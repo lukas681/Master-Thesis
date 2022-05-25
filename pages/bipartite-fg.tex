@@ -16,23 +16,23 @@
     \end{scope}
 
     \begin{scope}[start chain=going below, node distance=7mm]
-        \foreach \i in {6,7,...,10}
-        \node[ssnode,on chain] (f\i) [label=above left: $x'_{\i}$] {};
+        \foreach \i [count=\j] in {6,7,...,10}
+        \node[ssnode,on chain] (f\i) [label=above left: $x'_{\j}$] {};
     \end{scope}
 
     % the vertices of V
-    \begin{scope}[xshift=6cm,yshift=-0.5cm,start chain=going below, node distance=7mm]
-        \foreach \i in {11,12,...,14}
-        \node[ssnode,on chain] (f\i) [label=above right: $y'_{\i}$] {};
+    \begin{scope}[xshift=5cm,yshift=-0.5cm,start chain=going below, node distance=7mm]
+        \foreach \i [count=\j] in {11,12,...,14}
+        \node[ssnode,on chain] (f\i) [label=above right: $y_{\j}$] {};
     \end{scope}
     
-    \begin{scope}[xshift=8cm,yshift=-0.5cm,start chain=going below, node distance=7mm]
-        \foreach \i in {15,16,...,18}
-        \node[fsnode,on chain] (f\i) [label=above right: $x_{\i}$] {};
+    \begin{scope}[xshift=7cm,yshift=-0.5cm,start chain=going below, node distance=7mm]
+        \foreach \i [count=\j] in {15,16,...,18}
+        \node[fsnode,on chain] (f\i) [label=above right: $y'_{\j}$] {};
     \end{scope}
 
     \node [fsnode, left=of f8, xshift=-1cm] (nx) [label=above left: $d_1$]{};
-    \node [ssnode, right=of nx, xshift=12cm] (ny) [label=above right: $d_2$]{};
+    \node [ssnode, right=of nx, xshift=11cm] (ny) [label=above right: $d_2$]{};
 
     \node [ssnode, left=of nx] (nxx) [label=left: $u_1$]{};
     \node [fsnode, right=of ny] (nyy) [label=right: $u_2$]{};

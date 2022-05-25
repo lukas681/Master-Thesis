@@ -5,20 +5,23 @@
 \end{theorem}
 
 \begin{proof}
-    Given an bipartite Graph $G = ( \{X \cup Y\}, E)$ where X and Y are Independent Sets, we construct a bipratite G' the following way:
+    Given an bipartite Graph $G = ( \{X \cup Y\}, E)$ where X and Y are Independent Sets, we construct a biprartite Graph G' in the following way:
     \begin{enumerate}
-        \item For each vertex $x_i \in X$ we add a new vertex $x_i'$  and add a edge $(x_i, x_i')$ in between.
-        \item For each vertex $y_i \in Y$ we add a new vertex $y_i'$ and add a edge $(y_i, y_i')$ in between.
-        \item We add two $P_1$'s $(u_m, d_m), m \in [2]$ and connect $(d_1, x_i')$ and $(d_2, y_i')$ with all vertices from X (Y resp.) 
+        \item For each vertex $x_i \in X$ we add a new vertex $x_i'$  and add an edge $(x_i, x_i')$ in between.
+        \item For each vertex $y_i \in Y$ we add a new vertex $y_i'$ and add an edge $(y_i, y_i')$ in between.
+        \item We add two $P_1$'s $(u_m, d_m), m \in [2]$ and connect $(d_1, x_i')$ and $(d_2, y_i')$ 
     \end{enumerate}
-    \paragraph*{Observation:} The constructed graph is clearly bipartite: Setting $X' = X \cup \{y_i, u_1\}$ and $Y' = Y \cup \{x_i, u_2\}$ 
+    \paragraph*{Observation:} G' is clearly bipartite as all $y'_i$'s and $x'_i$ form an Independent Set which can freely be attached with our existing partitions. Setting  $X' = X \cup \{y'_i, u_2\}$ and $Y' = Y \cup \{x'_i, u_1\}$ give our desired new partitions.
 
-    \begin{corollary} G' has a Semitotal Dominating Set of size k iff G has a Dominating Set of size $k' = k + 1$
+    \begin{corollary} G has a Dominating Set of size k iff G has a Semitotal Dominating Set of size $k' = k + 2$
     \end{corollary} 
+     $\Rightarrow$: Asume there exists a Dominating Set D in G with size k. $DS = D\cup \{d_1,d_2\}$ is a Semitotal Dominating Set in $G'$ with size $k' = k+2 $ , because $d_1$ dominates $u_1$ and all $x'_i$s; $d_2$ dominates $u_2$ and all $y'_i$s. Hence, it is a Semitotal Dominating Set, because $\forall v \in (D \cap X): d(v, d_1) = 2$ and $\forall v \in (D \cap Y): d(v, d_2) = 2$
 
-    As the G' can be constructed in O(m+n) and parameter k only increases about 1, this reduction is a FPT reduction.
+    $\Leftarrow$: On the contrary, asume any Semitotal Dominating Set $SD$ in $G'$ with size $k'$. WLOG we can asume that $u_1, u_2 \notin DS$. 
+    
+    Our construction forces $d_1$, $d_2 \in DS$. Because all $x'_i$ can only be important for dominating $x_i$ ($y'_i$ for $y_i$), in the case if $x'_i \in DS$ we simly flip the dominating vertex to $x_i$ (for $y'_i$ and $y_i$ respectively) without changing the size of the dominating set. Setting $D = DS \setminus \{ d_1,d_2\}$ give us a Dominating Set in G with size $ k = k' - 2$
 
-    As Dominating Set is already $w[2]$ hard for Chordal Graphs (CITE) so is Semitotal Dominating Set.
+    As G' can be constructed in $\mathcal{O}(n)$ and parameter k is only blown up by a constant, this reduction is a FPT reduction. As Dominating Set is $w[2]$ hard for Bipratite Graphs (CITE) so is Semitotal Dominating Set.
 
 \end{proof}
 
