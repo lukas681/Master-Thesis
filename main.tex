@@ -1,0 +1,82 @@
+% \RequirePackage[l2tabu,orthodox]{nag}
+
+% TODO: decide if one-sided/two-sided
+%\documentclass[headsepline,footsepline,footinclude=false,fontsize=11pt,paper=a4,listof=totoc,bibliography=totoc,BCOR=12mm,DIV=12]{scrbook} % two-sided
+\documentclass[headsepline,footsepline,footinclude=false,oneside,fontsize=11pt,paper=a4,listof=totoc,bibliography=totoc]{scrbook} % one-sided
+
+% TODO: change citation style in settings
+\usepackage{amssymb,stmaryrd,mathrsfs,dsfont,mathtools}
+\usepackage{amsthm}
+%\usetikzlibrary{intersections}
+
+
+\usepackage[style=altlist,acronym]{glossaries}
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc}
+%\tikzstyle{vertex}=[circle, draw, inner sep=0pt, minimum size=6pt]
+\newcommand{\vertex}{\node[vertex]}
+
+\definecolor{applegreen}{rgb}{0.55, 0.71, 0.0}
+\definecolor{aqua}{rgb}{0.0, 1.0, 1.0}
+
+
+\input xy
+\xyoption{all}
+
+
+\setacronymstyle{long-short-desc}
+\renewcommand*{\acronymentry}[1]{%
+ \acronymfont{\glsentryshort{#1} -- \glsentrylong{#1}}}
+
+\input{settings}
+
+% TODO: change thesis information
+\newcommand*{\getUniversity}{Technical University Munich }
+\newcommand*{\getFaculty}{Department of Informatics}
+\newcommand*{\getTitle}{Collection of Proofs}
+\newcommand*{\getTitleGer}{On Parametrized Semitotal Dominating Set}
+\newcommand*{\getAuthor}{Lukas Retschmeier}
+\newcommand*{\getDoctype}{Master Thesis}
+\newcommand*{\getSupervisor}{Paloma T. Lima}
+\newcommand*{\getAdvisor}{Professor}
+\newcommand*{\getSubmissionDate}{}
+\newcommand*{\getSubmissionLocation}{Copenhagen}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\begin{document}
+
+% Set page numbering to avoid "destination with the same identifier has been already used" warning for cover page.
+% (see https://en.wikibooks.org/wiki/LaTeX/Hyperlinks#Problems_with_Links_and_Pages).
+\pagenumbering{alph}
+\input{pages/cover}
+
+\frontmatter{}
+
+\input{pages/title}
+\input{pages/disclaimer}
+\input{pages/acknowledgments}
+\input{pages/abstract}
+
+\newacronym[description={Problem},%
+    name={Semitotal Dominating Set}]{sds}{sds}{Semitotal Dominating Set}
+
+\microtypesetup{protrusion=false}
+\tableofcontents{}
+\microtypesetup{protrusion=true}
+
+\mainmatter{}
+
+\input{pages/proofs}
+
+\appendix{}
+
+\microtypesetup{protrusion=false}
+% \listoffigures{}
+\listoftables{}
+\microtypesetup{protrusion=true}
+
+\end{document}

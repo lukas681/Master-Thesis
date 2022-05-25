@@ -1,0 +1,28 @@
+\chapter{Proofs}
+\input{pages/bipartite-fg.tex}
+\begin{theorem}
+    Semitotal Dominating Set is $\omega[2]$ hard for bipartite Graphs
+\end{theorem}
+
+\begin{proof}
+    Given an bipartite Graph $G = ( \{X \cup Y\}, E)$ where X and Y are Independent Sets, we construct a bipratite G' the following way:
+    \begin{enumerate}
+        \item For each vertex $x_i \in X$ we add a new vertex $x_i'$  and add a edge $(x_i, x_i')$ in between.
+        \item For each vertex $y_i \in Y$ we add a new vertex $y_i'$ and add a edge $(y_i, y_i')$ in between.
+        \item We add two $P_1$'s $(u_m, d_m), m \in [2]$ and connect $(d_1, x_i')$ and $(d_2, y_i')$ with all vertices from X (Y resp.) 
+    \end{enumerate}
+    \paragraph*{Observation:} The constructed graph is clearly bipartite: Setting $X' = X \cup \{y_i, u_1\}$ and $Y' = Y \cup \{x_i, u_2\}$ 
+
+    \begin{corollary} G' has a Semitotal Dominating Set of size k iff G has a Dominating Set of size $k' = k + 1$
+    \end{corollary} 
+
+    As the G' can be constructed in O(m+n) and parameter k only increases about 1, this reduction is a FPT reduction.
+
+    As Dominating Set is already $w[2]$ hard for Chordal Graphs (CITE) so is Semitotal Dominating Set.
+
+\end{proof}
+
+\begin{theorem}
+    Semitotal Dominating Set is $\omega[2]$ hard for Chordal Graphs
+\end{theorem}
+    
