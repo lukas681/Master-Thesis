@@ -1,6 +1,9 @@
-\begin{center}
+\begin{figure}[htb]
+    \centering
 \definecolor{myblue}{RGB}{80,80,160}
 \definecolor{mygreen}{RGB}{80,160,80}
+
+\resizebox{0.7\textwidth}{!}{
 \begin{tikzpicture}[thick,
         every node/.style={draw,circle},
         fsnode/.style={fill=myblue},
@@ -8,7 +11,6 @@
         every fit/.style={ellipse,draw,inner sep=-2pt,text width=2.2cm},
         -,shorten >= 3pt,shorten <= 3pt
     ]
-
     % the vertices of U
     \begin{scope}[xshift=2cm,start chain=going below, node distance=7mm]
         \foreach \i in {1,2,...,5}
@@ -79,5 +81,7 @@
     \draw (f14) -- (f18);
 
 \end{tikzpicture}
-\end{center}
+}
+%\caption*{Constructing G' from a bipartite Graph G by duplicating the vertices and adding a dominating tail}
+\end{figure}
 
