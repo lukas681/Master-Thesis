@@ -1,0 +1,152 @@
+\pagenumbering{roman}
+\chapter{Introduction}
+
+\subsection*{Our contributions}
+
+\chapter{Preliminaries}
+We start by recapping some basic notation in Graph Theory and Parametrized Complexity. 
+
+%% TODO State Draft
+Continuing an intensive study of parametrized complexity of that problem. 
+
+\section{Graph Theory}
+We quickly state the following definitions given by {\cite[p.~xxx]{diestel10}}.
+
+%% TODO Path, Subgraph, Induced Subgraph, Copnnected 
+\begin{definition}[Graph]
+A graph is a pair $G = (V, E)$ of two sets where $V$ denotes the vertices and $E \subseteq V \times C$ the edges of the graph.  A vertex $v \in V$ is incident with an edge $e \in E$ if $v \in e$. Two vertices $x, y$ are adjacent, or neighbours, if $\{x,y \} \in E$.
+% Size of the Graph?
+\end{definition}
+
+\begin{definition}[Special Graph Notations {\cite[p.~27]{diestel10}}]
+    A simple Graph
+
+    A directed Graph is a graph
+
+    A Multi Graph
+
+    A Planar Graph
+\end{definition}
+
+\begin{definition}[Adjacent Vertices]
+\end{definition}
+
+\begin{definition}[Closed and Open Neighborhoods of Vertices]
++ Sets
+\end{definition}
+
+\begin{definition}[Induced Subgraph]
+    asd
+\end{definition}
+
+\subsection*{Special Graph Classes}
+We call the class of graphs without any special restrictions "General Graphs".
+
+\begin{definition}[r-partite Graphs]
+    Let $r \geq 2$ be an integer. A Graph $G = (V,E)$ is called "r-partite" if V admits a parititon into r classes such that every edge has its ends in different classes: Vertices in the same partition class must not be adjacent. 
+    
+    For the case $r = 2$ we say that the G is "bipartite" 
+%      %        TODO mage of a bipartite Graph
+
+\end{definition}
+
+\begin{definition}[Chordal Graphs]
+    
+\end{definition}
+
+\begin{definition}[Split Graphs]
+    
+\end{definition}
+
+% Independent Set
+
+\section{Parametrized Complexity}
+
+\subsection{Fixed Parameter Tractability}
+\subsection{Fixed Parameter Intractability: The \hmath $W$ Hierarchy}
+\subsection{Kernelization}
+
+
+\chapter{On Parametrized Dominating Set}
+\section{Semitotal Domination}
+
+Definition, dominating number
+
+\subsection*{A Survey}
+
+\section{\hmath $w[i]$-Intractibility}
+
+Now some  w[i] hard classes. 
+
+\subsection{Warm-Up: \hmath $W[2]$-hard on General Graphs}
+
+% TODO can we conclude anything for AT Free Graphs?
+%% TODO Extend to r-partite
+\subsection{\hmath $W[2]$-hard on Bipartite Graphs}
+
+\subsection{\hmath $W[2]$-hard on Chordal Graphs}
+
+\subsection{\hmath $W[2]$-hard on Split Graphs}
+
+\chapter{A Linear Kernel for Planar Semitotal Domination}
+
+TODO Alber et. al, Total Domination. 
+
+\section{The Main Idea and The Big Picture}
+\section{Definitions}
+\section{Deducing Reduction Rules}
+\subsection{Reduction Rule I (R1): Getting Rid of unneccessary $N_3(v)$-vertices}
+
+\begin{lemma}[Correctness of the Reduction]
+    
+\end{lemma}
+
+\subsection{Reduction Rule II (R2): Shrinking the Size of a Region}
+\begin{lemma}[Correctness of the Reduction]
+    
+\end{lemma}
+
+\subsection{ Reduction Rule III (R3): Shrinking the Size of Simple Regions}
+\begin{lemma}[Correctness of the Reduction]
+    
+\end{lemma}
+
+%TODO Cite Stau, Ignasi
+\begin{lemma}[Reduced Plane Graph under R2]
+    
+\end{lemma}
+
+
+\begin{lemma}[Given size of N1 and N2 regions] 
+    
+\end{lemma}
+
+\section{Bounding the Size of the Kernel}
+
+
+\begin{lemma}[Number of Vertices inside a Region ]
+    
+\end{lemma}
+
+\begin{lemma}[Number of Vertices outside a Region]
+    
+\end{lemma}
+
+\begin{lemma}[Number of Regions in a Maximum Region Decomposition]
+    
+\end{lemma}
+
+We now have all the tools ready to proof the central theorem of this section: 
+
+\begin{lemma}[Running Time of Reduction Procedure]
+    
+\end{lemma}
+
+\begin{theorem}
+    Semitotal Dominating Set has a linear kernel of size XXX on planar graphs.
+\end{theorem}
+\subsection*{NP Hardness on General Graphs}
+
+\chapter{Open Questions and Further Research}
+
+Chordal Bipartite Graphs a very interesting case.

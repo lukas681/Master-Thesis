@@ -1,14 +1,13 @@
-% \RequirePackage[l2tabu,orthodox]{nag}
-
-% TODO: decide if one-sided/two-sided
 %\documentclass[headsepline,footsepline,footinclude=false,fontsize=11pt,paper=a4,listof=totoc,bibliography=totoc,BCOR=12mm,DIV=12]{scrbook} % two-sided
-\documentclass[headsepline,footsepline,footinclude=false,oneside,fontsize=11pt,paper=a4,listof=totoc,bibliography=totoc]{scrbook} % one-sided
+\documentclass[11pt,a4paper,listof=totoc,bibliography=totoc,openany]{scrbook} % one-sided
 
-% TODO: change citation style in settings
+% TODO  change citation style in settings
 \usepackage{amssymb,stmaryrd,mathrsfs,dsfont,mathtools}
 \usepackage{amsthm}
-%\usetikzlibrary{intersections}
-
+\usepackage[dvipsnames]{xcolor} 			% einfache Verwendung von Farben in nahezu allen Farbmodellen
+\usepackage[hyphens]{url}
+\usepackage[Conny]{fncychap} %% Oder Bjarne, Bjornstrup, Glenn
+\usepackage{datetime}
 
 \usepackage[style=altlist,acronym]{glossaries}
 \usepackage{tikz}
@@ -16,13 +15,16 @@
 %\tikzstyle{vertex}=[circle, draw, inner sep=0pt, minimum size=6pt]
 \newcommand{\vertex}{\node[vertex]}
 
+%% DECLARING STYLING
+\def\hmath$#1${\texorpdfstring{{\rmfamily\textit{#1}}}{#1}}
+\ChTitleVar{\bfseries\Large\rmfamily}
+
+\ChNameVar{\bfseries\Large\sffamily}
 \definecolor{applegreen}{rgb}{0.55, 0.71, 0.0}
 \definecolor{aqua}{rgb}{0.0, 1.0, 1.0}
 
-
 \input xy
 \xyoption{all}
-
 
 \setacronymstyle{long-short-desc}
 \renewcommand*{\acronymentry}[1]{%
@@ -30,20 +32,19 @@
 
 \input{settings}
 
-% TODO: change thesis information
 \newcommand*{\getUniversity}{Technical University Munich }
 \newcommand*{\getFaculty}{Department of Informatics}
-\newcommand*{\getTitle}{Collection of Proofs}
-\newcommand*{\getTitleGer}{On Parametrized Semitotal Dominating Set}
+\newcommand*{\getTitle}{On Parametrized Semitotal Dominating Set}
+\newcommand*{\getTitleGer}{A Survey and a Linear Kernel For Planar Graphs}
 \newcommand*{\getAuthor}{Lukas Retschmeier}
 \newcommand*{\getDoctype}{Master Thesis}
-\newcommand*{\getSupervisor}{Paloma T. Lima}
-\newcommand*{\getAdvisor}{Professor}
-\newcommand*{\getSubmissionDate}{}
-\newcommand*{\getSubmissionLocation}{Copenhagen}
-
+\newcommand*{\getSupervisor}{Prof. Dr. Debarghya Ghoshdastidar (TUM)}
+\newcommand*{\getAdvisor}{Prof. Dr. Paloma T. Lima (ITU)}
+\newcommand*{\getSubmissionDate}{\today}
+\newcommand*{\getSubmissionLocation}{København}
 
 \newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
 \newtheorem{corollary}{Corollary}
 \newtheorem{lemma}[theorem]{Lemma}
 \newenvironment{subproof}[1][\proofname]{%
@@ -52,6 +53,8 @@
 }{%
   \end{proof}%
 }
+\newacronym[description={Problem},%
+    name={Semitotal Dominating Set}]{sds}{sds}{Semitotal Dominating Set}
 
 \begin{document}
 
@@ -65,23 +68,25 @@
 \input{pages/title}
 \input{pages/disclaimer}
 \input{pages/acknowledgments}
+\tableofcontents
 \input{pages/abstract}
 
-\newacronym[description={Problem},%
-    name={Semitotal Dominating Set}]{sds}{sds}{Semitotal Dominating Set}
-
-\microtypesetup{protrusion=false}
-\tableofcontents{}
-\microtypesetup{protrusion=true}
 
 \mainmatter{}
+\input{pages/theory}
 
-\input{pages/proofs}
 
+\microtypesetup{protrusion=false}
+\microtypesetup{protrusion=true}
+
+
+% \input{pages/proofs}
+
+\printbibliography
 \appendix{}
 
 \microtypesetup{protrusion=false}
-% \listoffigures{}
+\listoffigures{}
 \listoftables{}
 \microtypesetup{protrusion=true}
 
