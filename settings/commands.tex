@@ -1,0 +1,52 @@
+% GENERAL ABBREVIATIONS
+\newcommand{\mc}{\mathcal}
+
+% ABBREVIATIONS
+\newcommand{\Dvw}   {\ensuremath{\mc{D}}\xspace}
+\newcommand{\Dv}    {\ensuremath{\mc{D}_{v}}\xspace}
+\newcommand{\Dw}    {\ensuremath{\mc{D}_{w}}\xspace}
+
+% SETTINGS
+\newcommand*{\getUniversity}{Technical University Munich }
+\newcommand*{\getFaculty}{Department of Informatics}
+\newcommand*{\getTitle}{On Parametrized Semitotal Dominating Set}
+\newcommand*{\getTitleGer}{A Survey and a Linear Kernel For Planar Graphs}
+\newcommand*{\getAuthor}{Lukas Retschmeier}
+\newcommand*{\getDoctype}{Master Thesis}
+\newcommand*{\getSupervisor}{Prof. Dr. Debarghya Ghoshdastidar (TUM)}
+\newcommand*{\getAdvisor}{Prof. Dr. Paloma T. Lima (ITU)}
+\newcommand*{\getSubmissionDate}{\today}
+\newcommand*{\getSubmissionLocation}{København}
+
+
+
+
+% TIKZ
+\newcommand{\vertex}{\node[vertex]}
+
+% COLORSKEME
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\green}[1]{\textcolor{mygreen}{#1}}
+\newcommand{\brown}[1]{\textcolor{brown}{#1}}
+
+% THEOREM ENVIRONMENTS
+\newtheorem{fact}{Fact}
+\newtheorem{rgl}  {Rule} 	
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newenvironment{subproof}[1][\proofname]{%
+  \renewcommand{\qedsymbol}{$\blacksquare$}%
+  \begin{proof}[#1]%
+}{%
+  \end{proof}%
+}
+
+% ACRONYMS
+\newacronym[description={Problem},%
+    name={Semitotal Dominating Set}]{sds}{sds}{Semitotal Dominating Set}
+
+% HACKY STUFF
+\renewcommand{\o}{\oldemptyset}

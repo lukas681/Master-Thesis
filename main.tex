@@ -1,19 +1,22 @@
 %\documentclass[headsepline,footsepline,footinclude=false,fontsize=11pt,paper=a4,listof=totoc,bibliography=totoc,BCOR=12mm,DIV=12]{scrbook} % two-sided
 \documentclass[11pt,a4paper,listof=totoc,bibliography=totoc,openany]{scrbook} % one-sided
 
-% TODO  change citation style in settings
 \usepackage{amssymb,stmaryrd,mathrsfs,dsfont,mathtools}
 \usepackage{amsthm}
 \usepackage[dvipsnames]{xcolor} 			% einfache Verwendung von Farben in nahezu allen Farbmodellen
 \usepackage[hyphens]{url}
-\usepackage[Conny]{fncychap} %% Oder Bjarne, Bjornstrup, Glenn
+\usepackage[Conny]{fncychap} %% Oder jarne, Bjornstrup, Glenn
 \usepackage{datetime}
+\usepackage{lipsum}
+\usepackage{xspace}
+
+\usepackage{graphics}
+     \graphicspath{{fig/}}
 
 \usepackage[style=altlist,acronym]{glossaries}
 \usepackage{tikz}
 \usetikzlibrary{positioning,chains,fit,shapes,calc}
 %\tikzstyle{vertex}=[circle, draw, inner sep=0pt, minimum size=6pt]
-\newcommand{\vertex}{\node[vertex]}
 
 %% DECLARING STYLING
 \def\hmath$#1${\texorpdfstring{{\rmfamily\textit{#1}}}{#1}}
@@ -30,40 +33,17 @@
 \renewcommand*{\acronymentry}[1]{%
  \acronymfont{\glsentryshort{#1} -- \glsentrylong{#1}}}
 
-\input{settings}
-
-\newcommand*{\getUniversity}{Technical University Munich }
-\newcommand*{\getFaculty}{Department of Informatics}
-\newcommand*{\getTitle}{On Parametrized Semitotal Dominating Set}
-\newcommand*{\getTitleGer}{A Survey and a Linear Kernel For Planar Graphs}
-\newcommand*{\getAuthor}{Lukas Retschmeier}
-\newcommand*{\getDoctype}{Master Thesis}
-\newcommand*{\getSupervisor}{Prof. Dr. Debarghya Ghoshdastidar (TUM)}
-\newcommand*{\getAdvisor}{Prof. Dr. Paloma T. Lima (ITU)}
-\newcommand*{\getSubmissionDate}{\today}
-\newcommand*{\getSubmissionLocation}{København}
-
-\newtheorem{theorem}{Theorem}
-\newtheorem{definition}{Definition}
-\newtheorem{corollary}{Corollary}
-\newtheorem{lemma}[theorem]{Lemma}
-\newenvironment{subproof}[1][\proofname]{%
-  \renewcommand{\qedsymbol}{$\blacksquare$}%
-  \begin{proof}[#1]%
-}{%
-  \end{proof}%
-}
-\newacronym[description={Problem},%
-    name={Semitotal Dominating Set}]{sds}{sds}{Semitotal Dominating Set}
+\input{settings/settings}
+\input{settings/commands}
 
 \begin{document}
 
+%\pagenumbering{alph}
 % Set page numbering to avoid "destination with the same identifier has been already used" warning for cover page.
 % (see https://en.wikibooks.org/wiki/LaTeX/Hyperlinks#Problems_with_Links_and_Pages).
-\pagenumbering{alph}
 \input{pages/cover}
 
-\frontmatter{}
+\frontmatter
 
 \input{pages/title}
 \input{pages/disclaimer}
@@ -71,23 +51,18 @@
 \tableofcontents
 \input{pages/abstract}
 
+\mainmatter
+  \part{Theory}
+    \include{pages/theory}
 
-\mainmatter{}
-\input{pages/theory}
+\backmatter
+  \microtypesetup{protrusion=false}
+  \listoffigures{}
+  \listoftables{}
+  \microtypesetup{protrusion=true}
+  \printbibliography
 
+\appendix
 
-\microtypesetup{protrusion=false}
-\microtypesetup{protrusion=true}
-
-
-% \input{pages/proofs}
-
-\printbibliography
-\appendix{}
-
-\microtypesetup{protrusion=false}
-\listoffigures{}
-\listoftables{}
-\microtypesetup{protrusion=true}
 
 \end{document}
