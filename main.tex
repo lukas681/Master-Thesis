@@ -3,12 +3,14 @@
 
 \usepackage{amssymb,stmaryrd,mathrsfs,dsfont,mathtools}
 \usepackage{amsthm}
+\usepackage{thmtools}
 \usepackage[dvipsnames]{xcolor} 			% einfache Verwendung von Farben in nahezu allen Farbmodellen
 \usepackage[hyphens]{url}
 \usepackage[Conny]{fncychap} %% Oder jarne, Bjornstrup, Glenn
 \usepackage{datetime}
 \usepackage{lipsum}
 \usepackage{xspace}
+\usepackage{physics}
 
 \usepackage{graphics}
      \graphicspath{{fig/}}
@@ -34,6 +36,11 @@
  \acronymfont{\glsentryshort{#1} -- \glsentrylong{#1}}}
 
 \input{settings/settings}
+
+% DEPENDS ON HYPERREF
+\usepackage{nameref}
+\usepackage[capitalize,nameinlink]{cleveref}
+
 \input{settings/commands}
 
 \begin{document}
@@ -46,21 +53,22 @@
 \frontmatter
 
 \input{pages/title}
+
 \input{pages/disclaimer}
 \input{pages/acknowledgments}
 \tableofcontents
 \input{pages/abstract}
 
 \mainmatter
-  \part{Theory}
     \include{pages/theory}
 
 \backmatter
   \microtypesetup{protrusion=false}
+  \printbibliography
+  % TODO: Discuss wether necessary. 
   \listoffigures{}
   \listoftables{}
   \microtypesetup{protrusion=true}
-  \printbibliography
 
 \appendix
 
