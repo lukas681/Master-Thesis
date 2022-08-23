@@ -1,0 +1,43 @@
+\documentclass[12p,a5paper, paper=portrait]{article}
+
+\usepackage[margin=1cm]{geometry}
+
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{multicol}
+
+\begin{document}
+
+\section*{Cheatsheet}
+
+%\begin{multicols}{2}
+
+    \begin{itemize}
+    \item Neighborhoods for a single Vertex \\
+
+    $ N_1(v) = \{u \in N(v) : N(u) \setminus (N(v)\cup \{v\}) \neq \emptyset \} $\\
+    $ N_2(v) = \{u \in N(v)\setminus N_1(v) : N(u) \cap N_1(v) \neq \emptyset \} $\\
+    $ N_3(v) = N(v) \setminus (N_1(v) \cup N_2(v))$
+
+    For $i,j \in [1,3]$, we denote $N_{i,j} (v) = N_i(v) \cup N_j(v)$ 
+
+    \item Neighborhoods for a two Vertices\\
+    
+    $ N_1(v,w) = \{u \in N(v,w) \mid N(u) \setminus (N(v,w)\cup \{v,w\}) \neq \emptyset \} $\\
+    $ N_2(v,w) = \{u \in N(v,w)\setminus N_1(v,w) \mid N(u) \cap N_1(v,w) \neq \emptyset \}$\\
+    $ N_3(v,w) =  N(v,w) \setminus (N_1(v,w) \cup N_2(v,w))$.
+
+    For $i,j \in [1,3]$, we denote $N_{i,j}(v,w) = N_i(v,w) \cup N_j(v,w)$.
+
+%    \columnbreak
+
+    \item Definition for Reduction Rule 2\\
+   
+        $D = \{ \tilde D \subseteq N_{2,3}(v,w)            \mid N_3(v,w) \subseteq \bigcup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3                  \}$,\\
+        $D_v = \{ \tilde D \subseteq N_{2,3}(v,w) \cup \{v\} \mid N_3(v,w) \subseteq \bigcup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3,\ v \in \tilde D \}$ \\
+        $D_w = \{ \tilde D \subseteq N_{2,3}(v,w) \cup \{w\} \mid N_3(v,w) \subseteq \bigcup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3,\ w \in \tilde D \}$.
+
+        $\bigcup D_v = \bigcup_{D \in D_v} D$ and $\bigcup D_w = \bigcup_{D \in \Dw} D$
+    \end{itemize}
+
+\end{document}

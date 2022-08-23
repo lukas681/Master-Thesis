@@ -6,10 +6,12 @@
 \newcommand{\Dv}    {\ensuremath{\mc{D}_{v}}\xspace}
 \newcommand{\Dw}    {\ensuremath{\mc{D}_{w}}\xspace}
 
+\newcommand{\Nthreev}    {\ensuremath{N_3(v)}}
+
 % SETTINGS
 \newcommand*{\getUniversity}{Technical University Munich }
 \newcommand*{\getFaculty}{Department of Informatics}
-\newcommand*{\getTitle}{On Parametrized Semitotal Dominating Set}
+\newcommand*{\getTitle}{On the Paramtrized Complexity of Semitotal Domination on Graph Classes}
 \newcommand*{\getTitleGer}{A Survey and a Linear Kernel For Planar Graphs}
 \newcommand*{\getAuthor}{Lukas Retschmeier}
 \newcommand*{\getDoctype}{Master Thesis}
@@ -17,9 +19,6 @@
 \newcommand*{\getAdvisor}{Prof. Dr. Paloma T. Lima (ITU)}
 \newcommand*{\getSubmissionDate}{\today}
 \newcommand*{\getSubmissionLocation}{København}
-
-
-
 
 % TIKZ
 \newcommand{\vertex}{\node[vertex]}
@@ -31,12 +30,27 @@
 \newcommand{\brown}[1]{\textcolor{brown}{#1}}
 
 % THEOREM ENVIRONMENTS
-\newtheorem{fact}{Fact}
-\newtheorem{rgl}  {Rule} 	
-\newtheorem{theorem}{Theorem}
-\newtheorem{definition}{Definition}
-\newtheorem{corollary}{Corollary}
-\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{fact}{\protect\color{TUMSecondaryBlue} Fact}
+\newtheorem{rgl}  {\protect\color{TUMSecondaryBlue} Rule} 	
+\newtheorem{theorem}{\protect\color{TUMSecondaryBlue} Theorem}
+
+\newtheorem{definition}{\protect\color{TUMSecondaryBlue} Definition}
+\newtheorem{corollary}{\protect\color{TUMSecondaryBlue} Corollary}
+\newtheorem{lemma}[theorem]{\protect\color{TUMSecondaryBlue} Lemma}
+
+\newcounter{casenum}
+\newenvironment{caseof}{\setcounter{casenum}{1}}{\vskip.5\baselineskip}
+\newcommand{\case}[2]{\vskip.5\baselineskip\par\noindent {\bfseries Case \arabic{casenum}:} #1\\#2\addtocounter{casenum}{1}}
+\crefname{case}{Case}{Cases}
+
+
+\crefname{rgl}{Rule}{Rules}
+\crefname{fact}{Fact}{Facts}
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{definition}{Definition}{Definitions}
+\crefname{corollary}{Corollary}{Corollaries}
+
+
 \newenvironment{subproof}[1][\proofname]{%
   \renewcommand{\qedsymbol}{$\blacksquare$}%
   \begin{proof}[#1]%
@@ -48,5 +62,27 @@
 \newacronym[description={Problem},%
     name={Semitotal Dominating Set}]{sds}{sds}{Semitotal Dominating Set}
 
-% HACKY STUFF
-\renewcommand{\o}{\oldemptyset}
+\newcommand{\name}[1]{\textsc{#1}}
+\newcommand{\dom}	{\name{Dominating Set}\xspace}
+\newcommand{\tdom}{\name{Total Dominating Set}\xspace}
+\newcommand{\sdom}{\name{Semitotal Dominating Set}\xspace}
+\newcommand{\cdom}{\name{Connected Dominating Set}\xspace}
+\newcommand{\rbdom}{\name{Red-Blue Dominating Set}\xspace}
+\newcommand{\efdom}{\name{Efficient Dominating Set}\xspace}
+\newcommand{\eddom}{\name{Edge Dominating Set}\xspace}
+\newcommand{\G}		{\ensuremath{G=(V,E)}\xspace}
+\newcommand{\GB}	{\ensuremath{G'=(V',E')}\xspace}
+\newcommand{\R}		{\ensuremath{R(v,w)}\xspace}
+\newcommand{\N}[1]	{\ensuremath{N_{#1}(v,w)}\xspace}
+\newcommand{\DR}	{\ensuremath{\mc{R}}\xspace}
+\newcommand{\vw}	{\ensuremath{\{ v,w\}}\xspace}
+\newcommand{\sr}	{simple region}
+
+\newcommand{\bg}	{bipartite graphs}
+\newcommand{\cg}	{chordal graphs}
+\newcommand{\cbg}	{chordal bipartite graphs}
+\newcommand{\rpg}	{\ensuremath{r}-partite graphs}
+\newcommand{\sg}	{split graphs}
+
+\newcommand{\wtwo}	{\ensuremath{w[2]}}
+\newcommand{\wone}	{\ensuremath{w[1]}}

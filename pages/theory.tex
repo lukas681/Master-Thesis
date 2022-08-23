@@ -1,6 +1,38 @@
 \chapter{Introduction}
 
-\subsection*{Our contributions}
+Parametrized Complexity emerging branch. Books about that
+
+Semitotal domination introduced by 
+% TODO: Idea for a nice introduction 
+\section{Content of the thesis}
+
+In this thesis we continue the systematic analysis of the \sdom problem by focusing on the parametrized complexity of the problem. 
+
+Although the problem already had a lot of attention regarding classical complexity (CITE), only few results are currently known for the parametrized variant. 
+
+As far as we have seen, even the w-hardness of the general case has not been explicitely been proofen in the literature. 
+
+In this thesis we continue the journey towards a systematic analysis by stating some hardness results for specific graph classes for the problem.
+
+\paragraph{Our contributions}
+% TODO Better: 
+
+Our main contributations consist of first showing the $w[2]$-hardness of \sdom for XXXX graphs.
+
+\noindent As the \dom problem and the \tdom problem both admit a linear kernel for planar graphs, it is interesting to analyse wether this results also holds for the \sdom problem which lays in between these two. 
+%TODO by relxing the witness of these two provlemsproblems.
+
+Having these kernels also for other variants like \eddom, \efdom, \cdom, \rbdom lent us a great confidence that the result will also work for \sdom on planar graphs.
+
+%% TODO Find more.
+
+Following the approach from ... which alraedy relies on the technique given in, we give some simple data reduction rules for \sdom on planar graphs leading to a linear kernel. More precisely, we are going to proof the following central theorem of this thesis:
+
+\begin{restatable}[]{theorem}{centraltheo}\label{thm:central}
+    The \sdom problem parametrized by solution size admits a linear kernel on planar graphs. There exists a polynomial-time algorithms that given a planar graph $(G, k)$, either correctly reports that $(G, k)$ is a NO-instance or returns an equivalent instance $(G', k)$ such that XXX.
+\end{restatable}
+
+ \dom problem and \tdom problem, both already 
 
 \chapter{Preliminaries}
 We start by recapping some basic notation in Graph Theory and Parametrized Complexity. 
@@ -62,16 +94,18 @@ We call the class of graphs without any special restrictions "General Graphs".
 \section{Parametrized Complexity}
 
 \subsection{Fixed Parameter Tractability}
-\subsection{Fixed Parameter Intractability: The \hmath $W$ Hierarchy}
+\paragraph{Fixed Parameter Intractability: The \hmath $W$ Hierarchy}
 \subsection{Kernelization}
 
 
 \chapter{On Parametrized Dominating Set}
 \section{Semitotal Domination}
 
+\sdom
+
 Definition, dominating number
 
-\subsection*{A Survey}
+\subsection*{Complexity Status of \sdom}
 
 \section{\hmath $w[i]$-Intractibility}
 
@@ -83,6 +117,8 @@ Now some  w[i] hard classes.
 %% TODO Extend to r-partite
 \subsection{\hmath $W[2]$-hard on Bipartite Graphs}
 
+As any \bg with bipartition can be split further into \rpg this results also implies the \wone-hardness of \rpg
+
 \subsection{\hmath $W[2]$-hard on Chordal Graphs}
 
 \subsection{\hmath $W[2]$-hard on Split Graphs}
@@ -92,69 +128,158 @@ Now some  w[i] hard classes.
 TODO Alber et. al, Total Domination. 
 
 \section{The Main Idea and The Big Picture}
-\section{Necessary Definitions}
+
+
+
+\section{Definitions}
+
+\begin{definition} \label{def:nv}
+    Let \G be a graph and let $v \in V$. We denote by $N(v) = \{u \in V : \{u,v\} \in E \}$ the neighborhood of $v$. We split $N(v)$ into three subsets:
+    \begin{align}
+    N_1(v) &= \{u \in N(v) : N(u) \setminus (N(v)\cup \{v\}) \neq \emptyset \} \\
+    N_2(v) &= \{u \in N(v)\setminus N_1(v) : N(u) \cap N_1(v) \neq \emptyset \} \\
+    N_3(v) &= N(v) \setminus (N_1(v) \cup N_2(v))
+    \end{align}
+    In order to inhance future readability, we add some syntactical sugar.  For $i,j \in [1,3]$, we denote $N_{i,j} (v) = N_i(v) \cup N_j(v)$.
+\end{definition}
+    
+\begin{definition}
+    Let \G be a graph and $v,w \in V$. We denote by $N(v,w) = N(v) \cup N(w)$ the neighborhood of the pair $v,w$. We split $N(v,w)$ into three subsets:
+    \begin{align}
+    N_1(v,w) &= \{u \in N(v,w) \mid N(u) \setminus (N(v,w)\cup \{v,w\}) \neq \emptyset \} \\
+    N_2(v,w) &= \{u \in N(v,w)\setminus N_1(v,w) \mid N(u) \cap N_1(v,w) \neq \emptyset \}\\
+    N_3(v,w) &=  N(v,w) \setminus (N_1(v,w) \cup N_2(v,w))
+    \end{align}
+    Again, for $i,j \in [1,3]$, we denote $N_{i,j}(v,w) = N_i(v,w) \cup N_j(v,w)$.
+\end{definition}
 
 \section{Deducing Reduction Rules}
-\subsection{Reduction Rule I (R1): Getting Rid of unneccessary $N_3(v)$ vertices}
 
-\begin{lemma}[Correctness of the Reduction]
-    
+\subsection{Reduction Rule I: Getting Rid of unneccessary  $N_3(v)$ vertices}
+
+\begin{rgl}\label{rgl:rone}
+    Let \G be a graph and let $v \in V$. If $\abs{\Nthreev} \geq 1$:
+
+    \begin{itemize}
+        \item remove $\Nthreev$ from G, 
+        \item add a vertex $v'$ and an edge $\{v, v'\}$
+    \end{itemize}
+     
+\end{rgl}
+\begin{lemma}
+    Let \G be a a graph and let $v \in V$. If $G'$ is the graph obtained by applying \cref{rgl:rone}   on $V$, then G has SDS of size k if and only if G' has one.
+\end{lemma}
+\begin{proof}
+   This will be the proof for this lemma X 
+\end{proof}
+
+\subsection{Reduction Rule II: Shrinking the Size of a Region}
+
+% TODO: Force connectivity, improve kerne bound
+
+...
+% TODO: Reformulate
+Following the approach from [STAU] which relies on the technique first introduced by Alber et al we try to reduce the neighborhood for two given vertices $v$ and $w$
+
+This observation gives motivation to define the following sets:
+
+\begin{align}
+    \Dvw &= \{ \tilde D \subseteq N_{2,3}(v,w)            \mid N_3(v,w) \subseteq \bigcup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3                  \}\\
+    \Dv  &= \{ \tilde D \subseteq N_{2,3}(v,w) \cup \{v\} \mid N_3(v,w) \subseteq \bigcup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3,\ v \in \tilde D \}\\
+    \Dw  &= \{ \tilde D \subseteq N_{2,3}(v,w) \cup \{w\} \mid N_3(v,w) \subseteq \bigcup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3,\ w \in \tilde D \}
+    \end{align}
+
+    %TODO Explain that more in detail. + Examples.
+    Note, that 
+\begin{rgl}\label{rgl:rtwo}
+    Let \G be a graph and two distinct $v,w \in V$. If $\Dvw = \emptyset$ we apply the following:
+    \begin{caseof}
+        \case{if $\Dv =  \emptyset$ and $D_w = \emptyset$}
+
+        \begin{itemize}
+            \item Remove $N_{2,3}(v,w)$
+            \item Add vertices $v'$ and $w'$ and two edges $\{v, v'\}$ and $\{w, w'\}$
+            \item If there was a common neighbor of $v$ and $w$ in $N_{2,3}(v,w)$ add another vertex $y$ and two connecting edges  $\{v, y\}$ and $\{y, w\}$
+        \end{itemize}
+        \case{if $\Dv \neq  \emptyset$ and $D_w \neq \emptyset$}asdasd
+        \case{if $\Dv \neq  \emptyset$ and $D_w = \emptyset$}asd
+        \case{if $\Dv =  \emptyset$ and $D_w \neq \emptyset$} This case is symmetrical to \textbf{Case 3}. 
+    \end{caseof}
+\end{rgl}
+
+Before proofing the correctness of this reduction we will give some intuition behind these rules.
+
+\begin{lemma}
+    Let \G be a plane graph, $v, w \in V$ and \GB be the graph obtained after application of \cref{rgl:rtwo} on the pair $\{v, w\}$. Then G has SDS of size k if and only if G' has SDS of size k.
 \end{lemma}
 
-\subsection{Reduction Rule II (R2): Shrinking the Size of a Region}
-\begin{lemma}[Correctness of the Reduction]
-    
+\subsection{Reduction Rule III: Shrinking Simple Regions}
+\begin{rgl}\label{rgl:rthree}
+    Let \G be a plane graph, $v, w \ in V$ and $R$ be a simple region between $v$ and $w$. If $\abs{V(R) \setminus \{v, w\}} \geq 7$
+
+    % TODO N_3 star?
+    \begin{itemize}
+        \item Remove $N_3*(v,w)$
+        \item Add two vertices $h_1$ and $h_2$ and four edges $\{v, h_1\}$, $\{v, H_2\}$, $\{w, h_1\}$ and $\{w, h_2\}$
+    \end{itemize}
+\end{rgl}
+\begin{lemma}[Correctness of \cref{rgl:rthree}]
+
+    Let \G be a plane graph, $v, w \in V$ and \GB be the graph obtained after application of \cref{rgl:rthree} on the pair $\{v, w\}$. Then G has SDS of size k if and only if G' has SDS of size k.
 \end{lemma}
 
-\subsection{ Reduction Rule III (R3): Shrinking the Size of Simple Regions}
-\begin{lemma}[Correctness of the Reduction]
-    
-\end{lemma}
+The application of \cref{rgl:rthree} gives us a bound on the number of vertices inside a \sr. 
+\begin{corollary}
+    Let \G be a graph, $v, w\in V$ and R a \sr~ between $v$ and $w$. If \cref{rgl:three} has been applied, the simply region has size at most XXXX.
+\end{corollary}
 
-%TODO Cite Stau, Ignasi
-\begin{lemma}[Reduced Plane Graph under R2]
-    
-\end{lemma}
+\subsection{Computing Maximal Simple Regions between two vertices}
+
+For the sake of completeness, we state an algorithm how a maximal \sr between two vertices $v,w \in V$ can be computed in time $\mathcal{O}(d(v) + d(w))$:
+
+%\begin{lemma}[Reduced Plane Graph under R2]
+%    
+%\end{lemma}
 
 
-\begin{lemma}[Given size of N1 and N2 regions] 
-    
-\end{lemma}
+%\begin{lemma}[Given size of N1 and N2 regions] 
+%    
+%\end{lemma}
 
 \section{Bounding the Size of the Kernel}
 
 
 %TODO: Can I "induced" in this case is undefined
 \begin{lemma}
-   Given a plane Graph $G = (V,E)$ reduced under R2 and a region R(v, w), if $\Dv \neq \emptyset $ (resp. $\Dw \neq \emptyset$), $N_3(v,w) \cap V(R)$ can be covered by: 
+   Given a plane Graph $G = (V,E)$ reduced under R2 and a region R(v, w), if $\Dv \neq $ (resp. $\Dw \neq \emptyset$), $N_3(v,w) \cap V(R)$ can be covered by: 
    \begin{itemize}
-    \item $11$ simple regions if $\Dw \neq \o$, 
-    \item $14$ simple regions if $N_{2,3}(v) \cap N_3(v,w) = \o$
+    \item $11$ \sr if $\Dw \neq \emptyset$, 
+    \item $14$ \sr if $N_{2,3}(v) \cap N_3(v,w) = \emptyset$
    \end{itemize}
 \end{lemma}
 
 \begin{proof} 
 \end{proof}
 
-\begin{lemma}[Number of Vertices inside a Region ]
+\begin{lemma}[\#Vertices inside a Region after \cref{rgl:rone,rgl:rtwo,rgl:three}]
+    Let \G be a plane graph reduced under \cref{rgl:rone,rgl:rtwo,rgl:rthree}. Furthermore, let $D$ be a SDS of G and let $v,w \in D$. Then a region R between $v$ and $w$ has size at most xxx.
+\end{lemma}
+\begin{proof} 
+\end{proof}
+
+\begin{lemma}[\#Vertices outside a Region]
     
 \end{lemma}
 \begin{proof} 
 \end{proof}
 
-\begin{lemma}[Number of Vertices outside a Region]
-    
-\end{lemma}
-\begin{proof} 
-\end{proof}
-
+% TODO: CITE ALBER AND STAU
 \begin{lemma}[Number of Regions in a Maximum Region Decomposition]
     
 \end{lemma}
 \begin{proof} 
 \end{proof}
 
-We now have all the tools ready to proof the central theorem of this section: 
 
 \begin{lemma}[Running Time of Reduction Procedure]
     
@@ -162,14 +287,14 @@ We now have all the tools ready to proof the central theorem of this section:
 \begin{proof} 
 \end{proof}
 
-\begin{theorem}
-    Semitotal Dominating Set has a linear kernel of size XXX on planar graphs.
-\end{theorem}
-\begin{proof} 
-\end{proof}
+We now have all the weapons set up to proof \cref{thm:central}: 
 
-\subsection*{NP Hardness on General Graphs}
+\centraltheo*
+\begin{proof}
+    XXXXXXsdfjöakfjölajdflöajsfölajsöflkjaslödjaöslf jöalkdjf aölsfjaöslfjöalsfjaölsdföalkföalksdjföaksdföalksdföalksföalksdfaksdf ajkf öaklsdf öalkdf öal    lökjadf
+\end{proof}
 
 \chapter{Open Questions and Further Research}
 
-Chordal Bipartite Graphs a very interesting case.
+* Chordal Bipartite Grap hs a very interesting case.
+* Improve the Kernel Bound
