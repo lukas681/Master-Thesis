@@ -1,0 +1,32 @@
+\subsection{\hmath $W[2]$-hard on Bipartite Graphs}
+
+\begin{definition}[Bipartite Graph, {\cite[p.5]{Bondy2008}}]
+    
+A \textit{\bg} is a Graph G whose vertex set can be partitioned into two subsets X and Y, so that each edge has one end in X and one end in Y. Such a partition (X,Y) is called a \textit{bipartition} of G.
+
+\end{definition}
+
+\input{fig/tikz/bipartite-fg.tex}
+\begin{theorem}
+    Semitotal Dominating Set is $\omega[2]$ hard for bipartite Graphs
+\end{theorem}
+
+\begin{proof}
+    Given a bipartite Graph $G = ( \{X \cup Y\}, E)$, we construct a bipartite Graph G' in the following way:
+    \begin{enumerate}
+        \item For each vertex $x_i \in X$ we add a new vertex $x_i'$  and an edge $(x_i, x_i')$ in between.
+        \item For each vertex $y_j \in Y$ we add a new vertex $y_j'$ and an edge $(y_j, y_j')$ in between.
+        \item We add two $P_1$, namely $(u_1, d_1)$ and $(u_2, d_2)$, and connect them with all $(d_1, x_i')$ and $(d_2, y_j')$ respectively.
+    \end{enumerate}
+    \paragraph*{Observation:} G' is clearly bipartite as all $y'_j$ and $x'_i$ form again an Independent Set. Setting  $X' = X \cup \{u_2\} \cup \bigcup y'_i$ and $Y' = Y \cup \{u_1\} \cup \bigcup {x'_i}$ form the partitions of bipartite G'.
+
+    \begin{corollary} G has a Dominating Set of size k iff G has a Semitotal Dominating Set of size $k' = k + 2$
+    \end{corollary} 
+    $\Rightarrow$: Asume there exists a Dominating Set D in G with size k. $DS = D\cup \{d_1,d_2\}$ is a Semitotal Dominating Set in $G'$ with size $k' = k+2 $ , because $d_1$ dominates $u_1$ and all $x'_i$; $d_2$ dominates $u_2$ and all $y'_i$. Hence, it is a Semitotal Dominating Set, because $\forall v \in (D \cap X): d(v, d_1) = 2$ and $\forall v \in (D \cap Y): d(v, d_2) = 2$
+
+    $\Leftarrow$: On the contrary, asume any Semitotal Dominating Set $SD$ in $G'$ with size $k'$. WLOG we can asume that $u_1, u_2 \notin DS$. 
+    
+    Our construction forces $d_1$, $d_2 \in DS$. Because all $x'_i$ are only important in dominating $x_i$ ($y'_i$ for $y_i$ resp.) as $d_1, d_2 \in DS$. If $x'_i \in DS$ we simply exchange it with $x_i$ (for $y'_i$ and $y_i$ respectively) in our DS keeping the size of the dominating set. $D = DS \setminus \{ d_1,d_2\}$ give us a Dominating Set in G with size $ k = k' - 2$
+
+    As G' can be constructed in $\mathcal{O}(n)$ and parameter k is only blown up by a constant, this reduction is a FPT reduction. As Dominating Set is $w[2]$ hard for bipartite Graphs\footnote{Citation needed!} so is Semitotal Dominating Set.
+\end{proof}

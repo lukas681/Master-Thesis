@@ -1,3 +1,12 @@
+\afterpage{%
+\newgeometry{
+top=1.25in,
+bottom=1.25in,
+left=1.25in,
+right=1.25in,
+bindingoffset=0.25in,
+heightrounded
+}
 \begin{titlepage}
   % HACK for two-sided documents: ignore binding correction for cover page.
   % Adapted from Markus Kohm's KOMA-Script titlepage=firstiscover handling.
@@ -6,7 +15,8 @@
   %\oddsidemargin=\evensidemargin\relax
   %\textwidth=\dimexpr\paperwidth-2\evensidemargin-2in\relax
   %\hsize=\textwidth\relax
-  \centering
+  \vspace*{\fill}
+  \begin{center}
   \IfFileExists{logos/tum.pdf}{%
     \includegraphics[height=20mm]{logos/tum.pdf}
   }{%
@@ -28,8 +38,12 @@
   \vspace{15mm}
   {\LARGE \getAuthor{}}
 
+
   \IfFileExists{logos/faculty.png}{%
     \vfill{}
     \includegraphics[height=20mm]{logos/faculty.png}
   }{}
+\end{center}
 \end{titlepage}
+\clearpage
+\restoregeometry}

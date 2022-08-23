@@ -115,9 +115,10 @@ Now some  w[i] hard classes.
 
 % TODO can we conclude anything for AT Free Graphs?
 %% TODO Extend to r-partite
-\subsection{\hmath $W[2]$-hard on Bipartite Graphs}
 
 As any \bg with bipartition can be split further into \rpg this results also implies the \wone-hardness of \rpg
+
+\input{chapters/whardness.tex}
 
 \subsection{\hmath $W[2]$-hard on Chordal Graphs}
 
@@ -177,9 +178,16 @@ TODO Alber et. al, Total Domination.
 
 % TODO: Force connectivity, improve kerne bound
 
-...
 % TODO: Reformulate
-Following the approach from [STAU] which relies on the technique first introduced by Alber et al we try to reduce the neighborhood for two given vertices $v$ and $w$
+Extending the approach for a linear kernel for \dom proposed by Alber et al. in \cite{Alber2004}, Garnero and Stau transferred these results in \cite{Garnero2018} to the \tdom problem. 
+
+%TODO: Better:
+Their idea was to relax the reduction rules in such a way that the witness properties for total domination are being preserved.
+
+% TODO Should we discuss that?
+Following their approach in one of the first verions of \cite{Garnero2014}, we stating reduction rules that. Interestingly, the reduction rules given in the latest version of this paper was not transferable to \sdom, but an older version giving slightly easier reduction rules could be adjusted to our problem.
+
+which relies on the technique first introduced by Alber et al we try to reduce the neighborhood for two given vertices $v$ and $w$
 
 This observation gives motivation to define the following sets:
 
@@ -201,8 +209,17 @@ This observation gives motivation to define the following sets:
             \item Add vertices $v'$ and $w'$ and two edges $\{v, v'\}$ and $\{w, w'\}$
             \item If there was a common neighbor of $v$ and $w$ in $N_{2,3}(v,w)$ add another vertex $y$ and two connecting edges  $\{v, y\}$ and $\{y, w\}$
         \end{itemize}
-        \case{if $\Dv \neq  \emptyset$ and $D_w \neq \emptyset$}asdasd
-        \case{if $\Dv \neq  \emptyset$ and $D_w = \emptyset$}asd
+        \case{if $\Dv \neq  \emptyset$ and $D_w \neq \emptyset$}
+        % TODO: If it can not be applied any more. Using R3 to reduce this      
+        Do nothing\footnote{Originally, reduce Simple Regions [STAU]}
+
+        \case{if $\Dv \neq  \emptyset$ and $D_w = \emptyset$}
+
+        \begin{itemize}
+            \item Remove $N_{2,3}(v) \Cap N_3(v,w)$
+            \item Add $\{v, v'\}$ 
+        \end{itemize}
+
         \case{if $\Dv =  \emptyset$ and $D_w \neq \emptyset$} This case is symmetrical to \textbf{Case 3}. 
     \end{caseof}
 \end{rgl}

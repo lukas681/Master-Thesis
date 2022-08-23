@@ -1,12 +1,23 @@
 %\documentclass[headsepline,footsepline,footinclude=false,fontsize=11pt,paper=a4,listof=totoc,bibliography=totoc,BCOR=12mm,DIV=12]{scrbook} % two-sided
-\documentclass[11pt,a4paper,listof=totoc,bibliography=totoc,openany]{scrbook} % one-sided
+\documentclass[11pt,a4paper,listof=totoc,bibliography=totoc,parskip]{scrbook} % one-sided
+
+\usepackage{geometry}
+%\usepackage[
+%  top=1.25in,
+%  bottom=1.25in,
+%  left=1.25in,
+%  right=1.25in,
+%  bindingoffset=0.25in,
+%  heightrounded,
+%]{geometry}
 
 \usepackage{amssymb,stmaryrd,mathrsfs,dsfont,mathtools}
+\usepackage{afterpage}
 \usepackage{amsthm}
-\usepackage{thmtools,thm-restate}
+\usepackage{thmtools, thm-restate}
 \usepackage[dvipsnames]{xcolor} 			% einfache Verwendung von Farben in nahezu allen Farbmodellen
 \usepackage[hyphens]{url}
-\usepackage[Conny]{fncychap} %% Oder jarne, Bjornstrup, Glenn
+\usepackage[jarne]{fncychap} %% Oder jarne, Bjornstrup, Glenn
 \usepackage{datetime}
 \usepackage{lipsum}
 \usepackage{xspace}
@@ -48,14 +59,13 @@
 %\pagenumbering{alph}
 % Set page numbering to avoid "destination with the same identifier has been already used" warning for cover page.
 % (see https://en.wikibooks.org/wiki/LaTeX/Hyperlinks#Problems_with_Links_and_Pages).
-\input{pages/cover}
 
 \frontmatter
+\input{pages/layout/cover}
+\input{pages/layout/title}
 
-\input{pages/title}
-
-\input{pages/disclaimer}
-\input{pages/acknowledgments}
+\input{pages/layout/disclaimer}
+\input{pages/layout/acknowledgments}
 \tableofcontents
 \input{pages/abstract}
 
@@ -66,8 +76,8 @@
   \microtypesetup{protrusion=false}
   \printbibliography
   % TODO: Discuss wether necessary. 
-  \listoffigures{}
-  \listoftables{}
+   \listoffigures{}
+ \listoftables{}
   \microtypesetup{protrusion=true}
 
 \appendix
