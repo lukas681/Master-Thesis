@@ -1,5 +1,5 @@
 %\documentclass[headsepline,footsepline,footinclude=false,fontsize=11pt,paper=a4,listof=totoc,bibliography=totoc,BCOR=12mm,DIV=12]{scrbook} % two-sided
-\documentclass[11pt,a4paper,listof=totoc,bibliography=totoc,parskip]{scrbook} % one-sided
+\documentclass[11pt,a4paper,listof=totoc,bibliography=totoc,openany]{scrbook} % one-sided
 
 \usepackage{geometry}
 %\usepackage[
@@ -13,11 +13,13 @@
 
 \usepackage{amssymb,stmaryrd,mathrsfs,dsfont,mathtools}
 \usepackage{afterpage}
+\usepackage{epigraph}
+
 \usepackage{amsthm}
 \usepackage{thmtools, thm-restate}
 \usepackage[dvipsnames]{xcolor} 			% einfache Verwendung von Farben in nahezu allen Farbmodellen
 \usepackage[hyphens]{url}
-\usepackage[jarne]{fncychap} %% Oder jarne, Bjornstrup, Glenn
+\usepackage[Conny]{fncychap} %% Oder jarne, Bjornstrup, Glenn
 \usepackage{datetime}
 \usepackage{lipsum}
 \usepackage{xspace}
@@ -27,7 +29,10 @@
      \graphicspath{{fig/}}
 
 \usepackage[style=altlist,acronym]{glossaries}
+\usepackage{pgf}
 \usepackage{tikz}
+\usepackage{lib/tikzit}
+
 \usetikzlibrary{positioning,chains,fit,shapes,calc}
 %\tikzstyle{vertex}=[circle, draw, inner sep=0pt, minimum size=6pt]
 

@@ -1,5 +1,6 @@
 \chapter{Introduction}
 
+
 Parametrized Complexity emerging branch. Books about that
 
 Semitotal domination introduced by 
@@ -27,6 +28,8 @@ Having these kernels also for other variants like \eddom, \efdom, \cdom, \rbdom 
 %% TODO Find more.
 
 Following the approach from ... which alraedy relies on the technique given in, we give some simple data reduction rules for \sdom on planar graphs leading to a linear kernel. More precisely, we are going to proof the following central theorem of this thesis:
+
+With some  modifications we were able to transfer the approach given by Garnero and Stau in \cite{Garnero2018} to the \sdom problem.
 
 \begin{restatable}[]{theorem}{centraltheo}\label{thm:central}
     The \sdom problem parametrized by solution size admits a linear kernel on planar graphs. There exists a polynomial-time algorithms that given a planar graph $(G, k)$, either correctly reports that $(G, k)$ is a NO-instance or returns an equivalent instance $(G', k)$ such that XXX.
@@ -70,6 +73,10 @@ A graph is a pair $G = (V, E)$ of two sets where $V$ denotes the vertices and $E
     asd
 \end{definition}
 
+\begin{definition}[Isomorphic Graph]
+    asd
+\end{definition}
+
 \subsection*{Special Graph Classes}
 We call the class of graphs without any special restrictions "General Graphs".
 
@@ -98,7 +105,7 @@ We call the class of graphs without any special restrictions "General Graphs".
 \subsection{Kernelization}
 
 
-\chapter{On Parametrized Dominating Set}
+\chapter{On Parametrized Semitotal Domination}
 \section{Semitotal Domination}
 
 \sdom
@@ -126,13 +133,35 @@ As any \bg with bipartition can be split further into \rpg this results also imp
 
 \chapter{A Linear Kernel for Planar Semitotal Domination}
 
-TODO Alber et. al, Total Domination. 
+\epigraph{\itshape The best way to explain it is to do it.}{Lewis Caroll, \textit{Alice in Wonderland}}
+
+We are now building up towards a linear kernel for the \sdom problem. In order to achieve this, we will first split up the neighborhood of one vertice and a pair of vertices into three distinct subsets, give some nice properties on them and then state the corresponding reduction rules.  
+
+% TODO: Reword
+
+%TODO: SIZE of instance: Number of vertices.
+
+But first, we would like to define what we consider to be a \textit{reduced} graph. 
+
+\begin{definition}[Reduced Graph {\cite[p. 13]{Garnero2018}} and \cite{Garnero2017}]
+    A Graph G is reduced under a set of rules if either none of these rules can be applied to G or the application of any of them creates a graph isomorphic to G.
+\end{definition}
+
+In our case, we say G is reduced if none of the \cref{rgl:rone,rgl:rtwo,rgl:rthree} are modifying G any more.
+
+This differs from the definition usually giving in literature where a graph G is \textit{reduced} under a set of reduction rules, if none of them can be applied to G anymore (Compare e.g. \cite{Fomin2019}). The reason is that we are giving reduction rules (see \cref{rgl:rone} or \cref{rgl:rtwo}) that could be applied \textit{ad infinitum} sending us into an endless loop without ever changing G any more. Our definition guarantees termination in that case.
+
+From an algorithmic point of view, all our given reduction rules are local and only concern the neighborhood of at most two vertices and replace them partially with gadgets of constant size. Now checking wether a graph after applying the rule has beein changed can be trivially be accomplished in constant time.
 
 \section{The Main Idea and The Big Picture}
 
+[TODO SUM UP THE STRATEGY]
 
 
 \section{Definitions}
+
+We are now going to split up the neighborhood of a single vertex into three (disjoint) subsets.
+
 
 \begin{definition} \label{def:nv}
     Let \G be a graph and let $v \in V$. We denote by $N(v) = \{u \in V : \{u,v\} \in E \}$ the neighborhood of $v$. We split $N(v)$ into three subsets:
@@ -143,7 +172,20 @@ TODO Alber et. al, Total Domination.
     \end{align}
     In order to inhance future readability, we add some syntactical sugar.  For $i,j \in [1,3]$, we denote $N_{i,j} (v) = N_i(v) \cup N_j(v)$.
 \end{definition}
-    
+
+\noindent \textbf{$N_1(v)$} are all neighbors of $v$ which have at least one adjacent vertex that is outside of $N(v)$.
+
+\noindent \textbf{$N_2(v)$} are all neighbors of $v$ which have at least one adjacent vertex that is outside of $N(v)$.
+
+\noindent \textbf{$N_3(v)$} are all neighbors of $v$ which have at least one adjacent vertex that is outside of 
+
+\input{fig/tikz/neighborhoods-single-vertex.tikz}
+
+Note that from a semitotal dominating perspective, they are only useful as witnesses for $v$, because it follows from definition that for a $z \in N_3(v)$ it holds that  $N(z) \subseteq N(v)$ and thus, we would always prefer $v$ as a dominating vertex instead of $z$. We are using thise observation in \cref{rgl:rone} where we shrink $\abs{N_3(v)} \leq 1$ 
+
+
+
+
 \begin{definition}
     Let \G be a graph and $v,w \in V$. We denote by $N(v,w) = N(v) \cup N(w)$ the neighborhood of the pair $v,w$. We split $N(v,w)$ into three subsets:
     \begin{align}
@@ -155,6 +197,8 @@ TODO Alber et. al, Total Domination.
 \end{definition}
 
 \section{Deducing Reduction Rules}
+
+Following the approach by \cite{Garnero2014}, we are now stating reduction rules that after exhaustive application will expose a linear kernel. 
 
 \subsection{Reduction Rule I: Getting Rid of unneccessary  $N_3(v)$ vertices}
 
@@ -173,6 +217,8 @@ TODO Alber et. al, Total Domination.
 \begin{proof}
    This will be the proof for this lemma X 
 \end{proof}
+
+Note: If we would not consider reduced graph to be ...
 
 \subsection{Reduction Rule II: Shrinking the Size of a Region}
 
