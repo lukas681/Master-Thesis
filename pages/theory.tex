@@ -145,7 +145,7 @@ But first, we would like to define what we consider to be a \textit{reduced} gra
 
 \begin{definition}[Reduced Graph {\cite[p. 13]{Garnero2018}} and \cite{Garnero2017}]
     A Graph G is reduced under a set of rules if either none of these rules can be applied to G or the application of any of them creates a graph isomorphic to G.
-\end{definition}
+\end{definition}\label{def:reduced}
 
 In our case, we say G is reduced if none of the \cref{rgl:rone,rgl:rtwo,rgl:rthree} are modifying G any more.
 
@@ -233,7 +233,7 @@ Following the approach by \cite{Garnero2014}, we are now stating reduction rules
    This will be the proof for this lemma X 
 \end{proof}
 
-Note: If we would not consider reduced graph to be ...
+\cautionbox{Note, that we need our definition of a reduced instance given in \ref{def:reduced}. If \cref{rgl:rthree} is being applied, it will still leave us with a vertex $z\in N_3(v)$ allowing this rule to be applied again. }
 
 \subsection{Reduction Rule II: Shrinking the Size of a Region}
 
@@ -340,7 +340,7 @@ For the sake of completeness, we state an algorithm how a maximal \sr between tw
 \end{proof}
 
 \begin{lemma}[\#Vertices inside a Region after \cref{rgl:rone,rgl:rtwo,rgl:three}]
-    Let \G be a plane graph reduced under \cref{rgl:rone,rgl:rtwo,rgl:rthree}. Furthermore, let $D$ be a SDS of G and let $v,w \in D$. Then a region R between $v$ and $w$ has size at most xxx.
+    Let \G be a plane graph reduced under \cref{rgl:rone,rgl:rtwo,rgl:rthree}. Furthermore, let $D$ be a SDS of G and let $v,w \in D$. Any v-w-region R contains at most XXX vertices distinct from its poles.
 \end{lemma}
 \begin{proof} 
 \end{proof}
@@ -352,24 +352,34 @@ For the sake of completeness, we state an algorithm how a maximal \sr between tw
 \end{proof}
 
 % TODO: CITE ALBER AND STAU
-\begin{lemma}[Number of Regions in a Maximum Region Decomposition]
-    
+
+% TODO Maybe, we can make that simpler? No proof really uses the fact that the graph is reduced. Note, that they do not use the notion of a reduced instance in the proof.
+
+Alber et al. \cite[p. ]{Alber2004} constructed a greedy algorithm to construct a maximal D-region decomposition for a \dom. Building up on these results, Garnero and Stau gave decomposition procedures for \rbdom (\cite{Garnero2017a}) and \tdom (\cite{Garnero2018}), both relying on the same technique. 
+
+Garnero and Stau (\cite[p. 15]{Garnero2014}) already mention that the decomposition does not rely on the 
+
+At the same time, we are going to upper-bound the number of v-w-regions D can span. Will will now proof that this claim also holds for \sdom. 
+% TODO Better english? to span
+
+\begin{lemma}[{\cite[Proposition 1]{Garnero2014}}]
+    Let G be a reduced plane graph and let D be a \sdom with $\abs{D}\geq 3$. There is a maximal D-region decomposition of G such that $\abs{R} \leq 3 \cdot \abs{D} - 6$
 \end{lemma}
+
 \begin{proof} 
 \end{proof}
 
 
 \begin{lemma}[Running Time of Reduction Procedure]
-    
+TODO Runsi in polynomial Time. 
 \end{lemma}
 \begin{proof} 
 \end{proof}
 
-We now have all the weapons set up to proof \cref{thm:central}: 
+We now have all the weapons set up to proof the \cref{thm:central}: 
 
 \centraltheo*
 \begin{proof}
-    XXXXXXsdfjöakfjölajdflöajsfölajsöflkjaslödjaöslf jöalkdjf aölsfjaöslfjöalsfjaölsdföalkföalksdjföaksdföalksdföalksföalksdfaksdf ajkf öaklsdf öalkdf öal    lökjadf
 \end{proof}
 
 \chapter{Open Questions and Further Research}

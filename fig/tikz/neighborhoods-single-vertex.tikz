@@ -3,12 +3,12 @@
 		\node [style=BLACK, label={above:$v$}] (0) at (1, 2) {};
 		\node [style=NONE] (1) at (4.25, 2.75) {};
 		\node [style=NONE] (2) at (4.25, 0) {};
-		\node [style=NTHR] (3) at (5.25, 1.75) {};
-		\node [style=NTHR] (4) at (5.75, 2.75) {};
-		\node [style=NTHR] (5) at (5.25, 3.75) {};
-		\node [style=NTHR] (6) at (5.25, 1) {};
-		\node [style=NTHR] (7) at (5.75, 0) {};
-		\node [style=NTHR] (8) at (5.25, -1) {};
+		\node [style=none] (3) at (5.25, 1.75) {};
+		\node [style=none] (4) at (5.75, 2.75) {};
+		\node [style=none] (5) at (5.25, 3.75) {};
+		\node [style=none] (6) at (5.25, 1) {};
+		\node [style=none] (7) at (5.75, 0) {};
+		\node [style=none] (8) at (5.25, -1) {};
 		\node [style=NTHR] (9) at (2, 4) {};
 		\node [style=NTWO] (10) at (1.25, 0.25) {};
 		\node [style=NTWO] (11) at (3, 3.75) {};
