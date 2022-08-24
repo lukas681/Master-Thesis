@@ -173,17 +173,24 @@ We are now going to split up the neighborhood of a single vertex into three (dis
     In order to inhance future readability, we add some syntactical sugar.  For $i,j \in [1,3]$, we denote $N_{i,j} (v) = N_i(v) \cup N_j(v)$.
 \end{definition}
 
-\noindent \textbf{$N_1(v)$} are all neighbors of $v$ which have at least one adjacent vertex that is outside of $N(v)$.
+In some senses, we are classifying neighbors of v by how they are interacting with the rest of the graph:
 
-\noindent \textbf{$N_2(v)$} are all neighbors of $v$ which have at least one adjacent vertex that is outside of $N(v)$.
+\noindent \textbf{$\mathbf{N_1(v)}$} are all neighbors of $v$ which have at least one adjacent vertex that is outside of $N(v)$. 
+% TODO What can they dominate
 
-\noindent \textbf{$N_3(v)$} are all neighbors of $v$ which have at least one adjacent vertex that is outside of 
+\noindent \textbf{$\mathbf{N_2(v)}$} are all neighbors of $v$ which have at least one adjacent vertex that is outside of $N(v)$.
 
-\input{fig/tikz/neighborhoods-single-vertex.tikz}
+\noindent \textbf{$\mathbf{N_3(v)}$} are all neighbors of $v$ which have at least one adjacent vertex that is outside of 
 
-Note that from a semitotal dominating perspective, they are only useful as witnesses for $v$, because it follows from definition that for a $z \in N_3(v)$ it holds that  $N(z) \subseteq N(v)$ and thus, we would always prefer $v$ as a dominating vertex instead of $z$. We are using thise observation in \cref{rgl:rone} where we shrink $\abs{N_3(v)} \leq 1$ 
+Note that from a (semi)total dominating perspective, they are only useful as witnesses for $v$, because it follows from definition that for a $z \in N_3(v)$ it holds that  $N(z) \subseteq N(v)$ and thus, we would always prefer $v$ as a dominating vertex instead of $z$. We are using thise observation in \cref{rgl:rone} where we shrink $\abs{N_3(v)} \leq 1$ 
 
-
+\begin{equ}[!ht]\label{fig:neighborhoodSingle}
+    \begin{equation*}
+        \tikzfig{fig/tikz/neighborhoods-single-vertex}
+    \end{equation*}
+\caption*{\textit{The neighborhood of a vertex splitted to $N_1(v)$ (blue), $N_2(v)$ (purple) and $N_3(v)$ (green). Note that all purple vertices have at least one blue neighbor making setting them in-between the green and blue vertices.}}
+\end{equ}
+% TODO Improve this description
 
 
 \begin{definition}
@@ -195,6 +202,14 @@ Note that from a semitotal dominating perspective, they are only useful as witne
     \end{align}
     Again, for $i,j \in [1,3]$, we denote $N_{i,j}(v,w) = N_i(v,w) \cup N_j(v,w)$.
 \end{definition}
+
+ 
+\begin{equ}[!ht]\label{fig:neighborhoodSingle}
+    \begin{equation*}
+        \tikzfig{fig/tikz/neighborhoods-two-vertices}
+    \end{equation*}
+\caption*{\textit{TODO}}
+\end{equ}
 
 \section{Deducing Reduction Rules}
 

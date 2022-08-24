@@ -3,7 +3,7 @@
 1) All TODOS resolved?
 2) align environment correct numbering
 3) All figures correctly referenced?
-4) Captions detailed enough?
+4) Captions detailed enough? Reviewed
 5) Quotations
 6) Citations correctly. All pages given correctly?
 
