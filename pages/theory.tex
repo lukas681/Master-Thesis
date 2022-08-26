@@ -47,7 +47,7 @@ Continuing an intensive study of parametrized complexity of that problem.
 We quickly state the following definitions given by {\cite[p.~xxx]{diestel10}}.
 
 %% TODO Path, Subgraph, Induced Subgraph, Copnnected 
-\begin{definition}[Graph]
+\begin{definition}[Graph {\cite[p. 3]{diestel10}}]
 A graph is a pair $G = (V, E)$ of two sets where $V$ denotes the vertices and $E \subseteq V \times C$ the edges of the graph.  A vertex $v \in V$ is incident with an edge $e \in E$ if $v \in e$. Two vertices $x, y$ are adjacent, or neighbours, if $\{x,y \} \in E$.
 % Size of the Graph?
 \end{definition}
@@ -62,11 +62,10 @@ A graph is a pair $G = (V, E)$ of two sets where $V$ denotes the vertices and $E
     A Planar Graph
 \end{definition}
 
-\begin{definition}[Adjacent Vertices]
-\end{definition}
-
-\begin{definition}[Closed and Open Neighborhoods of Vertices]
-+ Sets
+% TODO Quote e.g. The open neighborhood number of a graph
+\begin{definition}[Closed and Open Neighborhoods {\cite{Balakrishnan2012}}]
+    Let \G be a (non-empty) graph. 
+    The set of all neighbors of $v$ is the \underline{open neighborhood} of $v$ and denoted by $N(v)$; the set $N[v] = N(v) \Cup \{v\}$ is the \underline{closed neighborhood} f $v$ in $G$. When G needs to be made explicit, those open and closed neighborhoods are denoted by $N_G(v)$ and $N_G[v]$. 
 \end{definition}
 
 \begin{definition}[Induced Subgraph]
@@ -160,29 +159,20 @@ From an algorithmic point of view, all our given reduction rules are local and o
 
 \section{Definitions}
 
-We are now going to split up the neighborhood of a single vertex into three (disjoint) subsets.
+In this section we are giving some key definitions that are used in our reduction rules for obtaining the linear kernel. These as inspired by those given by Garnero and Stau (\ptdom in \cite[]{Garnero2014} or \prbdom in \cite{Garnero2017a}) and already relied on those given by Alber et al. in \cite[]{Alber2004} for \pdom.
+
+The idea is to split up the neighborhood of a single vertex and a pair of vertices into three (disjoint)  subsets that make a statement about how strongly the neighborhood is connected with the rest of the graph.
 
 
 \begin{definition} \label{def:nv}
     Let \G be a graph and let $v \in V$. We denote by $N(v) = \{u \in V : \{u,v\} \in E \}$ the neighborhood of $v$. We split $N(v)$ into three subsets:
     \begin{align}
-    N_1(v) &= \{u \in N(v) : N(u) \setminus (N(v)\cup \{v\}) \neq \emptyset \} \\
+    N_1(v) &= \{u \in N(v) : N(u) \setminus N[v] \neq \emptyset \} \\
     N_2(v) &= \{u \in N(v)\setminus N_1(v) : N(u) \cap N_1(v) \neq \emptyset \} \\
     N_3(v) &= N(v) \setminus (N_1(v) \cup N_2(v))
     \end{align}
     In order to inhance future readability, we add some syntactical sugar.  For $i,j \in [1,3]$, we denote $N_{i,j} (v) = N_i(v) \cup N_j(v)$.
 \end{definition}
-
-In some senses, we are classifying neighbors of v by how they are interacting with the rest of the graph:
-
-\noindent \textbf{$\mathbf{N_1(v)}$} are all neighbors of $v$ which have at least one adjacent vertex that is outside of $N(v)$. 
-% TODO What can they dominate
-
-\noindent \textbf{$\mathbf{N_2(v)}$} are all neighbors of $v$ which have at least one adjacent vertex that is outside of $N(v)$.
-
-\noindent \textbf{$\mathbf{N_3(v)}$} are all neighbors of $v$ which have at least one adjacent vertex that is outside of 
-
-Note that from a (semi)total dominating perspective, they are only useful as witnesses for $v$, because it follows from definition that for a $z \in N_3(v)$ it holds that  $N(z) \subseteq N(v)$ and thus, we would always prefer $v$ as a dominating vertex instead of $z$. We are using thise observation in \cref{rgl:rone} where we shrink $\abs{N_3(v)} \leq 1$ 
 
 \begin{equ}[!ht]\label{fig:neighborhoodSingle}
     \begin{equation*}
@@ -192,7 +182,19 @@ Note that from a (semi)total dominating perspective, they are only useful as wit
 \end{equ}
 % TODO Improve this description
 
+Intuitvely, these sets are classifying neighbors of $v$ by how much they can interact with the rest of the graph and how much they are locally centered around $v$:
 
+\noindent \textbf{$\mathbf{N_1(v)}$} are all neighbors of $v$ which have at least one adjacent vertex that is outside of $N(v)$ and therefore connect $v$ with the rest of the graph. They could possible belong to a solution.
+% TODO What can they dominate
+
+\noindent \textbf{$\mathbf{N_2(v)}$} are all neighbors of $v$ that have at least one neighbor from $N_1(v)$. These vertices do not have any function as a dominating vertex and can be seen as a \textit{buffer} bridging $N_1(v)$-vertices with those from $N_3(v) \cup \{ v \}$. Furthermore, they are useless as witnesses, because either we can replace them by $v$ (sharing the same neighborhood) or when being a witness for $v$, we replace it by one $z \in N_1(v)$.
+
+% TODO This sentence? Every path to a vertex outside N(v) will take more than 2 steps. 
+\noindent Vertices from $\mathbf{N_3(v)}$ are unmitigated sealed off from the rest of the graph. They are useless as dominating vertices: For all $z \in N_3(v)$ it holds that  $N(z) \subseteq N(v)$ by definition and thus, we would always prefer $v$ as a dominating vertex instead of $z$. Nevertheless, they can be important as a witness for $v$ in the case that $N_1(v) \cup N_2(v) =\emptyset $. We are using this observation in \cref{rgl:rone} where we shrink $\abs{N_3(v)} \leq 1$ 
+
+In the following we are going to further extend this definition to a pair of vertices. Using this, \cref{rgl:rtwo} will later try to reduce the neighborhood of two vertices and similar to \ref{def:nv}, we can deduce some properties.
+
+%TODO Where is it used?
 \begin{definition}
     Let \G be a graph and $v,w \in V$. We denote by $N(v,w) = N(v) \cup N(w)$ the neighborhood of the pair $v,w$. We split $N(v,w)$ into three subsets:
     \begin{align}
@@ -203,12 +205,23 @@ Note that from a (semi)total dominating perspective, they are only useful as wit
     Again, for $i,j \in [1,3]$, we denote $N_{i,j}(v,w) = N_i(v,w) \cup N_j(v,w)$.
 \end{definition}
 
- 
-\begin{equ}[!ht]\label{fig:neighborhoodSingle}
+Again, $N_1(v,w)$ are those connected with the rest of the graph, $N_2(v, w)$ are a \textit{buffer} between $N_3(v,w) \cup \{v, w\}$ and $N_3(v,w)$ are those isolated from the rest of the graph, but can still be usefull as a witness for $v$ or $w$. 
+
+\begin{equ}[!ht]\label{fig:neighborhoodDouble}
     \begin{equation*}
         \tikzfig{fig/tikz/neighborhoods-two-vertices}
     \end{equation*}
-\caption*{\textit{TODO}}
+\caption{\textit{TODO}}
+\end{equ}
+
+
+Note that for example a vertex $z \in N_1(v)$ is not necessarily also in $z \notin N_1(v,w)$. Figure 
+ 
+\begin{equ}[!ht]\label{fig:neighborhoodWeird}
+    \begin{equation*}
+        \tikzfig{fig/tikz/neighborhoods-odd}
+    \end{equation*}
+\caption{\textit{The vertex $z$ is in $N_1(v)$, because there is an edge outside of $N(v)$ to $w$. Contrary, it is not in $N_1(v,w)$, but now  belongs to $N_3(v,w)$, because we are considering the ``shared'' neighborhood}}
 \end{equ}
 
 \section{Deducing Reduction Rules}
