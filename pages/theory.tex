@@ -288,13 +288,13 @@ We now have all the definitions ready to formally define a decomposition techniq
 \end{definition}
 
 
-Figure \ref{ref:maxRegionDecompose} gives an example on how to decompose a graph into a maximal $D-region$ decomposition with a given \sdom of size 3.
+Figure \ref{fig:maxRegionDecompose} gives an example on how to decompose a graph into a maximal $D-region$ decomposition with a given \sdom of size 3.
 
 \begin{figure}[!ht]
     \begin{equation*}
         \tikzfig{fig/tikz/region-example}
     \end{equation*}
-    \caption{\textit{TODO}}\label{fig:maxRegionDecompose}
+    \caption{\textit{Observe, that some vertices (around $d_1$) are not part of any $vw$-region. Our reduction rules are going to take care about that and bound these number of vertices to obtain the kernel.}}\label{fig:maxRegionDecompose}
 \end{figure}
 
 % TODO: Wording: "kernel" precise enough here.
@@ -382,13 +382,12 @@ Before we give the concrete reduction rule, we will define three sets
 
     %TODO Explain that more in detail. + Examples.
 
-
-
 \begin{rgl}\label{rgl:rtwo}
     Let \G be a graph and two distinct $v,w \in V$. If $\Dvw = \emptyset$ we apply the following:
     \begin{caseof}
         \case{if $\Dv =  \emptyset$ and $D_w = \emptyset$}
 
+        \vspace{-5mm}
         \begin{itemize}
             \item Remove $N_{2,3}(v,w)$
             \item Add vertices $v'$ and $w'$ and two edges $\{v, v'\}$ and $\{w, w'\}$
@@ -398,8 +397,9 @@ Before we give the concrete reduction rule, we will define three sets
         % TODO: If it can not be applied any more. Using R3 to reduce this      
         Do nothing\footnote{Originally, reduce Simple Regions [STAU]}
 
-        \case{if $\Dv \neq  \emptyset$ and $D_w = \emptyset$}
+        \case{if $\Dv \neq  \emptyset$ and $D_w = \emptyset$}        
 
+        \vspace{-5mm}
         \begin{itemize}
             \item Remove $N_{2,3}(v) \Cap N_3(v,w)$
             \item Add $\{v, v'\}$ 
@@ -448,7 +448,7 @@ Now we are ready to proof the correctness of \cref*{rgl:rtwo}
 \end{lemma}
 
 The application of \cref{rgl:rthree} gives us a bound on the number of vertices inside a \sr. 
-\begin{corollary}
+\begin{corollary}\label{lemma:simpleregionbound}
     Let \G be a graph, $v, w\in V$ and R a \sr~ between $v$ and $w$. If \cref{rgl:rthree} has been applied, this simple region has size at most 6.
 \end{corollary}
 % TODO Verify that
@@ -464,32 +464,35 @@ For the sake of completeness, we state an algorithm how a maximal \sr between tw
 
 \section{Bounding the Size of the Kernel}
 
-\subsubsection{Bounding the Number of Regions}
+\subsection{Bounding the Size of a Region}
+
+We start are more fine-grained analysis of the impact of the different cases of \cref*{rgl:rtwo} on a $vw$-region. The main idea is to count the number of simple regions in the $vw$-region and than use the bound on the size of a simple region after \cref*{rgl:rthree} was applied exhaustively and which was obtain obtained in Lemma~\ref{lemma:simpleregionbound}.   
 
 %TODO: Can I "induced" in this case is undefined
 \begin{lemma}
-   Given a plane Graph $G = (V,E)$ reduced under R2 and a region R(v, w), if $\Dv \neq $ (resp. $\Dw \neq \emptyset$), $N_3(v,w) \cap V(R)$ can be covered by: 
-   \begin{itemize}
+   Given a plane Graph $G = (V,E)$ reduced under \cref{rgl:rtwo} and a region R(v, w), if $\Dv \neq $ (resp. $\Dw \neq \emptyset$), $N_3(v,w) \cap V(R)$ can be covered by: 
+   \begin{enumerate}
     \item $11$ \sr s~if $\Dw \neq \emptyset$, 
     \item $14$ \sr s~if $N_{2,3}(v) \cap N_3(v,w) = \emptyset$
-   \end{itemize}
+   \end{enumerate}
 \end{lemma}
 
+Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been applied and the second one, when Case 4 of \cref{rgl:rtwo} was applied.
 \begin{proof} 
 \end{proof}
 
-\subsubsection{Bounding the Size of a Region}
 
 \begin{lemma}[\#Vertices inside a Region after \cref{rgl:rone,rgl:rtwo,rgl:rthree}]
-    Let \G be a plane graph reduced under \cref{rgl:rone,rgl:rtwo,rgl:rthree}. Furthermore, let $D$ be a SDS of G and let $v,w \in D$. Any v-w-region R contains at most XXX vertices distinct from its poles.
+    Let \G be a plane graph reduced under \cref{rgl:rone,rgl:rtwo,rgl:rthree}. Furthermore, let $D$ be a SDS of G and let $v,w \in D$. Any $vw$-region R contains at most XXX vertices distinct from its poles.
 \end{lemma}
 \begin{proof} 
+    Adapt proof given in \cite*{Garnero2017}
 \end{proof}
 
-\subsubsection{Number of Vertices outside the Decomposition}
+\subsection{Number of Vertices outside the Decomposition}
 
 \begin{lemma}[\#Vertices outside a Region]
-Let \G be a plane graph reduced under \cref*{rgl:rone, rgl:rtwo} and let D SDS of G. If R has a maximal D-region decomposition then
+Let \G be a plane graph reduced under \cref*{rgl:rone,rgl:rtwo} and let D SDS of G. If R has a maximal D-region decomposition then
 
 XXXXXXXXX
 
@@ -501,6 +504,8 @@ XXXXXXXXX
 % TODO: CITE ALBER AND STAU
 
 % TODO Maybe, we can make that simpler? No proof really uses the fact that the graph is reduced. Note, that they do not use the notion of a reduced instance in the proof.
+
+\subsection{Bounding the Number of Regions}
 
 Alber et al. \cite[p. ]{Alber2004} constructed a greedy algorithm to construct a maximal D-region decomposition for a \dom. Building up on these results, Garnero and Stau gave decomposition procedures for \rbdom (\cite{Garnero2017a}) and \tdom (\cite{Garnero2018}), both relying on the same technique. 
 

@@ -10,6 +10,8 @@
 8) CREFS* / CREF correctly distinguished.
 9) Regions quoted correcty?
 10) Quotation Signs correct?
+11) vw-region spelled correctly
+12) Try to fix all compiler warnings
 
 
 # Possible Quotes
