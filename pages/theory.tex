@@ -163,23 +163,24 @@ In this section we are giving some key definitions that are used in our reductio
 
 The idea is to split up the neighborhood of a single vertex and a pair of vertices into three (disjoint)  subsets that make a statement about how strongly the neighborhood is connected with the rest of the graph.
 
-
-\begin{definition} \label{def:nv}
+\begin{definition}
+    \label{def:nv}
     Let \G be a graph and let $v \in V$. We denote by $N(v) = \{u \in V : \{u,v\} \in E \}$ the neighborhood of $v$. We split $N(v)$ into three subsets:
     \begin{align}
     N_1(v) &= \{u \in N(v) : N(u) \setminus N[v] \neq \emptyset \} \\
     N_2(v) &= \{u \in N(v)\setminus N_1(v) : N(u) \cap N_1(v) \neq \emptyset \} \\
     N_3(v) &= N(v) \setminus (N_1(v) \cup N_2(v))
     \end{align}
-    In order to inhance future readability, we add some syntactical sugar.  For $i,j \in [1,3]$, we denote $N_{i,j} (v) = N_i(v) \cup N_j(v)$.
+    In order to inhance future readability, for $i,j \in [1,3]$, we denote $N_{i,j} (v) := N_i(v) \cup N_j(v)$.
 \end{definition}
 
-\begin{equ}[!ht]\label{fig:neighborhoodSingle}
+\begin{figure}[!ht]
+    \label{fig:neighborhoodSingle}
     \begin{equation*}
         \tikzfig{fig/tikz/neighborhoods-single-vertex}
     \end{equation*}
 \caption*{\textit{The neighborhood of a vertex splitted to $N_1(v)$ (blue), $N_2(v)$ (purple) and $N_3(v)$ (green). Note that all purple vertices have at least one blue neighbor making setting them in-between the green and blue vertices.}}
-\end{equ}
+\end{figure}
 % TODO Improve this description
 
 Intuitvely, these sets are classifying neighbors of $v$ by how much they can interact with the rest of the graph and how much they are locally centered around $v$:
@@ -207,23 +208,76 @@ In the following we are going to further extend this definition to a pair of ver
 
 Again, $N_1(v,w)$ are those connected with the rest of the graph, $N_2(v, w)$ are a \textit{buffer} between $N_3(v,w) \cup \{v, w\}$ and $N_3(v,w)$ are those isolated from the rest of the graph, but can still be usefull as a witness for $v$ or $w$. 
 
-\begin{equ}[!ht]\label{fig:neighborhoodDouble}
+\begin{figure}[!ht]
     \begin{equation*}
         \tikzfig{fig/tikz/neighborhoods-two-vertices}
     \end{equation*}
 \caption{\textit{TODO}}
-\end{equ}
+    \label{fig:neighborhoodDouble}
+\end{figure}
 
 
-Note that for example a vertex $z \in N_1(v)$ is not necessarily also in $z \notin N_1(v,w)$. Figure 
+Note that for example a vertex $z \in N_1(v) \notimplies z \in N_1(v,w)$. Figure~\ref{fig:neighborhoodWeird} gives an example, where $z$ belongs to $N_1(v)$, but not to $N_1(v,w)$.
+
  
-\begin{equ}[!ht]\label{fig:neighborhoodWeird}
-    \begin{equation*}
-        \tikzfig{fig/tikz/neighborhoods-odd}
-    \end{equation*}
-\caption{\textit{The vertex $z$ is in $N_1(v)$, because there is an edge outside of $N(v)$ to $w$. Contrary, it is not in $N_1(v,w)$, but now  belongs to $N_3(v,w)$, because we are considering the ``shared'' neighborhood}}
-\end{equ}
+% TODO FIX HERE
+\begin{figure}[ht]
+\begin{equation*}
+    \tikzfig{fig/tikz/neighborhoods-odd}
+\end{equation*}
+\caption{\textit{The vertex $z$ is in $N_1(v)$, because there is an edge pointing outside of $N(v)$ to $w$. Contrary, it is not in $N_1(v,w)$, but now  belongs to $N_3(v,w)$, because we are considering the ``shared'' neighborhood}}
+    \label{fig:neighborhoodWeird}
+\end{figure}
 
+\subsection{Regions in Planar Graph}
+
+We will introduce a concept that leads towards a new perspective looking at planar graphs, regions
+% TODO Quote Alber et al.
+
+As it is possible to bound the number of total $vw$-regions in a planar graph, we can analyse the local impacts to these regions from our future reduction rules. 
+
+% TODO Maybe remove this.
+It might be interesting to note that the authors of \cite{Garnero2017} have revised their original definitions to set the basic for a more formal analysis.
+
+\begin{definition}
+    Two simple paths $p_1, p_2$ in a plane graph G are \underline{confluent} if:
+
+    \begin{enumerate}
+        \item they are vertex-disjoint
+        \item they are edge-disjoint and for every common vertex $u$, if $v_i, w_i$ are the neighbors of $u$ in $p_i$, for $i \in [1,2]$, it holds that $[v_1, w_1, v_2, w_2]$, or
+        \item they are confluent after contracting common edges
+    \end{enumerate}
+\end{definition}
+
+% TODO MORE TEXT HERE
+
+\begin{definition}
+    Let \G be a plane graph and let $v,w \in V$ be two distinct vertices. A $vw$-region is a closed subset of the plane such that:
+    \begin{enumerate}
+        \item the boundary of R is formed by two confluent simple $vw$-paths with length at most 3
+        \item every vertex in R belongs to $N(v,w)$, and 
+        \item the compliment of R in the plane is connected.
+    \end{enumerate}
+
+    We denote by $\partial R$ the boundary of R and by $V(R)$ the set of vertices which lie (with the plane embedding) in $R$. Furthermore, we call $\abs{V(R)}$ the \textit{size of the region}.
+
+    The poles of R are the vertices $v$ and $w$. The boundary paths are the two $vw$-paths that form $\partial R$ 
+
+\end{definition}
+
+% TODO: Wording: "kernel" precise enough here.
+We are introducing a special case of a region, a \textit{simple region} where every vertex is a common neighbor of $v$ and $w$. They will appear on many unexpected astonishing places and are an important tool to operate on small parts of a plane graph. Especially the upcoming \cref{rgl:rone} will try to shrink them to a small kernel individually.
+
+\begin{definition}
+    A simple $vw$-region is a $vw$-region such that:
+
+    \begin{enumerate}
+        \item its bounary paths have length at most 2, and
+        \item $V(R) \{v,w\} \subseteq N(v) \cap N(w)$.
+    \end{enumerate}
+\end{definition}
+
+    % TODO for more examples refer to.
 \section{Deducing Reduction Rules}
 
 Following the approach by \cite{Garnero2014}, we are now stating reduction rules that after exhaustive application will expose a linear kernel. 
@@ -272,7 +326,9 @@ This observation gives motivation to define the following sets:
     \end{align}
 
     %TODO Explain that more in detail. + Examples.
-    Note, that 
+
+
+
 \begin{rgl}\label{rgl:rtwo}
     Let \G be a graph and two distinct $v,w \in V$. If $\Dvw = \emptyset$ we apply the following:
     \begin{caseof}
@@ -303,65 +359,71 @@ Before proofing the correctness of this reduction we will give some intuition be
 \begin{lemma}
     Let \G be a plane graph, $v, w \in V$ and \GB be the graph obtained after application of \cref{rgl:rtwo} on the pair $\{v, w\}$. Then G has SDS of size k if and only if G' has SDS of size k.
 \end{lemma}
+\begin{proof}
+   We will proof the claim by analysing the different cases seperately.
+\end{proof}
 
 \subsection{Reduction Rule III: Shrinking Simple Regions}
 \begin{rgl}\label{rgl:rthree}
-    Let \G be a plane graph, $v, w \ in V$ and $R$ be a simple region between $v$ and $w$. If $\abs{V(R) \setminus \{v, w\}} \geq 7$
-
-    % TODO N_3 star?
+    Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and $w$. If $\abs{V(R) \setminus \{v, w\}} \geq 7$
     \begin{itemize}
-        \item Remove $N_3*(v,w)$
-        \item Add two vertices $h_1$ and $h_2$ and four edges $\{v, h_1\}$, $\{v, H_2\}$, $\{w, h_1\}$ and $\{w, h_2\}$
+        \item Remove $N_3(v,w)$
+        \item Add two vertices $h_1$ and $h_2$ and four edges $\{v, h_1\}$, $\{v, h_2\}$, $\{w, h_1\}$ and $\{w, h_2\}$
     \end{itemize}
 \end{rgl}
 \begin{lemma}[Correctness of \cref{rgl:rthree}]
-
     Let \G be a plane graph, $v, w \in V$ and \GB be the graph obtained after application of \cref{rgl:rthree} on the pair $\{v, w\}$. Then G has SDS of size k if and only if G' has SDS of size k.
 \end{lemma}
 
 The application of \cref{rgl:rthree} gives us a bound on the number of vertices inside a \sr. 
 \begin{corollary}
-    Let \G be a graph, $v, w\in V$ and R a \sr~ between $v$ and $w$. If \cref{rgl:three} has been applied, the simply region has size at most XXXX.
+    Let \G be a graph, $v, w\in V$ and R a \sr~ between $v$ and $w$. If \cref{rgl:rthree} has been applied, this simple region has size at most 6.
 \end{corollary}
+% TODO Verify that
+% TODO Maybe add a figure here.
+\begin{proof}
+    Clearly, if $\abs{V(R) \setminus \{v, w\}} < 7$ then the rule would not have changed G and the size of the region would already be bounded by 6.
+    Asuming $\abs{V(R) \setminus \{v, w\}} \geq 7$ we note that every simple region can have at most two distinct vertices from $N_1(v,w)$ and two distinct ones from $N_2(v,w)$ without breaking planarity. These vertices are not touched by the reduction. Adding the two vertices that are being added between $v$ and $w$ gives us the desired upper bound.
+\end{proof}
 
 \subsection{Computing Maximal Simple Regions between two vertices}
 
 For the sake of completeness, we state an algorithm how a maximal \sr between two vertices $v,w \in V$ can be computed in time $\mathcal{O}(d(v) + d(w))$:
 
-%\begin{lemma}[Reduced Plane Graph under R2]
-%    
-%\end{lemma}
-
-
-%\begin{lemma}[Given size of N1 and N2 regions] 
-%    
-%\end{lemma}
-
 \section{Bounding the Size of the Kernel}
 
+\subsubsection{Bounding the Number of Regions}
 
 %TODO: Can I "induced" in this case is undefined
 \begin{lemma}
    Given a plane Graph $G = (V,E)$ reduced under R2 and a region R(v, w), if $\Dv \neq $ (resp. $\Dw \neq \emptyset$), $N_3(v,w) \cap V(R)$ can be covered by: 
    \begin{itemize}
-    \item $11$ \sr if $\Dw \neq \emptyset$, 
-    \item $14$ \sr if $N_{2,3}(v) \cap N_3(v,w) = \emptyset$
+    \item $11$ \sr s~if $\Dw \neq \emptyset$, 
+    \item $14$ \sr s~if $N_{2,3}(v) \cap N_3(v,w) = \emptyset$
    \end{itemize}
 \end{lemma}
 
 \begin{proof} 
 \end{proof}
 
-\begin{lemma}[\#Vertices inside a Region after \cref{rgl:rone,rgl:rtwo,rgl:three}]
+\subsubsection{Bounding the Size of a Region}
+
+\begin{lemma}[\#Vertices inside a Region after \cref{rgl:rone,rgl:rtwo,rgl:rthree}]
     Let \G be a plane graph reduced under \cref{rgl:rone,rgl:rtwo,rgl:rthree}. Furthermore, let $D$ be a SDS of G and let $v,w \in D$. Any v-w-region R contains at most XXX vertices distinct from its poles.
 \end{lemma}
 \begin{proof} 
 \end{proof}
 
+\subsubsection{Number of Vertices outside the Decomposition}
+
 \begin{lemma}[\#Vertices outside a Region]
-    
+Let \G be a plane graph reduced under \cref*{rgl:rone, rgl:rtwo} and let D SDS of G. If R has a maximal D-region decomposition then
+
+XXXXXXXXX
+
 \end{lemma}
 \begin{proof} 
+
 \end{proof}
 
 % TODO: CITE ALBER AND STAU
