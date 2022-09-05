@@ -229,7 +229,7 @@ Note that for example a vertex $z \in N_1(v) \notimplies z \in N_1(v,w)$. Figure
     \label{fig:neighborhoodWeird}
 \end{figure}
 
-\subsection{Regions in Planar Graph}
+\subsection{Regions in Planar Graphs}
 
 We will introduce a concept that leads towards a new perspective looking at planar graphs, regions
 % TODO Quote Alber et al.
@@ -252,7 +252,7 @@ It might be interesting to note that the authors of \cite{Garnero2017} have revi
 % TODO MORE TEXT HERE
 
 \begin{definition}
-    Let \G be a plane graph and let $v,w \in V$ be two distinct vertices. A $vw$-region is a closed subset of the plane such that:
+    Let \G be a plane graph and let $v,w \in V$ be two distinct vertices. A \underline{$vw$-region} is a closed subset of the plane, such that:
     \begin{enumerate}
         \item the boundary of R is formed by two confluent simple $vw$-paths with length at most 3
         \item every vertex in R belongs to $N(v,w)$, and 
@@ -266,16 +266,27 @@ It might be interesting to note that the authors of \cite{Garnero2017} have revi
 \end{definition}
 
 % TODO: Wording: "kernel" precise enough here.
-We are introducing a special case of a region, a \textit{simple region} where every vertex is a common neighbor of $v$ and $w$. They will appear on many unexpected astonishing places and are an important tool to operate on small parts of a plane graph. Especially the upcoming \cref{rgl:rone} will try to shrink them to a small kernel individually.
+We are introducing a special subset of a region, a \textit{simple region} where every vertex is a common neighbor of $v$ and $w$. They will appear on many unexpected astonishing places and are an important tool to operate on small parts of a plane graph. The upcoming \cref{rgl:rthree} will bound the size of these \textit{simple regions}.
 
 \begin{definition}
     A simple $vw$-region is a $vw$-region such that:
 
     \begin{enumerate}
         \item its bounary paths have length at most 2, and
-        \item $V(R) \{v,w\} \subseteq N(v) \cap N(w)$.
+        \item $V(R) \setminus \{v,w\} \subseteq N(v) \cap N(w)$.
     \end{enumerate}
 \end{definition}
+
+Figure \ref{fig:simpleRegionExample} shows an example of a simple region containing  9 vertices.
+
+% TODO: Add colors here
+\begin{figure}[!ht]
+    \begin{equation*}
+        \tikzfig{fig/tikz/simple-region-example}
+    \end{equation*}
+\caption{\textit{A simple region with two vertices from $N_1(v,w)$ setting the boundary, two vertices from $N_2(v,w)$ and some vertices from $N_3(v,w)$ in between}}
+    \label{fig:simpleRegionExample}
+\end{figure}
 
     % TODO for more examples refer to.
 \section{Deducing Reduction Rules}
@@ -354,7 +365,22 @@ This observation gives motivation to define the following sets:
     \end{caseof}
 \end{rgl}
 
-Before proofing the correctness of this reduction we will give some intuition behind these rules.
+
+Before proofing \cref*{rgl:rtwo} we will deduce some \textit{Facts} which are implied by the definitions above.
+
+\begin{fact}
+    Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref*{rgl:rtwo} on $v,w$. If $\Dvw = \emptyset$, then G has a solution if and only if it has a solution containing at least one of the two vertices $\{v,w \}$.
+\end{fact}
+\begin{proof}
+    
+\end{proof}
+
+\begin{fact}
+   Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref*{rgl:rtwo} on $v, w$. If $\Dvw = \emptyset$ and $\Dv = \emptyset$ (resp. $\Dw = \emptyset$) then $G'$ has a solution if and only if it has a solution containing $v$ (resp. $w$).
+\end{fact}
+\begin{proof}
+    
+\end{proof}
 
 \begin{lemma}
     Let \G be a plane graph, $v, w \in V$ and \GB be the graph obtained after application of \cref{rgl:rtwo} on the pair $\{v, w\}$. Then G has SDS of size k if and only if G' has SDS of size k.

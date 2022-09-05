@@ -1,0 +1,54 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=BLACK, label={above:$v$}] (0) at (-3.25, 0) {};
+		\node [style=BLACK, label={above:$w$}] (2) at (3, 0) {};
+		\node [style=NONE] (3) at (0, 4.25) {};
+		\node [style=NONE] (4) at (0, -2.25) {};
+		\node [style=NTWO] (5) at (0, 3.25) {};
+		\node [style=NTWO] (6) at (0, -1.5) {};
+		\node [style=NTHR] (7) at (0, 2.25) {};
+		\node [style=NTHR] (8) at (0, 1.5) {};
+		\node [style=NTHR] (9) at (0, 0.75) {};
+		\node [style=NTHR] (10) at (0, 0) {};
+		\node [style=NTHR] (11) at (0, -0.75) {};
+		\node [style=none] (12) at (1, 5) {};
+		\node [style=none] (13) at (0, 5.5) {};
+		\node [style=none] (14) at (-1, 5) {};
+		\node [style=none] (15) at (0.75, -3) {};
+		\node [style=none] (16) at (0, -3.5) {};
+		\node [style=none] (17) at (-0.75, -3) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=FILLGREEN] (0.center)
+			 to (4.center)
+			 to (2.center)
+			 to (3.center)
+			 to cycle;
+		\draw (5) to (0);
+		\draw (7) to (0);
+		\draw (8) to (0);
+		\draw (9) to (0);
+		\draw (10) to (0);
+		\draw (8) to (9);
+		\draw (5) to (7);
+		\draw (5) to (3);
+		\draw (6) to (4);
+		\draw (6) to (0);
+		\draw (6) to (2);
+		\draw (11) to (2);
+		\draw (10) to (2);
+		\draw (11) to (0);
+		\draw (9) to (2);
+		\draw (8) to (2);
+		\draw (2) to (7);
+		\draw (5) to (2);
+		\draw (7) to (8);
+		\draw (10) to (11);
+		\draw (3) to (13.center);
+		\draw (3) to (12.center);
+		\draw (3) to (14.center);
+		\draw (16.center) to (4);
+		\draw (4) to (15.center);
+		\draw (17.center) to (4);
+	\end{pgfonlayer}
+\end{tikzpicture}

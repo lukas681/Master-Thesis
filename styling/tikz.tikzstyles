@@ -17,3 +17,4 @@
 \tikzstyle{big dash}=[-, dashed, dash pattern=on 4mm off 2mm, fill={rgb,255: red,178; green,255; blue,253}]
 \tikzstyle{big dash thick}=[-, thick, dashed, dash pattern=on 4mm off 2mm, fill={rgb,255: red,178; green,255; blue,253}]
 \tikzstyle{new edge style 0}=[-, fill={rgb,255: red,224; green,254; blue,255}]
+\tikzstyle{FILLGREEN}=[-, fill={rgb,255: red,232; green,255; blue,207}]

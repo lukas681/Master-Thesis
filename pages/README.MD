@@ -7,6 +7,7 @@
 5) Quotations
 6) Citations correctly. All pages given correctly?
 7) Neighbours vs neighbors
+8) CREFS* / CREF correctly distinguished.
 
 
 # Possible Quotes
