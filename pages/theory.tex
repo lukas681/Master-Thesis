@@ -284,7 +284,7 @@ We now have all the definitions ready to formally define a decomposition techniq
     \end{enumerate}
     We denote $V(\mathfrak{R}) = \bigcup\limits_{R \in \mathfrak{R}} V(R)$. 
     
-    \noindent A \textit{$D-region$ decomposition} is \underline{maximal} if there is no region $R \notin \mathfrak{R}$ such that $\mathfrak{R}' = \mathfrak{R} \cup \{R\}$ is a \textit{$D-region$ decomposition} with $V(\mathfrak{R}) \subsetneq V(\mathfrak{R}')$
+    \noindent A \dreg is \underline{maximal} if there is no region $R \notin \mathfrak{R}$ such that $\mathfrak{R}' = \mathfrak{R} \cup \{R\}$ is a \dreg with $V(\mathfrak{R}) \subsetneq V(\mathfrak{R}')$
 \end{definition}
 
 
@@ -294,7 +294,7 @@ Figure \ref{fig:maxRegionDecompose} gives an example on how to decompose a graph
     \begin{equation*}
         \tikzfig{fig/tikz/region-example}
     \end{equation*}
-    \caption{\textit{Observe, that some vertices (around $d_1$) are not part of any $vw$-region. Our reduction rules are going to take care about that and bound these number of vertices to obtain the kernel.}}\label{fig:maxRegionDecompose}
+    \caption{\textit{A maximal \dreg, where $D = \{d_1,d_2,d_3\}$ form a \sdom. There are two regions between $d_2$ and $d_1$, one region between $d_1$ and $d_3$ and one region between $d_2$ and $d_3$. Observe that some neighbors of $d_1$) are not part of any $vw$-region. For those, our reduction rules are going to take care about that and bound these number of vertices to obtain the kernel.}}\label{fig:maxRegionDecompose}
 \end{figure}
 
 % TODO: Wording: "kernel" precise enough here.
