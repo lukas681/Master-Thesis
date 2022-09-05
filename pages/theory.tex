@@ -77,12 +77,12 @@ A graph is a pair $G = (V, E)$ of two sets where $V$ denotes the vertices and $E
 \end{definition}
 
 \subsection*{Special Graph Classes}
-We call the class of graphs without any special restrictions "General Graphs".
+We call the class of graphs without any special restrictions ``General Graphs''.
 
 \begin{definition}[r-partite Graphs]
-    Let $r \geq 2$ be an integer. A Graph $G = (V,E)$ is called "r-partite" if V admits a parititon into r classes such that every edge has its ends in different classes: Vertices in the same partition class must not be adjacent. 
+    Let $r \geq 2$ be an integer. A Graph $G = (V,E)$ is called ``r-partite'' if V admits a parititon into r classes such that every edge has its ends in different classes: Vertices in the same partition class must not be adjacent. 
     
-    For the case $r = 2$ we say that the G is "bipartite" 
+    For the case $r = 2$ we say that the G is ``bipartite'' 
 %      %        TODO mage of a bipartite Graph
 
 \end{definition}
@@ -284,11 +284,18 @@ We now have all the definitions ready to formally define a decomposition techniq
     \end{enumerate}
     We denote $V(\mathfrak{R}) = \bigcup\limits_{R \in \mathfrak{R}} V(R)$. 
     
-    A \textit{$D-region$ decomposition} is \underline{maximal} if there is no region $R \notin \mathfrak{R}$ such that $\mathfrak{R}' = \mathfrak{R} \cup \{R\}$ is a \textit{$D-region$ decomposition} with $V(\mathfrak{R}) \subsetneq V(\mathfrak{R}')$
+    \noindent A \textit{$D-region$ decomposition} is \underline{maximal} if there is no region $R \notin \mathfrak{R}$ such that $\mathfrak{R}' = \mathfrak{R} \cup \{R\}$ is a \textit{$D-region$ decomposition} with $V(\mathfrak{R}) \subsetneq V(\mathfrak{R}')$
 \end{definition}
 
 
+Figure \ref{ref:maxRegionDecompose} gives an example on how to decompose a graph into a maximal $D-region$ decomposition with a given \sdom of size 3.
 
+\begin{figure}[!ht]
+    \begin{equation*}
+        \tikzfig{fig/tikz/region-example}
+    \end{equation*}
+    \caption{\textit{TODO}}\label{fig:maxRegionDecompose}
+\end{figure}
 
 % TODO: Wording: "kernel" precise enough here.
 We are introducing a special subset of a region, a \textit{simple region} where every vertex is a common neighbor of $v$ and $w$. They will appear on many unexpected astonishing places and are an important tool to operate on small parts of a plane graph. The upcoming \cref{rgl:rthree} will bound the size of these \textit{simple regions}.
@@ -319,6 +326,18 @@ Figure \ref{fig:simpleRegionExample} shows an example of a simple region contain
 Following the approach by \cite{Garnero2014}, we are now stating reduction rules that after exhaustive application will expose a linear kernel. 
 
 \subsection{Reduction Rule I: Getting Rid of unneccessary  $N_3(v)$ vertices}
+%TODO More text:
+An exemplarly application of the rule is shown in figure \ref{fig:ruleOne}
+
+\begin{figure}[!ht]
+    \begin{equation*}
+        \tikzfig{fig/tikz/ruleOne}
+    \end{equation*}
+\caption{\textit{TODO}}
+    \label{fig:ruleOne}
+\end{figure}
+
+
 
 \begin{rgl}\label{rgl:rone}
     Let \G be a graph and let $v \in V$. If $\abs{\Nthreev} \geq 1$:
