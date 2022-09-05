@@ -265,6 +265,31 @@ It might be interesting to note that the authors of \cite{Garnero2017} have revi
 
 \end{definition}
 
+
+We now have all the definitions ready to formally define a decomposition technique for planar graphs:
+
+\begin{definition}
+    Two regions $R_1$ and $R_2$ are non-crossing, if:
+    \begin{enumerate}
+        \item $(R_1 \setminus \partial R_1) \cap R_2 = (R_2 \setminus \partial R_2) = \emptyset$, and 
+        \item the boundary paths of $R_1$ are pairwise confluent with the ones in $R_2$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Given a plane graph \G and $D\subseteq V$, a \underline{$D-region$ Decomposition} of G is a set $\mathfrak{R}$ of regions with poles in D such that: 
+    \begin{enumerate}
+        \item for any $vw$-region $R \in \mathfrak{R} $, it holds that $D \cap V(R) = \{v, w\}$, and
+        \item all regions are pairwise non-crossing. 
+    \end{enumerate}
+    We denote $V(\mathfrak{R}) = \bigcup\limits_{R \in \mathfrak{R}} V(R)$. 
+    
+    A \textit{$D-region$ decomposition} is \underline{maximal} if there is no region $R \notin \mathfrak{R}$ such that $\mathfrak{R}' = \mathfrak{R} \cup \{R\}$ is a \textit{$D-region$ decomposition} with $V(\mathfrak{R}) \subsetneq V(\mathfrak{R}')$
+\end{definition}
+
+
+
+
 % TODO: Wording: "kernel" precise enough here.
 We are introducing a special subset of a region, a \textit{simple region} where every vertex is a common neighbor of $v$ and $w$. They will appear on many unexpected astonishing places and are an important tool to operate on small parts of a plane graph. The upcoming \cref{rgl:rthree} will bound the size of these \textit{simple regions}.
 
@@ -289,7 +314,7 @@ Figure \ref{fig:simpleRegionExample} shows an example of a simple region contain
 \end{figure}
 
     % TODO for more examples refer to.
-\section{Deducing Reduction Rules}
+\section{Reduction Rules}
 
 Following the approach by \cite{Garnero2014}, we are now stating reduction rules that after exhaustive application will expose a linear kernel. 
 
@@ -321,14 +346,14 @@ Following the approach by \cite{Garnero2014}, we are now stating reduction rules
 Extending the approach for a linear kernel for \dom proposed by Alber et al. in \cite{Alber2004}, Garnero and Stau transferred these results in \cite{Garnero2018} to the \tdom problem. 
 
 %TODO: Better:
-Their idea was to relax the reduction rules in such a way that the witness properties for total domination are being preserved.
+Their idea was to strengthen the reduction rules in such a way that the witness properties for total domination are being preserved.
 
 % TODO Should we discuss that?
-Following their approach in one of the first verions of \cite{Garnero2014}, we stating reduction rules that. Interestingly, the reduction rules given in the latest version of this paper was not transferable to \sdom, but an older version giving slightly easier reduction rules could be adjusted to our problem.
+Following their approach in one of the first versions of \cite{Garnero2014}, we stating reduction rules that. Interestingly, the reduction rules given in the latest version of this paper was not directly be transferable to \sdom, but an older version giving slightly easier reduction rules could be adjusted to our problem.
 
 which relies on the technique first introduced by Alber et al we try to reduce the neighborhood for two given vertices $v$ and $w$
 
-This observation gives motivation to define the following sets:
+Before we give the concrete reduction rule, we will define three sets 
 
 \begin{align}
     \Dvw &= \{ \tilde D \subseteq N_{2,3}(v,w)            \mid N_3(v,w) \subseteq \bigcup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3                  \}\\
@@ -374,6 +399,8 @@ Before proofing \cref*{rgl:rtwo} we will deduce some \textit{Facts} which are im
 \begin{proof}
     
 \end{proof}
+
+Now we are ready to proof the correctness of \cref*{rgl:rtwo}
 
 \begin{fact}
    Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref*{rgl:rtwo} on $v, w$. If $\Dvw = \emptyset$ and $\Dv = \emptyset$ (resp. $\Dw = \emptyset$) then $G'$ has a solution if and only if it has a solution containing $v$ (resp. $w$).

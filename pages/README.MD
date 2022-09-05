@@ -8,12 +8,12 @@
 6) Citations correctly. All pages given correctly?
 7) Neighbours vs neighbors
 8) CREFS* / CREF correctly distinguished.
+9) Regions quoted correcty?
 
 
 # Possible Quotes
 
 `Found it,' the Mouse replied rather crossly: `of course you know what "it" means.'
-
 
 # MOre
 
