@@ -505,15 +505,15 @@ Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been
 
 \begin{lemma}[\#Vertices outside a Region]
 Let \G be a plane graph reduced under \cref*{rgl:rone,rgl:rtwo} and let D be a SDS of G. If R has a maximal D-region decomposition, then XXX
-
 \end{lemma}
 
+In the following, we define $\dGR(v) = \abs{R(v,w) \in \mathfrak{R}, w \in D}$ to be the number of regions in $\mathfrak{R}$ adjacent to a vertex $v$.
 %TODO Add sum here
 \begin{lemma}
-    Let \G be a graph and D be a set. For any maximal \dreg~$\mathfrak{R}$ on G it holds that $\abs{D} \leq 2 \cdot \abs{\mathfrak{R}}$
+    Let \G be a graph and D be a set. For any maximal \dreg~$\mathfrak{R}$ on G it holds that $\sum_{d \in D} \leq \abs{\mathfrak{R}}$.
 \end{lemma}
 \begin{proof}\label{lemma:polesBound}
-    By definition, any region has exactly two poles $p_1,p_2 \in D$ which could potentially be different for each region $R_i \in \mathfrak{R}$. Hence, $\abs{D} \leq 2 \cdot \abs{\mathfrak{R}}$ holds.
+    By definition, we know that each region $\widetilde{R}$ has exactly two poles, thus there can only exist at most two sets from $\dGR(v_i)$ containing $\widetilde{R}$. Hence, the claim follows.
 \end{proof}
 
 With some slightly modifications, the proof given in \cite{Garnero2014} will also hold in our case. Note that although asuming the graph to be reduced, the following proof only relies on \cref*{rgl:rone,rgl:rtwo}. It is a very interesting observation that $N_2$
@@ -529,7 +529,7 @@ With some slightly modifications, the proof given in \cite{Garnero2014} will als
 
     \noindent$\mathbf{N_3(v)}$: The trivial case. As we know that \cref{rgl:rone} has exhaustively applied, we know that $\abs{N_3(v)} \leq 1$. Hence, $\abs{\bigcup_{v \in D}N_3(v) \setminus V(\mathfrak{R})} \leq \abs{D}$
 
-    \noindent$\mathbf{N_2(v)}$: According to Alber et al. (\cite*{Alber2004}), we know that $N_2(v) \setminus V(\mathfrak{R})$ can be covered by at most $4 \dGR(v)$ simple regionsbetween $v$ and some vertices from $N_1(v)$ on the boundary of $\mathfrak{R}$ where $\dGR(v) = \abs{R(v,w) \in \mathfrak{R}, w \in D}$ is the number of regions in $\mathfrak{R}$ adjacent to $V$. Intuitively, we know that every region $v$ can be a pole of (which it is as $v \in D$) has at most four $N_1(v)$-vertices to which the $N_2(v)$-vertices can be connected. Note that if there had been any intervening $N_3(v)$-vertices, they would have been reduce. Figure \ref{fig:kernelSize} shows an example.
+    \noindent$\mathbf{N_2(v)}$: According to Alber et al. (\cite*{Alber2004}), we know that $N_2(v) \setminus V(\mathfrak{R})$ can be covered by at most $4 \dGR(v)$ simple regionsbetween $v$ and some vertices from $N_1(v)$ on the boundary of $\mathfrak{R}$. Intuitively, we know that every region $v$ can be a pole of (which it is as $v \in D$) has at most four $N_1(v)$-vertices to which the $N_2(v)$-vertices can be connected. Note that if there had been any intervening $N_3(v)$-vertices, they would have been reduce. Figure \ref{fig:kernelSize} shows an example.
     By lemma \ref*{lemma:simpleregionbound} we know that a simple region can only have at least 6 vertices distinct from its poles. Hence, $\abs{\bigcup_{v \ in D} N_2(v) \setminus \mathfrak{R} \leq 6 \sum_{v \in D}4 \cdot \dGR(v) } = 24 \cdot \sum_{v \in D}\dGR(v) \leq^{\mathit{Lemma \ref{lemma:polesBound}}} $
 
     % Now use the lemma in the revised version. 
