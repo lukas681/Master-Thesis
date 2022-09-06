@@ -297,7 +297,7 @@ Figure \ref{fig:maxRegionDecompose} gives an example on how to decompose a graph
     \caption{\textit{A maximal \dreg, where $D = \{d_1,d_2,d_3\}$ form a \sdom. There are two regions between $d_2$ and $d_1$, one region between $d_1$ and $d_3$ and one region between $d_2$ and $d_3$. Observe that some neighbors of $d_1$) are not part of any $vw$-region. For those, our reduction rules are going to take care about that and bound these number of vertices to obtain the kernel.}}\label{fig:maxRegionDecompose}
 \end{figure}
 
-% TODO: Wording: "kernel" precise enough here.
+% TODO: Wording: "kernel" prsdfecise enough here.
 We are introducing a special subset of a region, a \textit{simple region} where every vertex is a common neighbor of $v$ and $w$. They will appear on many unexpected astonishing places and are an important tool to operate on small parts of a plane graph. The upcoming \cref{rgl:rthree} will bound the size of these \textit{simple regions}.
 
 \begin{definition}
@@ -464,6 +464,9 @@ For the sake of completeness, we state an algorithm how a maximal \sr between tw
 
 \section{Bounding the Size of the Kernel}
 
+% TODO: Rewrite:
+We are now putting all our pieces together in order to proof our main result: A linear bound on the kernel size. In order to do so, we distinguish between those vertices that are covered by a maximal \dreg and those that are not. In both cases our reduction rules bound the number of vertices to a consant size which means the kernel size does only depend on the number of regions of this decomposition. Lemma \ref{fig:maxRegionDecompose} states that for any solution D, we only have a linear number of regions that cover the whole graph.
+
 \subsection{Bounding the Size of a Region}
 
 We start are more fine-grained analysis of the impact of the different cases of \cref*{rgl:rtwo} on a $vw$-region. The main idea is to count the number of simple regions in the $vw$-region and than use the bound on the size of a simple region after \cref*{rgl:rthree} was applied exhaustively and which was obtain obtained in Lemma~\ref{lemma:simpleregionbound}.   
@@ -491,15 +494,43 @@ Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been
 
 \subsection{Number of Vertices outside the Decomposition}
 
-\begin{lemma}[\#Vertices outside a Region]
-Let \G be a plane graph reduced under \cref*{rgl:rone,rgl:rtwo} and let D SDS of G. If R has a maximal D-region decomposition then
+\begin{lemma}
+    \cite*{Alber2004}
+    Every vertex in $u \in V \setminus V(\mathfrak{R})$ is either in D or belongs to a set $N_2(v) \cup N_3(v)$.
+\end{lemma}
+\begin{proof}
+    
+\end{proof}
 
-XXXXXXXXX
+
+\begin{lemma}[\#Vertices outside a Region]
+Let \G be a plane graph reduced under \cref*{rgl:rone,rgl:rtwo} and let D be a SDS of G. If R has a maximal D-region decomposition, then XXX
 
 \end{lemma}
-\begin{proof} 
 
+With some slightly modifications, the proof given in \cite{Garnero2014} will also hold in our case. Note that although asuming the graph to be reduced, the following proof only relies on \cref*{rgl:rone,rgl:rtwo}. It is a very interesting observation that $N_2$
+% TODO: Proof that N_Is are distinct
+% TODO Provie a worst configuration
+\begin{proof} 
+    Again, we will follow the proof proposed by Alber et al. \cite[Proposition 2]{Alber2004}. 
+   
+    The proof does only rely on \cref*{rgl:rone,rgl:rtwo} and we can use the number of vertices in a simple region we have proofen in \ref*{lemma:simpleregionbound}. In particular, we are going to proof that $V \setminus V(\mathfrak{R}) \leq XX \cdot \abs{\mathfrak{R}} + 2 \cdot \abs{D}$. Directly placing in Lemma~\ref{lemma:numRegions} will give as the desired bound.
+
+    Now let $\mathfrak{R}$ be a maximal \dreg and let $v \in D$. Since D dominates $V$ and therefore every non-dominating vertex in the graph has at least one neighbor in D, we can consider $V$ as $\bigcup_{v \in D}N(v)$ and thus, we only need to bound the sizes of $N_1(v)$, $N_2(v)$ and $N_3(v)$  MINUS R seperately. let $v \in D$ in the following:
+    %As we know that the sets $N_1(v,w)$, $N_2(v,w)$ and $N_3(v,w)$ are distinct by definition, we can seperately bound the vertices from $\abs{V \setminus V(\mathfrak{R})}$
+
+    \noindent$\mathbf{N_3(v)}$: The trivial case. As we know that \cref{rgl:rone} has exhaustively applied, we know that $\abs{N_3(v)} \leq 1$. Hence, $\abs{\bigcup_{v \in D}N_3(v) \setminus V(\mathfrak{R})} \leq \abs{D}$
+
+    \noindent$\mathbf{N_2(v)}$: According to Alber et al. (\cite*{Alber2004}), we know that $N_2(v) \setminus V(\mathfrak{R})$ can be covered by at most $4l$ simple regionsbetween $v$ and some vertices from $N_1(v)$ on the boundary of $\mathfrak{R}$ where $l = \abs{R(v,w) \in \mathfrak{R}, w \in D}$ is the number of regions in $\mathfrak{R}$ adjacent to $V$. Intuitively, we know that every region $v$ can be a pole of (which it is as $v \in D$) has at most four $N_1(v)$ vertices to which the $N_2(v)$-vertices can be connected. 
+
+    % TODO Formally Proof that
+    % TODO Make a picture for that case 
+
+    \noindent$\mathbf{N_1(v)}$. Extra Lemma why it is the case TODO
+
+Summing up these three bounds, for each $v \in D$ we get XXXXXX
 \end{proof}
+
 
 % TODO: CITE ALBER AND STAU
 
@@ -514,7 +545,7 @@ Garnero and Stau (\cite[p. 15]{Garnero2014}) already mention that the decomposit
 At the same time, we are going to upper-bound the number of v-w-regions D can span. Will will now proof that this claim also holds for \sdom. 
 % TODO Better english? to span
 
-\begin{lemma}[{\cite[Proposition 1]{Garnero2014}}]
+\begin{lemma}[{\cite[Proposition 1]{Garnero2014}}]\label{lemma:numRegions}
     Let G be a reduced plane graph and let D be a \sdom with $\abs{D}\geq 3$. There is a maximal D-region decomposition of G such that $\abs{R} \leq 3 \cdot \abs{D} - 6$
 \end{lemma}
 
