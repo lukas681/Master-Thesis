@@ -509,9 +509,9 @@ Let \G be a plane graph reduced under \cref*{rgl:rone,rgl:rtwo} and let D be a S
 
 In the following, we define $\dGR(v) = \abs{R(v,w) \in \mathfrak{R}, w \in D}$ to be the number of regions in $\mathfrak{R}$ adjacent to a vertex $v$.
 %TODO Add sum here
-\begin{lemma}
-    Let \G be a graph and D be a set. For any maximal \dreg~$\mathfrak{R}$ on G it holds that $\sum_{d \in D} \leq \abs{\mathfrak{R}}$.
-\end{lemma}
+\begin{corollary}
+    Let \G be a graph and D be a set. For any maximal \dreg~$\mathfrak{R}$ on G it holds that $\sum_{v \in D} \dGR(v) \leq 2 \cdot \abs{\mathfrak{R}}$.
+\end{corollary}
 \begin{proof}\label{lemma:polesBound}
     By definition, we know that each region $\widetilde{R}$ has exactly two poles, thus there can only exist at most two sets from $\dGR(v_i)$ containing $\widetilde{R}$. Hence, the claim follows.
 \end{proof}
@@ -527,20 +527,22 @@ With some slightly modifications, the proof given in \cite{Garnero2014} will als
     Now let $\mathfrak{R}$ be a maximal \dreg and let $v \in D$. Since D dominates $V$ and therefore every non-dominating vertex in the graph has at least one neighbor in D, we can consider $V$ as $\bigcup_{v \in D}N(v)$ and thus, we only need to bound the sizes of $N_1(v)$, $N_2(v)$ and $N_3(v)$  MINUS R seperately. let $v \in D$ in the following:
     %As we know that the sets $N_1(v,w)$, $N_2(v,w)$ and $N_3(v,w)$ are distinct by definition, we can seperately bound the vertices from $\abs{V \setminus V(\mathfrak{R})}$
 
-    \noindent$\mathbf{N_3(v)}$: The trivial case. As we know that \cref{rgl:rone} has exhaustively applied, we know that $\abs{N_3(v)} \leq 1$. Hence, $\abs{\bigcup_{v \in D}N_3(v) \setminus V(\mathfrak{R})} \leq \abs{D}$
+    \noindent$\mathbf{N_3(v)}$: As we know that \cref{rgl:rone} has exhaustively applied, we trivially see that $\abs{N_3(v)} \leq 1$. Hence, $\abs{\bigcup_{v \in D}N_3(v) \setminus V(\mathfrak{R})} \leq \abs{D}$
 
     \noindent$\mathbf{N_2(v)}$: According to Alber et al. (\cite*{Alber2004}), we know that $N_2(v) \setminus V(\mathfrak{R})$ can be covered by at most $4 \dGR(v)$ simple regionsbetween $v$ and some vertices from $N_1(v)$ on the boundary of $\mathfrak{R}$. Intuitively, we know that every region $v$ can be a pole of (which it is as $v \in D$) has at most four $N_1(v)$-vertices to which the $N_2(v)$-vertices can be connected. Note that if there had been any intervening $N_3(v)$-vertices, they would have been reduce. Figure \ref{fig:kernelSize} shows an example.
-    By lemma \ref*{lemma:simpleregionbound} we know that a simple region can only have at least 6 vertices distinct from its poles. Hence, $\abs{\bigcup_{v \ in D} N_2(v) \setminus \mathfrak{R} \leq 6 \sum_{v \in D}4 \cdot \dGR(v) } = 24 \cdot \sum_{v \in D}\dGR(v) \leq^{\mathit{Lemma \ref{lemma:polesBound}}} $
+    By lemma \ref*{lemma:simpleregionbound} we know that a simple region can only have at least 6 vertices distinct from its poles. Hence, 
+    
+    \[\abs{\bigcup_{v \ in D} N_2(v) \setminus \mathfrak{R} \leq 6 \sum_{v \in D}4 \cdot \dGR(v) } = 24 \cdot \sum_{v \in D}\dGR(v) \overset{\text{Corollary \ref{lemma:polesBound}}}{\leq} 48 \abs{\mathfrak{R}}\]
 
-    % Now use the lemma in the revised version. 
-
-    % TODO Migrate l to D_Gr(v)
+    % TODO Now use the lemma in the revised version. 
     % TODO Formally Proof that
     % TODO Make a picture for that case 
 
-    \noindent$\mathbf{N_1(v)}$. Extra Lemma why it is the case TODO
+    \noindent$\mathbf{N_1(v)}$: By Lemma XX, we know that $N_1(v) \subseteq V(\mathfrak{R})$ and hence 
 
-Summing up these three bounds, for each $v \in D$ we get XXXXXX
+    \[\abs{\bigcup_{v \in D}N_1(v) \setminus V(\mathfrak{R})} = 0\]
+
+Summing up these three upper bounds for each $v \in D$ we obtain $V \setminus V(\mathfrak{R}) \leq 48 \abs{\mathfrak{R} + \abs{D}}$
 \end{proof}
 
 \begin{figure}[!ht]
