@@ -531,7 +531,7 @@ Now let $\mathfrak{R}$ be a maximal \dreg and let $v \in D$. Since D dominates $
 \noindent$\mathbf{N_2(v)}$: According to Alber et al. (\cite*{Alber2004}), we know that $N_2(v) \setminus V(\mathfrak{R})$ can be covered by at most $4 \dGR(v)$ simple regionsbetween $v$ and some vertices from $N_1(v)$ on the boundary of $\mathfrak{R}$. Intuitively, we know that every region $v$ can be a pole of (which it is as $v \in D$) has at most four $N_1(v)$-vertices to which the $N_2(v)$-vertices can be connected. Note that if there had been any intervening $N_3(v)$-vertices, they would have been reduce. Figure \ref{fig:kernelSize} shows an example.
 By lemma \ref*{lemma:simpleregionbound} we know that a simple region can only have at least 6 vertices distinct from its poles and hence, 
 
-\[\abs{\bigcup_{v \ in D} N_2(v) \setminus \mathfrak{R} \leq 6 \sum_{v \in D}4 \cdot \dGR(v) } = 24 \cdot \sum_{v \in D}\dGR(v) \overset{\text{Corollary \ref{lemma:polesBound}}}{\leq} 48 \abs{\mathfrak{R}}\]
+\[\abs{\bigcup_{v \in D} N_2(v) \setminus \mathfrak{R} \leq 6 \sum_{v \in D}4 \cdot \dGR(v) } = 24 \cdot \sum_{v \in D}\dGR(v) \overset{\text{Corollary \ref{lemma:polesBound}}}{\leq} 48 \abs{\mathfrak{R}}\]
 
 % TODO Now use the lemma in the revised version. 
 % TODO Formally Proof that
@@ -545,7 +545,7 @@ By lemma \ref*{lemma:simpleregionbound} we know that a simple region can only ha
 
 \begin{equation}
     \begin{split}
-        V \setminus V(\mathfrak{R}) &\leq 48 \cdot \abs{\mathfrak{R}} + \abs{D} \\
+        \abs{V \setminus V(\mathfrak{R}) \cup D)} &\leq 48 \cdot \abs{\mathfrak{R}} + \abs{D} \\
         &\leq 48 \cdot (3 \abs{D} - 6) + \abs{D} \\
         &\leq 144 \abs{D} + \abs{D} \\
         &= 145 \abs{D}
