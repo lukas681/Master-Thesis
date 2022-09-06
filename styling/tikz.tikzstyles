@@ -23,4 +23,6 @@
 \tikzstyle{FILLPURPLE}=[-, fill={rgb,255: red,255; green,233; blue,239}]
 \tikzstyle{FILLDARKBLUE}=[-, fill={rgb,255: red,238; green,230; blue,255}]
 \tikzstyle{FILLDARKBLUEINVISIBLE}=[-, draw=none, fill={rgb,255: red,238; green,230; blue,255}]
+\tikzstyle{FILLGREENINVISBLE}=[-, draw=none,fill={rgb,255: red,232; green,255; blue,207}]
 \tikzstyle{ULTRAGRAY}=[-, draw={rgb,255: red,236; green,236; blue,236}]
+\tikzstyle{EDGEDASHED}=[-, dashed, fill=none]

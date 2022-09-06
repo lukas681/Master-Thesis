@@ -508,6 +508,14 @@ Let \G be a plane graph reduced under \cref*{rgl:rone,rgl:rtwo} and let D be a S
 
 \end{lemma}
 
+%TODO Add sum here
+\begin{lemma}
+    Let \G be a graph and D be a set. For any maximal \dreg~$\mathfrak{R}$ on G it holds that $\abs{D} \leq 2 \cdot \abs{\mathfrak{R}}$
+\end{lemma}
+\begin{proof}\label{lemma:polesBound}
+    By definition, any region has exactly two poles $p_1,p_2 \in D$ which could potentially be different for each region $R_i \in \mathfrak{R}$. Hence, $\abs{D} \leq 2 \cdot \abs{\mathfrak{R}}$ holds.
+\end{proof}
+
 With some slightly modifications, the proof given in \cite{Garnero2014} will also hold in our case. Note that although asuming the graph to be reduced, the following proof only relies on \cref*{rgl:rone,rgl:rtwo}. It is a very interesting observation that $N_2$
 % TODO: Proof that N_Is are distinct
 % TODO Provie a worst configuration
@@ -521,8 +529,12 @@ With some slightly modifications, the proof given in \cite{Garnero2014} will als
 
     \noindent$\mathbf{N_3(v)}$: The trivial case. As we know that \cref{rgl:rone} has exhaustively applied, we know that $\abs{N_3(v)} \leq 1$. Hence, $\abs{\bigcup_{v \in D}N_3(v) \setminus V(\mathfrak{R})} \leq \abs{D}$
 
-    \noindent$\mathbf{N_2(v)}$: According to Alber et al. (\cite*{Alber2004}), we know that $N_2(v) \setminus V(\mathfrak{R})$ can be covered by at most $4l$ simple regionsbetween $v$ and some vertices from $N_1(v)$ on the boundary of $\mathfrak{R}$ where $l = \abs{R(v,w) \in \mathfrak{R}, w \in D}$ is the number of regions in $\mathfrak{R}$ adjacent to $V$. Intuitively, we know that every region $v$ can be a pole of (which it is as $v \in D$) has at most four $N_1(v)$ vertices to which the $N_2(v)$-vertices can be connected. 
+    \noindent$\mathbf{N_2(v)}$: According to Alber et al. (\cite*{Alber2004}), we know that $N_2(v) \setminus V(\mathfrak{R})$ can be covered by at most $4 \dGR(v)$ simple regionsbetween $v$ and some vertices from $N_1(v)$ on the boundary of $\mathfrak{R}$ where $\dGR(v) = \abs{R(v,w) \in \mathfrak{R}, w \in D}$ is the number of regions in $\mathfrak{R}$ adjacent to $V$. Intuitively, we know that every region $v$ can be a pole of (which it is as $v \in D$) has at most four $N_1(v)$-vertices to which the $N_2(v)$-vertices can be connected. Note that if there had been any intervening $N_3(v)$-vertices, they would have been reduce. Figure \ref{fig:kernelSize} shows an example.
+    By lemma \ref*{lemma:simpleregionbound} we know that a simple region can only have at least 6 vertices distinct from its poles. Hence, $\abs{\bigcup_{v \ in D} N_2(v) \setminus \mathfrak{R} \leq 6 \sum_{v \in D}4 \cdot \dGR(v) } = 24 \cdot \sum_{v \in D}\dGR(v) \leq^{\mathit{Lemma \ref{lemma:polesBound}}} $
 
+    % Now use the lemma in the revised version. 
+
+    % TODO Migrate l to D_Gr(v)
     % TODO Formally Proof that
     % TODO Make a picture for that case 
 
@@ -531,6 +543,14 @@ With some slightly modifications, the proof given in \cite{Garnero2014} will als
 Summing up these three bounds, for each $v \in D$ we get XXXXXX
 \end{proof}
 
+\begin{figure}[!ht]
+    \begin{equation*}
+        \tikzfig{fig/tikz/kernelSize}
+    \end{equation*}
+\caption{\textit{Bounding the number of $N_2(v)$-vertices around a dominating vertex $v$. $v$ is a pole of $R_1, R_2,...R_j$ and can span simple regions with the help of $N_2(v)$-vertices to at most 4l $N_1(v)$-vertices}. These regions are being reduced by \cref*{rgl:rthree}.}
+\label{fig:kernelSize}
+\end{figure}
+%
 
 % TODO: CITE ALBER AND STAU
 
