@@ -48,9 +48,15 @@ We quickly state the following definitions given by {\cite[p.~xxx]{diestel10}}.
 
 %% TODO Path, Subgraph, Induced Subgraph, Copnnected 
 \begin{definition}[Graph {\cite[p. 3]{diestel10}}]
-A graph is a pair $G = (V, E)$ of two sets where $V$ denotes the vertices and $E \subseteq V \times C$ the edges of the graph.  A vertex $v \in V$ is incident with an edge $e \in E$ if $v \in e$. Two vertices $x, y$ are adjacent, or neighbours, if $\{x,y \} \in E$.
+A graph is a pair $G = (V, E)$ of two sets where $V$ denotes the vertices and $E \subseteq V \times V$ the edges of the graph.  A vertex $v \in V$ is incident with an edge $e \in E$ if $v \in e$. Two vertices $x, y$ are adjacent, or neighbours, if $\{x,y \} \in E$.
 % Size of the Graph?
 \end{definition}
+
+%TODO Quote
+\begin{definition}[Vertex Degrees]
+The \textit{degree} $d_G(v)$ (If G is clear, also $d(v)$) of a vertex $v$ is the number of neighbors of v. We call a vertex of degree 0 as isoliated and one of degree 1 as a pendant.
+\end{definition}
+
 
 \begin{definition}[Special Graph Notations {\cite[p.~27]{diestel10}}]
     A simple Graph
@@ -108,6 +114,11 @@ We call the class of graphs without any special restrictions ``General Graphs''.
 \section{Semitotal Domination}
 
 \sdom
+
+%TODO improve definition
+For two dominating vertices $d_1, d_2$ we say that they are wittnesses for each other if $d(d_1, d_2) \leq 2$
+%\subsection{Some useful notation}
+
 
 Definition, dominating number
 
@@ -252,14 +263,14 @@ It might be interesting to note that the authors of \cite{Garnero2017} have revi
 % TODO MORE TEXT HERE
 
 \begin{definition}
-    Let \G be a plane graph and let $v,w \in V$ be two distinct vertices. A \underline{$vw$-region} is a closed subset of the plane, such that:
+    Let \G be a plane graph and let $v,w \in V$ be two distinct vertices. A \underline{ region $R(v,w)$} (also denoted as $vw$-region) is a closed subset of the plane, such that:
     \begin{enumerate}
         \item the boundary of R is formed by two confluent simple $vw$-paths with length at most 3
         \item every vertex in R belongs to $N(v,w)$, and 
         \item the compliment of R in the plane is connected.
     \end{enumerate}
 
-    We denote by $\partial R$ the boundary of R and by $V(R)$ the set of vertices which lie (with the plane embedding) in $R$. Furthermore, we call $\abs{V(R)}$ the \textit{size of the region}.
+    We denote by $\partial R$ the boundary of R and by $V(R)$ the set of vertices which lay (with the plane embedding) in $R$. Furthermore, we call $\abs{V(R)}$ the \textit{size of the region}.
 
     The poles of R are the vertices $v$ and $w$. The boundary paths are the two $vw$-paths that form $\partial R$ 
 
@@ -488,7 +499,37 @@ Combining these three parts will give us a linear kernel.
 
 We start are more fine-grained analysis of the impact of the different cases of \cref*{rgl:rtwo} on a $vw$-region. The main idea is to count the number of simple regions in the $vw$-region and than use the bound on the size of a simple region after \cref*{rgl:rthree} was applied exhaustively and which was obtain obtained in Lemma~\ref{lemma:simpleregionbound}.   
 
-We start by giving a constant bound on the number of simple regions that cover all  $N_3(v,w)$ vertices in a given region.
+We start by giving 
+
+%TODO Correct Citation
+\begin{lemma}
+    Given a plane Graph \G and a region R(v,w) $\abs{N_1(v,w) \cap V(R)} \leq 4$ and these vertices lay exactly on the boundary $\partial R$ of $R$. 
+\end{lemma}
+\begin{proof}
+    TO BE DONE
+\end{proof}
+
+\begin{lemma}\cite[See Fact 5]{Garnero2018}
+    Given a reduced plane graph \G and a region $R(v,w)$, $N_2(v,w) \cap N$ can be coverd by at most 6 simple regions.
+\end{lemma}
+\begin{proof}
+    Let $(v,u_1, u_2,w)$ and $(v, u_3, u_4, w)$ be the two boundary paths of $R(v,w)$. (A shorter path would only lead to a smaller bound).
+    By definition of $N_2(v,w)$, vertices from $N_2(v,w) \cap V(R)$ are common neighbors of $v$ and $w$ and $u_i, i \in [4]$. By planarity, we can cover $N_2(v,w) \cap V(R)$ with at most 6 simple regions. To see this, imagine the graph where edges denote all possible simple $vw$-regions (See fig. \ref{fig:maxntwoinside}). There are at most 8 simple regions possible. but we have to remove at least two of them to maintain planarity.
+
+    Furthermore, asuming the graph to be reduced, any intermediate $N_3(v,w)$ which could possible seperate multiple simple regions between $v$ and $u_i$ have been deleted by \cref{rgl:rone} already.
+\end{proof}
+
+\begin{figure}[!ht]
+    \begin{equation*}
+        \tikzfig{fig/tikz/maxntwo}
+    \end{equation*}
+\caption{\textit{Bounding the maximum number of simple regions inside a region $R(v,w)$. $N_2(v,w)$ is covered by 6 green (simple) regions. A dashed edge would also be an option, but would contradict planarity. Note that the gray vertex g was reduced by \cref{rgl:rone} allowing the formation of exactly one simple region between $v$ and $u_1$}}
+\label{fig:maxntwoinside}
+\end{figure}
+
+
+
+We continue by giving a constant bound on the number of simple regions that cover all  $N_3(v,w)$ vertices in a given region.
 
 %TODO: Can I "induced" in this case is undefined
 \begin{lemma}
@@ -501,7 +542,7 @@ We start by giving a constant bound on the number of simple regions that cover a
 
 Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been applied and the second one, when Case 4 of \cref{rgl:rtwo} was applied.
 \begin{proof} 
-    We will just give some intuition, because the proof of Garnero and Stau in \cite[Fact 6]{Garnero2014} does not use any special property exposed by the reduction rules. Figure gives a visualization worst case scenarias to cover $N_3(v,w) \cap V(R)$ with simple regions in the relevant cases.\footnote{Note: In a newer revision of their paper \cite{Garnero2018}, Stau und Garnero removed this proof, because they changed \cref*{rgl:rtwo} and a more fine-grain analysis was made possible.}
+    We will just give some intuition, because the proof of Garnero and Stau in \cite[Fact 6]{Garnero2014} does not use any special property exposed by the reduction rules. Figure (Add picture about figures) gives a visualization worst case scenarias to cover $N_3(v,w) \cap V(R)$ with simple regions in the relevant cases.\footnote{Note: In a newer revision of their paper \cite{Garnero2018}, Stau und Garnero removed this proof, because they changed \cref*{rgl:rtwo} and a more fine-grain analysis was made possible.}
     
 
     % Altough our \cref{rgl:rtwo} is a bit different, the proof still goes through in the original way.
@@ -515,6 +556,10 @@ Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been
 \begin{proof} 
     Adapt proof given in \cite*{Garnero2017}
 \end{proof}
+
+
+
+
 
 \subsection{Number of Vertices outside the Decomposition}
 We continue to bound the number of vertices that do not lay inside any region of a maximal \dreg $\mathfrak{R}$, that is, we bound the size of $V \setminus \VR$. \cref{rgl:rone} ensures that we only have a small amount of $N_3(v)$-pendants. We then try to cover the rest with as few simple regions as possible, because, by application of \cref{rgl:rthree}, these simple regions are of constant size.
