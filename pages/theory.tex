@@ -190,7 +190,7 @@ The idea is to split up the neighborhood of a single vertex and a pair of vertic
     \begin{equation*}
         \tikzfig{fig/tikz/neighborhoods-single-vertex}
     \end{equation*}
-\caption*{\textit{The neighborhood of a vertex splitted to $N_1(v)$ (blue), $N_2(v)$ (purple) and $N_3(v)$ (green). Note that all purple vertices have at least one blue neighbor making setting them in-between the green and blue vertices.}}
+\caption[The neighbordhood of a Single Vertex $v$]{\textit{The neighborhood of a vertex splitted to $N_1(v)$ (blue), $N_2(v)$ (purple) and $N_3(v)$ (green). Note that all purple vertices have at least one blue neighbor making setting them in-between the green and blue vertices.}}
 \end{figure}
 % TODO Improve this description
 
@@ -223,7 +223,7 @@ Again, $N_1(v,w)$ are those connected with the rest of the graph, $N_2(v, w)$ ar
     \begin{equation*}
         \tikzfig{fig/tikz/neighborhoods-two-vertices}
     \end{equation*}
-\caption{\textit{TODO}}
+\caption[$N_i(v,w)$]{\textit{TODO}}
     \label{fig:neighborhoodDouble}
 \end{figure}
 
@@ -236,7 +236,7 @@ Note that for example a vertex $z \in N_1(v) \notimplies z \in N_1(v,w)$. Figure
 \begin{equation*}
     \tikzfig{fig/tikz/neighborhoods-odd}
 \end{equation*}
-\caption{\textit{The vertex $z$ is in $N_1(v)$, because there is an edge pointing outside of $N(v)$ to $w$. Contrary, it is not in $N_1(v,w)$, but now  belongs to $N_3(v,w)$, because we are considering the ``shared'' neighborhood}}
+\caption[Counterexample]{\textit{The vertex $z$ is in $N_1(v)$, because there is an edge pointing outside of $N(v)$ to $w$. Contrary, it is not in $N_1(v,w)$, but now  belongs to $N_3(v,w)$, because we are considering the ``shared'' neighborhood}}
     \label{fig:neighborhoodWeird}
 \end{figure}
 
@@ -305,7 +305,7 @@ We now have all the definitions ready to formally define a decomposition techniq
     \begin{equation*}
         \tikzfig{fig/tikz/region-example}
     \end{equation*}
-    \caption{\textit{left: A maximal \dreg $\mathfrak{R}$, where $D = \{d_1,d_2,d_3\}$ form a \sdom. There are two regions between $d_2$ and $d_1$, one region between $d_1$ and $d_3$ and one region between $d_2$ and $d_3$. Observe that some neighbors of $d_1$) are not part of any $vw$-region. For those, our reduction rules are going to take care about that and bound these number of vertices to obtain the kernel. Right: The corresponding underlying multigraph $G_{\mathfrak{R}}$}}\label{fig:maxRegionDecompose}
+    \caption[Region Decomposition]{\textit{left: A maximal \dreg $\mathfrak{R}$, where $D = \{d_1,d_2,d_3\}$ form a \sdom. There are two regions between $d_2$ and $d_1$, one region between $d_1$ and $d_3$ and one region between $d_2$ and $d_3$. Observe that some neighbors of $d_1$) are not part of any $vw$-region. For those, our reduction rules are going to take care about that and bound these number of vertices to obtain the kernel. Right: The corresponding underlying multigraph $G_{\mathfrak{R}}$}}\label{fig:maxRegionDecompose}
 \end{figure}
 
 % TODO: Wording: "kernel" prsdfecise enough here.
@@ -327,7 +327,7 @@ We are introducing a special subset of a region, a \textit{simple region} where 
     \begin{equation*}
         \tikzfig{fig/tikz/simple-region-example}
     \end{equation*}
-\caption{\textit{A simple region with two vertices from $N_1(v,w)$ setting the boundary, two vertices from $N_2(v,w)$ and some vertices from $N_3(v,w)$ in between}}
+\caption[A Simple Region]{\textit{A simple region with two vertices from $N_1(v,w)$ setting the boundary, two vertices from $N_2(v,w)$ and some vertices from $N_3(v,w)$ in between}}
     \label{fig:simpleRegionExample}
 \end{figure}
 
@@ -453,6 +453,8 @@ Now we are ready to proof the correctness of \cref{rgl:rtwo}
 \end{proof}
 
 \subsection{Reduction Rule III: Shrinking Simple Regions}
+
+
 \begin{rgl}\label{rgl:rthree}
     Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and $w$. If $\abs{V(R) \setminus \{v, w\}} \geq 7$
     \begin{itemize}
@@ -474,6 +476,16 @@ The application of \cref{rgl:rthree} gives us a bound on the number of vertices 
     Clearly, if $\abs{V(R) \setminus \{v, w\}} < 7$ then the rule would not have changed G and the size of the region would already be bounded by 6.
     Asuming $\abs{V(R) \setminus \{v, w\}} \geq 7$ we note that every simple region can have at most two distinct vertices from $N_1(v,w)$ and two distinct ones from $N_2(v,w)$ without breaking planarity. These vertices are not touched by the reduction. Adding the two vertices that are being added between $v$ and $w$ gives us the desired upper bound.
 \end{proof}
+
+
+\begin{figure}[!ht]
+    \begin{equation*}
+        \tikzfig{fig/tikz/rulethree}
+    \end{equation*}
+\caption[Application of \cref{rgl:rthree}]{\textit{TO BE DONE}}
+\label{fig:maxntwoinside}
+\end{figure}
+
 
 \subsection{Computing Maximal Simple Regions between two vertices}
 
@@ -523,7 +535,7 @@ We start by giving
     \begin{equation*}
         \tikzfig{fig/tikz/maxntwo}
     \end{equation*}
-\caption{\textit{Bounding the maximum number of simple regions inside a region $R(v,w)$. $N_2(v,w)$ is covered by 6 green (simple) regions. A dashed edge would also be an option, but would contradict planarity. Note that the gray vertex g was reduced by \cref{rgl:rone} allowing the formation of exactly one simple region between $v$ and $u_1$}}
+\caption[Bounding number of simple regions with $N_2(v,w)$ inside a $vw$-region R]{\textit{Bounding the maximum number of simple regions inside a region $R(v,w)$. $N_2(v,w)$ is covered by 6 green (simple) regions. A dashed edge would also be an option, but would contradict planarity. Note that the gray vertex g was reduced by \cref{rgl:rone} allowing the formation of exactly one simple region between $v$ and $u_1$}}
 \label{fig:maxntwoinside}
 \end{figure}
 
@@ -650,7 +662,7 @@ Because G is reduced by assumption, we know by \cref{lemma:simpleregionbound} th
     \begin{equation*}
         \tikzfig{fig/tikz/kernelSize}
     \end{equation*}
-\caption{\textit{Bounding the number of $N_2(v)$-vertices around a dominating vertex $v$ given a maximal \dreg $\mathfrak{R}$. $v$ is a pole of $R_1, R_2,...R_j$ and can span simple regions with the help of $N_2(v)$-vertices to at most two $N_1(v)$-vertices per $R_i$. Each region has at most four vertices in $N_1(v,w) \subseteq N_1(v)$ on the boundary of $R_j$, but only at most two can be used for a simple region: Observe that trying to build a simple region between $v$ and $n_2$ in this example would contradict the maximality of $\mathfrak{R}$
+\caption[Vertices from $N_2(v)$ laying outside]{\textit{Bounding the number of $N_2(v)$-vertices around a dominating vertex $v$ given a maximal \dreg $\mathfrak{R}$. $v$ is a pole of $R_1, R_2,...R_j$ and can span simple regions with the help of $N_2(v)$-vertices to at most two $N_1(v)$-vertices per $R_i$. Each region has at most four vertices in $N_1(v,w) \subseteq N_1(v)$ on the boundary of $R_j$, but only at most two can be used for a simple region: Observe that trying to build a simple region between $v$ and $n_2$ in this example would contradict the maximality of $\mathfrak{R}$
 Furthermore, the size of these simple regions is bounded after the application of \cref{rgl:rthree}}}
 \label{fig:kernelSize}
 \end{figure}

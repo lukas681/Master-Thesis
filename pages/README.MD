@@ -16,6 +16,7 @@
 14) Quote Lemma XX or nur XX? Set in href settings?
 15) Add a duck somewhere.
 16) Check all lemma / theorem / proposition references and their name
+17) Color scheme for regions and vertices consistent?
 
 
 
