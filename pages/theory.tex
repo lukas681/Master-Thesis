@@ -25,7 +25,7 @@ Our main contributations consist of first showing the $w[2]$-hardness of \sdom f
 
 Having these kernels also for other variants like \eddom, \efdom, \cdom, \rbdom lent us a great confidence that the result will also work for \sdom on planar graphs.
 
-%% TODO Find more.
+%% TODO Find more  .
 
 Following the approach from ... which alraedy relies on the technique given in, we give some simple data reduction rules for \sdom on planar graphs leading to a linear kernel. More precisely, we are going to proof the following central theorem of this thesis:
 
@@ -299,7 +299,7 @@ We now have all the definitions ready to formally define a decomposition techniq
 \end{definition}
 
 
-Figure \ref{fig:maxRegionDecompose} gives an example on how to decompose a graph into a maximal $D-region$ decomposition with a given \sdom of size 3.
+\cref{fig:maxRegionDecompose} gives an example on how to decompose a graph into a maximal $D-region$ decomposition with a given \sdom of size 3.
 
 \begin{figure}[!ht]
     \begin{equation*}
@@ -320,7 +320,7 @@ We are introducing a special subset of a region, a \textit{simple region} where 
     \end{enumerate}
 \end{definition}
 
-Figure \ref{fig:simpleRegionExample} shows an example of a simple region containing  9 vertices.
+\cref{fig:simpleRegionExample} shows an example of a simple region containing  9 vertices.
 
 % TODO: Add colors here
 \begin{figure}[!ht]
@@ -331,7 +331,7 @@ Figure \ref{fig:simpleRegionExample} shows an example of a simple region contain
     \label{fig:simpleRegionExample}
 \end{figure}
 
-Later we will use properties of the underlying multigraph of a \dreg. Refer to figure \ref{fig:maxRegionDecompose} for an example.
+Later we will use properties of the underlying multigraph of a \dreg. Refer to \cref{fig:maxRegionDecompose} for an example.
 \begin{definition}
     Let \G be a plane graph, let $D \subseteq V$ and let $\mathfrak{R}$ be a \dreg of G. The underlying multigraph $G_\mathfrak{R} = (V_\mathfrak{R}, E _\mathfrak{R})$ of $\mathfrak{R}$ is such that  $V_\mathfrak{R} = D$ and there is an edge $\{v,w\} \in E_\mathfrak{R}$ for each vw-region $R(v,w) \in \mathfrak{R}$
 \end{definition}
@@ -427,19 +427,19 @@ Before we give the concrete reduction rule, we will define three sets
 \end{rgl}
 
 
-Before proofing \cref*{rgl:rtwo} we will deduce some \textit{Facts} which are implied by the definitions above.
+Before proofing \cref{rgl:rtwo} we will deduce some \textit{Facts} which are implied by the definitions above.
 
 \begin{fact}
-    Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref*{rgl:rtwo} on $v,w$. If $\Dvw = \emptyset$, then G has a solution if and only if it has a solution containing at least one of the two vertices $\{v,w \}$.
+    Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref{rgl:rtwo} on $v,w$. If $\Dvw = \emptyset$, then G has a solution if and only if it has a solution containing at least one of the two vertices $\{v,w \}$.
 \end{fact}
 \begin{proof}
     
 \end{proof}
 
-Now we are ready to proof the correctness of \cref*{rgl:rtwo}
+Now we are ready to proof the correctness of \cref{rgl:rtwo}
 
 \begin{fact}
-   Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref*{rgl:rtwo} on $v, w$. If $\Dvw = \emptyset$ and $\Dv = \emptyset$ (resp. $\Dw = \emptyset$) then $G'$ has a solution if and only if it has a solution containing $v$ (resp. $w$).
+   Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref{rgl:rtwo} on $v, w$. If $\Dvw = \emptyset$ and $\Dv = \emptyset$ (resp. $\Dw = \emptyset$) then $G'$ has a solution if and only if it has a solution containing $v$ (resp. $w$).
 \end{fact}
 \begin{proof}
     
@@ -484,7 +484,7 @@ For the sake of completeness, we state an algorithm how a maximal \sr between tw
 We are now putting all our pieces together in order to proof our main result: A linear bound on the kernel size. 
 In order to do so, we distinguish between those vertices that are covered by a maximal \dreg and those that are not. 
 In both cases our reduction rules bound the number of vertices to a consant size which means the kernel size does only depend on the number of regions of these decomposition. 
-Lemma \ref{fig:maxRegionDecompose} states that for any solution D, we only have a linear number of regions that cover the whole graph. 
+\cref{fig:maxRegionDecompose} states that for any solution D, we only have a linear number of regions that cover the whole graph. 
 In particular, we show that given a \sdom D of size k, there exist a maximal \dreg $\mathfrak{R}$ such that:
 
 \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
@@ -497,13 +497,13 @@ Combining these three parts will give us a linear kernel.
 
 \subsection{Bounding the Size of a Region}
 
-We start are more fine-grained analysis of the impact of the different cases of \cref*{rgl:rtwo} on a $vw$-region. The main idea is to count the number of simple regions in the $vw$-region and than use the bound on the size of a simple region after \cref*{rgl:rthree} was applied exhaustively and which was obtain obtained in Lemma~\ref{lemma:simpleregionbound}.   
+We start are more fine-grained analysis of the impact of the different cases of \cref{rgl:rtwo} on a $vw$-region. The main idea is to count the number of simple regions in the $vw$-region and than use the bound on the size of a simple region after \cref{rgl:rthree} was applied exhaustively and which was obtained in \cref{lemma:simpleregionbound}.   
 
 We start by giving 
 
 %TODO Correct Citation
 \begin{lemma}
-    Given a plane Graph \G and a region R(v,w) $\abs{N_1(v,w) \cap V(R)} \leq 4$ and these vertices lay exactly on the boundary $\partial R$ of $R$. 
+    Given a plane Graph \G and a $vw$-region R(v,w) $\abs{N_1(v,w) \cap V(R)} \leq 4$ and these vertices lay exactly on the boundary $\partial R$ of $R$. 
 \end{lemma}
 \begin{proof}
     TO BE DONE
@@ -516,7 +516,7 @@ We start by giving
     Let $(v,u_1, u_2,w)$ and $(v, u_3, u_4, w)$ be the two boundary paths of $R(v,w)$. (A shorter path would only lead to a smaller bound).
     By definition of $N_2(v,w)$, vertices from $N_2(v,w) \cap V(R)$ are common neighbors of $v$ and $w$ and $u_i, i \in [4]$. By planarity, we can cover $N_2(v,w) \cap V(R)$ with at most 6 simple regions. To see this, imagine the graph where edges denote all possible simple $vw$-regions (See fig. \ref{fig:maxntwoinside}). There are at most 8 simple regions possible. but we have to remove at least two of them to maintain planarity.
 
-    Furthermore, asuming the graph to be reduced, any intermediate $N_3(v,w)$ which could possible seperate multiple simple regions between $v$ and $u_i$ have been deleted by \cref{rgl:rone} already.
+    Furthermore, asuming the graph to be reduced, any intermediate $N_3(v,w)$ which could possible seperate multiple simple regions between $v$ and $u_i$ has been deleted by \cref{rgl:rone} already.
 \end{proof}
 
 \begin{figure}[!ht]
@@ -531,6 +531,8 @@ We start by giving
 
 We continue by giving a constant bound on the number of simple regions that cover all  $N_3(v,w)$ vertices in a given region.
 
+
+
 %TODO: Can I "induced" in this case is undefined
 \begin{lemma}
    Given a plane Graph $G = (V,E)$ reduced under \cref{rgl:rtwo} and a region R(v, w), if $\Dv \neq $ (resp. $\Dw \neq \emptyset$), $N_3(v,w) \cap V(R)$ can be covered by: 
@@ -542,7 +544,7 @@ We continue by giving a constant bound on the number of simple regions that cove
 
 Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been applied and the second one, when Case 4 of \cref{rgl:rtwo} was applied.
 \begin{proof} 
-    We will just give some intuition, because the proof of Garnero and Stau in \cite[Fact 6]{Garnero2014} does not use any special property exposed by the reduction rules. Figure (Add picture about figures) gives a visualization worst case scenarias to cover $N_3(v,w) \cap V(R)$ with simple regions in the relevant cases.\footnote{Note: In a newer revision of their paper \cite{Garnero2018}, Stau und Garnero removed this proof, because they changed \cref*{rgl:rtwo} and a more fine-grain analysis was made possible.}
+    We will just give some intuition, because the proof of Garnero and Stau in \cite[Fact 6]{Garnero2014} does not use any special property exposed by the reduction rules. Figure (Add picture about figures) gives a visualization worst case scenarias to cover $N_3(v,w) \cap V(R)$ with simple regions in the relevant cases.\footnote{Note: In a newer revision of their paper \cite{Garnero2018}, Stau und Garnero removed this proof, because they changed \cref{rgl:rtwo} and a more fine-grain analysis was made possible.}
     
 
     % Altough our \cref{rgl:rtwo} is a bit different, the proof still goes through in the original way.
@@ -554,7 +556,7 @@ Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been
     Let \G be a plane graph reduced under \cref{rgl:rone,rgl:rtwo,rgl:rthree}. Furthermore, let $D$ be a SDS of G and let $v,w \in D$. Any $vw$-region R contains at most XXX vertices distinct from its poles.
 \end{lemma}
 \begin{proof} 
-    Adapt proof given in \cite*{Garnero2017}
+    Adapt proof given in \cite{Garnero2017}
 \end{proof}
 
 
@@ -591,16 +593,16 @@ In the following, we define $\dGR(v) = \abs{\{R(v,w) \in \mathfrak{R}, w \in D\}
 %    By the handshake lemma, we know that $2 \abs{E} = \sum_{v \in V} d(v)$ in a graph \G.
 \end{proof}
 
-\begin{lemma}[\#Vertices outside a Region]
+\begin{proposition}[\#Vertices outside a Region]
 Let \G be a plane graph reduced under \cref*{rgl:rone,rgl:rtwo} and let D be a SDS of G. If G has a maximal D-region decomposition, then $\abs{V \setminus (V(\mathfrak{R}) \cup D)} \leq 144 \abs{D}$
-\end{lemma}
+\end{proposition}
 
 With slight modifications, the proof given in \cite{Garnero2014} will also work in our case. Note that although assuming the graph to be entirely reduced, the following proof only relies on \cref*{rgl:rone,rgl:rthree}. The proof uses the observation that vertices from $N_2(v)$ span simple regions between those from $\{v\} \cup N_1(v)$.
 
 \begin{proof}
 Again, we will follow the proof proposed by Alber et al. \cite[Proposition 2]{Alber2004}. 
 
-The proof does only rely on \cref*{rgl:rone,rgl:rthree} and we can use the number of vertices in a simple region we have proofen in \ref{lemma:simpleregionbound}. In particular, we are going to proof that $V \setminus V(\mathfrak{R}) \leq 48 \cdot \abs{\mathfrak{R}} + 2 \cdot \abs{D}$. Directly placing in Lemma~\ref{lemma:numRegions} will give as the desired bound.
+The proof does only rely on \cref{rgl:rone,rgl:rthree} and we can use the number of vertices in a simple region we have proofen in \cref{lemma:simpleregionbound}. In particular, we are going to proof that $V \setminus V(\mathfrak{R}) \leq 48 \cdot \abs{\mathfrak{R}} + 2 \cdot \abs{D}$. Directly placing in \cref{lemma:numRegions} will give as the desired bound.
 
 let $\mathfrak{R}$ be a maximal \dreg and let $v \in D$. Since D dominates all vertices from $V$, we can consider $V$ as $\bigcup_{v \in D}N(v)$ and thus, we only need to bound the sizes of $N_1(v)\setminus \VR$, $N_2(v) \setminus \VR$ and $N_3(v) \setminus \VR$ separately. In the following, let $v \in D$:
 %As we know that the sets $N_1(v,w)$, $N_2(v,w)$ and $N_3(v,w)$ are distinct by definition, we can seperately bound the vertices from $\abs{V \setminus V(\mathfrak{R})}$
@@ -611,7 +613,7 @@ let $\mathfrak{R}$ be a maximal \dreg and let $v \in D$. Since D dominates all v
 
 \noindent$\mathbf{N_2(v)}$: According to Garnero and Stau (\cite[Proposition 2]{Garnero2018}), we know that $N_2(v) \setminus V(\mathfrak{R})$ can be covered by at most $4 \dGR(v)$ simple regions between $v$ and some vertices from $N_1(v)$ on the boundary of a region in $\mathfrak{R}$. Figure \ref{fig:kernelSize} gives some intuition.
 
-Because G is reduced by assumption, we know by lemma \ref{lemma:simpleregionbound} that a simple region can only have at least 6 vertices distinct from its poles and hence,
+Because G is reduced by assumption, we know by \cref{lemma:simpleregionbound} that a simple region can only have at least 6 vertices distinct from its poles and hence,
 
 \begin{equation}
     \begin{split}
@@ -626,11 +628,11 @@ Because G is reduced by assumption, we know by lemma \ref{lemma:simpleregionboun
 % TODO Formally Proof that
 % TODO Make a picture for that case 
 
-\noindent$\mathbf{N_1(v)}$: By Lemma \ref{lemma:noneinside}, we know that $N_1(v) \subseteq V(\mathfrak{R})$ and hence, 
+\noindent$\mathbf{N_1(v)}$: By \cref{lemma:noneinside}, we know that $N_1(v) \subseteq V(\mathfrak{R})$ and hence, 
 
 \[\abs{\bigcup_{v \in D}N_1(v) \setminus V(\mathfrak{R})} = 0\]
 
-\noindent Summing up these three upper bounds for each $v \in D$ we obtain the result using the equation from Lemma \ref{lemma:numRegions}:
+\noindent Summing up these three upper bounds for each $v \in D$ we obtain the result using the equation from \cref{lemma:numRegions}:
 
 \begin{equation}
     \begin{alignedat}[b]{2}
