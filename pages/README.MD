@@ -12,6 +12,7 @@
 10) Quotation Signs correct?
 11) vw-region spelled correctly
 12) Try to fix all compiler warnings
+13) planar and plane?
 
 
 # Possible Quotes

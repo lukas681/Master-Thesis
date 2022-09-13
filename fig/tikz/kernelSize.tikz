@@ -15,10 +15,6 @@
 		\node [style=NTWO] (14) at (-1.25, -1.5) {};
 		\node [style=NTWO] (15) at (-1.5, 2.25) {};
 		\node [style=NTWO] (16) at (-1.5, 1.5) {};
-		\node [style=NTWO] (17) at (1.5, -4.25) {};
-		\node [style=NTWO] (18) at (1.75, -5) {};
-		\node [style=NTWO] (19) at (2.25, -5.75) {};
-		\node [style=NTWO] (20) at (-5.5, 3.75) {};
 		\node [style=none] (21) at (-7.25, 3) {};
 		\node [style=none] (22) at (-8, 2.75) {};
 		\node [style=none] (23) at (-8.25, 2) {};
@@ -31,7 +27,7 @@
 		\node [style=none] (30) at (-3, 3) {};
 		\node [style=none] (31) at (-3.5, -2.75) {};
 		\node [style=none] (34) at (-6.5, 1.25) {$n_2$};
-		\node [style=none] (35) at (-3.5, 1.25) {$n_1$};
+		\node [style=none] (35) at (-3.5, 1.5) {$n_1$};
 		\node [style=none] (36) at (-3, -1.25) {$n_3$};
 		\node [style=none] (37) at (-7, -1.25) {$n_4$};
 		\node [style=none] (38) at (-4.75, -0.25) {$\mathbf{R_1}$};
@@ -63,6 +59,8 @@
 		\node [style=none] (64) at (-8.75, -4.25) {};
 		\node [style=none] (65) at (-11.5, -1) {};
 		\node [style=none] (66) at (-8.5, 4) {};
+		\node [style=none] (67) at (-10.25, -0.75) {$w_1$};
+		\node [style=none] (68) at (3.75, 7) {$w_2$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=FILLDARKBLUE] (1.center)
@@ -81,21 +79,12 @@
 			 to (0.center)
 			 to (6.center)
 			 to cycle;
-		\draw [style=FILLGREEN] (17.center)
-			 to [bend right=75, looseness=1.50] (0.center)
-			 to [bend left=75, looseness=1.50] (19.center)
-			 to (3.center)
-			 to cycle;
-		\draw [style=EDGE, bend left=75, looseness=1.50] (0) to (18);
 		\draw [style=FILLGREEN] (15.center)
 			 to (1.center)
 			 to (0.center)
 			 to cycle;
 		\draw [style=EDGE] (16) to (0);
 		\draw [style=EDGE] (1) to (16);
-		\draw [style=FILLGREENINVISBLE] (0.center)
-			 to [bend right=45] (20.center)
-			 to [bend left=60, looseness=1.25] cycle;
 		\draw [style=FILLGREEN] (13.center)
 			 to [in=-30, out=180] (2.center)
 			 to (0.center)
@@ -123,11 +112,6 @@
 		\draw (0) to (14);
 		\draw (0) to (11);
 		\draw (0) to (12);
-		\draw [style=EDGE, bend left=45, looseness=1.25] (20) to (0);
-		\draw [style=FILLGREENINVISBLE] (4.center)
-			 to [bend right=15] (20.center)
-			 to [bend right=15] cycle;
-		\draw (20) to (4);
 		\draw [style=EDGEDASHED] (0) to (40.center);
 		\draw (45.center) to (44);
 		\draw (44) to (46.center);
@@ -145,7 +129,6 @@
 		\draw (55.center) to (42);
 		\draw (54.center) to (42);
 		\draw [style=EDGEDASHED] (0) to (60.center);
-		\draw (18) to (3);
 		\draw [style=EDGEDASHED] (66.center) to (61.center);
 		\draw [style=EDGEDASHED] (66.center)
 			 to (65.center)

@@ -499,15 +499,21 @@ Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been
 \end{proof}
 
 \subsection{Number of Vertices outside the Decomposition}
+We continue to bound the number of vertices that do not lay inside any region of a maximal \dreg $\mathfrak{R}$, that is, we bound the size of $V \setminus \VR$. \cref{rgl:rone} ensures that we only have a small amount of $N_3(v)$-pendants. We then try to cover the rest with as few simple regions as possible, because, by application of \cref{rgl:rthree}, these simple regions are of constant size.
+
+%Ref to 4.3
 
 \begin{lemma}
-    \cite*{Alber2004}
+    \cite{Alber2004}
     Every vertex in $u \in V \setminus V(\mathfrak{R})$ is either in D or belongs to a set $N_2(v) \cup N_3(v)$.
 \end{lemma}
-\begin{proof}
-    
-\end{proof}
 
+The following lemma states that no vertices from a set $N_1(v)$ will be outside of a maximal \dreg.
+\begin{lemma}\label{lemma:noneinside}
+    \cite[Lemma 6]{Alber2004}
+    Let \G be a plane graph and $\mathfrak{R}$ be a maximal \dreg of a DS D. If $u \in N_1(v)$ for some vertex $v \in D$ then $u \in V(\mathfrak{R})$
+
+\end{lemma}
 In the following, we define $\dGR(v) = \abs{\{R(v,w) \in \mathfrak{R}, w \in D\}}$ to be the number of regions in $\mathfrak{R}$ having $v$ as a pole. 
 
 %TODO Add sum here
@@ -518,7 +524,7 @@ In the following, we define $\dGR(v) = \abs{\{R(v,w) \in \mathfrak{R}, w \in D\}
 \end{corollary}
 \begin{proof}\label{lemma:polesBound}
 
-    The proof follows directly from the handshake lemma applied to the underlying multigraph \GR.
+    The proof follows directly from the handshake lemma applied to the underlying multigraph~\GR.
 %    By the handshake lemma, we know that $2 \abs{E} = \sum_{v \in V} d(v)$ in a graph \G.
 \end{proof}
 
@@ -526,42 +532,50 @@ In the following, we define $\dGR(v) = \abs{\{R(v,w) \in \mathfrak{R}, w \in D\}
 Let \G be a plane graph reduced under \cref*{rgl:rone,rgl:rtwo} and let D be a SDS of G. If G has a maximal D-region decomposition, then $\abs{V \setminus (V(\mathfrak{R}) \cup D)} \leq 144 \abs{D}$
 \end{lemma}
 
-With slight modifications, the proof given in \cite{Garnero2014} will also work in our case. Note that although asuming the graph to be entirely reduced, the following proof only relies on \cref*{rgl:rone,rgl:rthree}. The proof uses the observation that vertices from $N_(v)$ span simple regions between those from $\{v} \cup N_1(v)$.
+With slight modifications, the proof given in \cite{Garnero2014} will also work in our case. Note that although assuming the graph to be entirely reduced, the following proof only relies on \cref*{rgl:rone,rgl:rthree}. The proof uses the observation that vertices from $N_2(v)$ span simple regions between those from $\{v\} \cup N_1(v)$.
 
 \begin{proof}
 Again, we will follow the proof proposed by Alber et al. \cite[Proposition 2]{Alber2004}. 
 
-The proof does only rely on \cref*{rgl:rone,rgl:rtwo} and we can use the number of vertices in a simple region we have proofen in \ref*{lemma:simpleregionbound}. In particular, we are going to proof that $V \setminus V(\mathfrak{R}) \leq XX \cdot \abs{\mathfrak{R}} + 2 \cdot \abs{D}$. Directly placing in Lemma~\ref{lemma:numRegions} will give as the desired bound.
+The proof does only rely on \cref*{rgl:rone,rgl:rthree} and we can use the number of vertices in a simple region we have proofen in \ref{lemma:simpleregionbound}. In particular, we are going to proof that $V \setminus V(\mathfrak{R}) \leq 48 \cdot \abs{\mathfrak{R}} + 2 \cdot \abs{D}$. Directly placing in Lemma~\ref{lemma:numRegions} will give as the desired bound.
 
-Now let $\mathfrak{R}$ be a maximal \dreg and let $v \in D$. Since D dominates $V$ and therefore every non-dominating vertex in the graph has at least one neighbor in D, we can consider $V$ as $\bigcup_{v \in D}N(v)$ and thus, we only need to bound the sizes of $N_1(v)$, $N_2(v)$ and $N_3(v)$  MINUS R seperately. let $v \in D$ in the following:
+let $\mathfrak{R}$ be a maximal \dreg and let $v \in D$. Since D dominates all vertices from $V$, we can consider $V$ as $\bigcup_{v \in D}N(v)$ and thus, we only need to bound the sizes of $N_1(v)\setminus \VR$, $N_2(v) \setminus \VR$ and $N_3(v) \setminus \VR$ separately. In the following, let $v \in D$:
 %As we know that the sets $N_1(v,w)$, $N_2(v,w)$ and $N_3(v,w)$ are distinct by definition, we can seperately bound the vertices from $\abs{V \setminus V(\mathfrak{R})}$
 
-\noindent$\mathbf{N_3(v)}$: As we know that \cref{rgl:rone} has exhaustively applied, we trivially see that $\abs{N_3(v)} \leq 1$ and hence, 
+\noindent$\mathbf{N_3(v)}$: As we know that \cref{rgl:rone} has been exhaustively applied, we trivially see that $\abs{N_3(v)} \leq 1$ and hence, 
 
 \[\abs{\bigcup_{v \in D}N_3(v) \setminus V(\mathfrak{R})} \leq \abs{D}\]
 
-\noindent$\mathbf{N_2(v)}$: According to Alber et al. (\cite*{Alber2004}), we know that $N_2(v) \setminus V(\mathfrak{R})$ can be covered by at most $4 \dGR(v)$ simple regionsbetween $v$ and some vertices from $N_1(v)$ on the boundary of $\mathfrak{R}$. Intuitively, we know that every region $v$ can be a pole of (which it is as $v \in D$) has at most four $N_1(v)$-vertices to which the $N_2(v)$-vertices can be connected. Note that if there had been any intervening $N_3(v)$-vertices, they would have been reduce. Figure \ref{fig:kernelSize} shows an example.
-By lemma \ref*{lemma:simpleregionbound} we know that a simple region can only have at least 6 vertices distinct from its poles and hence, 
+\noindent$\mathbf{N_2(v)}$: According to Garnero and Stau (\cite[Proposition 2]{Garnero2018}), we know that $N_2(v) \setminus V(\mathfrak{R})$ can be covered by at most $4 \dGR(v)$ simple regions between $v$ and some vertices from $N_1(v)$ on the boundary of a region in $\mathfrak{R}$. Figure \ref{fig:kernelSize} gives some intuition.
 
-\[\abs{\bigcup_{v \in D} N_2(v) \setminus \mathfrak{R} \leq 6 \sum_{v \in D}4 \cdot \dGR(v) } = 24 \cdot \sum_{v \in D}\dGR(v) \overset{\text{Corollary \ref{lemma:polesBound}}}{\leq} 48 \abs{\mathfrak{R}}\]
+Because G is reduced by assumption, we know by lemma \ref{lemma:simpleregionbound} that a simple region can only have at least 6 vertices distinct from its poles and hence,
+
+\begin{equation}
+    \begin{split}
+        \abs{\bigcup_{v \in D} N_2(v) \setminus V(\mathfrak{R})} &\leq 6 \sum_{v \in D}4 \cdot \dGR(v) \\
+        &= 24 \cdot \sum_{v \in D}\dGR(v) \\
+        &\overset{\text{Cor. \ref{lemma:polesBound}}}{\leq} 48 \abs{\mathfrak{R}}
+    \end{split}
+\end{equation}
+
 
 % TODO Now use the lemma in the revised version. 
 % TODO Formally Proof that
 % TODO Make a picture for that case 
 
-\noindent$\mathbf{N_1(v)}$: By Lemma XX, we know that $N_1(v) \subseteq V(\mathfrak{R})$ and hence, 
+\noindent$\mathbf{N_1(v)}$: By Lemma \ref{lemma:noneinside}, we know that $N_1(v) \subseteq V(\mathfrak{R})$ and hence, 
 
 \[\abs{\bigcup_{v \in D}N_1(v) \setminus V(\mathfrak{R})} = 0\]
 
-\noindent Summing up these three upper bounds for each $v \in D$ we obtain the result using Lemma \ref{lemma:numRegions}:
+\noindent Summing up these three upper bounds for each $v \in D$ we obtain the result using the equation from Lemma \ref{lemma:numRegions}:
 
 \begin{equation}
-    \begin{split}
-        \abs{V \setminus V(\mathfrak{R}) \cup D)} &\leq 48 \cdot \abs{\mathfrak{R}} + \abs{D} \\
-        &\leq 48 \cdot (3 \abs{D} - 6) + \abs{D} \\
-        &\leq 144 \abs{D} + \abs{D} \\
+    \begin{alignedat}[b]{2}
+        \abs{V \setminus V(\mathfrak{R}) \cup D)} &\leq 48 \cdot \abs{\mathfrak{R}} + \abs{D} & \zerotext[4em]{(\ref{lemma:numRegions})}\\ 
+        &\leq 48 \cdot (3 \abs{D} - 6) + \abs{D} &\\
+        &\leq 144 \abs{D} + \abs{D} &\\
         &= 145 \abs{D}
-    \end{split}
+    \end{alignedat}
 \end{equation}
 
 \end{proof}
@@ -571,7 +585,8 @@ By lemma \ref*{lemma:simpleregionbound} we know that a simple region can only ha
     \begin{equation*}
         \tikzfig{fig/tikz/kernelSize}
     \end{equation*}
-\caption{\textit{Bounding the number of $N_2(v)$-vertices around a dominating vertex $v$. $v$ is a pole of $R_1, R_2,...R_j$ and can span simple regions with the help of $N_2(v)$-vertices to at most 4l $N_1(v)$-vertices}. These regions are being reduced by \cref*{rgl:rthree}.}
+\caption{\textit{Bounding the number of $N_2(v)$-vertices around a dominating vertex $v$ given a maximal \dreg $\mathfrak{R}$. $v$ is a pole of $R_1, R_2,...R_j$ and can span simple regions with the help of $N_2(v)$-vertices to at most two $N_1(v)$-vertices per $R_i$. Each region has at most four vertices in $N_1(v,w) \subseteq N_1(v)$ on the boundary of $R_j$, but only at most two can be used for a simple region: Observe that trying to build a simple region between $v$ and $n_2$ in this example would contradict the maximality of $\mathfrak{R}$
+Furthermore, the size of these simple regions is bounded after the application of \cref{rgl:rthree}}}
 \label{fig:kernelSize}
 \end{figure}
 %
@@ -583,18 +598,18 @@ By lemma \ref*{lemma:simpleregionbound} we know that a simple region can only ha
 % TODO: Shift before other parts, because this result is heavily used
 \subsection{Bounding the Number of Regions}
 
-Alber et al. \cite[p. ]{Alber2004} constructed a greedy algorithm to construct a maximal D-region decomposition for a \dom. Building up on these results, Garnero and Stau gave decomposition procedures for \rbdom (\cite{Garnero2017a}) and \tdom (\cite{Garnero2018}), both relying on the same technique. 
+Alber et al. \cite[Proposition 1]{Alber2004} gave a greedy algorithm to construct a maximal \dreg for a \dom. Building up on these results, Garnero and Stau gave decomposition procedures for both \rbdom (\cite{Garnero2017a}) and \tdom (\cite{Garnero2018}) relying on the same technique. This is the core of the linear kernelization, because it states that given a \dom D, we can decompose the graph into a \textit{linear number} of regions.
 
-Garnero and Stau (\cite[p. 15]{Garnero2014}) already mention that the decomposition does not rely on the 
-
-At the same time, we are going to upper-bound the number of v-w-regions D can span. Will will now proof that this claim also holds for \sdom. 
 % TODO Better english? to span
 
-\begin{lemma}[{\cite[Proposition 1]{Garnero2014}}]\label{lemma:numRegions}
+The following lemma corresponds to \cite[Proposition 1 and Lemma 5]{Alber2004}. Although the authors gave different reduction rules and require a \textit{reduced} instance as an assumption for the following lemma, they do not use any specific properties exposed by these rules. 
+As any \sdom is also a \dom, we can safely apply it for our problem as well. For a more detailed and formal proof, one can also refer to \cite[Proposition 1]{Garnero2018}.
+
+\begin{lemma}\label{lemma:numRegions}
     Let G be a reduced plane graph and let D be a \sdom with $\abs{D}\geq 3$. There is a maximal D-region decomposition of G such that $\abs{R} \leq 3 \cdot \abs{D} - 6$
 \end{lemma}
-
 \begin{proof} 
+    Follows directly from \cite[Proposition 1 and Lemma 5]{Alber2004}
 \end{proof}
 
 
