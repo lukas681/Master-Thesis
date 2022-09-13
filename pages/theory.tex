@@ -407,7 +407,7 @@ Before we give the concrete reduction rule, we will define three sets
 
         \vspace{-5mm}
         \begin{itemize}
-            \item Remove $N_{2,3}(v) \Cap N_3(v,w)$
+            \item Remove $N_{2,3}(v) \cap N_3(v,w)$
             \item Add $\{v, v'\}$ 
         \end{itemize}
 
@@ -470,12 +470,25 @@ For the sake of completeness, we state an algorithm how a maximal \sr between tw
 
 \section{Bounding the Size of the Kernel}
 
-% TODO: Rewrite:
-We are now putting all our pieces together in order to proof our main result: A linear bound on the kernel size. In order to do so, we distinguish between those vertices that are covered by a maximal \dreg and those that are not. In both cases our reduction rules bound the number of vertices to a consant size which means the kernel size does only depend on the number of regions of this decomposition. Lemma \ref{fig:maxRegionDecompose} states that for any solution D, we only have a linear number of regions that cover the whole graph.
+We are now putting all our pieces together in order to proof our main result: A linear bound on the kernel size. 
+In order to do so, we distinguish between those vertices that are covered by a maximal \dreg and those that are not. 
+In both cases our reduction rules bound the number of vertices to a consant size which means the kernel size does only depend on the number of regions of these decomposition. 
+Lemma \ref{fig:maxRegionDecompose} states that for any solution D, we only have a linear number of regions that cover the whole graph. 
+In particular, we show that given a \sdom D of size k, there exist a maximal \dreg $\mathfrak{R}$ such that:
+
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+    \item $\mathfrak{R}$ has only at most $3 \abs{D} - 6$ regions
+    \item $V(\mathfrak{R})$ covers most vertices of V. There are at most $144 \cdot \abs{D}$ vertices outside of any region.
+    \item each region of $\mathfrak{R}$ contains at most XX vertices
+\end{enumerate}
+
+Combining these three parts will give us a linear kernel.
 
 \subsection{Bounding the Size of a Region}
 
 We start are more fine-grained analysis of the impact of the different cases of \cref*{rgl:rtwo} on a $vw$-region. The main idea is to count the number of simple regions in the $vw$-region and than use the bound on the size of a simple region after \cref*{rgl:rthree} was applied exhaustively and which was obtain obtained in Lemma~\ref{lemma:simpleregionbound}.   
+
+We start by giving a constant bound on the number of simple regions that cover all  $N_3(v,w)$ vertices in a given region.
 
 %TODO: Can I "induced" in this case is undefined
 \begin{lemma}
@@ -488,6 +501,11 @@ We start are more fine-grained analysis of the impact of the different cases of 
 
 Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been applied and the second one, when Case 4 of \cref{rgl:rtwo} was applied.
 \begin{proof} 
+    We will just give some intuition, because the proof of Garnero and Stau in \cite[Fact 6]{Garnero2014} does not use any special property exposed by the reduction rules. Figure gives a visualization worst case scenarias to cover $N_3(v,w) \cap V(R)$ with simple regions in the relevant cases.\footnote{Note: In a newer revision of their paper \cite{Garnero2018}, Stau und Garnero removed this proof, because they changed \cref*{rgl:rtwo} and a more fine-grain analysis was made possible.}
+    
+
+    % Altough our \cref{rgl:rtwo} is a bit different, the proof still goes through in the original way.
+
 \end{proof}
 
 
@@ -505,7 +523,7 @@ We continue to bound the number of vertices that do not lay inside any region of
 
 \begin{lemma}
     \cite{Alber2004}
-    Every vertex in $u \in V \setminus V(\mathfrak{R})$ is either in D or belongs to a set $N_2(v) \cup N_3(v)$.
+    (Deprecated) Every vertex in $u \in V \setminus V(\mathfrak{R})$ is either in D or belongs to a set $N_2(v) \cup N_3(v)$.
 \end{lemma}
 
 The following lemma states that no vertices from a set $N_1(v)$ will be outside of a maximal \dreg.
@@ -571,7 +589,7 @@ Because G is reduced by assumption, we know by lemma \ref{lemma:simpleregionboun
 
 \begin{equation}
     \begin{alignedat}[b]{2}
-        \abs{V \setminus V(\mathfrak{R}) \cup D)} &\leq 48 \cdot \abs{\mathfrak{R}} + \abs{D} & \zerotext[4em]{(\ref{lemma:numRegions})}\\ 
+        \abs{V \setminus V(\mathfrak{R}) \cup D)} &\leq 48 \cdot \abs{\mathfrak{R}} + \abs{D} & \zerotext[4em]{(Lemma \ref{lemma:numRegions})}\\ 
         &\leq 48 \cdot (3 \abs{D} - 6) + \abs{D} &\\
         &\leq 144 \abs{D} + \abs{D} &\\
         &= 145 \abs{D}

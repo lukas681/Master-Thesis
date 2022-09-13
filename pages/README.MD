@@ -13,6 +13,12 @@
 11) vw-region spelled correctly
 12) Try to fix all compiler warnings
 13) planar and plane?
+14) Quote Lemma XX or nur XX? Set in href settings?
+15) Add a duck somewhere.
+
+
+V(R) defined?
+Define penadant vertices
 
 
 # Possible Quotes
