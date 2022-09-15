@@ -546,7 +546,7 @@ We continue by giving a constant bound on the number of simple regions that cove
 
 
 %TODO: Can I "induced" in this case is undefined
-\begin{lemma}
+\begin{lemma}\label{lemma:rtwosr}
    Given a plane Graph $G = (V,E)$ reduced under \cref{rgl:rtwo} and a region R(v, w), if $\Dv \neq $ (resp. $\Dw \neq \emptyset$), $N_3(v,w) \cap V(R)$ can be covered by: 
    \begin{enumerate}
     \item $11$ \sr s~if $\Dw \neq \emptyset$, 
@@ -573,16 +573,16 @@ Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been
      It is still remaining to bound for \nthi, but gladly we have \cref{rgl:rtwo}, which took care about them! \cref{fig:nthreeinside} shows worst case amount of simple regions the indidual cases can have.
 
      % Maybe note that N_2 vertices do not cause any troubles as they are always bound to the near of N_1 vertex
-    \begin{caseof}
-        \case{If \cref{rgl:rtwo} has \textbf{not} been applied} As $\Dvw \neq \emptyset$, there exists a set $\tilde D = \{d_1,d_2,d_3\} \in \Dvw$ of at most three vertices dominating $N_3(v,w)$. We observe that vertices from \nthi~ are common neighbors of either v or w (by the definition of a $vw$-region) and at least one vertex from $\tilde D$. Withouth violating planarity, we can span at most 6 simple regions. Using \cref{lemma:simpleregionbound} and adding $\abs{tilde D} = 3$, we can conclude $\nthi \leq 6 * 6 + 3 = 39$.
+    \begin{caseofz}
+        \casez{If \cref{rgl:rtwo} has \textbf{not} been applied} As $\Dvw \neq \emptyset$, there exists a set $\tilde D = \{d_1,d_2,d_3\} \in \Dvw$ of at most three vertices dominating $N_3(v,w)$. We observe that vertices from \nthi~ are common neighbors of either v or w (by the definition of a $vw$-region) and at least one vertex from $\tilde D$. Withouth violating planarity, we can span at most 6 simple regions. Using \cref{lemma:simpleregionbound} and adding $\abs{tilde D} = 3$, we can conclude $\nthi \leq 6 * 6 + 3 = 39$.
 
-        \case{If \cref{rgl:rtwo} Case 1 has been applied}Test
+        \casez{If \cref{rgl:rtwo} Case 1 has been applied}
+        In that case \nthi was entirely removed and at most three vertices ($v', w'$ and $y$) added. Hence $\nthi \leq 3$.
 
+        \casez{If \cref{rgl:rtwo} Case 2 has been applied} As we know that $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$, we can apply \cref{lemma:rtwosr} and although \cref{rgl:rtwo} has not changed the G, we can cover R with at most $11$ simple regions giving as $\nthi \leq 11 \cdot 6 = 66$ vertices. 
 
-        \case{If \cref{rgl:rtwo} Case 2 has been applied} Test
-
-        \case{If \cref{rgl:rtwo} Case 3 (sym. 4) has been applied} Test
-    \end{caseof}
+        \casez{If \cref{rgl:rtwo} Case 3 (sym. 4) has been applied} Test
+    \end{caseofz}
 
 \begin{figure}[!ht]
     \begin{equation*}

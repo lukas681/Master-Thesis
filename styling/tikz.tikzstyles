@@ -15,6 +15,7 @@
 % Edge styles
 \tikzstyle{EDGE}=[-, fill=none]
 \tikzstyle{GRAY}=[-, fill={rgb,255: red,128; green,128; blue,128}]
+\tikzstyle{DARKGREEN}=[-, fill=none, draw={rgb,255: red,19; green,100; blue,13}, line width=1.25pt]
 \tikzstyle{big dash}=[-, dashed, dash pattern=on 4mm off 2mm, fill={rgb,255: red,178; green,255; blue,253}]
 \tikzstyle{big dash thick}=[-, thick, dashed, dash pattern=on 4mm off 2mm, fill={rgb,255: red,178; green,255; blue,253}]
 \tikzstyle{new edge style 0}=[-, fill={rgb,255: red,224; green,254; blue,255}]
@@ -23,6 +24,6 @@
 \tikzstyle{FILLPURPLE}=[-, fill={rgb,255: red,255; green,233; blue,239}]
 \tikzstyle{FILLDARKBLUE}=[-, fill={rgb,255: red,238; green,230; blue,255}]
 \tikzstyle{FILLDARKBLUEINVISIBLE}=[-, draw=none, fill={rgb,255: red,238; green,230; blue,255}]
-\tikzstyle{FILLGREENINVISBLE}=[-, draw=none,fill={rgb,255: red,232; green,255; blue,207}]
+\tikzstyle{FILLGREENINVISBLE}=[-, draw=none, fill={rgb,255: red,232; green,255; blue,207}]
 \tikzstyle{ULTRAGRAY}=[-, draw={rgb,255: red,236; green,236; blue,236}]
 \tikzstyle{EDGEDASHED}=[-, dashed, fill=none]

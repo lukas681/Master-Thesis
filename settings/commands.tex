@@ -48,6 +48,11 @@
 \crefname{case}{Case}{Cases}
 
 
+\newenvironment{caseofz}{\setcounter{casenum}{0}}{\vskip.5\baselineskip}
+\newcommand{\casez}[2]{\vskip.5\baselineskip\par\noindent {\bfseries Case \arabic{casenum}:} #1\\#2\addtocounter{casenum}{1}}
+%\newcommand{\case}[2]{\vskip.5\baselineskip\par\noindent {\bfseries Case \arabic{casenum}:} #1\\#2\addtocounter{casenum}{1}}
+%\crefname{case}{Case}{Cases}
+
 \crefname{rgl}{Rule}{Rules}
 \crefname{fact}{Fact}{Facts}
 \crefname{theorem}{Theorem}{Theorems}
