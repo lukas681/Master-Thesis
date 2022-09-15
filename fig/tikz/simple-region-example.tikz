@@ -20,10 +20,10 @@
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=FILLGREEN] (0.center)
-			 to (4.center)
-			 to (2.center)
-			 to (3.center)
-			 to cycle;
+			 to [bend right=15] (4.center)
+			 to [bend right=15, looseness=0.75] (2.center)
+			 to [bend right=15] (3.center)
+			 to [bend right=15] cycle;
 		\draw (5) to (0);
 		\draw (7) to (0);
 		\draw (8) to (0);

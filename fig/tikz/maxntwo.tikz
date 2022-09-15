@@ -1,0 +1,65 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=DOM] (0) at (-4, 0) {};
+		\node [style=NONE] (1) at (-2, 3.75) {};
+		\node [style=NONE] (2) at (4, 3.75) {};
+		\node [style=DOM] (3) at (6, 0) {};
+		\node [style=NONE] (4) at (4, -2) {};
+		\node [style=NONE] (5) at (-2, -2) {};
+		\node [style=none] (6) at (-4.5, 0.5) {$v$};
+		\node [style=none] (7) at (6, 0.75) {$w$};
+		\node [style=none] (9) at (4, 4.5) {$u_2$};
+		\node [style=none] (10) at (-2, 4.5) {$u_1$};
+		\node [style=none] (11) at (-2, -2.75) {$u_3$};
+		\node [style=none] (12) at (4, -2.75) {$u_4$};
+		\node [style=NTWO] (13) at (-3.25, 2) {};
+		\node [style=NTWO] (14) at (-2.5, 1.75) {};
+		\node [style=BRGRAY] (15) at (-1.75, 1.5) {};
+		\node [style=NTWO] (16) at (-1, 1.25) {};
+		\node [style=NTWO] (17) at (0, 1) {};
+		\node [style=none] (18) at (-1.75, 2) {$g$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1) to (2);
+		\draw (5) to (4);
+		\draw [style=EDGEDASHED] (3) to (1);
+		\draw [style=FILLGREENINVISBLE, bend right, looseness=1.25] (1) to (0);
+		\draw [style=FILLGREENINVISBLE, bend right, looseness=0.75] (0) to (1);
+		\draw [style=FILLGREENINVISBLE, bend right, looseness=1.25] (1) to (0);
+		\draw [style=FILLGREENINVISBLE, bend right=60, looseness=1.25] (0) to (1);
+		\draw [style=FILLGREEN] (0.center)
+			 to (17.center)
+			 to (1.center)
+			 to [bend right, looseness=1.25] cycle;
+		\draw [style=FILLGREENINVISBLE] (0.center)
+			 to [bend right=45, looseness=1.50] (2.center)
+			 to [bend left, looseness=1.50] cycle;
+		\draw [bend left=45, looseness=1.25] (2) to (0);
+		\draw [style=FILLGREENINVISBLE] (5.center)
+			 to [bend right, looseness=0.75] (0.center)
+			 to cycle;
+		\draw (0) to (5);
+		\draw [style=FILLGREENINVISBLE] (2.center)
+			 to [bend right, looseness=0.75] (3.center)
+			 to cycle;
+		\draw [style=FILLGREENINVISBLE] (4.center)
+			 to [bend left, looseness=0.75] (3.center)
+			 to cycle;
+		\draw (3) to (4);
+		\draw (3) to (2);
+		\draw [style=FILLGREENINVISBLE] (5.center)
+			 to [bend left=15, looseness=0.50] (3.center)
+			 to [bend left=15, looseness=0.50] cycle;
+		\draw (3) to (5);
+		\draw (0) to (13);
+		\draw (13) to (1);
+		\draw (0) to (14);
+		\draw (14) to (1);
+		\draw [style=ULTRAGRAY] (15) to (0);
+		\draw (16) to (0);
+		\draw (16) to (1);
+		\draw [style=ULTRAGRAY] (14) to (15);
+		\draw [style=ULTRAGRAY] (16) to (15);
+		\draw [style=EDGEDASHED] (0) to (4);
+	\end{pgfonlayer}
+\end{tikzpicture}

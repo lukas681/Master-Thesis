@@ -27,7 +27,7 @@
 		\node [style=none] (30) at (-3, 3) {};
 		\node [style=none] (31) at (-3.5, -2.75) {};
 		\node [style=none] (34) at (-6.5, 1.25) {$n_2$};
-		\node [style=none] (35) at (-3.5, 1.25) {$n_1$};
+		\node [style=none] (35) at (-3.5, 1.5) {$n_1$};
 		\node [style=none] (36) at (-3, -1.25) {$n_3$};
 		\node [style=none] (37) at (-7, -1.25) {$n_4$};
 		\node [style=none] (38) at (-4.75, -0.25) {$\mathbf{R_1}$};

@@ -1,6 +1,8 @@
 % GENERAL ABBREVIATIONS
 \newcommand{\mc}{\mathcal}
 \newcommand{\notimplies}{\;\not\!\!\!\implies}
+\newcommand{\zerotext}[2][0pt]{\makebox[#1][l]{\qquad#2}}
+
 
 % ABBREVIATIONS
 \newcommand{\Dvw}   {\ensuremath{\mc{D}}\xspace}
@@ -16,10 +18,10 @@
 \newcommand*{\getTitleGer}{}
 \newcommand*{\getAuthor}{Lukas Retschmeier}
 \newcommand*{\getDoctype}{Master Thesis}
-\newcommand*{\getSupervisor}{Prof. Dr. Debarghya Ghoshdastidar (TUM)}
-\newcommand*{\getAdvisor}{Prof. Dr. Paloma T. Lima (ITU)}
+\newcommand*{\getSupervisor}{Prof. Debarghya Ghoshdastidar (TUM)}
+\newcommand*{\getAdvisor}{Prof. Paloma T. Lima (ITU)}
 \newcommand*{\getSubmissionDate}{\today}
-\newcommand*{\getSubmissionLocation}{København}
+\newcommand*{\getSubmissionLocation}{\textit{København S}}
 
 % TIKZ
 \newcommand{\vertex}{\node[vertex]}
@@ -37,7 +39,8 @@
 
 \newtheorem{definition}{\protect\color{TUMSecondaryBlue} Definition}
 \newtheorem{corollary}{\protect\color{TUMSecondaryBlue} Corollary}
-\newtheorem{lemma}[theorem]{\protect\color{TUMSecondaryBlue} Lemma}
+\newtheorem{lemma}{\protect\color{TUMSecondaryBlue} Lemma}
+\newtheorem{proposition}{\protect\color{TUMSecondaryBlue} Proposition}
 
 \newcounter{casenum}
 \newenvironment{caseof}{\setcounter{casenum}{1}}{\vskip.5\baselineskip}
@@ -98,6 +101,8 @@
 \newcommand{\sg}	{split graphs}
 
 \newcommand{\dGR} {\ensuremath{d_{G_{\mathfrak{R}}}}}
+\newcommand{\GR} {\ensuremath{{G_{\mathfrak{R}}}}}
+\newcommand{\VR} {\ensuremath{{V(\mathfrak{R})} } }
 
 \newcommand{\wtwo}	{\ensuremath{w[2]}}
 \newcommand{\wone}	{\ensuremath{w[1]}}

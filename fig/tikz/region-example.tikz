@@ -1,27 +1,33 @@
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=BLACK] (0) at (-3, 0) {};
-		\node [style=BLACK] (1) at (-3.75, -2) {};
-		\node [style=BLACK] (2) at (0, -4.75) {};
-		\node [style=BLACK] (3) at (-1.25, -1.25) {};
-		\node [style=BLACK] (5) at (1, 1.25) {};
-		\node [style=DOM, label={above:$d_1$}] (6) at (4, -2.5) {};
-		\node [style=BLACK] (7) at (-1, -0.25) {};
-		\node [style=BLACK] (9) at (3.75, 0.25) {};
-		\node [style=DOM, label={above:$d_2$}] (10) at (-3, 0) {};
-		\node [style=BLACK] (11) at (0.5, -2.25) {};
-		\node [style=BLACK] (12) at (2.75, -1.5) {};
-		\node [style=BLACK] (13) at (0.25, -0.25) {};
-		\node [style=DOM, label={above:$d_3$}] (14) at (1.5, -1) {};
-		\node [style=BLACK] (15) at (1.25, 2.75) {};
-		\node [style=BLACK] (16) at (4.75, -4) {};
-		\node [style=BLACK] (17) at (6.5, -3) {};
-		\node [style=BLACK] (18) at (6.5, -1.25) {};
-		\node [style=BLACK] (19) at (7.5, -1.75) {};
-		\node [style=BLACK] (20) at (3, -5) {};
-		\node [style=BLACK] (21) at (-2.25, -1.75) {};
-		\node [style=BLACK] (22) at (1.5, -3) {};
-		\node [style=BLACK] (23) at (1.5, -3.75) {};
+		\node [style=BLACK] (0) at (-11.75, -0.25) {};
+		\node [style=BLACK] (1) at (-12.5, -2.25) {};
+		\node [style=BLACK] (2) at (-8.75, -5) {};
+		\node [style=BLACK] (3) at (-10, -1.5) {};
+		\node [style=BLACK] (5) at (-7.75, 1) {};
+		\node [style=DOM, label={above:$d_1$}] (6) at (-4.75, -2.75) {};
+		\node [style=BLACK] (7) at (-9.75, -0.5) {};
+		\node [style=BLACK] (9) at (-5, 0) {};
+		\node [style=DOM, label={above:$d_2$}] (10) at (-11.75, -0.25) {};
+		\node [style=BLACK] (11) at (-8.25, -2.5) {};
+		\node [style=BLACK] (12) at (-6, -1.75) {};
+		\node [style=BLACK] (13) at (-8.5, -0.5) {};
+		\node [style=DOM, label={above:$d_3$}] (14) at (-7.25, -1.25) {};
+		\node [style=BLACK] (15) at (-7.5, 2.5) {};
+		\node [style=BLACK] (16) at (-4, -4.25) {};
+		\node [style=BLACK] (17) at (-2.25, -3.25) {};
+		\node [style=BLACK] (18) at (-2.25, -1.5) {};
+		\node [style=BLACK] (19) at (-1.25, -2) {};
+		\node [style=BLACK] (20) at (-5.75, -5.25) {};
+		\node [style=BLACK] (21) at (-11, -2) {};
+		\node [style=BLACK] (22) at (-7.25, -3.25) {};
+		\node [style=BLACK] (23) at (-7.25, -4) {};
+		\node [style=BLACK] (25) at (0, 0) {};
+		\node [style=DOM, label={above:$d_2$}] (33) at (0, 0) {};
+		\node [style=DOM] (38) at (4.5, -1) {};
+		\node [style=DOM] (39) at (7, -2.5) {};
+		\node [style=none] (42) at (4.25, -0.5) {$d_3$};
+		\node [style=none] (43) at (7.5, -1.75) {$d_1$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=FILLPURPLE] (6.center)
@@ -38,7 +44,7 @@
 			 to (14.center)
 			 to (13.center)
 			 to cycle;
-		\draw [style=new edge style 0] (9.center)
+		\draw [style=FILLDARKBLUE] (9.center)
 			 to (5.center)
 			 to (10.center)
 			 to (15.center)
@@ -77,5 +83,9 @@
 		\draw (22) to (6);
 		\draw (22) to (2);
 		\draw (23) to (2);
+		\draw (33) to (38);
+		\draw (38) to (39);
+		\draw [bend right, looseness=0.25] (33) to (39);
+		\draw [bend right=60, looseness=0.75] (39) to (33);
 	\end{pgfonlayer}
 \end{tikzpicture}
