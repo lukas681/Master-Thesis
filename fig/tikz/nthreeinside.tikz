@@ -1,0 +1,86 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=BLACK] (0) at (-5, 0) {};
+		\node [style=BLACK] (1) at (5, 0) {};
+		\node [style=NONE] (2) at (-3, 3) {};
+		\node [style=NONE] (3) at (3, 3) {};
+		\node [style=NONE] (4) at (3, -3) {};
+		\node [style=NONE] (5) at (-3, -3) {};
+		\node [style=none] (6) at (5.5, 0.75) {$w$};
+		\node [style=none] (7) at (-5.75, 0.75) {$v$};
+		\node [style=DOM] (8) at (0, 1.5) {};
+		\node [style=DOM] (9) at (0, -0.25) {};
+		\node [style=DOM] (10) at (0, -2.5) {};
+		\node [style=NTHR] (12) at (-0.75, 2.25) {};
+		\node [style=NTHR] (13) at (-1.5, 1.75) {};
+		\node [style=NTHR] (14) at (-2.5, 1.25) {};
+		\node [style=NTHR] (15) at (-3.25, 0.5) {};
+		\node [style=none] (16) at (3.5, 3.5) {};
+		\node [style=none] (17) at (3, 3.75) {};
+		\node [style=none] (18) at (2.5, 3.5) {};
+		\node [style=none] (19) at (-2.5, 3.5) {};
+		\node [style=none] (20) at (-3, 3.75) {};
+		\node [style=none] (21) at (-3.5, 3.5) {};
+		\node [style=none] (22) at (-3.5, -3.5) {};
+		\node [style=none] (23) at (-3, -3.75) {};
+		\node [style=none] (24) at (-2.5, -3.5) {};
+		\node [style=none] (25) at (2.5, -3.5) {};
+		\node [style=none] (26) at (3, -3.75) {};
+		\node [style=none] (27) at (3.5, -3.5) {};
+		\node [style=none] (28) at (-5.25, 5) {\textbf{Case 1}: Maximal 6 Simple Regions};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [bend left=15] (1) to (4);
+		\draw (4) to (5);
+		\draw [bend left=15] (5) to (0);
+		\draw [bend left=15] (0) to (2);
+		\draw (2) to (3);
+		\draw [bend left=15] (3) to (1);
+		\draw [style=FILLGREENINVISBLE] (8.center)
+			 to (0.center)
+			 to [bend left=75] cycle;
+		\draw [style=FILLGREENINVISBLE] (0.center)
+			 to [bend left=15] (9.center)
+			 to [bend right=345] cycle;
+		\draw [style=FILLGREENINVISBLE] (10.center)
+			 to [bend right=15] (0.center)
+			 to [bend right=15] cycle;
+		\draw [style=FILLGREENINVISBLE] (1.center)
+			 to [bend right=15] (8.center)
+			 to cycle;
+		\draw [style=FILLGREENINVISBLE] (1.center)
+			 to [bend right=15] (9.center)
+			 to [bend right=15] cycle;
+		\draw [style=FILLGREENINVISBLE] (1.center)
+			 to [bend left=15, looseness=0.75] (10.center)
+			 to [bend left=15] cycle;
+		\draw [style=FILLGREENINVISBLE] (12) to (8);
+		\draw [style=FILLGREENINVISBLE] (8) to (13);
+		\draw [style=FILLGREENINVISBLE] (13) to (8);
+		\draw (12) to (8);
+		\draw (8) to (13);
+		\draw [bend right=15] (14) to (0);
+		\draw [bend left] (0) to (13);
+		\draw [bend right, looseness=1.25] (12) to (0);
+		\draw (8) to (14);
+		\draw (0) to (15);
+		\draw (15) to (8);
+		\draw (0) to (9);
+		\draw (9) to (1);
+		\draw (1) to (10);
+		\draw (10) to (0);
+		\draw (8) to (1);
+		\draw (16.center) to (3);
+		\draw (3) to (17.center);
+		\draw (3) to (18.center);
+		\draw (2) to (20.center);
+		\draw (19.center) to (2);
+		\draw (2) to (21.center);
+		\draw (24.center) to (5);
+		\draw (5) to (23.center);
+		\draw (22.center) to (5);
+		\draw (25.center) to (4);
+		\draw (4) to (26.center);
+		\draw (27.center) to (4);
+	\end{pgfonlayer}
+\end{tikzpicture}

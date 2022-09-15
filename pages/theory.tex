@@ -514,15 +514,15 @@ We start are more fine-grained analysis of the impact of the different cases of 
 We start by giving 
 
 %TODO Correct Citation
-\begin{lemma}
-    Given a plane Graph \G and a $vw$-region R(v,w) $\abs{N_1(v,w) \cap V(R)} \leq 4$ and these vertices lay exactly on the boundary $\partial R$ of $R$. 
+\begin{lemma}\label{lemma:nonecover}
+    Given a plane Graph \G and a $vw$-region R $\abs{N_1(v,w) \cap V(R)} \leq 4$ and these vertices lay exactly on the boundary $\partial R$ of $R$. 
 \end{lemma}
 \begin{proof}
-    TO BE DONE
+
 \end{proof}
 
-\begin{lemma}\cite[See Fact 5]{Garnero2018}
-    Given a reduced plane graph \G and a region $R(v,w)$, $N_2(v,w) \cap N$ can be coverd by at most 6 simple regions.
+\begin{lemma}\cite[See Fact 5]{Garnero2018}\label{lemma:ntwocover}
+    Given a reduced plane graph \G and a region $R(v,w)$, $N_2(v,w) \cap N$ can be covered by at most 6 simple regions.
 \end{lemma}
 \begin{proof}
     Let $(v,u_1, u_2,w)$ and $(v, u_3, u_4, w)$ be the two boundary paths of $R(v,w)$. (A shorter path would only lead to a smaller bound).
@@ -556,7 +556,7 @@ We continue by giving a constant bound on the number of simple regions that cove
 
 Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been applied and the second one, when Case 4 of \cref{rgl:rtwo} was applied.
 \begin{proof} 
-    We will just give some intuition, because the proof of Garnero and Stau in \cite[Fact 6]{Garnero2014} does not use any special property exposed by the reduction rules. Figure (Add picture about figures) gives a visualization worst case scenarias to cover $N_3(v,w) \cap V(R)$ with simple regions in the relevant cases.\footnote{Note: In a newer revision of their paper \cite{Garnero2018}, Stau und Garnero removed this proof, because they changed \cref{rgl:rtwo} and a more fine-grain analysis was made possible.}
+    We will just give some intuition, because the proof of Garnero and Stau in \cite[Fact 6]{Garnero2014} does not use any special property exposed by the reduction rules. Figure (Add picture about figures) gives a visualization worst case scenarias to cover $N_3(v,w) \cap V(R)$ with simple regions in the relevant cases.\footnote{Note: In a newer revision of their paper \cite{Garnero2018}, Stau und Garnero removed this proof, because they changed \cref{rgl:rtwo} and a more fine-grained analysis was made possible.}
     
 
     % Altough our \cref{rgl:rtwo} is a bit different, the proof still goes through in the original way.
@@ -568,7 +568,41 @@ Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been
     Let \G be a plane graph reduced under \cref{rgl:rone,rgl:rtwo,rgl:rthree}. Furthermore, let $D$ be a SDS of G and let $v,w \in D$. Any $vw$-region R contains at most XXX vertices distinct from its poles.
 \end{lemma}
 \begin{proof} 
+    By \cref{lemma:nonecover,lemma:ntwocover} and \cref{lemma:simpleregionbound} to bound the number of vertices inside a simple region, we know that $\abs{N_1(v,w) \cap V(R)} \leq 4$ and $\abs{N_2(v,w) \cap V(R)} \leq 6 \cdot 7 = 42$.
+
+     It is still remaining to bound for \nthi, but gladly we have \cref{rgl:rtwo}, which took care about them! \cref{fig:nthreeinside} shows worst case amount of simple regions the indidual cases can have.
+
+     % Maybe note that N_2 vertices do not cause any troubles as they are always bound to the near of N_1 vertex
+    \begin{caseof}
+        \case{If \cref{rgl:rtwo} has \textbf{not} been applied} As $\Dvw \neq \emptyset$, there exists a set $\tilde D = \{d_1,d_2,d_3\} \in \Dvw$ of at most three vertices dominating $N_3(v,w)$. We observe that vertices from \nthi~ are common neighbors of either v or w (by the definition of a $vw$-region) and at least one vertex from $\tilde D$. Withouth violating planarity, we can span at most 6 simple regions. Using \cref{lemma:simpleregionbound} and adding $\abs{tilde D} = 3$, we can conclude $\nthi \leq 6 * 6 + 3 = 39$.
+
+        \case{If \cref{rgl:rtwo} Case 1 has been applied}Test
+
+
+        \case{If \cref{rgl:rtwo} Case 2 has been applied} Test
+
+        \case{If \cref{rgl:rtwo} Case 3 (sym. 4) has been applied} Test
+    \end{caseof}
+
+\begin{figure}[!ht]
+    \begin{equation*}
+        \tikzfig{fig/tikz/nthreeinside}
+    \end{equation*}
+    \caption[Bounding number of simple regions with inside a $vw$-region R]{\textit{TODO}}
+    \label{fig:nthreeinside}
+\end{figure}
+
+
+
+
+    Hence, as $V(R) = \{v, w\} \cup (N_1(v,w) \cup N_2(v,w) \cup N_3(v,w)) \cap V(R)$ we get 
+
+    \[V(R) \leq X +X + DX *X\]
+
     Adapt proof given in \cite{Garnero2017}
+    By 
+
+
 \end{proof}
 
 
