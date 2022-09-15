@@ -53,8 +53,8 @@
 		\node [style=BLACK] (58) at (-2, -7.5) {};
 		\node [style=NONE] (59) at (-10, -4.5) {};
 		\node [style=NONE] (60) at (-4, -4.5) {};
-		\node [style=NONE] (61) at (-4, -10.5) {};
-		\node [style=NONE] (62) at (-10, -10.5) {};
+		\node [style=NONE] (61) at (-4, -13) {};
+		\node [style=NONE] (62) at (-10, -13) {};
 		\node [style=none] (63) at (-1.5, -6.75) {$w$};
 		\node [style=none] (64) at (-12.75, -6.75) {$v$};
 		\node [style=none] (72) at (-3.5, -4) {};
@@ -63,19 +63,19 @@
 		\node [style=none] (75) at (-9.5, -4) {};
 		\node [style=none] (76) at (-10, -3.75) {};
 		\node [style=none] (77) at (-10.5, -4) {};
-		\node [style=none] (78) at (-10.5, -11) {};
-		\node [style=none] (79) at (-10, -11.25) {};
-		\node [style=none] (80) at (-9.5, -11) {};
-		\node [style=none] (81) at (-4.5, -11) {};
-		\node [style=none] (82) at (-4, -11.25) {};
-		\node [style=none] (83) at (-3.5, -11) {};
+		\node [style=none] (78) at (-10.5, -13.5) {};
+		\node [style=none] (79) at (-10, -13.75) {};
+		\node [style=none] (80) at (-9.5, -13.5) {};
+		\node [style=none] (81) at (-4.5, -13.5) {};
+		\node [style=none] (82) at (-4, -13.75) {};
+		\node [style=none] (83) at (-3.5, -13.5) {};
 		\node [style=none] (84) at (-6.75, -2.75) {\textbf{Case 2}: All Maximal 11 Simple Regions};
 		\node [style=BLACK] (85) at (1.75, -7.5) {};
 		\node [style=BLACK] (86) at (11.75, -7.5) {};
 		\node [style=NONE] (87) at (3.75, -4.5) {};
 		\node [style=NONE] (88) at (9.75, -4.5) {};
-		\node [style=NONE] (89) at (9.75, -10.5) {};
-		\node [style=NONE] (90) at (3.75, -10.5) {};
+		\node [style=NONE] (89) at (9.75, -13) {};
+		\node [style=NONE] (90) at (3.75, -13) {};
 		\node [style=none] (91) at (12.25, -6.75) {$w$};
 		\node [style=none] (92) at (1, -6.75) {$v$};
 		\node [style=none] (100) at (10.25, -4) {};
@@ -84,13 +84,13 @@
 		\node [style=none] (103) at (4.25, -4) {};
 		\node [style=none] (104) at (3.75, -3.75) {};
 		\node [style=none] (105) at (3.25, -4) {};
-		\node [style=none] (106) at (3.25, -11) {};
-		\node [style=none] (107) at (3.75, -11.25) {};
-		\node [style=none] (108) at (4.25, -11) {};
-		\node [style=none] (109) at (9.25, -11) {};
-		\node [style=none] (110) at (9.75, -11.25) {};
-		\node [style=none] (111) at (10.25, -11) {};
-		\node [style=none] (112) at (6.75, -2.75) {\textbf{Case 3/4}: Maximal 6 Simple Regions};
+		\node [style=none] (106) at (3.25, -13.5) {};
+		\node [style=none] (107) at (3.75, -13.75) {};
+		\node [style=none] (108) at (4.25, -13.5) {};
+		\node [style=none] (109) at (9.25, -13.5) {};
+		\node [style=none] (110) at (9.75, -13.75) {};
+		\node [style=none] (111) at (10.25, -13.5) {};
+		\node [style=none] (112) at (6.75, -2.75) {\textbf{Case 3/4}: Maximal 9 Simple Regions};
 		\node [style=NTHR] (113) at (4, 2) {};
 		\node [style=NTHR] (114) at (9.75, 4.75) {};
 		\node [style=NTHR] (115) at (7, 3.75) {};
@@ -100,13 +100,18 @@
 		\node [style=none] (119) at (-6.75, 6) {$d_1$};
 		\node [style=none] (120) at (-6.75, 4.25) {$d_2$};
 		\node [style=none] (121) at (-6.75, 2) {$d_3$};
-		\node [style=DOM] (122) at (-7.25, -6.75) {};
-		\node [style=DOM] (123) at (-7.25, -9) {};
-		\node [style=BLACK] (124) at (-4.5, -6.25) {};
-		\node [style=BLACK] (125) at (-4.75, -7.25) {};
-		\node [style=BLACK] (126) at (-4.75, -8.25) {};
-		\node [style=BLACK] (127) at (-4.5, -9.25) {};
+		\node [style=BLACK] (122) at (-7.25, -7) {};
+		\node [style=BLACK] (123) at (-6, -10.5) {};
+		\node [style=BLACK] (124) at (-4.25, -6.5) {};
+		\node [style=BLACK] (125) at (-4.5, -7.75) {};
+		\node [style=BLACK] (126) at (-5.25, -9.25) {};
+		\node [style=BLACK] (127) at (-4.25, -11) {};
 		\node [style=BLACK] (128) at (-2, -7.5) {};
+		\node [style=DOM] (129) at (7.75, -5.75) {};
+		\node [style=DOM] (130) at (7.75, -7.5) {};
+		\node [style=DOM] (131) at (5.75, -9.25) {};
+		\node [style=DOM] (132) at (5.75, -11.5) {};
+		\node [style=BLACK] (133) at (11.75, -7.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [bend left=15] (1) to (4);
@@ -181,7 +186,7 @@
 		\draw (55.center) to (33);
 		\draw [bend left=15] (58) to (61);
 		\draw (61) to (62);
-		\draw [bend left, looseness=1.25] (62) to (57);
+		\draw [bend left=15, looseness=1.25] (62) to (57);
 		\draw [bend left=15] (57) to (59);
 		\draw (59) to (60);
 		\draw [bend left=15] (60) to (58);
@@ -242,17 +247,17 @@
 			 to [bend left=60] (128.center)
 			 to [in=60, out=135] cycle;
 		\draw [style=FILLGREENINVISBLE] (128.center)
-			 to [bend left, looseness=0.25] (57.center)
-			 to [bend right=15, looseness=0.25] cycle;
+			 to [bend left, looseness=0.75] (57.center)
+			 to [bend right=75, looseness=0.25] cycle;
 		\draw [style=DARKGREEN, bend left=15, looseness=0.50] (57) to (122);
-		\draw [style=DARKGREEN, bend left=15] (122) to (128);
+		\draw [style=DARKGREEN] (122) to (128);
 		\draw [style=DARKGREEN, bend left=345, looseness=1.25] (124) to (57);
 		\draw [style=DARKGREEN, in=60, out=120] (128) to (57);
 		\draw [style=FILLGREENINVISBLE] (57.center)
 			 to (125.center)
 			 to [bend left=15, looseness=0.50] cycle;
 		\draw [style=DARKGREEN, bend right=15, looseness=0.25] (57) to (125);
-		\draw [style=DARKGREEN, bend left=15, looseness=0.50] (128) to (57);
+		\draw [style=DARKGREEN, bend left, looseness=0.75] (128) to (57);
 		\draw [style=FILLGREENINVISBLE] (57.center)
 			 to [bend right=60, looseness=0.75] (127.center)
 			 to [bend right=330] cycle;
@@ -263,9 +268,45 @@
 			 to [bend right] cycle;
 		\draw [style=DARKGREEN, in=-30, out=-180, looseness=1.25] (123) to (57);
 		\draw [style=FILLGREENINVISBLE] (57.center)
-			 to [bend right=60] (128.center)
-			 to [bend left=75] cycle;
-		\draw [style=DARKGREEN, bend left=60] (128) to (57);
+			 to [bend right=75, looseness=1.75] (128.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=DARKGREEN, bend left=75, looseness=1.75] (128) to (57);
 		\draw [style=DARKGREEN, bend right=15] (123) to (128);
+		\draw [style=FILLGREENINVISBLE] (85.center)
+			 to [bend left=45, looseness=1.25] (86.center)
+			 to [bend left=315] cycle;
+		\draw [style=FILLGREENINVISBLE] (129.center)
+			 to (86.center)
+			 to [bend right=15, looseness=0.75] cycle;
+		\draw [style=FILLGREENINVISBLE] (86.center)
+			 to [bend left=345] (85.center)
+			 to [in=165, out=15, looseness=0.75] cycle;
+		\draw [style=FILLGREENINVISBLE] (133)
+			 to (130.center)
+			 to [bend right=15] (86);
+		\draw [style=FILLGREENINVISBLE] (85.center)
+			 to [bend right, looseness=0.75] (133.center)
+			 to [bend left=15] cycle;
+		\draw [style=FILLGREENINVISBLE] (85.center)
+			 to [bend right=15] (131.center)
+			 to cycle;
+		\draw [style=FILLGREENINVISBLE] (133.center)
+			 to [bend left=45, looseness=1.50] (85.center)
+			 to [bend right=45, looseness=1.25] cycle;
+		\draw [style=FILLGREENINVISBLE] (85.center)
+			 to [bend right=15] (132.center)
+			 to cycle;
+		\draw [style=FILLGREENINVISBLE] (85.center)
+			 to [bend right=60, looseness=2.00] (133.center)
+			 to [bend left=75, looseness=1.75] cycle;
+		\draw [style=DARKGREEN] (129) to (133);
+		\draw [style=DARKGREEN, bend right=45, looseness=1.25] (133) to (85);
+		\draw [style=DARKGREEN] (130) to (133);
+		\draw [style=DARKGREEN, bend left=15, looseness=0.75] (131) to (85);
+		\draw [style=DARKGREEN, bend right=15, looseness=0.75] (85) to (132);
+		\draw [style=DARKGREEN, bend right=15, looseness=1.25] (85) to (133);
+		\draw [style=DARKGREEN, bend right=45, looseness=1.50] (85) to (133);
+		\draw [style=DARKGREEN, bend left=60, looseness=2.00] (133) to (85);
+		\draw [style=DARKGREEN, bend left=15] (85) to (133);
 	\end{pgfonlayer}
 \end{tikzpicture}
