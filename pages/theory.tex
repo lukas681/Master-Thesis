@@ -158,7 +158,10 @@ We are going to present a polynomial-time preprocessing procedure which gives a 
 
 \begin{figure}[!ht]
     \begin{equation*}
+    \scalebox{.8}
+    {
         \tikzfig{fig/tikz/overview}
+    }
     \end{equation*}
     \caption[Structure of Proof]{\textit{The plan for obtaining a linear kernel for \psdom}}\label{fig:overview}
 \end{figure}
@@ -578,7 +581,7 @@ We start by giving
 \end{proof}
 
 \begin{lemma}\cite[See Fact 5]{Garnero2018}\label{lemma:ntwocover}
-    Given a reduced plane graph \G and a region $R(v,w)$, $N_2(v,w) \cap N$ can be covered by at most 6 simple regions.
+    Given a reduced plane graph \G and a region $R(v,w)$, $N_2(v,w) \cap V(R)$ can be covered by at most 6 simple regions.
 \end{lemma}
 \begin{proof}
     Let $(v,u_1, u_2,w)$ and $(v, u_3, u_4, w)$ be the two boundary paths of $R(v,w)$. (A shorter path would only lead to a smaller bound).

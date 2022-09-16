@@ -13,6 +13,7 @@
 \tikzstyle{BRGRAY}=[fill={rgb,255: red,236; green,236; blue,236}, draw=none, shape=circle, inner sep=3pt]
 \tikzstyle{TEXTSTD}=[fill=white, draw=black, shape=rectangle, tikzit shape=rectangle, text width=3cm, rounded corners]
 \tikzstyle{TEXTHIGH}=[fill={rgb,255: red,231; green,245; blue,255}, draw=black, shape=rectangle, tikzit shape=rectangle, text width=3cm, rounded corners]
+\tikzstyle{TEXTHIGHGRAY}=[fill={rgb,255: red,220; green,220; blue,220}, draw=black, shape=rectangle, tikzit shape=rectangle, text width=3cm, rounded corners]
 
 % Edge styles
 \tikzstyle{EDGE}=[-, fill=none]
@@ -30,3 +31,4 @@
 \tikzstyle{ULTRAGRAY}=[-, draw={rgb,255: red,236; green,236; blue,236}]
 \tikzstyle{EDGEDASHED}=[-, dashed, fill=none]
 \tikzstyle{simple directed edge}=[->, draw=black]
+\tikzstyle{simple dashed directed edge}=[->, draw=black,dashed]
