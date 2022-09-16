@@ -17,8 +17,12 @@
 15) Add a duck somewhere.
 16) Check all lemma / theorem / proposition references and their name
 17) Color scheme for regions and vertices consistent?
+18) Which paper should I use as a reference.
+19) Make side notes
 
+TODO: Look up unknown graph theoretic terms for me.
 
+Note that if not mentioned other wise, parametrized by solution size.
 
 V(R) defined?
 Define penadant vertices

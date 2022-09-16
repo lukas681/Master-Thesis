@@ -5,6 +5,14 @@ Parametrized Complexity emerging branch. Books about that
 
 Semitotal domination introduced by 
 % TODO: Idea for a nice introduction 
+
+Idea:  Lake with stones, and family of ducks of fixed size wants to occupy the lake so that no other clan tries to take it over.
+Rules: 
+* A duck can quack freeing up neighboring stones.
+* Ducks don't like to be alone and want to quack together. So for every duck their must be another duck that is not further than two stones away.
+Q: Can our ducklings occupy the whole lake while not feeling lonely?
+
+
 \section{Content of the thesis}
 
 In this thesis we continue the systematic analysis of the \sdom problem by focusing on the parametrized complexity of the problem. 
@@ -145,11 +153,46 @@ As any \bg with bipartition can be split further into \rpg this results also imp
 
 \epigraph{\itshape The best way to explain it is to do it.}{Lewis Caroll, \textit{Alice in Wonderland}}
 
-We are now building up toward a linear kernel for the \sdom problem. In order to achieve this, we will first split up the neighborhood of one vertice and a pair of vertices into three distinct subsets, give some nice properties about them, and then state the corresponding reduction rules.  
+We are going to present a polynomial-time preprocessing procedure which gives a linear kernel for \psdom parametrized by solution size. Based on the technique first introduced by Alber et al. (\cite{Alber2004}) in 2004, an abundance of similar results to other domination problems emerged which gave us the believe that we can also transfer these results to \sdom. \cref{tbl:kernels} gives an overview about the status of kernels for the planar case on other domination problems. All of these results introduce reduction rules bounding the number of vertices inside so-called ``regions'' which can be obtained by a special decomposition of the graph. 
 
-% TODO: Reword
+% TODO: Add running time of these algorithm there?
+\begin{table}[h]
+\begin{minipage}[th]{\linewidth}
+\begin{tabularx}{\textwidth}{lcX}
+\textbf{Problem} & \textbf{Best Known Kernel} & \textbf{Source} \\
+\dom &  $67k$ & \cite{Diekert2005}\footnotemark\\
+\tdom &  $410k$ & \cite{Garnero2018}\footnotemark \\
+\sdom & TODO & This Work \\
+& & \\
+\eddom & $14k$  & \cite[p. 375 - 386, Thereom 2]{Arge2007} \\
+\efdom &  $84k$ & \cite[p. 375 - 386, Theorem 4]{Arge2007} \\
+\rbdom &  $43k$ & \cite{Garnero2017a} \\
+\cdom & $130k$  & \cite{Luo2013} \\
+\dirdom &  ?  & \cite{Alber2006}  \\
+\end{tabularx}
+\footnotetext{There is also a masters thesis claiming a bound of 43k \cite{Halseth2016}, but a conference or journal version was not found.}
+\end{minipage}
+\footnotetext{Improved their own results from first $694$ \cite{Garnero2014}}
+\caption{An overview about existing kernels for planar dominating set variants}
+\label{tbl:kernels}
+\end{table}
 
-%TODO: SIZE of instance: Number of vertices.
+In the following years, this approach bore fruits in other planar problems as well like 
+\name{Connected Vertex Cover}\xspace ($11/3k$ in \cite{Kowalik2013}),
+\name{Maximum Triangle Packing}\xspace ($624k$ in \cite{Wang2011})
+\name{Induced Matching}\xspace ($40k$ in \cite{Kanj2011})
+\name{Full-Degree Spanning Tree}\xspace ( in \cite{Guo2006})
+\name{Feedback Vertex Set}\xspace ($13k$ in \cite{Bonamy2016}) and 
+\name{Cycle Packing}\xspace (\cite{Garnero2019})
+
+In the upcoming years, many results could generalize the approach to larger graph classes. Fomin and Thilikos started this journey by directly proofing in the same year that the initial reduction rules given by Alber et al. \cite{Alber2004} can also be used to obtain a linear kernel on graphs with bounded genus g (\cite{Fomin2004}).  Alon and Gutner advanced in 2008 with showing that the problem has a linear kernel on $K_{3,h}$-topological-minor-free graph classes and a polynomial kernel for $K_h$-topological-minor-free graph classes (\cite{Gutner2009}). In 2007 they extended this result to show that graphs of bounded degeneracy are FPT (\cite{Alon2007}). Finally, in 2012 Philip et al. showed that even $K_{i,j}$-free graph classes admit a polynomial kernel for \dom (\cite{Philip2012}). 
+In an attempt to extend these ideas to other problems as well, Bodlaender et al. (\cite{Bodlaender2016}) proofed that all problems expressivle in counting monadic second-order logic who sastisfy a coverability property admit a polyynomial kernel on graphs of bounded genus g.
+
+Although these results are very interesting from a theoretical point of view, the constants for the kernels obtained by these methods are so large that they are not of practical interest. The question we also follow in this paper is how such a kernel can explicitely and efficiently be constructed.
+
+
+
+In order to achieve this, we will first split up the neighborhood of one vertice and a pair of vertices into three distinct subsets, give some nice properties about them, and then state the corresponding reduction rules.  
 
 But first, we would like to define what we consider to be a \textit{reduced} graph. 
 
@@ -163,27 +206,9 @@ This differs from the definition usually given in literature where a graph G is 
 
 From an algorithmic point of view, all our given reduction rules are local and only concern the neighborhood of at most two vertices and replace them partially with gadgets of constant size. Now checking whether a graph after applying the rule has been changed can be trivially accomplished in constant time.
 
-\subsection{Previous Results for Planar Dominating Set}
-After Alber et al. introduced their kernelization technique in \cite[]{Alber2004}, a series of similar results emerged transfering these results to other variants of dominating set as well. The following table gives an overview about some different variants of dominating set:
+section{The Main Idea and The Big Picture}
 
-\begin{table}[]
-\begin{tabular}{ccc}
-\textbf{Problem} & \textbf{Best Known Kernel} & \textbf{Source} \\
-\dom &  $67k$ & \cite{Diekert2005}\tablefootnote{There is also a masters thesis claiming a bound of 43k \cite{Halseth2016}, but a conference or journal version was not found.}\\
-\tdom &  $410k$ & \cite{Garnero2018}\tablefootnote{Improved their own results from first $694$ \cite{Garnero2014}} \\
-\rbdom &  $43k$ & \cite{Garnero2017a} \\
-\cdom & $130k$  & \cite{Luo2013} \\
-\eddom & $14k$  & \cite[p. 375 - 386, (2)]{Arge2007} \\
-\efdom &  $84k$ & \cite[p. 375 - 386, (4)]{Arge2007} \\
-\dirdom &  ?  & \cite{Alber2006}  \\
-\sdom & & This Thesis \\
-\end{tabular}
-\end{table}
-
-Furthermore, it is worth mentioning that the technique was further developed to a number of meta theorems:
-
-\section{The Main Idea and The Big Picture}
- 
+ The main idea is to decompose a graph into so called ``regions'' where we can bound the number of vertices that are left, after some reduction rules have operated on the graph.
  [TODO SUM UP THE STRATEGY]
 
 
