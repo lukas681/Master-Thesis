@@ -155,6 +155,14 @@ As any \bg with bipartition can be split further into \rpg this results also imp
 
 We are going to present a polynomial-time preprocessing procedure which gives a linear kernel for \psdom parametrized by solution size. Based on the technique first introduced by Alber et al. (\cite{Alber2004}) in 2004, an abundance of similar results to other domination problems emerged which gave us the believe that we can also transfer these results to \sdom. \cref{tbl:kernels} gives an overview about the status of kernels for the planar case on other domination problems. All of these results introduce reduction rules bounding the number of vertices inside so-called ``regions'' which can be obtained by a special decomposition of the graph. 
 
+
+\begin{figure}[!ht]
+    \begin{equation*}
+        \tikzfig{fig/tikz/overview}
+    \end{equation*}
+    \caption[Structure of Proof]{\textit{The plan for obtaining a linear kernel for \psdom}}\label{fig:overview}
+\end{figure}
+
 % TODO: Add running time of these algorithm there?
 \begin{table}[h]
 \begin{minipage}[th]{\linewidth}
@@ -181,20 +189,31 @@ In the following years, this approach bore fruits in other planar problems as we
 \name{Connected Vertex Cover}\xspace ($11/3k$ in \cite{Kowalik2013}),
 \name{Maximum Triangle Packing}\xspace ($624k$ in \cite{Wang2011})
 \name{Induced Matching}\xspace ($40k$ in \cite{Kanj2011})
-\name{Full-Degree Spanning Tree}\xspace ( in \cite{Guo2006})
+\name{Full-Degree Spanning Tree}\xspace (TODO in \cite{Guo2006})
 \name{Feedback Vertex Set}\xspace ($13k$ in \cite{Bonamy2016}) and 
 \name{Cycle Packing}\xspace (\cite{Garnero2019})
 
 In the upcoming years, many results could generalize the approach to larger graph classes. Fomin and Thilikos started this journey by directly proofing in the same year that the initial reduction rules given by Alber et al. \cite{Alber2004} can also be used to obtain a linear kernel on graphs with bounded genus g (\cite{Fomin2004}).  Alon and Gutner advanced in 2008 with showing that the problem has a linear kernel on $K_{3,h}$-topological-minor-free graph classes and a polynomial kernel for $K_h$-topological-minor-free graph classes (\cite{Gutner2009}). In 2007 they extended this result to show that graphs of bounded degeneracy are FPT (\cite{Alon2007}). Finally, in 2012 Philip et al. showed that even $K_{i,j}$-free graph classes admit a polynomial kernel for \dom (\cite{Philip2012}). 
-In an attempt to extend these ideas to other problems as well, Bodlaender et al. (\cite{Bodlaender2016}) proofed that all problems expressivle in counting monadic second-order logic who sastisfy a coverability property admit a polyynomial kernel on graphs of bounded genus g.
+In an attempt to extend these ideas to other problems as well, Bodlaender et al. (\cite{Bodlaender2016}) proofed that all problems expressible in  counting monadic second-order logic who sastisfy a coverability property admit a polynomial kernel on graphs of bounded genus g.
 
-Although these results are very interesting from a theoretical point of view, the constants for the kernels obtained by these methods are so large that they are not of practical interest. The question we also follow in this paper is how such a kernel can explicitely and efficiently be constructed.
+Although these results are very interesting from a theoretical point of view, the constants for the kernels obtained by these methods are so large that they are not of practical interest. The question is how such a kernel can explicitely and efficiently be constructed. 
+
+We are going to show that, with some slight modifications, the kernel described by Garnero and Stau (\cite{Garnero2014}) for \ptdom can also be used for \psdom giving us an explicitely constructed kernel with ``reasonable'' small constants.
+
+\section{The Main Idea and The Big Picture}
+
+From an algorithmic point of view, all our given reduction rules are local and only concern the neighborhood of at most two vertices and replace them partially with gadgets of constant size. Now checking whether a graph after applying the rule has been changed can be trivially accomplished in constant time.
 
 
+ The main idea is to decompose a graph into so called ``regions'' where we can bound the number of vertices that are left, after some reduction rules have operated on the graph.
+ [TODO SUM UP THE STRATEGY]
 
-In order to achieve this, we will first split up the neighborhood of one vertice and a pair of vertices into three distinct subsets, give some nice properties about them, and then state the corresponding reduction rules.  
 
-But first, we would like to define what we consider to be a \textit{reduced} graph. 
+\section{Definitions}
+
+We are now giving ....
+
+First, we would like to define what we consider to be a \textit{reduced} graph. 
 
 \begin{definition}[Reduced Graph {\cite[p. 13]{Garnero2018}} and \cite{Garnero2017}]
     A Graph G is reduced under a set of rules if either none of these rules can be applied to G or the application of any of them creates a graph isomorphic to G.
@@ -204,15 +223,7 @@ In our case, we say G is reduced if none of the \cref{rgl:rone,rgl:rtwo,rgl:rthr
 
 This differs from the definition usually given in literature where a graph G is \textit{reduced} under a set of reduction rules, if none of them can be applied to G anymore (Compare e.g. \cite{Fomin2019}). The reason is that we are giving reduction rules (see \cref{rgl:rone} or \cref{rgl:rtwo}) that could be applied \textit{ad infinitum} sending us into an endless loop without ever changing G any more. Our definition guarantees termination in that case.
 
-From an algorithmic point of view, all our given reduction rules are local and only concern the neighborhood of at most two vertices and replace them partially with gadgets of constant size. Now checking whether a graph after applying the rule has been changed can be trivially accomplished in constant time.
-
-section{The Main Idea and The Big Picture}
-
- The main idea is to decompose a graph into so called ``regions'' where we can bound the number of vertices that are left, after some reduction rules have operated on the graph.
- [TODO SUM UP THE STRATEGY]
-
-
-\section{Definitions}
+In order to achieve this, we will first split up the neighborhood of one vertice and a pair of vertices into three distinct subsets, give some nice properties about them, and then state the corresponding reduction rules.  
 
 In this section, we are giving some key definitions that are used in our reduction rules for obtaining the linear kernel. These as inspired by those given by Garnero and Stau (\ptdom in \cite[]{Garnero2014} or \prbdom in \cite{Garnero2017a}) and already relied on those given by Alber et al. in \cite[]{Alber2004} for \pdom.
 
@@ -609,7 +620,7 @@ Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been
 \end{proof}
 
 
-\begin{lemma}[\#Vertices inside a Region after \cref{rgl:rone,rgl:rtwo,rgl:rthree}]\label{lemma:outside}
+\begin{lemma}[\#Vertices inside a Region after \cref{rgl:rone,rgl:rtwo,rgl:rthree}]\label{lemma:inside}
     Let \G be a plane graph reduced under \cref{rgl:rone,rgl:rtwo,rgl:rthree}. Furthermore, let $D$ be a SDS of G and let $v,w \in D$. Any $vw$-region R contains at most 139 vertices distinct from its poles.
 \end{lemma}
 \begin{proof} 
