@@ -11,7 +11,8 @@
 \tikzstyle{NTHR}=[fill={rgb,255: red,140; green,143; blue,14}, draw=black, shape=circle, inner sep=3pt]
 \tikzstyle{GRAYN}=[fill={rgb,255: red,128; green,128; blue,128}, draw=black, shape=circle, inner sep=3pt]
 \tikzstyle{BRGRAY}=[fill={rgb,255: red,236; green,236; blue,236}, draw=none, shape=circle, inner sep=3pt]
-\tikzstyle{new style 0}=[fill=white, draw=black, shape=rectangle, tikzit shape=rectangle, text width=3cm, rounded corners]
+\tikzstyle{TEXTSTD}=[fill=white, draw=black, shape=rectangle, tikzit shape=rectangle, text width=3cm, rounded corners]
+\tikzstyle{TEXTHIGH}=[fill={rgb,255: red,231; green,245; blue,255}, draw=black, shape=rectangle, tikzit shape=rectangle, text width=3cm, rounded corners]
 
 % Edge styles
 \tikzstyle{EDGE}=[-, fill=none]

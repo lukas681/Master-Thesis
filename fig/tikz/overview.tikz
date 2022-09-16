@@ -1,23 +1,24 @@
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=new style 0] (0) at (-6.5, -0.75) {Reduction \cref{rgl:rtwo}};
-		\node [style=new style 0] (2) at (3.5, 3.25) {$\abs{N_1(v,w)}$ inside R: \cref{lemma:nonecover}};
-		\node [style=new style 0] (3) at (-6.5, 3.25) {Reduction \cref{rgl:rone}};
-		\node [style=new style 0] (4) at (3.5, -0.75) {$\abs{N_2(v,w)}$ inside R: \cref{lemma:ntwocover}};
-		\node [style=new style 0] (5) at (3.5, -4.75) {Size of a Region: \cref{lemma:inside}};
-		\node [style=new style 0] (6) at (14.25, 3.25) {vertices outside: \cref{lemma:outside}};
-		\node [style=new style 0] (7) at (11.25, -11.25) {\sdom has linear a linear kernel \cref{thm:central}};
-		\node [style=new style 0] (8) at (14, -4.75) {x max \dreg with $\abs{R} \leq 3* \abs{D}-6$ \cref{lemma:numRegions}};
-		\node [style=new style 0] (9) at (-4, -11.5) {\cref{rgl:rone,rgl:rtwo,rgl:rthree} run in poly-time \cref{lemma:runtime}};
-		\node [style=new style 0] (10) at (-6.75, -4.75) {Reduction \cref{rgl:rthree}};
+		\node [style=TEXTSTD] (0) at (-6.5, -0.75) {Reduction \cref{rgl:rtwo}};
+		\node [style=TEXTSTD, text width=4cm] (2) at (15, 7.25) {$ \abs{N_1(v,w) \cap V(R)} \leq 4 $ [\cref{lemma:nonecover}]};
+		\node [style=TEXTSTD] (3) at (-6.5, 3.25) {Reduction \cref{rgl:rone}};
+		\node [style=TEXTSTD] (4) at (4.25, -4.75) {$\abs{N_2(v,w)}$ inside R: \cref{lemma:ntwocover}};
+		\node [style=TEXTSTD] (5) at (13.5, -5) {Size of a Region: \cref{lemma:inside}};
+		\node [style=TEXTSTD] (6) at (4.25, -0.75) {vertices outside: \cref{lemma:outside}};
+		\node [style=TEXTHIGH, text width=4cm] (7) at (8.5, -11.5) {\sdom has a linear linear kernel \cref{thm:central}};
+		\node [style=TEXTSTD, text width=4.5cm] (8) at (3.25, 7.25) {Ex. max \dreg with $\abs{R} \leq 3* \abs{D}-6$ \cref{lemma:numRegions}};
+		\node [style=TEXTSTD] (9) at (-4, -11.5) {\cref{rgl:rone,rgl:rtwo,rgl:rthree} run in poly-time \cref{lemma:runtime}};
+		\node [style=TEXTSTD] (10) at (-6.75, -4.75) {Reduction \cref{rgl:rthree}};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=simple directed edge] (9) to (7);
 		\draw [style=simple directed edge, in=-180, out=-90, looseness=1.25] (10) to (9);
-		\draw [style=simple directed edge, in=180, out=-150] (0) to (9);
-		\draw [style=simple directed edge, in=-180, out=-135, looseness=1.25] (3) to (9);
-		\draw [style=simple directed edge, bend right] (3) to (5);
-		\draw [style=simple directed edge, bend right=15, looseness=1.75] (0) to (5);
-		\draw [style=simple directed edge] (10) to (5);
+		\draw [style=simple directed edge, in=180, out=-165] (0) to (9);
+		\draw [style=simple directed edge, in=180, out=-165] (3) to (9);
+		\draw [style=simple directed edge] (10) to (6);
+		\draw [style=simple directed edge] (3) to (6);
+		\draw [style=simple directed edge] (5) to (7);
+		\draw [style=simple directed edge] (8) to (2);
 	\end{pgfonlayer}
 \end{tikzpicture}
