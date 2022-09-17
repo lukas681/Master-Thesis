@@ -156,15 +156,6 @@ As any \bg with bipartition can be split further into \rpg this results also imp
 We are going to present a polynomial-time preprocessing procedure which gives a linear kernel for \psdom parametrized by solution size. Based on the technique first introduced by Alber et al. (\cite{Alber2004}) in 2004, an abundance of similar results to other domination problems emerged which gave us the believe that we can also transfer these results to \sdom. \cref{tbl:kernels} gives an overview about the status of kernels for the planar case on other domination problems. All of these results introduce reduction rules bounding the number of vertices inside so-called ``regions'' which can be obtained by a special decomposition of the graph. 
 
 
-\begin{figure}[!ht]
-    \begin{equation*}
-    \scalebox{.9}
-    {
-        \tikzfig{fig/tikz/overview}
-    }
-    \end{equation*}
-    \caption[Structure of the Proof]{\textit{The plan for obtaining a linear kernel for \psdom}}\label{fig:overview}
-\end{figure}
 
 % TODO: Add running time of these algorithm there?
 \begin{table}[h]
@@ -203,14 +194,14 @@ Although these results are very interesting from a theoretical point of view, th
 
 We are going to show that, with some slight modifications, the kernel described by Garnero and Stau (\cite{Garnero2014}) for \ptdom can also be used for \psdom giving us an explicitely constructed kernel with ``reasonable'' small constants.
 
-\section{The Main Idea and The Big Picture}
+\section{The Main Idea}
 
-From an algorithmic point of view, all our given reduction rules are local and only concern the neighborhood of at most two vertices and replace them partially with gadgets of constant size. Now checking whether a graph after applying the rule has been changed can be trivially accomplished in constant time.
+The main idea is to use the fact that a plane graph \G and a set D, G can be decomposed into at most $(3 \cdot \abs{D} -6)$ so-called ``regions'' (\cref{def:region}). If D is now a given \sdom~of size $k := \abs{D}$, we know that the number of regions will depend linearly on k. If we define  \textit{reduction rules}(\cref{rgl:rone,rgl:rtwo,rgl:rthree}) that try to minimize the number of vertices in and around a region we can overally bound the size of G in $k$.
 
+The reduction rules 
+% Reduction Rules, what are they doing
 
- The main idea is to decompose a graph into so called ``regions'' where we can bound the number of vertices that are left, after some reduction rules have operated on the graph.
- [TODO SUM UP THE STRATEGY]
-
+Currently, our reduction rules do not rely on the decomposition itself, but rather consider the neighborhood of every pair of vertices.
 
 \section{Definitions}
 
@@ -221,6 +212,8 @@ First, we would like to define what we consider to be a \textit{reduced} graph.
 \begin{definition}[Reduced Graph {\cite[p. 13]{Garnero2018}} and \cite{Garnero2017}]
     A Graph G is reduced under a set of rules if either none of these rules can be applied to G or the application of any of them creates a graph isomorphic to G.
 \end{definition}\label{def:reduced}
+
+From an algorithmic point of view, all our given reduction rules are local and only concern the neighborhood of at most two vertices and replace them partially with gadgets of constant size. Now checking whether a graph after applying the rule has been changed can be trivially accomplished in constant time.
 
 In our case, we say G is reduced if none of the \cref{rgl:rone,rgl:rtwo,rgl:rthree} are modifying G any more.
 
@@ -346,7 +339,7 @@ We now have all the definitions ready to formally define a decomposition techniq
     \end{enumerate}
 \end{definition}
 
-\begin{definition}
+\begin{definition}\label{def:region}
     Given a plane graph \G and $D\subseteq V$, a \underline{$D-region$ Decomposition} of G is a set $\mathfrak{R}$ of regions with poles in D such that: 
     \begin{enumerate}
         \item for any $vw$-region $R \in \mathfrak{R} $, it holds that $D \cap V(R) = \{v, w\}$, and
@@ -395,6 +388,22 @@ Later we will use properties of the underlying multigraph of a \dreg. Refer to \
     Let \G be a plane graph, let $D \subseteq V$ and let $\mathfrak{R}$ be a \dreg of G. The underlying multigraph $G_\mathfrak{R} = (V_\mathfrak{R}, E _\mathfrak{R})$ of $\mathfrak{R}$ is such that  $V_\mathfrak{R} = D$ and there is an edge $\{v,w\} \in E_\mathfrak{R}$ for each vw-region $R(v,w) \in \mathfrak{R}$
 \end{definition}
 %% TODO: Example for a multigraph
+
+\section{The Big Picture}
+
+TODO Text here
+
+\begin{figure}[!ht]
+    \begin{equation*}
+    \scalebox{.9}
+    {
+        \tikzfig{fig/tikz/overview}
+    }
+    \end{equation*}
+    \caption[Structure of the Proof]{\textit{The plan for obtaining a linear kernel for \psdom. TODO: Check whether R1-3 apply for gray lemmas}}\label{fig:overview}
+\end{figure}
+
+
 
 % TODO for more examples refer to.
 \section{Reduction Rules}

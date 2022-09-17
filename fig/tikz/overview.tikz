@@ -14,7 +14,7 @@
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=simple dashed directed edge] (9) to (7);
-		\draw [style=simple directed edge, in=180, out=180, looseness=1.25] (10) to (9);
+		\draw [style=simple directed edge, in=180, out=-180] (10) to (9);
 		\draw [style=simple directed edge, in=180, out=-135, looseness=0.75] (0) to (9);
 		\draw [style=simple directed edge, in=180, out=-135, looseness=0.75] (3) to (9);
 		\draw [style=simple directed edge] (10) to (6);
@@ -29,5 +29,6 @@
 		\draw [style=simple directed edge] (0) to (6);
 		\draw [style=simple directed edge] (8) to (11);
 		\draw [style=simple directed edge, bend right] (8) to (12);
+		\draw [style=simple directed edge] (8) to (6);
 	\end{pgfonlayer}
 \end{tikzpicture}
