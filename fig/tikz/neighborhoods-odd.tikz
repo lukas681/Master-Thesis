@@ -10,17 +10,21 @@
 		\node [style=NTHR] (9) at (-2.25, 0) {};
 		\node [style=NTHR] (10) at (-2, -1) {};
 		\node [style=GRAYN, label={$z$}] (11) at (0.25, 0) {};
-		\node [style=none, label={above:$N_3[v,w]$}] (12) at (0, 3.5) {};
-		\node [style=none] (13) at (0, -3) {};
+		\node [style=none, label={above:$N_3[v,w]$}] (12) at (-0.5, 3.75) {};
+		\node [style=none] (13) at (-0.5, -3) {};
 		\node [style=none] (14) at (4, 0) {};
 		\node [style=none] (15) at (-5, 0) {};
+		\node [style=NONE] (16) at (4, 2.25) {};
+		\node [style=none] (17) at (4.75, 2.5) {};
+		\node [style=none] (18) at (4.5, 3.25) {};
+		\node [style=none] (19) at (3.75, 3) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=new edge style 0] (15.center)
-			 to [bend left=45, looseness=0.75] (12.center)
-			 to [bend left] (14.center)
-			 to [in=0, out=-105] (13.center)
-			 to [bend left] cycle;
+			 to [in=180, out=90] (12.center)
+			 to [in=90, out=0] (14.center)
+			 to [in=0, out=-90] (13.center)
+			 to [in=-90, out=180] cycle;
 		\draw [style=big dash thick] (5.center)
 			 to [bend left=45, looseness=1.50] (3.center)
 			 to [bend left=45, looseness=1.50] (4.center)
@@ -31,5 +35,9 @@
 		\draw [style=EDGE] (8) to (2);
 		\draw (2) to (11);
 		\draw (11) to (1);
+		\draw (1) to (16);
+		\draw (16) to (19.center);
+		\draw (18.center) to (16);
+		\draw (17.center) to (16);
 	\end{pgfonlayer}
 \end{tikzpicture}

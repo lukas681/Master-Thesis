@@ -52,25 +52,9 @@ Currently, our reduction rules do not rely on the decomposition itself, but rath
 
 \section{Definitions}
 
-We are now giving ....
-
-First, we would like to define what we consider to be a \textit{reduced} graph. 
-
-\begin{definition}[Reduced Graph {\cite[p. 13]{Garnero2018}} and \cite{Garnero2017}]
-    A Graph G is reduced under a set of rules if either none of these rules can be applied to G or the application of any of them creates a graph isomorphic to G.
-\end{definition}\label{def:reduced}
-
-From an algorithmic point of view, all our given reduction rules are local and only concern the neighborhood of at most two vertices and replace them partially with gadgets of constant size. Now checking whether a graph after applying the rule has been changed can be trivially accomplished in constant time.
-
-In our case, we say G is reduced if none of the \cref{rgl:rone,rgl:rtwo,rgl:rthree} are modifying G any more.
-
-This differs from the definition usually given in literature where a graph G is \textit{reduced} under a set of reduction rules, if none of them can be applied to G anymore (Compare e.g. \cite{Fomin2019}). The reason is that we are giving reduction rules (see \cref{rgl:rone} or \cref{rgl:rtwo}) that could be applied \textit{ad infinitum} sending us into an endless loop without ever changing G any more. Our definition guarantees termination in that case.
-
-In order to achieve this, we will first split up the neighborhood of one vertice and a pair of vertices into three distinct subsets, give some nice properties about them, and then state the corresponding reduction rules.  
-
 In this section, we are giving some key definitions that are used in our reduction rules for obtaining the linear kernel. These as inspired by those given by Garnero and Stau (\ptdom in \cite[]{Garnero2014} or \prbdom in \cite{Garnero2017a}) and already relied on those given by Alber et al. in \cite[]{Alber2004} for \pdom.
 
-The idea is to split up the neighborhood of a single vertex and a pair of vertices into three (disjoint)  subsets that make a statement about how strongly the neighborhood is connected with the rest of the graph.
+The idea is to split the neighborhood of a single vertex and a pair of vertices into three distinct subsets which intuitively gives us a level of ``confinement'' of the vertices inside the neighborhood with respect to the rest of the graph (\cite{Garnero2018}). That is, they make a statement on how closely parts of the neighborhood are connected with the rest of the graph. 
 
 \begin{definition}
     \label{def:nv}
@@ -88,26 +72,28 @@ The idea is to split up the neighborhood of a single vertex and a pair of vertic
     \begin{equation*}
         \tikzfig{fig/tikz/neighborhoods-single-vertex}
     \end{equation*}
-    \caption[The neighbordhood of a Single Vertex $v$]{\textit{The neighborhood of a vertex split to $N_1(v)$ (blue), $N_2(v)$ (purple), and $N_3(v)$ (green). Note that all purple vertices have at least one blue neighbor making setting them in-between the green and blue vertices.}}
+    \caption[The neighbordhood of a single Vertex $v$]{\textit{The neighborhood of a single vertex v split to $N_1(v)$ (purple), $N_2(v)$ (blue), and $N_3(v)$ (green). $M_1(v)$ are those having neighbors outside $N(v)$, $N_2(v)$ are a buffer between $N_1(v)$ and $N_3(v)$, and $N_3(v)$-vertices are confined in $N(v)$}}
 \end{figure}
-% TODO Improve this description
 
 Intuitively, these sets are classifying neighbors of $v$ by how much they can interact with the rest of the graph and how much they are locally centered around $v$:
 
-\noindent \textbf{$\mathbf{N_1(v)}$} are all neighbors of $v$ which have at least one adjacent vertex that is outside of $N(v)$ and therefore connect $v$ with the rest of the graph. They could possibly belong to a solution.
+\begin{xltabular}{\textwidth}{lX}
+\textbf{$\mathbf{N_1(v)}$} & are all neighbors of $v$ which have at least one adjacent vertex that is outside of $N(v)$ and therefore connect $v$ with the rest of the graph. They could possibly belong to a \sdom. \\
+
+\textbf{$\mathbf{N_2(v)}$} & are all neighbors of $v$ that have at least one neighbor in $N_1(v)$. These vertices do not have any function as a dominating vertex and can be seen as a \textit{buffer} bridging $N_1(v)$-vertices with those from $N_3(v) \cup \{ v \}$. Furthermore, they are useless as witnesses, because either we can replace them by $v$ (sharing the same neighborhood) or when being a witness for $v$, we replace it with one $z \in N_1(v)$.\\
+
+$\mathbf{N_3(v)}$ & vertices are sealed off from the rest of the graph. They are useless as dominating vertices: For all $z \in N_3(v)$ it holds that  $N(z) \subseteq N(v)$ by definition and thus, we would always prefer $v$ as a dominating vertex instead of $z$. Nevertheless, they can be important as a witness for $v$ in the case that $N_1(v) \cup N_2(v) =\emptyset $. We are using this observation in \cref{rgl:rone} where we shrink $\abs{N_3(v)} \leq 1$.
+\end{xltabular}
+
 % TODO What can they dominate
-
-\noindent \textbf{$\mathbf{N_2(v)}$} are all neighbors of $v$ that have at least one neighbor from $N_1(v)$. These vertices do not have any function as a dominating vertex and can be seen as a \textit{buffer} bridging $N_1(v)$-vertices with those from $N_3(v) \cup \{ v \}$. Furthermore, they are useless as witnesses, because either we can replace them by $v$ (sharing the same neighborhood) or when being a witness for $v$, we replace it with one $z \in N_1(v)$.
-
 % TODO This sentence? Every path to a vertex outside N(v) will take more than 2 steps. 
 % TODO Grammar 
-\noindent Vertices from $\mathbf{N_3(v)}$ are unmitigated and sealed off from the rest of the graph. They are useless as dominating vertices: For all $z \in N_3(v)$ it holds that  $N(z) \subseteq N(v)$ by definition and thus, we would always prefer $v$ as a dominating vertex instead of $z$. Nevertheless, they can be important as a witness for $v$ in the case that $N_1(v) \cup N_2(v) =\emptyset $. We are using this observation in \cref{rgl:rone} where we shrink $\abs{N_3(v)} \leq 1$
 
-In the following, we are going to further extend this definition to a pair of vertices. Using this, \cref{rgl:rtwo} will later try to reduce the neighborhood of two vertice, and similar to \ref{def:nv}, we can deduce some properties.
+Next, we are going to extend this notation also to a pair of vertices. Using this, \cref{rgl:rtwo} will later try to reduce the neighborhood of two vertice, and similar to \cref{def:nv}, we can observe nice properties. Again, the idea is to classify how strongly the shared neighborhood $N(v) \cup N(w)$ is connected with the rest of the graph.
 
 %TODO Where is it used?
 \begin{definition}
-    Let \G be a graph and $v,w \in V$. We denote by $N(v,w) = N(v) \cup N(w)$ the neighborhood of the pair $v,w$. We split $N(v,w)$ into three subsets:
+    Let \G be a graph and $v,w \in V$. We denote by $N(v,w) := N(v) \cup N(w)$ the shared neighborhood of the pair $v,w$ and split $N(v,w)$ into three distinct subsets:
     \begin{align}
         N_1(v,w) & = \{u \in N(v,w) \mid N(u) \setminus (N(v,w)\cup \{v,w\}) \neq \emptyset \}  \\
         N_2(v,w) & = \{u \in N(v,w)\setminus N_1(v,w) \mid N(u) \cap N_1(v,w) \neq \emptyset \} \\
@@ -116,28 +102,42 @@ In the following, we are going to further extend this definition to a pair of ve
     Again, for $i,j \in [1,3]$, we denote $N_{i,j}(v,w) = N_i(v,w) \cup N_j(v,w)$.
 \end{definition}
 
-Again, $N_1(v,w)$ are those connected with the rest of the graph, $N_2(v, w)$ are a \textit{buffer} between $N_3(v,w) \cup \{v, w\}$ and $N_3(v,w)$ are those isolated from the rest of the graph, but can still be useful as a witness for $v$ or $w$. 
+$N_1(v,w)$ contains those vertices connected with the rest of the graph, $N_2(v, w)$ are a \textit{buffer} between $N_3(v,w) \cup \{v, w\}$ and $N_(v,w)$, and $N_3(v,w)$ are those vertices isolated from the rest of the graph. 
 
 \begin{figure}[!ht]
     \begin{equation*}
         \tikzfig{fig/tikz/neighborhoods-two-vertices}
     \end{equation*}
-    \caption[$N_i(v,w)$]{\textit{TODO}}
+    \caption[$N_i(v,w)$]{\textit{The neighborhood of a pair of vertices. N_3(v,w)
+    
+    Furthermore, note that $z \in N_1(w)$, because there is an edge to $v$, but $z \notin N_1(v,w)$ and $z \in N_3(v,w)$}}
     \label{fig:neighborhoodDouble}
 \end{figure}
 
+Note that vertices in $N_i(v)$ do not necessarily also correspond to a vertex in $N_i(v,w)$. For example \cref{fig:neighborhoodDouble} gives an example, where $z$ belongs to $N_1(v)$, but not to $N_1(v,w)$.
 
-Note that for example a vertex $z \in N_1(v) \notimplies z \in N_1(v,w)$. Figure~\ref{fig:neighborhoodWeird} gives an example, where $z$ belongs to $N_1(v)$, but not to $N_1(v,w)$.
+%\begin{figure}[ht]
+%    \begin{equation*}
+%        \tikzfig{fig/tikz/neighborhoods-odd}
+%    \end{equation*}
+%    \caption[Counterexample]{\textit{The vertex $z$ is in $N_1(v)$, because there is an edge pointing outside of $N(v)$ to $w$. Contrary, it is not in $N_1(v,w)$, but now  belongs to $N_3(v,w)$, because we are considering the ``shared'' neighborhood}}
+%    \label{fig:neighborhoodWeird}
+%\end{figure}
 
+\subsubsection{Reduced Graph}
 
-% TODO FIX HERE
-\begin{figure}[ht]
-    \begin{equation*}
-        \tikzfig{fig/tikz/neighborhoods-odd}
-    \end{equation*}
-    \caption[Counterexample]{\textit{The vertex $z$ is in $N_1(v)$, because there is an edge pointing outside of $N(v)$ to $w$. Contrary, it is not in $N_1(v,w)$, but now  belongs to $N_3(v,w)$, because we are considering the ``shared'' neighborhood}}
-    \label{fig:neighborhoodWeird}
-\end{figure}
+Before stating the reduction rules, we want to clarify when we consider a graph to be a \textit{reduced}. 
+
+\begin{definition}[Reduced Graph {\cite[p. 13]{Garnero2018}} and \cite{Garnero2017}]\label{def:reduced}
+    A Graph G is reduced under a set of rules if either none of them can be applied to G or the application of any of them creates a graph isomorphic to G.
+\end{definition}
+
+This definition differs from the definition usually given in literature where a graph G is \textit{reduced} under a set of reduction rules, if none of them can be applied to G anymore (compare e.g.\cite{Fomin2019}). Some of our reduction rules (\cref{rgl:rone} or \cref{rgl:rtwo}) could be applied \textit{ad infinitum} creating an endless loop that does not change G any more. Our definition guarantees termination in that case.
+
+% TODO Why can that be done?
+All of the given reduction rules are local and only need the neighborhood of at most two vertices and replace them partially with gadgets of constant size. Now checking whether a graph after applying the rule has been isomorphically changed can be trivially accomplished in constant time.
+
+In our case, we say G is reduced if all of the \cref{rgl:rone,rgl:rtwo,rgl:rthree} have exhaustively been applied.
 
 \subsection{Regions in Planar Graphs}
 
