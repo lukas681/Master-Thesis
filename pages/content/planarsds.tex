@@ -195,8 +195,7 @@ We now have all the definitions ready to formally a maximal \dreg on planar grap
 \end{figure}
 
 % TODO: Wording: "kernel" prsdfecise enough here.
-We are introducing a special subset of a region, namely \textit{simple region} where every vertex is a common neighbor of $v$ and $w$. They will appear in many unexpected astonishing places and are an important tool to operate on small parts of a plane graph. The upcoming \cref{rgl:rthree} will bound the size of these \textit{simple regions}. Interestingly, in the first version of the paper about the linear kernel for \ptdom (\cite{Garnero2014}), they were not given independently, but covered by one of their reduction rule (Rule 2). As it turned out, the analysis is getting simpler if we treat them in a seperate rule (In our case: \cref{rgl:rthree}) and so did Garnero and Stau in a revised version of their paper four years later (\cite{Garnero2018}).
-
+We are introducing a special subset of a region, namely \textit{simple region} where every vertex is a common neighbor of $v$ and $w$. They will appear in many unexpected astonishing places and are an important tool to operate on small parts of a plane graph. The upcoming \cref{rgl:rthree} will bound the size of these \textit{simple regions}. Interestingly, in the first version of the paper about the linear kernel for \ptdom (\cite{Garnero2014}), they were not given independently, but covered by one of their reduction rules (Rule 2). As it turned out, the analysis is getting simpler if we treat them in a seperate rule (In our case: \cref{rgl:rthree}) and so did Garnero and Stau in a revised version of their paper four years later (\cite{Garnero2018}).
 
 \begin{definition}
     A simple $vw$-region is a $vw$-region such that:
@@ -207,21 +206,23 @@ We are introducing a special subset of a region, namely \textit{simple region} w
     \end{enumerate}
 \end{definition}
 
-\cref{fig:simpleRegionExample} shows an example of a simple region containing  9 vertices.
+\cref{fig:simpleRegionExample} shows an example of a simple region containing 9 distinct vertices.
 
-% TODO: Add colors here
 \begin{figure}[!ht]
     \begin{equation*}
         \tikzfig{fig/tikz/simple-region-example}
     \end{equation*}
-    \caption[A Simple Region]{\textit{A simple region with two vertices from $N_1(v,w)$ setting the boundary, two vertices from $N_2(v,w)$ and some vertices from $N_3(v,w)$ in between}}
+   \caption[A Simple Region]{\textit{A simple region with two vertices from $N_1(v,w)$ (purple) setting the boundary, two vertices from $N_2(v,w)$ (blue) and some vertices from $N_3(v,w)$ (green) in between.}}
     \label{fig:simpleRegionExample}
 \end{figure}
 
 Later we will use properties of the underlying multigraph of a \dreg. Refer to \cref{fig:maxRegionDecompose} for an example.
+
+\begin{minipage}{\textwidth}
 \begin{definition}
     Let \G be a plane graph, let $D \subseteq V$ and let $\mathfrak{R}$ be a \dreg of G. The underlying multigraph $G_\mathfrak{R} = (V_\mathfrak{R}, E _\mathfrak{R})$ of $\mathfrak{R}$ is such that  $V_\mathfrak{R} = D$ and there is an edge $\{v,w\} \in E_\mathfrak{R}$ for each vw-region $R(v,w) \in \mathfrak{R}$
 \end{definition}
+\end{minipage}
 %% TODO: Example for a multigraph
 
 \section{The Big Picture}
