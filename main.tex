@@ -30,6 +30,7 @@
 \usepackage{tablefootnote}
 \usepackage{tabularx}
 \usepackage{xltabular}
+% \usepackage{soul} % Nice Textdecorations, not need right now ...
 
 \usepackage{graphics}
      \graphicspath{{fig/}}
@@ -80,11 +81,12 @@
 \input{pages/layout/disclaimer}
 \input{pages/layout/acknowledgments}
 \tableofcontents
-\input{pages/abstract}
+\input{pages/util/abstract}
 
 \mainmatter~
-    \include{pages/theory}
-    \include{pages/planarsds}
+    \include{pages/introduction/intro.tex}
+    \include{pages/theory/theory}
+    \include{pages/content/planarsds}
 
 \backmatter~
   \microtypesetup{protrusion=false}

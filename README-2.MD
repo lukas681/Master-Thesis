@@ -19,6 +19,7 @@
 17) Color scheme for regions and vertices consistent?
 18) Which paper should I use as a reference.
 19) Make side notes
+20) Remove duplicate labels in the whole document
 
 TODO: Look up unknown graph theoretic terms for me.
 
