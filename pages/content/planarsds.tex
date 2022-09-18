@@ -45,10 +45,7 @@ We are going to show that, with some slight modifications, the kernel described 
 
 The main idea is to use the fact that given a plane graph \G and given a vertex set $D \subseteq V$, G can be decomposed into at most $(3 \cdot \abs{D} -6)$ so-called ``regions'' (\cref{def:region}). If D is now a given \sdom~of size $k := \abs{D}$, we know that the number of regions will depend linearly on k. If we define  \textit{reduction rules}(\cref{rgl:rone,rgl:rtwo,rgl:rthree}) that try to minimize the number of vertices in and around a region we can overally bound the size of G in $k$.
 
-The reduction rules 
-% Reduction Rules, what are they doing
-
-Currently, our reduction rules do not rely on the decomposition itself, but rather consider the neighborhood of every pair of vertices.
+As they are now, our reduction rules do not rely on the decomposition itself, but rather consider the neighborhood of every pair of vertices in the graph.
 
 \section{Definitions}
 
@@ -122,7 +119,7 @@ Note that vertices in $N_i(v)$ do not necessarily also correspond to a vertex in
 %    \label{fig:neighborhoodWeird}
 %\end{figure}
 
-\subsubsection{Reduced Graph}
+\subsection{Reduced Graph}
 
 Before stating the reduction rules, we want to clarify when we consider a graph to be a \textit{reduced}. 
 
@@ -130,22 +127,15 @@ Before stating the reduction rules, we want to clarify when we consider a graph 
     A Graph G is reduced under a set of rules if either none of them can be applied to G or the application of any of them creates a graph isomorphic to G.
 \end{definition}
 
-This definition differs from the definition usually given in literature where a graph G is \textit{reduced} under a set of reduction rules, if none of them can be applied to G anymore (compare e.g.\cite{Fomin2019}). Some of our reduction rules (\cref{rgl:rone} or \cref{rgl:rtwo}) could be applied \textit{ad infinitum} creating an endless loop that does not change G any more. Our definition guarantees termination in that case.
-
-% TODO Why can that be done?
-All of the given reduction rules are local and only need the neighborhood of at most two vertices and replace them partially with gadgets of constant size. Now checking whether a graph after applying the rule has been isomorphically changed can be trivially accomplished in constant time.
+This definition differs from the definition usually given in literature where a graph G is \textit{reduced} under a set of reduction rules, if none of them can be applied to G anymore (compare e.g. \cite{Fomin2019}). Some of our reduction rules (\cref{rgl:rone} or \cref{rgl:rtwo}) could be applied \textit{ad infinitum} creating an endless loop that does not change G any more. Our definition guarantees termination in that case. All of the given reduction rules are local and only need the neighborhood of at most two vertices and replace them partially with gadgets of constant size. Now checking whether a graph after applying the rule has been isomorphically changed can be trivially accomplished in constant time.
 
 In our case, we say G is reduced if all of the \cref{rgl:rone,rgl:rtwo,rgl:rthree} have exhaustively been applied.
 
 \subsection{Regions in Planar Graphs}
 
-We will introduce a concept that leads towards a new perspective looking at planar graphs, regions
-% TODO Quote Alber et al.
+Alber et al. (\cite{Alber2004}) introduced a novel approach on how to look at planar graphs. In their analysis they gave an construtive algorithms on how to decompose a planar graph into local areas which they call ``regions''. As Garnero and Stau (\cite{Garnero2018}) seized these results in their analysis of \ptdom. Using this as a basis, we will transfer them to \sdom as well.  
 
-As it is possible to bound the number of total $vw$-regions in a planar graph, we can analyze the local impacts to these regions from our future reduction rules. 
-
-% TODO Maybe remove this.
-It might be interesting to note that the authors of \cite{Garnero2017} have revised their original definitions to set the basis for a more formal analysis.
+%It might be interesting to note that the authors of \cite{Garnero2017} have revised their original definitions to set the basis for a more formal analysis.
 
 \begin{definition}
     Two simple paths $p_1, p_2$ in a plane graph G are \underline{confluent} if:
