@@ -11,7 +11,7 @@ We are going to present a polynomial-time preprocessing procedure which gives a 
 \textbf{Problem} & \textbf{Best Known Kernel} & \textbf{Source} \\
 \dom &  $67k$ & \cite{Diekert2005}\footnotemark\\
 \tdom &  $410k$ & \cite{Garnero2018}\footnotemark \\
-\sdom & \kernelsize & This Work \\
+\sdom & $\kernelsize k$ & This Work \\
 & & \\
 \eddom & $14k$  & \cite[p. 375 - 386, Thereom 2]{Arge2007} \\
 \efdom &  $84k$ & \cite[p. 375 - 386, Theorem 4]{Arge2007} \\
@@ -197,14 +197,16 @@ We now have all the definitions ready to formally a maximal \dreg on planar grap
 % TODO: Wording: "kernel" prsdfecise enough here.
 We are introducing a special subset of a region, namely \textit{simple region} where every vertex is a common neighbor of $v$ and $w$. They will appear in many unexpected astonishing places and are an important tool to operate on small parts of a plane graph. The upcoming \cref{rgl:rthree} will bound the size of these \textit{simple regions}. Interestingly, in the first version of the paper about the linear kernel for \ptdom (\cite{Garnero2014}), they were not given independently, but covered by one of their reduction rules (Rule 2). As it turned out, the analysis is getting simpler if we treat them in a seperate rule (In our case: \cref{rgl:rthree}) and so did Garnero and Stau in a revised version of their paper four years later (\cite{Garnero2018}).
 
+\begin{minipage}{\textwidth}
 \begin{definition}
     A simple $vw$-region is a $vw$-region such that:
-    
     \begin{enumerate}
         \item its boundary paths have length at most 2, and
         \item $V(R) \setminus \{v,w\} \subseteq N(v) \cap N(w)$.
     \end{enumerate}
+
 \end{definition}
+\end{minipage}
 
 \cref{fig:simpleRegionExample} shows an example of a simple region containing 9 distinct vertices.
 
@@ -216,18 +218,17 @@ We are introducing a special subset of a region, namely \textit{simple region} w
     \label{fig:simpleRegionExample}
 \end{figure}
 
-Later we will use properties of the underlying multigraph of a \dreg. Refer to \cref{fig:maxRegionDecompose} for an example.
+In the analysis, we will also use properties of the \textit{underlying multigraph} of a \dreg $\mathfrak{R}$. Refer to \cref{fig:maxRegionDecompose} for an example.
 
 \begin{minipage}{\textwidth}
-\begin{definition}
+\begin{definition}\label{def:unterlyingMG}
     Let \G be a plane graph, let $D \subseteq V$ and let $\mathfrak{R}$ be a \dreg of G. The underlying multigraph $G_\mathfrak{R} = (V_\mathfrak{R}, E _\mathfrak{R})$ of $\mathfrak{R}$ is such that  $V_\mathfrak{R} = D$ and there is an edge $\{v,w\} \in E_\mathfrak{R}$ for each vw-region $R(v,w) \in \mathfrak{R}$
 \end{definition}
 \end{minipage}
-%% TODO: Example for a multigraph
 
 \section{The Big Picture}
-
-TODO Text here
+\cref{fig:overview} gives a high level view on how we are going to obtain the linear kernel for \psdom. We will first five three different reduction rules (\cref{rgl:rone,rgl:rtwo,rgl:rthree} are green in the overview) and proof that they preserve the solution size $k$ and run in polynomial-time. 
+The idea is then to use a maximal \dreg~$\mathfrak{R}$ to bound the number of vertices that fly around a given region $R \in \mathfrak{R}$. This will lead us to a bound on the number of vertices inside R and those that are not belonging to any $vw$-region in $\mathfrak{R}$. We will often exploit \cref{rgl:rthree} and find hidden simple regions which we know are of constant size by \cref{lemma:simpleregionbound}.
 
 \begin{figure}[!ht]
     \begin{equation*}
@@ -236,43 +237,41 @@ TODO Text here
         \tikzfig{fig/tikz/overview}
     }
     \end{equation*}
-    \caption[Structure of the Proof]{\textit{The plan for obtaining a linear kernel for \psdom. TODO: Check whether R1-3 apply for gray lemmas}}\label{fig:overview}
+    \caption[Structure of the Proof]{\textit{The plan for obtaining a linear kernel for \psdom. Starting with the reduction rules we will try to derivate the number of vertices inside and outside of a $vw$-region.}}\label{fig:overview}
 \end{figure}
 
-
-
-% TODO for more examples refer to.
-\section{Reduction Rules}
+\section{The Reduction Rules}
 
 Following the approach by \cite{Garnero2014}, we are now stating reduction rules that after exhaustive application will expose a linear kernel. 
-
 \subsection{Reduction Rule I: Getting Rid of unneccessary  $N_3(v)$ vertices}
-%TODO More text:
-An exemplarly application of the rule is shown in figure \ref{fig:ruleOne}
+
+% Maybe we can even remov all N_3's, because later, only the case v in a pair could be important. We do not have a connected graph.
+The idea behind our first rule is the observation that $N_3(v)$-vertices can only dominate $v$ or vertices from $N_2(v)$ by definition. In both cases we can just pick $v$ as the dominating vertex as $N_3(v) \subseteq N(v)$. But in any case we have to preserve at least one vertex $v' \in N(v)$ as a witness for $v$, which could possibly come from $N_2()$. An example for this rule is shown in figure \ref{fig:ruleOne}.
 
 \begin{figure}[!ht]
     \begin{equation*}
         \tikzfig{fig/tikz/ruleOne}
     \end{equation*}
-    \caption{\textit{TODO}}
+    \caption{\textit{Simplyfining $N_{23}(v)$: As $N_3(v) \geq 1$, we remove $N_{23}(v)$ and add a new witness $v'$. $N_1(v)$ remains untouched.}}
     \label{fig:ruleOne}
 \end{figure}
 
-
-
 \begin{rgl}\label{rgl:rone}
     Let \G be a graph and let $v \in V$. If $\abs{\Nthreev} \geq 1$:
-    
     \begin{itemize}
         \item remove $\Nthreev$ from G,
         \item add a vertex $v'$ and an edge $\{v, v'\}$
     \end{itemize}
-    
 \end{rgl}
+
+We are now proofing the correctness of this reduction rule.
+
 \begin{lemma}\label{lemma:correctnessone}
     Let \G be a a graph and let $v \in V$. If $G'$ is the graph obtained by applying \cref{rgl:rone}   on $V$, then G has SDS of size k if and only if G' has one.
 \end{lemma}
 \begin{proof}
+TODO
+
     This will be the proof for this lemma X 
 \end{proof}
 

@@ -30,5 +30,6 @@
 		\draw [style=simple directed edge] (8) to (11);
 		\draw [style=simple directed edge, bend right] (8) to (12);
 		\draw [style=simple directed edge] (8) to (6);
+		\draw [style=simple directed edge, in=165, out=-15] (10) to (5);
 	\end{pgfonlayer}
 \end{tikzpicture}
