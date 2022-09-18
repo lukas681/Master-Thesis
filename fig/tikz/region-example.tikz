@@ -22,12 +22,14 @@
 		\node [style=BLACK] (21) at (-11, -2) {};
 		\node [style=BLACK] (22) at (-7.25, -3.25) {};
 		\node [style=BLACK] (23) at (-7.25, -4) {};
-		\node [style=BLACK] (25) at (0, 0) {};
-		\node [style=DOM, label={above:$d_2$}] (33) at (0, 0) {};
-		\node [style=DOM] (38) at (4.5, -1) {};
-		\node [style=DOM] (39) at (7, -2.5) {};
-		\node [style=none] (42) at (4.25, -0.5) {$d_3$};
-		\node [style=none] (43) at (7.5, -1.75) {$d_1$};
+		\node [style=BLACK] (25) at (1, 0) {};
+		\node [style=DOM, label={above:$d_2$}] (33) at (1, 0) {};
+		\node [style=DOM] (38) at (5.5, -1) {};
+		\node [style=DOM] (39) at (8, -2.5) {};
+		\node [style=none] (42) at (5, 0) {$d_3$};
+		\node [style=none] (43) at (8.5, -1.75) {$d_1$};
+		\node [style=none] (44) at (0, 3.5) {};
+		\node [style=none] (45) at (0, -5.25) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=FILLPURPLE] (6.center)
@@ -86,6 +88,7 @@
 		\draw (33) to (38);
 		\draw (38) to (39);
 		\draw [bend right, looseness=0.25] (33) to (39);
-		\draw [bend right=60, looseness=0.75] (39) to (33);
+		\draw [bend right=60] (39) to (33);
+		\draw [style=EDGEDASHED] (44.center) to (45.center);
 	\end{pgfonlayer}
 \end{tikzpicture}

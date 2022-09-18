@@ -135,9 +135,7 @@ In our case, we say G is reduced if all of the \cref{rgl:rone,rgl:rtwo,rgl:rthre
 
 Alber et al. (\cite{Alber2004}) introduced a novel approach on how to look at planar graphs. In their analysis they gave an construtive algorithms on how to decompose a planar graph into local areas which they call ``regions''. Vaguely said, a region is a set of vertices that are enclosed by a boundary path.
 
-For a formal definition, we will now give a series of definitions that are based on those given by Garnero and Stau (\cite{Garnero2014}) and will lead toward a clean defintion of a \textit{region}.
-
-%It might be interesting to note that the authors of \cite{Garnero2017} have revised their or\iginal definitions to set the basis for a more formal analysis.
+The following definitions are based on those given by Garnero and Stau (\cite{Garnero2014}) and will lead toward a clean defintion of a \textit{region} and what we understand as a \dreg.
 
 \begin{definition}
     Two simple paths $p_1, p_2$ in a plane graph G are \underline{confluent} if:
@@ -165,9 +163,6 @@ For a formal definition, we will now give a series of definitions that are based
     
 \end{definition}
 
-
-We now have all the definitions ready to formally define a decomposition technique for planar graphs:
-
 \begin{definition}
     Two regions $R_1$ and $R_2$ are non-crossing, if:
     \begin{enumerate}
@@ -175,6 +170,8 @@ We now have all the definitions ready to formally define a decomposition techniq
         \item the boundary paths of $R_1$ are pairwise confluent with the ones in $R_2$
     \end{enumerate}
 \end{definition}
+
+We now have all the definitions ready to formally a maximal \dreg on planar graphs:
 
 \begin{definition}\label{def:region}
     Given a plane graph \G and $D\subseteq V$, a \underline{$D-region$ Decomposition} of G is a set $\mathfrak{R}$ of regions with poles in D such that: 
@@ -184,21 +181,22 @@ We now have all the definitions ready to formally define a decomposition techniq
     \end{enumerate}
     We denote $V(\mathfrak{R}) = \bigcup\limits_{R \in \mathfrak{R}} V(R)$. 
     
-    \noindent A \dreg is \underline{maximal} if there is no region $R \notin \mathfrak{R}$ such that $\mathfrak{R}' = \mathfrak{R} \cup \{R\}$ is a \dreg with $V(\mathfrak{R}) \subsetneq V(\mathfrak{R}')$
+    \noindent A \dreg is \underline{maximal} if there is no region $R \notin \mathfrak{R}$ such that $\mathfrak{R}' = \mathfrak{R} \cup \{R\}$ is a \dreg~with $V(\mathfrak{R}) \subsetneq V(\mathfrak{R}')$.
 \end{definition}
 
 
-\cref{fig:maxRegionDecompose} gives an example of how to decompose a graph into a maximal $D-region$ decomposition with a given \sdom of size 3.
+\cref{fig:maxRegionDecompose} gives an example of how to decompose a graph into a maximal $D-region$ decomposition with a given \sdom $D$ of size 3.
 
 \begin{figure}[!ht]
     \begin{equation*}
         \tikzfig{fig/tikz/region-example}
     \end{equation*}
-    \caption[Region Decomposition]{\textit{left: A maximal \dreg $\mathfrak{R}$, where $D = \{d_1,d_2,d_3\}$ form a \sdom. There are two regions between $d_2$ and $d_1$, one region between $d_1$ and $d_3$ and one region between $d_2$ and $d_3$. Observe that some neighbors of $d_1$) are not part of any $vw$-region. For those, our reduction rules are going to take care of that and bound these number of vertices to obtain the kernel. Right: The corresponding underlying multigraph $G_{\mathfrak{R}}$}}\label{fig:maxRegionDecompose}
+    \caption[Region Decomposition]{\textit{Left: A maximal \dreg $\mathfrak{R}$, where $D = \{d_1,d_2,d_3\}$ form a \sdom. There are two regions between $d_2$ and $d_1$ (purple and pink), one region between $d_1$ and $d_3$ (green) and one region between $d_2$ and $d_3$ (purple). Observe that some neighbors of $d_1$ are not part of any $vw$-region. Our reduction rules are going to take care of of them and bound these number of vertices to obtain the kernel. Right: The corresponding underlying multigraph $G_{\mathfrak{R}}$. Every edge denotes a region between $d_i$ and $d_j$}}\label{fig:maxRegionDecompose}
 \end{figure}
 
 % TODO: Wording: "kernel" prsdfecise enough here.
-We are introducing a special subset of a region, a \textit{simple region} where every vertex is a common neighbor of $v$ and $w$. They will appear in many unexpected astonishing places and are an important tool to operate on small parts of a plane graph. The upcoming \cref{rgl:rthree} will bound the size of these \textit{simple regions}.
+We are introducing a special subset of a region, namely \textit{simple region} where every vertex is a common neighbor of $v$ and $w$. They will appear in many unexpected astonishing places and are an important tool to operate on small parts of a plane graph. The upcoming \cref{rgl:rthree} will bound the size of these \textit{simple regions}. Interestingly, in the first version of the paper about the linear kernel for \ptdom (\cite{Garnero2014}), they were not given independently, but covered by one of their reduction rule (Rule 2). As it turned out, the analysis is getting simpler if we treat them in a seperate rule (In our case: \cref{rgl:rthree}) and so did Garnero and Stau in a revised version of their paper four years later (\cite{Garnero2018}).
+
 
 \begin{definition}
     A simple $vw$-region is a $vw$-region such that:

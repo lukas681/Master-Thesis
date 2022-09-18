@@ -17,6 +17,11 @@
 		\node [style=none] (15) at (0.75, -3) {};
 		\node [style=none] (16) at (0, -3.5) {};
 		\node [style=none] (17) at (-0.75, -3) {};
+		\node [style=none] (18) at (-4, 4.75) {};
+		\node [style=none] (19) at (3.75, 4.75) {};
+		\node [style=none] (20) at (3.75, -2.75) {};
+		\node [style=none] (21) at (-4, -2.75) {};
+		\node [style=none] (22) at (-2.5, 5.75) {$N(v,w)$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=FILLGREEN] (0.center)
@@ -50,5 +55,9 @@
 		\draw (16.center) to (4);
 		\draw (4) to (15.center);
 		\draw (17.center) to (4);
+		\draw [style=EDGEDASHED] (18.center) to (21.center);
+		\draw [style=EDGEDASHED] (20.center) to (21.center);
+		\draw [style=EDGEDASHED] (20.center) to (19.center);
+		\draw [style=EDGEDASHED] (19.center) to (18.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
