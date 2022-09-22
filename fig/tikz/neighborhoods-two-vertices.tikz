@@ -60,6 +60,7 @@
 		\node [style=none] (60) at (-8.5, -4) {};
 		\node [style=none] (61) at (-8.5, 3.5) {};
 		\node [style=none] (63) at (7.25, 4.25) {$N(v,w)$};
+		\node [style=none] (64) at (2.75, 1.5) {$z$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (5) to (0);
