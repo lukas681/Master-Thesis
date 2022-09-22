@@ -20,6 +20,8 @@
 18) Which paper should I use as a reference.
 19) Make side notes
 20) Remove duplicate labels in the whole document
+21) Remove Journal Citings with the actual paper and not the editor
+22) Make arrows in Drawing thicker to make it better readable
 
 TODO: Look up unknown graph theoretic terms for me.
 

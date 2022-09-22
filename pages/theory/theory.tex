@@ -68,10 +68,18 @@ We call the class of graphs without any special restrictions ``General Graphs''.
 % Independent Set
 
 \section{Parametrized Complexity}
+We are now giving a short introduction into the world of parametrized complexity. 
+* General Introduction
+\paragraph{Ways to cope with NP-hard problem.}
 
 \subsection{Fixed Parameter Tractability}
 \paragraph{Fixed Parameter Intractability: The \hmath $W$ Hierarchy}
+
 \subsection{Kernelization}
+\subsubsection{Formal Definitions}
+\begin{definition}[TODO CITE]
+A \textit{Kernelization Algorithm} or \textit{kernel} is an algorithm $\mathfrak{A}$ for a parametrized Problem Q, that given an instance $(I,k)$ of Q works in polynomial timeand returns an equivalent instance $(I', k')$ of Q. Moreover, we require that $size_{\mathfrak{A}}(k) \leq g(k)$ for some computable function $g:\mathcal{N} \rightarrow \mathcal{N}$
+\end{definition}
 
 
 \chapter{On Parametrized Semitotal Domination}

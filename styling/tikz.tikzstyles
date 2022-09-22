@@ -31,5 +31,5 @@
 \tikzstyle{FILLGREENINVISBLE}=[-, draw=none, fill={rgb,255: red,232; green,255; blue,207}]
 \tikzstyle{ULTRAGRAY}=[-, draw={rgb,255: red,236; green,236; blue,236}]
 \tikzstyle{EDGEDASHED}=[-, dashed, fill=none]
-\tikzstyle{simple directed edge}=[->, draw=black]
+\tikzstyle{simple directed edge}=[->,, draw=black, thick]
 \tikzstyle{simple dashed directed edge}=[->, draw=black,dashed]
