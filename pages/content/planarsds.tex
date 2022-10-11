@@ -133,7 +133,7 @@ In our case, we say G is reduced if all of the \cref{rgl:rone,rgl:rtwo,rgl:rthre
 
 \subsection{Regions in Planar Graphs}
 
-Alber et al. (\cite{Alber2004}) introduced a novel approach on how to look at planar graphs. In their analysis they gave an construtive algorithms on how to decompose a planar graph into local areas which they call ``regions''. Vaguely said, a region is a set of vertices that are enclosed by a boundary path.
+Alber et al. (\cite{Alber2004}) introduced a novel approach on how to look at planar graphs. In their analysis they gave a constructive algorithm that decomposes a planar graph into local areas which they call ``regions''. Vaguely said, a region is a set of vertices that are enclosed by a boundary path in a fixed planar embedding.
 
 The following definitions are based on those given by Garnero and Stau (\cite{Garnero2014}) and will lead toward a clean defintion of a \textit{region} and what we understand as a \dreg.
 
@@ -246,13 +246,15 @@ Following the approach by \cite{Garnero2014}, we are now stating reduction rules
 \subsection{Reduction Rule I: Getting Rid of unneccessary  $N_3(v)$ vertices}
 
 % Maybe we can even remov all N_3's, because later, only the case v in a pair could be important. We do not have a connected graph.
-The idea behind our first rule is the observation that $N_3(v)$-vertices can only dominate $v$ or vertices from $N_2(v)$ by definition. In both cases we can just pick $v$ as the dominating vertex as $N_3(v) \subseteq N(v)$. But in any case we have to preserve at least one vertex $v' \in N(v)$ as a witness for $v$, which could possibly come from $N_2()$. An example for this rule is shown in figure \ref{fig:ruleOne}.
+The idea behind our first rule is the observation that a vertex $z \in N_3(v)$ dominates $v$ and vertices from $N_2(v)$. As $N(z) \subseteq N(v)$ and the observation that a witness for z is also a witness for v, we can use $v$ instead of $z$ as a dominating vertex.
+
+Nevertheless, $z$ can be a necessary witness for $v$ and is therefore required in a solution. To preserve this case, we make sure that at least one $N_3(v)$-vertex is preserved. An example for this rule is shown in \cref{fig:ruleOne}.
 
 \begin{figure}[!ht]
     \begin{equation*}
         \tikzfig{fig/tikz/ruleOne}
     \end{equation*}
-    \caption{\textit{Simplyfining $N_{23}(v)$: As $N_3(v) \geq 1$, we remove $N_{23}(v)$ and add a new witness $v'$. $N_1(v)$ remains untouched.}}
+    \caption{\textit{Simplifying $N_{23}(v)$: As $N_3(v) \geq 1$, we remove $N_{23}(v)$ and add a new witness $v'$. $N_1(v)$ remains untouched.}}
     \label{fig:ruleOne}
 \end{figure}
 
@@ -264,15 +266,29 @@ The idea behind our first rule is the observation that $N_3(v)$-vertices can onl
     \end{itemize}
 \end{rgl}
 
-We are now proofing the correctness of this reduction rule.
+
+\begin{fact}
+Let \G, $v \in V$ and $v' \in N_{2,3}(v)$. Any witness $w$ for $v'$ is also a witness for $v$. % Reformulate as v can be a witness for $w'$
+\end{fact}
+\begin{proof}
+    % Explain the definition better? Somehow I am not really happy with that.
+We know that $v'$ is witnessed by a vertex w with $d(v', w) \leq 2$. By definition of $N_{2,3}(v)$, we know that $w$ is either $v$, a direct neighbor of $v$ or can be reached via one step over a $N_1(v)$ vertex, hence $w \in N(v) \cup \bigcup\limits_{z \in N_1(v)} N(z) $. Clearly, $d(v, w) \leq 2$.
+\end{proof}
+
+We can now proof the correctness of this rule.
 
 \begin{lemma}\label{lemma:correctnessone}
-    Let \G be a a graph and let $v \in V$. If $G'$ is the graph obtained by applying \cref{rgl:rone}   on $V$, then G has SDS of size k if and only if G' has one.
+    Let \G be a a graph and let $v \in V$. If $G'$ is the graph obtained by applying \cref{rgl:rone}   on $G$, then G has SDS of size k if and only if G' has one.
 \end{lemma}
 \begin{proof}
-TODO
 
-    This will be the proof for this lemma X 
+    \begin{enumerate}
+        \item[$\Rightarrow$] Let $D$ be a \sdom in $G$ of size k. 
+        Because \cref{rgl:rone} has been applied, we can asume $N_3(v) \neq \emptyset$ in $G$. Now observe $v \in D$
+        
+        \item[$\Leftarrow$]  Asume $D'$ to be a \sdom in $G'$
+    \end{enumerate}
+
 \end{proof}
 
 \cautionbox{Note, that we need our definition of a reduced instance given in \ref{def:reduced}. If \cref{rgl:rthree} is being applied, it will still leave us with a vertex $z\in N_3(v)$ allowing this rule to be applied again. }
