@@ -368,24 +368,25 @@ Furthermore, we shortly denote $\bigcup \Dv = \bigcup\limits_{D \in \Dv}D $ and 
 
 % TODO Let's briefly discuss these cases. TODO application diagram
 
-Before proofing \cref{rgl:rtwo} we will deduce some \textit{Facts} which are implied by the definitions above.
+Before proofing \cref{rgl:rtwo} we will deduce some \textit{Facts} which are implied by the definitions above. These facts justify the definition of the sets $\Dvw$, $\Dv$ and $\Dw$.
 
-\begin{fact}
+\begin{fact}\label{fact:f1}
     Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref{rgl:rtwo} on $v,w$. If $\Dvw = \emptyset$, then G has a solution if and only if it has a solution containing at least one of the two vertices $\{v,w \}$.
 \end{fact}
 \begin{proof}
-
+Because $\Dvw = \emptyset$, any SDS of $G$ has to contain $v$ or $w$, or at least four vertices from $N_{2,3}$. In the second case, these four vertices can be replaced with $v$, $w$ and two neighbors of $v$ and $w$ still forming a \sdom.
 \end{proof}
 
-Now we are ready to prove the correctness of \cref{rgl:rtwo}
+The second fact states that if  $\Dv$ (resp. $\Dw$) is empty, too, we only need to consider solutions containing $w$ ($v$):
 
 \begin{fact}
-    Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref{rgl:rtwo} on $v, w$. If $\Dvw = \emptyset$ and $\Dv = \emptyset$ (resp. $\Dw = \emptyset$) then $G'$ has a solution if and only if it has a solution containing $v$ (resp. $w$).
+    Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref{rgl:rtwo} on $v, w$. If $\Dvw = \emptyset$ and $\Dw = \emptyset$ (resp. $\Dv = \emptyset$) then $G'$ has a solution if and only if it has a solution containing $v$ (resp. $w$).
 \end{fact}
 \begin{proof}
-
+As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ with $u, u' \in N_{2,3}(v,w)$ can dominate $N_3(v,w)$. Since also $\Dvw = \emptyset$ any SDS of G has to contain $v$ or at least four vertices by \cref{fact:f1}. In the last case, we again replace these four vertices again by $v$, $w$ and two neighbors respectively and we can conclude that $v$ belongs to the solution.
 \end{proof}
 
+\noindent Now we are ready to prove the correctness of \cref{rgl:rtwo}
 \begin{lemma}\label{lemma:correctnesstwo}
     Let \G be a plane graph, $v, w \in V$ and \GB be the graph obtained after application of \cref{rgl:rtwo} on the pair $\{v, w\}$. Then G has SDS of size k if and only if G' has SDS of size k.
 \end{lemma}
