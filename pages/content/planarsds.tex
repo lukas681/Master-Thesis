@@ -348,6 +348,7 @@ Furthermore, we shortly denote $\bigcup \Dv = \bigcup\limits_{D \in \Dv}D $ and 
             \item Remove $N_{2,3}(v,w)$
             \item Add vertices $v'$ and $w'$ and two edges $\{v, v'\}$ and $\{w, w'\}$
             \item If there was a common neighbor of $v$ and $w$ in $N_{2,3}(v,w)$ add another vertex $y$ and two connecting edges  $\{v, y\}$ and $\{y, w\}$
+            \item If there was no common neighbor of $v$ and $w$ in $N_{2,3}(v,w)$, but at least one path of length three from $v$ to $w$ via only vertices from $N_{2,3}(v,w)$ add two vertices $y$ and $y'$ and connecting edges $\{v,y\}$, $\{y, y'\}$ and $\{y', w\}$
         \end{itemize}
         \case{if $\Dv \neq  \emptyset$ and $D_w \neq \emptyset$}
 
@@ -365,6 +366,12 @@ Furthermore, we shortly denote $\bigcup \Dv = \bigcup\limits_{D \in \Dv}D $ and 
     \end{caseof}
 \end{rgl}
 
+In the first case, we know by fact \cref{fact:f2} that $v$ and $w$ must be in D. Therefore, we introduce two vertices $v'$ and $w'$ in $G'$ and remove $N_{2,3}(v,w)$ as they are dominated by $v$ and $w$. 
+But if we remove $N_{2,3}(v,w)$ entirely, we could lose solutions: First, the case that $v$ is a direct witness of $w$ ($d(v,w) = 2$) or that there is one intermediate witness on a path of lenth three from $v$ to $w$ via vertices in $N_{2,3}(v,w)$.
+
+entirely could break certain distance properties of $v$ and $w$ which is, 
+
+%Common neighbor necessary at all?  
 
 % TODO Let's briefly discuss these cases. TODO application diagram
 
@@ -379,21 +386,44 @@ Because $\Dvw = \emptyset$, any SDS of $G$ has to contain $v$ or $w$, or at leas
 
 The second fact states that if  $\Dv$ (resp. $\Dw$) is empty, too, we only need to consider solutions containing $w$ ($v$):
 
-\begin{fact}
+\begin{fact}\label{fact:f2}
     Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref{rgl:rtwo} on $v, w$. If $\Dvw = \emptyset$ and $\Dw = \emptyset$ (resp. $\Dv = \emptyset$) then $G'$ has a solution if and only if it has a solution containing $v$ (resp. $w$).
 \end{fact}
 \begin{proof}
 As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ with $u, u' \in N_{2,3}(v,w)$ can dominate $N_3(v,w)$. Since also $\Dvw = \emptyset$ any SDS of G has to contain $v$ or at least four vertices by \cref{fact:f1}. In the last case, we again replace these four vertices again by $v$, $w$ and two neighbors respectively and we can conclude that $v$ belongs to the solution.
 \end{proof}
 
+On the opposite side, if $\Dvw \neq \emptyset$, we ahve 
+
 \noindent Now we are ready to prove the correctness of \cref{rgl:rtwo}
 \begin{lemma}\label{lemma:correctnesstwo}
     Let \G be a plane graph, $v, w \in V$ and \GB be the graph obtained after application of \cref{rgl:rtwo} on the pair $\{v, w\}$. Then G has SDS of size k if and only if G' has SDS of size k.
 \end{lemma}
 \begin{proof}
-    We will prove the claim by analyzing the different cases separately.
-\end{proof}
+    We will prove the claim by analyzing the different cases of the rule independently.     
+    \begin{enumerate}
+        \item[$\Rightarrow$] Consider a \sdom $D$ in $G$. We show that $G'$ also has a SDS with $\abs{D'} \leq \abs{D}$
+        \begin{enumerate}
+            \item  $ \Dv = \emptyset  \wedge \Dw = \emptyset $: By applying \cref{fact:f2} twice, we know that $v, w \in D $.
+             
+            
+            
+            \item  $ \Dv \neq \emptyset \wedge \Dw \neq \emptyset $
+            \item  $ \Dv \neq \emptyset  \wedge \Dw = \emptyset$
+            \item  $ \Dv = \emptyset  \wedge \Dw \neq  \emptyset $: Symmetrical to previous case.
+        \end{enumerate}
 
+        \item[$\Leftarrow$] Let $D'$ be a \sdom in $G'$. We show that $G$ has a SDS $D$ with $\abs{D} \leq \abs{D'}$
+        \begin{enumerate}
+            \item  Test
+            \item  Test
+            \item  Test
+            \item Test
+        \end{enumerate} 
+    \end{enumerate}
+
+\end{proof}
+% What happens if D != empty?
 \subsection{Reduction Rule III: Shrinking Simple Regions}
 
 
