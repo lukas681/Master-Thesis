@@ -23,7 +23,8 @@
 21) Remove Journal Citings with the actual paper and not the editor
 22) Make arrows in Drawing thicker to make it better readable
 23) Check distance definitino: Waht about infinity? 
-24) Bipartite Graph defined
+24) Bipartite Graph definedp
+25) Remove case 2.and adjust all refs
 
 TODO: Look up unknown graph theoretic terms for me.
 

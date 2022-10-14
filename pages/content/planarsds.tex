@@ -324,7 +324,7 @@ It can be observed that in the worst case four vertices are needed to dominate $
 
 If $d(v,w) \leq 2$, it might even suffice to consider sets of size at most three, because then there would be an intermediate vertex that could witness $v$ and $w$ at the same time. We believe that the kernel can be improved by applying \cref{rgl:rtwo} only on those distanced two vertices. 
 
-Before we give the concrete reduction rule, we are going to define the following three sets and deduce some facts from them. Intuitively, we first try to find a set $\tilde D \subseteq N_{2,3}(v,w)$ of size at most three dominating $N_3(v,w)$ without using $v$ or $w$. If no such set exists, we allow $v$ (resp. $w$) and try to find one again. If we now find such a set, we can conclude that $v$ ($w$) must be part of a solution.
+Before we give the concrete reduction rule, we need to define three sets. Intuitively, we first try to find a set $\tilde D \subseteq N_{2,3}(v,w)$ of size at most three dominating $N_3(v,w)$ without using $v$ or $w$. If no such set exists, we allow $v$ (resp. $w$) and try to find one again. If we now find such a set, we can conclude that $v$ ($w$) must be part of a solution.
 
 \begin{definition}
 Let \G be a graph and let $v,w \in V$. We now consider all the sets that can dominate $N_3(v,w)$:
@@ -339,7 +339,7 @@ Furthermore, we shortly denote $\bigcup \Dv = \bigcup\limits_{D \in \Dv}D $ and 
 Let us now state \cref{rgl:rtwo}:
 
 \begin{rgl}\label{rgl:rtwo}
-    Let \G be a graph and two distinct $v,w \in V$. If $\Dvw = \emptyset$ we apply the following:
+    Let \G be a graph and two distinct $v,w \in V$. If $\mathbf{\Dvw = \emptyset}$ we apply the following:
     \begin{caseof}
         \case{if $\Dv =  \emptyset$ and $D_w = \emptyset$}
         
@@ -350,7 +350,7 @@ Let us now state \cref{rgl:rtwo}:
             \item If there was a common neighbor of $v$ and $w$ in $N_{2,3}(v,w)$ add another vertex $y$ and two connecting edges  $\{v, y\}$ and $\{y, w\}$
         \end{itemize}
         \case{if $\Dv \neq  \emptyset$ and $D_w \neq \emptyset$}
-        % TODO: If it can not be applied any more. Using R3 to reduce this      
+
         Do nothing\footnote{Originally, reduce Simple Regions [SAU]}
         
         \case{if $\Dv \neq  \emptyset$ and $D_w = \emptyset$}
