@@ -55,3 +55,11 @@ D-region Decomposition
  ## bibliopgraphy
 
  * JabRef for managing *.bib file
+
+
+# Sketches
+
+    %\[ D' = \begin{cases}
+    %        0                 &          \\
+    %        \frac{100-x}{100} & \mathbb{else} \\
+    %    \end{cases}
