@@ -4,7 +4,7 @@
 
 We are going to present a polynomial-time preprocessing procedure that gives a linear kernel for \psdom parametrized by solution size. Based on the technique first introduced by Alber et al. (\cite{Alber2004}) in 2004, an abundance of similar results to other domination problems emerged which gave us the belief that we can also transfer these results to \sdom. \cref{tbl:kernels} gives an overview of the status of kernels for the planar case on other domination problems. All of these results introduce reduction rules bounding the number of vertices inside so-called ``regions'' which can be obtained by a special decomposition of the graph. 
 
-% TODO: Add running time of these algorithm there?
+% TODO: Add the running time of this algorithm there.
 \begin{table}[h]
 \begin{minipage}[th]{\linewidth}
 \begin{tabularx}{\textwidth}{lcX}
@@ -17,7 +17,7 @@ We are going to present a polynomial-time preprocessing procedure that gives a l
 \pefdom &  $84k$ & \cite[p. 375 - 386, Theorem 4]{Arge2007} \\
 \prbdom &  $43k$ & \cite{Garnero2017a} \\
 \pcdom & $130k$  & \cite{Luo2013} \\
-\pdirdom &  ?  & \cite{Alber2006}  \\
+\pdirdom & ?  & \cite{Alber2006}  \\
 \end{tabularx}
 \footnotetext{There is also a master's thesis claiming a bound of 43k \cite{Halseth2016}, but a conference or journal version was not found.}
 \end{minipage}
@@ -278,7 +278,7 @@ By assumption $v'$ is witnessed by a vertex $w \neq v$ with $d(v', w) \leq 2$. I
 % we know that $w$ is either $v$, a direct neighbor of $v$ or can be reached via one step over a $N_1(v)$ vertex, hence $w \in N(v) \cup \bigcup\limits_{z \in N_1(v)} N(z) $. Clearly, $d(v, w) \leq 2$.
 \end{proof}
 
-We can now proof the correctness of this rule.
+We can now prove the correctness of this rule.
 
 \begin{lemma}\label{lemma:correctnessone}
     Let \G be a graph and let $v \in V$. If $G'$ is the graph obtained by applying \cref{rgl:rone}   on $G$, then G has \sdom of size k if and only if G' has one.
@@ -336,7 +336,7 @@ Let \G be a graph and let $v,w \in V$. We now consider all the sets that can dom
 Furthermore, we shortly denote $\bigcup \Dv = \bigcup\limits_{D \in \Dv}D $ and $\bigcup \Dw = \bigcup\limits_{D \in \Dw}D$.
 \end{definition}
 
-Let us now state \cref{rgl:rtwo}:
+\noindent We are now ready to state \cref{rgl:rtwo}:
 
 \begin{rgl}\label{rgl:rtwo}
     Let \G be a graph and two distinct $v,w \in V$. If $\mathbf{\Dvw = \emptyset}$ we apply the following:
@@ -366,6 +366,8 @@ Let us now state \cref{rgl:rtwo}:
 \end{rgl}
 
 
+% TODO Let's briefly discuss these cases. TODO application diagram
+
 Before proofing \cref{rgl:rtwo} we will deduce some \textit{Facts} which are implied by the definitions above.
 
 \begin{fact}
@@ -375,7 +377,7 @@ Before proofing \cref{rgl:rtwo} we will deduce some \textit{Facts} which are imp
 
 \end{proof}
 
-Now we are ready to proof the correctness of \cref{rgl:rtwo}
+Now we are ready to prove the correctness of \cref{rgl:rtwo}
 
 \begin{fact}
     Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref{rgl:rtwo} on $v, w$. If $\Dvw = \emptyset$ and $\Dv = \emptyset$ (resp. $\Dw = \emptyset$) then $G'$ has a solution if and only if it has a solution containing $v$ (resp. $w$).
@@ -388,7 +390,7 @@ Now we are ready to proof the correctness of \cref{rgl:rtwo}
     Let \G be a plane graph, $v, w \in V$ and \GB be the graph obtained after application of \cref{rgl:rtwo} on the pair $\{v, w\}$. Then G has SDS of size k if and only if G' has SDS of size k.
 \end{lemma}
 \begin{proof}
-    We will proof the claim by analysing the different cases seperately.
+    We will prove the claim by analyzing the different cases separately.
 \end{proof}
 
 \subsection{Reduction Rule III: Shrinking Simple Regions}
@@ -432,11 +434,10 @@ For the sake of completeness, we state an algorithm how a maximal \sr between tw
 
 \section{Bounding the Size of the Kernel}
 
-We are now putting all our pieces together in order to proof our main result: A linear bound on the kernel size. 
-In order to do so, we distinguish between those vertices that are covered by a maximal \dreg and those that are not. 
-In both cases our reduction rules bound the number of vertices to a consant size which means the kernel size does only depend on the number of regions of these decomposition. 
+We are now putting all our pieces together in order to prove our main result: A linear bound on the kernel size. To do so, we distinguish between those vertices that are covered by a maximal \dreg and those that are not. 
+In both cases, our reduction rules bound the number of vertices to a constant size which means the kernel size does only depend on the number of regions of these decompositions. 
 \cref{fig:maxRegionDecompose} states that for any solution D, we only have a linear number of regions that cover the whole graph. 
-In particular, we show that given a \sdom D of size k, there exist a maximal \dreg $\mathfrak{R}$ such that:
+In particular, we show that given a \sdom D of size k, there exists a maximal \dreg $\mathfrak{R}$ such that:
 
 \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
     \item $\mathfrak{R}$ has only at most $3 \abs{D} - 6$ regions
@@ -448,7 +449,7 @@ Combining these three parts will give us a linear kernel.
 
 \subsection{Bounding the Size of a Region}
 
-We start are more fine-grained analysis of the impact of the different cases of \cref{rgl:rtwo} on a $vw$-region. The main idea is to count the number of simple regions in the $vw$-region and than use the bound on the size of a simple region after \cref{rgl:rthree} was applied exhaustively and which was obtained in \cref{lemma:simpleregionbound}.   
+We start with a more fine-grained analysis of the impact of the different cases of \cref{rgl:rtwo} on a $vw$-region. The main idea is to count the number of simple regions in the $vw$-region and then use the bound on the size of a simple region after \cref{rgl:rthree} was applied exhaustively and which was obtained in \cref{lemma:simpleregionbound}.   
 
 We start by giving 
 
@@ -467,14 +468,14 @@ We start by giving
     Let $(v,u_1, u_2,w)$ and $(v, u_3, u_4, w)$ be the two boundary paths of $R(v,w)$. (A shorter path would only lead to a smaller bound).
     By definition of $N_2(v,w)$, vertices from $N_2(v,w) \cap V(R)$ are common neighbors of $v$ and $w$ and $u_i, i \in [4]$. By planarity, we can cover $N_2(v,w) \cap V(R)$ with at most 6 simple regions. To see this, imagine the graph where edges denote all possible simple $vw$-regions (See fig. \ref{fig:maxntwoinside}). There are at most 8 simple regions possible. but we have to remove at least two of them to maintain planarity.
     
-    Furthermore, asuming the graph to be reduced, any intermediate $N_3(v,w)$ which could possible seperate multiple simple regions between $v$ and $u_i$ has been deleted by \cref{rgl:rone} already.
+    Furthermore, assuming the graph to be reduced, any intermediate $N_3(v,w)$ which could separate multiple simple regions between $v$ and $u_i$ has been deleted by \cref{rgl:rone} already.
 \end{proof}
 
 \begin{figure}[!ht]
     \begin{equation*}
         \tikzfig{fig/tikz/maxntwo}
     \end{equation*}
-    \caption[Bounding number of simple regions with $N_2(v,w)$ inside a $vw$-region R]{\textit{Bounding the maximum number of simple regions inside a region $R(v,w)$. $N_2(v,w)$ is covered by 6 green (simple) regions. A dashed edge would also be an option, but would contradict planarity. Note that the gray vertex g was reduced by \cref{rgl:rone} allowing the formation of exactly one simple region between $v$ and $u_1$}}
+    \caption[Bounding number of simple regions with $N_2(v,w)$ inside a $vw$-region R]{\textit{Bounding the maximum number of simple regions inside a region $R(v,w)$. $N_2(v,w)$ is covered by 6 green (simple) regions. A dashed edge would also be an option but would contradict planarity. Note that the gray vertex g was reduced by \cref{rgl:rone} allowing the formation of exactly one simple region between $v$ and $u_1$}}
     \label{fig:maxntwoinside}
 \end{figure}
 
@@ -495,7 +496,7 @@ We continue by giving a constant bound on the number of simple regions that cove
 
 Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been applied and the second one, when Case 4 of \cref{rgl:rtwo} was applied.
 \begin{proof} 
-    We will just give some intuition, because the proof of Garnero and Sau in \cite[Fact 6]{Garnero2014} does not use any special property exposed by the reduction rules. Figure (Add picture about figures) gives a visualization worst case scenarias to cover $N_3(v,w) \cap V(R)$ with simple regions in the relevant cases.\footnote{Note: In a newer revision of their paper \cite{Garnero2018}, Garnero and Sau removed this proof, because they changed \cref{rgl:rtwo} and a more fine-grained analysis was made possible.}
+    We will just give some intuition because the proof of Garnero and Sau in \cite[Fact 6]{Garnero2014} does not use any special property exposed by the reduction rules. Figure (Add picture about figures) gives a visualization of the worst-case scenarios to cover $N_3(v,w) \cap V(R)$ with simple regions in the relevant cases.\footnote{Note: In a newer revision of their paper \cite{Garnero2018}, Garnero and Sau removed this proof, because they changed \cref{rgl:rtwo} and a more fine-grained analysis was made possible.}
     
     
     % Altough our \cref{rgl:rtwo} is a bit different, the proof still goes through in the original way.
@@ -504,17 +505,17 @@ Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been
 
 
 \begin{lemma}[\#Vertices inside a Region after \cref{rgl:rone,rgl:rtwo,rgl:rthree}]\label{lemma:inside}
-    Let \G be a plane graph reduced under \cref{rgl:rone,rgl:rtwo,rgl:rthree}. Furthermore, let $D$ be a SDS of G and let $v,w \in D$. Any $vw$-region R contains at most 139 vertices distinct from its poles.
+    Let \G be a plane graph reduced under \cref{rgl:rone,rgl:rtwo,rgl:rthree}. Furthermore, let $D$ be an SDS of G and let $v,w \in D$. Any $vw$-region R contains at most 139 vertices distinct from its poles.
 \end{lemma}
 \begin{proof} 
     By \cref{lemma:nonecover,lemma:ntwocover} and \cref{lemma:simpleregionbound} to bound the number of vertices inside a simple region, we know that $\abs{N_1(v,w) \cap V(R)} \leq 4$ and $\abs{N_2(v,w) \cap V(R)} \leq 6 \cdot 7 = 42$.
     
-    It is still remaining to bound for \nthi, but gladly we have \cref{rgl:rtwo}, which took care about them! \cref{fig:nthreeinside} shows worst case amount of simple regions the indidual cases can have.
+    It is remaining to bound for \nthi, but gladly we have \cref{rgl:rtwo}, which took care about them! \cref{fig:nthreeinside} shows the worst case amount of simple regions the indidual cases can have.
     
     % Maybe note that N_2 vertices do not cause any troubles as they are always bound to the near of N_1 vertex
     \begin{caseofz}
         %% TODO Check if that is correct and compare with latest paper
-        \casez{If \cref{rgl:rtwo} has \textbf{not} been applied} As $\Dvw \neq \emptyset$, there exists a set $\tilde D = \{d_1,d_2,d_3\} \in \Dvw$ of at most three vertices dominating $N_3(v,w)$. We observe that vertices from \nthi~ are common neighbors of either v or w (by the definition of a $vw$-region) and at least one vertex from $\tilde D$. Withouth violating planarity, we can span at most 6 simple regions. Using \cref{lemma:simpleregionbound} and adding $\abs{\tilde D} = 3$, we can conclude $\nthi \leq 6 \cdot 6 + 3 = 39$.
+        \casez{If \cref{rgl:rtwo} has \textbf{not} been applied} As $\Dvw \neq \emptyset$, there exists a set $\tilde D = \{d_1,d_2,d_3\} \in \Dvw$ of at most three vertices dominating $N_3(v,w)$. We observe that vertices from \nthi~ are common neighbors of either v or w (by the definition of a $vw$-region) and at least one vertex from $\tilde D$. Without violating planarity, we can span at most 6 simple regions. Using \cref{lemma:simpleregionbound} and adding $\abs{\tilde D} = 3$, we can conclude $\nthi \leq 6 \cdot 6 + 3 = 39$.
         
         %% TODO even that: is it correct regarding N2?
         \casez{If \cref{rgl:rtwo} Case 1 has been applied}
@@ -577,7 +578,7 @@ With slight modifications, the proof given in \cite{Garnero2014} will also work 
 \begin{proof}
     Again, we will follow the proof proposed by Alber et al. \cite[Proposition 2]{Alber2004}. 
     
-    The proof does only rely on \cref{rgl:rone,rgl:rthree} and we can use the number of vertices in a simple region we have proofen in \cref{lemma:simpleregionbound}. In particular, we are going to proof that $V \setminus V(\mathfrak{R}) \leq 48 \cdot \abs{\mathfrak{R}} + 2 \cdot \abs{D}$. Directly placing in \cref{lemma:numRegions} will give as the desired bound.
+    The proof does only rely on \cref{rgl:rone,rgl:rthree} and we can use the number of vertices in a simple region we have proofen in \cref{lemma:simpleregionbound}. In particular, we are going to proof that $V \setminus V(\mathfrak{R}) \leq 48 \cdot \abs{\mathfrak{R}} + 2 \cdot \abs{D}$. Directly placing in \cref{lemma:numRegions} will give the desired bound.
     
     let $\mathfrak{R}$ be a maximal \dreg and let $v \in D$. Since D dominates all vertices from $V$, we can consider $V$ as $\bigcup_{v \in D}N(v)$ and thus, we only need to bound the sizes of $N_1(v)\setminus \VR$, $N_2(v) \setminus \VR$ and $N_3(v) \setminus \VR$ separately. In the following, let $v \in D$:
     %As we know that the sets $N_1(v,w)$, $N_2(v,w)$ and $N_3(v,w)$ are distinct by definition, we can seperately bound the vertices from $\abs{V \setminus V(\mathfrak{R})}$
@@ -638,7 +639,7 @@ With slight modifications, the proof given in \cite{Garnero2014} will also work 
 % TODO: Shift before other parts, because this result is heavily used
 \subsection{Bounding the Number of Regions}
 
-Alber et al. \cite[Proposition 1]{Alber2004} gave a greedy algorithm to construct a maximal \dreg for a \dom. Building up on these results, Garnero and Sau gave decomposition procedures for both \rbdom (\cite{Garnero2017a}) and \tdom (\cite{Garnero2018}) relying on the same technique. This is the core of the linear kernelization, because it states that given a \dom D, we can decompose the graph into a \textit{linear number} of regions.
+Alber et al. \cite[Proposition 1]{Alber2004} gave a greedy algorithm to construct a maximal \dreg for a \dom. Building up on these results, Garnero and Sau gave decomposition procedures for both \rbdom (\cite{Garnero2017a}) and \tdom (\cite{Garnero2018}) relying on the same technique. This is the core of our linear kernelization because it states that given a \dom D, we can decompose the graph into a \textit{linear number} of regions.
 
 % TODO Better english? to span
 
