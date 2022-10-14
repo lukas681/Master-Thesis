@@ -266,13 +266,15 @@ Nevertheless, $z$ can be a necessary witness for $v$ and is therefore required i
     \end{itemize}
 \end{rgl}
 
-
 \begin{fact}
-Let \G, $v \in V$ and $v' \in N_{2,3}(v)$. Any witness $w$ for $v'$ is also a witness for $v$. % Reformulate as v can be a witness for $w'$
+Let \G, $v \in V$ and $v' \in N_{2,3}(v)$. Any witness $w \neq v$ for $v'$ is also a witness for $v$. % Reformulate as v can be a witness for $w'$
 \end{fact}
 \begin{proof}
     % Explain the definition better? Somehow I am not really happy with that.
-We know that $v'$ is witnessed by a vertex w with $d(v', w) \leq 2$. By definition of $N_{2,3}(v)$, we know that $w$ is either $v$, a direct neighbor of $v$ or can be reached via one step over a $N_1(v)$ vertex, hence $w \in N(v) \cup \bigcup\limits_{z \in N_1(v)} N(z) $. Clearly, $d(v, w) \leq 2$.
+By assumption $v'$ is witnessed by a vertex $w \neq v$ with $d(v', w) \leq 2$. It follows directly from the definition of $v' \in N_{2,3}(v)$ that $N(v') \subseteq N(v)$ and hence $v'$ is \textit{confined} inside the neighborhood of $v$. Therefore, every possible witness that can be reached from $v'$ within two steps can also be reached from $v$ within two steps.
+
+% Maybe add a note that it can also point outside of N(v)
+% we know that $w$ is either $v$, a direct neighbor of $v$ or can be reached via one step over a $N_1(v)$ vertex, hence $w \in N(v) \cup \bigcup\limits_{z \in N_1(v)} N(z) $. Clearly, $d(v, w) \leq 2$.
 \end{proof}
 
 We can now proof the correctness of this rule.
