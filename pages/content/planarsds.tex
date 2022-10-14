@@ -308,7 +308,7 @@ Note that we need our definition of a reduced instance given in \ref{def:reduced
 
 \subsection{Reduction Rule II: Shrinking the Size of a Region}
 
-The second rule is the heart of the whole reduction and tries to minimize the neighborhood of two distinct vertices This rule follows Garnero and Sau's approach in one of the early versions of \cite{Garnero2014} for \tdom. Interestingly, the reduction rules given in the latest version were not directly transferable to \sdom, because they heavily rely on properties only a \tdom exposes and can not be generalized to the more relaxed \sdom.
+The second rule is the heart of the whole reduction and tries to minimize the neighborhood of two distinct vertices. The rule follows Garnero and Sau's approach in one of the early versions of \cite{Garnero2014} for \ptdom. Interestingly, the reduction rules given in the latest version were not directly transferable to \psdom, because they heavily rely on properties only a \ptdom exposes and can not be generalized to the more relaxed \psdom.
 
 % TODO: Force connectivity, improve kerne bound
 % TODO: Reformulate
@@ -319,26 +319,24 @@ The second rule is the heart of the whole reduction and tries to minimize the ne
 
 % which relies on the technique first introduced by Alber et al we try to reduce the neighborhood for two given vertices $v$ and $w$
 
-Before we give the concrete reduction rule, we will define the following three sets. The intuition behind them. 
-% TODO
 
-It can be observed that in the worst case four vertices are needed to dominate $N_3(v,w)$ of two vertices $v,w \in V$: $v$, $w$ and two witnesses for them. 
+It can be observed that in the worst case four vertices are needed to dominate $N_3(v,w)$ of two vertices $v,w \in V$: $v$, $w$ and two witnesses for them. Exemplary, observe the graph consisting of two distinct $K_{1,m}$ with $m \in \mathbb{N}$ with centers $v$ and $w$
 
-If $d(v,w) \leq 2$, it might even suffice to consider sets of size three, because then there would be an intermediate vertex that could witness $v$ and $w$ at the same time. We believe that the kernel can be improved by applying \cref{rgl:rtwo} only on those distanced two vertices. 
+If $d(v,w) \leq 2$, it might even suffice to consider sets of size at most three, because then there would be an intermediate vertex that could witness $v$ and $w$ at the same time. We believe that the kernel can be improved by applying \cref{rgl:rtwo} only on those distanced two vertices. 
 
-For an example observe the graph consisting of two distinct $K_{1,m}$ with $m \in \mathcal{N}$ with centers $v$ and $w$.
+Before we give the concrete reduction rule, we are going to define the following three sets and deduce some facts from them. Intuitively, we first try to find a set $\tilde D \subseteq N_{2,3}(v,w)$ of size at most three dominating $N_3(v,w)$ without using $v$ or $w$. If no such set exists, we allow $v$ (resp. $w$) and try to find one again. If we now find such a set, we can conclude that $v$ ($w$) must be part of a solution.
 
-%% Assuming connected, only 3!
-
+\begin{definition}
+Let \G be a graph and let $v,w \in V$. We now consider all the sets that can dominate $N_3(v,w)$:
 \begin{align}
     \Dvw & = \{ \tilde D \subseteq N_{2,3}(v,w)            \mid N_3(v,w) \subseteq \bigcup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3                  \} \\
     \Dv  & = \{ \tilde D \subseteq N_{2,3}(v,w) \cup \{v\} \mid N_3(v,w) \subseteq \bigcup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3,\ v \in \tilde D \} \\
     \Dw  & = \{ \tilde D \subseteq N_{2,3}(v,w) \cup \{w\} \mid N_3(v,w) \subseteq \bigcup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3,\ w \in \tilde D \}
 \end{align}
+Furthermore, we shortly denote $\bigcup \Dv = \bigcup\limits_{D \in \Dv}D $ and $\bigcup \Dw = \bigcup\limits_{D \in \Dw}D$.
+\end{definition}
 
-
-We are now ready to state \cref{rgl:rtwo}:
-
+Let us now state \cref{rgl:rtwo}:
 
 \begin{rgl}\label{rgl:rtwo}
     Let \G be a graph and two distinct $v,w \in V$. If $\Dvw = \emptyset$ we apply the following:
