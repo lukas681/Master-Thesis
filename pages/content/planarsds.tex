@@ -281,50 +281,54 @@ By assumption $v'$ is witnessed by a vertex $w \neq v$ with $d(v', w) \leq 2$. I
 We can now proof the correctness of this rule.
 
 \begin{lemma}\label{lemma:correctnessone}
-    Let \G be a a graph and let $v \in V$. If $G'$ is the graph obtained by applying \cref{rgl:rone}   on $G$, then G has \sdom of size k if and only if G' has one.
+    Let \G be a graph and let $v \in V$. If $G'$ is the graph obtained by applying \cref{rgl:rone}   on $G$, then G has \sdom of size k if and only if G' has one.
 \end{lemma}
 \begin{proof}
     \begin{enumerate}
         \item[$\Rightarrow$] Let $D$ be a \sdom in $G$ of size k. 
-        Because \cref{rgl:rone} has been applied, we can asume $N_3(v) \neq \emptyset$ in $G$. 
+        Because \cref{rgl:rone} has been applied, we can assume $N_3(v) \neq \emptyset$ in $G$. 
         
-        In order to dominate $N_3(v)$ we either need $v \in D$ or at least one other vertex $d \in N_{2,3}(v) \cap D$. In the latter case we can replace this vertex by $v$ directly. By \cref{fact:witnessTwin}, we know that a witness for $d$ will also be a witness for $v$ preserving a \sdom. Hence, we now asume $v \in D$ and $N_{2,3}(v)$ is already dominated by $v$.
+        In order to dominate $N_3(v)$ we either need $v \in D$ or at least one other vertex $d \in N_{2,3}(v) \cap D$. In the latter case, we can replace this vertex by $v$ directly. By \cref{fact:witnessTwin}, we know that a witness for $d$ will also be a witness for $v$ preserving a \sdom. Hence, we now assume $v \in D$ and $N_{2,3}(v)$ is already dominated by $v$.
 
-        If \cref{rgl:rone} has removed at least one dominating vertex, we set $D' = D \setminus N_{2,3}(v) \cup \{v'\}$ otherwise $D = D'$. In both cases $v'$ is being dominated by $v$.
+        If \cref{rgl:rone} has removed at least one dominating vertex, we set $D' = D \setminus N_{2,3}(v) \cup \{v'\}$ otherwise $D = D'$. In both cases, $v'$ is dominated by $v$.
 
         Because a vertex in $N_{2,3}(v) \cap D$ could have possible been a witness for $v$, we select $v' \in D'$ as a witness for $v$ ensuring $D'$ to be a \sdom. In both cases $\abs{D} \leq \abs{D'}$.
 
-        \item[$\Leftarrow$]  Asume $D'$ to be a \sdom in $G'$. We know that $v \in D'$, because $v'$ has to be dominated and it is always better to choose $v$.
+        \item[$\Leftarrow$]  Assume $D'$ to be a \sdom in $G'$. We know that $v \in D'$, because $v'$ has to be dominated and it is always better to choose $v$.
 
         If $v' \in D'$ is a witness for $v$ in $G'$, we have to preserve a witness in $G$ as well. As we know that $N_3(v) \neq \emptyset$, we can replace it by an arbitrary vertex $d \in N_3(v)$ in $G$. 
         
         In the second case, the witness for $v$ came either from a vertex $o \in N_1(v)$ or some neighbor $N(o) \setminus N(v)$ outside the neighborhood of $v$ which has not been touched by this reduction rule. 
         
         In summary, if $v' \in D'$, we set $D = D' \cup \{d\} \setminus \{v'\}$ for a single $d \in N_3(v)$ and otherwise $D = D'$. In both cases, $N_{2,3}(v)$ is dominated by $v$ and $\abs{D} = \abs{D'}$.
-
-
     \end{enumerate}
-
 \end{proof}
 
 Note that we need our definition of a reduced instance given in \ref{def:reduced}. If \cref{rgl:rthree} is being applied, it will still leave us with a vertex $z\in N_3(v)$ allowing this rule to be applied again.
 
 \subsection{Reduction Rule II: Shrinking the Size of a Region}
 
-% TODO: Force connectivity, improve kerne bound
+The second rule is the heart of the whole reduction and tries to minimize the neighborhood of two distinct vertices This rule follows Garnero and Sau's approach in one of the early versions of \cite{Garnero2014} for \tdom. Interestingly, the reduction rules given in the latest version were not directly transferable to \sdom, because they heavily rely on properties only a \tdom exposes and can not be generalized to the more relaxed \sdom.
 
+% TODO: Force connectivity, improve kerne bound
 % TODO: Reformulate
-Extending the approach for a linear kernel for \dom proposed by Alber et al. in \cite{Alber2004}, Garnero and Sau transferred these results in \cite{Garnero2018} to the \tdom problem. 
+% Extending the approach for a linear kernel for \dom proposed by Alber et al. in \cite{Alber2004}, Garnero and Sau transferred these results in \cite{Garnero2018} to the \tdom problem. 
 
 %TODO: Better:
-Their idea was to strengthen the reduction rules in such a way that the witness properties for total domination are being preserved.
-
 % TODO Should we discuss that?
-Following their approach in one of the first versions of \cite{Garnero2014}, we stating reduction rules that. Interestingly, the reduction rules given in the latest version of this paper was not directly be transferable to \sdom, but an older version giving slightly easier reduction rules could be adjusted to our problem.
 
-which relies on the technique first introduced by Alber et al we try to reduce the neighborhood for two given vertices $v$ and $w$
+% which relies on the technique first introduced by Alber et al we try to reduce the neighborhood for two given vertices $v$ and $w$
 
-Before we give the concrete reduction rule, we will define three sets 
+Before we give the concrete reduction rule, we will define the following three sets. The intuition behind them. 
+% TODO
+
+It can be observed that in the worst case four vertices are needed to dominate $N_3(v,w)$ of two vertices $v,w \in V$: $v$, $w$ and two witnesses for them. 
+
+If $d(v,w) \leq 2$, it might even suffice to consider sets of size three, because then there would be an intermediate vertex that could witness $v$ and $w$ at the same time. We believe that the kernel can be improved by applying \cref{rgl:rtwo} only on those distanced two vertices. 
+
+For an example observe the graph consisting of two distinct $K_{1,m}$ with $m \in \mathcal{N}$ with centers $v$ and $w$.
+
+%% Assuming connected, only 3!
 
 \begin{align}
     \Dvw & = \{ \tilde D \subseteq N_{2,3}(v,w)            \mid N_3(v,w) \subseteq \bigcup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3                  \} \\
@@ -332,7 +336,9 @@ Before we give the concrete reduction rule, we will define three sets
     \Dw  & = \{ \tilde D \subseteq N_{2,3}(v,w) \cup \{w\} \mid N_3(v,w) \subseteq \bigcup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3,\ w \in \tilde D \}
 \end{align}
 
-%TODO Explain that more in detail. + Examples.
+
+We are now ready to state \cref{rgl:rtwo}:
+
 
 \begin{rgl}\label{rgl:rtwo}
     Let \G be a graph and two distinct $v,w \in V$. If $\Dvw = \emptyset$ we apply the following:
