@@ -24,7 +24,7 @@ We are going to present a polynomial-time preprocessing procedure that gives a l
 \end{tabularx}
 
 \footnotetext[1]{There is also a master's thesis claiming a bound of 43k \cite{Halseth2016}, but a conference or journal version was not found.}
-\footnotetext[2]{Improved their own results from first $694$ \cite[Revision 2012]{Garnero2018}}
+\footnotetext[2]{Improved their own results from first $694k$ \cite[Revision 2012]{Garnero2018}}
 \setcounter{footnote}{\value{mpfootnote}}
 \end{minipage}
 \caption{An overview about existing kernels for planar dominating set variants}
@@ -57,9 +57,11 @@ The reduction rules do not rely on the decomposition itself, but rather consider
 
 \section{Definitions}
 
-In this section, we are giving some key definitions that are used in our reduction rules for obtaining the linear kernel. These as inspired by those given by Garnero and tau (\ptdom in \cite[]{Garnero2014} or \prbdom in \cite{Garnero2017}) and already relied on those given by Alber et al. in \cite[]{Alber2004} for \pdom.
+In this section, we are giving key definitions for our reduction rules. They are inspired by those given by Garnero and Sau (\ptdom in \cite[Revision 2014]{Garnero2018} or \prbdom in \cite{Garnero2017}) and used ideas given by Alber et al. in \cite{Alber2004} for \pdom.
 
-The idea is to split the neighborhood of a single vertex and a pair of vertices into three distinct subsets which intuitively gives us a level of ``confinement'' of the vertices inside the neighborhood with respect to the rest of the graph (\cite{Garnero2018}). That is, they make a statement on how closely parts of the neighborhood are connected with the rest of the graph. 
+We are splitting the neighborhood of a single vertex and a pair of vertices into three distinct subsets which intuitively give us a level of ``confinement'' of these vertices and how closely they are related to the rest of the graph (\cite{Garnero2018}). 
+% For example, for some neighbors of a vertex $v$ all its neighbors are still neighbors of v and they form a local ``bubble'' around $v$.
+
 
 \begin{definition}
     \label{def:nv}
