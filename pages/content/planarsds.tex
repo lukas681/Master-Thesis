@@ -40,22 +40,20 @@ In the following years, this approach bore fruits in other planar problems as we
 \name{Cycle Packing}\xspace (\cite{Garnero2019})
 
 % TODO Where from?
-In the impending years, many results generalize this approach to larger graph classes. Fomin and Thilikos started this journey by directly proofing that the initial reduction rules given by Alber et al. \cite{Alber2004} can also be used to obtain a linear kernel on graphs with bounded genus $g$ (\cite{Fomin2004}).
+In the impending years, many results generalized this approach to larger graph classes. Fomin and Thilikos started by proofing that the initial reduction rules given by Alber et al. \cite{Alber2004} can also be used to obtain a linear kernel on graphs with bounded genus $g$ (\cite{Fomin2004}).
 Gutner advanced in 2008 by showing that the problem has a linear kernel on $K_{3,h}$-topological-minor-free graph classes and a polynomial kernel for $K_h$-topological-minor-free graph classes (\cite{Gutner2009}). 
 % TODO following required?
 % In 2007 they extended it to show that graphs of bounded degeneracy are FPT (\cite{Alon2007}). 
 In 2012 Philip, Raman and Sikdar showed that even $K_{i,j}$-free graph classes admit a polynomial kernel for \dom (\cite{Philip2012}). 
 In an attempt to extend these ideas to other problems as well, Bodlaender et al. proved that all problems expressible in counting monadic second-order logic that satisfy a coverability property admit a polynomial kernel on graphs of bounded genus g (\cite{Bodlaender2016}).
 
-Although these results are very interesting from a theoretical point of view, the constants for the kernels obtained by these methods are so large that they are not of practical interest. The question is how such a kernel can explicitly and efficiently be constructed. 
-
-We are going to show that, with some considerations of preserving witness properties, the kernel described by Garnero and Sau in their original version of \cite[Revision 2014]{Garnero2018} for \ptdom can also be ``recycled'' for \psdom giving us an explicitly constructed kernel with ``reasonable'' small constants.
+These meta-results are interesting from a theoretical point of view, but the constants for the kernels obtained by these methods are too large to be of practical interest. The question of how an efficient kernel can be constructed remains. We will show that the kernel described by Garnero and Sau in their original version of \cite[Revision 2014]{Garnero2018} for \ptdom can also be ``recycled'' for \psdom giving us an explicitly constructed kernel with ``reasonable'' small constants.
 
 \section{The Main Idea}
 
-The main idea is to use the fact that given a plane graph \G and given a vertex set $D \subseteq V$, G can be decomposed into at most $(3 \cdot \abs{D} -6)$ so-called ``regions'' (\cref{def:region}). If D is now a given \sdom~of size $k := \abs{D}$, we know that the number of regions will depend linearly on k. If we define  \textit{reduction rules}(\cref{rgl:rone,rgl:rtwo,rgl:rthree}) that try to minimize the number of vertices in and around a region we can overall bound the size of G in $k$.
+The main idea is to use the fact that given a plane graph \G and given a vertex set $D \subseteq V$, G can be decomposed into at most $(3 \cdot \abs{D} -6)$ so-called ``regions'' (\cref{def:region}). If $D$ is now a given \sdom~of size $\abs{D}$, we know that the total number of regions depends linearly on the size of $D$. If we define \textit{reduction rules} (\cref{rgl:rone,rgl:rtwo,rgl:rthree}) that try to minimize the number of vertices in and around a region we can overall bound the size of a reduced graph $G'$. We give rules that ensure that each region is of constant size after they have been applied.
 
-As they are now, our reduction rules do not rely on the decomposition itself, but rather consider the neighborhood of every pair of vertices in the graph.
+The reduction rules do not rely on the decomposition itself, but rather consider the neighborhood of every pair of vertices in the graph.
 
 \section{Definitions}
 
