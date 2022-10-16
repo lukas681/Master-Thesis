@@ -350,10 +350,7 @@ Furthermore, we shortly denote $\bigcup \Dv = \bigcup\limits_{D \in \Dv}D $ and 
             \item If there was a common neighbor of $v$ and $w$ in $N_{2,3}(v,w)$ add another vertex $y$ and two connecting edges  $\{v, y\}$ and $\{y, w\}$
             \item If there was no common neighbor of $v$ and $w$ in $N_{2,3}(v,w)$, but at least one path of length three from $v$ to $w$ via only vertices from $N_{2,3}(v,w)$, add two vertices $y$ and $y'$ and connecting edges $\{v,y\}$, $\{y, y'\}$ and $\{y', w\}$
         \end{itemize}
-        \case{if $\Dv \neq  \emptyset$ and $D_w \neq \emptyset$}
-
-        Do nothing\footnote{Originally, reduce Simple Regions [SAU]}
-        
+        \case{if $\Dv \neq  \emptyset$ and $D_w \neq \emptyset$}: Added for sake of completeness. Do nothing.
         \case{if $\Dv \neq  \emptyset$ and $D_w = \emptyset$}
         
         \vspace{-5mm}
@@ -367,7 +364,8 @@ Furthermore, we shortly denote $\bigcup \Dv = \bigcup\limits_{D \in \Dv}D $ and 
 \end{rgl}
 
 In the first case, we know by \cref{fact:f2} that $v$ and $w$ must be in D. Therefore, we introduce two forcing vertices $v'$ and $w'$ in $G'$ and remove $N_{2,3}(v,w)$ as these vertices are dominated by $v$ and $w$.
-But if we remove $N_{2,3}(v,w)$ entirely, we could lose solutions: First, the case that $v$ is a direct witness of $w$ ($d(v,w) = 2$) and that there is one intermediate witness on a path of lenth three from $v$ to $w$ via vertices in $N_{2,3}(v,w)$, which could be a witness for both $v$ and $w$ at the same time. 
+But if we remove $N_{2,3}(v,w)$ entirely, we could lose solutions: First, the case that $v$ is a direct witness of $w$ ($d(v,w) = 2$) and that there is one intermediate witness on a path of length three from $v$ to $w$ via vertices in $N_{2,3}(v,w)$, which could be a witness for both $v$ and $w$ at the same time. 
+Note that if we would not distinguish between these two cases and just add one intermediate vertex, we would possibly generate wrong solutions, because $v$ could always witness $w$.
 
 In the second case, we do not do anything. In the later analysis, the application of \cref{rgl:rthree} is critical.
 
@@ -433,13 +431,15 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
         \begin{enumerate}
             \item  $\Dv = \emptyset \wedge \Dw = \emptyset$: In any case we know that $v,w \in D$ to dominate $v'$ and $w'$ and therefore also dominating $N_{2,3}(v,w)$ in $G$. To preserve the distance $d(v,w)$ the rule might have introduced additional vertices $y$ and $y'$.            
             \begin{itemize}
-                \item If only $y$ was introduced we know that there was a common neighbor $n \in N(v) \cap N(w)$ of $v$ and $w$. $y$ was introduced to preserve $v$ being a direct witness for $w$ (and vice versa) and is not part of a solution itself. ($y \notin D'$) Hence, we set $D = D'$.
-                \item If $y$ and $y'$ were introduce ... 
+                \item If only $y$ was introduced we know that there was a common neighbor $n \in N(v) \cap N(w)$ of $v$ and $w$. $y$ allows $v$ to witness $w$ (and vice versa) and is not part of a solution itself. (assuming $y \notin D'$). Hence, we set $D = D'$.
+                \item If $y$ and $y'$ were added, a solution could use one of them to provide a single witness for $v$ and $w$. There exists a path $p = (v, n_1, n_2, w)$ from $v$ to $w$ in $G$ only using vertices from $N_{2,3}(v,w)$. As $n_1$ and $n_2$ both witness $v$ and $w$, we put one of them in $D$ if at least one of $y$ or $y$ are dominating vertices in $G'$.
+                Hence, if $y \in D'$ or $y \in D'$, we set $D = D' \setminus \{y,y'\} \cup \{n_1\}$.
             \end{itemize}
-            \item  $\Dv \neq \emptyset \wedge \Dw \neq \emptyset$
-            \item  $\Dv \neq \emptyset \wedge \Dw = \emptyset$
-            \item  $\Dv = \emptyset \wedge \Dw \neq \emptyset$: Symmtrical to previous case.
+            \item  $\Dv \neq \emptyset \wedge \Dw \neq \emptyset$: Nothing done.
+            \item  $\Dv \neq \emptyset \wedge \Dw = \emptyset$: Clearly, $v \in D'$ to dominate $v'$. If $v \in D'$, we set $D =  D' \setminus \{v'\} \cup d$ for some vertex $d \in N_{2,3}(v,w)$ and otherwise $D = D'$. If $v'$ was the witness of $v$, it is now replaced by $d$ and $D$ is an SDS with $\abs{D} \leq \abs{D'}$.
+            \item  $\Dv = \emptyset \wedge \Dw \neq \emptyset$: Symmetrical to previous case.
         \end{enumerate} 
+        In all cases we have shown that $\abs{D} \leq \abs{D'}$ and $D$ is a \sdom of $G$.
     \end{enumerate}
 
 \end{proof}
@@ -485,7 +485,7 @@ For the sake of completeness, we state an algorithm how a maximal \sr between tw
 
 \section{Bounding the Size of the Kernel}
 
-We are now putting all our pieces together in order to prove our main result: A linear bound on the kernel size. To do so, we distinguish between those vertices that are covered by a maximal \dreg and those that are not. 
+We are now putting all our pieces together to prove our main result: A linear bound on the kernel size. To do so, we distinguish between those vertices that are covered by a maximal \dreg and those that are not. 
 In both cases, our reduction rules bound the number of vertices to a constant size which means the kernel size does only depend on the number of regions of these decompositions. 
 \cref{fig:maxRegionDecompose} states that for any solution D, we only have a linear number of regions that cover the whole graph. 
 In particular, we show that given a \sdom D of size k, there exists a maximal \dreg $\mathfrak{R}$ such that:
@@ -632,7 +632,7 @@ With slight modifications, the proof given in \cite{Garnero2014} will also work 
     The proof does only rely on \cref{rgl:rone,rgl:rthree} and we can use the number of vertices in a simple region we have proofen in \cref{lemma:simpleregionbound}. In particular, we are going to proof that $V \setminus V(\mathfrak{R}) \leq 48 \cdot \abs{\mathfrak{R}} + 2 \cdot \abs{D}$. Directly placing in \cref{lemma:numRegions} will give the desired bound.
     
     let $\mathfrak{R}$ be a maximal \dreg and let $v \in D$. Since D dominates all vertices from $V$, we can consider $V$ as $\bigcup_{v \in D}N(v)$ and thus, we only need to bound the sizes of $N_1(v)\setminus \VR$, $N_2(v) \setminus \VR$ and $N_3(v) \setminus \VR$ separately. In the following, let $v \in D$:
-    %As we know that the sets $N_1(v,w)$, $N_2(v,w)$ and $N_3(v,w)$ are distinct by definition, we can seperately bound the vertices from $\abs{V \setminus V(\mathfrak{R})}$
+    %As we know that the sets $N_1(v,w)$, $N_2(v,w)$ and $N_3(v,w)$ are distinct by definition, we can separately bound the vertices from $\abs{V \setminus V(\mathfrak{R})}$
     
     \noindent$\mathbf{N_3(v)}$: As we know that \cref{rgl:rone} has been exhaustively applied, we trivially see that $\abs{N_3(v)} \leq 1$ and hence, 
     
@@ -695,7 +695,7 @@ Alber et al. \cite[Proposition 1]{Alber2004} gave a greedy algorithm to construc
 % TODO Better english? to span
 
 The following lemma corresponds to \cite[Proposition 1 and Lemma 5]{Alber2004}. Although the authors gave different reduction rules and require a \textit{reduced} instance as an assumption for the following lemma, they do not use any specific properties exposed by these rules. 
-As any \sdom is also a \dom, we can safely apply it for our problem as well. For a more detailed and formal proof, one can also refer to \cite[Proposition 1]{Garnero2018}.
+As any \sdom is also a \dom, we can safely apply it to our problem as well. For a more detailed and formal proof, one can also refer to \cite[Proposition 1]{Garnero2018}.
 
 \begin{lemma}\label{lemma:numRegions}
     Let G be a reduced plane graph and let D be a \sdom with $\abs{D}\geq 3$. There is a maximal D-region decomposition of G such that $\abs{R} \leq 3 \cdot \abs{D} - 6$
@@ -718,13 +718,13 @@ As any \sdom is also a \dom, we can safely apply it for our problem as well. For
 \begin{proof}
     Let \G be the plane input graph and $G'=(V',E')$ be the graph obtained by the exhautive application of the \cref{rgl:rone,rgl:rtwo,rgl:rthree}. 
     As none of our rules change the size of a possible solution D' in G', we know by \cref{lemma:correctnessone}, \cref{lemma:correctnesstwo} and \cref{lemma:correctnessthree} that G' has a \sdom of size k if and only if G has a \sdom of size k.
-    In \cref{lemma:runtime}, we have proofen that this preprocessing procedure runs in polynomial time.
+    In \cref{lemma:runtime}, we have proven that this preprocessing procedure runs in polynomial time.
     
-    \noindent Asume that G' admits a solution $D'$. 
+    \noindent Assume that G' admits a solution $D'$. 
     
     %If  $\abs{D'} = 0$ then G' is empty, if $\abs{D'} = 1$, because D' needs to be a \sdom and a witness would be missing.
     
-    By taking the size of each region proofen in \cref{lemma:outside}, the total number of regions in a maximal \dreg~(\cref{lemma:numRegions}) and the number of vertices that can lay outside of any region (\cref{lemma:outside}), we obtain the following bound:
+    By taking the size of each region proven in \cref{lemma:outside}, the total number of regions in a maximal \dreg~(\cref{lemma:numRegions}) and the number of vertices that can lay outside of any region (\cref{lemma:outside}), we obtain the following bound:
     
     \begin{equation}
         139 \cdot (3k - 6) + 145 \cdot k + k \leq \kernelsize \cdot k
