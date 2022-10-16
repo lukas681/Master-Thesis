@@ -358,7 +358,7 @@ Furthermore, we shortly denote $\bigcup \Dv = \bigcup\limits_{D \in \Dv}D $ and 
         
         \vspace{-5mm}
         \begin{itemize}
-            \item Remove $N_{2,3}(v) \cap N_3(v,w)$
+            \item Remove $N_{2,3}(v)$ % OLD: \cap N_3(v,w)$
             \item Add $\{v, v'\}$
         \end{itemize}
         
@@ -371,9 +371,8 @@ But if we remove $N_{2,3}(v,w)$ entirely, we could lose solutions: First, the ca
 
 In the second case, we do not do anything. In the later analysis, the application of \cref{rgl:rthree} is critical.
 
-In the third and fourth cases, we reduce vertices from $N_{2,3}(v)$. Again by \cref{fact:f2}, we know that $v \in D$ and therefore already dominates $N_{2,3}$. By \cref{fact:f1}, we see that they are only important for witnessing $v$ directly because all the other vertices are also witnessed by $v$. 
+Again by \cref{fact:f2} we know in the last two cases that $v \in D$ and similar to \cref{rgl:rone} we can simplify the neighborhood $N_{2,3}(v)$. \cref{fact:f1} states, that these vertices are only useful for witnessing $v$, but do not go beyond what $v$ already witnesses.
 
-% TODO Let's briefly discuss these cases. TODO application diagram
 
 Before proofing \cref{rgl:rtwo} we will deduce some \textit{Facts} which are implied by the definitions above. These facts justify the definition of the sets $\Dvw$, $\Dv$ and $\Dw$.
 
@@ -402,7 +401,7 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
 \begin{proof}
     We will prove the claim by analyzing the different cases of the rule independently.     
     \begin{enumerate}
-        \item[$\Rightarrow$] Consider a \sdom $D$ in $G$. We show that $G'$ also has a SDS with $\abs{D'} \leq \abs{D}$. By assumption we have $\Dvw = \emptyset$.
+        \item[$\Rightarrow$] Consider a \sdom $D$ in $G$. We show that $G'$ also has a SDS with $\abs{D'} \leq \abs{D}$. By assumption, we have $\Dvw = \emptyset$.
         \begin{enumerate}
             \item  $ \Dv = \emptyset  \wedge \Dw = \emptyset $: By applying \cref{fact:f2} twice, we know that both  $v, w \in D$. Therefore, $v'$,$w'$, and potentially $y$ and $y'$ are dominated by $v$ or $w$ in $G'$.
             
@@ -422,16 +421,20 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
             In all of the cases, it follows that $D'$ is a SDS of $G'$ with $\abs{D'} \leq \abs{D}$ 
             
             \item  $ \Dv \neq \emptyset \wedge \Dw \neq \emptyset$: Only for sake of completeness, set $D' = D$ as $G' = G$.
-            \item  $ \Dv \neq \emptyset  \wedge \Dw = \emptyset$. As $\Dw$ and \cref{fact:f2}, we know that $v \in D$ and dominates $N_{2,3}(v,w) \cap N_3{v,w }$
+            \item  $ \Dv \neq \emptyset  \wedge \Dw = \emptyset$: As $\Dw = \emptyset$ and \cref{fact:f2}, we know that $v \in D$ and $v$ dominates $N_{2,3}(v)$. 
+            If a vertex $d \in D \cap N_{2,3}(v)$ was removed, we set $D' = D \setminus N_{2,3}(v) \cup \{v'\}$, else $D' = D$.
+            Deleting dominating vertices $d \in D \cap N_{2,3}(v)$ does not destroy the witness properties of the graph, because by \cref{fact:f1} we know that everything $d$ could witness, is also witnessed by $v$. 
+            If $d$ was a witness for $v$, we have replaced it with $v'$ in $G'$.
+            Note that otherwise a vertex from $N_1(v) \cup \{ p \in (N(z) \setminus N(v)) | z \in N_1(v) \}$ is a witness for $v$ that is not touched by this reduction. Clearly, $\abs{D'} \leq \abs{D}$ holds.
             \item  $ \Dv = \emptyset  \wedge \Dw \neq  \emptyset $: Symmetrical to previous case.
         \end{enumerate}
 
-        \item[$\Leftarrow$] Let $D'$ be a \sdom in $G'$. We show that $G$ has a SDS $D$ with $\abs{D} \leq \abs{D'}$
+        \item[$\Leftarrow$] Let $D'$ be a \sdom in $G'$ and $\Dvw =  \emptyset$. We show that $G$ has a SDS $D$ with $\abs{D} \leq \abs{D'}$ by distinguishing the different cases again. 
         \begin{enumerate}
-            \item  Test
-            \item  Test
-            \item  Test
-            \item Test
+            \item  $\Dv = \emptyset \wedge \Dw = \emptyset$
+            \item  $\Dv \neq \emptyset \wedge \Dw \neq \emptyset$
+            \item  $\Dv \neq \emptyset \wedge \Dw = \emptyset$
+            \item  $\Dv = \emptyset \wedge \Dw \neq \emptyset$: Symmtrical to previous case.
         \end{enumerate} 
     \end{enumerate}
 
