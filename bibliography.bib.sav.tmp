@@ -36,33 +36,6 @@
   primaryclass  = {math.CO},
 }
 
-@Article{Garnero2018,
-  author    = {Valentin Garnero and Ignasi Sau},
-  journal   = {Discret. Math. Theor. Comput. Sci.},
-  title     = {A Linear Kernel for Planar Total Dominating Set},
-  year      = {2018},
-  number    = {1},
-  volume    = {20},
-  bibsource = {dblp computer science bibliography, https://dblp.org},
-  biburl    = {https://dblp.org/rec/journals/dmtcs/GarneroS18.bib},
-  url       = {http://dmtcs.episciences.org/4487},
-}
-
-@Article{Garnero2014,
-  author        = {Valentin Garnero and Ignasi Sau},
-  journal       = {Discrete Mathematics \& Theoretical Computer Science, Vol. 20 no. 1, Discrete Algorithms (May 16, 2018) dmtcs:4487},
-  title         = {A Linear Kernel for Planar Total Dominating Set},
-  year          = {2014},
-  month         = nov,
-  note          = {First Revision of the Paper},
-  abstract      = {A total dominating set of a graph $G=(V,E)$ is a subset $D \subseteq V$ such that every vertex in $V$ is adjacent to some vertex in $D$. Finding a total dominating set of minimum size is NP-hard on planar graphs and W[2]-complete on general graphs when parameterized by the solution size. By the meta-theorem of Bodlaender et al. [J. ACM, 2016], there exists a linear kernel for Total Dominating Set on graphs of bounded genus. Nevertheless, it is not clear how such a kernel can be effectively constructed, and how to obtain explicit reduction rules with reasonably small constants. Following the approach of Alber et al. [J. ACM, 2004], we provide an explicit kernel for Total Dominating Set on planar graphs with at most $410k$ vertices, where $k$ is the size of the solution. This result complements several known constructive linear kernels on planar graphs for other domination problems such as Dominating Set, Edge Dominating Set, Efficient Dominating Set, Connected Dominating Set, or Red-Blue Dominating Set.},
-  archiveprefix = {arXiv},
-  doi           = {10.23638/DMTCS-20-1-14},
-  eprint        = {1211.0978},
-  keywords      = {cs.DS, 05C85, 05C10, G.2.2},
-  primaryclass  = {cs.DS},
-}
-
 @Article{Alber2004,
   author    = {Jochen Alber and Michael R. Fellows and Rolf Niedermeier},
   title     = {Polynomial-time data reduction for dominating set},
@@ -119,16 +92,6 @@
 }
 
 @Article{Garnero2017,
-  author = {Valentin Garnero and Ignasi Sau and Dimitrios M. Thilikos},
-  title  = {A linear kernel for planar red–blue dominating set},
-  year   = {2017},
-  issn   = {0166-218X},
-  pages  = {536-547},
-  volume = {217},
-  doi    = {10.1016/j.dam.2016.09.045},
-}
-
-@Article{Garnero2017a,
   author    = {Valentin Garnero and Ignasi Sau and Dimitrios M. Thilikos},
   journal   = {Discret. Appl. Math.},
   title     = {A linear kernel for planar red-blue dominating set},
@@ -452,4 +415,33 @@
   pages     = {394--405},
   publisher = {Springer-Verlag},
   series    = {{COCOON}'07},
-  abstract  = {There is substantial literature dealing with fixed parameter algorithms for the dominating set problem on various families of graphs. In this paper, we give a kO(dk)n time algorithm for finding a dominating set of size at most k in a d-degenerated graph with n vertices. This proves that the dominating set problem is fixed-parameter tractable for degenerated graphs. For graphs that do not contain Kh as a topological minor, we give an improved algorithm for the problem with running time (O(h))hkn. For graphs which are Kh-minor-free, the runni
+  abstract  = {There is substantial literature dealing with fixed parameter algorithms for the dominating set problem on various families of graphs. In this paper, we give a kO(dk)n time algorithm for finding a dominating set of size at most k in a d-degenerated graph with n vertices. This proves that the dominating set problem is fixed-parameter tractable for degenerated graphs. For graphs that do not contain Kh as a topological minor, we give an improved algorithm for the problem with running time (O(h))hkn. For graphs which are Kh-minor-free, the running time is further reduced to (O(log h))hk/2n. Fixed-parameter tractable algorithms that are linear in the number of vertices of the graph were previously known only for planar graphs. For the families of graphs discussed above, the problem of finding an induced cycle of a given length is also addressed. For every fixed H and k, we show that if an H-minor-free graph G with n vertices contains an induced cycle of size k, then such a cycle can be found in O(n) expected time as well as in O(n log n) worst-case time. Some results are stated concerning the (im)possibility of establishing linear time algorithms for the more general family of degenerated graphs.},
+  isbn      = {9783540735441},
+  keywords  = {fixed-parameter tractable algorithms, dominating set problem, finding an induced cycle, H-minor-free graphs, degenerated graphs},
+  urldate   = {2022-09-16},
+}
+
+@InProceedings{Guo2007,
+  author    = {Guo, Jiong and Niedermeier, Rolf},
+  booktitle = {Automata, Languages and Programming},
+  title     = {Linear Problem Kernels for NP-Hard Problems on Planar Graphs},
+  year      = {2007},
+  address   = {Berlin, Heidelberg},
+  editor    = {Arge, Lars and Cachin, Christian and Jurdzi{\'{n}}ski, Tomasz and Tarlecki, Andrzej},
+  pages     = {375--386},
+  publisher = {Springer Berlin Heidelberg},
+  abstract  = {We develop a generic framework for deriving linear-size problem kernels for NP-hard problems on planar graphs. We demonstrate the usefulness of our framework in several concrete case studies, giving new kernelization results for Connected Vertex Cover, Minimum Edge Dominating Set, Maximum Triangle Packing, and Efficient Dominating Set on planar graphs. On the route to these results, we present effective, problem-specific data reduction rules that are useful in any approach attacking the computational intractability of these problems.},
+  isbn      = {978-3-540-73420-8},
+}
+
+%% dmtcs:4487
+%% https://dmtcs.episciences.org/4487
+%% 
+@Article{Garnero2018,
+  author   = {Valentin Garnero and Ignasi Sau},
+  journal  = {{Discrete Mathematics \& Theoretical Computer Science}},
+  title    = {{A Linear Kernel for Planar Total Dominating Set}},
+  year     = {2018},
+  month    = May,
+  volume   = {{Vol. 20 no. 1}},
+  abstract = {A total dominating set of a graph $G=(V,E)$ is a subset $D \subseteq V$ such that ev

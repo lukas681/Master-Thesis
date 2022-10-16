@@ -68,3 +68,6 @@ D-region Decomposition
     %        0                 &          \\
     %        \frac{100-x}{100} & \mathbb{else} \\
     %    \end{cases}
+
+
+*     ## Apply the technique to ROMAN DOMINATION as well
