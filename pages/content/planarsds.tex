@@ -320,7 +320,7 @@ The second rule is the heart of the whole reduction and tries to minimize the ne
 % which relies on the technique first introduced by Alber et al we try to reduce the neighborhood for two given vertices $v$ and $w$
 
 
-It can be observed that in the worst case four vertices are needed to dominate $N_3(v,w)$ of two vertices $v,w \in V$: $v$, $w$ and two witnesses for them. Exemplary, observe the graph consisting of two distinct $K_{1,m}$ with $m \in \mathbb{N}$ with centers $v$ and $w$
+It can be observed that in the worst case four vertices are needed to dominate $N_3(v,w)$ of two vertices $v,w \in V$: $v$, $w$ and two witnesses for them. Exemplary, observe the graph consisting of two distinct $K_{1,m}$ with $m \in \mathbb{N}$ with centers $v$ and $w$.
 
 If $d(v,w) \leq 2$, it might even suffice to consider sets of size at most three, because then there would be an intermediate vertex that could witness $v$ and $w$ at the same time. We believe that the kernel can be improved by applying \cref{rgl:rtwo} only on those distanced two vertices. 
 
@@ -348,7 +348,7 @@ Furthermore, we shortly denote $\bigcup \Dv = \bigcup\limits_{D \in \Dv}D $ and 
             \item Remove $N_{2,3}(v,w)$
             \item Add vertices $v'$ and $w'$ and two edges $\{v, v'\}$ and $\{w, w'\}$
             \item If there was a common neighbor of $v$ and $w$ in $N_{2,3}(v,w)$ add another vertex $y$ and two connecting edges  $\{v, y\}$ and $\{y, w\}$
-            \item If there was no common neighbor of $v$ and $w$ in $N_{2,3}(v,w)$, but at least one path of length three from $v$ to $w$ via only vertices from $N_{2,3}(v,w)$ add two vertices $y$ and $y'$ and connecting edges $\{v,y\}$, $\{y, y'\}$ and $\{y', w\}$
+            \item If there was no common neighbor of $v$ and $w$ in $N_{2,3}(v,w)$, but at least one path of length three from $v$ to $w$ via only vertices from $N_{2,3}(v,w)$, add two vertices $y$ and $y'$ and connecting edges $\{v,y\}$, $\{y, y'\}$ and $\{y', w\}$
         \end{itemize}
         \case{if $\Dv \neq  \emptyset$ and $D_w \neq \emptyset$}
 
@@ -369,6 +369,9 @@ Furthermore, we shortly denote $\bigcup \Dv = \bigcup\limits_{D \in \Dv}D $ and 
 In the first case, we know by \cref{fact:f2} that $v$ and $w$ must be in D. Therefore, we introduce two forcing vertices $v'$ and $w'$ in $G'$ and remove $N_{2,3}(v,w)$ as these vertices are dominated by $v$ and $w$.
 But if we remove $N_{2,3}(v,w)$ entirely, we could lose solutions: First, the case that $v$ is a direct witness of $w$ ($d(v,w) = 2$) and that there is one intermediate witness on a path of lenth three from $v$ to $w$ via vertices in $N_{2,3}(v,w)$, which could be a witness for both $v$ and $w$ at the same time. 
 
+In the second case, we do not do anything. In the later analysis, the application of \cref{rgl:rthree} is critical.
+
+In the third and fourth cases, we reduce vertices from $N_{2,3}(v)$. Again by \cref{fact:f2}, we know that $v \in D$ and therefore already dominates $N_{2,3}$. By \cref{fact:f1}, we see that they are only important for witnessing $v$ directly because all the other vertices are also witnessed by $v$. 
 
 % TODO Let's briefly discuss these cases. TODO application diagram
 
@@ -390,7 +393,7 @@ The second fact states that if  $\Dv$ (resp. $\Dw$) is empty, too, we only need 
 As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ with $u, u' \in N_{2,3}(v,w)$ can dominate $N_3(v,w)$. Since also $\Dvw = \emptyset$ any SDS of G has to contain $v$ or at least four vertices by \cref{fact:f1}. In the last case, we again replace these four vertices again by $v$, $w$ and two neighbors respectively and we can conclude that $v$ belongs to the solution.
 \end{proof}
 
-On the opposite side, if $\Dvw \neq \emptyset$, we ahve 
+% On the opposite side, if $\Dvw \neq \emptyset$, we have ... 
 
 \noindent Now we are ready to prove the correctness of \cref{rgl:rtwo}
 \begin{lemma}\label{lemma:correctnesstwo}
@@ -399,14 +402,27 @@ On the opposite side, if $\Dvw \neq \emptyset$, we ahve
 \begin{proof}
     We will prove the claim by analyzing the different cases of the rule independently.     
     \begin{enumerate}
-        \item[$\Rightarrow$] Consider a \sdom $D$ in $G$. We show that $G'$ also has a SDS with $\abs{D'} \leq \abs{D}$
+        \item[$\Rightarrow$] Consider a \sdom $D$ in $G$. We show that $G'$ also has a SDS with $\abs{D'} \leq \abs{D}$. By assumption we have $\Dvw = \emptyset$.
         \begin{enumerate}
-            \item  $ \Dv = \emptyset  \wedge \Dw = \emptyset $: By applying \cref{fact:f2} twice, we know that $v, w \in D $.
-             
+            \item  $ \Dv = \emptyset  \wedge \Dw = \emptyset $: By applying \cref{fact:f2} twice, we know that both  $v, w \in D$. Therefore, $v'$,$w'$, and potentially $y$ and $y'$ are dominated by $v$ or $w$ in $G'$.
             
+            We now have three cases: Either $v$ and $w$ are so far away that both have their witnesses themselves; they are of distance three, such that potentially one witness on a path from $v$ to $w$ (which could go through $N_{2,3}(v,w)$ and will be removed) is required or they can be of distance less than three, such that they already witness each other directly. 
+
+            We will now build $D'$ depending on which vertices from $D \cap N_{2,3}(v,w)$ have removed. 
+            % Add figure.
+            \begin{itemize}
+                \item If the rule has not removed any $d \in D$, we simply set $D' = D$. If $v$ was a witness for $w$ (and vice versa), \cref{rgl:rtwo} will preserve it by introducing the vertex $y$. Otherwise, these witnesses are preserved.
+                \item If $d(v,w) > 3$, then $v$ and $w$ are not sharing any common witnesses. 
+                If the rule has removed a vertex from $D \cap N(v)$, we set $D' = D \setminus N_{2,3}(v,w) \cup \{v'\}$.
+                If the rule has removed a vertex from $D \cap N(w)$, we  set $D' = D \setminus N_{2,3}(v,w) \cup \{w'\}$.
+                If the rule has removed a vertex from $(D \cap N(v))$ and a vertex from $(D \cap N(w))$, we set $D' = D \setminus N_{2,3}(v,w) \cup \{v', w'\}$.
+                \item If $d(v,w) = 3$, then there could possibly be a path via $N_{2,3}(v,w) $ vertices containing a witness for both $v$ and $w$. If the rule removed a vertex $D \cap N_{2,3}(v, w)$m, we set $D' = D \setminus N_{2,3}(v,w) \cup \{y\}$. Note that we could also choose $y' \in D'$, because $y$'s only function is to be a single witness for $v$ and $w$ and everything it could witness too, will also be witnessed by $v,w \in D'$ (\cref{fact:f1}).
+                \item If $d(v,w) \leq 2$, then $v$ directly witnesses $w$ (and vice versa). Even if the rule has removed a vertex $z \in D \cap N_{2,3}(v,w)$, we can ignore that, because \cref{fact:f1} states that $v$ and $w$ will witness the same vertices as $z$ did. Hence, we set $D' = D \setminus N_{2,3}(v,w)$.
+            \end{itemize}
+            In all of the cases, it follows that $D'$ is a SDS of $G'$ with $\abs{D'} \leq \abs{D}$ 
             
-            \item  $ \Dv \neq \emptyset \wedge \Dw \neq \emptyset $
-            \item  $ \Dv \neq \emptyset  \wedge \Dw = \emptyset$
+            \item  $ \Dv \neq \emptyset \wedge \Dw \neq \emptyset$: Only for sake of completeness, set $D' = D$ as $G' = G$.
+            \item  $ \Dv \neq \emptyset  \wedge \Dw = \emptyset$. As $\Dw$ and \cref{fact:f2}, we know that $v \in D$ and dominates $N_{2,3}(v,w) \cap N_3{v,w }$
             \item  $ \Dv = \emptyset  \wedge \Dw \neq  \emptyset $: Symmetrical to previous case.
         \end{enumerate}
 
