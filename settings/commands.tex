@@ -46,8 +46,17 @@
 
 \newcounter{casenum}
 \newenvironment{caseof}{\setcounter{casenum}{1}}{\vskip.5\baselineskip}
-\newcommand{\case}[2]{\vskip.5\baselineskip\par\noindent {\bfseries Case \arabic{casenum}:} #1\\#2\addtocounter{casenum}{1}}
+% \newcommand{\case}[2]{\vskip.5\baselineskip\par\noindent {\bfseries Case \arabic{casenum}:} #1\\#2\addtocounter{casenum}{1}}
+\newcommand{\case}[2]{%
+  \par\addvspace{.5\baselineskip}%
+  \noindent \refstepcounter{casenum}\textbf{Case \thecasenum:}~#1\\*
+  #2\ifhmode\unskip\fi
+}
+
 \crefname{case}{Case}{Cases}
+\crefname{casenum}{\protect\textbf{case}}{\protect\textbf{cases}}
+\Crefname{casenum}{\protect\textbf{Case}}{\protect\textbf{Cases}}
+\creflabelformat{casenum}{#2\textbf{(#1)}#3}
 
 
 \newenvironment{caseofz}{\setcounter{casenum}{0}}{\vskip.5\baselineskip}

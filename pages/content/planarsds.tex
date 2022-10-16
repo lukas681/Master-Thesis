@@ -341,7 +341,7 @@ Furthermore, we shortly denote $\bigcup \Dv = \bigcup\limits_{D \in \Dv}D $ and 
 \begin{rgl}\label{rgl:rtwo}
     Let \G be a graph and two distinct $v,w \in V$. If $\mathbf{\Dvw = \emptyset}$ we apply the following:
     \begin{caseof}
-        \case{if $\Dv =  \emptyset$ and $D_w = \emptyset$}
+        \case{if $\Dv =  \emptyset$ and $D_w = \emptyset$\label{case:c1}}
         
         \vspace{-5mm}
         \begin{itemize}
@@ -350,29 +350,27 @@ Furthermore, we shortly denote $\bigcup \Dv = \bigcup\limits_{D \in \Dv}D $ and 
             \item If there was a common neighbor of $v$ and $w$ in $N_{2,3}(v,w)$ add another vertex $y$ and two connecting edges  $\{v, y\}$ and $\{y, w\}$
             \item If there was no common neighbor of $v$ and $w$ in $N_{2,3}(v,w)$, but at least one path of length three from $v$ to $w$ via only vertices from $N_{2,3}(v,w)$, add two vertices $y$ and $y'$ and connecting edges $\{v,y\}$, $\{y, y'\}$ and $\{y', w\}$
         \end{itemize}
-        \case{if $\Dv \neq  \emptyset$ and $D_w \neq \emptyset$}: Added for sake of completeness. Do nothing.
-        \case{if $\Dv \neq  \emptyset$ and $D_w = \emptyset$}
-        
+        \case{if $\Dv \neq  \emptyset$ and $D_w = \emptyset$\label{case:c2}}
+
         \vspace{-5mm}
         \begin{itemize}
             \item Remove $N_{2,3}(v)$ % OLD: \cap N_3(v,w)$
             \item Add $\{v, v'\}$
         \end{itemize}
         
-        \case{if $\Dv =  \emptyset$ and $D_w \neq \emptyset$} This case is symmetrical to \textbf{Case 3}. 
+        \case{if $\Dv =  \emptyset$ and $D_w \neq \emptyset$\label{case:c3}} This case is symmetrical to \textbf{Case 3}. 
     \end{caseof}
 \end{rgl}
 
-In the first case, we know by \cref{fact:f2} that $v$ and $w$ must be in D. Therefore, we introduce two forcing vertices $v'$ and $w'$ in $G'$ and remove $N_{2,3}(v,w)$ as these vertices are dominated by $v$ and $w$.
-But if we remove $N_{2,3}(v,w)$ entirely, we could lose solutions: First, the case that $v$ is a direct witness of $w$ ($d(v,w) = 2$) and that there is one intermediate witness on a path of length three from $v$ to $w$ via vertices in $N_{2,3}(v,w)$, which could be a witness for both $v$ and $w$ at the same time. 
-Note that if we would not distinguish between these two cases and just add one intermediate vertex, we would possibly generate wrong solutions, because $v$ could always witness $w$.
+%% Description Case 1
+In \cref{case:c1}, we know by \cref{fact:f2} that $v$ and $w$ must be in D. Therefore, we introduce two forcing vertices $v'$ and $w'$ in $G'$ and remove $N_{2,3}(v,w)$ as these vertices are dominated by $v$ and $w$.
+But if we remove $N_{2,3}(v,w)$ entirely, we could lose solutions: First, the case that $v$ is a direct witness of $w$ ($d(v,w) = 2$) and that there is one intermediate witness on a path of length three from $v$ to $w$ via vertices in $N_{2,3}(v,w)$, which could be a witness for both $v$ and $w$ at the same time. Note that if we would not distinguish between these two cases and just add one intermediate vertex, we would possibly generate wrong solutions, because $v$ could always witness $w$.
 
-In the second case, we do not do anything. In the later analysis, the application of \cref{rgl:rthree} is critical.
+Again by \cref{fact:f2} we know for \cref{case:c1,case:c2} that $v \in D$ and similar to \cref{rgl:rone} we can simplify the neighborhood $N_{2,3}(v)$. \cref{fact:f1} states, that these vertices are only useful for witnessing $v$, but do not go beyond what $v$ already witnesses.
 
-Again by \cref{fact:f2} we know in the last two cases that $v \in D$ and similar to \cref{rgl:rone} we can simplify the neighborhood $N_{2,3}(v)$. \cref{fact:f1} states, that these vertices are only useful for witnessing $v$, but do not go beyond what $v$ already witnesses.
+The cases where $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$ are not required and in a later analysis only the existence of these two sets is required and the application of \cref{rgl:rthree} is critical.
 
-
-Before proofing \cref{rgl:rtwo} we will deduce some \textit{Facts} which are implied by the definitions above. These facts justify the definition of the sets $\Dvw$, $\Dv$ and $\Dw$.
+Before proofing \cref{rgl:rtwo} we will deduce some \textit{facts} which are implied by the definitions above. These facts justify the definition of the sets $\Dvw$, $\Dv$ and $\Dw$.
 
 \begin{fact}\label{fact:f1}
     Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref{rgl:rtwo} on $v,w$. If $\Dvw = \emptyset$, then G has a solution if and only if it has a solution containing at least one of the two vertices $\{v,w \}$.
@@ -387,7 +385,7 @@ The second fact states that if  $\Dv$ (resp. $\Dw$) is empty, too, we only need 
     Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref{rgl:rtwo} on $v, w$. If $\Dvw = \emptyset$ and $\Dw = \emptyset$ (resp. $\Dv = \emptyset$) then $G'$ has a solution if and only if it has a solution containing $v$ (resp. $w$).
 \end{fact}
 \begin{proof}
-As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ with $u, u' \in N_{2,3}(v,w)$ can dominate $N_3(v,w)$. Since also $\Dvw = \emptyset$ any SDS of G has to contain $v$ or at least four vertices by \cref{fact:f1}. In the last case, we again replace these four vertices again by $v$, $w$ and two neighbors respectively and we can conclude that $v$ belongs to the solution.
+As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ with $u, u' \in N_{2,3}(v,w)$ can dominate $N_3(v,w)$. Since also $\Dvw = \emptyset$ any SDS of G has to contain $v$ or at least four vertices by \cref{fact:f1}. In the last case, we again replace these four vertices by $v$, $w$ and two neighbors respectively and we can conclude that $v$ belongs to the solution.
 \end{proof}
 
 % On the opposite side, if $\Dvw \neq \emptyset$, we have ... 
@@ -418,7 +416,6 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
             \end{itemize}
             In all of the cases, it follows that $D'$ is a SDS of $G'$ with $\abs{D'} \leq \abs{D}$ 
             
-            \item  $ \Dv \neq \emptyset \wedge \Dw \neq \emptyset$: Only for sake of completeness, set $D' = D$ as $G' = G$.
             \item  $ \Dv \neq \emptyset  \wedge \Dw = \emptyset$: As $\Dw = \emptyset$ and \cref{fact:f2}, we know that $v \in D$ and $v$ dominates $N_{2,3}(v)$. 
             If a vertex $d \in D \cap N_{2,3}(v)$ was removed, we set $D' = D \setminus N_{2,3}(v) \cup \{v'\}$, else $D' = D$.
             Deleting dominating vertices $d \in D \cap N_{2,3}(v)$ does not destroy the witness properties of the graph, because by \cref{fact:f1} we know that everything $d$ could witness, is also witnessed by $v$. 
@@ -435,7 +432,6 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
                 \item If $y$ and $y'$ were added, a solution could use one of them to provide a single witness for $v$ and $w$. There exists a path $p = (v, n_1, n_2, w)$ from $v$ to $w$ in $G$ only using vertices from $N_{2,3}(v,w)$. As $n_1$ and $n_2$ both witness $v$ and $w$, we put one of them in $D$ if at least one of $y$ or $y$ are dominating vertices in $G'$.
                 Hence, if $y \in D'$ or $y \in D'$, we set $D = D' \setminus \{y,y'\} \cup \{n_1\}$.
             \end{itemize}
-            \item  $\Dv \neq \emptyset \wedge \Dw \neq \emptyset$: Nothing done.
             \item  $\Dv \neq \emptyset \wedge \Dw = \emptyset$: Clearly, $v \in D'$ to dominate $v'$. If $v \in D'$, we set $D =  D' \setminus \{v'\} \cup d$ for some vertex $d \in N_{2,3}(v,w)$ and otherwise $D = D'$. If $v'$ was the witness of $v$, it is now replaced by $d$ and $D$ is an SDS with $\abs{D} \leq \abs{D'}$.
             \item  $\Dv = \emptyset \wedge \Dw \neq \emptyset$: Symmetrical to previous case.
         \end{enumerate} 
@@ -445,7 +441,6 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
 \end{proof}
 % What happens if D != empty?
 \subsection{Reduction Rule III: Shrinking Simple Regions}
-
 
 \begin{rgl}\label{rgl:rthree}
     Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and $w$. If $\abs{V(R) \setminus \{v, w\}} \geq 7$
@@ -502,8 +497,6 @@ Combining these three parts will give us a linear kernel.
 
 We start with a more fine-grained analysis of the impact of the different cases of \cref{rgl:rtwo} on a $vw$-region. The main idea is to count the number of simple regions in the $vw$-region and then use the bound on the size of a simple region after \cref{rgl:rthree} was applied exhaustively and which was obtained in \cref{lemma:simpleregionbound}.   
 
-We start by giving 
-
 %TODO Correct Citation
 \begin{lemma}\label{lemma:nonecover}
     Given a plane Graph \G and a $vw$-region R $\abs{N_1(v,w) \cap V(R)} \leq 4$ and these vertices lay exactly on the boundary $\partial R$ of $R$. 
@@ -549,7 +542,6 @@ Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been
 \begin{proof} 
     We will just give some intuition because the proof of Garnero and Sau in \cite[Fact 6]{Garnero2014} does not use any special property exposed by the reduction rules. Figure (Add picture about figures) gives a visualization of the worst-case scenarios to cover $N_3(v,w) \cap V(R)$ with simple regions in the relevant cases.\footnote{Note: In a newer revision of their paper \cite{Garnero2018}, Garnero and Sau removed this proof, because they changed \cref{rgl:rtwo} and a more fine-grained analysis was made possible.}
     
-    
     % Altough our \cref{rgl:rtwo} is a bit different, the proof still goes through in the original way.
     
 \end{proof}
@@ -566,15 +558,20 @@ Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been
     % Maybe note that N_2 vertices do not cause any troubles as they are always bound to the near of N_1 vertex
     \begin{caseofz}
         %% TODO Check if that is correct and compare with latest paper
-        \casez{If \cref{rgl:rtwo} has \textbf{not} been applied} As $\Dvw \neq \emptyset$, there exists a set $\tilde D = \{d_1,d_2,d_3\} \in \Dvw$ of at most three vertices dominating $N_3(v,w)$. We observe that vertices from \nthi~ are common neighbors of either v or w (by the definition of a $vw$-region) and at least one vertex from $\tilde D$. Without violating planarity, we can span at most 6 simple regions. Using \cref{lemma:simpleregionbound} and adding $\abs{\tilde D} = 3$, we can conclude $\nthi \leq 6 \cdot 6 + 3 = 39$.
+        \casez{\cref{rgl:rtwo} has \textbf{not} been applied in the following two cases: Either $\Dvw \neq \emptyset$ or ($\Dvw = \emptyset \wedge \Dv \neq \emptyset \wedge \Dw \neq \emptyset$}
+        
+        \begin{itemize}
+            \item If $\Dvw \neq \emptyset$, there exists a set $\tilde D = \{d_1,d_2,d_3\} \in \Dvw$ of at most three vertices dominating $N_3(v,w)$. We observe that vertices from \nthi~ are common neighbors of either v or w (by the definition of a $vw$-region) and at least one vertex from $\tilde D$. Without violating planarity, we can span at most 6 simple regions. Using \cref{lemma:simpleregionbound} and adding $\abs{\tilde D} = 3$, we can conclude $\nthi \leq 6 \cdot 6 + 3 = 39$.
+            \item As we know that $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$, we can apply \cref{lemma:rtwosr} and although \cref{rgl:rtwo} has not changed the G, we can cover R with at most $11$ simple regions giving as $\nthi \leq 11 \cdot 6 = 66$ vertices.
+        \end{itemize}
         
         %% TODO even that: is it correct regarding N2?
-        \casez{If \cref{rgl:rtwo} Case 1 has been applied}
-        In that case \ntwi was entirely removed and at \nthi replaced by at most three vertices ($v', w'$ and $y$) added. Hence $\nthi \leq 3$.
+        \casez{If \cref{rgl:rtwo} \Cref{case:c1} has been applied}
+        In that case, \ntwi was entirely removed and at \nthi replaced by at most three vertices ($v', w'$ and $y$) added. Hence $\nthi \leq 3$.
+
+%        \casez{If \cref{rgl:rtwo} \Cref{case:c2} has been applied} As we know that $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$, we can apply \cref{lemma:rtwosr} and although \cref{rgl:rtwo} has not changed the G, we can cover R with at most $11$ simple regions giving as $\nthi \leq 11 \cdot 6 = 66$ vertices. 
         
-        \casez{If \cref{rgl:rtwo} Case 2 has been applied} As we know that $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$, we can apply \cref{lemma:rtwosr} and although \cref{rgl:rtwo} has not changed the G, we can cover R with at most $11$ simple regions giving as $\nthi \leq 11 \cdot 6 = 66$ vertices. 
-        
-        \casez{If \cref{rgl:rtwo} Case 3 (sym. 4) has been applied} We know that in this case $N_{2,3}(v) \cap N_3(v,w)$ was entirely removed and replaced by a single possible witness. Using \cref{lemma:rtwosr}, we can cover $(N_3(v,w) \setminus \{v'\} \cap V(R)$ with (at most) 14 simple regions giving us $\abs{\nthi} \leq 14 \cdot 6 + 1 = 85$.
+        \casez{If \cref{rgl:rtwo} \Cref{case:c2,case:c3} have been applied} We know that in this case $N_{2,3}(v) \cap N_3(v,w)$ was entirely removed and replaced by a single possible witness. Using \cref{lemma:rtwosr}, we can cover $(N_3(v,w) \setminus \{v'\} \cap V(R)$ with (at most) 14 simple regions giving us $\abs{\nthi} \leq 14 \cdot 6 + 1 = 85$.
     \end{caseofz}
     
     \begin{figure}[!ht]

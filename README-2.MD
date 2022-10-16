@@ -25,6 +25,7 @@
 23) Check distance definitino: Waht about infinity? 
 24) Bipartite Graph definedp
 25) Remove case 2.and adjust all refs
+26) cref vs Cref upper and lower cases.
 Acronyms
 
 TODO: Look up unknown graph theoretic terms for me.
