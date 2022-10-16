@@ -431,7 +431,11 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
 
         \item[$\Leftarrow$] Let $D'$ be a \sdom in $G'$ and $\Dvw =  \emptyset$. We show that $G$ has a SDS $D$ with $\abs{D} \leq \abs{D'}$ by distinguishing the different cases again. 
         \begin{enumerate}
-            \item  $\Dv = \emptyset \wedge \Dw = \emptyset$
+            \item  $\Dv = \emptyset \wedge \Dw = \emptyset$: In any case we know that $v,w \in D$ to dominate $v'$ and $w'$ and therefore also dominating $N_{2,3}(v,w)$ in $G$. To preserve the distance $d(v,w)$ the rule might have introduced additional vertices $y$ and $y'$.            
+            \begin{itemize}
+                \item If only $y$ was introduced we know that there was a common neighbor $n \in N(v) \cap N(w)$ of $v$ and $w$. $y$ was introduced to preserve $v$ being a direct witness for $w$ (and vice versa) and is not part of a solution itself. ($y \notin D'$) Hence, we set $D = D'$.
+                \item If $y$ and $y'$ were introduce ... 
+            \end{itemize}
             \item  $\Dv \neq \emptyset \wedge \Dw \neq \emptyset$
             \item  $\Dv \neq \emptyset \wedge \Dw = \emptyset$
             \item  $\Dv = \emptyset \wedge \Dw \neq \emptyset$: Symmtrical to previous case.
