@@ -1,9 +1,13 @@
 \chapter{A Linear Kernel for Planar Semitotal Domination}
 
+\vspace*{-50pt}
+\begin{figure}[ht]
+\includegraphics[width=.3\textwidth, right]{img/constructing.png}
+\end{figure}
+
 \epigraph{\itshape The best way to explain it is to do it.}{Lewis Caroll, \textit{Alice in Wonderland}}
 
 We are going to present a polynomial-time preprocessing procedure that gives a linear kernel for \psdom parametrized by solution size. Based on the technique first introduced by Alber et al. (\cite{Alber2004}) in 2004, an abundance of similar results to other domination problems emerged which gave us the belief that we can transfer these results to \sdom. \cref{tbl:kernels} gives an overview of the status of kernels for the planar case on various domination problems. All of these results introduce reduction rules bounding the number of vertices inside so-called ``regions'' which can be obtained by a special decomposition of the planar graph. 
-
 % TODO: Add the running time of this algorithm there.
 \begin{table}[h]
 \begin{minipage}[th]{\linewidth}
@@ -205,7 +209,7 @@ We now have all the definitions ready to formally a maximal \dreg on planar grap
 \end{figure}
 
 % TODO: Wording: "kernel" precise enough here.
-We are introducing a special subset of a region, namely \textit{simple region} where every vertex is a common neighbor of $v$ and $w$. They will appear in many unexpected astonishing places and are an important tool to operate on small parts of a plane graph. The upcoming \cref{rgl:rthree} will bound the size of these \textit{simple regions}. Interestingly, in the first version of the paper about the linear kernel for \ptdom (\cite{Garnero2014}), they were not given independently but covered by one of their reduction rules (Rule 2). As it turned out, the analysis is getting simpler if we treat them in a separate rule (In our case: \cref{rgl:rthree}) and so did Garnero and Sau in a revised version of their paper four years later (\cite{Garnero2018}).
+We are introducing a special subset of a region, namely \textit{simple region} where every vertex is a common neighbor of $v$ and $w$. They will appear in many unexpected astonishing places and are an important tool to operate on small parts of a plane graph. The upcoming \cref{rgl:rthree} will bound the size of these \textit{simple regions}. Interestingly, in the first version of the paper about the linear kernel for \ptdom (\cite[Revision 2014]{Garnero2018}), they were not given independently but covered by one of their reduction rules (Rule 2). As it turned out, the analysis is getting simpler if we treat them in a separate rule (In our case: \cref{rgl:rthree}) and so did Garnero and Sau in a revised version of their paper four years later (\cite{Garnero2018}).
 
 \begin{minipage}{\textwidth}
 \begin{definition}
@@ -318,7 +322,7 @@ Note that we need our definition of a reduced instance given in \ref{def:reduced
 
 \subsection{Reduction Rule II: Shrinking the Size of a Region}
 
-The second rule is the heart of the whole reduction and tries to minimize the neighborhood of two distinct vertices. The rule follows Garnero and Sau's approach in one of the early versions of \cite{Garnero2014} for \ptdom. Interestingly, the reduction rules given in the latest version were not directly transferable to \psdom, because they heavily rely on properties only a \ptdom exposes and can not be generalized to the more relaxed \psdom.
+The second rule is the heart of the whole reduction and tries to minimize the neighborhood of two distinct vertices. The rule follows Garnero and Sau's approach in one of the early versions of \cite[Revision 2014]{Garnero2018} for \ptdom. Interestingly, the reduction rules given in the latest version were not directly transferable to \psdom, because they heavily rely on properties only a \ptdom exposes and can not be generalized to the more relaxed \psdom.
 
 % TODO: Force connectivity, improve kerne bound
 % TODO: Reformulate
@@ -550,7 +554,7 @@ We continue by giving a constant bound on the number of simple regions that cove
 
 Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been applied and the second one, when Case 4 of \cref{rgl:rtwo} was applied.
 \begin{proof} 
-    We will just give some intuition because the proof of Garnero and Sau in \cite[Revision 2014, Fact 6]{Garnero2014} does not use any special property exposed by the reduction rules. Figure (Add picture about figures) gives a visualization of the worst-case scenarios to cover $N_3(v,w) \cap V(R)$ with simple regions in the relevant cases.\footnote{Note: In a newer revision of their paper \cite{Garnero2018}, Garnero and Sau removed this proof, because they changed \cref{rgl:rtwo} and a more fine-grained analysis was made possible.}
+    We will just give some intuition because the proof of Garnero and Sau in \cite[Revision 2014, Fact 6]{Garnero2018} does not use any special property exposed by the reduction rules. Figure (Add picture about figures) gives a visualization of the worst-case scenarios to cover $N_3(v,w) \cap V(R)$ with simple regions in the relevant cases.\footnote{Note: In a newer revision of their paper \cite{Garnero2018}, Garnero and Sau removed this proof, because they changed \cref{rgl:rtwo} and a more fine-grained analysis was made possible.}
     
     % Altough our \cref{rgl:rtwo} is a bit different, the proof still goes through in the original way.
     
@@ -563,7 +567,7 @@ Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been
 \begin{proof} 
     By \cref{lemma:nonecover,lemma:ntwocover} and \cref{lemma:simpleregionbound} to bound the number of vertices inside a simple region, we know that $\abs{N_1(v,w) \cap V(R)} \leq 4$ and $\abs{N_2(v,w) \cap V(R)} \leq 6 \cdot 7 = 42$.
     
-    It is remaining to bound for \nthi, but gladly we have \cref{rgl:rtwo}, which took care about them! \cref{fig:nthreeinside} shows the worst case amount of simple regions the indidual cases can have.
+    It is remaining to bound for \nthi, but gladly we have \cref{rgl:rtwo}, which took care about them! \cref{fig:nthreeinside} shows the worst case amount of simple regions the individual cases can have.
     
     % Maybe note that N_2 vertices do not cause any troubles as they are always bound to the near of N_1 vertex
     \begin{caseofz}

@@ -19,7 +19,9 @@
 \usepackage{thmtools, thm-restate}
 \usepackage[dvipsnames]{xcolor} 			% einfache Verwendung von Farben in nahezu allen Farbmodellen
 \usepackage[hyphens]{url}
-\usepackage[Conny]{fncychap} %% Oder jarne, Bjornstrup, Glenn
+% Legacy, Seems to provide required libraries
+\usepackage[Conny]{fncychap} %% Oder jarne, Bjornstrup, Glen
+
 \usepackage[useregional]{datetime2}
 \usepackage{lipsum}
 \usepackage{xspace}
@@ -31,6 +33,7 @@
 \usepackage{tabularx}
 \usepackage{xltabular}
 \usepackage{wrapfig}
+\usepackage[export]{adjustbox}
 % \usepackage{soul} % Nice Textdecorations, not need right now ...
 
 \usepackage{graphics}
@@ -47,9 +50,8 @@
 %\tikzstyle{vertex}=[circle, draw, inner sep=0pt, minimum size=6pt]
 
 %% DECLARING STYLING
-\def\hmath$#1${\texorpdfstring{{\rmfamily\textit{#1}}}{#1}}
+ \def\hmath$#1${\texorpdfstring{{\rmfamily\textit{#1}}}{#1}}
 \ChTitleVar{\bfseries\Large\rmfamily}
-
 \ChNameVar{\bfseries\Large\sffamily}
 \definecolor{applegreen}{rgb}{0.55, 0.71, 0.0}
 \definecolor{aqua}{rgb}{0.0, 1.0, 1.0}
