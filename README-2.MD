@@ -26,6 +26,7 @@
 24) Bipartite Graph definedp
 25) Remove case 2.and adjust all refs
 26) cref vs Cref upper and lower cases.
+27) This in the end;: https://blog.wordvice.com/avoid-fillers-powerful-writing/
 Acronyms
 
 TODO: Look up unknown graph theoretic terms for me.
@@ -35,6 +36,8 @@ Note that if not mentioned other wise, parametrized by solution size.
 V(R) defined?
 Define penadant vertices
 add more penandant?
+
+Henning exhaustive research in domination problems
 
 
 # Possible Quotes

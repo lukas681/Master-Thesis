@@ -3,11 +3,13 @@
 \vspace*{-50pt}
 \begin{figure}[ht]
 \includegraphics[width=.3\textwidth, right]{img/constructing.png}
+        \captionsetup{textformat=empty,labelformat=blank}
+        \caption{Generated with Dall-E. \url{https://labs.openai.com/}. ``more ducks building and working on  a high stack in the water using a excavator and tools and machines''}
 \end{figure}
 
 \epigraph{\itshape The best way to explain it is to do it.}{Lewis Caroll, \textit{Alice in Wonderland}}
 
-We are going to present a polynomial-time preprocessing procedure that gives a linear kernel for \psdom parametrized by solution size. Based on the technique first introduced by Alber et al. (\cite{Alber2004}) in 2004, an abundance of similar results to other domination problems emerged which gave us the belief that we can transfer these results to \sdom. \cref{tbl:kernels} gives an overview of the status of kernels for the planar case on various domination problems. All of these results introduce reduction rules bounding the number of vertices inside so-called ``regions'' which can be obtained by a special decomposition of the planar graph. 
+We are going to present a polynomial-time preprocessing procedure giving a linear kernel for \psdom parametrized by solution size. Based on the technique first introduced by Alber et al. (\cite{Alber2004}) in 2004, an abundance of similar results to other domination problems emerged which gave us the belief we can transfer these results to \sdom. \cref{tbl:kernels} gives an overview of the status of kernels for the planar case on various domination problems. All of these results introduce reduction rules bounding the number of vertices inside so-called ``regions'' which can be obtained by a special decomposition of the planar graph. 
 % TODO: Add the running time of this algorithm there.
 \begin{table}[h]
 \begin{minipage}[th]{\linewidth}
@@ -45,27 +47,23 @@ In the following years, this approach bore fruits in other planar problems as we
 
 % TODO Where from?
 In the impending years, many results generalized this approach to larger graph classes. Fomin and Thilikos started by proofing that the initial reduction rules given by Alber et al. \cite{Alber2004} can also be used to obtain a linear kernel on graphs with bounded genus $g$ (\cite{Fomin2004}).
-Gutner advanced in 2008 by showing that the problem has a linear kernel on $K_{3,h}$-topological-minor-free graph classes and a polynomial kernel for $K_h$-topological-minor-free graph classes (\cite{Gutner2009}). 
+Gutner advanced in 2008 by giving a linear kernel on $K_{3,h}$-topological-minor-free graph classes and a polynomial kernel for $K_h$-topological-minor-free graph classes (\cite{Gutner2009}). 
 % TODO following required?
 % In 2007 they extended it to show that graphs of bounded degeneracy are FPT (\cite{Alon2007}). 
-In 2012 Philip, Raman and Sikdar showed that even $K_{i,j}$-free graph classes admit a polynomial kernel for \dom (\cite{Philip2012}). 
-In an attempt to extend these ideas to other problems as well, Bodlaender et al. proved that all problems expressible in counting monadic second-order logic that satisfy a coverability property admit a polynomial kernel on graphs of bounded genus g (\cite{Bodlaender2016}).
+In 2012 Philip, Raman and Sikdar showed that $K_{i,j}$-free graph classes admit a polynomial kernel for \dom (\cite{Philip2012}). 
+In an attempt to extend these ideas to other problems as well, Bodlaender et al. proved that all problems expressible in counting monadic second-order logic satisfying a coverability property admit a polynomial kernel on graphs of bounded genus g (\cite{Bodlaender2016}).
 
-These meta-results are interesting from a theoretical point of view, but the constants for the kernels obtained by these methods are too large to be of practical interest. The question of how an efficient kernel can be constructed remains. We will show that the kernel described by Garnero and Sau in their original version of \cite[Revision 2014]{Garnero2018} for \ptdom can also be ``recycled'' for \psdom giving us an explicitly constructed kernel with ``reasonable'' small constants.
+These meta-results are interesting from a theoretical point of view, but the constants for the kernels obtained by these methods are too large to be of practical interest. The question of how an efficient kernel can be constructed remains. We will transfer the kernel described by Garnero and Sau in their original version of \cite[Revision 2014]{Garnero2018} for \ptdom can also be ``recycled'' for \psdom giving us an explicitly constructed kernel with ``reasonable'' small constants.
 
-\section{The Main Idea}
+ \paragraph{The Main Idea} A given a plane graph \G with a given vertex set $D \subseteq V$ can be decomposed into at most $3 \cdot \abs{D} -6$ so-called ``regions'' (see \cref{def:region}). If $D$ is a given \sdom~of size $\abs{D}$, the total number of regions in this decomposition depends \underline{linearly} on the size of $D$. If we define \textit{reduction rules} (\cref{rgl:rone,rgl:rtwo,rgl:rthree})  minimizing the number of vertices in and around a region, we can bound the size of a reduced graph. In our case, we give rules to reduce a region down to a constant number of vertices. We can create an equivalent instance of $G$ whose number of remaining vertices lies linearly in the size of an enquiried solution. Such a reduction gives a \textit{Kernel} for \psdom.
 
-The main idea is to use the fact that given a plane graph \G and given a vertex set $D \subseteq V$, G can be decomposed into at most $(3 \cdot \abs{D} -6)$ so-called ``regions'' (\cref{def:region}). If $D$ is now a given \sdom~of size $\abs{D}$, we know that the total number of regions depends linearly on the size of $D$. If we define \textit{reduction rules} (\cref{rgl:rone,rgl:rtwo,rgl:rthree}) that try to minimize the number of vertices in and around a region we can overall bound the size of a reduced graph $G'$. We give rules that ensure that each region is of constant size after they have been applied.
-
-The reduction rules do not rely on the decomposition itself, but rather consider the neighborhood of every pair of vertices in the graph.
+Interestingly, the reduction rules do not rely on the decomposition itself, but rather consider the neighborhood of every pair of vertices in the graph. The decomposition itself has just used a tool for analyzing the kernel size after the reduction.
 
 \section{Definitions}
 
-In this section, we are giving key definitions for our reduction rules. They are inspired by those given by Garnero and Sau (\ptdom in \cite[Revision 2014]{Garnero2018} or \prbdom in \cite{Garnero2017}) and used ideas given by Alber et al. in \cite{Alber2004} for \pdom.
+Before giving the exact reduction rules, we need some definitions which expose some nice properties we are going to exploit. They are inspired by those given by Garnero and Sau (\ptdom in \cite[Revision 2014]{Garnero2018} or \prbdom in \cite{Garnero2017}) and reused ideas introduced by Alber et al. in \cite{Alber2004} for \pdom.
 
-We are splitting the neighborhood of a single vertex and a pair of vertices into three distinct subsets which intuitively give us a level of ``confinement'' of these vertices and how closely they are related to the rest of the graph (\cite{Garnero2018}). 
-% For example, for some neighbors of a vertex $v$ all its neighbors are still neighbors of v and they form a local ``bubble'' around $v$.
-
+The idea is to split up the neighborhood of a single vertex and a pair of vertices into three distinct subsets which intuitively give us a level of ``confinement'' of these vertices and how closely they are related to the rest of the graph (\cite[p. 6]{Garnero2018}). 
 
 \begin{definition}
     \label{def:nv}
@@ -75,7 +73,7 @@ We are splitting the neighborhood of a single vertex and a pair of vertices into
         N_2(v) & = \{u \in N(v)\setminus N_1(v) : N(u) \cap N_1(v) \neq \emptyset \} \\
         N_3(v) & = N(v) \setminus (N_1(v) \cup N_2(v))
     \end{align}
-    In order to inhance future readability, for $i,j \in [1,3]$, we denote $N_{i,j} (v) := N_i(v) \cup N_j(v)$.
+    To inhance future readability, for $i,j \in [1,3]$, we denote $N_{i,j} (v) := N_i(v) \cup N_j(v)$.
 \end{definition}
 
 \begin{figure}[!ht]
@@ -83,24 +81,22 @@ We are splitting the neighborhood of a single vertex and a pair of vertices into
     \begin{equation*}
         \tikzfig{fig/tikz/neighborhoods-single-vertex}
     \end{equation*}
-    \caption[The neighbordhood of a single Vertex $v$]{\textit{The neighborhood of a single vertex v split to $N_1(v)$ (purple), $N_2(v)$ (blue), and $N_3(v)$ (green). $M_1(v)$ are those having neighbors outside $N(v)$, $N_2(v)$ are a buffer between $N_1(v)$ and $N_3(v)$, and $N_3(v)$-vertices are confined in $N(v)$}}
+    \caption[The neighbordhood of a single Vertex $v$]{\textit{The neighborhood of a single vertex v split to $N_1(v)$ (purple), $N_2(v)$ (blue), and $N_3(v)$ (green). $N_1(v)$'s are those having neighbors outside $N(v)$, $N_2(v)$'s are a buffer between $N_1(v)$ and $N_3(v)$, and $N_3(v)$-vertices are confined in $N(v)$}}
 \end{figure}
 
-Intuitively, these sets are classifying neighbors of $v$ by how much they can interact with the rest of the graph and how much they are locally centered around $v$:
-
 \begin{xltabular}{\textwidth}{lX}
-\textbf{$\mathbf{N_1(v)}$} & are all neighbors of $v$ which have at least one adjacent vertex that is outside of $N(v)$ and therefore connect $v$ with the rest of the graph. They could possibly belong to a \sdom. \\
+\textbf{$\mathbf{N_1(v)}$} & is all the neighbors of $v$ which have at least one adjacent vertex that is outside of $N(v)$ and therefore connects $v$ with the rest of the graph. They can belong to a \sdom. \\
 
-\textbf{$\mathbf{N_2(v)}$} & are all neighbors of $v$ that have at least one neighbor in $N_1(v)$. These vertices do not have any function as a dominating vertex and can be seen as a \textit{buffer} bridging $N_1(v)$-vertices with those from $N_3(v) \cup \{ v \}$. Furthermore, they are useless as witnesses, because either we can replace them by $v$ (sharing the same neighborhood) or when being a witness for $v$, we replace it with one $z \in N_1(v)$.\\
+\textbf{$\mathbf{N_2(v)}$} & is all neighbors of $v$ that have at least one neighbor in $N_1(v)$. These vertices do not have any function as a dominating vertex and can be seen as a \textit{buffer} bridging $N_1(v)$-vertices with those from $N_3(v) \cup \{ v \}$. Furthermore, they are useless as witnesses, because either we can replace them with $v$ (sharing the same neighborhood) or when being a witness for $v$, we replace it with a $z \in N_1(v)$. \\
 
-$\mathbf{N_3(v)}$ & vertices are sealed off from the rest of the graph. They are useless as dominating vertices: For all $z \in N_3(v)$ it holds that  $N(z) \subseteq N(v)$ by definition and thus, we would always prefer $v$ as a dominating vertex instead of $z$. Nevertheless, they can be important as a witness for $v$ in the case that $N_1(v) \cup N_2(v) =\emptyset $. We are using this observation in \cref{rgl:rone} where we shrink $\abs{N_3(v)} \leq 1$.
+$\mathbf{N_3(v)}$ & vertices are sealed off from the rest of the graph. They are useless as dominating vertices: For all $z \in N_3(v)$ it holds that  $N(z) \subseteq N(v)$ by definition and thus, we would always prefer $v$ as a dominating vertex instead of $z$. Nevertheless, they can be important as a witness for $v$ in the case where it is the only neighbor of $v$ (this $N_1(v) \cup N_2(v) =\emptyset$). We are using this observation in \cref{rgl:rone} where we shrink $\abs{N_3(v)} \leq 1$.
 \end{xltabular}
 
 % TODO What can they dominate
 % TODO This sentence? Every path to a vertex outside N(v) will take more than 2 steps. 
 % TODO Grammar 
 
-Next, we are going to extend this notation also to a pair of vertices. Using this, \cref{rgl:rtwo} will later try to reduce the neighborhood of two vertices, and similar to \cref{def:nv}, we can observe nice properties. Again, the idea is to classify how strongly the shared neighborhood $N(v) \cup N(w)$ is connected with the rest of the graph.
+Next, we are going to extend this notation to a pair of vertices. Using this, \cref{rgl:rtwo} will later try to reduce the neighborhood of two vertices, and similar to \cref{def:nv}, we can observe nice properties. Again, the idea is to classify how strongly the shared neighborhood $N(v) \cup N(w)$ is connected with the rest of the graph.
 
 %TODO Where is it used?
 \begin{definition}
@@ -302,7 +298,7 @@ We can now prove the correctness of this rule.
         \item[$\Rightarrow$] Let $D$ be a \sdom in $G$ of size k. 
         Because \cref{rgl:rone} has been applied, we can assume $N_3(v) \neq \emptyset$ in $G$. 
         
-        In order to dominate $N_3(v)$ we either need $v \in D$ or at least one other vertex $d \in N_{2,3}(v) \cap D$. In the latter case, we can replace this vertex by $v$ directly. By \cref{fact:witnessTwin}, we know that a witness for $d$ will also be a witness for $v$ preserving a \sdom. Hence, we now assume $v \in D$ and $N_{2,3}(v)$ is already dominated by $v$.
+        To dominate $N_3(v)$ we either need $v \in D$ or at least one other vertex $d \in N_{2,3}(v) \cap D$. In the latter case, we can replace this vertex by $v$ directly. By \cref{fact:witnessTwin}, we know that a witness for $d$ will also be a witness for $v$ preserving a \sdom. Hence, we now assume $v \in D$ and $N_{2,3}(v)$ is already dominated by $v$.
 
         If \cref{rgl:rone} has removed at least one dominating vertex, we set $D' = D \setminus N_{2,3}(v) \cup \{v'\}$ otherwise $D = D'$. In both cases, $v'$ is dominated by $v$.
 
@@ -336,7 +332,7 @@ The second rule is the heart of the whole reduction and tries to minimize the ne
 
 It can be observed that in the worst case four vertices are needed to dominate $N_3(v,w)$ of two vertices $v,w \in V$: $v$, $w$ and two witnesses for them. Exemplary, observe the graph consisting of two distinct $K_{1,m}$ with $m \in \mathbb{N}$ with centers $v$ and $w$.
 
-If $d(v,w) \leq 2$, it might even suffice to consider sets of size at most three, because then there would be an intermediate vertex that could witness $v$ and $w$ at the same time. We believe that the kernel can be improved by applying \cref{rgl:rtwo} only on those distanced two vertices. 
+If $d(v,w) \leq 2$, it might suffice to consider sets of size at most three, because then there would be an intermediate vertex that could witness $v$ and $w$ at the same time. We believe that the kernel can be improved by applying \cref{rgl:rtwo} only on those distanced two vertices. 
 
 Before we give the concrete reduction rule, we need to define three sets. Intuitively, we first try to find a set $\tilde D \subseteq N_{2,3}(v,w)$ of size at most three dominating $N_3(v,w)$ without using $v$ or $w$. If no such set exists, we allow $v$ (resp. $w$) and try to find one again. If we now find such a set, we can conclude that $v$ ($w$) must be part of a solution.
 
@@ -378,7 +374,7 @@ Furthermore, we shortly denote $\bigcup \Dv = \bigcup\limits_{D \in \Dv}D $ and 
 
 %% Description Case 1
 In \cref{case:c1}, we know by \cref{fact:f2} that $v$ and $w$ must be in D. Therefore, we introduce two forcing vertices $v'$ and $w'$ in $G'$ and remove $N_{2,3}(v,w)$ as these vertices are dominated by $v$ and $w$.
-But if we remove $N_{2,3}(v,w)$ entirely, we could lose solutions: First, the case that $v$ is a direct witness of $w$ ($d(v,w) = 2$) and that there is one intermediate witness on a path of length three from $v$ to $w$ via vertices in $N_{2,3}(v,w)$, which could be a witness for both $v$ and $w$ at the same time. Note that if we would not distinguish between these two cases and just add one intermediate vertex, we would possibly generate wrong solutions, because $v$ could always witness $w$.
+But if we remove $N_{2,3}(v,w)$ entirely, we could lose solutions: First, the case that $v$ is a direct witness of $w$ ($d(v,w) = 2$) and that there is one intermediate witness on a path of length three from $v$ to $w$ via vertices in $N_{2,3}(v,w)$, which could be a witness for both $v$ and $w$ at the same time. Note that if we would not distinguish between these two cases and add one intermediate vertex, we would possibly generate wrong solutions, because $v$ could always witness $w$.
 
 Again by \cref{fact:f2} we know for \cref{case:c1,case:c2} that $v \in D$ and similar to \cref{rgl:rone} we can simplify the neighborhood $N_{2,3}(v)$. \cref{fact:f1} states, that these vertices are only useful for witnessing $v$, but do not go beyond what $v$ already witnesses.
 
@@ -426,7 +422,7 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
                 If the rule has removed a vertex from $D \cap N(w)$, we  set $D' = D \setminus N_{2,3}(v,w) \cup \{w'\}$.
                 If the rule has removed a vertex from $(D \cap N(v))$ and a vertex from $(D \cap N(w))$, we set $D' = D \setminus N_{2,3}(v,w) \cup \{v', w'\}$.
                 \item If $d(v,w) = 3$, then there could possibly be a path via $N_{2,3}(v,w) $ vertices containing a witness for both $v$ and $w$. If the rule removed a vertex $D \cap N_{2,3}(v, w)$m, we set $D' = D \setminus N_{2,3}(v,w) \cup \{y\}$. Note that we could also choose $y' \in D'$, because $y$'s only function is to be a single witness for $v$ and $w$ and everything it could witness too, will also be witnessed by $v,w \in D'$ (\cref{fact:f1}).
-                \item If $d(v,w) \leq 2$, then $v$ directly witnesses $w$ (and vice versa). Even if the rule has removed a vertex $z \in D \cap N_{2,3}(v,w)$, we can ignore that, because \cref{fact:f1} states that $v$ and $w$ will witness the same vertices as $z$ did. Hence, we set $D' = D \setminus N_{2,3}(v,w)$.
+                \item If $d(v,w) \leq 2$, then $v$ directly witnesses $w$ (and vice versa). even if the rule has removed a vertex $z \in D \cap N_{2,3}(v,w)$, we can ignore that, because \cref{fact:f1} states that $v$ and $w$ will witness the same vertices as $z$ did. Hence, we set $D' = D \setminus N_{2,3}(v,w)$.
             \end{itemize}
             In all of the cases, it follows that $D'$ is a SDS of $G'$ with $\abs{D'} \leq \abs{D}$ 
             
