@@ -144,9 +144,9 @@ In our case, we say G is reduced if all of the \cref{rgl:rone,rgl:rtwo,rgl:rthre
 
 \subsection{Regions in Planar Graphs}
 
-Alber et al. (\cite{Alber2004}) introduced a novel approach how to look at planar graphs. In their analysis, they gave a constructive algorithm that decomposes a planar graph into local areas which they call ``regions''. Vaguely said, a region is a set of vertices that are enclosed by a boundary path in a fixed planar embedding.
+Alber et al. gave in \cite{Alber2004} a novel approach to look at planar graphs. In their analysis, they stated a constructive algorithm that decomposes a planar graph into local ``regions''. Vaguely said, a region is a set of vertices that are enclosed by a boundary path in a fixed planar embedding of the graph.
 
-The following definitions are based on those given by Garnero and Sau (\cite[Revision 2014]{Garnero2018}) and will lead toward a clean definition of a \textit{region} and what we understand as a \dreg.
+The following definitions are based on those given by Garnero and Sau in \cite[Revision 2014]{Garnero2018} and will lead toward a clean definition of a \textit{region} and what we understand as a \dreg. More detailed explanations and concrete examples can be found in their paper.
 
 \begin{definition}
     Two simple paths $p_1, p_2$ in a plane graph G are \underline{confluent} if:
@@ -161,14 +161,14 @@ The following definitions are based on those given by Garnero and Sau (\cite[Rev
 % TODO MORE TEXT HERE
 
 \begin{definition}
-    Let \G be a plane graph and let $v,w \in V$ be two distinct vertices. A \underline{ region $R(v,w)$} (also denoted as $vw$-region) is a closed subset of the plane, such that:
+    Let \G be a plane graph and let $v,w \in V$ be two distinct vertices. A \underline{ region $R(v,w)$} (synonymy denoted as  $vw$-region) is a closed subset of the plane, such that:
     \begin{enumerate}
         \item the boundary of R is formed by two confluent simple $vw$-paths with length at most 3
         \item every vertex in R belongs to $N(v,w)$, and
         \item the complement of R in the plane is connected.
     \end{enumerate}
     
-    We denote by $\partial R$ the boundary of R and by $V(R)$ the set of vertices which lay (with the plane embedding) in $R$. Furthermore, we call $\abs{V(R)}$ the \textit{size of the region}.
+    We denote with $\partial R$ the boundary of $R$ and by $V(R)$ the set of vertices laying (on the plane embedding) in $R$. Furthermore, we call $\abs{V(R)}$ the \textit{size of the region}.
     
     The poles of R are the vertices $v$ and $w$. The boundary paths are the two $vw$-paths that form $\partial R$
     
