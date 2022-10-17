@@ -96,7 +96,7 @@ $\mathbf{N_3(v)}$ & vertices are sealed off from the rest of the graph. They are
 % TODO This sentence? Every path to a vertex outside N(v) will take more than 2 steps. 
 % TODO Grammar 
 
-Next, we are going to extend this notation to a pair of vertices. Using this, \cref{rgl:rtwo} will later try to reduce the neighborhood of two vertices, and similar to \cref{def:nv}, we can observe nice properties. Again, the idea is to classify how strongly the shared neighborhood $N(v) \cup N(w)$ is connected with the rest of the graph.
+Next, we are going to extend this notation to a pair of vertices. Using this, \cref{rgl:rtwo} will later try to reduce the neighborhood of two vertices, and similar to \cref{def:nv}, we observe nice properties. Again, the idea is to classify how strongly the shared neighborhood of two vertices $N(v) \cup N(w)$ is connected to the rest of the graph.
 
 %TODO Where is it used?
 \begin{definition}
@@ -109,17 +109,18 @@ Next, we are going to extend this notation to a pair of vertices. Using this, \c
     Again, for $i,j \in [1,3]$, we denote $N_{i,j}(v,w) = N_i(v,w) \cup N_j(v,w)$.
 \end{definition}
 
-$N_1(v,w)$ contains those vertices connected with the rest of the graph, $N_2(v, w)$ are a \textit{buffer} between $N_3(v,w) \cup \{v, w\}$ and $N_(v,w)$, and $N_3(v,w)$ are those vertices isolated from the rest of the graph. 
+\textbf{$N_1(v,w)$} contains those vertices connected with the rest of the graph by at least one vertex not in the neighborhood of $v$ or $w$, \textbf{$N_2(v, w)$}-vertices are a \textit{buffer} between those from $N_3(v,w) \cup \{v, w\}$ and $N_(v,w)$, and \textbf{$N_3(v,w)$} contains vertices isolated from the rest of the graph. You can see an example in \cref{fig:neighborhoodDouble}.
+A vertex $v \in N_i(v)$ is not necessarily also in $N_i(v,w)$! Observe the vertex $z$ in \cref{fig:neighborhoodDouble}.
 
 \begin{figure}[!ht]
     \begin{equation*}
         \tikzfig{fig/tikz/neighborhoods-two-vertices}
     \end{equation*}
-    \caption[$N_i(v,w)$]{\textit{The neighborhood of a pair of vertices. Furthermore, note that $z \in N_1(w)$, because there is an edge to $v$, but $z \notin N_1(v,w)$ and $z \in N_3(v,w)$}}
+    \caption[$N_i(v,w)$]{\textit{The neighborhood of a pair of vertices. Vertices from $N_3(v,w)$ are colored green, $N_2(v,w)$'s blue and $N_1(v,w)$'s purple.
+    NOte that $z \in N_1(w)$, because there is an edge to a neighbor of $v$, but $z \notin N_1(v,w)$ (and rather $z \in N_3(v,w)$)}.}
     \label{fig:neighborhoodDouble}
 \end{figure}
 
-Note that vertices in $N_i(v)$ do not necessarily also correspond to a vertex in $N_i(v,w)$. For example \cref{fig:neighborhoodDouble} gives an example, where $z$ belongs to $N_1(v)$, but not to $N_1(v,w)$.
 
 %\begin{figure}[ht]
 %    \begin{equation*}
