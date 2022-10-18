@@ -16,7 +16,7 @@
 14) Quote Lemma XX or nur XX? Set in href settings?
 15) Add a duck somewhere.
 16) Check all lemma / theorem / proposition references and their name
-17) Color scheme for regions and vertices consistent?
+17) Color scheme for regions and vertices consistent? + Color scheme for all other environments
 18) Which paper should I use as a reference.
 19) Make side notes
 20) Remove duplicate labels in the whole document
@@ -30,6 +30,7 @@
 Acronyms
 28) Difference between plane and planar graph
 29) Buy grammarly premium and cross check.
+30) Implement these facy boxes
 
 TODO: Look up unknown graph theoretic terms for me.
 
