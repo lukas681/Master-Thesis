@@ -467,7 +467,13 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
 
 General Idea: sharing neighbors already force v or w into ds
 
-If two vertices $v$ and $w$ share more than one neighbor, at least one of them is impelled to be a dominating vertex.
+If two vertices $v$ and $w$ share enough neighbors with each other at least one of them must be in a solution to dominate all of them. 
+
+We know that $v$ witnesses $w$ (and vice versa) and therefore, we can always semitotal dominate with at most to vertices. 
+
+However sometimes choosing two of the shared vertices yields a better solution than $v$ and $w$: One common neighbor is already enough to dominate $v$ and $w$ and can be witnesses by a  
+
+Furthermore, we also know that $v$ directly witnesses $w$ 
 
 
 
@@ -483,6 +489,7 @@ The lowest number of shared vertices we could come up with
 
 While first directly embedding the following \cref{rgl:rthree} into \cite[Revision 2014]{Garnero2018} into \cref{rgl:rtwo}, Garnero and Sau decided in \cite[Revision 2018]{Garnero2018} to the reduction into a separate rule simplyfing the further analysis. 
 
+This reduction rule is a ``swiss-army-knife'' and simple regions found at various places will  
 
 
 \begin{rgl}\label{rgl:rthree}

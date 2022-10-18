@@ -1,64 +1,55 @@
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=BLACK] (0) at (-7, 0) {};
-		\node [style=BLACK] (1) at (-1, 0) {};
-		\node [style=NONE] (2) at (-4, 3.5) {};
-		\node [style=NTWO] (3) at (-4, 2.75) {};
-		\node [style=NTHR] (4) at (-4, 2) {};
-		\node [style=NTHR] (5) at (-4, 1.25) {};
-		\node [style=NTHR] (6) at (-4, 0.5) {};
-		\node [style=NTHR] (7) at (-4, -0.25) {};
-		\node [style=NTHR] (8) at (-4, -1) {};
-		\node [style=NTHR] (9) at (-4, -1.75) {};
-		\node [style=NTWO] (10) at (-4, -2.5) {};
-		\node [style=NONE] (11) at (-4, -3.25) {};
-		\node [style=none] (12) at (0, 0) {$\rightarrow$};
-		\node [style=BLACK] (13) at (1, 0) {};
-		\node [style=BLACK] (14) at (7, 0) {};
-		\node [style=NONE] (15) at (4, 3.5) {};
-		\node [style=NTWO] (16) at (4, 2.75) {};
-		\node [style=BRGRAY] (17) at (4, 2) {};
-		\node [style=BRGRAY] (18) at (4, 1.25) {};
-		\node [style=BRGRAY] (19) at (4, 0.5) {};
-		\node [style=BRGRAY] (20) at (4, -0.25) {};
-		\node [style=BRGRAY] (21) at (4, -1) {};
-		\node [style=BRGRAY] (22) at (4, -1.75) {};
-		\node [style=NTWO] (23) at (4, -2.5) {};
-		\node [style=NONE] (24) at (4, -3.25) {};
-		\node [style=BLACK] (25) at (4, 0.75) {};
-		\node [style=BLACK] (26) at (4, -0.75) {};
-		\node [style=none] (27) at (-7.25, 0.75) {$v$};
-		\node [style=none] (28) at (-1, 0.75) {$w$};
-		\node [style=none] (31) at (7.25, 0.75) {$w$};
-		\node [style=none] (32) at (1, 0.75) {$v$};
-		\node [style=none] (33) at (4.5, 1.25) {$h_1$};
-		\node [style=none] (34) at (4.5, -1.25) {$h_2$};
-		\node [style=none] (35) at (4.75, 3.75) {};
-		\node [style=none] (36) at (4, 4.25) {};
-		\node [style=none] (37) at (3.25, 3.75) {};
-		\node [style=none] (38) at (-3.25, 3.75) {};
-		\node [style=none] (39) at (-4, 4.25) {};
-		\node [style=none] (40) at (-4.75, 3.75) {};
-		\node [style=none] (41) at (-4.75, -3.75) {};
-		\node [style=none] (42) at (-3.25, -3.75) {};
-		\node [style=none] (43) at (-4, -4.25) {};
-		\node [style=none] (44) at (3.25, -3.75) {};
-		\node [style=none] (45) at (4, -4.25) {};
-		\node [style=none] (46) at (4.75, -3.75) {};
+		\node [style=BLACK] (0) at (-7.5, 0) {};
+		\node [style=BLACK] (1) at (-1.5, 0) {};
+		\node [style=NONE] (2) at (-4.5, 3.5) {};
+		\node [style=NTWO] (3) at (-4.5, 2.75) {};
+		\node [style=NTHR] (4) at (-4.5, 1.75) {};
+		\node [style=NTHR] (5) at (-4.5, 0.75) {};
+		\node [style=NTHR] (8) at (-4.5, -0.5) {};
+		\node [style=NTHR] (9) at (-4.5, -1.5) {};
+		\node [style=NTWO] (10) at (-4.5, -2.5) {};
+		\node [style=NONE] (11) at (-4.5, -3.25) {};
+		\node [style=none] (12) at (0, 0) {$\longrightarrow$};
+		\node [style=BLACK] (13) at (1.5, 0) {};
+		\node [style=BLACK] (14) at (7.5, 0) {};
+		\node [style=NONE] (15) at (4.5, 3.5) {};
+		\node [style=NTWO] (16) at (4.5, 2.75) {};
+		\node [style=BRGRAY] (17) at (4.5, 1.5) {};
+		\node [style=BRGRAY] (21) at (4.5, -0.5) {};
+		\node [style=BRGRAY] (22) at (4.5, -1.5) {};
+		\node [style=NTWO] (23) at (4.5, -2.5) {};
+		\node [style=NONE] (24) at (4.5, -3.25) {};
+		\node [style=BLACK] (25) at (4.5, 0.75) {};
+		\node [style=BLACK] (26) at (4.5, -0.75) {};
+		\node [style=none] (27) at (-7.75, 0.75) {$v$};
+		\node [style=none] (28) at (-1.5, 0.75) {$w$};
+		\node [style=none] (31) at (7.75, 0.75) {$w$};
+		\node [style=none] (32) at (1.5, 0.75) {$v$};
+		\node [style=none] (33) at (5, 1.25) {$h_1$};
+		\node [style=none] (34) at (5, -1.25) {$h_2$};
+		\node [style=none] (35) at (5.25, 3.75) {};
+		\node [style=none] (36) at (4.5, 4.25) {};
+		\node [style=none] (37) at (3.75, 3.75) {};
+		\node [style=none] (38) at (-3.75, 3.75) {};
+		\node [style=none] (39) at (-4.5, 4.25) {};
+		\node [style=none] (40) at (-5.25, 3.75) {};
+		\node [style=none] (41) at (-5.25, -3.75) {};
+		\node [style=none] (42) at (-3.75, -3.75) {};
+		\node [style=none] (43) at (-4.5, -4.25) {};
+		\node [style=none] (44) at (3.75, -3.75) {};
+		\node [style=none] (45) at (4.5, -4.25) {};
+		\node [style=none] (46) at (5.25, -3.75) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=FILLGREEN] (11.center)
-			 to [bend right=15] (1.center)
-			 to [bend right=15] (2.center)
-			 to [bend right=15] (0.center)
-			 to [bend right=15] cycle;
+			 to [in=240, out=15] (1.center)
+			 to [in=-15, out=120] (2.center)
+			 to [in=60, out=-165] (0.center)
+			 to [in=165, out=-60] cycle;
 		\draw (3) to (0);
 		\draw (0) to (4);
 		\draw (5) to (1);
-		\draw (1) to (6);
-		\draw (7) to (0);
-		\draw (0) to (6);
-		\draw (6) to (0);
 		\draw (0) to (5);
 		\draw (4) to (1);
 		\draw (1) to (8);
@@ -70,24 +61,16 @@
 		\draw (3) to (1);
 		\draw (10) to (11);
 		\draw (3) to (2);
-		\draw (7) to (1);
-		\draw (7) to (8);
 		\draw (10) to (9);
 		\draw (3) to (4);
-		\draw (5) to (6);
 		\draw (5) to (4);
 		\draw [style=FILLGREEN] (13.center)
-			 to [bend right=15] (24.center)
-			 to [bend right=15] (14.center)
-			 to [bend right=15] (15.center)
-			 to [bend right=15] cycle;
+			 to [in=165, out=-60] (24.center)
+			 to [in=240, out=15] (14.center)
+			 to [in=-15, out=120] (15.center)
+			 to [in=60, out=-165] cycle;
 		\draw (16) to (13);
 		\draw [style=ULTRAGRAY] (13) to (17);
-		\draw [style=ULTRAGRAY] (18) to (14);
-		\draw [style=ULTRAGRAY] (14) to (19);
-		\draw [style=ULTRAGRAY] (20) to (13);
-		\draw [style=ULTRAGRAY] (13) to (19);
-		\draw [style=ULTRAGRAY] (13) to (18);
 		\draw [style=ULTRAGRAY] (17) to (14);
 		\draw [style=ULTRAGRAY] (14) to (21);
 		\draw [style=ULTRAGRAY] (21) to (13);
@@ -98,12 +81,8 @@
 		\draw (16) to (14);
 		\draw (23) to (24);
 		\draw (16) to (15);
-		\draw [style=ULTRAGRAY] (20) to (14);
-		\draw [style=ULTRAGRAY] (20) to (21);
 		\draw [style=ULTRAGRAY] (23) to (22);
 		\draw [style=ULTRAGRAY] (16) to (17);
-		\draw [style=ULTRAGRAY] (18) to (19);
-		\draw [style=ULTRAGRAY] (18) to (17);
 		\draw [bend right=15] (25) to (14);
 		\draw [bend left=15] (14) to (26);
 		\draw [bend right=15] (26) to (13);
