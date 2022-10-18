@@ -67,6 +67,18 @@ D-region Decomposition
 
  * JabRef for managing *.bib file
 
+# Achknowlidgements
+
+* Pal..
+* Supervisor at TUM
+* Jan Arne for introducing me into the fascinating world of Parametrized Complexity.
+* ITU Algorithms Group
+
+* Martin for fighting danish universitxy bureauxracy. 
+* Dalle-E for providing me with
+* GF? 
+* Family and Friends supporting me during these intensive months
+
 
 # Sketches
 
