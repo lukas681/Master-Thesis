@@ -110,8 +110,7 @@ Next, we are going to extend this notation to a pair of vertices. Using this, \c
     Again, for $i,j \in [1,3]$, we denote $N_{i,j}(v,w) = N_i(v,w) \cup N_j(v,w)$.
 \end{definition}
 
-\textbf{$N_1(v,w)$} contains those vertices connected with the rest of the graph by at least one vertex not in the neighborhood of $v$ or $w$, \textbf{$N_2(v, w)$}-vertices are a \textit{buffer} between those from $N_3(v,w) \cup \{v, w\}$ and $N_(v,w)$, and \textbf{$N_3(v,w)$} contains vertices isolated from the rest of the graph. You can see an example in \cref{fig:neighborhoodDouble}.
-A vertex $v \in N_i(v)$ is not necessarily also in $N_i(v,w)$! Observe the vertex $z$ in \cref{fig:neighborhoodDouble}.
+\textbf{$N_1(v,w)$} contains those vertices connected with the rest of the graph by at least one vertex not in the neighborhood of $v$ or $w$, \textbf{$N_2(v, w)$}-vertices are a \textit{buffer} between those from $N_3(v,w) \cup \{v, w\}$ and $N_1(v,w)$, and \textbf{$N_3(v,w)$} contains vertices isolated from the rest of the graph. You can see an example in \cref{fig:neighborhoodDouble}. 
 
 \begin{figure}[!ht]
     \begin{equation*}
@@ -120,6 +119,17 @@ A vertex $v \in N_i(v)$ is not necessarily also in $N_i(v,w)$! Observe the verte
     \caption[$N_i(v,w)$]{\textit{The neighborhood of a pair of vertices. Vertices from $N_3(v,w)$ are colored green, $N_2(v,w)$'s blue and $N_1(v,w)$'s purple.
     NOte that $z \in N_1(w)$, because there is an edge to a neighbor of $v$, but $z \notin N_1(v,w)$ (and rather $z \in N_3(v,w)$)}.}
     \label{fig:neighborhoodDouble}
+\end{figure}
+
+
+A vertex $v \in N_i(v)$ is not necessarily also in $N_i(v,w)$! Observe the vertex $z$ in \cref{fig:neighborhoodDouble}. Unlike $N_i(v)$ in every $N_i(v,w)$ ($i \in [3]$) can be in an optimal \sdom (compare \cref{fig:alldominating} for an example in each of the sets).
+
+\begin{figure}[!ht]
+    \begin{equation*}
+        \tikzfig{fig/tikz/ntwoimportant}
+    \end{equation*}
+    \caption[$N_i(v,w)$]{\textit{Left:} $\{d_1, d_2\}$ with $d_2 \in N_2(v,w)$ form the only minimal \sdom. \textit{Right:} $d_1 \in N_1(v,w)$ and $d_2 \in N_3(v,w)$ optimal.}
+    \label{fig:alldominating}
 \end{figure}
 
 
@@ -455,7 +465,16 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
 % What happens if D != empty?
 \subsection{Reduction Rule III: Shrinking Simple Regions}
 
-If two vertices share more than one neighbor it can 
+General Idea: sharing neighbors already force v or w into ds
+
+If two vertices $v$ and $w$ share more than one neighbor, at least one of them is impelled to be a dominating vertex.
+
+
+
+There are some situations where a 
+
+
+Furthermore, in order to witness   
 
 % PRoblem
 
@@ -463,6 +482,7 @@ The lowest number of shared vertices we could come up with
 
 
 While first directly embedding the following \cref{rgl:rthree} into \cite[Revision 2014]{Garnero2018} into \cref{rgl:rtwo}, Garnero and Sau decided in \cite[Revision 2018]{Garnero2018} to the reduction into a separate rule simplyfing the further analysis. 
+
 
 
 \begin{rgl}\label{rgl:rthree}
@@ -490,6 +510,7 @@ The application of \cref{rgl:rthree} gives us a bound on the number of vertices 
 \end{corollary}
 % TODO Verify that
 % TODO Maybe add a figure here.
+
 \begin{proof}
     If $\abs{V(R) \setminus \{v, w\}} < 7$ then the rule would not have changed G and the size of the region would already be bounded by 6.
     Assuming $\abs{V(R) \setminus \{v, w\}} \geq 7$ we note that every simple region can have at most two distinct vertices from $N_1(v,w)$ and two distinct ones from $N_2(v,w)$ without breaking planarity. These vertices are not touched by the reduction. Adding the two vertices that are being added between $v$ and $w$ gives us the desired upper bound.
