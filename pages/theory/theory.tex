@@ -15,7 +15,7 @@ We quickly state the following definitions given by {\cite[p.~xxx]{diestel10}}.
 
 %TODO Quote
 \begin{definition}[Vertex Degrees]
-    The \textit{degree} $d_G(v)$ (If G is clear, also $d(v)$) of a vertex $v$ is the number of neighbors of v. We call a vertex of degree 0 as isoliated and one of degree 1 as a pendant.
+    The \textit{degree} $d_G(v)$ (If G is clear, also $d(v)$) of a vertex $v$ is the number of neighbors of v. We call a vertex of degree 0 as isolated and one of degree 1 as a pendant.
 \end{definition}
 
 \begin{definition}[isomorphic Graphs, {\cite*[p. 3]{diestel10}}]
@@ -50,7 +50,7 @@ Let \G and $G' = (V', E')$ be two graph. We call $G$ and $G'$ \underline{isomorp
 We call the class of graphs without any special restrictions ``General Graphs''.
 
 \begin{definition}[r-partite Graphs]
-    Let $r \geq 2$ be an integer. A Graph $G = (V,E)$ is called ``r-partite'' if V admits a parititon into r classes such that every edge has its ends in different classes: Vertices in the same partition class must not be adjacent. 
+    Let $r \geq 2$ be an integer. A Graph $G = (V,E)$ is called ``r-partite'' if V admits a partition into r classes such that every edge has its ends in different classes: Vertices in the same partition class must not be adjacent. 
     
     For the case $r = 2$ we say that the G is ``bipartite'' 
     %      %        TODO mage of a bipartite Graph
@@ -63,6 +63,21 @@ We call the class of graphs without any special restrictions ``General Graphs''.
 
 \begin{definition}[Split Graphs]
     
+\end{definition}
+
+\begin{definition}[Planar Graphs {\cite[Chapter 4]{diestel10}}]
+
+A \textit{plane graph} is a pair $(V,E)$ of finite sets with the following properties:
+
+\begin{itemize}
+    \item $V \subseteq \mathbb{R}^2$ (Vertices)
+    \item Every edge is an arc between two vertices 
+    \item different edges have different sets of endpoints
+    \item The interior of an edge contains no vertex and no point of any other edge
+\end{itemize}
+
+An embedding in the plane, or \textit{planar embedding}, of an (abstract) graph $G$ is an isomorphism between $G$ and a plane graph $H$. A \textit{plane graph} can be seen as a concrete \textbf{embedding} of the planar graph into the ``plane'' $\mathbb{R}^2$.
+
 \end{definition}
 
 % Independent Set

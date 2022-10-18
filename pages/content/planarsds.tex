@@ -4,7 +4,7 @@
 \begin{figure}[ht]
 \includegraphics[width=.3\textwidth, right]{img/constructing.png}
         \captionsetup{textformat=empty,labelformat=blank}
-        \caption{Generated with Dall-E. \url{https://labs.openai.com/}. ``more ducks building and working on  a high stack in the water using a excavator and tools and machines''}
+        \caption{Generated with Dall-E. \url{https://labs.openai.com/}. ``more ducks building and working on  a high stack in the water using an excavator and tools and machines''}
 \end{figure}
 
 \epigraph{\itshape The best way to explain it is to do it.}{Lewis Caroll, \textit{Alice in Wonderland}}
@@ -57,6 +57,7 @@ These meta-results are interesting from a theoretical point of view, but the con
 
  \paragraph{The Main Idea} A given a plane graph \G with a given vertex set $D \subseteq V$ can be decomposed into at most $3 \cdot \abs{D} -6$ so-called ``regions'' (see \cref{def:region}). If $D$ is a given \sdom~of size $\abs{D}$, the total number of regions in this decomposition depends \underline{linearly} on the size of $D$. If we define \textit{reduction rules} (\cref{rgl:rone,rgl:rtwo,rgl:rthree})  minimizing the number of vertices in and around a region, we can bound the size of a reduced graph. In our case, we give rules to reduce a region down to a constant number of vertices. We can create an equivalent instance of $G$ whose number of remaining vertices lies linearly in the size of an enquiried solution. Such a reduction gives a \textit{Kernel} for \psdom.
 
+
 Interestingly, the reduction rules do not rely on the decomposition itself, but rather consider the neighborhood of every pair of vertices in the graph. The decomposition itself has just used a tool for analyzing the kernel size after the reduction.
 
 \section{Definitions}
@@ -81,7 +82,7 @@ The idea is to split up the neighborhood of a single vertex and a pair of vertic
     \begin{equation*}
         \tikzfig{fig/tikz/neighborhoods-single-vertex}
     \end{equation*}
-    \caption[The neighbordhood of a single Vertex $v$]{\textit{The neighborhood of a single vertex v split to $N_1(v)$ (purple), $N_2(v)$ (blue), and $N_3(v)$ (green). $N_1(v)$'s are those having neighbors outside $N(v)$, $N_2(v)$'s are a buffer between $N_1(v)$ and $N_3(v)$, and $N_3(v)$-vertices are confined in $N(v)$}}
+    \caption[The neighbordhood of a single Vertex $v$]{\textit{The neighborhood of a single vertex v split to $N_1(v)$ (purple), $N_2(v)$ (blue), and $N_3(v)$ (green). $N_1(v)$'s are those having neighbors outside $N(v)$, $N_2(v)$'s are a buffer between $N_1(v)$ and $N_3(v)$, and $N_3(v)$-vertices are confined in $N(v)$}.}
 \end{figure}
 
 \begin{xltabular}{\textwidth}{lX}
@@ -202,10 +203,10 @@ We now have all the definitions ready to formally a maximal \dreg on planar grap
     \begin{equation*}
         \tikzfig{fig/tikz/region-example}
     \end{equation*}
-    \caption[Region Decomposition]{\textit{Left: A maximal \dreg $\mathfrak{R}$, where $D = \{d_1,d_2,d_3\}$ form a \sdom. There are two regions between $d_2$ and $d_1$ (purple and pink), one region between $d_1$ and $d_3$ (green) and one region between $d_2$ and $d_3$ (purple). Observe that some neighbors of $d_1$ are not part of any $vw$-region. Our reduction rules are going to take care of of them and bound these number of vertices to obtain the kernel. Right: The corresponding underlying multigraph $G_{\mathfrak{R}}$. Every edge denotes a region between $d_i$ and $d_j$}}\label{fig:maxRegionDecompose}
+    \caption[Region Decomposition]{\textit{Left: A maximal \dreg $\mathfrak{R}$, where $D = \{d_1,d_2,d_3\}$ form a \sdom. There are two regions between $d_2$ and $d_1$ (purple and pink), one region between $d_1$ and $d_3$ (green) and one region between $d_2$ and $d_3$ (purple). Observe that some neighbors of $d_1$ are not part of any $vw$-region. Our reduction rules are going to take care of them and bound these number of vertices to obtain the kernel. Right: The corresponding underlying multigraph $G_{\mathfrak{R}}$. Every edge denotes a region between $d_i$ and $d_j$}}\label{fig:maxRegionDecompose}
 \end{figure}
 
-% TODO: Wording: "kernel" precise enough here.
+% TODO: Wording: "kernel" is precise enough here.
 We are introducing a special subset of a region, namely \textit{simple region} where every vertex is a common neighbor of $v$ and $w$. They will appear in many unexpected astonishing places and are an important tool to operate on small parts of a plane graph. The upcoming \cref{rgl:rthree} will bound the size of these \textit{simple regions}. Interestingly, in the first version of the paper about the linear kernel for \ptdom (\cite[Revision 2014]{Garnero2018}), they were not given independently but covered by one of their reduction rules (Rule 2). As it turned out, the analysis is getting simpler if we treat them in a separate rule (In our case: \cref{rgl:rthree}) and so did Garnero and Sau in a revised version of their paper four years later (\cite{Garnero2018}).
 
 \begin{minipage}{\textwidth}
@@ -256,7 +257,7 @@ The idea is then to use a maximal \dreg~$\mathfrak{R}$ to bound the number of ve
 Following the ideas proposed by Garnero and Sau in \cite[Revision 2014]{Garnero2018}, we state reduction rules that after exhaustive application will expose a linear kernel. 
 \subsection{Reduction Rule I: Getting Rid of unneccessary  $N_3(v)$ vertices}
 
-% Maybe we can even remove all N_3's, because later, only the case v in a pair could be important. We do not have a connected graph.
+% Maybe we can even remove all N_3's because later, only the case v in a pair could be important. We do not have a connected graph.
 
 The idea behind our first rule is the observation that a vertex $v' \in N_3(v)$ dominates $v$ and vertices from $N_2(v)$. As $N(v') \subseteq N(v)$ and the \cref{fact:witnessTwin} that a witness for $v'$ is also witness for $v$, we can use $v$ instead of $z$ as a dominating vertex. Nevertheless, $v'$ can be a witness for $v$ itself and might be required in a solution. Our rule ensures that at least one $N_3(v)$-vertex is preserved.
 
@@ -282,7 +283,7 @@ Note that \cref{rgl:rone} has only removed vertices that \textit{must be dominat
 Let \G, $v \in V$ and $v' \in N_{2,3}(v)$. Any witness $w \neq v$ for $v'$ is also a witness for $v$. % Reformulate as v can be a witness for $w'$
 \end{fact}
 \begin{proof}
-    % Explain the definition better? Somehow I am not really happy with that.
+    % Explain the definition better. Somehow I am not really happy with that.
 By assumption $v'$ is witnessed by a vertex $w \neq v$ with $d(v', w) \leq 2$. It follows directly from the definition of $v' \in N_{2,3}(v)$ that $N(v') \subseteq N(v)$ and hence $v'$ is \textit{confined} inside the neighborhood of $v$. Therefore, every possible witness that can be reached from $v'$ within two steps can also be reached from $v$ within two steps.
 
 % Maybe add a note that it can also point outside of N(v)
@@ -375,7 +376,8 @@ Furthermore, we shortly denote $\bigcup \Dv = \bigcup\limits_{D \in \Dv}D $ and 
 
 %% Description Case 1
 In \cref{case:c1}, we know by \cref{fact:f2} that $v$ and $w$ must be in D. Therefore, we introduce two forcing vertices $v'$ and $w'$ in $G'$ and remove $N_{2,3}(v,w)$ as these vertices are dominated by $v$ and $w$.
-But if we remove $N_{2,3}(v,w)$ entirely, we could lose solutions: First, the case that $v$ is a direct witness of $w$ ($d(v,w) = 2$) and that there is one intermediate witness on a path of length three from $v$ to $w$ via vertices in $N_{2,3}(v,w)$, which could be a witness for both $v$ and $w$ at the same time. Note that if we would not distinguish between these two cases and add one intermediate vertex, we would possibly generate wrong solutions, because $v$ could always witness $w$.
+But if we remove $N_{2,3}(v,w)$ entirely, we could lose solutions: First, the case that $v$ is a direct witness of $w$ ($d(v,w) = 2$) and that there is one intermediate witness on a path of length three from $v$ to $w$ via vertices in $N_{2,3}(v,w)$, which could be a witness for both $v$ and $w$ at the same time. Note that if we would not distinguish between these two cases and had added one intermediate vertex, we would possibly have generated wrong solutions, because $v$ could always witness $w$.
+
 
 Again by \cref{fact:f2} we know for \cref{case:c1,case:c2} that $v \in D$ and similar to \cref{rgl:rone} we can simplify the neighborhood $N_{2,3}(v)$. \cref{fact:f1} states, that these vertices are only useful for witnessing $v$, but do not go beyond what $v$ already witnesses.
 
@@ -396,7 +398,7 @@ The second fact states that if  $\Dv$ (resp. $\Dw$) is empty, too, we only need 
     Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref{rgl:rtwo} on $v, w$. If $\Dvw = \emptyset$ and $\Dw = \emptyset$ (resp. $\Dv = \emptyset$) then $G'$ has a solution if and only if it has a solution containing $v$ (resp. $w$).
 \end{fact}
 \begin{proof}
-As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ with $u, u' \in N_{2,3}(v,w)$ can dominate $N_3(v,w)$. Since also $\Dvw = \emptyset$ any SDS of G has to contain $v$ or at least four vertices by \cref{fact:f1}. In the last case, we again replace these four vertices by $v$, $w$ and two neighbors respectively and we can conclude that $v$ belongs to the solution.
+As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ with $u, u' \in N_{2,3}(v,w)$ can dominate $N_3(v,w)$. Since also $\Dvw = \emptyset$ any SDS of G has to contain $v$ or at least four vertices by \cref{fact:f1}. In the last case, we again replace these four vertices with $v$, $w$ and two neighbors respectively and we can conclude that $v$ belongs to the solution.
 \end{proof}
 
 % On the opposite side, if $\Dvw \neq \emptyset$, we have ... 
@@ -453,6 +455,16 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
 % What happens if D != empty?
 \subsection{Reduction Rule III: Shrinking Simple Regions}
 
+If two vertices share more than one neighbor it can 
+
+% PRoblem
+
+The lowest number of shared vertices we could come up with 
+
+
+While first directly embedding the following \cref{rgl:rthree} into \cite[Revision 2014]{Garnero2018} into \cref{rgl:rtwo}, Garnero and Sau decided in \cite[Revision 2018]{Garnero2018} to the reduction into a separate rule simplyfing the further analysis. 
+
+
 \begin{rgl}\label{rgl:rthree}
     Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and $w$. If $\abs{V(R) \setminus \{v, w\}} \geq 7$
     \begin{itemize}
@@ -463,16 +475,24 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
 \begin{lemma}[Correctness of \cref{rgl:rthree}]\label{lemma:correctnessthree}
     Let \G be a plane graph, $v, w \in V$ and \GB be the graph obtained after application of \cref{rgl:rthree} on the pair $\{v, w\}$. Then G has SDS of size k if and only if G' has SDS of size k.
 \end{lemma}
+\begin{proof}
+    \begin{enumerate}
+        \item[$\Rightarrow$] Consider a \sdom $D$ in $G$. We show that $G'$ also has a SDS with $\abs{D'} \leq \abs{D}$. By assumption, we have $\Dvw = \emptyset$.
+        \item[$\Rightarrow$] Consider a \sdom $D$ in $G'$. We show that $G$ has a SDS with $\abs{D} \leq \abs{D'}$. By assumption, we have $\Dvw = \emptyset$.
+
+    \end{enumerate}
+    
+\end{proof}
 
 The application of \cref{rgl:rthree} gives us a bound on the number of vertices inside a \sr. 
 \begin{corollary}\label{lemma:simpleregionbound}
-    Let \G be a graph, $v, w\in V$ and R a \sr~ between $v$ and $w$. If \cref{rgl:rthree} has been applied, this simple region has size at most 6.
+    Let \G be a graph, $v, w\in V$ and R a \sr~ between $v$ and $w$. If \cref{rgl:rthree} has been applied, this simple region has a size of at most 6.
 \end{corollary}
 % TODO Verify that
 % TODO Maybe add a figure here.
 \begin{proof}
-    Clearly, if $\abs{V(R) \setminus \{v, w\}} < 7$ then the rule would not have changed G and the size of the region would already be bounded by 6.
-    Asuming $\abs{V(R) \setminus \{v, w\}} \geq 7$ we note that every simple region can have at most two distinct vertices from $N_1(v,w)$ and two distinct ones from $N_2(v,w)$ without breaking planarity. These vertices are not touched by the reduction. Adding the two vertices that are being added between $v$ and $w$ gives us the desired upper bound.
+    If $\abs{V(R) \setminus \{v, w\}} < 7$ then the rule would not have changed G and the size of the region would already be bounded by 6.
+    Assuming $\abs{V(R) \setminus \{v, w\}} \geq 7$ we note that every simple region can have at most two distinct vertices from $N_1(v,w)$ and two distinct ones from $N_2(v,w)$ without breaking planarity. These vertices are not touched by the reduction. Adding the two vertices that are being added between $v$ and $w$ gives us the desired upper bound.
 \end{proof}
 
 
@@ -553,7 +573,7 @@ Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been
 \begin{proof} 
     We will just give some intuition because the proof of Garnero and Sau in \cite[Revision 2014, Fact 6]{Garnero2018} does not use any special property exposed by the reduction rules. Figure (Add picture about figures) gives a visualization of the worst-case scenarios to cover $N_3(v,w) \cap V(R)$ with simple regions in the relevant cases.\footnote{Note: In a newer revision of their paper \cite{Garnero2018}, Garnero and Sau removed this proof, because they changed \cref{rgl:rtwo} and a more fine-grained analysis was made possible.}
     
-    % Altough our \cref{rgl:rtwo} is a bit different, the proof still goes through in the original way.
+    % Although our \cref{rgl:rtwo} is a bit different, the proof still goes through in an original way.
     
 \end{proof}
 
@@ -564,11 +584,11 @@ Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been
 \begin{proof} 
     By \cref{lemma:nonecover,lemma:ntwocover} and \cref{lemma:simpleregionbound} to bound the number of vertices inside a simple region, we know that $\abs{N_1(v,w) \cap V(R)} \leq 4$ and $\abs{N_2(v,w) \cap V(R)} \leq 6 \cdot 7 = 42$.
     
-    It is remaining to bound for \nthi, but gladly we have \cref{rgl:rtwo}, which took care about them! \cref{fig:nthreeinside} shows the worst case amount of simple regions the individual cases can have.
+    It is remaining to bound for \nthi, but gladly we have \cref{rgl:rtwo}, which took care of them! \cref{fig:nthreeinside} shows the worst-case amount of simple regions the individual cases can have.
     
-    % Maybe note that N_2 vertices do not cause any troubles as they are always bound to the near of N_1 vertex
+    % Maybe note that N_2 vertices do not cause any troubles as they are always bound to the near N_1 vertex
     \begin{caseofz}
-        %% TODO Check if that is correct and compare with latest paper
+        %% TODO Check if that is correct and compare it with the latest paper
         \casez{\cref{rgl:rtwo} has \textbf{not} been applied in the following two cases: Either $\Dvw \neq \emptyset$ or ($\Dvw = \emptyset \wedge \Dv \neq \emptyset \wedge \Dw \neq \emptyset$):}
 
         \begin{enumerate}
@@ -659,7 +679,7 @@ With slight modifications, the proof given in \cite[Revision 2014]{Garnero2018} 
     \end{equation}
     
     
-    % TODO Now use the lemma in the revised version. 
+    % TODO Now uses the lemma in the revised version. 
     % TODO Formally Proof that
     % TODO Make a picture for that case 
     
@@ -714,7 +734,7 @@ As any \sdom is also a \dom, we can safely apply it to our problem as well. For 
 
 
 \begin{lemma}[Running Time of Reduction Procedure]\label{lemma:runtime}
-    TODO Runsi in polynomial Time. 
+    % TODOX Runs in polynomial Time. 
 \end{lemma}
 \begin{proof} 
 \end{proof}

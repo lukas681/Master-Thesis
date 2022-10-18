@@ -28,6 +28,8 @@
 26) cref vs Cref upper and lower cases.
 27) This in the end;: https://blog.wordvice.com/avoid-fillers-powerful-writing/
 Acronyms
+28) Difference between plane and planar graph
+29) Buy grammarly premium and cross check.
 
 TODO: Look up unknown graph theoretic terms for me.
 
