@@ -21,6 +21,7 @@ We quickly state the following definitions given by {\cite[p.~xxx]{diestel10}}.
 \begin{definition}[isomorphic Graphs, {\cite*[p. 3]{diestel10}}]
 Let \G and $G' = (V', E')$ be two graph. We call $G$ and $G'$ \underline{isomorphic}, if there exists a bijection $\phi: V \rightarrow V'$ with $\{x, y\} \in E \Leftrightarrow \phi(x)\phi(y) \in E'$ for all  $x,y \in V$. Such a map $\phi$ is called \underline{isomorphism}.
 \end{definition}
+If a graph $G$ is isomorphic to another graph $h$, we denote $G \simeq H$. 
 
 \begin{definition}[Special Graph Notations {\cite[p.~27]{diestel10}}]
     A simple Graph
@@ -62,6 +63,10 @@ We call the class of graphs without any special restrictions ``General Graphs''.
 \end{definition}
 
 \begin{definition}[Split Graphs]
+    
+\end{definition}
+
+\begin{definition}[Path Graph $P_i$]
     
 \end{definition}
 
@@ -116,8 +121,6 @@ A \textit{Kernelization Algorithm} or \textit{kernel} is an algorithm $\mathfrak
 
 \begin{prb}[DOMINATING SET]{prb:ds}
 
-~\\
-    
     \begin{tabularx}{0.9\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.7\hsize}X}
         \textbf{Input:} & Graph \G and an integer $k$\\
         \textbf{Question:} & Is there a set $X \subseteq V$ of size $k$ s.t. $N[X] = V(G)$? \\

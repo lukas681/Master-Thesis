@@ -465,35 +465,60 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
 % What happens if D != empty?
 \subsection{Reduction Rule III: Shrinking Simple Regions}
 
-General Idea: sharing neighbors already force v or w into ds
+If two vertices $v$ and $w$ share enough neighbors with each other, we can sometimes conclude at least one of them to be in a solution. 
 
-If two vertices $v$ and $w$ share enough neighbors with each other at least one of them must be in a solution to dominate all of them. 
+By planarity, a \textit{simple region} has at most two vertices from $N_1(v,w)$ (namely the border $\partial$), two vertices from $N_2(v,w)$ connected to the border and unlimited $N_3(v,w)$ vertices squeezed in the middle.
 
-We know that $v$ witnesses $w$ (and vice versa) and therefore, we can always semitotal dominate with at most to vertices. 
+%  In order to gain the same bound as .
 
-However sometimes choosing two of the shared vertices yields a better solution than $v$ and $w$: One common neighbor is already enough to dominate $v$ and $w$ and can be witnesses by a  
+Note: A more sofitisticated could still improve the bound and therefore hugely smashes down the asdfj
 
-Furthermore, we also know that $v$ directly witnesses $w$ 
+%We notice that a reduction must preserve the $N_1(v,w)$ vertices, because they can be important as dominating vertices. 
+% Unlike other regions (where we would need three vertices in the worst case), a simple region can be semitotally dominated by at most two vertices: $v$ and $w$, because $v$ instantly witnesses $w$. Therefor we asked in which cases \underline{choosing exactly one vertex in $N(v) \cap N(w) \setminus N_1(v,w)$} can expose a better solution than picking $v$ and $w$. 
+It turns out that 
+% TODO Refer to 4.5 figure with simple regions
 
-
-
-There are some situations where a 
-
-
-Furthermore, in order to witness   
+% Note a N_3(v,w) can also be on the border!
+%General Idea: sharing neighbors already force v or w into ds
+%
+%A worst-case shared neighborhood has exactly 5 vertices (see fig.)
+%
+%We know that $v$ witnesses $w$ (and vice versa) and therefore, we can always semitotal dominate with at most to vertices. 
+%
+%
+%
+%Sometimes it is possible to cover all with only one vertex from $N_x$
+%
+%choosing two of the shared vertices yields a better solution than $v$ and $w$: One common neighbor is already enough to dominate $v$ and $w$ and can be witnesses by a  
+%
+%Furthermore, we also know that $v$ directly witnesses $w$ 
+%
+%
+%
+%There are some situations where a 
+%
+%
+%Furthermore, in order to witness   
 
 % PRoblem
 
-The lowest number of shared vertices we could come up with 
-
-
-While first directly embedding the following \cref{rgl:rthree} into \cite[Revision 2014]{Garnero2018} into \cref{rgl:rtwo}, Garnero and Sau decided in \cite[Revision 2018]{Garnero2018} to the reduction into a separate rule simplyfing the further analysis. 
-
-For a total dominating set, it is sufficient to check ...
-
-This reduction rule is a ``swiss-army-knife'' and simple regions found at various places will  
-
-
+%The lowest number of shared vertices we could come up with 
+%
+%
+%While first directly embedding the following \cref{rgl:rthree} into \cite[Revision 2014]{Garnero2018} into \cref{rgl:rtwo}, Garnero and Sau decided in \cite[Revision 2018]{Garnero2018} to the reduction into a separate rule simplyfing the further analysis. 
+%
+%For a total dominating set, it is sufficient to check ...
+%
+%
+%This reduction rule is a ``swiss-army-knife'' and simple regions found at various places will  
+%
+%For \tdom it is sufficient to replace these vertices with one single intermediate vertex $h$, because no solution would use $h$ without either including $v$ or $w$ as well as $h$ must also be dominated. Resembling an ``OR''-Gadget.
+%
+%% TODO: Refactor.
+%However, for \sdom the situation is a bit different: There could be another witness for $h$ than $v$ or $w$ (for example a $N_1(v,w)$-vertex) and we might generate smaller solutions. Therefore, our gadget consists of two vertices $h_1$ and $h_2$. A solution would either contain $h_1$ and $h_2$ or at least $v$ or $w$. In the first case, we replace it with $v$ and $w$ which is still a \sdom.
+%
+%A vertex on the border $\partial R$ must not necessarily be in $N_1(v,w)$ if it has no neighbors outside. In that case it belongs to $N_3(v,w)$. To circumvent any misunderstandings, we will in \cref{rgl:rthree} use the set $V(R \setminus \partial R)$
+%
 \begin{rgl}\label{rgl:rthree}
     Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and $w$. If $\abs{V(R) \setminus \{v, w\}} \geq 7$
     \begin{itemize}

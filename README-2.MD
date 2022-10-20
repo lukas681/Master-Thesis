@@ -31,6 +31,7 @@ Acronyms
 28) Difference between plane and planar graph
 29) Buy grammarly premium and cross check.
 30) Implement these facy boxes
+31) Capitalizing    
 
 TODO: Look up unknown graph theoretic terms for me.
 
