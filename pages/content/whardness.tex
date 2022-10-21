@@ -6,7 +6,17 @@ A \textit{\bg} is a Graph G whose vertex set can be partitioned into two subsets
 
 \end{definition}
 
-\input{fig/tikz/bipartite-fg.tex}
+% \input{fig/tikz/bipartite-fg.tex}
+
+\begin{figure}[!ht]
+    \label{fig:neighborhoodSingle}
+    \begin{equation*}
+        \tikzfig{fig/tikz/wbipartite}
+    \end{equation*}
+\caption{\textit{Constructing a bipartite G' from the bipartite graph $K_{m,n}$ by duplicating all vertices and adding exactly two forced witnesses.}}
+\end{figure}
+
+
 \begin{theorem}
     Semitotal Dominating Set is $\omega[2]$ hard for bipartite Graphs
 \end{theorem}
@@ -14,20 +24,24 @@ A \textit{\bg} is a Graph G whose vertex set can be partitioned into two subsets
 \begin{proof}
     Given a bipartite Graph $G = ( \{X \cup Y\}, E)$, we construct a bipartite Graph G' in the following way:
     \begin{enumerate}
-        \item For each vertex $x_i \in X$ we add a new vertex $x_i'$  and an edge $(x_i, x_i')$ in between.
-        \item For each vertex $y_j \in Y$ we add a new vertex $y_j'$ and an edge $(y_j, y_j')$ in between.
-        \item We add two $P_1$, namely $(u_1, d_1)$ and $(u_2, d_2)$, and connect them with all $(d_1, x_i')$ and $(d_2, y_j')$ respectively.
+        \item For each vertex $x_i \in X$, we add a new vertex $x_i' \in A$  and an edge $\{x_i, x_i'\}$ in between. 
+        \item For each vertex $y_j \in Y$, we add a new vertex $y_j' \in B$ and an edge $\{y_j, y_j'\}$ in between.
+        \item We add fource vertices with with edges $\{u_1, d_1\}$ and $\{u_2, d_2\}$, and connect them with all $\{d_1, x'_i\}$ and $\{d_2, y'_j\}$ ($i \in [m]$ and $j \in [n]$) respectively.
     \end{enumerate}
-    \paragraph*{Observation:} G' is clearly bipartite as all $y'_j$ and $x'_i$ form again an Independent Set. Setting  $X' = X \cup \{u_2\} \cup \bigcup y'_i$ and $Y' = Y \cup \{u_1\} \cup \bigcup {x'_i}$ form the partitions of bipartite G'.
+    \paragraph*{Observation:} G' is clearly bipartite, because $A$ and $B$ form an independent set on G' that can be attached to one of the previous vertex sets. Setting  $X' = X \cup \{u_2,d_1\} \cup B$ and $Y' = X \cup \{u_1,d_2\} \cup A$ form the partitions of the new bipartite G'.
 
-    \begin{corollary} G has a Dominating Set of size k iff G has a Semitotal Dominating Set of size $k' = k + 2$
+    \begin{corollary} G has a \sdom of size k iff G has a \sdom of size $k' = k + 2$
     \end{corollary} 
-    $\Rightarrow$: Assume there exists a Dominating Set D in G with size k. $DS = D\cup \{d_1,d_2\}$ is a Semitotal Dominating Set in $G'$ with size $k' = k+2 $ , because $d_1$ dominates $u_1$ and all $x'_i$; $d_2$ dominates $u_2$ and all $y'_i$. Hence, it is a Semitotal Dominating Set, because $\forall v \in (D \cap X): d(v, d_1) = 2$ and $\forall v \in (D \cap Y): d(v, d_2) = 2$
+    \begin{enumerate}
 
-    $\Leftarrow$: On the contrary, assume any Semitotal Dominating Set $SD$ in $G'$ with size $k'$. WLOG we can assume that $u_1, u_2 \notin DS$. 
+    \item[$\Rightarrow$] Assume a \sdom in $G$ of size $k$. We know that $D' = D\cup \{d_1,d_2\}$ is a \sdom in $G'$ of size $k' = k+2$ , because $d_1$ dominates $u_1$ and all $x'_i \in A$; $d_2$ dominates $u_2$ and all $y'_i \in B$. The rest is still dominated by the same vertices as they were in G, but know all of them have either $d_1$ or $d_2$ as a witness.
+        More formally, we have by definition of $G'$ that $\forall v \in (D \cap X): d(v, d_1) = 2$ and $\forall v \in (D \cap Y): d(v, d_2) = 2$.
+
+    \item[$\Leftarrow$] On the contrary, assume any \sdom $D'$ in $G'$ with size $k'$. WLOG we can assume that $u_1, u_2 \notin D'S$, because choosing $d_1$ and $d_2$ is always as least as good.
     
-    Our construction forces $d_1$, $d_2 \in DS$. Because all $x'_i$ are only important in dominating $x_i$ ($y'_i$ for $y_i$ resp.) as $d_1, d_2 \in DS$. If $x'_i \in DS$ we simply exchange it with $x_i$ (for $y'_i$ and $y_i$ respectively) in our DS keeping the size of the dominating set. $D = DS \setminus \{ d_1,d_2\}$ give us a Dominating Set in G with size $ k = k' - 2$
-
+    %TODO REFACTOR HERE:
+    Therefore, the construction forces $d_1$, $d_2 \in D'$. Because all $x'_i \in A$ are only important in dominating $x_i$ ($y'_i$ for $y_i$ resp.) as $d_1, d_2 \in DS$. If $x'_i \in DS$ we simply exchange it with $x_i$ (for $y'_i$ and $y_i$ respectively) in our DS keeping the size of the dominating set. $D = DS \setminus \{ d_1,d_2\}$ give us a Dominating Set in G with size $ k = k' - 2$
+    \end{enumerate}
     As G' can be constructed in $\mathcal{O}(n)$ and parameter k is only blown up by a constant, this reduction is a FPT reduction. As Dominating Set is $w[2]$ hard for bipartite Graphs\footnote{Citation needed!} so is Semitotal Dominating Set.
 \end{proof}
 

@@ -1,0 +1,1 @@
+@book{fomin_lokshtanov_saurabh_zehavi_2019, place={Cambridge}, title={Kernelization: Theory of Parameterized Preprocessing}, DOI={10.1017/9781107415157}, publisher={Cambridge University Press}, author={Fomin, Fedor V. and Lokshtanov, Daniel and Saurabh, Saket and Zehavi, Meirav}, year={2019}}

@@ -1,0 +1,78 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=BLACK] (14) at (-7, -3.25) {};
+		\node [style=BLACK] (15) at (-7, -1.75) {};
+		\node [style=BLACK] (16) at (-7, -0.25) {};
+		\node [style=BLACK] (17) at (-7, 1.25) {};
+		\node [style=BLACK] (18) at (-7, 2.75) {};
+		\node [style=BLACK] (19) at (-2, -2.25) {};
+		\node [style=BLACK] (20) at (-2, -0.75) {};
+		\node [style=BLACK] (21) at (-2, 0.75) {};
+		\node [style=BLACK] (22) at (-2, 2.25) {};
+		\node [style=none] (23) at (-7.5, 3.5) {$x_1$};
+		\node [style=none] (24) at (-7.5, -2.5) {$x_m$};
+		\node [style=none] (25) at (-1.5, 3) {$y_1$};
+		\node [style=none] (26) at (-1.5, -1.5) {$y_n$};
+		\node [style=BLACK] (27) at (-9, 2.75) {};
+		\node [style=BLACK] (28) at (-9, 1.25) {};
+		\node [style=BLACK] (29) at (-9, -0.25) {};
+		\node [style=BLACK] (30) at (-9, -1.75) {};
+		\node [style=BLACK] (31) at (-9, -3.25) {};
+		\node [style=BLACK] (34) at (0, -2.25) {};
+		\node [style=BLACK] (35) at (0, -0.75) {};
+		\node [style=BLACK] (36) at (0, 0.75) {};
+		\node [style=BLACK] (37) at (0, 2.25) {};
+		\node [style=DOM] (38) at (-11, -0.25) {};
+		\node [style=DOM] (39) at (2, -0.25) {};
+		\node [style=none] (40) at (0.5, 3) {$y'_1$};
+		\node [style=none] (41) at (-0.25, -1.5) {$y'_n$};
+		\node [style=none] (42) at (-9.5, 3.5) {$x'_1$};
+		\node [style=none] (43) at (-9, -2.5) {$x'_m$};
+		\node [style=BLACK] (44) at (2.75, 1) {};
+		\node [style=BLACK] (45) at (-12, 1.25) {};
+		\node [style=none] (49) at (-8, 4) {};
+		\node [style=none] (50) at (-1, 4) {};
+		\node [style=none] (51) at (-1, -4) {};
+		\node [style=none] (52) at (-8, -4) {};
+		\node [style=none] (53) at (-7.25, 4.75) {$K_{m,n}$};
+		\node [style=none] (54) at (1.75, 1) {$d_2$};
+		\node [style=none] (55) at (-11, 0.75) {$d_1$};
+		\node [style=none] (57) at (-12, 2) {$u_1$};
+		\node [style=none] (58) at (2.75, 1.75) {$u_2$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (18) to (22);
+		\draw (22) to (17);
+		\draw (17) to (21);
+		\draw (20) to (16);
+		\draw (15) to (20);
+		\draw (16) to (22);
+		\draw (21) to (14);
+		\draw (19) to (15);
+		\draw (19) to (18);
+		\draw (27) to (18);
+		\draw (22) to (37);
+		\draw (36) to (21);
+		\draw (17) to (28);
+		\draw (29) to (16);
+		\draw (30) to (15);
+		\draw (31) to (14);
+		\draw (19) to (34);
+		\draw (20) to (35);
+		\draw (27) to (38);
+		\draw (38) to (28);
+		\draw (29) to (38);
+		\draw (30) to (38);
+		\draw (31) to (38);
+		\draw (34) to (39);
+		\draw (35) to (39);
+		\draw (37) to (39);
+		\draw (36) to (39);
+		\draw (45) to (38);
+		\draw (44) to (39);
+		\draw [style=EDGEDASHED] (50.center) to (51.center);
+		\draw [style=EDGEDASHED] (52.center) to (51.center);
+		\draw [style=EDGEDASHED] (52.center) to (49.center);
+		\draw [style=EDGEDASHED] (49.center) to (50.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

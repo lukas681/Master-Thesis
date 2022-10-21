@@ -1,0 +1,48 @@
+For an introduction into classical cimplexity theoy. Refer to the standard textbooks aaran und cpo.
+Rely an \cite[]{}
+
+\section{Parametrized Complexity}
+
+\begin{definition}[Parametrized Problem{\cite[Def 1.1]{Cygan2015}}]
+    A parametrized problem is a $L\subseteq\Sigma^*\times \mathbb{N}$ ($\Sigma$ finite fixed alphabet) for an instance $(x,k)\in \Sigma^*\times \mathbb{N}$, where k is called the \textit{parameter}.
+\end{definition}
+
+We will now clarify the basic terminology withing Parametrized Complexity. 
+We are now giving a short introduction into the world of parametrized complexity. 
+* General Introduction
+\paragraph{Ways to cope with NP-hard problem.}
+
+
+\subsection{Fixed Parameter Tractability}
+
+\begin{definition} [The Class FPT {\cite[Def 1.2]{Cygan2015}}]
+    A parametrized problem $L\subseteq\Sigma^*\times\mathbb{N}$ is called \textit{fixed-parameter tractable} if there exists an algorithm A (called a \textit{fixed-parameter algorithm}), a computable function $f:\mathbb{N} \rightarrow \mathbb{N}$ and a constant c such that, given $(x,k) \in \Sigma^* \times \mathbb{N}$, the algorithm $\mathcal{A}$ correctly decides whether $(x,k) \in L$ in time bounded by $f(k) \cdot |(x,k)|^c$. The complexity class containing all fixed-parameter tractable problems is called \textit{FPT}
+\end{definition}
+
+
+\subsection{Kernelization}
+
+
+\begin{definition}[kernelization Algoritm{\cite[Def 2.1]{Cygan2015}}]
+A \textit{Kernelization Algorithm} or \textit{kernel} is an algorithm $\mathfrak{A}$ for a parametrized Problem Q, that given an instance $(I,k)$ of Q works in polynomial timeand returns an equivalent instance $(I', k')$ of Q. Moreover, we require that $size_{\mathfrak{A}}(k) \leq g(k)$ for some computable function $g:\mathcal{N} \rightarrow \mathcal{N}$
+\end{definition}
+
+Clearly, if there exists a kernelization algorithm for a problem $L$ and an algorithm $\mathfrak{A}$ with any runtime to decide $L$, the problem is in $FPT$ because after the kernelization pre-processing has been applied, the size of the reduced instance is a function merely in $k$ and independent of the input size $n$. In \cref{ch:linkern} we will explicitly construct a kernel for \psdom and hence showing it to be in \textit{FPT}. 
+
+% Interstingly, als the converse?
+
+
+\subsection{Fixed Parameter Intractability: The w-Hierarchy}
+\subsection{Compare to classical NP-Hardness theory}
+
+\subsubsection{Parametrized Reductions}
+\begin{definition}[Parametrized Reduction {\cite[Def 13.1]{Cygan2015}}] Let $A,B\subseteq \Sigma^*\times\mathbb{N}$ two parametrized problems. A \textit{Parametrized Reduction} from A to B is an algorithm that, given an instance $(x,k)$ of A, outputs an instance $(x', k')$ of B such that
+
+    \begin{itemize}
+        \item $(x,k)$ is a \textcolor{gray}{yes instance} of A \textbf{iff} $(x',k')$ is a \textcolor{gray}{yes instance} of B
+        \item $k' \leq g(k)$ for some computable function $g$
+        \item the running time is $f(k)\cdot |x|^{\mathcal{O}(1)}$ (FPT!)
+    \end{itemize}
+\end{definition}
+    \subsubsection{The $w$-hierarchy}
+
