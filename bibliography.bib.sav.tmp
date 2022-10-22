@@ -1,10 +1,3 @@
-@book{latex,
-  title = {LaTeX : A Documentation Preparation System User's Guide and Reference Manual},
-  publisher = {Addison-Wesley Professional},
-  year = {1994},
-  author = {Leslie Lamport}
-}
-
 @book{diestel10,
   added-at = {2015-05-14T08:30:31.000+0200},
   address = {Heidelberg; New York},
@@ -444,4 +437,5 @@
   title    = {{A Linear Kernel for Planar Total Dominating Set}},
   year     = {2018},
   month    = May,
-  volume   = {{Vol. 20 no. 
+  volume   = {{Vol. 20 no. 1}},
+  abstract = {A total dominating set of a graph $G=(V,E)$ is a subset $D \subseteq V$ such that every vertex in $V$ is adjacent to some vertex in $D$. Finding a total dominating set of minimum size
