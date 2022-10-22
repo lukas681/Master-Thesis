@@ -24,10 +24,10 @@
 		\node [style=BLACK] (37) at (0, 2.25) {};
 		\node [style=DOM] (38) at (-11, -0.25) {};
 		\node [style=DOM] (39) at (2, -0.25) {};
-		\node [style=none] (40) at (0.5, 3) {$y'_1$};
-		\node [style=none] (41) at (-0.25, -1.5) {$y'_n$};
-		\node [style=none] (42) at (-9.5, 3.5) {$x'_1$};
-		\node [style=none] (43) at (-9, -2.5) {$x'_m$};
+		\node [style=none] (40) at (0.25, 3.25) {$b_1$};
+		\node [style=none] (41) at (-0.25, -1.5) {$b_n$};
+		\node [style=none] (42) at (-9.5, 3.5) {$a_1$};
+		\node [style=none] (43) at (-9, -2.5) {$a_m$};
 		\node [style=BLACK] (44) at (2.75, 1) {};
 		\node [style=BLACK] (45) at (-12, 1.25) {};
 		\node [style=none] (49) at (-8, 4) {};
@@ -39,6 +39,8 @@
 		\node [style=none] (55) at (-11, 0.75) {$d_1$};
 		\node [style=none] (57) at (-12, 2) {$u_1$};
 		\node [style=none] (58) at (2.75, 1.75) {$u_2$};
+		\node [style=none] (60) at (-9, -4.5) {$A$};
+		\node [style=none] (61) at (0, -4.5) {$B$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (18) to (22);
