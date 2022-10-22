@@ -141,6 +141,7 @@
   bibsource = {dblp computer science bibliography, https://dblp.org},
   biburl    = {https://dblp.org/rec/journals/tcs/LuoWFGC13.bib},
   doi       = {10.1016/j.tcs.2013.06.011},
+  file      = {:Luo2013 - Improved Linear Problem Kernel for Planar Connected Dominating Set.ris:ris},
 }
 
 @Article{Lokshtanov2011,
@@ -267,7 +268,7 @@
   series    = {Lecture {Notes} in {Computer} {Science}},
   abstract  = {Recently, various linear problem kernels for NP-hard planar graph problems have been achieved, finally resulting in a meta-theorem for classification of problems admitting linear kernels. Almost all of these results are based on a so-called region decomposition technique. In this paper, we introduce a simple partition of the vertex set to analyze kernels for planar graph problems which admit the distance property with small constants. Without introducing new reduction rules, this vertex partition directly leads to improved kernel sizes for several problems. Moreover, we derive new kernelization algorithms for Connected Vertex Cover, Edge Dominating Set, and Maximum Triangle Packing problems, further improving the kernel size upper bounds for these problems.},
   doi       = {10.1007/978-3-642-22993-0_53},
-  file      = {Full Text PDF:https\://link.springer.com/content/pdf/10.1007%2F978-3-642-22993-0_53.pdf:application/pdf;:Wang2011 - Linear Problem Kernels for Planar Graph Problems with Small Distance Property.txt:Text},
+  file      = {Full Text PDF:https\://link.springer.com/content/pdf/10.1007%2F978-3-642-22993-0_53.pdf:application/pdf},
   isbn      = {9783642229930},
   keywords  = {Planar Graph, Vertex Cover, Linear Kernel, Kernel Size, Reduction Rule},
   language  = {en},
@@ -443,4 +444,4 @@
   title    = {{A Linear Kernel for Planar Total Dominating Set}},
   year     = {2018},
   month    = May,
-  volume   = {{Vol. 20 no. 1}},
+  volume   = {{Vol. 20 no. 

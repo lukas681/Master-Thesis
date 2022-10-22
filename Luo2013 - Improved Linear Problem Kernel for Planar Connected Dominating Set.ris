@@ -1,0 +1,17 @@
+TY  - JOUR
+AU  - Raman, Venkatesh
+AU  - Saurabh, Saket
+PY  - 2008
+DA  - 2008/10/01
+TI  - Short Cycles Make W-hard Problems Hard: FPT Algorithms for W-hard Problems in Graphs with no Short Cycles
+JO  - Algorithmica
+SP  - 203
+EP  - 225
+VL  - 52
+IS  - 2
+AB  - We show that several problems that are hard for various parameterized complexity classes on general graphs, become fixed parameter tractable on graphs with no small cycles.
+SN  - 1432-0541
+UR  - https://doi.org/10.1007/s00453-007-9148-9
+DO  - 10.1007/s00453-007-9148-9
+ID  - Raman2008
+ER  - 

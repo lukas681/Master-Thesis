@@ -16,6 +16,10 @@ A \textit{\bg} is a Graph G whose vertex set can be partitioned into two subsets
 \caption{\textit{Constructing a bipartite G' from the bipartite graph $K_{m,n}$ by duplicating all vertices and adding exactly two forced witnesses.}}
 \end{figure}
 
+We will use the following statement in the upcoming proof.
+\begin{theorem}
+The \dom problem is $w[2]$-complete for bipartite graphs. (\cite[Theorem 1]{Raman2018})
+\end{theorem}
 
 \begin{theorem}
     Semitotal Dominating Set is $\omega[2]$ hard for bipartite Graphs
@@ -24,31 +28,30 @@ A \textit{\bg} is a Graph G whose vertex set can be partitioned into two subsets
 \begin{proof}
     Given a bipartite Graph $G = ( \{X \cup Y\}, E)$, we construct a bipartite Graph $G' = (\{X' \cup Y'\},E')$ in the following way:
     \begin{enumerate}
-        \item For each vertex $x_i \in X$, we add a new vertex $x_i' \in A$  and an edge $\{x_i, x_i'\}$ in between. 
-        \item For each vertex $y_j \in Y$, we add a new vertex $y_j' \in B$ and an edge $\{y_j, y_j'\}$ in between.
-        \item We add fource vertices with with edges $\{u_1, d_1\}$ and $\{u_2, d_2\}$, and connect them with all $\{d_1, x'_i\}$ and $\{d_2, y'_j\}$ ($i \in [m]$ and $j \in [n]$) respectively.
+        \item For each vertex $x_i \in X$, we add a new vertex $a_i \in A$  and an edge $\{x_i, a_i\}$ in between. 
+        \item For each vertex $y_j \in Y$, we add a new vertex $b_j \in B$ and an edge $\{y_j, b_j\}$ in between.
+        \item We add fource vertices with with edges $\{u_1, d_1\}$ and $\{u_2, d_2\}$, and connect them with all $\{d_1, a_i\}$ and $\{d_2, b_j\}$ ($i \in [m]$ and $j \in [n]$) respectively.
     \end{enumerate}
-    \paragraph*{Observation:} G' is bipartite because $A$ and $B$ form an independent set on G' that can be attached to one of the previous vertex sets. Setting  $X' = X \cup \{u_2,d_1\} \cup B$ and $Y' = X \cup \{u_1,d_2\} \cup A$ form the partitions of the new bipartite G'.
+    \paragraph*{Observation:} The constructed $G'$ is bipartite because $A$ and $B$ form an independent set on G' that can be cross-wise attached to one of the previous vertex sets. Setting  $X' = X \cup \{u_2,d_1\} \cup B$ and $Y' = X \cup \{u_1,d_2\} \cup A$ form the partitions of the new bipartite G'.
 
-    \begin{corollary} G has a \sdom of size k iff G has a \sdom of size $k' = k + 2$
+    \begin{corollary} G has a \dom of size $k$ iff G has a \sdom of size $k' = k + 2$
     \end{corollary} 
     \begin{enumerate}
 % TODO: Better name for A and B # add it to figure
-    \item[$\Rightarrow$] Assume a \sdom in $G$ of size $k$. We know that $D' = D\cup \{d_1,d_2\}$ is a \sdom in $G'$ of size $k' = k+2$ , because $d_1$ dominates $u_1$ and all $x'_i \in A$; $d_2$ dominates $u_2$ and all $y'_i \in B$. The rest is still dominated by the same vertices as they were in G, but now all of them have either $d_1$ or $d_2$ as a witness.
-        More formally, we have by definition of $G'$ that $\forall v \in (D \cap X): d(v, d_1) = 2$ and $\forall v \in (D \cap Y): d(v, d_2) = 2$.
+    \item[$\Rightarrow$] Assume a \dom in $G$ of size $k$. We know that $D' = D\cup \{d_1,d_2\}$ is a \sdom in $G'$ of size $k' = k + 2$, because $d_1$ dominates $u_1$ and all $a_i \in A$; $d_2$ dominates $u_2$ and all $b_i \in B$. The rest is dominated by the same vertices as they were in $G$, but now all of them have either $d_1$ or $d_2$ as a witness.
+    More formally, we have by construction of $G'$ that $\forall v \in (D \cap X): d(v, d_1) = 2$ and $\forall v \in (D \cap Y): d(v, d_2) = 2$.
 
     \item[$\Leftarrow$] On the contrary, assume any \sdom $D'$ in $G'$ with size $k'$. Without loss of generality, we can assume that $u_1, u_2 \notin D'$, because choosing $d_1$ and $d_2$ instead is always as least as good and does not violate any witnesses. Therefore, the construction forces $d_1$, $d_2 \in D'$. 
 
-    % TODO one sentence about flipping operation
-    Because all $x'_i \in A$ can only be useful to dominate their partnering $x_i$ ($y'_i \in B$ for $y_i$), because $d_1, d_2 \in D$ is the only other neighbor.
-    If $x'_i,y'_i \in D'$ we replace it with $x_i$ and $y_i$ in $D'$ keeping the size of the dominating set. As $d_1$ and $d_2$ suffice to provide a witness for every vertex in the graph, this operation is sound.
+    All $a_i \in A$ can only be useful to dominate their partnering $x_i$ ($b_i \in B$ for $y_i$), because $d_1, d_2 \in D$ is the only second neighbor they have.
+    If $a_i,b_i \in D'$ we replace it with $x_i$ and $y_i$ preserving the size $D$. As $d_1$ and $d_2$ suffice to provide a witness for every vertex in the graph and do not lose any other witnesses, this operation is sound.
     
     % flip before?
     
-    $D = D' \setminus \{ d_1,d_2\}$ gives us a \sdom in $G$ with size $ k = k' - 2$
+    In the end, $D = D' \setminus \{ d_1,d_2\}$ gives us a \dom in $G$ with size $ k = k' - 2$
     
     \end{enumerate}
-    As G' can be constructed in $\mathcal{O}(n)$ and parameter k is only blown up by a constant, this reduction is an FPT reduction. As Dominating Set is $w[2]$ hard for bipartite Graphs\footnote{Citation needed!} so is Semitotal Dominating Set.
+    As G' can be constructed in linear time and the parameter $k$ is only blown up by a constant, this reduction is an FPT reduction.  Because \dom is already $w[2]$-hard on bipartite graphs (\cite), we imply that \sdom is $w[2]$-hard as well.
 \end{proof}
 
 \subsection{\hmath $W[2]$-hard on Chordal Graphs}
