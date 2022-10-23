@@ -47,7 +47,8 @@ If a graph $G$ is isomorphic to another graph $h$, we denote $G \simeq H$.
     asd
 \end{definition}
 
-\subsection*{Special Graph Classes}
+\subsection*{Graph Classes}
+
 We call the class of graphs without any special restrictions ``General Graphs''.
 
 \begin{definition}[r-partite Graphs]
@@ -69,6 +70,13 @@ We call the class of graphs without any special restrictions ``General Graphs''.
 \begin{definition}[Path Graph $P_i$]
     
 \end{definition}
+
+\begin{definition}[Bipartite Graph, {\cite[p.5]{Bondy2008}}]
+    
+A \textit{\bg} is a Graph G whose vertex set can be partitioned into two subsets X and Y, so that each edge has one end in X and one end in Y. Such a partition (X,Y) is called a \textit{bipartition} of G.
+
+\end{definition}
+
 
 \begin{definition}[Planar Graphs {\cite[Chapter 4]{diestel10}}]
 
@@ -104,35 +112,6 @@ An embedding in the plane, or \textit{planar embedding}, of an (abstract) graph 
 \input{pages/theory/pc/pc.tex}
 
 \section{Semitotal Domination}
-
-\textbf{Problem Definition}
-
-\begin{prb}[DOMINATING SET]{prb:ds}
-
-    \begin{tabularx}{0.9\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.7\hsize}X}
-        \textbf{Input:} & Graph \G and an integer $k$\\
-        \textbf{Question:} & Is there a set $X \subseteq V$ of size $k$ s.t. $N[X] = V(G)$? \\
-    \end{tabularx}
-        
-\end{prb}
-
-\begin{prb}[DOMINATING SET]{prb:tds}
-    
-    \begin{tabularx}{0.8\textwidth}{>{\hsize=0.35\hsize}X>{\hsize=0.65\hsize}X}
-        \textbf{Input:} & Graph \G and an integer $k$\\
-        \textbf{Question:} & TODO \\
-    \end{tabularx}
-        
-\end{prb}
-
-\begin{prb}[SEMITOTAL DOMINATING SET]{prb:sds}
-    
-    \begin{tabularx}{0.8\textwidth}{>{\hsize=0.35\hsize}X>{\hsize=0.65\hsize}X}
-        \textbf{Input:} & Graph \G and an integer $k$\\
-        \textbf{Question:} & TODO \\
-    \end{tabularx}
-        
-\end{prb}
 
 
 Dominating Set

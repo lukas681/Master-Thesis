@@ -32,6 +32,7 @@ Acronyms
 29) Buy grammarly premium and cross check.
 30) Implement these facy boxes
 31) Capitalizing    
+32) Uniform: Underline or bolt in definitions emphasizes
 
 TODO: Look up unknown graph theoretic terms for me.
 

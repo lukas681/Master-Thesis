@@ -1,10 +1,6 @@
 \subsection{\hmath $W[2]$-hard on Bipartite Graphs}
 
-\begin{definition}[Bipartite Graph, {\cite[p.5]{Bondy2008}}]
-    
-A \textit{\bg} is a Graph G whose vertex set can be partitioned into two subsets X and Y, so that each edge has one end in X and one end in Y. Such a partition (X,Y) is called a \textit{bipartition} of G.
-
-\end{definition}
+We are showing that \sdom is $\omega[2]$-hard on bipartite graphs by a parametrized reduction from \dom on bipartite graphs which is known to be $\omega{2}$-hard (\cite[Theorem 1]{Raman2008}).
 
 % \input{fig/tikz/bipartite-fg.tex}
 
@@ -16,10 +12,9 @@ A \textit{\bg} is a Graph G whose vertex set can be partitioned into two subsets
 \caption{\textit{Constructing a bipartite G' from the bipartite graph $K_{m,n}$ by duplicating all vertices and adding exactly two forced witnesses.}}
 \end{figure}
 
-We will use the following statement in the upcoming proof.
-\begin{theorem}
-The \dom problem is $w[2]$-complete for bipartite graphs. (\cite[Theorem 1]{Raman2008})
-\end{theorem}
+%\begin{theorem}
+%The \dom problem is $\omega[2]$-complete for bipartite graphs. (\cite[Theorem 1]{Raman2008})
+%\end{theorem}
 
 \begin{theorem}
     Semitotal Dominating Set is $\omega[2]$ hard for bipartite Graphs

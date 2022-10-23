@@ -3,10 +3,16 @@ Rely an \cite[]{}
 
 \section{Parametrized Complexity}
 
+* Decision Problem
+
+
 \begin{definition}[Parametrized Problem{\cite[Def 1.1]{Cygan2015}}]
     A parametrized problem is a $L\subseteq\Sigma^*\times \mathbb{N}$ ($\Sigma$ finite fixed alphabet) for an instance $(x,k)\in \Sigma^*\times \mathbb{N}$, where k is called the \textit{parameter}.
 \end{definition}
 
+\begin{definition}[Instance Size]
+    The \textbf{size of an instance} of an instance $(x,k)$ of a parametrized problem is $\abs{(x,k)} = \abs{x} + k$
+\end{definition}
 We will now clarify the basic terminology withing Parametrized Complexity. 
 We are now giving a short introduction into the world of parametrized complexity. 
 * General Introduction
@@ -22,15 +28,41 @@ We are now giving a short introduction into the world of parametrized complexity
 
 \subsection{Kernelization}
 
-
 \begin{definition}[kernelization Algoritm{\cite[Def 2.1]{Cygan2015}}]
 A \textit{Kernelization Algorithm} or \textit{kernel} is an algorithm $\mathfrak{A}$ for a parametrized Problem Q, that given an instance $(I,k)$ of Q works in polynomial timeand returns an equivalent instance $(I', k')$ of Q. Moreover, we require that $size_{\mathfrak{A}}(k) \leq g(k)$ for some computable function $g:\mathcal{N} \rightarrow \mathcal{N}$
 \end{definition}
+
+%TODO better
+If we bound the size of the kernel bya linear function $f(m) = \mathcal{O}(k)$, we say that the problem admits a \textbf{linear kernel}. 
+
+%Examplary, if we reduce a graph for a graph problem in such a way that we can garuantee that our reduced graph only has a a few vertices \textbf{linear} in  $k$ left
+
+The main idea, preprocessing algorithm, shrink size as much as possible, sound reduction rules,small output instance
+
+\begin{definition}[Output size of a Preprocessing Procedure {\cite[p. 18]{Cygan2015}}] The output size of a preprocessing algorithms $\mathfrak{A}$ is defined as 
+
+    \[\mathrm{size}_{\mathfrak{A}}(k) = \sup\{\abs{I'} + l': (I',k')= \mathfrak{A}(I,k), I \in \Sigma^* \} \]
+\end{definition}
+
+possibly infinite
 
 Clearly, if there exists a kernelization algorithm for a problem $L$ and an algorithm $\mathfrak{A}$ with any runtime to decide $L$, the problem is in $FPT$ because after the kernelization pre-processing has been applied, the size of the reduced instance is a function merely in $k$ and independent of the input size $n$. In \cref{ch:linkern} we will explicitly construct a kernel for \psdom and hence showing it to be in \textit{FPT}. 
 
 % Interstingly, als the converse?
 
+\begin{definition}[Reduction Rules {\cite[p. 18]{Cygan2015}}]
+A \textbf{reduction rule} is a function $\phi:\Sigma^* \times \mathbb{N} \rightarrow \Sigma^* \times \mathbb{N}$ that maps an instance $(x,k)$ to an equivalent instance $(x',k')$ such that $phi$ is computable in time polynomial in $\abs{x}$ and $k$
+\end{definition}
+
+\begin{definition}[Equivalent Instance {\cite[p. 18]{Cygan2015}}]
+     This is a test
+\end{definition}
+
+\begin{definition}{Soundness of a rule}
+
+\end{definition}
+
+A \textbf{reduction rule} is a function $\Sigma* \times \mathbb{N}$ that maps an instance $(x,k)$ to an equivalent instance $(x',k')$ such that xx is computable in time polynomial in $\abs{x}$ and $k$
 
 \subsection{Fixed Parameter Intractability: The w-Hierarchy}
 \subsection{Compare to classical NP-Hardness theory}
