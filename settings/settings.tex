@@ -4,7 +4,9 @@
 \usepackage[T1]{fontenc}
 \usepackage[sc]{mathpazo}
 \usepackage[ngerman,american]{babel}
+
 \usepackage[autostyle]{csquotes}
+
 \usepackage[%
   backend=biber,
   url=false,
@@ -14,7 +16,14 @@
   minnames=3,
   maxbibnames=99,
   giveninits,
-  uniquename=init]{biblatex} % TODO: adapt citation style
+  uniquename=init]{biblatex}
+\usepackage{hyperref} % hidelinks removes colored boxes around references and links
+\hypersetup{
+colorlinks=true,
+linkcolor=darkgray,
+citecolor=[RGB]{0,0,139}
+}
+
 \usepackage{graphicx}
 \usepackage{scrhack} % necessary for listings package
 \usepackage{listings}
@@ -25,7 +34,6 @@
 \usepackage{booktabs}
 \usepackage[final]{microtype}
 \usepackage{caption}
-\usepackage[colorlinks,linkcolor=darkgray]{hyperref} % hidelinks removes colored boxes around references and links
 
 \bibliography{bibliography}
 
