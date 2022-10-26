@@ -74,7 +74,7 @@ The idea is to split up the neighborhood of a single vertex and a pair of vertic
         N_2(v) & = \{u \in N(v)\setminus N_1(v) : N(u) \cap N_1(v) \neq \emptyset \} \\
         N_3(v) & = N(v) \setminus (N_1(v) \cup N_2(v))
     \end{align}
-    To inhance future readability, for $i,j \in [1,3]$, we denote $N_{i,j} (v) := N_i(v) \cup N_j(v)$.
+    To enhance future readability, for $i,j \in [1,3]$, we denote $N_{i,j} (v) := N_i(v) \cup N_j(v)$. Furthermore, we call a vertex $v'$ \textit{confined} by a vertex $v$, if $N(v') \subseteq N[v]$
 \end{definition}
 
 \begin{figure}[!ht]
@@ -249,9 +249,8 @@ In the analysis, we will also use properties of the \textit{underlying multigrap
 \end{minipage}
 
 \section{The Big Picture}
-\cref{fig:overview} gives a high-level view of how we are going to obtain the linear kernel for \psdom. We will first five three different reduction rules (\cref{rgl:rone,rgl:rtwo,rgl:rthree} are green in the overview) and prove that they preserve the solution size $k$ and run in polynomial-time. 
-The idea is then to use a maximal \dreg~$\mathfrak{R}$ to bound the number of vertices that fly around a given region $R \in \mathfrak{R}$. This will lead us to a bound on the number of vertices inside R and those that are not belonging to any $vw$-region in $\mathfrak{R}$. We will often exploit \cref{rgl:rthree} and find hidden simple regions which we know are of constant size by \cref{lemma:simpleregionbound}.
-
+\cref{fig:overview} gives a high-level view of how we are going to obtain the linear kernel for \psdom. We will first derive three different reduction rules (\cref{rgl:rone,rgl:rtwo,rgl:rthree} are green in the overview), prove that they preserve the solution size $k$ and run in polynomial-time. 
+Then we use the existence of a maximal \dreg~$\mathfrak{R}$ on planar graphs to bound the number of vertices that fly around a given region $R \in \mathfrak{R}$. This will lead us towards a bound on the number of vertices inside R. Furthermore, we observe that the number of vertices that are not enclosed in R, but lie outside the border is bounded, too. We will often encounter hidden simple regions which are reduced by \cref{rgl:rthree} and therefore of constant size by \cref{lemma:simpleregionbound}. As we know that the total number of regions R in the \dreg is linear in $k$, we obtained a linear kernel for the \psdom as well.
 \begin{figure}[!ht]
     \begin{equation*}
     \scalebox{.9}
@@ -259,19 +258,31 @@ The idea is then to use a maximal \dreg~$\mathfrak{R}$ to bound the number of ve
         \tikzfig{fig/tikz/overview}
     }
     \end{equation*}
-    \caption[Structure of the Proof]{\textit{The plan for obtaining a linear kernel for \psdom. Starting with the reduction rules we will try to derivate the number of vertices inside and outside of a $vw$-region.}}\label{fig:overview}
+    \caption[Structure of the Proof]{\textit{The plan for obtaining a linear kernel for \psdom. Starting with the reduction rules (Green) we will derive the number of vertices inside and outside of a $vw$-region.}}\label{fig:overview}
 \end{figure}
 
 \section{The Reduction Rules}
 
-Following the ideas proposed by Garnero and Sau in \cite[Revision 2014]{Garnero2018}, we state reduction rules that after exhaustive application will expose a linear kernel. 
+Following the ideas proposed by Garnero and Sau in \cite[Revision 2014]{Garnero2018}, we state reduction rules that after exhaustive application will expose a linear kernel. We note that especially for \cref{rgl:rtwo}, we relied on the first revision of the paper because in the following years their kernel size was improved for the cost of making them more specific to \ptdom and we saw that the latest rules stated will not work for \psdom. 
+The main challenge in all of those rules is to maintain the witness properties of the graph because a vertex inside a region can be important as a witness for vertices in another region and can not always simply be reduced. Therefore a more sophisticated analysis is required. 
 \subsection{Reduction Rule I: Getting Rid of unneccessary  $N_3(v)$ vertices}
 
 % Maybe we can even remove all N_3's because later, only the case v in a pair could be important. We do not have a connected graph.
 
-The idea behind our first rule is the observation that a vertex $v' \in N_3(v)$ dominates $v$ and vertices from $N_2(v)$. As $N(v') \subseteq N(v)$ and the \cref{fact:witnessTwin} that a witness for $v'$ is also witness for $v$, we can use $v$ instead of $z$ as a dominating vertex. Nevertheless, $v'$ can be a witness for $v$ itself and might be required in a solution. Our rule ensures that at least one $N_3(v)$-vertex is preserved.
+The idea of the first rule is the observation that a vertex $v' \in N_{2,3}(v)$ dominates $v$ and possibly vertices from $N_2(v)$ and $N_3(v)$. As $N(v') \subseteq N(v)$ and the \cref{fact:witnessTwin} that a witness for $v'$ is also witness for $v$, we can use $v$ instead of $v'$ as a dominating vertex. Therefore, we can remove $N_{2,3}$ from the graph. Nevertheless, $v'$ can be a witness for $v$ itself and might be required in a solution. Our rule ensures that at least one $N_3(v)$-vertex is preserved. An example for this rule is shown in \cref{fig:ruleOne}.
 
-Note that \cref{rgl:rone} has only removed vertices that \textit{must be dominated} by $v$ in $G$. An example for this rule is shown in \cref{fig:ruleOne}.
+\begin{fact}\label{fact:witnessTwin}
+Let \G, $v \in V$ and $v' \in N_{2,3}(v)$. Any witness $w \neq v$ for $v'$ is also a witness for $v$. % Reformulate as v can be a witness for $w'$
+\end{fact}
+\begin{proof}
+
+By assumption $v'$ is witnessed by a vertex $w \neq v$ with $d(v', w) \leq 2$. It follows directly from the definition of $v' \in N_{2,3}(v)$ that $N(v') \subseteq N[v]$ and hence $v'$ is \textit{confined} inside the neighborhood of $v$. Every path $P = (v', n, w)$ from $v'$ to possible witness $w$ within two steps must pass at least one vertex $n \in N[v]$ as all neighbors. This implies that there exists also a path from $v$ to $w$ with a length of at most two and $v$  
+
+% Maybe add a note that it can also point outside of N(v)
+% we know that $w$ is either $v$, a direct neighbor of $v$ or can be reached via one step over a $N_1(v)$ vertex, hence $w \in N(v) \cup \bigcup\limits_{z \in N_1(v)} N(z) $. Clearly, $d(v, w) \leq 2$.
+\end{proof}
+
+
 
 \begin{figure}[!ht]
     \begin{equation*}
@@ -284,45 +295,32 @@ Note that \cref{rgl:rone} has only removed vertices that \textit{must be dominat
 \begin{rgl}\label{rgl:rone}
     Let \G be a graph and let $v \in V$. If $\abs{\Nthreev} \geq 1$:
     \begin{itemize}
-        \item remove $\Nthreev$ from G,
+        \item remove $N_{2,3}(v)$ from G,
         \item add a vertex $v'$ and an edge $\{v, v'\}$
     \end{itemize}
 \end{rgl}
 
-\begin{fact}\label{fact:witnessTwin}
-Let \G, $v \in V$ and $v' \in N_{2,3}(v)$. Any witness $w \neq v$ for $v'$ is also a witness for $v$. % Reformulate as v can be a witness for $w'$
-\end{fact}
-\begin{proof}
-    % Explain the definition better. Somehow I am not really happy with that.
-By assumption $v'$ is witnessed by a vertex $w \neq v$ with $d(v', w) \leq 2$. It follows directly from the definition of $v' \in N_{2,3}(v)$ that $N(v') \subseteq N(v)$ and hence $v'$ is \textit{confined} inside the neighborhood of $v$. Therefore, every possible witness that can be reached from $v'$ within two steps can also be reached from $v$ within two steps.
-
-% Maybe add a note that it can also point outside of N(v)
-% we know that $w$ is either $v$, a direct neighbor of $v$ or can be reached via one step over a $N_1(v)$ vertex, hence $w \in N(v) \cup \bigcup\limits_{z \in N_1(v)} N(z) $. Clearly, $d(v, w) \leq 2$.
-\end{proof}
-
-We can now prove the correctness of this rule.
+\noindent We can now prove the correctness of this rule.
 
 \begin{lemma}\label{lemma:correctnessone}
-    Let \G be a graph and let $v \in V$. If $G'$ is the graph obtained by applying \cref{rgl:rone}   on $G$, then G has \sdom of size k if and only if G' has one.
+    Let \G be a graph and let $v \in V$. If $G'$ is the graph obtained by applying \cref{rgl:rone}   on $G$, then G has a \sdom of size k if and only if G' has a \sdom of size k.
 \end{lemma}
 \begin{proof}
     \begin{enumerate}
         \item[$\Rightarrow$] Let $D$ be a \sdom in $G$ of size k. 
-        Because \cref{rgl:rone} has been applied, we can assume $N_3(v) \neq \emptyset$ in $G$. 
+        Because \cref{rgl:rone} has been applied, we can assume $N_{2,3}(v) \neq \emptyset$ in $G$. 
         
-        To dominate $N_3(v)$ we either need $v \in D$ or at least one other vertex $d \in N_{2,3}(v) \cap D$. In the latter case, we can replace this vertex by $v$ directly. By \cref{fact:witnessTwin}, we know that a witness for $d$ will also be a witness for $v$ preserving a \sdom. Hence, we now assume $v \in D$ and $N_{2,3}(v)$ is already dominated by $v$.
+        To dominate all vertices from $N_3(v)$ we either need $v \in D$ or at least one other vertex $d \in N_{2,3}(v) \cap D$. In the latter case, we can replace this vertex by $v$ directly. By \cref{fact:witnessTwin}, we know that a witness for $d$  (which is not  $v$) is also a witness for $v$ and therefore, the replacing preserves the \sdom. Henceforth, we assume $v \in D$ and $N_{2,3}(v)$ is already dominated by $v$.
 
-        If \cref{rgl:rone} has removed at least one dominating vertex, we set $D' = D \setminus N_{2,3}(v) \cup \{v'\}$ otherwise $D = D'$. In both cases, $v'$ is dominated by $v$.
+        If \cref{rgl:rone} has removed at least one dominating vertex from $N_{2,3}(v)$, we set $D' = D \setminus N_{2,3}(v) \cup \{v'\}$ otherwise $D = D'$. 
+        In the first case this vertex in $N_{2,3}(v) \cap D$ could have possible been a witness for $v$, so we select $v' \in D'$ as a witness for $v$ ensuring $D'$ to be a \sdom. In both cases $v'$ is by assumption dominated by $v$ and  $\abs{D} \leq \abs{D'}$.
 
-        Because a vertex in $N_{2,3}(v) \cap D$ could have possible been a witness for $v$, we select $v' \in D'$ as a witness for $v$ ensuring $D'$ to be a \sdom. In both cases $\abs{D} \leq \abs{D'}$.
-
-        \item[$\Leftarrow$]  Assume $D'$ to be a \sdom in $G'$. We know that $v \in D'$, because $v'$ has to be dominated and it is always better to choose $v$.
+        \item[$\Leftarrow$]  Assume $D'$ to be a \sdom in $G'$. We can assume that $v \in D'$, because $v'$ has to be dominated and it is always better to choose $v$ instead of $v$.
 
         If $v' \in D'$ is a witness for $v$ in $G'$, we have to preserve a witness in $G$ as well. As we know that $N_3(v) \neq \emptyset$, we can replace it by an arbitrary vertex $d \in N_3(v)$ in $G$. 
         
         In the second case, the witness for $v$ came either from a vertex $o \in N_1(v)$ or some neighbor $N(o) \setminus N(v)$ outside the neighborhood of $v$ which has not been touched by this reduction rule. 
-        
-        In summary, if $v' \in D'$, we set $D = D' \cup \{d\} \setminus \{v'\}$ for a single $d \in N_3(v)$ and otherwise $D = D'$. In both cases, $N_{2,3}(v)$ is dominated by $v$ and $\abs{D} = \abs{D'}$.
+        In summary, if $v' \in D'$, we set $D = D' \cup \{d\} \setminus \{v'\}$ for any $d \in N_3(v)$ and otherwise $D = D'$. In both cases, $N_{2,3}(v)$ is dominated by $v$ and $\abs{D} = \abs{D'}$.
     \end{enumerate}
 \end{proof}
 
