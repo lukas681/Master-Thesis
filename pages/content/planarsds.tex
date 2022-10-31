@@ -627,14 +627,14 @@ We continue by giving a constant bound on the number of simple regions that cove
 
 %TODO: Can I "induced" in this case is undefined
 \begin{lemma}\label{lemma:rtwosr}
-    Given a plane Graph $G = (V,E)$ reduced under \cref{rgl:rtwo} and \cref{rgl:rthree} and a region R(v, w), if $\Dv \neq \emptyset $ (resp. $\Dw \neq \emptyset$), $N_3(v,w) \cap V(R)$ can be covered by: 
+    Given a plane Graph $G = (V,E)$ reduced under \cref{rgl:rtwo}  and a region R(v, w), if $\Dv \neq \emptyset $ (resp. $\Dw \neq \emptyset$), $N_3(v,w) \cap V(R)$ can be covered by: 
     \begin{enumerate}
         \item $11$ \sr s~if $\Dw \neq \emptyset$,
         \item $14$ \sr s~if $N_{2,3}(v) \cap N_3(v,w) = \emptyset$
     \end{enumerate}
 \end{lemma}
 
-Observe that in the first case, we can assume that \cref{case:c1} \& \cref{case:c2} of \cref{rgl:rtwo} have been applied and the second one, when \cref{case:c3} was applied.
+Observe that in the first case, we can assume that no case of \cref{rgl:rtwo} has been applied, but the claim is a direct consequence of the assumption $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$. If \cref{case:c2} \cref{case:c3} has been applied $N_{2,3}(v,w)$ gets reduced and the second case can be applied.
 
 \begin{proof} 
     We will closely follow the approach by Garnero and Sau (\cite[Revision 2014, Fact 6]{Garnero2018}). 
