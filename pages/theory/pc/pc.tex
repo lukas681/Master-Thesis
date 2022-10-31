@@ -1,4 +1,4 @@
-For an introduction into classical cimplexity theoy. Refer to the standard textbooks aaran und cpo.
+For an introduction into classical complexity theory. Refer to the standard textbooks aaran und cpo.
 Rely an \cite[]{}
 
 \section{Parametrized Complexity}
@@ -29,11 +29,11 @@ We are now giving a short introduction into the world of parametrized complexity
 \subsection{Kernelization}
 
 \begin{definition}[kernelization Algoritm{\cite[Def 2.1]{Cygan2015}}]
-A \textit{Kernelization Algorithm} or \textit{kernel} is an algorithm $\mathfrak{A}$ for a parametrized Problem Q, that given an instance $(I,k)$ of Q works in polynomial timeand returns an equivalent instance $(I', k')$ of Q. Moreover, we require that $size_{\mathfrak{A}}(k) \leq g(k)$ for some computable function $g:\mathcal{N} \rightarrow \mathcal{N}$
+A \textit{Kernelization Algorithm} or \textit{kernel} is an algorithm $\mathfrak{A}$ for a parametrized Problem Q, that given an instance $(I,k)$ of Q works in polynomial time and returns an equivalent instance $(I', k')$ of Q. Moreover, we require that $size_{\mathfrak{A}}(k) \leq g(k)$ for some computable function $g:\mathbb{N} \rightarrow \mathbb{N}$
 \end{definition}
 
 %TODO better
-If we bound the size of the kernel bya linear function $f(m) = \mathcal{O}(k)$, we say that the problem admits a \textbf{linear kernel}. 
+If we bound the size of the kernel by linear function $f(m) = \mathcal{O}(k)$, we say that the problem admits a \textbf{linear kernel}. 
 
 %Examplary, if we reduce a graph for a graph problem in such a way that we can garuantee that our reduced graph only has a a few vertices \textbf{linear} in  $k$ left
 

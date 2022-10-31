@@ -415,7 +415,7 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
 
 \noindent Now we are ready to prove the correctness of \cref{rgl:rtwo}
 \begin{lemma}\label{lemma:correctnesstwo}
-    Let \G be a plane graph, $v, w \in V$ and \GB be the graph obtained after application of \cref{rgl:rtwo} on the pair $\{v, w\}$. Then G has SDS of size k if and only if G' has SDS of size k.
+    Let \G be a plane graph, $v, w \in V$ and \GB be the graph obtained after application of \cref{rgl:rtwo} on the pair $\{v, w\}$. Then G has \sdom of size k if and only if G' has \sdom of size k.
 \end{lemma}
 \begin{proof}
     We will prove the claim by analyzing the different cases of the rule independently.     
@@ -424,9 +424,10 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
         \begin{enumerate}
             \item  $ \Dv = \emptyset  \wedge \Dw = \emptyset $: By applying \cref{fact:f2} twice, we know that both  $v, w \in D$. Therefore, $v'$,$w'$, and potentially $y$ and $y'$ are dominated by $v$ or $w$ in $G'$.
             
-            We now have three cases: Either $v$ and $w$ are so far away that both have their witnesses themselves; they are of distance three, such that potentially one witness on a path from $v$ to $w$ (which could go through $N_{2,3}(v,w)$ and will be removed) is required or they can be of distance less than three, such that they already witness each other directly. 
+            We now have three cases: Either $v$ and $w$ have their own witnesses (e.g. via two distinct $N_1(v,w)$-vertices); they are of distance three and share one witness on a path from $v$ to $w$ (which could go through $N_{2,3}(v,w)$ and therefore will be kept by the vertices $y$ and $y$) is required, or they can be of distance less than three, such that they already witness each other directly. 
+            Furthermore, a direct edge $\{v,w\}$ will not be reduced. 
 
-            We will now build $D'$ depending on which vertices from $D \cap N_{2,3}(v,w)$ have removed. 
+            We will now build $D'$ depending on which vertices from $D \cap N_{2,3}(v,w)$ have been removed. 
             % Add figure.
             \begin{itemize}
                 \item If the rule has not removed any $d \in D$, we simply set $D' = D$. If $v$ was a witness for $w$ (and vice versa), \cref{rgl:rtwo} will preserve it by introducing the vertex $y$. Otherwise, these witnesses are preserved.
@@ -434,9 +435,12 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
                 If the rule has removed a vertex from $D \cap N(v)$, we set $D' = D \setminus N_{2,3}(v,w) \cup \{v'\}$.
                 If the rule has removed a vertex from $D \cap N(w)$, we  set $D' = D \setminus N_{2,3}(v,w) \cup \{w'\}$.
                 If the rule has removed a vertex from $(D \cap N(v))$ and a vertex from $(D \cap N(w))$, we set $D' = D \setminus N_{2,3}(v,w) \cup \{v', w'\}$.
-                \item If $d(v,w) = 3$, then there could possibly be a path via $N_{2,3}(v,w) $ vertices containing a witness for both $v$ and $w$. If the rule removed a vertex $D \cap N_{2,3}(v, w)$m, we set $D' = D \setminus N_{2,3}(v,w) \cup \{y\}$. Note that we could also choose $y' \in D'$, because $y$'s only function is to be a single witness for $v$ and $w$ and everything it could witness too, will also be witnessed by $v,w \in D'$ (\cref{fact:f1}).
-                \item If $d(v,w) \leq 2$, then $v$ directly witnesses $w$ (and vice versa). even if the rule has removed a vertex $z \in D \cap N_{2,3}(v,w)$, we can ignore that, because \cref{fact:f1} states that $v$ and $w$ will witness the same vertices as $z$ did. Hence, we set $D' = D \setminus N_{2,3}(v,w)$.
+                \item If $d(v,w) = 3$ and the vertices $y$ and $y'$ get introduced preserving one path from $v$ to $w$, because there have been a path via $N_{2,3}(v,w)$-vertices containing a single witness for both $v$ and $w$.
+                If the rule removed a dominating vertex $D \cap N_{2,3}(v, w)$, we set $D' = D \setminus N_{2,3}(v,w) \cup \{y\}$. Note that we could also choose $y' \in D'$, because $y$'s only function is to be a single witness for $v$ and $w$ and every other vertex it could be a witness for, will also be witnessed by $v,w \in D'$ (\cref{fact:f1}).
+                \item If $d(v,w) \leq 2$, then $v$ and $w$ directly witness each other and the reduction must preserve this relation, which is accomplished by introducing the single bridging vertex $y$. 
+                Even if the rule has removed a vertex $z \in D \cap N_{2,3}(v,w)$, we can ignore that, because \cref{fact:f1} states that $v$ and $w$ will witness the same vertices as $z$ did. Hence, we set $D' = D \setminus N_{2,3}(v,w)$.
             \end{itemize}
+            
             In all of the cases, it follows that $D'$ is a SDS of $G'$ with $\abs{D'} \leq \abs{D}$ 
             
             \item  $ \Dv \neq \emptyset  \wedge \Dw = \emptyset$: As $\Dw = \emptyset$ and \cref{fact:f2}, we know that $v \in D$ and $v$ dominates $N_{2,3}(v)$. 
@@ -636,7 +640,10 @@ We continue by giving a constant bound on the number of simple regions that cove
 
 Observe that in the first case, we can assume that no case of \cref{rgl:rtwo} has been applied, but the claim is a direct consequence of the assumption $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$. If \cref{case:c2} \cref{case:c3} has been applied $N_{2,3}(v,w)$ gets reduced and the second case can be applied.
 
+\textbf{STOP STOP STOP ---  FROM HERE ERVERYTHING IS CURRENTLY IN PROGRESS -- :)}
+
 \begin{proof} 
+    
     We will closely follow the approach by Garnero and Sau (\cite[Revision 2014, Fact 6]{Garnero2018}). 
     
     Figure (Add picture about figures) gives a visualization of the worst-case scenarios to cover $N_3(v,w) \cap V(R)$ with simple regions in the relevant cases.\footnote{Note: In a newer revision of their paper \cite{Garnero2018}, Garnero and Sau removed this proof, because they changed \cref{rgl:rtwo} and a more fine-grained analysis was made possible.}
