@@ -568,13 +568,13 @@ The application of \cref{rgl:rthree} gives us a bound on the number of vertices 
 
 \subsection{Computing Maximal Simple Regions between two vertices}
 
-For the sake of completeness, we state an algorithm how a maximal \sr between two vertices $v,w \in V$ can be computed in time $\mathcal{O}(d(v) + d(w))$:
+For the sake of completeness, we state an algorithm on how a maximal \sr between two vertices $v,w \in V$ can be computed in time $\mathcal{O}(d(v) + d(w))$:
 
 \section{Bounding the Size of the Kernel}
 
-We are now putting all our pieces together to prove the main result: A kernel bounded linear in the solution size $k$. To do so, we distinguish between those vertices that are covered inside a region in a maximal \dreg and those that are not. 
+We now put all the pieces together to prove the main result: A kernel bounded linear in the solution size $k$. For that purpose, we distinguish between those vertices that are covered inside a region in a maximal \dreg and those that are not. 
 In both cases, our reduction rules bound the number of vertices to a constant size which means the kernel size does only depend on the number of regions of these decompositions. 
-As \cref{fig:maxRegionDecompose} states that for any solution (vertex set) $D$, we only need a linear number of regions that cover the whole graph. 
+As \cref{lemma:numRegions} states that for any given dominating set $D$, we can partition the whole graph into a linear number of regions.
 In particular, we show that given a \sdom $D$ of size $k$, there exists a maximal \dreg $\mathfrak{R}$ such that:
 
 \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
@@ -583,18 +583,19 @@ In particular, we show that given a \sdom $D$ of size $k$, there exists a maxima
     \item each region of $\mathfrak{R}$ contains at most $139$ vertices % TODO, fill in
 \end{enumerate}
 
-Combining these three statements will give us a linear kernel. \Cref{fig:overview} shows them highlighted in \textit{yellow}.
+Combining these three statements will give us a linear kernel. \Cref{fig:overview} depicts them \textit{yellow}.
 
 \subsection{Bounding the Size of a Region}
 
-We start with a more fine-grained analysis of the impact of the different cases of \cref{rgl:rtwo} on a $vw$-region. The main idea is to count the number of simple regions in the $vw$-region and then use the bound on the size of a simple region after \cref{rgl:rthree} was applied exhaustively and which was obtained in \cref{lemma:simpleregionbound}.   
+We start with a more fine-grained analysis of the impact of the different cases of \cref{rgl:rtwo} on a $vw$-region. The main idea is to count the number of simple regions in the $vw$-region and then use the bound on the size of a simple region after \cref{rgl:rthree} was applied exhaustively. The bound was obtained in \cref{lemma:simpleregionbound}.   
 
 %TODO Correct Citation
 \begin{lemma}\label{lemma:nonecover}
-    Given a plane Graph \G and a $vw$-region R $\abs{N_1(v,w) \cap V(R)} \leq 4$ and these vertices lay exactly on the boundary $\partial R$ of $R$. 
+    Given a plane Graph \G and a $vw$-region $R$, let $D$ be a \sdom and let $\mathfrak{R}$ be a maximal \dreg of G. 
+    For any $vw$-regions $R \in \mathfrak{R}$,  $\abs{N_1(v,w) \cap V(R)} \leq 4$ and these vertices lay exactly on the boundary $\partial R$ of $R$. 
 \end{lemma}
 \begin{proof}
-
+The proof directly follows from \cite[Proposition 2, Revision 2018]{Garnero2019}, because every \tdom is also \sdom. Actually, this claim also holds for \dom in Intuitively, this statement says that every $N_(v,w)$
 \end{proof}
 
 \begin{lemma}\cite[See Fact 5]{Garnero2018}\label{lemma:ntwocover}
@@ -615,11 +616,7 @@ We start with a more fine-grained analysis of the impact of the different cases 
     \label{fig:maxntwoinside}
 \end{figure}
 
-
-
 We continue by giving a constant bound on the number of simple regions that cover all  $N_3(v,w)$ vertices in a given region.
-
-
 
 %TODO: Can I "induced" in this case is undefined
 \begin{lemma}\label{lemma:rtwosr}

@@ -93,6 +93,7 @@
 \newcommand{\ptdom}{\name{Planar Total Dominating Set}\xspace}
 
 \newcommand{\sdom}{\name{Semitotal Dominating Set}\xspace}
+\newcommand{\msdom}{\name{Minimum Semitotal Dominating Set}\xspace}
 \newcommand{\psdom}{\name{Planar Semitotal Dominating Set}\xspace}
 
 \newcommand{\cdom}{\name{Connected Dominating Set}\xspace}
@@ -146,5 +147,13 @@
 
 % CONSTANTS
 \newcommand\kernelsize{561}
+
+\newenvironment{abstract}[1]{%
+\begin{center}\normalfont\textbf{Abstract}\end{center}
+\begin{quotation} #1 \end{quotation}
+}{%
+\vspace{1cm}
+}
+
 
 \input{settings/mdframed-environments.tex}
