@@ -572,18 +572,18 @@ For the sake of completeness, we state an algorithm how a maximal \sr between tw
 
 \section{Bounding the Size of the Kernel}
 
-We are now putting all our pieces together to prove our main result: A linear bound on the kernel size. To do so, we distinguish between those vertices that are covered by a maximal \dreg and those that are not. 
+We are now putting all our pieces together to prove the main result: A kernel bounded linear in the solution size $k$. To do so, we distinguish between those vertices that are covered inside a region in a maximal \dreg and those that are not. 
 In both cases, our reduction rules bound the number of vertices to a constant size which means the kernel size does only depend on the number of regions of these decompositions. 
-\cref{fig:maxRegionDecompose} states that for any solution D, we only have a linear number of regions that cover the whole graph. 
-In particular, we show that given a \sdom D of size k, there exists a maximal \dreg $\mathfrak{R}$ such that:
+As \cref{fig:maxRegionDecompose} states that for any solution (vertex set) $D$, we only need a linear number of regions that cover the whole graph. 
+In particular, we show that given a \sdom $D$ of size $k$, there exists a maximal \dreg $\mathfrak{R}$ such that:
 
 \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
     \item $\mathfrak{R}$ has only at most $3 \abs{D} - 6$ regions
     \item $V(\mathfrak{R})$ covers most vertices of V. There are at most $144 \cdot \abs{D}$ vertices outside of any region.
-    \item each region of $\mathfrak{R}$ contains at most XX vertices
+    \item each region of $\mathfrak{R}$ contains at most $139$ vertices % TODO, fill in
 \end{enumerate}
 
-Combining these three parts will give us a linear kernel.
+Combining these three statements will give us a linear kernel. \Cref{fig:overview} shows them highlighted in \textit{yellow}.
 
 \subsection{Bounding the Size of a Region}
 

@@ -3,10 +3,10 @@
 		\node [style=TEXTHIGHGREEN] (0) at (-5.25, -0.75) {Reduction [\cref{rgl:rtwo}]};
 		\node [style=TEXTHIGHGRAY, text width=4cm] (2) at (13, 7) {$ \abs{N_1(v,w) \cap V(R)} \leq 4 $ [\cref{lemma:nonecover}]};
 		\node [style=TEXTHIGHGREEN] (3) at (-8, 3.5) {Reduction [\cref{rgl:rone}]};
-		\node [style=TEXTSTD] (5) at (12.25, -8.75) {Any $vw$-region contains at most 139 vertices [\cref{lemma:inside}]};
-		\node [style=TEXTSTD, text width=5cm] (6) at (-1.25, 7) {$\abs{V\setminus(V(\mathfrak{R}) \cup D} \leq 144 \abs{D}$: [\cref{lemma:outside}]};
+		\node [style=TEXTHIGHYELLOW] (5) at (12.25, -8.75) {Any $vw$-region contains at most 139 vertices [\cref{lemma:inside}]};
+		\node [style=TEXTHIGHYELLOW, text width=5cm] (6) at (-1.25, 7) {$\abs{V\setminus(V(\mathfrak{R}) \cup D} \leq 144 \abs{D}$: [\cref{lemma:outside}]};
 		\node [style=TEXTHIGH, text width=7.5cm] (7) at (6, -14.75) {\sdom has a linear linear kernel of size at most 562k  [\cref{thm:central}]};
-		\node [style=TEXTSTD, text width=6cm] (8) at (7.75, 3.25) {Ex. max \dreg with $\abs{R} \leq 3* \abs{D}-6$ [\cref{lemma:numRegions}]};
+		\node [style=TEXTHIGHYELLOW, text width=6cm] (8) at (7.75, 3.25) {Ex. max \dreg with $\abs{R} \leq 3* \abs{D}-6$ [\cref{lemma:numRegions}]};
 		\node [style=TEXTSTD] (9) at (-3.25, -10.5) {\cref{rgl:rone,rgl:rtwo,rgl:rthree} run in Poly-Time [\cref{lemma:runtime}]};
 		\node [style=TEXTHIGHGREEN] (10) at (-2, -4.75) {Reduction [\cref{rgl:rthree}]};
 		\node [style=TEXTHIGHGRAY, text width=4cm] (11) at (14.5, 0.5) {$N_2(v,w) $ by 6 simple regions [\cref{lemma:ntwocover}]};
