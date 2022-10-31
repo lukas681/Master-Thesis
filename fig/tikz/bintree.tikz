@@ -1,0 +1,63 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=BLACK] (0) at (0, 6) {};
+		\node [style=BLACK] (1) at (-4, 4) {};
+		\node [style=BLACK] (2) at (4, 4) {};
+		\node [style=BLACK] (3) at (-6, 2) {};
+		\node [style=BLACK] (4) at (-2, 2) {};
+		\node [style=BLACK] (5) at (2, 2) {};
+		\node [style=BLACK] (6) at (6, 2) {};
+		\node [style=BLACK] (7) at (-5, 0) {};
+		\node [style=BLACK] (8) at (-7, 0) {};
+		\node [style=BLACK] (9) at (-3, 0) {};
+		\node [style=BLACK] (10) at (-1, 0) {};
+		\node [style=BLACK] (11) at (1, 0) {};
+		\node [style=BLACK] (12) at (3, 0) {};
+		\node [style=BLACK] (13) at (5, 0) {};
+		\node [style=BLACK] (14) at (7, 0) {};
+		\node [style=none] (16) at (0, 6.75) {$n$};
+		\node [style=none] (17) at (5.25, 4) {$\frac{n}{2}$};
+		\node [style=none] (23) at (-5.25, 4) {$\frac{n}{2}$};
+		\node [style=none] (24) at (7.25, 2) {$\frac{n}{4}$};
+		\node [style=none] (25) at (1, 2) {$\frac{n}{4}$};
+		\node [style=none] (26) at (-1, 2) {$\frac{n}{4}$};
+		\node [style=none] (27) at (-7.25, 2) {$\frac{n}{4}$};
+		\node [style=BLACK] (29) at (0, -4) {};
+		\node [style=BLACK] (30) at (-1, -5.5) {};
+		\node [style=BLACK] (31) at (1, -5.5) {};
+		\node [style=none] (33) at (-1.5, -6.5) {$\frac{n}{2^{\ln n}}$};
+		\node [style=none] (34) at (1.25, -6.5) {$\frac{n}{2^{\ln n}}$};
+		\node [style=none] (35) at (8.25, 7) {};
+		\node [style=none] (36) at (8.25, -6.5) {};
+		\node [style=none] (37) at (9.5, 0.5) {$\ln n$};
+		\node [style=none] (38) at (7.25, 7) {};
+		\node [style=none] (39) at (7.25, -6.5) {};
+		\node [style=none] (40) at (8.25, -6.5) {};
+		\node [style=none] (41) at (7.25, -6.5) {};
+		\node [style=none] (42) at (7.25, -6.5) {};
+		\node [style=none] (43) at (0, -3.25) {};
+		\node [style=none] (44) at (0, -0.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (3) to (1);
+		\draw (4) to (1);
+		\draw (3) to (7);
+		\draw (3) to (8);
+		\draw (9) to (4);
+		\draw (4) to (10);
+		\draw (5) to (11);
+		\draw (12) to (5);
+		\draw (6) to (13);
+		\draw (14) to (6);
+		\draw (6) to (2);
+		\draw (0) to (2);
+		\draw (0) to (1);
+		\draw (5) to (2);
+		\draw (29) to (30);
+		\draw (29) to (31);
+		\draw [style=EDGEDASHED] (35.center) to (36.center);
+		\draw [style=EDGEDASHED] (42.center) to (40.center);
+		\draw [style=EDGEDASHED] (38.center) to (35.center);
+		\draw [style=EDGEDASHED] (44.center) to (43.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

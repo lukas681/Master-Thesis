@@ -15,6 +15,7 @@
 \tikzstyle{TEXTHIGH}=[fill={rgb,255: red,231; green,245; blue,255}, draw=black, shape=rectangle, tikzit shape=rectangle, text width=3cm, rounded corners]
 \tikzstyle{TEXTHIGHGRAY}=[fill={rgb,255: red,220; green,220; blue,220}, draw=black, shape=rectangle, tikzit shape=rectangle, text width=3cm, rounded corners]
 \tikzstyle{TEXTHIGHGREEN}=[fill={rgb,255: red,149; green,242; blue,145}, draw=black, shape=rectangle, tikzit shape=rectangle, text width=3cm, rounded corners]
+\tikzstyle{TEXTHIGHYELLOW}=[fill={rgb,255: red,250; green,250; blue,160}, draw=black, shape=rectangle, tikzit shape=rectangle, text width=3cm, rounded corners]
 
 % Edge styles
 \tikzstyle{EDGE}=[-, fill=none]
