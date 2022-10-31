@@ -568,7 +568,8 @@ The application of \cref{rgl:rthree} gives us a bound on the number of vertices 
 
 \subsection{Computing Maximal Simple Regions between two vertices}
 
-For the sake of completeness, we state an algorithm on how a maximal \sr between two vertices $v,w \in V$ can be computed in time $\mathcal{O}(d(v) + d(w))$:
+TO BE DONE:
+For the sake of completeness, we state an algorithm on how a maximal \sr between two vertices $v,w \in V$ can be computed in time $\mathcal{O}(d(v) + d(w))$.
 
 \section{Bounding the Size of the Kernel}
 
@@ -595,19 +596,21 @@ We start with a more fine-grained analysis of the impact of the different cases 
     For any $vw$-regions $R \in \mathfrak{R}$ it holds that $\abs{N_1(v,w) \cap V(R)} \leq 4$ and these vertices lay exactly on the boundary $\partial R$ of $R$. 
 \end{lemma}
 \begin{proof}
-The same argument as in \cite{Alber2004} and \cite[Proposition 2, Revision 2018]{Garnero2019} also holds here:
-Let $P_1 = (v, u_1, u_2,w)$ and $P_2 = (v, u_3, U_4,w)$ be the two boundary paths enclosing the region $R$ from $v$ to $w$. By definition of a region, they have a length of at most 3. Because every vertex in $R$ belongs to $N(v,w)$, but a vertex from $N_1(v,w)$ also has neighbors outside $N(v,w)$, it \emph{must} lie on one of the boundary paths $P_1, P_2$.
-Therefore, R has at most four boundary vertices and $\abs{N_1(v,w) \cap V(R)} \leq 4$.
+The same argument as in \cite{Alber2004} and \cite[Proposition 2, Revision 2018]{Garnero2019} applies here:
+Let $P_1 = (v, u_1, u_2,w)$ and $P_2 = (v, u_3, u_4,w)$ be the two boundary paths enclosing the region $R$ from $v$ to $w$. By definition of a region, they have a length of at most 3. Because every vertex in $R$ belongs to $N(v,w)$, but a vertex from $N_1(v,w)$ also has neighbors outside $N(v,w)$, it \emph{must} lie on one of the boundary paths $P_1, P_2$.
+Therefore, $R$ has at most four boundary vertices and $\abs{N_1(v,w) \cap V(R)} \leq 4$.
 
 Clearly, the worst case is achieved, if the two confluent paths $P_1$ and $P_2$ are vertex-disjoint. 
 \end{proof}
 
 \begin{lemma}\cite[See Fact 5]{Garnero2018}\label{lemma:ntwocover}
-    Given a reduced plane graph \G and a region $R(v,w)$, $N_2(v,w) \cap V(R)$ can be covered by at most 6 simple regions.
+    Given a reduced plane graph \G and a $vw$-region $R$, $N_2(v,w) \cap V(R)$ can be covered by at most 6 simple regions.
 \end{lemma}
 \begin{proof}
-    Let $(v,u_1, u_2,w)$ and $(v, u_3, u_4, w)$ be the two boundary paths of $R(v,w)$. (A shorter path would only lead to a smaller bound).
-    By definition of $N_2(v,w)$, vertices from $N_2(v,w) \cap V(R)$ are common neighbors of $v$ and $w$ and $u_i, i \in [4]$. By planarity, we can cover $N_2(v,w) \cap V(R)$ with at most 6 simple regions. To see this, imagine the graph where edges denote all possible simple $vw$-regions (See fig. \ref{fig:maxntwoinside}). There are at most 8 simple regions possible. but we have to remove at least two of them to maintain planarity.
+    Let $P_1 = (v,u_1, u_2,w)$ and $P_2 = (v, u_3, u_4, w)$ be the two boundary paths of $R$. As in the previous \cref{lemma:nonecover}, the worst case is achieved if they are vertex-disjoint. Otherwise, a smaller bound would be obtained.
+
+    By definition of $N_2(v,w)$, vertices from $N_2(v,w) \cap V(R)$ are common neighbors of $v$ or $w$ and one of $\{u_1,u_2,u_3,u_4$.
+    By planarity, we can cover $N_2(v,w) \cap V(R)$ with at most 6 simple regions. To see this, imagine the graph where edges denote all possible simple $vw$-regions (See fig. \ref{fig:maxntwoinside}). There are at most 8 simple regions possible. but we have to remove at least two of them to maintain planarity.
     
     Furthermore, assuming the graph to be reduced, any intermediate $N_3(v,w)$ which could separate multiple simple regions between $v$ and $u_i$ has been deleted by \cref{rgl:rone} already.
 \end{proof}
@@ -616,7 +619,7 @@ Clearly, the worst case is achieved, if the two confluent paths $P_1$ and $P_2$ 
     \begin{equation*}
         \tikzfig{fig/tikz/maxntwo}
     \end{equation*}
-    \caption[Bounding number of simple regions with $N_2(v,w)$ inside a $vw$-region R]{\textit{Bounding the maximum number of simple regions inside a region $R(v,w)$. $N_2(v,w)$ is covered by 6 green (simple) regions. A dashed edge would also be an option but would contradict planarity. Note that the gray vertex g was reduced by \cref{rgl:rone} allowing the formation of exactly one simple region between $v$ and $u_1$}}
+    \caption[Bounding number of simple regions with $N_2(v,w)$ inside a $vw$-region R]{\textit{Bounding the maximum number of simple regions inside a region $R(v,w)$. $N_2(v,w)$ is covered by 6 green (simple) regions. A dashed edge would also be an option but would contradict planarity.}}
     \label{fig:maxntwoinside}
 \end{figure}
 

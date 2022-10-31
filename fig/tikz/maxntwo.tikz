@@ -8,16 +8,27 @@
 		\node [style=NONE] (5) at (-2, -2) {};
 		\node [style=none] (6) at (-4.5, 0.5) {$v$};
 		\node [style=none] (7) at (6, 0.75) {$w$};
-		\node [style=none] (9) at (4, 4.5) {$u_2$};
-		\node [style=none] (10) at (-2, 4.5) {$u_1$};
-		\node [style=none] (11) at (-2, -2.75) {$u_3$};
-		\node [style=none] (12) at (4, -2.75) {$u_4$};
+		\node [style=none] (9) at (4, 5) {$u_2$};
+		\node [style=none] (10) at (-2, 5) {$u_1$};
+		\node [style=none] (11) at (-2, -3.25) {$u_3$};
+		\node [style=none] (12) at (4, -3.25) {$u_4$};
 		\node [style=NTWO] (13) at (-3.25, 2) {};
 		\node [style=NTWO] (14) at (-2.5, 1.75) {};
-		\node [style=BRGRAY] (15) at (-1.75, 1.5) {};
+		\node [style=NTWO] (15) at (-1.75, 1.5) {};
 		\node [style=NTWO] (16) at (-1, 1.25) {};
 		\node [style=NTWO] (17) at (0, 1) {};
-		\node [style=none] (18) at (-1.75, 2) {$g$};
+		\node [style=none] (19) at (-1.5, 4.25) {};
+		\node [style=none] (20) at (-2, 4.5) {};
+		\node [style=none] (21) at (-2.5, 4.25) {};
+		\node [style=none] (22) at (3.5, 4.25) {};
+		\node [style=none] (23) at (4, 4.5) {};
+		\node [style=none] (24) at (4.5, 4.25) {};
+		\node [style=none] (25) at (-2, -2.75) {};
+		\node [style=none] (26) at (-2.5, -2.5) {};
+		\node [style=none] (27) at (-1.5, -2.5) {};
+		\node [style=none] (28) at (4, -2.75) {};
+		\node [style=none] (29) at (4.5, -2.5) {};
+		\node [style=none] (30) at (3.5, -2.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (1) to (2);
@@ -55,11 +66,24 @@
 		\draw (13) to (1);
 		\draw (0) to (14);
 		\draw (14) to (1);
-		\draw [style=ULTRAGRAY] (15) to (0);
 		\draw (16) to (0);
 		\draw (16) to (1);
-		\draw [style=ULTRAGRAY] (14) to (15);
-		\draw [style=ULTRAGRAY] (16) to (15);
 		\draw [style=EDGEDASHED] (0) to (4);
+		\draw (21.center) to (1);
+		\draw (20.center) to (1);
+		\draw (19.center) to (1);
+		\draw (23.center) to (2);
+		\draw (24.center) to (2);
+		\draw (22.center) to (2);
+		\draw (25.center) to (5);
+		\draw (27.center) to (5);
+		\draw (26.center) to (5);
+		\draw (30.center) to (4);
+		\draw (28.center) to (4);
+		\draw (29.center) to (4);
+		\draw (14) to (15);
+		\draw (0) to (15);
+		\draw (15) to (1);
+		\draw (15) to (16);
 	\end{pgfonlayer}
 \end{tikzpicture}
