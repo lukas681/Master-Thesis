@@ -1,14 +1,14 @@
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=BLACK] (14) at (-7, -3.25) {};
-		\node [style=BLACK] (15) at (-7, -1.75) {};
+		\node [style=DOM] (15) at (-7, -1.75) {};
 		\node [style=BLACK] (16) at (-7, -0.25) {};
 		\node [style=BLACK] (17) at (-7, 1.25) {};
 		\node [style=BLACK] (18) at (-7, 2.75) {};
 		\node [style=BLACK] (19) at (-2, -2.25) {};
 		\node [style=BLACK] (20) at (-2, -0.75) {};
-		\node [style=BLACK] (21) at (-2, 0.75) {};
-		\node [style=BLACK] (22) at (-2, 2.25) {};
+		\node [style=DOM] (21) at (-2, 0.75) {};
+		\node [style=DOM] (22) at (-2, 2.25) {};
 		\node [style=none] (23) at (-7.5, 3.5) {$x_1$};
 		\node [style=none] (24) at (-7.5, -2.5) {$x_m$};
 		\node [style=none] (25) at (-1.5, 3) {$y_1$};
