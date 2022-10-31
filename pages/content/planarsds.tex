@@ -609,7 +609,7 @@ Clearly, the worst case is achieved, if the two confluent paths $P_1$ and $P_2$ 
 \begin{proof}
     Let $P_1 = (v,u_1, u_2,w)$ and $P_2 = (v, u_3, u_4, w)$ be the two boundary paths of $R$. As in the previous \cref{lemma:nonecover}, the worst case is achieved if they are vertex-disjoint. Otherwise, a smaller bound would be obtained.
 
-    By definition of $N_2(v,w)$, vertices from $N_2(v,w) \cap V(R)$ are common neighbors of $v$ or $w$ and one of $\{u_1,u_2,u_3,u_4$.
+    By definition of $N_2(v,w)$, vertices from $N_2(v,w) \cap V(R)$ are common neighbors of $v$ or $w$ and one of $\{u_1,u_2,u_3,u_4\}$.
     By planarity, we can cover $N_2(v,w) \cap V(R)$ with at most 6 simple regions. To see this, imagine the graph where edges denote all possible simple $vw$-regions (See fig. \ref{fig:maxntwoinside}). There are at most 8 simple regions possible. but we have to remove at least two of them to maintain planarity.
     
     Furthermore, assuming the graph to be reduced, any intermediate $N_3(v,w)$ which could separate multiple simple regions between $v$ and $u_i$ has been deleted by \cref{rgl:rone} already.
@@ -619,7 +619,7 @@ Clearly, the worst case is achieved, if the two confluent paths $P_1$ and $P_2$ 
     \begin{equation*}
         \tikzfig{fig/tikz/maxntwo}
     \end{equation*}
-    \caption[Bounding number of simple regions with $N_2(v,w)$ inside a $vw$-region R]{\textit{Bounding the maximum number of simple regions inside a region $R(v,w)$. $N_2(v,w)$ is covered by 6 green (simple) regions. A dashed edge would also be an option but would contradict planarity.}}
+    \caption[Bounding number of simple regions with $N_2(v,w)$ inside a $vw$-region R]{\textit{Bounding the maximum number of simple regions inside a region $R(v,w)$. $N_2(v,w)$ is covered by 6 green (simple) regions. The two dashed edges indicate that they are among the 8 possible pairs of vertices, but a simple region between them would contradict the planarity.}}
     \label{fig:maxntwoinside}
 \end{figure}
 
@@ -627,16 +627,19 @@ We continue by giving a constant bound on the number of simple regions that cove
 
 %TODO: Can I "induced" in this case is undefined
 \begin{lemma}\label{lemma:rtwosr}
-    Given a plane Graph $G = (V,E)$ reduced under \cref{rgl:rtwo} and a region R(v, w), if $\Dv \neq $ (resp. $\Dw \neq \emptyset$), $N_3(v,w) \cap V(R)$ can be covered by: 
+    Given a plane Graph $G = (V,E)$ reduced under \cref{rgl:rtwo} and \cref{rgl:rthree} and a region R(v, w), if $\Dv \neq \emptyset $ (resp. $\Dw \neq \emptyset$), $N_3(v,w) \cap V(R)$ can be covered by: 
     \begin{enumerate}
         \item $11$ \sr s~if $\Dw \neq \emptyset$,
         \item $14$ \sr s~if $N_{2,3}(v) \cap N_3(v,w) = \emptyset$
     \end{enumerate}
 \end{lemma}
 
-Note, that the first case applies, when Case 2 \& 3 of \cref{rgl:rtwo} have been applied and the second one, when Case 4 of \cref{rgl:rtwo} was applied.
+Observe that in the first case, we can assume that \cref{case:c1} \& \cref{case:c2} of \cref{rgl:rtwo} have been applied and the second one, when \cref{case:c3} was applied.
+
 \begin{proof} 
-    We will just give some intuition because the proof of Garnero and Sau in \cite[Revision 2014, Fact 6]{Garnero2018} does not use any special property exposed by the reduction rules. Figure (Add picture about figures) gives a visualization of the worst-case scenarios to cover $N_3(v,w) \cap V(R)$ with simple regions in the relevant cases.\footnote{Note: In a newer revision of their paper \cite{Garnero2018}, Garnero and Sau removed this proof, because they changed \cref{rgl:rtwo} and a more fine-grained analysis was made possible.}
+    We will closely follow the approach by Garnero and Sau (\cite[Revision 2014, Fact 6]{Garnero2018}). 
+    
+    Figure (Add picture about figures) gives a visualization of the worst-case scenarios to cover $N_3(v,w) \cap V(R)$ with simple regions in the relevant cases.\footnote{Note: In a newer revision of their paper \cite{Garnero2018}, Garnero and Sau removed this proof, because they changed \cref{rgl:rtwo} and a more fine-grained analysis was made possible.}
     
     % Although our \cref{rgl:rtwo} is a bit different, the proof still goes through in an original way.
     
