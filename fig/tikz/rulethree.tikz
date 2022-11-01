@@ -42,7 +42,7 @@
 		\node [style=none] (46) at (5.25, -3.75) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [style=FILLGREEN] (11.center)
+		\draw [style=FILLBLUE] (11.center)
 			 to [in=240, out=15] (1.center)
 			 to [in=-15, out=120] (2.center)
 			 to [in=60, out=-165] (0.center)
@@ -64,7 +64,7 @@
 		\draw (10) to (9);
 		\draw (3) to (4);
 		\draw (5) to (4);
-		\draw [style=FILLGREEN] (13.center)
+		\draw [style=FILLBLUE] (13.center)
 			 to [in=165, out=-60] (24.center)
 			 to [in=240, out=15] (14.center)
 			 to [in=-15, out=120] (15.center)

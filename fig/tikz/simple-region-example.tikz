@@ -24,7 +24,7 @@
 		\node [style=none] (22) at (-2.5, 5.75) {$N(v,w)$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [style=FILLGREEN] (0.center)
+		\draw [style=FILLBLUE] (0.center)
 			 to [bend right=15] (4.center)
 			 to [bend right=15, looseness=0.75] (2.center)
 			 to [bend right=15] (3.center)
