@@ -550,14 +550,14 @@ With a more sophisticated analysis, we were able to modify this rule such that t
 
 The application of \cref{rgl:rthree} gives us a bound on the number of vertices inside a \sr. 
 \begin{corollary}\label{lemma:simpleregionbound}
-    Let \G be a graph, $v, w\in V$ and R a \sr~ between $v$ and $w$. If \cref{rgl:rthree} has been applied, this simple region has a size of at most 6.
+    Let \G be a graph, $v, w\in V$ and R a \sr~ between $v$ and $w$. If \cref{rgl:rthree} has been applied, this simple region has a size of at most 4.
 \end{corollary}
 % TODO Verify that
 % TODO Maybe add a figure here.
 
 \begin{proof}
-    If $\abs{V(R) \setminus \{v, w\}} < 7$ then the rule would not have changed G and the size of the region would already be bounded by 6.
-    Assuming $\abs{V(R) \setminus \{v, w\}} \geq 7$ we note that every simple region can have at most two distinct vertices from $N_1(v,w)$ and two distinct ones from $N_2(v,w)$ without breaking planarity. These vertices are not touched by the reduction. Adding the two vertices that are being added between $v$ and $w$ gives us the desired upper bound.
+    If $\abs{V(R) \setminus \{v, w\}} < 5$ then the rule would not have changed G and the size of the region would already be smaller than 5.
+    Assuming $\abs{V(R) \setminus \{v, w\}} \geq 5$ in both cases $V(R \setminus \partial R)$ gets removed and at most two new vertices added. As the boundary in a simple region contains at most two vertices distinct from $v$ and $w$, the size of the simple region is bounded by at most four.
 \end{proof}
 
 
@@ -639,7 +639,8 @@ We continue by giving a constant bound on the number of simple regions that cove
 \end{lemma}
 
 Observe that in the first case, we can assume that no case of \cref{rgl:rtwo} has been applied, but the claim is a direct consequence of the assumption $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$. If \cref{case:c2} \cref{case:c3} has been applied $N_{2,3}(v,w)$ gets reduced and the second case can be applied. For the sake of completeness, we will restate (an slightly adjusted version of) the proof from Garnero and Sau (\cite[Revision 2014, Fact 6]{Garnero2018}). 
-% Not sure wether following is good.
+
+% Not sure whether following is good.
 Note that this analysis provides a quick upper bound, but doing it more sophisticated could yield a better bound, because having $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$ would restrict the region more than analyzing these sets independently.
 
 \begin{proof}
@@ -648,12 +649,16 @@ Note that this analysis provides a quick upper bound, but doing it more sophisti
     \begin{enumerate}
         \item Because $\Dv \neq \emptyset$ there exists $D = \{v,u,u'\} \in \Dv$ (a smaller set will give a better bound). By definition we know that $D$ dominates $N_3(v,w)$ and also $N_3(v,w) \setminus N(v)$. Therefore, all vertices in $N_3(v,w) \setminus N(v)$ must be neighbors of $w$ and either $u$ or $u'$ and in the worst case at most three simple regions are required. By assumption, $\Dw \neq \emptyset$ as well, and therefore $N_3(v,w) \setminus N(w)$ is bounded by at most three simple regions, too.
         By planarity, we can cover the remaining common neighbors in $N_3(v,w) \cap N(v) \cap N(w)$ with at most 5 vertices and in total, we can cover \textbf{$\mathbf{N_3(v,w) \cap R(v,w)}$ by at most $\mathbf{3 + 3 +5 = 11}$} simple regions.
-        \item  
+
+        \item No property of a reduced instance is used, so the proof shown in \cite[Revision 2018]{Garnero2018} holds. 
+
+        % \item Now assume that $N_{2,3}(w) \cap N_3(v,w) = \emptyset$. Then all neighbors of $v$ in $N_3(v,w)$ are from the remaining $N_1(v)$ vertices. These vertices have only neighbors in from $N_{2,3}$ and at least one that is different from $N(v)$ (by definition of $N_1(v)$). Therefore they must be from $N(w) \cap  N_{2,3}(v,w)$.
+    
+        %Previously, we have already seen that vertices from $N(w) \cap N_3(v,w)$ can be covered by at most three simple regions (because $\Dv$ is non-empty and all those vertices lay between $w$ and one of $\{v,u,u'\} \in \Dv$). By \cref{lemma:ntwocover}, vertices from $N(w) \cap N_2(v,w)$ required 6 simple regions and vertices from $N_3(v,w) \setminus N(w)$ are common neighbors of $v$ and a vertex on the boundary of previously considered simple regions
     \end{enumerate}
 
-    Figure (Add picture about figures) gives a visualization of the worst-case scenarios to cover $N_3(v,w) \cap V(R)$ with simple regions in the relevant cases.\footnote{Note: In a newer revision of their paper \cite{Garnero2018}, Garnero and Sau removed this proof, because they changed \cref{rgl:rtwo} and a more fine-grained analysis was made possible.}
+    Cases 2 to 4 of \cref{fig:nthreeinside} visualize these simple regions around $N_3(v,w) \cap V(R)$ with simple regions in the relevant cases.\footnote{In revision 2018 of \cite{Garnero2018}, Garnero and Sau removed this proof, because they changed \cref{rgl:rtwo} and the overall proof was tuned.}
     % Although our \cref{rgl:rtwo} is a bit different, the proof still goes through in an original way.
-
     
 \end{proof}
 
@@ -662,27 +667,25 @@ Note that this analysis provides a quick upper bound, but doing it more sophisti
     Let \G be a plane graph reduced under \cref{rgl:rone,rgl:rtwo,rgl:rthree}. Furthermore, let $D$ be an SDS of G and let $v,w \in D$. Any $vw$-region R contains at most 139 vertices distinct from its poles.
 \end{lemma}
 \begin{proof} 
-    By \cref{lemma:nonecover,lemma:ntwocover} and \cref{lemma:simpleregionbound} to bound the number of vertices inside a simple region, we know that $\abs{N_1(v,w) \cap V(R)} \leq 4$ and $\abs{N_2(v,w) \cap V(R)} \leq 6 \cdot 7 = 42$.
+    By \cref{lemma:nonecover,lemma:ntwocover} and \cref{lemma:simpleregionbound} to bound the number of vertices inside a simple region, we know that $\abs{N_1(v,w) \cap V(R)} \leq 4$ and $\abs{N_2(v,w) \cap V(R)} \leq 6 \cdot 4 = 24$.
     
-    It is remaining to bound for \nthi, but gladly we have \cref{rgl:rtwo}, which took care of them! \cref{fig:nthreeinside} shows the worst-case amount of simple regions the individual cases can have.
+    It is remaining to bound for \nthi, but gladly we have \cref{rgl:rtwo}, which gracefully took care of them! \cref{fig:nthreeinside} shows the worst-case amount of simple regions the individual cases can have.
     
-    % Maybe note that N_2 vertices do not cause any troubles as they are always bound to the near N_1 vertex
     \begin{caseofz}
         %% TODO Check if that is correct and compare it with the latest paper
         \casez{\cref{rgl:rtwo} has \textbf{not} been applied in the following two cases: Either $\Dvw \neq \emptyset$ or ($\Dvw = \emptyset \wedge \Dv \neq \emptyset \wedge \Dw \neq \emptyset$):}
 
         \begin{enumerate}
-            \item If $\Dvw \neq \emptyset$, there exists a set $\tilde D = \{d_1,d_2,d_3\} \in \Dvw$ of at most three vertices dominating $N_3(v,w)$. We observe that vertices from \nthi~ are common neighbors of either v or w (by the definition of a $vw$-region) and at least one vertex from $\tilde D$. Without violating planarity, we can span at most 6 simple regions. Using \cref{lemma:simpleregionbound} and adding $\abs{\tilde D} = 3$, we can conclude $\nthi \leq 6 \cdot 6 + 3 = 39$.
-            \item If $\Dvw = \emptyset$, $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$, we can apply \cref{lemma:rtwosr} and although \cref{rgl:rtwo} has not changed the G, we can cover R with at most $11$ simple regions giving us $\nthi \leq 11 \cdot 6 = 66$ vertices.
+            \item If $\Dvw \neq \emptyset$, there exists a set $\tilde D = \{d_1,d_2,d_3\} \in \Dvw$ of at most three vertices dominating $N_3(v,w)$. We observe that vertices from \nthi~ are common neighbors of either v or w (by the definition of a $vw$-region) and at least one vertex from $\tilde D$. Without violating planarity, we can span at most distinct 6 simple regions. Using the bound of simple regions (\cref{lemma:simpleregionbound}) and including $\abs{\tilde D} = 3$, we can conclude $\nthi \leq 6 \cdot 4 + 3 = 27$.
+            \item If $\Dvw = \emptyset$, $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$, we can apply \cref{lemma:rtwosr} and although \cref{rgl:rtwo} has not changed the G, we can cover R with at most $11$ simple regions giving us $\nthi \leq 11 \cdot 4 = 44$ vertices.
         \end{enumerate}
         
         %% TODO even that: is it correct regarding N2?
-        \casez{If \cref{rgl:rtwo} \Cref{case:c1} has been applied}
-        In that case, \ntwi was entirely removed and at \nthi replaced by at most three vertices ($v', w'$ and $y$) added. Hence $\nthi \leq 3$.
+        \casez{If \cref{rgl:rtwo} \Cref{case:c1} has been applied} \ntwi was entirely removed and \nthi replaced by at most four new vertices $v', w'$ and $y$ and $y'$. Hence $\nthi \leq 4$.
 
 %        \casez{If \cref{rgl:rtwo} \Cref{case:c2} has been applied} As we know that $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$, we can apply \cref{lemma:rtwosr} and although \cref{rgl:rtwo} has not changed the G, we can cover R with at most $11$ simple regions giving as $\nthi \leq 11 \cdot 6 = 66$ vertices. 
         
-        \casez{If \cref{rgl:rtwo} \Cref{case:c2,case:c3} have been applied} We know that in this case $N_{2,3}(v) \cap N_3(v,w)$ was entirely removed and replaced by a single possible witness. Using \cref{lemma:rtwosr}, we can cover $(N_3(v,w) \setminus \{v'\} \cap V(R)$ with (at most) 14 simple regions giving us $\abs{\nthi} \leq 14 \cdot 6 + 1 = 85$.
+        \casez{If \cref{rgl:rtwo} \Cref{case:c2,case:c3} have been applied}, we know that $(N_{2,3}(v) \cap N_3(v,w)) \subseteq N_{2,3}(v)$ was removed and replaced by one single vertex. Applying \cref{lemma:rtwosr}, we can cover $(N_3(v,w) \setminus \{v'\} \cap V(R)$ with at most $14$ simple regions giving us $\abs{\nthi} \leq 14 \cdot 4 + 1 = 57$.
     \end{caseofz}
     
     \begin{figure}[!ht]

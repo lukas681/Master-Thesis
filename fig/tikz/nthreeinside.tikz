@@ -27,7 +27,7 @@
 		\node [style=none] (25) at (-4.5, 0) {};
 		\node [style=none] (26) at (-4, -0.25) {};
 		\node [style=none] (27) at (-3.5, 0) {};
-		\node [style=none] (28) at (-6.75, 8.5) {\textbf{Case 0}: Maximal 6 Simple Regions};
+		\node [style=none] (28) at (-6.75, 8.5) {\textbf{Case 0}: Maximal 6 simple regions};
 		\node [style=BLACK] (29) at (1.75, 3.5) {};
 		\node [style=BLACK] (30) at (11.75, 3.5) {};
 		\node [style=NONE] (31) at (3.75, 6.5) {};
@@ -48,7 +48,7 @@
 		\node [style=none] (53) at (9.25, 0) {};
 		\node [style=none] (54) at (9.75, -0.25) {};
 		\node [style=none] (55) at (10.25, 0) {};
-		\node [style=none] (56) at (6.75, 8.5) {\textbf{Case 1}: Exactly 3 vertices};
+		\node [style=none] (56) at (6.75, 8.5) {\textbf{Case 1}: At most 4 vertices};
 		\node [style=BLACK] (57) at (-12, -7.5) {};
 		\node [style=BLACK] (58) at (-2, -7.5) {};
 		\node [style=NONE] (59) at (-10, -4.5) {};
@@ -69,7 +69,7 @@
 		\node [style=none] (81) at (-4.5, -13.5) {};
 		\node [style=none] (82) at (-4, -13.75) {};
 		\node [style=none] (83) at (-3.5, -13.5) {};
-		\node [style=none] (84) at (-6.75, -2.75) {\textbf{Case 2}: All Maximal 11 Simple Regions};
+		\node [style=none] (84) at (-6.75, -2.75) {\textbf{Case 2}};
 		\node [style=BLACK] (85) at (1.75, -7.5) {};
 		\node [style=BLACK] (86) at (11.75, -7.5) {};
 		\node [style=NONE] (87) at (3.75, -4.5) {};
@@ -90,12 +90,12 @@
 		\node [style=none] (109) at (9.25, -13.5) {};
 		\node [style=none] (110) at (9.75, -13.75) {};
 		\node [style=none] (111) at (10.25, -13.5) {};
-		\node [style=none] (112) at (6.75, -2.75) {\textbf{Case 3/4}: Maximal 9 Simple Regions};
+		\node [style=none] (112) at (6.75, -2.75) {\textbf{Case 3/4}: At most 9 simple regions};
 		\node [style=NTHR] (113) at (4, 2) {};
 		\node [style=NTHR] (114) at (9.75, 4.75) {};
-		\node [style=NTHR] (115) at (7, 3.75) {};
+		\node [style=NTHR] (115) at (5.5, 3.5) {};
 		\node [style=none] (116) at (9, 5.75) {$v'$};
-		\node [style=none] (117) at (6.5, 4.75) {$y$};
+		\node [style=none] (117) at (5.5, 4.25) {$y$};
 		\node [style=none] (118) at (4.75, 2.5) {$w'$};
 		\node [style=none] (119) at (-6.75, 6) {$d_1$};
 		\node [style=none] (120) at (-6.75, 4.25) {$d_2$};
@@ -107,11 +107,17 @@
 		\node [style=BLACK] (126) at (-5.25, -9.25) {};
 		\node [style=BLACK] (127) at (-4.25, -11) {};
 		\node [style=BLACK] (128) at (-2, -7.5) {};
-		\node [style=DOM] (129) at (7.75, -5.75) {};
-		\node [style=DOM] (130) at (7.75, -7.25) {};
-		\node [style=DOM] (131) at (5.25, -9) {};
-		\node [style=DOM] (132) at (5.5, -11) {};
+		\node [style=BLACK] (129) at (7.75, -5.75) {};
+		\node [style=BLACK] (130) at (7.75, -7.25) {};
+		\node [style=BLACK] (131) at (5.25, -9) {};
+		\node [style=BLACK] (132) at (5.5, -11) {};
 		\node [style=BLACK] (133) at (11.75, -7.5) {};
+		\node [style=none] (134) at (7, -6) {$u_1$};
+		\node [style=none] (135) at (6.5, -11.25) {$u_2'$};
+		\node [style=none] (136) at (6.5, -9) {$u_1'$};
+		\node [style=none] (137) at (7, -7.5) {$u_2$};
+		\node [style=NTHR] (138) at (8.25, 4) {};
+		\node [style=none] (139) at (8.25, 4.75) {$y'$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [bend left=15] (1) to (4);
