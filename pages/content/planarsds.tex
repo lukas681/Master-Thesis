@@ -664,7 +664,7 @@ Note that this analysis provides a quick upper bound, but doing it more sophisti
 
 
 \begin{lemma}[\#Vertices inside a Region after \cref{rgl:rone,rgl:rtwo,rgl:rthree}]\label{lemma:inside}
-    Let \G be a plane graph reduced under \cref{rgl:rone,rgl:rtwo,rgl:rthree}. Furthermore, let $D$ be an SDS of G and let $v,w \in D$. Any $vw$-region R contains at most 139 vertices distinct from its poles.
+    Let \G be a plane graph reduced under \cref{rgl:rone,rgl:rtwo,rgl:rthree}. Furthermore, let $D$ be an SDS of G and let $v,w \in D$. Any $vw$-region R contains at most 87 vertices distinct from its poles.
 \end{lemma}
 \begin{proof} 
     By \cref{lemma:nonecover,lemma:ntwocover} and \cref{lemma:simpleregionbound} to bound the number of vertices inside a simple region, we know that $\abs{N_1(v,w) \cap V(R)} \leq 4$ and $\abs{N_2(v,w) \cap V(R)} \leq 6 \cdot 4 = 24$.
@@ -805,13 +805,9 @@ Alber et al. \cite[Proposition 1]{Alber2004} gave a greedy algorithm to construc
 The following lemma corresponds to \cite[Proposition 1 and Lemma 5]{Alber2004}. Although the authors gave different reduction rules and require a \textit{reduced} instance as an assumption for the following lemma, they do not use any specific properties exposed by these rules. 
 As any \sdom is also a \dom, we can safely apply it to our problem as well. For a more detailed and formal proof, one can also refer to \cite[Proposition 1]{Garnero2018}.
 
-\begin{lemma}\label{lemma:numRegions}
+\begin{lemma}[{\cite[Proposition 1 and Lemma 5]{Alber2004}}]\label{lemma:numRegions}
     Let G be a reduced plane graph and let D be a \sdom with $\abs{D}\geq 3$. There is a maximal D-region decomposition of G such that $\abs{R} \leq 3 \cdot \abs{D} - 6$
 \end{lemma}
-\begin{proof} 
-    Follows directly from \cite[Proposition 1 and Lemma 5]{Alber2004}
-\end{proof}
-
 
 \begin{lemma}[Running Time of Reduction Procedure]\label{lemma:runtime}
     % TODOX Runs in polynomial Time. 
@@ -824,20 +820,16 @@ As any \sdom is also a \dom, we can safely apply it to our problem as well. For 
 \centraltheo*
 
 \begin{proof}
-    Let \G be the plane input graph and $G'=(V',E')$ be the graph obtained by the exhautive application of the \cref{rgl:rone,rgl:rtwo,rgl:rthree}. 
-    As none of our rules change the size of a possible solution D' in G', we know by \cref{lemma:correctnessone}, \cref{lemma:correctnesstwo} and \cref{lemma:correctnessthree} that G' has a \sdom of size k if and only if G has a \sdom of size k.
-    In \cref{lemma:runtime}, we have proven that this preprocessing procedure runs in polynomial time.
-    
-    \noindent Assume that G' admits a solution $D'$. 
-    
-    %If  $\abs{D'} = 0$ then G' is empty, if $\abs{D'} = 1$, because D' needs to be a \sdom and a witness would be missing.
+    Let \G be the plane input graph and $G'=(V',E')$ be the graph obtained by the exhaustive application of \cref{rgl:rone,rgl:rtwo,rgl:rthree}.
+    As none of our rules change the size of a possible solution $D' \subseteq V'$ in $G'$, we know by \cref{lemma:correctnessone}, \cref{lemma:correctnesstwo} and \cref{lemma:correctnessthree} that $G'$ has a \sdom of size $k$ if and only if $G$ has a \sdom of size $k$.
+    Furthermore, by \cref{lemma:runtime}, the preprocessing procedure runs in polynomial time.
     
     By taking the size of each region proven in \cref{lemma:outside}, the total number of regions in a maximal \dreg~(\cref{lemma:numRegions}) and the number of vertices that can lay outside of any region (\cref{lemma:outside}), we obtain the following bound:
     
     \begin{equation}
-        139 \cdot (3k - 6) + 145 \cdot k + k \leq \kernelsize \cdot k
+         87 \cdot (3k - 6) + 97 \cdot k + k < \kernelsize \cdot k
     \end{equation}
 
-    \noindent If $\abs{V(G')} > \kernelsize \cdot k$ G is a NO-instance and we replace G' by two single disconnected vertices (trivial NO-instance). Then the kernel is of the claimed size.
+    \noindent If $\abs{V(G')} > \kernelsize \cdot k$ G is a NO-instance and we replace G' by one sibngle vertex, which is trivially a \emph{no}-instance.
 
 \end{proof}
