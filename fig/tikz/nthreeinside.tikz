@@ -11,10 +11,10 @@
 		\node [style=DOM] (8) at (-7, 5) {};
 		\node [style=DOM] (9) at (-7, 3.25) {};
 		\node [style=DOM] (10) at (-7, 1) {};
-		\node [style=NTHR] (12) at (-7.75, 5.75) {};
-		\node [style=NTHR] (13) at (-8.5, 5.25) {};
-		\node [style=NTHR] (14) at (-9.5, 4.75) {};
-		\node [style=NTHR] (15) at (-10.25, 4) {};
+		\node [style=NTHR] (12) at (-8.5, 6) {};
+		\node [style=NTHR] (13) at (-9.75, 5.5) {};
+		\node [style=NTHR] (14) at (-8.5, 5.25) {};
+		\node [style=NTHR] (15) at (-10, 4.5) {};
 		\node [style=none] (16) at (-3.5, 7) {};
 		\node [style=none] (17) at (-4, 7.25) {};
 		\node [style=none] (18) at (-4.5, 7) {};
@@ -108,9 +108,9 @@
 		\node [style=BLACK] (127) at (-4.25, -11) {};
 		\node [style=BLACK] (128) at (-2, -7.5) {};
 		\node [style=DOM] (129) at (7.75, -5.75) {};
-		\node [style=DOM] (130) at (7.75, -7.5) {};
-		\node [style=DOM] (131) at (5.75, -9.25) {};
-		\node [style=DOM] (132) at (5.75, -11.5) {};
+		\node [style=DOM] (130) at (7.75, -7.25) {};
+		\node [style=DOM] (131) at (5.25, -9) {};
+		\node [style=DOM] (132) at (5.5, -11) {};
 		\node [style=BLACK] (133) at (11.75, -7.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
@@ -120,40 +120,29 @@
 		\draw [bend left=15] (0) to (2);
 		\draw (2) to (3);
 		\draw [bend left=15] (3) to (1);
-		\draw [style=FILLGREENINVISBLE] (8.center)
+		\draw [style=FILLBLUE] (8.center)
 			 to (0.center)
-			 to [bend left=75] cycle;
-		\draw [style=FILLGREENINVISBLE] (0.center)
+			 to [bend left=60, looseness=1.25] cycle;
+		\draw [style=FILLBLUE] (0.center)
 			 to [bend left=15] (9.center)
 			 to [bend right=345] cycle;
-		\draw [style=FILLGREENINVISBLE] (10.center)
+		\draw [style=FILLBLUE] (10.center)
 			 to [bend right=15] (0.center)
 			 to [bend right=15] cycle;
-		\draw [style=FILLGREENINVISBLE] (1.center)
+		\draw [style=FILLBLUE] (1.center)
 			 to [bend right=15] (8.center)
 			 to cycle;
-		\draw [style=FILLGREENINVISBLE] (1.center)
+		\draw [style=FILLBLUE] (1.center)
 			 to [bend right=15] (9.center)
 			 to [bend right=15] cycle;
-		\draw [style=FILLGREENINVISBLE] (1.center)
+		\draw [style=FILLBLUE] (1.center)
 			 to [bend left=15, looseness=0.75] (10.center)
 			 to [bend left=15] cycle;
 		\draw [style=FILLGREENINVISBLE] (12) to (8);
 		\draw [style=FILLGREENINVISBLE] (8) to (13);
 		\draw [style=FILLGREENINVISBLE] (13) to (8);
-		\draw (12) to (8);
-		\draw (8) to (13);
-		\draw [bend right=15] (14) to (0);
-		\draw [bend left] (0) to (13);
-		\draw [bend right, looseness=1.25] (12) to (0);
+		\draw [bend right, looseness=0.75] (8) to (13);
 		\draw (8) to (14);
-		\draw (0) to (15);
-		\draw (15) to (8);
-		\draw (0) to (9);
-		\draw (9) to (1);
-		\draw (1) to (10);
-		\draw (10) to (0);
-		\draw (8) to (1);
 		\draw (16.center) to (3);
 		\draw (3) to (17.center);
 		\draw (3) to (18.center);
@@ -224,89 +213,73 @@
 		\draw [bend left=15] (115) to (30);
 		\draw (30) to (114);
 		\draw (113) to (29);
-		\draw [style=FILLGREENINVISBLE] (124.center)
+		\draw [style=FILLBLUE] (124.center)
 			 to (122.center)
 			 to (125.center)
 			 to [in=180, out=360] (128.center)
 			 to cycle;
-		\draw [style=FILLGREENINVISBLE] (126.center)
+		\draw [style=FILLBLUE] (126.center)
 			 to (123.center)
 			 to (127.center)
 			 to (128.center)
 			 to cycle;
-		\draw [style=FILLGREENINVISBLE] (57.center)
+		\draw [style=FILLBLUE] (57.center)
 			 to [bend right=345] (124.center)
 			 to [bend left=330] cycle;
-		\draw [style=FILLGREENINVISBLE] (57.center)
+		\draw [style=FILLBLUE] (57.center)
 			 to [bend left=345, looseness=1.25] (126.center)
 			 to [bend right=345] cycle;
-		\draw [style=FILLGREENINVISBLE] (57.center)
+		\draw [style=FILLBLUE] (57.center)
 			 to (122.center)
 			 to [bend left=15, looseness=0.25] cycle;
-		\draw [style=FILLGREENINVISBLE] (57.center)
+		\draw [style=FILLBLUE] (57.center)
 			 to [bend left=60] (128.center)
 			 to [in=60, out=135] cycle;
-		\draw [style=FILLGREENINVISBLE] (128.center)
+		\draw [style=FILLBLUE] (128.center)
 			 to [bend left, looseness=0.75] (57.center)
 			 to [bend right=75, looseness=0.25] cycle;
-		\draw [style=DARKGREEN, bend left=15, looseness=0.50] (57) to (122);
-		\draw [style=DARKGREEN] (122) to (128);
-		\draw [style=DARKGREEN, bend left=345, looseness=1.25] (124) to (57);
-		\draw [style=DARKGREEN, in=60, out=120] (128) to (57);
-		\draw [style=FILLGREENINVISBLE] (57.center)
+		\draw [style=FILLBLUE] (57.center)
 			 to (125.center)
 			 to [bend left=15, looseness=0.50] cycle;
-		\draw [style=DARKGREEN, bend right=15, looseness=0.25] (57) to (125);
-		\draw [style=DARKGREEN, bend left, looseness=0.75] (128) to (57);
-		\draw [style=FILLGREENINVISBLE] (57.center)
+		\draw [style=FILLBLUE] (57.center)
 			 to [bend right=60, looseness=0.75] (127.center)
 			 to [bend right=330] cycle;
-		\draw [style=DARKGREEN, bend right=315, looseness=0.75] (127) to (57);
-		\draw [style=DARKGREEN, bend right=345] (126) to (57);
-		\draw [style=FILLGREENINVISBLE] (123.center)
+		\draw [style=FILLBLUE] (123.center)
 			 to [bend right=345] (57.center)
 			 to [bend right] cycle;
-		\draw [style=DARKGREEN, in=-30, out=-180, looseness=1.25] (123) to (57);
-		\draw [style=FILLGREENINVISBLE] (57.center)
+		\draw [style=FILLBLUE] (57.center)
 			 to [bend right=75, looseness=1.75] (128.center)
 			 to [bend left=90, looseness=1.75] cycle;
-		\draw [style=DARKGREEN, bend left=75, looseness=1.75] (128) to (57);
-		\draw [style=DARKGREEN, bend right=15] (123) to (128);
-		\draw [style=FILLGREENINVISBLE] (85.center)
+		\draw [style=FILLBLUE] (85.center)
 			 to [bend left=45, looseness=1.25] (86.center)
 			 to [bend left=315] cycle;
-		\draw [style=FILLGREENINVISBLE] (129.center)
+		\draw [style=FILLBLUE] (129.center)
 			 to (86.center)
 			 to [bend right=15, looseness=0.75] cycle;
-		\draw [style=FILLGREENINVISBLE] (86.center)
-			 to [bend left=345] (85.center)
-			 to [in=165, out=15, looseness=0.75] cycle;
-		\draw [style=FILLGREENINVISBLE] (133)
+		\draw [style=FILLBLUE] (86.center)
+			 to [bend left=330, looseness=0.75] (85.center)
+			 to [in=165, out=15] cycle;
+		\draw [style=FILLBLUE] (133)
 			 to (130.center)
 			 to [bend right=15] (86);
-		\draw [style=FILLGREENINVISBLE] (85.center)
-			 to [bend right, looseness=0.75] (133.center)
-			 to [bend left=15] cycle;
-		\draw [style=FILLGREENINVISBLE] (85.center)
+		\draw [style=FILLBLUE] (85.center)
+			 to [in=-150, out=-30, looseness=0.50] (133.center)
+			 to [in=345, out=-165, looseness=0.75] cycle;
+		\draw [style=FILLBLUE] (85.center)
 			 to [bend right=15] (131.center)
 			 to cycle;
-		\draw [style=FILLGREENINVISBLE] (133.center)
-			 to [bend left=45, looseness=1.50] (85.center)
-			 to [bend right=45, looseness=1.25] cycle;
-		\draw [style=FILLGREENINVISBLE] (85.center)
+		\draw [style=FILLBLUE] (133.center)
+			 to [in=315, out=-135, looseness=1.25] (85.center)
+			 to [bend right=45] cycle;
+		\draw [style=FILLBLUE] (85.center)
 			 to [bend right=15] (132.center)
 			 to cycle;
-		\draw [style=FILLGREENINVISBLE] (85.center)
-			 to [bend right=60, looseness=2.00] (133.center)
-			 to [bend left=75, looseness=1.75] cycle;
-		\draw [style=DARKGREEN] (129) to (133);
-		\draw [style=DARKGREEN, bend right=45, looseness=1.25] (133) to (85);
-		\draw [style=DARKGREEN] (130) to (133);
-		\draw [style=DARKGREEN, bend left=15, looseness=0.75] (131) to (85);
-		\draw [style=DARKGREEN, bend right=15, looseness=0.75] (85) to (132);
-		\draw [style=DARKGREEN, bend right=15, looseness=1.25] (85) to (133);
-		\draw [style=DARKGREEN, bend right=45, looseness=1.50] (85) to (133);
-		\draw [style=DARKGREEN, bend left=60, looseness=2.00] (133) to (85);
-		\draw [style=DARKGREEN, bend left=15] (85) to (133);
+		\draw [style=FILLBLUE] (85.center)
+			 to [bend right=60, looseness=1.75] (133.center)
+			 to [bend left=60, looseness=2.00] cycle;
+		\draw [style=EDGE, bend left, looseness=0.75] (0) to (14);
+		\draw [style=EDGE, bend right=15] (13) to (0);
+		\draw [style=EDGE] (0) to (15);
+		\draw [style=EDGE] (15) to (8);
 	\end{pgfonlayer}
 \end{tikzpicture}

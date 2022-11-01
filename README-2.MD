@@ -33,6 +33,8 @@ Acronyms
 30) Implement these facy boxes
 31) Capitalizing    
 32) Uniform: Underline or bolt in definitions emphasizes
+33) Examples for R2
+34) Introduce notion of pendants
 
 TODO: Look up unknown graph theoretic terms for me.
 

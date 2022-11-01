@@ -462,7 +462,7 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
             \item  $\Dv \neq \emptyset \wedge \Dw = \emptyset$: Clearly, $v \in D'$ to dominate $v'$. If $v \in D'$, we set $D =  D' \setminus \{v'\} \cup d$ for some vertex $d \in N_{2,3}(v,w)$ and otherwise $D = D'$. If $v'$ was the witness of $v$, it is now replaced by $d$ and $D$ is an SDS with $\abs{D} \leq \abs{D'}$.
             \item  $\Dv = \emptyset \wedge \Dw \neq \emptyset$: Symmetrical to previous case.
         \end{enumerate} 
-        In all cases we have shown that $\abs{D} \leq \abs{D'}$ and $D$ is a \sdom of $G$.
+        In all cases, we have shown that $\abs{D} \leq \abs{D'}$ and $D$ is a \sdom of $G$.
     \end{enumerate}
 
 \end{proof}
@@ -638,17 +638,22 @@ We continue by giving a constant bound on the number of simple regions that cove
     \end{enumerate}
 \end{lemma}
 
-Observe that in the first case, we can assume that no case of \cref{rgl:rtwo} has been applied, but the claim is a direct consequence of the assumption $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$. If \cref{case:c2} \cref{case:c3} has been applied $N_{2,3}(v,w)$ gets reduced and the second case can be applied.
+Observe that in the first case, we can assume that no case of \cref{rgl:rtwo} has been applied, but the claim is a direct consequence of the assumption $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$. If \cref{case:c2} \cref{case:c3} has been applied $N_{2,3}(v,w)$ gets reduced and the second case can be applied. For the sake of completeness, we will restate (an slightly adjusted version of) the proof from Garnero and Sau (\cite[Revision 2014, Fact 6]{Garnero2018}). 
+% Not sure wether following is good.
+Note that this analysis provides a quick upper bound, but doing it more sophisticated could yield a better bound, because having $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$ would restrict the region more than analyzing these sets independently.
 
-\textbf{STOP STOP STOP ---  FROM HERE ERVERYTHING IS CURRENTLY IN PROGRESS -- :)}
+\begin{proof}
+        We partition $N_3(v,w)$ into the distinct $N_3(v,w) \setminus N(w)$, $N_3(v,w) \setminus N(v)$ and $N_3(v,w) \cap N(v) \cap N(w)$ and then analyze how many simple regions can there be in the worst case.
 
-\begin{proof} 
-    
-    We will closely follow the approach by Garnero and Sau (\cite[Revision 2014, Fact 6]{Garnero2018}). 
-    
+    \begin{enumerate}
+        \item Because $\Dv \neq \emptyset$ there exists $D = \{v,u,u'\} \in \Dv$ (a smaller set will give a better bound). By definition we know that $D$ dominates $N_3(v,w)$ and also $N_3(v,w) \setminus N(v)$. Therefore, all vertices in $N_3(v,w) \setminus N(v)$ must be neighbors of $w$ and either $u$ or $u'$ and in the worst case at most three simple regions are required. By assumption, $\Dw \neq \emptyset$ as well, and therefore $N_3(v,w) \setminus N(w)$ is bounded by at most three simple regions, too.
+        By planarity, we can cover the remaining common neighbors in $N_3(v,w) \cap N(v) \cap N(w)$ with at most 5 vertices and in total, we can cover \textbf{$\mathbf{N_3(v,w) \cap R(v,w)}$ by at most $\mathbf{3 + 3 +5 = 11}$} simple regions.
+        \item  
+    \end{enumerate}
+
     Figure (Add picture about figures) gives a visualization of the worst-case scenarios to cover $N_3(v,w) \cap V(R)$ with simple regions in the relevant cases.\footnote{Note: In a newer revision of their paper \cite{Garnero2018}, Garnero and Sau removed this proof, because they changed \cref{rgl:rtwo} and a more fine-grained analysis was made possible.}
-    
     % Although our \cref{rgl:rtwo} is a bit different, the proof still goes through in an original way.
+
     
 \end{proof}
 
