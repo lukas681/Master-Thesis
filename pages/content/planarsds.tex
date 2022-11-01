@@ -698,7 +698,7 @@ Note that this analysis provides a quick upper bound, but doing it more sophisti
     
     All in all, as $V(R) = \{v, w\} \cup (N_1(v,w) \cup N_2(v,w) \cup N_3(v,w)) \cap V(R)$ we get 
     
-    \[V(R) \leq 2 + 4 + 42 + \max(39, 3, 66, 85) = 139\]
+    \[V(R) \leq 2 + 4 + 24 + \max(27, 44, 4, 57) = 87 \]
 \end{proof}
 
 \subsection{Number of Vertices outside the Decomposition}
@@ -706,44 +706,44 @@ We continue to bound the number of vertices that do not lay inside any region of
 
 %Ref to 4.3
 
-\begin{lemma}
-    \cite{Alber2004}
-    (Deprecated) Every vertex in $u \in V \setminus V(\mathfrak{R})$ is either in D or belongs to a set $N_2(v) \cup N_3(v)$.
-\end{lemma}
+%\begin{lemma}
+%    \cite{Alber2004}
+%    (Deprecated) Every vertex in $u \in V \setminus V(\mathfrak{R})$ is either in D or belongs to a set $N_2(v) \cup N_3(v)$.
+%\end{lemma}
 
-The following lemma states that no vertices from a set $N_1(v)$ will be outside of a maximal \dreg.
+\noindent The following lemma states that no vertex from $N_1(v)$ will be outside of a maximal \dreg.
+
 \begin{lemma}\label{lemma:noneinside}
     \cite[Lemma 6]{Alber2004}
-    Let \G be a plane graph and $\mathfrak{R}$ be a maximal \dreg of a DS D. If $u \in N_1(v)$ for some vertex $v \in D$ then $u \in V(\mathfrak{R})$
+    Let \G be a plane graph and $\mathfrak{R}$ be a maximal \dreg of a \dom $D$. If $u \in N_1(v)$ for some vertex $v \in D$ then $u \in V(\mathfrak{R})$.
     
 \end{lemma}
 In the following, we define $\dGR(v) = \abs{\{R(v,w) \in \mathfrak{R}, w \in D\}}$ to be the number of regions in $\mathfrak{R}$ having $v$ as a pole. 
 
+% THIS WAS UNUSED BY NOW
 %TODO Add sum here
 %TODO Correctness?
-%% TODO Add thin underlying multigraph in theory part
-\begin{corollary}
-    Let \G be a graph and D be a set. For any maximal \dreg~$\mathfrak{R}$ on G it holds that $\sum_{v \in D} \dGR(v) = 2 \cdot \abs{\mathfrak{R}}$.
-\end{corollary}
-\begin{proof}\label{lemma:polesBound}
-    
-    The proof follows directly from the handshake lemma applied to the underlying multigraph~\GR.
-    %    By the handshake lemma, we know that $2 \abs{E} = \sum_{v \in V} d(v)$ in a graph \G.
-\end{proof}
+%\begin{corollary}
+%    Let \G be a graph and D be a set. For any maximal \dreg~$\mathfrak{R}$ on G it holds that $\sum_{v \in D} \dGR(v) = 2 \cdot \abs{\mathfrak{R}}$.
+%\end{corollary}
+%\begin{proof}\label{lemma:polesBound}
+%    
+%    The proof follows directly from the handshake lemma applied to the underlying multigraph~\GR.
+%    %    By the handshake lemma, we know that $2 \abs{E} = \sum_{v \in V} d(v)$ in a graph \G.
+%\end{proof}
 
 \begin{proposition}[\#Vertices outside a Region]\label{lemma:outside}
-    Let \G be a plane graph reduced under \cref*{rgl:rone,rgl:rtwo} and let D be a SDS of G. If G has a maximal D-region decomposition, then $\abs{V \setminus (V(\mathfrak{R}) \cup D)} \leq 144 \abs{D}$
+    Let \G be a plane graph reduced under \cref*{rgl:rone,rgl:rtwo} and let D be a \sdom of G. For a maximal \dreg $\mathfrak{R}$,  $\abs{V \setminus (V(\mathfrak{R}) \cup D)} \leq 144 \abs{D}$
 \end{proposition}
 
-With slight modifications, the proof given in \cite[Revision 2014]{Garnero2018} will also work in our case. Note that although assuming the graph to be entirely reduced, the following proof only relies on \cref*{rgl:rone,rgl:rthree}. The proof uses the observation that vertices from $N_2(v)$ span simple regions between those from $\{v\} \cup N_1(v)$.
+With slight modifications, the proof given in \cite[Revision 2014]{Garnero2018} will also apply for \sdom. Although we assume G to be entirely reduced, the following proof only relies on \cref{rgl:rone,rgl:rthree}. The proof uses the observation that vertices from $N_2(v)$ that lie outside of a region must span simple regions between those from $\{v\} \cup N_1(v)$.
 
 \begin{proof}
     Again, we will follow the proof proposed by Alber et al. \cite[Proposition 2]{Alber2004}. 
     
-    The proof does only rely on \cref{rgl:rone,rgl:rthree} and we can use the number of vertices in a simple region we have proven in \cref{lemma:simpleregionbound}. In particular, we are going to proof that $V \setminus V(\mathfrak{R}) \leq 48 \cdot \abs{\mathfrak{R}} + 2 \cdot \abs{D}$. Directly placing in \cref{lemma:numRegions} will give the desired bound.
+    We use the size bound of a simple region we have proven in \cref{lemma:simpleregionbound}. In particular, we are going to show that $V \setminus V(\mathfrak{R}) \leq 48 \cdot \abs{\mathfrak{R}} + 2 \cdot \abs{D}$. \Cref{lemma:numRegions} will then give the desired bound.
     
-    let $\mathfrak{R}$ be a maximal \dreg and let $v \in D$. Since D dominates all vertices from $V$, we can consider $V$ as $\bigcup_{v \in D}N(v)$ and thus, we only need to bound the sizes of $N_1(v)\setminus \VR$, $N_2(v) \setminus \VR$ and $N_3(v) \setminus \VR$ separately. In the following, let $v \in D$:
-    %As we know that the sets $N_1(v,w)$, $N_2(v,w)$ and $N_3(v,w)$ are distinct by definition, we can separately bound the vertices from $\abs{V \setminus V(\mathfrak{R})}$
+    Let $D$ be a \sdom, $\mathfrak{R}$ be a maximal \dreg and $v \in D$. Since $D$ dominates all vertices in the graph, we can consider $V$ as $\bigcup_{v \in D}N(v)$ and thus, we only need to bound the sizes of $N_1(v)\setminus \VR$, $N_2(v) \setminus \VR$ and $N_3(v) \setminus \VR$ separately.
     
     \noindent$\mathbf{N_3(v)}$: As we know that \cref{rgl:rone} has been exhaustively applied, we trivially see that $\abs{N_3(v)} \leq 1$ and hence, 
     
@@ -766,7 +766,7 @@ With slight modifications, the proof given in \cite[Revision 2014]{Garnero2018} 
     % TODO Formally Proof that
     % TODO Make a picture for that case 
     
-    \noindent$\mathbf{N_1(v)}$: By \cref{lemma:noneinside}, we know that $N_1(v) \subseteq V(\mathfrak{R})$ and hence, 
+    \noindent$\mathbf{N_1(v)}$: Because every \sdom is also a \dom, we can apply \cref{lemma:noneinside} and conclude that $N_1(v) \subseteq V(\mathfrak{R})$. Hence,
     
     \[\abs{\bigcup_{v \in D}N_1(v) \setminus V(\mathfrak{R})} = 0\]
     
@@ -788,8 +788,7 @@ With slight modifications, the proof given in \cite[Revision 2014]{Garnero2018} 
     \begin{equation*}
         \tikzfig{fig/tikz/kernelSize}
     \end{equation*}
-    \caption[Vertices from $N_2(v)$ laying outside]{\textit{Bounding the number of $N_2(v)$-vertices around a dominating vertex $v$ given a maximal \dreg $\mathfrak{R}$. $v$ is a pole of $R_1, R_2,...R_j$ and can span simple regions with the help of $N_2(v)$-vertices to at most two $N_1(v)$-vertices per $R_i$. Each region has at most four vertices in $N_1(v,w) \subseteq N_1(v)$ on the boundary of $R_j$, but only at most two can be used for a simple region: Observe that trying to build a simple region between $v$ and $n_2$ in this example would contradict the maximality of $\mathfrak{R}$
-            Furthermore, the size of these simple regions is bounded after the application of \cref{rgl:rthree}}}
+    \caption[Vertices from $N_2(v)$ laying outside]{\textit{Bounding the number of $N_2(v)$-vertices around a dominating vertex $v$ given a maximal \dreg $\mathfrak{R}$. $v$ is a pole of $R_1, R_2,...R_j$ and can span simple regions with the help of $N_2(v)$-vertices to at most two $N_1(v)$-vertices per $R_i$. Each region has at most four vertices in $N_1(v,w) \subseteq N_1(v)$ on the boundary of $R_j$, but only at most two can be used for a simple region: For Example trying to construct a simple region between $v$ and $n_2$ would contradict the maximality of $\mathfrak{R}$. Furthermore, because rule \cref{rgl:rone} has removed all but \textbf{one} vertex from $N_3(v)$, we intuitively can span two regions to each of the $N_1(v)$-vertices. Furthermore, the size of these simple regions is bounded after the application of \cref{rgl:rthree}.}}
     \label{fig:kernelSize}
 \end{figure}
 %
