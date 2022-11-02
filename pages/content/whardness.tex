@@ -66,7 +66,7 @@ Although the previous result implies $w[2]$-hardness for chordal graphs, we foun
     \begin{equation*}
         \tikzfig{fig/tikz/chordal-reduction}
     \end{equation*}
-\caption[Constructing a chordal $G'$]{\textit{Constructing a chordal $G'$ from the chordal graph $P_4$ by adding a $K_5$, connecting its vertices pairwise to $G$ and adding some auxiliary vertices to preserve chordality.}}
+\caption[Constructing a chordal $G'$]{\textit{Constructing a chordal $G'$ from the chordal graph $P_4$ by adding a $K_5$, connecting its vertices pairwise to $G$. Adding the (blue) auxiliary vertices are necessary to preserve chordality.}}
 \end{figure}
 
 \begin{proof}
@@ -79,7 +79,7 @@ Although the previous result implies $w[2]$-hardness for chordal graphs, we foun
         \item For all vertices $v_i \in V$ in $G$, add a new edge $\{n, k_i\}$ for all neighbors $n \in N(v_i)$.
     \end{enumerate}
 
-    Ann example is shown in \cref{fig:construct-chordal-reduction}
+    An example reduction on the graph $P_4$ is shown in  \cref{fig:chordalReduction}.
 
     \begin{corollary}\label{cliqueNeighbor}
        $N(v_i) \in G$ forms a clique iff $N(v_i)$ forms a clique in $G'$
