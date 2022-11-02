@@ -36,15 +36,15 @@
 \newcommand{\brown}[1]{\textcolor{brown}{#1}}
 
 % THEOREM ENVIRONMENTS
-\newtheorem{fact}{\protect\color{TUMSecondaryBlue} Fact}
+\newtheorem{fact}{\protect\color{TUMSecondaryBlue} Fact}[section] % CHAPTER CHANGE TO SECTION TO GET ONE MORE LEVEL
 \newtheorem{rgl}  {\protect\color{TUMSecondaryBlue} Rule} 	
 \newtheorem{theorem}{\protect\color{TUMSecondaryBlue} Theorem}
 
-\newtheorem{definition}{\protect\color{TUMSecondaryBlue} Definition}
+\newtheorem{definition}{\protect\color{TUMSecondaryBlue} Definition}[section]
 
-\newtheorem{corollary}{\protect\color{TUMSecondaryBlue} Corollary}
-\newtheorem{lemma}{\protect\color{TUMSecondaryBlue} Lemma}
-\newtheorem{proposition}{\protect\color{TUMSecondaryBlue} Proposition}
+\newtheorem{corollary}{\protect\color{TUMSecondaryBlue} Corollary}[section]
+\newtheorem{lemma}{\protect\color{TUMSecondaryBlue} Lemma}[section]
+\newtheorem{proposition}{\protect\color{TUMSecondaryBlue} Proposition}[section]
 
 \newcounter{casenum}
 \newenvironment{caseof}{\setcounter{casenum}{0}}{\vskip.5\baselineskip}
