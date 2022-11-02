@@ -134,30 +134,28 @@ Before stating the reduction rules, we want to clarify when we consider a graph 
     A graph \G is reduced under a set of rules if either none of them can be applied to $G$ or the application of any of them creates a graph isomorphic to $G$.
 \end{definition}
 
-This definition differs from the definition usually given in literature where a graph G is \textit{reduced} under a set of reduction rules if none of them can be applied to G anymore (compare e.g. \cite{Fomin2019}). Some of our reduction rules (\cref{rgl:rone} or \cref{rgl:rtwo}) could be applied \textit{ad infinitum} creating an endless loop that does not change G any more. Our definition guarantees termination in that case. All of the given reduction rules are local and only need the neighborhood of at most two vertices and replace them partially with gadgets of constant size. Now checking whether a graph after applying the rule has been isomorphically changed can be trivially accomplished in constant time.
-
-In our case, we say G is reduced if all of the \cref{rgl:rone,rgl:rtwo,rgl:rthree} have exhaustively been applied.
+This definition differs from the definition usually given in literature where a graph G is \textit{reduced} under a set of reduction rules if none of them can be applied to G anymore (compare e.g. \cite{Fomin2019}). Some of our reduction rules (\cref{rgl:rone} or \cref{rgl:rtwo}) could be applied \textit{ad infinitum} creating an endless loop that does not change $G$ anymore. Our definition guarantees termination in that case. All of the given reduction rules are local and only need the neighborhood of at most two vertices and replace them partially with gadgets of constant size. Checking whether the application of one of the rules creates an isomorphic graph can be accomplished in constant time.
 
 \subsection{Regions in Planar Graphs}
 
-Alber et al. gave in \cite{Alber2004} a novel approach to look at planar graphs. In their analysis, they stated a constructive algorithm that decomposes a planar graph into local ``regions''. Vaguely said, a region is a set of vertices that are enclosed by a boundary path in a fixed planar embedding of the graph.
+Alber, Fellows and Niedermeier \cite{Alber2004} gave a novel approach to look at planar graphs. In their analysis, they stated a constructive algorithm that decomposes a planar graph into local ``regions''. Intuitively, assume that we have a fixed plane embedding of a planar graph \G. If we pick two distinct vertices $v$ and $w$ from a given \sdom $D \subseteq V$ that are at most of distance two apart, we can try to find two distinct paths from $v$ to $w$ that span up the boundaries of a face and enclose as many other vertices as possible. 
 
 The following definitions are based on those given by Garnero and Sau in \cite[Revision 2014]{Garnero2018} and will lead toward a clean definition of a \textit{region} and what we understand as a \dreg. More detailed explanations and concrete examples can be found in their paper.
 
+% TODO Define Contracting and clockwise order
 \begin{definition}
-    Two simple paths $p_1, p_2$ in a plane graph G are \underline{confluent} if:
+    Two simple paths $P_1, P_2$ in a plane graph G are \underline{confluent} if at least one of the following statements holds:
     
     \begin{enumerate}
         \item they are vertex-disjoint
-        \item they are edge-disjoint and for every common vertex $u$, if $v_i, w_i$ are the neighbors of $u$ in $p_i$, for $i \in [1,2]$, it holds that $[v_1, w_1, v_2, w_2]$, or
+        \item they are edge-disjoint and for every common vertex $u$, if $v_i, w_i$ are the neighbors of $u$ in $p_i$, for $i \in [1,2]$, it holds that $[v_1, w_1, v_2, w_2]$
         \item they are confluent after contracting common edges
     \end{enumerate}
 \end{definition}
 
-% TODO MORE TEXT HERE
-
+% TODO MORE TEXT HERE: GIVE MORE INTUITION
 \begin{definition}
-    Let \G be a plane graph and let $v,w \in V$ be two distinct vertices. A \underline{ region $R(v,w)$} (synonymy denoted as  $vw$-region) is a closed subset of the plane, such that:
+    Let \G be a plane graph and let $v,w \in V$ be two distinct vertices. A \underline{region $R(v,w)$} (also denoted as $vw$-region $R$) is a closed subset of the plane, such that:
     \begin{enumerate}
         \item the boundary of R is formed by two confluent simple $vw$-paths with length at most 3
         \item every vertex in R belongs to $N(v,w)$, and
@@ -173,12 +171,12 @@ The following definitions are based on those given by Garnero and Sau in \cite[R
 \begin{definition}
     Two regions $R_1$ and $R_2$ are non-crossing, if:
     \begin{enumerate}
-        \item $(R_1 \setminus \partial R_1) \cap R_2 = (R_2 \setminus \partial R_2) = \emptyset$, and
+        \item $(R_1 \setminus \partial R_1) \cap R_2 = (R_2 \setminus \partial R_2) \cap R_1 = \emptyset$, and
         \item the boundary paths of $R_1$ are pairwise confluent with the ones in $R_2$
     \end{enumerate}
 \end{definition}
 
-We now have all the definitions ready to formally a maximal \dreg on planar graphs:
+We now have all the definitions ready to formally define a maximal \dreg on planar graphs:
 
 \begin{definition}\label{def:region}
     Given a plane graph \G and $D\subseteq V$, a \underline{$D-region$ Decomposition} of G is a set $\mathfrak{R}$ of regions with poles in D such that: 
@@ -198,7 +196,7 @@ We now have all the definitions ready to formally a maximal \dreg on planar grap
     \begin{equation*}
         \tikzfig{fig/tikz/region-example}
     \end{equation*}
-    \caption[Region Decomposition]{\textit{Left: A maximal \dreg $\mathfrak{R}$, where $D = \{d_1,d_2,d_3\}$ form a \sdom. There are two regions between $d_2$ and $d_1$ (purple and pink), one region between $d_1$ and $d_3$ (green) and one region between $d_2$ and $d_3$ (purple). Observe that some neighbors of $d_1$ are not part of any $vw$-region. Our reduction rules are going to take care of them and bound these number of vertices to obtain the kernel. Right: The corresponding underlying multigraph $G_{\mathfrak{R}}$. Every edge denotes a region between $d_i$ and $d_j$}}\label{fig:maxRegionDecompose}
+    \caption[Region Decomposition]{\textit{Left: A maximal \dreg $\mathfrak{R}$, where $D = \{d_1,d_2,d_3\}$ form a \sdom. There are two regions between $d_2$ and $d_1$ (purple and pink), one region between $d_1$ and $d_3$ (green) and one region between $d_2$ and $d_3$ (purple). Observe that some neighbors of $d_1$ are not part of any $vw$-region. Our reduction rules are going to take care of them and bound these number of vertices to obtain the kernel. Right: The corresponding underlying multigraph $G_{\mathfrak{R}}$. Every edge denotes a region between $d_i$ and $d_j$.}}\label{fig:maxRegionDecompose}
 \end{figure}
 
 % TODO: Wording: "kernel" is precise enough here.
@@ -250,7 +248,7 @@ Then we use the existence of a maximal \dreg~$\mathfrak{R}$ on planar graphs to 
 
 Following the ideas proposed by Garnero and Sau in \cite[Revision 2014]{Garnero2018}, we state reduction rules that after exhaustive application will expose a linear kernel. We note that especially for \cref{rgl:rtwo}, we relied on the first revision of the paper because in the following years their kernel size was improved for the cost of making them more specific to \ptdom and we saw that the latest rules stated will not work for \psdom. 
 The main challenge in all of those rules is to maintain the witness properties of the graph because a vertex inside a region can be important as a witness for vertices in another region and can not always simply be reduced. Therefore a more sophisticated analysis is required. 
-\subsection{Reduction Rule I: Getting Rid of unneccessary  $N_3(v)$ vertices}
+\subsection{Reduction Rule I: Shrinking $N_3(v)$}
 
 % Maybe we can even remove all N_3's because later, only the case v in a pair could be important. We do not have a connected graph.
 
@@ -261,7 +259,7 @@ Let \G, $v \in V$ and $v' \in N_{2,3}(v)$. Any witness $w \neq v$ for $v'$ is al
 \end{fact}
 \begin{proof}
 
-By assumption $v'$ is witnessed by a vertex $w \neq v$ with $d(v', w) \leq 2$. It follows directly from the definition of $v' \in N_{2,3}(v)$ that $N(v') \subseteq N[v]$ and hence $v'$ is \textit{confined} inside the neighborhood of $v$. Every path $P = (v', n, w)$ from $v'$ to possible witness $w$ within two steps must pass at least one vertex $n \in N[v]$ as all neighbors. This implies that there exists also a path from $v$ to $w$ with a length of at most two and $v$  
+By assumption, $v'$ is witnessed by a vertex $w \neq v$ with $d(v', w) \leq 2$. It follows directly from the definition of $v' \in N_{2,3}(v)$ that $N(v') \subseteq N[v]$ and hence $v'$ is \textit{confined} inside the neighborhood of $v$. Every path $P = (v', n, w)$ from $v'$ to possible witness $w$ within two steps must pass at least one vertex $n \in N[v]$ as all neighbors. This implies that there exists also a path from $v$ to $w$ with a length of at most two and $v$  
 
 % Maybe add a note that it can also point outside of N(v)
 % we know that $w$ is either $v$, a direct neighbor of $v$ or can be reached via one step over a $N_1(v)$ vertex, hence $w \in N(v) \cup \bigcup\limits_{z \in N_1(v)} N(z) $. Clearly, $d(v, w) \leq 2$.
