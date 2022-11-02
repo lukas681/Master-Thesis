@@ -1,22 +1,21 @@
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=TEXTHIGHGREEN] (0) at (-5.25, -0.75) {Reduction [\cref{rgl:rtwo}]};
-		\node [style=TEXTHIGHGRAY, text width=4cm] (2) at (13, 7) {$ \abs{N_1(v,w) \cap V(R)} \leq 4 $ [\cref{lemma:nonecover}]};
-		\node [style=TEXTHIGHGREEN] (3) at (-8, 3.5) {Reduction [\cref{rgl:rone}]};
-		\node [style=TEXTHIGHYELLOW] (5) at (12.25, -8.75) {Any $vw$-region contains at most 139 vertices [\cref{lemma:inside}]};
-		\node [style=TEXTHIGHYELLOW, text width=5cm] (6) at (-1.25, 7) {$\abs{V\setminus(V(\mathfrak{R}) \cup D} \leq 144 \abs{D}$: [\cref{lemma:outside}]};
-		\node [style=TEXTHIGH, text width=7.5cm] (7) at (6, -14.75) {\sdom has a linear linear kernel of size at most 562k  [\cref{thm:central}]};
-		\node [style=TEXTHIGHYELLOW, text width=6cm] (8) at (7.75, 3.25) {Ex. max \dreg with $\abs{R} \leq 3* \abs{D}-6$ [\cref{lemma:numRegions}]};
-		\node [style=TEXTSTD] (9) at (-3.25, -10.5) {\cref{rgl:rone,rgl:rtwo,rgl:rthree} run in Poly-Time [\cref{lemma:runtime}]};
-		\node [style=TEXTHIGHGREEN] (10) at (-2, -4.75) {Reduction [\cref{rgl:rthree}]};
-		\node [style=TEXTHIGHGRAY, text width=4cm] (11) at (14.5, 0.5) {$N_2(v,w) $ by 6 simple regions [\cref{lemma:ntwocover}]};
-		\node [style=TEXTHIGHGRAY, text width=4cm] (12) at (13.25, -3.75) {$N_3(v,w) $ by at most 14  simple regions [\cref{lemma:rtwosr}]};
+		\node [style=TEXTHIGHGREEN] (0) at (-6.25, -0.75) {Reduction [\Cref{rgl:rtwo}]};
+		\node [style=TEXTHIGHGRAY, text width=4cm] (2) at (13, 7) {$ \abs{N_1(v,w) \cap V(R)} \leq 4 $ [\Cref{lemma:nonecover}]};
+		\node [style=TEXTHIGHGREEN] (3) at (-7.75, 2.5) {Reduction [\Cref{rgl:rone}]};
+		\node [style=TEXTHIGHYELLOW] (5) at (12.25, -8.75) {Any $vw$-region contains at most 139 vertices [\Cref{lemma:inside}]};
+		\node [style=TEXTHIGHYELLOW, text width=5cm] (6) at (-1.25, 7) {$\abs{V\setminus(V(\mathfrak{R}) \cup D} \leq 144 \abs{D}$: [\Cref{lemma:outside}]};
+		\node [style=TEXTHIGH, text width=7.5cm] (7) at (6, -14.75) {\sdom has a linear linear kernel of size at most $\kernelsize k$  [\Cref{thm:central}]};
+		\node [style=TEXTHIGHYELLOW, text width=6cm] (8) at (7.75, 3.25) {Ex. max \dreg with $\abs{R} \leq 3* \abs{D}-6$ [\Cref{lemma:numRegions}]};
+		\node [style=TEXTHIGHGREEN] (10) at (-2, -3) {Reduction [\Cref{rgl:rthree}]};
+		\node [style=TEXTHIGHGRAY, text width=4cm] (11) at (14.5, 0.5) {$N_2(v,w) $ by 6 simple regions [\Cref{lemma:ntwocover}]};
+		\node [style=TEXTHIGHGRAY, text width=4cm] (12) at (13.25, -3.75) {$N_3(v,w) $ by at most 14  simple regions [\Cref{lemma:rtwosr}]};
+		\node [style=none] (13) at (-12.75, 2.5) {};
+		\node [style=none] (14) at (-12, -0.75) {};
+		\node [style=none] (15) at (-8, -3) {};
+		\node [style=none] (16) at (7.25, 7) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [style=simple dashed directed edge] (9) to (7);
-		\draw [style=simple directed edge, in=180, out=-180] (10) to (9);
-		\draw [style=simple directed edge, in=180, out=-135, looseness=0.75] (0) to (9);
-		\draw [style=simple directed edge, in=180, out=-135, looseness=0.75] (3) to (9);
 		\draw [style=simple directed edge] (10) to (6);
 		\draw [style=simple directed edge] (3) to (6);
 		\draw [style=simple directed edge] (5) to (7);
@@ -31,5 +30,9 @@
 		\draw [style=simple directed edge, bend right] (8) to (12);
 		\draw [style=simple directed edge] (8) to (6);
 		\draw [style=simple directed edge, in=165, out=-15] (10) to (5);
+		\draw [style=simple dashed directed edge] (13.center) to (3);
+		\draw [style=simple dashed directed edge] (14.center) to (0);
+		\draw [style=simple dashed directed edge] (15.center) to (10);
+		\draw [style=simple dashed directed edge] (16.center) to (8);
 	\end{pgfonlayer}
 \end{tikzpicture}
