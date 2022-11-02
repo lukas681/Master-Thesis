@@ -63,7 +63,7 @@
 		\node [style=NTWO] (69) at (4.25, -0.25) {};
 		\node [style=NTWO] (70) at (2.75, 1) {};
 		\node [style=NTWO] (71) at (3.25, 0.5) {};
-		\node [style=NTHR] (72) at (0.5, -2.5) {};
+		\node [style=NTHR] (72) at (0, -2.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=FILLDARKBLUE] (1.center)
@@ -146,6 +146,6 @@
 		\draw (70) to (0);
 		\draw (71) to (7);
 		\draw (70) to (7);
-		\draw [style=FILLBLUE] (0) to (72);
+		\draw [style=EDGE, in=0, out=-75, looseness=0.75] (0) to (72);
 	\end{pgfonlayer}
 \end{tikzpicture}

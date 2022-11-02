@@ -1,0 +1,64 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=BLACK] (9) at (-5, 0) {};
+		\node [style=DOM] (10) at (-3, 2) {};
+		\node [style=DOM] (11) at (2, 2) {};
+		\node [style=BLACK] (12) at (4, 0) {};
+		\node [style=none] (13) at (-5.25, 1) {$v_1$};
+		\node [style=none] (16) at (4.5, 0.75) {$v_4$};
+		\node [style=none] (17) at (-1.5, 4) {};
+		\node [style=none] (18) at (1, 4) {};
+		\node [style=none] (19) at (5.25, -1) {};
+		\node [style=none] (20) at (-6.25, -1) {};
+		\node [style=none] (21) at (-5.25, 3.75) {$G$};
+		\node [style=BLACK] (22) at (-2, -1.75) {};
+		\node [style=BLACK] (23) at (1, -1.75) {};
+		\node [style=BLACK] (24) at (2, -4.25) {};
+		\node [style=BLACK] (25) at (-3, -4.25) {};
+		\node [style=DOM] (26) at (-0.5, -5.75) {};
+		\node [style=BLACK] (27) at (5, -5) {};
+		\node [style=none] (28) at (5, -4.25) {$t$};
+		\node [style=none] (30) at (-1.5, -5.75) {$u$};
+		\node [style=none] (31) at (-3.75, -4.75) {$k_1$};
+		\node [style=none] (32) at (3, -4.75) {$k_n$};
+		\node [style=none] (33) at (-4.5, -1.25) {};
+		\node [style=none] (34) at (3.5, -1.25) {};
+		\node [style=none] (35) at (3.5, -6.25) {};
+		\node [style=none] (36) at (-4.5, -6.25) {};
+		\node [style=none] (37) at (-5.5, -3) {$K_{n+1}$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (9) to (10);
+		\draw (10) to (11);
+		\draw (11) to (12);
+		\draw [style=EDGEDASHED] (17.center) to (18.center);
+		\draw [style=EDGEDASHED, bend left=45] (18.center) to (19.center);
+		\draw [style=EDGEDASHED] (19.center) to (20.center);
+		\draw [style=EDGEDASHED, bend left=45] (20.center) to (17.center);
+		\draw [style=EDGE, bend left] (12) to (24);
+		\draw [style=EDGE] (23) to (11);
+		\draw [style=EDGE] (22) to (10);
+		\draw [style=EDGE, bend right, looseness=0.75] (9) to (25);
+		\draw [style=EDGE] (22) to (23);
+		\draw [style=EDGE] (23) to (25);
+		\draw [style=EDGE] (25) to (24);
+		\draw [style=EDGE] (24) to (22);
+		\draw [style=EDGE] (22) to (25);
+		\draw [style=EDGE] (24) to (23);
+		\draw [style=EDGE] (24) to (26);
+		\draw [style=EDGE] (26) to (25);
+		\draw [style=EDGE] (23) to (26);
+		\draw [style=EDGE] (26) to (22);
+		\draw [style=EDGE] (26) to (27);
+		\draw [style=BLUE, bend right] (23) to (12);
+		\draw [style=BLUE, bend right] (24) to (11);
+		\draw [style=BLUE, bend right=15] (11) to (22);
+		\draw [style=BLUE, in=120, out=-60] (10) to (23);
+		\draw [style=BLUE, bend left] (25) to (10);
+		\draw [style=BLUE, bend right] (9) to (22);
+		\draw [style=SLIGHTLYDASHED] (34.center) to (33.center);
+		\draw [style=SLIGHTLYDASHED] (33.center) to (36.center);
+		\draw [style=SLIGHTLYDASHED] (36.center) to (35.center);
+		\draw [style=SLIGHTLYDASHED] (35.center) to (34.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

@@ -49,29 +49,37 @@ We are showing that \sdom is $\omega[2]$-hard on bipartite graphs by a parametri
     As G' can be constructed in linear time and the parameter $k$ is only blown up by a constant, this reduction is an FPT reduction.  Because \dom is already $w[2]$-hard on bipartite graphs (\cite), we imply that \sdom is $w[2]$-hard as well.
 \end{proof}
 
+\subsection{\hmath $W[2]$-hard on Split Graphs}
+
+TODO Getting started with that.
+
 \subsection{\hmath $W[2]$-hard on Chordal Graphs}
+
+Although the previous result implies $w[2]$-hardness for chordal graphs, we found another reduction from \dom on chordal graphs.
+
 \begin{theorem}
-    Semitotal Dominating Set is $\omega[2]$ hard on Chordal Graphs
+    \sdom restricted to chordal graphs is $\omega[2]$-hard.
 \end{theorem}
 
-\begin{figure}[th]
-    \includegraphics[scale=0.16]{pages/img/construct-chordal-reduction.jpg}
-    \centering
-    \caption{Constructing $G'$ by adding a $K_5$ and the vertex $t$}
-    \label{fig:construct-chordal-reduction}
+\begin{figure}[!ht]
+    \label{fig:chordalReduction}
+    \begin{equation*}
+        \tikzfig{fig/tikz/chordal-reduction}
+    \end{equation*}
+\caption[Constructing a chordal $G'$]{\textit{Constructing a chordal $G'$ from the chordal graph $P_4$ by adding a $K_5$, connecting its vertices pairwise to $G$ and adding some auxiliary vertices to preserve chordality.}}
 \end{figure}
 
 \begin{proof}
     
-
-    Given a chordal graph $G = (V = \{v_1,...,v_n\}, E)$, we construct a chordal graph G' as described below (See also fig \ref{fig:construct-chordal-reduction}):
+    We will give a reduction from \dom on chordal graphs.
+    Given \G with vertex set $V = \{v_1,...v_n\} $, we construct a chordal graph $G'$ as described below:
     \begin{enumerate}
-        \item Add a $K_{n+1}$ consisting of the vertices \{$k_1,...,k_n,u\}$ and add an edge $(v_i, k_i)$ to each vertex $v_i$ of G. One vertex $u$ in the clique will remain untouched.
-        \item Add one additional vertex $t$ and connect it with $u$.
-        \item For all vertices $v_i$ in G, add a new edge $(n, k_i)$ for all $n \in N(v_i)$.
+        \item Add one complete graph $K_{n+1}$ consisting of the vertices \{$k_1,...,k_n,u\}$ and an edge $\{v_i, k_i\}$ to each vertex $v_i \in V$ of $G$. One vertex of the complete subgraph is not connected to any $v \in V$. Denote it as $u$.
+        \item Add one additional vertex $t$ and connect it with $u$ vie the edge $\{u,t\}$.
+        \item For all vertices $v_i \in V$ in $G$, add a new edge $\{n, k_i\}$ for all neighbors $n \in N(v_i)$.
     \end{enumerate}
 
-
+    Ann example is shown in \cref{fig:construct-chordal-reduction}
 
     \begin{corollary}\label{cliqueNeighbor}
        $N(v_i) \in G$ forms a clique iff $N(v_i)$ forms a clique in $G'$
@@ -133,7 +141,3 @@ We are showing that \sdom is $\omega[2]$-hard on bipartite graphs by a parametri
 %    SDS is $w[2]$ hard on Chordal Grpahs 
  %   \end{corollary}
 \end{proof}
-
-\subsection{\hmath $W[2]$-hard on Split Graphs}
-
-TODO Getting started with that.

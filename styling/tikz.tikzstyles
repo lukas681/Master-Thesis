@@ -19,6 +19,7 @@
 
 % Edge styles
 \tikzstyle{EDGE}=[-, fill=none]
+\tikzstyle{BLUE}=[-, draw={rgb,255: red,20; green,35; blue,255}]
 \tikzstyle{GRAY}=[-, fill={rgb,255: red,128; green,128; blue,128}]
 \tikzstyle{DARKGREEN}=[-, fill=none, draw={rgb,255: red,19; green,100; blue,13}, line width=1.25pt]
 \tikzstyle{big dash}=[-, dashed, dash pattern=on 4mm off 2mm, fill={rgb,255: red,178; green,255; blue,253}]
@@ -33,4 +34,5 @@
 \tikzstyle{ULTRAGRAY}=[-, draw={rgb,255: red,236; green,236; blue,236}]
 \tikzstyle{EDGEDASHED}=[-, dashed, fill=none]
 \tikzstyle{simple directed edge}=[->, draw=black, thick]
-\tikzstyle{simple dashed directed edge}=[->, draw=black,dashed]
+\tikzstyle{simple dashed directed edge}=[->, draw=black, dashed]
+\tikzstyle{SLIGHTLYDASHED}=[-, dotted, fill=none,  draw={rgb,255: red,128; green,128; blue,128}]
