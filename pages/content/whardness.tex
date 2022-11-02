@@ -55,7 +55,26 @@ TODO Getting started with that.
 
 \subsection{\hmath $W[2]$-hard on Chordal Graphs}
 
+% TODO: Fix everything here.
 Although the previous result implies $w[2]$-hardness for chordal graphs, we found another reduction from \dom on chordal graphs.
+
+\begin{definition}[{\cite[IV. Triangulated Graphs]{Berge1966}}]
+    A graph G is called \textit{chordal} (or in the older literature \textit{triangulated}) graphs if for every cycle $c = [p_1,...,p_n,p_1]$ of length $l > 3$ there is an edge of $G$ joining two non-consecutive vertices of c. Such vertices are called chords of the cycle   
+\end{definition}
+
+We will introduce the notion of an elimination ordering.
+
+\begin{definition}[{\cite[Theorem 1]{Rose1960}}]
+    In a graph \G with n vertices, a vertex is called \textbf{simplicial} if and only if the subgraph of $G$ induced by the vertex set $\{v\} \cup N(v)$ is a complete graph.
+
+    $G$  is said to have a \textbf{perfect eliminiation ordering} if and only if there is an ordering $(v_1, ... v_n)$ of the vertices, such that each $v_i$ is simplicial in the subgraph induced by the vertices $v_1,...,v_i\{\}$
+\end{definition}
+
+The following lemma shows that 
+
+\begin{lemma}[{\cite[Theorem 1]{Rose1960}}]
+        A graph \G is chordal if and only if $G$ has a perfect elimination ordering.
+\end{lemma}
 
 \begin{theorem}
     \sdom restricted to chordal graphs is $\omega[2]$-hard.
