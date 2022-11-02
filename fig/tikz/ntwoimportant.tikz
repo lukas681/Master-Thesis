@@ -20,7 +20,7 @@
 		\node [style=none] (25) at (-6.75, 4.5) {$N(v,w)$};
 		\node [style=BLACK] (26) at (1.5, 0.75) {};
 		\node [style=BLACK] (27) at (7.5, 0.75) {};
-		\node [style=DOM] (28) at (4.5, 0.75) {};
+		\node [style=NTHR] (28) at (4.5, 0.75) {};
 		\node [style=DOM] (30) at (4.5, 3.25) {};
 		\node [style=none] (31) at (8, 3.75) {};
 		\node [style=none] (32) at (8, 0) {};
