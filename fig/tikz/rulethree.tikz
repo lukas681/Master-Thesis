@@ -26,8 +26,8 @@
 		\node [style=none] (28) at (-8.25, 0.75) {$w$};
 		\node [style=none] (31) at (-0.5, 0.75) {$w$};
 		\node [style=none] (32) at (-6.75, 0.75) {$v$};
-		\node [style=none] (33) at (-3.25, 1.5) {$h_1$};
-		\node [style=none] (34) at (-3.25, -1.5) {$h_2$};
+		\node [style=none] (33) at (-3.25, 1.5) {$y$};
+		\node [style=none] (34) at (-3.25, -1.5) {$y'$};
 		\node [style=none] (35) at (-3, 3.75) {};
 		\node [style=none] (36) at (-3.75, 4.25) {};
 		\node [style=none] (37) at (-4.5, 3.75) {};
@@ -60,8 +60,7 @@
 		\node [style=none] (70) at (6.75, 0.75) {$w$};
 		\node [style=none] (71) at (14.5, 0.75) {$w$};
 		\node [style=none] (72) at (8.25, 0.75) {$v$};
-		\node [style=none] (73) at (11.75, 1.25) {$h_1$};
-		\node [style=none] (74) at (11.75, -1.25) {$h_2$};
+		\node [style=none] (74) at (11.75, 0.75) {$y$};
 		\node [style=none] (75) at (12, 3.75) {};
 		\node [style=none] (76) at (11.25, 4.25) {};
 		\node [style=none] (77) at (10.5, 3.75) {};

@@ -583,14 +583,13 @@ The application of \cref{rgl:rthree} gives us a bound on the number of vertices 
     \begin{equation*}
         \tikzfig{fig/tikz/rulethree}
     \end{equation*}
-    \caption[Application of \cref{rgl:rthree}]{\textit{Both cases of the application of \cref{rgl:rthree}. Left: the vertices inside the region are not isomorphic to a $P_3$, which means that \cref{case:rtt} will be applied and two new vertices being added. Right: They are isomorphic to a $P_3$ and we can replace the whole inner region with one single vertex by \cref{case:cto}.}}
+    \caption[Application of \cref{rgl:rthree}]{\textit{Both cases of the application of \cref{rgl:rthree}. Left: the vertices inside the region are not isomorphic to a $P_3$, which means that \cref{case:rtt} will be applied and two new vertices being added. Right: They are isomorphic to a $P_3$ and we can replace the whole inner region with one single vertex by \cref{case:rto}.}}
     \label{fig:maxntwoinside}
 \end{figure}
 
-
 \subsection{Computing Maximal Simple Regions between two vertices}
 
-TO BE DONE:
+
 For the sake of completeness, we state an algorithm on how a maximal \sr between two vertices $v,w \in V$ can be computed in time $\mathcal{O}(d(v) + d(w))$.
 
 \section{Bounding the Size of the Kernel}
@@ -606,7 +605,7 @@ In particular, we show that given a \sdom $D$ of size $k$, there exists a maxima
     \item each region of $\mathfrak{R}$ contains at most $139$ vertices % TODO, fill in
 \end{enumerate}
 
-Combining these three statements will give us a linear kernel. \Cref{fig:overview} depicts them \textit{yellow}.
+Combining these three statements will give us a linear kernel. \Cref{fig:overview} depicts them in \textit{yellow}.
 
 \subsection{Bounding the Size of a Region}
 
