@@ -84,16 +84,19 @@
 		\node [style=none] (95) at (-10.5, -2.5) {};
 		\node [style=none] (96) at (-10.5, 2.75) {};
 		\node [style=none] (97) at (3, 1.5) {};
-		\node [style=none] (98) at (4.5, 1.5) {};
-		\node [style=none] (99) at (4.5, -1.5) {};
+		\node [style=none] (98) at (5, 1.5) {};
+		\node [style=none] (99) at (5, -1.5) {};
 		\node [style=none] (100) at (3, -1.5) {};
 		\node [style=none] (101) at (-13.5, 3.75) {$R \setminus \partial R$};
 		\node [style=none] (102) at (1.25, 3.25) {$R \setminus \partial R$};
 		\node [style=none] (103) at (-12.5, 2.25) {};
 		\node [style=none] (104) at (2.5, 1.25) {};
 		\node [style=none] (105) at (2.5, 1.25) {};
-		\node [style=none] (106) at (-13.5, 3.25) {};
-		\node [style=none] (107) at (1.25, 2.75) {};
+		\node [style=none] (106) at (-13.5, 3) {};
+		\node [style=none] (107) at (1.25, 2.5) {};
+		\node [style=none] (108) at (4.25, 2.25) {$P_1$};
+		\node [style=none] (109) at (4.25, 0.75) {$P_2$};
+		\node [style=none] (110) at (4.25, -0.75) {$P_3$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=FILLBLUE] (11.center)
@@ -170,13 +173,13 @@
 			 to [in=240, out=15] (59.center)
 			 to [in=-15, out=120] (60.center)
 			 to [in=60, out=-165] cycle;
-		\draw (61) to (58);
+		\draw [style=ULTRAGRAY] (61) to (58);
 		\draw [style=ULTRAGRAY] (59) to (63);
 		\draw [style=ULTRAGRAY] (63) to (58);
 		\draw [style=ULTRAGRAY] (58) to (64);
 		\draw [style=ULTRAGRAY] (64) to (59);
-		\draw (61) to (59);
-		\draw (61) to (60);
+		\draw [style=ULTRAGRAY] (61) to (59);
+		\draw [style=ULTRAGRAY] (61) to (60);
 		\draw [bend right=15] (67) to (59);
 		\draw [bend left=15] (58) to (67);
 		\draw [style=FILLGREEN] (80.center) to (49);
@@ -204,7 +207,7 @@
 		\draw [style=EDGEDASHED] (98.center) to (99.center);
 		\draw [style=EDGEDASHED] (99.center) to (100.center);
 		\draw [style=EDGEDASHED] (97.center) to (100.center);
-		\draw [style=simple directed edge] (106.center) to (103.center);
-		\draw [style=simple directed edge] (107.center) to (105.center);
+		\draw [style=simple directed edge, bend right, looseness=1.25] (106.center) to (103.center);
+		\draw [style=simple directed edge, bend right] (107.center) to (105.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
