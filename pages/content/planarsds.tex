@@ -508,18 +508,22 @@ With a more sophisticated analysis, we were able to modify this rule such that t
 %
 % SHORTLY DISCUSS THIS RULE
 
+
+% CASE TWO: OR GADGET, Compare to TDS
+
+
 \begin{rgl}\label{rgl:rthree}
     Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and $w$. If $\abs{V(R) \setminus \{v, w\}} \geq 5$ apply the following:
 
     \begin{caseof}
-        \case{If $G[R\setminus\partial R] \cong P_3$ then:\label{case:rto}}
+        \case{If $G[R\setminus\partial R] \cong P_3$, then:\label{case:rto}}
 
             \vspace{-5mm}
             \begin{itemize}
                     \item remove $V(R\setminus\partial R)$
                     \item add vertex $y$ with edges $\{v, y\}$ and $\{y, w\}$
             \end{itemize}
-        \case{If $G[R\setminus\partial R] \ncong P_3$ then\label{case:rtt}}
+        \case{If $G[R\setminus\partial R] \ncong P_3$, then\label{case:rtt}}
 
             \vspace{-5mm}
             \begin{itemize}
@@ -552,18 +556,20 @@ Recap that we denoted $\partial R$ as the set of boundary vertices of the (simpl
 
         In summary, we only need to consider in the following cases that no vertex from $\partial R \in D$, $\abs{V(R \setminus \partial R)} \geq 3$ and at most one vertex strictly inside $R$ is dominating.
 
-         \textbf{First assume} $V(R \setminus \partial R) \cong P_3$. We denote this induced path as $(p_1,p_2,p_3)$.         
+         \textbf{First, assume} $V(R \setminus \partial R) \cong P_3$. We denote this induced path as $(p_1,p_2,p_3)$.         
          If neither $p_1,p_2,p_3 \in D$, we set $D' = D$, trivially preserving a \sdom. Otherwise, $p_2 \in D$ is forced because this is the only way to dominate $V(R \setminus \partial R)$ with exactly one vertex inside. We know that \cref{case:rto} has been applied and we set $D' = D \setminus \{p2\} \cup \{y\}$. which dominates $\{y,y'\}$ and witnesses $N(v) \cup N(w)$ which are the same vertices as $p_2$ did. This case is depicted in \cref{fig:rulethree}.
 
          \textbf{Contrary, assume} $V(R \setminus \partial R) \ncong P_3$. Again, let us denote this induced path as $(p_1,p_2,p_3)$. We observe that without contradicting the planarity of $G$ the induced subgraph of the vertices $G[R \setminus \partial R]$ must be a subgraph of a $P_j$ for $j = \abs{V(R \setminus \partial R)}$ and  $j \geq 3$.  By assumption, we either have this as either a $P_3$ with at least one missing edge or a larger $P_j$. Therefore, it is impossible to dominate all these vertices with one single vertex $p_i$ if we also assume that no vertex in $\partial R$ is dominating. Hence, we set $D' = D$.
 
         \item[$\Leftarrow$] Consider a \sdom $D$ in $G'$. We show that $G$ has an \sdom with $\abs{D} \leq \abs{D'}$. By assumption, we have $\Dvw = \emptyset$. We analyze both cases separately.
 
-         \textbf{First assume} $V(R \setminus \partial R) \cong P_3$. Here, \cref{case:rto} has been applied and $V(R \setminus R)$ replaced by one single vertex $y$. We denote the induced path in $G$ as $(p_1,p_2,p_3)$.
-         If $y \in D'$, we set $D = D' \setminus \{y\} \cup \{p_2\}$.
+         \textbf{First, assume} $V(R \setminus \partial R) \cong P_3$. Here, \cref{case:rto} has been applied and $V(R \setminus R)$ replaced by one single vertex $y$. We denote the induced path in $G$ as $(p_1,p_2,p_3)$.
+         If $y \in D'$, we set $D = D' \setminus \{y\} \cup \{p_2\}$. We know that $p_2$ dominates $p_1$,$p_3$ in $G$ and witnesses the same vertices as in $G'$. 
+         Otherwise, we just set $D = D'$. 
 
-         \textbf{Contrary, assume} $V(R \setminus \partial R) \ncong P_3$ and \cref{case:rtt} has been applied.
-
+         \textbf{Contrary, assume} $V(R \setminus \partial R) \ncong P_3$ and \cref{case:rtt} has been applied and $V(R \setminus R)$ replaced by two vertices $y$ and $y'$. Observe that neither $y$ nor $y'$ is useful in any \sdom in $G'$: If both $y, y' \in D'$, we simply replace them by $v$ and $w$ and if only $y \in D$ (resp. $y'$), then we need either $v \in D'$ or $w \in D'$ to dominate $y'$ and again, we replace them by $v$ and $w$. 
+         We can even ignore that $y$ or $y'$ is important as a witness, because as $d(v,w) \leq 2$, $v$, $w$ and $v$ always witness each other.
+         Hence \textit{at least one of} $\{v,w \}$ must be in \sdom simulating an ``OR-gadget''. Therefore, also $V(R \partial R)$ is dominated by either $v$ or $w$. All the witnesses stayed the same and hence, we simply set $D = D'$.
     \end{enumerate}
  
 \end{proof}
