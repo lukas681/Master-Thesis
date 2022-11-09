@@ -45,7 +45,7 @@
 		\node [style=NONE] (49) at (3.75, 3.5) {};
 		\node [style=NTWO] (50) at (3.75, 1.5) {};
 		\node [style=DOM] (52) at (3.75, 0) {};
-		\node [style=NTHR] (54) at (3.75, -1.75) {};
+		\node [style=NTHR] (54) at (3.75, -1.5) {};
 		\node [style=NONE] (56) at (3.75, -3.25) {};
 		\node [style=none] (57) at (7.5, 0) {$\rightarrow$};
 		\node [style=BLACK] (58) at (8.25, 0) {};
@@ -78,6 +78,22 @@
 		\node [style=none] (89) at (0, -5) {};
 		\node [style=none] (90) at (7.5, 5) {$G[R\setminus\partial R] \cong P_3$};
 		\node [style=none] (91) at (-7.5, 5) {$G[R\setminus\partial R] \ncong P_3$};
+		\node [style=none] (92) at (-12, 2.75) {};
+		\node [style=none] (93) at (-10.5, 2.75) {};
+		\node [style=none] (94) at (-12, -2.5) {};
+		\node [style=none] (95) at (-10.5, -2.5) {};
+		\node [style=none] (96) at (-10.5, 2.75) {};
+		\node [style=none] (97) at (3, 1.5) {};
+		\node [style=none] (98) at (4.5, 1.5) {};
+		\node [style=none] (99) at (4.5, -1.5) {};
+		\node [style=none] (100) at (3, -1.5) {};
+		\node [style=none] (101) at (-13.5, 3.75) {$R \setminus \partial R$};
+		\node [style=none] (102) at (1.25, 3.25) {$R \setminus \partial R$};
+		\node [style=none] (103) at (-12.5, 2.25) {};
+		\node [style=none] (104) at (2.5, 1.25) {};
+		\node [style=none] (105) at (2.5, 1.25) {};
+		\node [style=none] (106) at (-13.5, 3.25) {};
+		\node [style=none] (107) at (1.25, 2.75) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=FILLBLUE] (11.center)
@@ -180,5 +196,15 @@
 		\draw [style=ULTRAGRAY] (64) to (63);
 		\draw [style=EDGE] (52) to (50);
 		\draw [style=ULTRAGRAY] (63) to (61);
+		\draw [style=EDGEDASHED] (92.center) to (96.center);
+		\draw [style=EDGEDASHED] (96.center) to (95.center);
+		\draw [style=EDGEDASHED] (94.center) to (92.center);
+		\draw [style=EDGEDASHED] (94.center) to (95.center);
+		\draw [style=EDGEDASHED] (97.center) to (98.center);
+		\draw [style=EDGEDASHED] (98.center) to (99.center);
+		\draw [style=EDGEDASHED] (99.center) to (100.center);
+		\draw [style=EDGEDASHED] (97.center) to (100.center);
+		\draw [style=simple directed edge] (106.center) to (103.center);
+		\draw [style=simple directed edge] (107.center) to (105.center);
 	\end{pgfonlayer}
 \end{tikzpicture}

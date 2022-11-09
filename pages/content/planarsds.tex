@@ -164,7 +164,7 @@ The following definitions are based on those given by Garnero and Sau in \cite[R
         \item the complement of R in the plane is connected.
     \end{enumerate}
     
-    We denote with $\partial R$ the boundary of $R$ and by $V(R)$ the set of vertices laying (on the plane embedding) in $R$. Furthermore, we call $\abs{V(R)}$ the \textit{size of the region}.
+    We denote with $\partial R$ the set of vertices on the boundary of $R$ (including the poles) and by $V(R)$ the set of vertices laying (on the plane embedding) in $R$. Furthermore, we call $\abs{V(R)}$ the \textit{size of the region}.
     
     The poles of R are the vertices $v$ and $w$. The boundary paths are the two $vw$-paths that form $\partial R$
     
@@ -506,6 +506,7 @@ With a more sophisticated analysis, we were able to modify this rule such that t
 %
 %A vertex on the border $\partial R$ must not necessarily be in $N_1(v,w)$ if it has no neighbors outside. In that case it belongs to $N_3(v,w)$. To circumvent any misunderstandings, we will in \cref{rgl:rthree} use the set $V(R \setminus \partial R)$
 %
+% SHORTLY DISCUSS THIS RULE
 
 \begin{rgl}\label{rgl:rthree}
     Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and $w$. If $\abs{V(R) \setminus \{v, w\}} \geq 5$ apply the following:
@@ -535,12 +536,15 @@ Recap that we denoted $\partial R$ as the set of boundary vertices of the (simpl
 \begin{proof}
     % TODO: Decide vw in Border? and properly define them as a set.
     \begin{enumerate}
-        \item[$\Rightarrow$] Consider a \sdom $D$ in $G$. We show that $G'$ also has an SDS with $\abs{D'} \leq \abs{D}$. By assumption, we have $\Dvw = \emptyset$ and $\abs{V(R) \setminus \{v, w\}} \geq 5$. 
-        We can safely assume that the border $\partial R$ contains exactly two vertices.
-        If $\abs{\partial R}  < 2$, the region would not have vertices strictly inside, because we are missing two boundary paths that enclose these vertices.
-        Hence, at least three vertices must lie inside.
+        \item[$\Rightarrow$] 
+        
+        Consider a \sdom $D$ in $G$. We show that $G'$ also has an \sdom with $\abs{D'} \leq \abs{D}$. By assumption, we have $\Dvw = \emptyset$ and $\abs{V(R) \setminus \{v, w\}} \geq 5$. 
 
-        On the other side, we only need to observe those cases, where both $v,w \notin D$. Again, if a vertex $v' \in V(R \setminus \partial R)$ together with $v$ or $w$ are in $D$, we can replace them with both $v$ and $w$ which preserves the dominating and witnessing properties. Even if $v'$ was a sole witness for $v$, we know that $d(v,w) \leq 2$ ($R$ being a simple region), and therefore $v$ is a witness for $w$ and vice versa.
+        First, we can safely assume that the set of border vertices  $\partial R$ contains exactly two vertices.
+        If $\abs{\partial R \setminus \{v,w\}}  < 2$, the region could not have vertices strictly inside, because the boundary path of $\partial R$ does not enclose any vertices.
+        Hence, at least three vertices must lie strictly inside $R$.
+
+        On the other side, we only need to observe those cases, where both $v,w \notin D$. Again, if a vertex $v' \in V(R \setminus \partial R)$ together with $v$ or $w$ are in $D$, we can replace them with both $v$ and $w$ which preserves the dominating and witnessing properties and we can set $D' = D \setminus \{v'\} \cup \{v,w\}$ Note that even if $v'$ was a sole witness for $v$, we know that $d(v,w) \leq 2$ ($R$ being a simple region), and therefore $v$ is a witness for $w$ and vice versa. If no vertex in $V(R \setminus \partial R)$ is dominating, we just set $D' = D$. 
 
         Furthermore, we assume $\abs{D \cap V(R \setminus \partial R)} \leq 1$ (at most one vertex strictly inside the region is dominating) because otherwise, we replace those two vertices by $v$ and $w$ which trivially dominate and witness the same vertices.
 
@@ -553,11 +557,7 @@ Recap that we denoted $\partial R$ as the set of boundary vertices of the (simpl
 
 %         If $\abs{\partial R \setminus \{v,w\} \cap D} = 0$, then $p_2 \in D$ is forced because this is the only way to dominate $V(R \setminus \partial R)$ with one vertex. This case motivated  xxxThis case is depicted in   xxx
 
-         \textbf{Contrary, assume} $V(R \setminus \partial R) \ncong P_3$. Again, let us denote this induced path as $(p_1,p_2,p_3)$. 
-
-
-        picture for that Case
-
+         \textbf{Contrary, assume} $V(R \setminus \partial R) \ncong P_3$. Again, let us denote this induced path as $(p_1,p_2,p_3)$. In that case, we need  
         
 
         \item[$\Rightarrow$] Consider a \sdom $D$ in $G'$. We show that $G$ has an SDS with $\abs{D} \leq \abs{D'}$. By assumption, we have $\Dvw = \emptyset$.
