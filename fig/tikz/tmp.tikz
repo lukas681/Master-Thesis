@@ -1,0 +1,164 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=BLACK] (0) at (-11.75, 1.25) {};
+		\node [style=BLACK] (1) at (-1.75, 1.25) {};
+		\node [style=NONE] (2) at (-9.75, 4.25) {};
+		\node [style=NONE] (3) at (-3.75, 4.25) {};
+		\node [style=NONE] (4) at (-3.75, -4.25) {};
+		\node [style=NONE] (5) at (-9.75, -4.25) {};
+		\node [style=none] (6) at (-1.25, 2) {$w$};
+		\node [style=none] (7) at (-12.5, 2) {$v$};
+		\node [style=none] (8) at (-3.25, 4.75) {};
+		\node [style=none] (9) at (-3.75, 5) {};
+		\node [style=none] (10) at (-4.25, 4.75) {};
+		\node [style=none] (11) at (-9.25, 4.75) {};
+		\node [style=none] (12) at (-9.75, 5) {};
+		\node [style=none] (13) at (-10.25, 4.75) {};
+		\node [style=none] (14) at (-10.25, -4.75) {};
+		\node [style=none] (15) at (-9.75, -5) {};
+		\node [style=none] (16) at (-9.25, -4.75) {};
+		\node [style=none] (17) at (-4.25, -4.75) {};
+		\node [style=none] (18) at (-3.75, -5) {};
+		\node [style=none] (19) at (-3.25, -4.75) {};
+		\node [style=none] (20) at (-6.5, 6) {\textbf{Case 0.2}};
+		\node [style=BLACK] (21) at (2, 1.25) {};
+		\node [style=BLACK] (22) at (12, 1.25) {};
+		\node [style=NONE] (23) at (4, 4.25) {};
+		\node [style=NONE] (24) at (10, 4.25) {};
+		\node [style=NONE] (25) at (10, -4.25) {};
+		\node [style=NONE] (26) at (4, -4.25) {};
+		\node [style=none] (27) at (12.5, 2) {$w$};
+		\node [style=none] (28) at (1.25, 2) {$v$};
+		\node [style=none] (29) at (10.5, 4.75) {};
+		\node [style=none] (30) at (10, 5) {};
+		\node [style=none] (31) at (9.5, 4.75) {};
+		\node [style=none] (32) at (4.5, 4.75) {};
+		\node [style=none] (33) at (4, 5) {};
+		\node [style=none] (34) at (3.5, 4.75) {};
+		\node [style=none] (35) at (3.5, -4.75) {};
+		\node [style=none] (36) at (4, -5) {};
+		\node [style=none] (37) at (4.5, -4.75) {};
+		\node [style=none] (38) at (9.5, -4.75) {};
+		\node [style=none] (39) at (10, -5) {};
+		\node [style=none] (40) at (10.5, -4.75) {};
+		\node [style=none] (41) at (7, 6) {\textbf{Case 3/4}: At most 9 simple regions};
+		\node [style=BLACK] (42) at (-7, 1.75) {};
+		\node [style=BLACK] (43) at (-5.75, -1.75) {};
+		\node [style=BLACK] (44) at (-4, 2.25) {};
+		\node [style=BLACK] (45) at (-4.25, 1) {};
+		\node [style=BLACK] (46) at (-5, -0.5) {};
+		\node [style=BLACK] (47) at (-4, -2.25) {};
+		\node [style=BLACK] (48) at (-1.75, 1.25) {};
+		\node [style=BLACK] (49) at (8, 3) {};
+		\node [style=BLACK] (50) at (8, 1.5) {};
+		\node [style=BLACK] (51) at (5.5, -0.25) {};
+		\node [style=BLACK] (52) at (5.75, -2.25) {};
+		\node [style=BLACK] (53) at (12, 1.25) {};
+		\node [style=none] (54) at (7.25, 2.75) {$u_1$};
+		\node [style=none] (55) at (6.75, -2.5) {$u_2'$};
+		\node [style=none] (56) at (6.75, -0.25) {$u_1'$};
+		\node [style=none] (57) at (7.25, 1.25) {$u_2$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [bend left=15] (1) to (4);
+		\draw (4) to (5);
+		\draw [bend left=15, looseness=1.25] (5) to (0);
+		\draw [bend left=15] (0) to (2);
+		\draw (2) to (3);
+		\draw [bend left=15] (3) to (1);
+		\draw (8.center) to (3);
+		\draw (3) to (9.center);
+		\draw (3) to (10.center);
+		\draw (2) to (12.center);
+		\draw (11.center) to (2);
+		\draw (2) to (13.center);
+		\draw (16.center) to (5);
+		\draw (5) to (15.center);
+		\draw (14.center) to (5);
+		\draw (17.center) to (4);
+		\draw (4) to (18.center);
+		\draw (19.center) to (4);
+		\draw [bend left=15] (22) to (25);
+		\draw (25) to (26);
+		\draw [bend left=15] (26) to (21);
+		\draw [bend left=15] (21) to (23);
+		\draw (23) to (24);
+		\draw [bend left=15] (24) to (22);
+		\draw (29.center) to (24);
+		\draw (24) to (30.center);
+		\draw (24) to (31.center);
+		\draw (23) to (33.center);
+		\draw (32.center) to (23);
+		\draw (23) to (34.center);
+		\draw (37.center) to (26);
+		\draw (26) to (36.center);
+		\draw (35.center) to (26);
+		\draw (38.center) to (25);
+		\draw (25) to (39.center);
+		\draw (40.center) to (25);
+		\draw [style=FILLBLUE] (44.center)
+			 to (42.center)
+			 to (45.center)
+			 to [in=180, out=360] (48.center)
+			 to cycle;
+		\draw [style=FILLBLUE] (46.center)
+			 to (43.center)
+			 to (47.center)
+			 to (48.center)
+			 to cycle;
+		\draw [style=FILLBLUE] (0.center)
+			 to [bend right=345] (44.center)
+			 to [bend left=330] cycle;
+		\draw [style=FILLBLUE] (0.center)
+			 to [bend left=345, looseness=1.25] (46.center)
+			 to [bend right=345] cycle;
+		\draw [style=FILLBLUE] (0.center)
+			 to (42.center)
+			 to [bend left=15, looseness=0.25] cycle;
+		\draw [style=FILLBLUE] (0.center)
+			 to [bend left=60] (48.center)
+			 to [in=60, out=135] cycle;
+		\draw [style=FILLBLUE] (48.center)
+			 to [bend left, looseness=0.75] (0.center)
+			 to [bend right=75, looseness=0.25] cycle;
+		\draw [style=FILLBLUE] (0.center)
+			 to (45.center)
+			 to [bend left=15, looseness=0.50] cycle;
+		\draw [style=FILLBLUE] (0.center)
+			 to [bend right=60, looseness=0.75] (47.center)
+			 to [bend right=330] cycle;
+		\draw [style=FILLBLUE] (43.center)
+			 to [bend right=345] (0.center)
+			 to [bend right] cycle;
+		\draw [style=FILLBLUE] (0.center)
+			 to [bend right=75, looseness=1.75] (48.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=FILLBLUE] (21.center)
+			 to [bend left=45, looseness=1.25] (22.center)
+			 to [bend left=315] cycle;
+		\draw [style=FILLBLUE] (49.center)
+			 to (22.center)
+			 to [bend right=15, looseness=0.75] cycle;
+		\draw [style=FILLBLUE] (22.center)
+			 to [bend left=330, looseness=0.75] (21.center)
+			 to [in=165, out=15] cycle;
+		\draw [style=FILLBLUE] (53)
+			 to (50.center)
+			 to [bend right=15] (22);
+		\draw [style=FILLBLUE] (21.center)
+			 to [in=-150, out=-30, looseness=0.50] (53.center)
+			 to [in=345, out=-165, looseness=0.75] cycle;
+		\draw [style=FILLBLUE] (21.center)
+			 to [bend right=15] (51.center)
+			 to cycle;
+		\draw [style=FILLBLUE] (53.center)
+			 to [in=315, out=-135, looseness=1.25] (21.center)
+			 to [bend right=45] cycle;
+		\draw [style=FILLBLUE] (21.center)
+			 to [bend right=15] (52.center)
+			 to cycle;
+		\draw [style=FILLBLUE] (21.center)
+			 to [bend right=60, looseness=1.75] (53.center)
+			 to [bend left=60, looseness=2.00] cycle;
+	\end{pgfonlayer}
+\end{tikzpicture}

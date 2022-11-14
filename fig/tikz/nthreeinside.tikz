@@ -27,28 +27,28 @@
 		\node [style=none] (25) at (-4.5, 0) {};
 		\node [style=none] (26) at (-4, -0.25) {};
 		\node [style=none] (27) at (-3.5, 0) {};
-		\node [style=none] (28) at (-6.75, 8.5) {\textbf{Case 0}: Maximal 6 simple regions};
-		\node [style=BLACK] (29) at (1.75, 3.5) {};
-		\node [style=BLACK] (30) at (11.75, 3.5) {};
-		\node [style=NONE] (31) at (3.75, 6.5) {};
-		\node [style=NONE] (32) at (9.75, 6.5) {};
-		\node [style=NONE] (33) at (9.75, 0.5) {};
-		\node [style=NONE] (34) at (3.75, 0.5) {};
-		\node [style=none] (35) at (12.25, 4.25) {$w$};
-		\node [style=none] (36) at (1, 4.25) {$v$};
-		\node [style=none] (44) at (10.25, 7) {};
-		\node [style=none] (45) at (9.75, 7.25) {};
-		\node [style=none] (46) at (9.25, 7) {};
-		\node [style=none] (47) at (4.25, 7) {};
-		\node [style=none] (48) at (3.75, 7.25) {};
-		\node [style=none] (49) at (3.25, 7) {};
-		\node [style=none] (50) at (3.25, 0) {};
-		\node [style=none] (51) at (3.75, -0.25) {};
-		\node [style=none] (52) at (4.25, 0) {};
-		\node [style=none] (53) at (9.25, 0) {};
-		\node [style=none] (54) at (9.75, -0.25) {};
-		\node [style=none] (55) at (10.25, 0) {};
-		\node [style=none] (56) at (6.75, 8.5) {\textbf{Case 1}: At most 4 vertices};
+		\node [style=none] (28) at (-6.75, 8.5) {\textbf{Case 0.1}: Maximal 6 simple regions};
+		\node [style=BLACK] (29) at (1, -10) {};
+		\node [style=BLACK] (30) at (11, -10) {};
+		\node [style=NONE] (31) at (3, -7) {};
+		\node [style=NONE] (32) at (9, -7) {};
+		\node [style=NONE] (33) at (9, -13) {};
+		\node [style=NONE] (34) at (3, -13) {};
+		\node [style=none] (35) at (11.5, -9.25) {$w$};
+		\node [style=none] (36) at (0.25, -7.75) {$v$};
+		\node [style=none] (44) at (9.5, -6.5) {};
+		\node [style=none] (45) at (9, -6.25) {};
+		\node [style=none] (46) at (8.5, -6.5) {};
+		\node [style=none] (47) at (3.5, -6.5) {};
+		\node [style=none] (48) at (3, -6.25) {};
+		\node [style=none] (49) at (2.5, -6.5) {};
+		\node [style=none] (50) at (2.5, -13.5) {};
+		\node [style=none] (51) at (3, -13.75) {};
+		\node [style=none] (52) at (3.5, -13.5) {};
+		\node [style=none] (53) at (8.5, -13.5) {};
+		\node [style=none] (54) at (9, -13.75) {};
+		\node [style=none] (55) at (9.5, -13.5) {};
+		\node [style=none] (56) at (6, -5) {\textbf{Case 1}: At most 4 vertices};
 		\node [style=BLACK] (57) at (-12, -7.5) {};
 		\node [style=BLACK] (58) at (-2, -7.5) {};
 		\node [style=NONE] (59) at (-10, -4.5) {};
@@ -69,34 +69,14 @@
 		\node [style=none] (81) at (-4.5, -13.5) {};
 		\node [style=none] (82) at (-4, -13.75) {};
 		\node [style=none] (83) at (-3.5, -13.5) {};
-		\node [style=none] (84) at (-6.75, -2.75) {\textbf{Case 2}};
-		\node [style=BLACK] (85) at (1.75, -7.5) {};
-		\node [style=BLACK] (86) at (11.75, -7.5) {};
-		\node [style=NONE] (87) at (3.75, -4.5) {};
-		\node [style=NONE] (88) at (9.75, -4.5) {};
-		\node [style=NONE] (89) at (9.75, -13) {};
-		\node [style=NONE] (90) at (3.75, -13) {};
-		\node [style=none] (91) at (12.25, -6.75) {$w$};
-		\node [style=none] (92) at (1, -6.75) {$v$};
-		\node [style=none] (100) at (10.25, -4) {};
-		\node [style=none] (101) at (9.75, -3.75) {};
-		\node [style=none] (102) at (9.25, -4) {};
-		\node [style=none] (103) at (4.25, -4) {};
-		\node [style=none] (104) at (3.75, -3.75) {};
-		\node [style=none] (105) at (3.25, -4) {};
-		\node [style=none] (106) at (3.25, -13.5) {};
-		\node [style=none] (107) at (3.75, -13.75) {};
-		\node [style=none] (108) at (4.25, -13.5) {};
-		\node [style=none] (109) at (9.25, -13.5) {};
-		\node [style=none] (110) at (9.75, -13.75) {};
-		\node [style=none] (111) at (10.25, -13.5) {};
-		\node [style=none] (112) at (6.75, -2.75) {\textbf{Case 3/4}: At most 9 simple regions};
-		\node [style=NTHR] (113) at (4, 2) {};
-		\node [style=NTHR] (114) at (9.75, 4.75) {};
-		\node [style=NTHR] (115) at (5.5, 3.5) {};
-		\node [style=none] (116) at (9, 5.75) {$v'$};
-		\node [style=none] (117) at (5.5, 4.25) {$y$};
-		\node [style=none] (118) at (4.75, 2.5) {$w'$};
+		\node [style=none] (84) at (-6.75, -2.75) {\textbf{Case 2 and 3}: 14 regions};
+		\node [style=none] (112) at (6, 8.5) {\textbf{Case 0.2}: At most 11 simple regions};
+		\node [style=NTHR] (113) at (3, -11.75) {};
+		\node [style=NTHR] (114) at (9.25, -8.5) {};
+		\node [style=NTHR] (115) at (4.75, -10) {};
+		\node [style=none] (116) at (8.25, -7.75) {$v'$};
+		\node [style=none] (117) at (4.75, -9.25) {$y$};
+		\node [style=none] (118) at (4, -11.25) {$w'$};
 		\node [style=none] (119) at (-6.75, 6) {$d_1$};
 		\node [style=none] (120) at (-6.75, 4.25) {$d_2$};
 		\node [style=none] (121) at (-6.75, 2) {$d_3$};
@@ -107,17 +87,50 @@
 		\node [style=BLACK] (126) at (-5.25, -9.25) {};
 		\node [style=BLACK] (127) at (-4.25, -11) {};
 		\node [style=BLACK] (128) at (-2, -7.5) {};
-		\node [style=BLACK] (129) at (7.75, -5.75) {};
-		\node [style=BLACK] (130) at (7.75, -7.25) {};
-		\node [style=BLACK] (131) at (5.25, -9) {};
-		\node [style=BLACK] (132) at (5.5, -11) {};
-		\node [style=BLACK] (133) at (11.75, -7.5) {};
-		\node [style=none] (134) at (7, -6) {$u_1$};
-		\node [style=none] (135) at (6.5, -11.25) {$u_2'$};
-		\node [style=none] (136) at (6.5, -9) {$u_1'$};
-		\node [style=none] (137) at (7, -7.5) {$u_2$};
-		\node [style=NTHR] (138) at (8.25, 4) {};
-		\node [style=none] (139) at (8.25, 4.75) {$y'$};
+		\node [style=NTHR] (138) at (7.5, -9.5) {};
+		\node [style=none] (139) at (7, -9) {$y'$};
+		\node [style=BRGRAY] (140) at (3, -7.75) {};
+		\node [style=BRGRAY] (141) at (4.5, -7.5) {};
+		\node [style=BRGRAY] (142) at (8.75, -11) {};
+		\node [style=BRGRAY] (143) at (9.25, -10.25) {};
+		\node [style=BRGRAY] (144) at (6, -10.75) {};
+		\node [style=BRGRAY] (145) at (5.75, -8.25) {};
+		\node [style=BRGRAY] (146) at (8, -11.75) {};
+		\node [style=BRGRAY] (147) at (6.5, -7.75) {};
+		\node [style=BRGRAY] (148) at (3.5, -8.75) {};
+		\node [style=BRGRAY] (149) at (6.75, -12) {};
+		\node [style=BRGRAY] (150) at (3.25, -9.5) {};
+		\node [style=NTHR] (164) at (-9.5, -11) {};
+		\node [style=none] (165) at (-8.75, -11.25) {$v'$};
+		\node [style=BLACK] (166) at (1, 3.75) {};
+		\node [style=BLACK] (167) at (11, 3.75) {};
+		\node [style=NONE] (168) at (3, 6.75) {};
+		\node [style=NONE] (169) at (9, 6.75) {};
+		\node [style=NONE] (170) at (9, -1.75) {};
+		\node [style=NONE] (171) at (3, -1.75) {};
+		\node [style=none] (172) at (11.5, 4.5) {$w$};
+		\node [style=none] (173) at (0.25, 4.5) {$v$};
+		\node [style=none] (174) at (9.5, 7.25) {};
+		\node [style=none] (175) at (9, 7.5) {};
+		\node [style=none] (176) at (8.5, 7.25) {};
+		\node [style=none] (177) at (3.5, 7.25) {};
+		\node [style=none] (178) at (3, 7.5) {};
+		\node [style=none] (179) at (2.5, 7.25) {};
+		\node [style=none] (180) at (2.5, -2.25) {};
+		\node [style=none] (181) at (3, -2.5) {};
+		\node [style=none] (182) at (3.5, -2.25) {};
+		\node [style=none] (183) at (8.5, -2.25) {};
+		\node [style=none] (184) at (9, -2.5) {};
+		\node [style=none] (185) at (9.5, -2.25) {};
+		\node [style=BLACK] (186) at (7, 5.5) {};
+		\node [style=BLACK] (187) at (7, 4) {};
+		\node [style=BLACK] (188) at (4.5, 2.25) {};
+		\node [style=BLACK] (189) at (4.75, 0.25) {};
+		\node [style=BLACK] (190) at (11, 3.75) {};
+		\node [style=none] (191) at (6.25, 5.25) {$u_1$};
+		\node [style=none] (192) at (5.75, 0) {$u_2'$};
+		\node [style=none] (193) at (5.75, 2.25) {$u_1'$};
+		\node [style=none] (194) at (6.25, 3.75) {$u_2$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [bend left=15] (1) to (4);
@@ -197,24 +210,6 @@
 		\draw (81.center) to (61);
 		\draw (61) to (82.center);
 		\draw (83.center) to (61);
-		\draw [bend left=15] (86) to (89);
-		\draw (89) to (90);
-		\draw [bend left=15] (90) to (85);
-		\draw [bend left=15] (85) to (87);
-		\draw (87) to (88);
-		\draw [bend left=15] (88) to (86);
-		\draw (100.center) to (88);
-		\draw (88) to (101.center);
-		\draw (88) to (102.center);
-		\draw (87) to (104.center);
-		\draw (103.center) to (87);
-		\draw (87) to (105.center);
-		\draw (108.center) to (90);
-		\draw (90) to (107.center);
-		\draw (106.center) to (90);
-		\draw (109.center) to (89);
-		\draw (89) to (110.center);
-		\draw (111.center) to (89);
 		\draw [bend right=15] (29) to (115);
 		\draw [bend left=15] (115) to (30);
 		\draw (30) to (114);
@@ -256,36 +251,76 @@
 		\draw [style=FILLBLUE] (57.center)
 			 to [bend right=75, looseness=1.75] (128.center)
 			 to [bend left=90, looseness=1.75] cycle;
-		\draw [style=FILLBLUE] (85.center)
-			 to [bend left=45, looseness=1.25] (86.center)
-			 to [bend left=315] cycle;
-		\draw [style=FILLBLUE] (129.center)
-			 to (86.center)
-			 to [bend right=15, looseness=0.75] cycle;
-		\draw [style=FILLBLUE] (86.center)
-			 to [bend left=330, looseness=0.75] (85.center)
-			 to [in=165, out=15] cycle;
-		\draw [style=FILLBLUE] (133)
-			 to (130.center)
-			 to [bend right=15] (86);
-		\draw [style=FILLBLUE] (85.center)
-			 to [in=-150, out=-30, looseness=0.50] (133.center)
-			 to [in=345, out=-165, looseness=0.75] cycle;
-		\draw [style=FILLBLUE] (85.center)
-			 to [bend right=15] (131.center)
-			 to cycle;
-		\draw [style=FILLBLUE] (133.center)
-			 to [in=315, out=-135, looseness=1.25] (85.center)
-			 to [bend right=45] cycle;
-		\draw [style=FILLBLUE] (85.center)
-			 to [bend right=15] (132.center)
-			 to cycle;
-		\draw [style=FILLBLUE] (85.center)
-			 to [bend right=60, looseness=1.75] (133.center)
-			 to [bend left=60, looseness=2.00] cycle;
 		\draw [style=EDGE, bend left, looseness=0.75] (0) to (14);
 		\draw [style=EDGE, bend right=15] (13) to (0);
 		\draw [style=EDGE] (0) to (15);
 		\draw [style=EDGE] (15) to (8);
+		\draw [style=ULTRAGRAY] (140) to (29);
+		\draw [style=ULTRAGRAY] (141) to (29);
+		\draw [style=ULTRAGRAY] (143) to (30);
+		\draw [style=ULTRAGRAY] (30) to (142);
+		\draw [style=ULTRAGRAY] (142) to (143);
+		\draw [style=ULTRAGRAY] (141) to (140);
+		\draw [style=ULTRAGRAY, bend right=345] (144) to (29);
+		\draw [style=ULTRAGRAY] (144) to (143);
+		\draw [style=ULTRAGRAY] (145) to (141);
+		\draw [style=ULTRAGRAY] (145) to (30);
+		\draw [style=ULTRAGRAY, bend right] (146) to (30);
+		\draw [style=ULTRAGRAY] (30) to (147);
+		\draw [style=ULTRAGRAY] (147) to (141);
+		\draw [style=ULTRAGRAY] (142) to (146);
+		\draw [style=ULTRAGRAY] (148) to (29);
+		\draw [style=ULTRAGRAY] (148) to (141);
+		\draw [style=ULTRAGRAY] (146) to (149);
+		\draw [style=ULTRAGRAY, bend right=45] (149) to (30);
+		\draw [style=ULTRAGRAY] (29) to (150);
+		\draw [style=ULTRAGRAY] (150) to (148);
+		\draw [style=ULTRAGRAY] (150) to (148);
+		\draw [style=EDGE, bend left=15, looseness=1.25] (164) to (57);
+		\draw [bend left=15] (167) to (170);
+		\draw (170) to (171);
+		\draw [bend left=15] (171) to (166);
+		\draw [bend left=15] (166) to (168);
+		\draw (168) to (169);
+		\draw [bend left=15] (169) to (167);
+		\draw (174.center) to (169);
+		\draw (169) to (175.center);
+		\draw (169) to (176.center);
+		\draw (168) to (178.center);
+		\draw (177.center) to (168);
+		\draw (168) to (179.center);
+		\draw (182.center) to (171);
+		\draw (171) to (181.center);
+		\draw (180.center) to (171);
+		\draw (183.center) to (170);
+		\draw (170) to (184.center);
+		\draw (185.center) to (170);
+		\draw [style=FILLBLUE] (167.center)
+			 to [bend left=315] (166.center)
+			 to [bend left=45, looseness=1.25] cycle;
+		\draw [style=FILLBLUE] (186.center)
+			 to (167.center)
+			 to [in=345, out=135, looseness=0.75] cycle;
+		\draw [style=FILLBLUE] (166.center)
+			 to [in=165, out=15] (167.center)
+			 to [bend left=330, looseness=0.75] cycle;
+		\draw [style=FILLBLUE] (190)
+			 to (187.center)
+			 to [bend right=15] (167);
+		\draw [style=FILLBLUE] (190.center)
+			 to [in=345, out=-165, looseness=0.75] (166.center)
+			 to [in=-150, out=-30, looseness=0.50] cycle;
+		\draw [style=FILLBLUE] (166.center)
+			 to [bend right=15] (188.center)
+			 to cycle;
+		\draw [style=FILLBLUE] (166.center)
+			 to [bend right=45] (190.center)
+			 to [in=315, out=-135, looseness=1.25] cycle;
+		\draw [style=FILLBLUE] (189.center)
+			 to (166.center)
+			 to [bend right=15] cycle;
+		\draw [style=FILLBLUE] (166.center)
+			 to [bend right=60, looseness=1.75] (190.center)
+			 to [bend left=60, looseness=2.00] cycle;
 	\end{pgfonlayer}
 \end{tikzpicture}

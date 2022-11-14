@@ -37,11 +37,11 @@ We are going to present a polynomial-time preprocessing procedure giving a linea
 \label{tbl:kernels}
 \end{table}
 
-In the following years, this approach bore fruits in other planar problems as well 
+In the following years, this approach bore fruits in other planar problems as well:
 a $11/3$ kernel for \name{Connected Vertex Cover}\xspace given in \cite{Kowalik2013},
 $624k$ for \name{Maximum Triangle Packing}\xspace in \cite{Wang2011},
 $40k$ for \name{Induced Matching}\xspace in \cite{Kanj2011},
-$13k$ for \name{Feedback Vertex Set}\xspace ($13k$ in \cite{Bonamy2016} and further linear kernels for
+$13k$ for \name{Feedback Vertex Set}\xspace \cite{Bonamy2016} and further linear kernels for
 \name{Full-Degree Spanning Tree}\xspace in \cite{Guo2006} and
 \name{Cycle Packing}\xspace in \cite{Garnero2019}.
 
@@ -594,19 +594,18 @@ For the sake of completeness, we state an algorithm on how a maximal \sr between
 
 \section{Bounding the Size of the Kernel}
 
-We now put all the pieces together to prove the main result: A kernel bounded linear in the solution size $k$. For that purpose, we distinguish between those vertices that are covered inside a region in a maximal \dreg and those that are not. 
-In both cases, our reduction rules bound the number of vertices to a constant size which means the kernel size does only depend on the number of regions of these decompositions. 
-As \cref{lemma:numRegions} states that for any given dominating set $D$, we can partition the whole graph into a linear number of regions.
+We now put all the pieces together to prove the main result: A kernel which siye is linearly bounded by the solution size $k$. For that purpose, we distinguish between those vertices that are covered inside a region in a maximal \dreg and those that are not. 
+In both cases, our reduction rules bound the number of vertices to a constant size.
+As \cref{lemma:numRegions} states that for any given dominating set $D$, we can partition the whole graph into a linear number of regions in $k$, we know that we also only have linearly many vertices left in the whole graph.
 In particular, we show that given a \sdom $D$ of size $k$, there exists a maximal \dreg $\mathfrak{R}$ such that:
 
 \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
     \item $\mathfrak{R}$ has only at most $3 \abs{D} - 6$ regions
     \item $V(\mathfrak{R})$ covers most vertices of V. There are at most $144 \cdot \abs{D}$ vertices outside of any region.
-    \item each region of $\mathfrak{R}$ contains at most $139$ vertices % TODO, fill in
+    \item each region of $\mathfrak{R}$ contains at most $139$ vertices.
 \end{enumerate}
 
-Combining these three statements will give us a linear kernel. \Cref{fig:overview} depicts them in \textit{yellow}.
-
+Combining these three statements will give us a linear kernel. \Cref{fig:overview} depicts these three goals in \textit{yellow}.
 \subsection{Bounding the Size of a Region}
 
 We start with a more fine-grained analysis of the impact of the different cases of \cref{rgl:rtwo} on a $vw$-region. The main idea is to count the number of simple regions in the $vw$-region and then use the bound on the size of a simple region after \cref{rgl:rthree} was applied exhaustively. The bound was obtained in \cref{lemma:simpleregionbound}.   
@@ -617,8 +616,8 @@ We start with a more fine-grained analysis of the impact of the different cases 
     For any $vw$-regions $R \in \mathfrak{R}$ it holds that $\abs{N_1(v,w) \cap V(R)} \leq 4$ and these vertices lay exactly on the boundary $\partial R$ of $R$. 
 \end{lemma}
 \begin{proof}
-The same argument as in \cite{Alber2004} and \cite[Proposition 2, Revision 2018]{Garnero2019} applies here:
-Let $P_1 = (v, u_1, u_2,w)$ and $P_2 = (v, u_3, u_4,w)$ be the two boundary paths enclosing the region $R$ from $v$ to $w$. By definition of a region, they have a length of at most 3. Because every vertex in $R$ belongs to $N(v,w)$, but a vertex from $N_1(v,w)$ also has neighbors outside $N(v,w)$, it \emph{must} lie on one of the boundary paths $P_1, P_2$.
+The same argument as proposed by Alber, Fellows and Niedermeier \cite{Alber2004}, and Garnero and Sau\cite[Proposition 2, Revision 2018]{Garnero2019} applies here:
+Let $P_1 = (v, u_1, u_2,w)$ and $P_2 = (v, u_3, u_4,w)$ be the two boundary paths enclosing the $vw$-region $R$. By the definition of a region, they have a length of at most 3. Because every vertex in $R$ belongs to $N(v,w)$, but a vertex from $N_1(v,w)$ also has neighbors outside $N(v,w)$, it \emph{must} lie on one of the boundary paths $P_1, P_2$.
 Therefore, $R$ has at most four boundary vertices and $\abs{N_1(v,w) \cap V(R)} \leq 4$.
 
 Clearly, the worst case is achieved, if the two confluent paths $P_1$ and $P_2$ are vertex-disjoint. 
@@ -631,9 +630,9 @@ Clearly, the worst case is achieved, if the two confluent paths $P_1$ and $P_2$ 
     Let $P_1 = (v,u_1, u_2,w)$ and $P_2 = (v, u_3, u_4, w)$ be the two boundary paths of $R$. As in the previous \cref{lemma:nonecover}, the worst case is achieved if they are vertex-disjoint. Otherwise, a smaller bound would be obtained.
 
     By definition of $N_2(v,w)$, vertices from $N_2(v,w) \cap V(R)$ are common neighbors of $v$ or $w$ and one of $\{u_1,u_2,u_3,u_4\}$.
-    By planarity, we can cover $N_2(v,w) \cap V(R)$ with at most 6 simple regions. To see this, imagine the graph where edges denote all possible simple $vw$-regions (See fig. \ref{fig:maxntwoinside}). There are at most 8 simple regions possible. but we have to remove at least two of them to maintain planarity.
-    
-    Furthermore, assuming the graph to be reduced, any intermediate $N_3(v,w)$ which could separate multiple simple regions between $v$ and $u_i$ has been deleted by \cref{rgl:rone} already.
+    By planarity, we can cover $N_2(v,w) \cap V(R)$ with at most 6 simple regions among 8 pairs of vertices (See fig. \ref{fig:maxntwoinside}).
+
+    %Furthermore, assuming the graph to be reduced, any intermediate $N_3(v) \cup N_3(w)$ which could separate multiple simple regions between $v$ and $u_i$ has been deleted by \cref{rgl:rone} already.
 \end{proof}
 
 \begin{figure}[!ht]
@@ -655,10 +654,9 @@ We continue by giving a constant bound on the number of simple regions that cove
     \end{enumerate}
 \end{lemma}
 
-Observe that in the first case, we can assume that no case of \cref{rgl:rtwo} has been applied, but the claim is a direct consequence of the assumption $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$. If \cref{case:c2} \cref{case:c3} has been applied $N_{2,3}(v,w)$ gets reduced and the second case can be applied. For the sake of completeness, we will restate (an slightly adjusted version of) the proof from Garnero and Sau (\cite[Revision 2014, Fact 6]{Garnero2018}). 
+Observe that in the first case, we can assume that no case of \cref{rgl:rtwo} has been applied, but the claim is a direct consequence of the assumption $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$. If \cref{case:c2} or \cref{case:c3} have been applied, $N_{2,3}(v,w)$ gets reduced and the second case can be applied. For the sake of completeness, we will restate (a slightly adjusted version of) the proof from Garnero and Sau \cite[Revision 2014, Fact 6]{Garnero2018}. 
 
-% Not sure whether following is good.
-Note that this analysis provides a quick upper bound, but doing it more sophisticated could yield a better bound, because having $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$ would restrict the region more than analyzing these sets independently.
+Note that this analysis provides a quick upper bound that might not be tight and executing it more sophisticated could yield a better bound because taking both $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$ in concern, our regions might get even more restricted.
 
 \begin{proof}
         We partition $N_3(v,w)$ into the distinct $N_3(v,w) \setminus N(w)$, $N_3(v,w) \setminus N(v)$ and $N_3(v,w) \cap N(v) \cap N(w)$ and then analyze how many simple regions can there be in the worst case.
@@ -684,32 +682,35 @@ Note that this analysis provides a quick upper bound, but doing it more sophisti
     Let \G be a plane graph reduced under \cref{rgl:rone,rgl:rtwo,rgl:rthree}. Furthermore, let $D$ be an SDS of G and let $v,w \in D$. Any $vw$-region R contains at most 87 vertices distinct from its poles.
 \end{lemma}
 \begin{proof} 
-    By \cref{lemma:nonecover,lemma:ntwocover} and \cref{lemma:simpleregionbound} to bound the number of vertices inside a simple region, we know that $\abs{N_1(v,w) \cap V(R)} \leq 4$ and $\abs{N_2(v,w) \cap V(R)} \leq 6 \cdot 4 = 24$.
+    By \cref{lemma:nonecover,lemma:ntwocover} and \cref{lemma:simpleregionbound} to bound the number of vertices inside a simple region, we know that $\abs{N_1(v,w) \cap V(R)} \leq 4$. Furthermore, $\abs{N_2(v,w) \cap V(R)} \leq 6 \cdot 4 = 24$, because after the reduction a simple region has at most 4 vertices distinct from its poles and has at most 6 simpler regions covering all $N_2(v, w)$.
     
-    It is remaining to bound for \nthi, but gladly we have \cref{rgl:rtwo}, which gracefully took care of them! \cref{fig:nthreeinside} shows the worst-case amount of simple regions the individual cases can have.
+    It is remaining to bound for \nthi, but gladly we have \cref{rgl:rtwo}, which gracefully took care of them! We will now shortly do a distinction about the different cases of \cref{rgl:rtwo}. \Cref{fig:nthreeinside} shows the worst-case amount of simple regions the individual cases can have.
     
     \begin{caseofz}
         %% TODO Check if that is correct and compare it with the latest paper
-        \casez{\cref{rgl:rtwo} has \textbf{not} been applied in the following two cases: Either $\Dvw \neq \emptyset$ or ($\Dvw = \emptyset \wedge \Dv \neq \emptyset \wedge \Dw \neq \emptyset$):}
+        \casez{\cref{rgl:rtwo} has \textbf{not} been applied in the following two cases: Either $\Dvw \neq \emptyset$ or $\Dvw = \emptyset \wedge \Dv \neq \emptyset \wedge \Dw \neq \emptyset$:}
 
         \begin{enumerate}
-            \item If $\Dvw \neq \emptyset$, there exists a set $\tilde D = \{d_1,d_2,d_3\} \in \Dvw$ of at most three vertices dominating $N_3(v,w)$. We observe that vertices from \nthi~ are common neighbors of either v or w (by the definition of a $vw$-region) and at least one vertex from $\tilde D$. Without violating planarity, we can span at most distinct 6 simple regions. Using the bound of simple regions (\cref{lemma:simpleregionbound}) and including $\abs{\tilde D} = 3$, we can conclude $\nthi \leq 6 \cdot 4 + 3 = 27$.
-            \item If $\Dvw = \emptyset$, $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$, we can apply \cref{lemma:rtwosr} and although \cref{rgl:rtwo} has not changed the G, we can cover R with at most $11$ simple regions giving us $\nthi \leq 11 \cdot 4 = 44$ vertices.
+            \item If $\Dvw \neq \emptyset$, there exists a set $\tilde D = \{d_1,d_2,d_3\} \in \Dvw$ of at most three vertices dominating $N_3(v,w)$. We observe that vertices from \nthi~ are common neighbors of either v or w (by the definition of a $vw$-region) and at least one vertex from $\tilde D$, because someone has to dominate them and we know that only the poles or vertices in $\tilde D$ come into question.
+            Without violating planarity, we can span at most 6 distinct simple regions. Using the bound of simple regions (worst case shown in \cref{lemma:simpleregionbound}) and including $\abs{\tilde D} = 3$, we can conclude $\nthi \leq 6 \cdot 4 + 3 = 27$.
+            \item If $\Dvw = \emptyset$, $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$, we can apply \cref{lemma:rtwosr} and although \cref{rgl:rtwo} has not changed the graph $G$, we can cover $R$ with at most $11$ simple regions giving us $\nthi \leq 11 \cdot 4 = 44$ vertices.
         \end{enumerate}
         
-        %% TODO even that: is it correct regarding N2?
-        \casez{If \cref{rgl:rtwo} \Cref{case:c1} has been applied} \ntwi was entirely removed and \nthi replaced by at most four new vertices $v', w'$ and $y$ and $y'$. Hence $\nthi \leq 4$.
+        \casez{If \cref{rgl:rtwo} \Cref{case:c1} has been applied,} \ntwi was entirely removed and \nthi replaced by at most four new vertices $v', w'$ and $y$ and $y'$. Hence $\nthi \leq 4$.
 
 %        \casez{If \cref{rgl:rtwo} \Cref{case:c2} has been applied} As we know that $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$, we can apply \cref{lemma:rtwosr} and although \cref{rgl:rtwo} has not changed the G, we can cover R with at most $11$ simple regions giving as $\nthi \leq 11 \cdot 6 = 66$ vertices. 
         
-        \casez{If \cref{rgl:rtwo} \Cref{case:c2,case:c3} have been applied}, we know that $(N_{2,3}(v) \cap N_3(v,w)) \subseteq N_{2,3}(v)$ was removed and replaced by one single vertex. Applying \cref{lemma:rtwosr}, we can cover $(N_3(v,w) \setminus \{v'\} \cap V(R)$ with at most $14$ simple regions giving us $\abs{\nthi} \leq 14 \cdot 4 + 1 = 57$.
+        \casez{If \cref{rgl:rtwo} \Cref{case:c2,case:c3} have been applied, } we know that $N_{2,3}(v) \cap N_3(v,w) \subseteq N_{2,3}(v)$ was removed and replaced by one single vertex. Applying \cref{lemma:rtwosr}, we can cover $N_3(v,w) \setminus \{v'\} \cap V(R)$ with at most $14$ simple regions giving us $|\nthi| \leq 14 \cdot 4 + 1 = 57$.
     \end{caseofz}
     
     \begin{figure}[!ht]
         \begin{equation*}
             \tikzfig{fig/tikz/nthreeinside}
         \end{equation*}
-        \caption[Bounding number of simple regions with inside a $vw$-region R]{\textit{TODO}}
+        \caption[Bounding number of simple regions with inside a $vw$-region R]{\textit{Showing the worst case scenarios for the different cases in \cref{lemma:inside}: \textbf{Case 0.1}: $\Dvw$ is nonempty and we have three vertices that can dominate $N_{2,3}$ alone. They can span simple regions with the $N_3(v,w)$ vertices.
+         \textbf{Case 1}: $N_{2,3}$ was removed and four vertices introduced.
+        \textbf{Case 2 and 3}: At most $14$ simple regions after $N_{2,3}$ has been replaced by a single $v'$. 
+        \textbf{Case 0.2}: $\Dvw$, $\Dv$ and $\Dw$ are all empty, so the rule has not changed anything and we can cover $N_3(v, w)\cap V(R)$ with at most 11 simple regions.}}
         \label{fig:nthreeinside}
     \end{figure}
     
