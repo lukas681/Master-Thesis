@@ -720,7 +720,7 @@ Note that this analysis provides a quick upper bound that might not be tight and
 \end{proof}
 
 \subsection{Number of Vertices outside the Decomposition}
-We continue to bound the number of vertices that do not lay inside any region of a maximal \dreg $\mathfrak{R}$, that is, we bound the size of $V \setminus \VR$. \cref{rgl:rone} ensures that we only have a small amount of $N_3(v)$-pendants. We then try to cover the rest with as few simple regions as possible, because, by application of \cref{rgl:rthree}, these simple regions are of constant size.
+We continue to bound the number of vertices that do not lay inside any region of a maximal \dreg $\mathfrak{R}$, that is, we bound the size of $V \setminus \VR$. \Cref{rgl:rone} ensures that we only have a small amount of $N_3(v)$-pendants. We then try to cover the rest with as few simple regions as possible, because, by application of \cref{rgl:rthree}, these simple regions are of constant size.
 
 %Ref to 4.3
 
@@ -729,13 +729,12 @@ We continue to bound the number of vertices that do not lay inside any region of
 %    (Deprecated) Every vertex in $u \in V \setminus V(\mathfrak{R})$ is either in D or belongs to a set $N_2(v) \cup N_3(v)$.
 %\end{lemma}
 
-\noindent The following lemma states that no vertex from $N_1(v)$ will be outside of a maximal \dreg.
+\noindent The following lemma states that no vertex from $N_1(v)$ will be outside of a maximal \dreg which was already proven by Alber, Fellows and Niedermeier \cite[Lemma 6]{Alber2004}.
 
 \begin{lemma}\label{lemma:noneinside}
-    \cite[Lemma 6]{Alber2004}
     Let \G be a plane graph and $\mathfrak{R}$ be a maximal \dreg of a \dom $D$. If $u \in N_1(v)$ for some vertex $v \in D$ then $u \in V(\mathfrak{R})$.
-    
 \end{lemma}
+
 In the following, we define $\dGR(v) = \abs{\{R(v,w) \in \mathfrak{R}, w \in D\}}$ to be the number of regions in $\mathfrak{R}$ having $v$ as a pole. 
 
 \begin{corollary}
@@ -743,16 +742,14 @@ In the following, we define $\dGR(v) = \abs{\{R(v,w) \in \mathfrak{R}, w \in D\}
 \end{corollary}
 \begin{proof}\label{lemma:polesBound}
     
-    The proof follows directly from the handshake lemma applied to the underlying multigraph~\GR where every edge between $v,w \in D$ represents a region between $v$ and $w$ in $\mathfrak{R}$.
+    The proof follows directly from the handshake lemma applied to the underlying multigraph~\GR~ where every edge between $v,w \in D$ represents a region between $v$ and $w$ in $\mathfrak{R}$.
 \end{proof}
 
 \begin{proposition}\label{lemma:outside}
     Let \G be a plane graph reduced under \cref*{rgl:rone,rgl:rtwo} and let D be a \sdom of G. For a maximal \dreg $\mathfrak{R}$,  $\abs{V \setminus (V(\mathfrak{R}) \cup D)} \leq 97 \abs{D}$
 \end{proposition}
 
-With slight modifications, the proof given in \cite[Revision 2014]{Garnero2018} will also apply for \sdom. Although we assume G to be entirely reduced, the following proof only relies on \cref{rgl:rone,rgl:rthree}. The proof uses the observation that vertices from $N_2(v)$ that lie outside of a region must span simple regions between those from $\{v\} \cup N_1(v)$.
-
-%TODO: note that we got the same bound as Garnero...
+With slight modifications, the proof given by Garnero and Sau \cite[Revision 2014]{Garnero2018} will also apply for \sdom. Although we assume $G$ to be entirely reduced, the following proof only relies on \cref{rgl:rone,rgl:rthree}. The proof uses the observation that vertices from $N_2(v)$ that lie outside of a region must span simple regions between those from $\{v\} \cup N_1(v)$.
 
 \begin{proof}
     Again, we will follow the proof proposed by Alber, Fellows, Niedermeier \cite[Proposition 2]{Alber2004}. 
@@ -765,7 +762,9 @@ With slight modifications, the proof given in \cite[Revision 2014]{Garnero2018} 
     
     \[\abs{\bigcup_{v \in D}N_3(v) \setminus V(\mathfrak{R})} \leq \abs{D}\]
     
-    \noindent$\mathbf{N_2(v)}$: According to Garnero and Sau \cite[Proposition 2]{Garnero2018}, we know that $N_2(v) \setminus V(\mathfrak{R})$ can be covered by at most $4 \dGR(v)$ simple regions between $v$ and some vertices from $N_1(v)$ on the boundary of a region in $\mathfrak{R}$. Figure \ref{fig:kernelSize} gives some intuition, but intuitively, we can span two simple regions to each of the vertices from $N_1(v)$ on the two border vertices for each $R \in \mathfrak{R}$.
+    \noindent$\mathbf{N_2(v)}$: According to Garnero and Sau \cite[Proposition 2]{Garnero2018}, we know that $N_2(v) \setminus V(\mathfrak{R})$ in a reduced graph can be covered by at most $4 \dGR(v)$ simple regions between $v$ and some vertices from $N_1(v)$ on the boundary of a region in $\mathfrak{R}$. 
+    As their argument 
+    Figure \ref{fig:kernelSize} gives some intuition, but intuitively, we can span two simple regions to each of the vertices from $N_1(v)$ on the two border vertices for each $R \in \mathfrak{R}$.
     
     Because we assume $G$ to be reduced, by \cref{lemma:simpleregionbound} a simple region can have at least $4$ vertices distinct from its poles and hence,
     
@@ -816,13 +815,14 @@ With slight modifications, the proof given in \cite[Revision 2014]{Garnero2018} 
 % TODO: Shift before other parts, because this result is heavily used
 \subsection{Bounding the Number of Regions}
 
-Alber, Fellows and Niedermeier \cite[Proposition 1]{Alber2004} gave a greedy algorithm to construct a maximal \dreg for a \dom. Building upon these results, Garnero and Sau gave stated explicit decomposition algorithms for \rbdom \cite{Garnero2017} and \tdom \cite{Garnero2018} relying on the same technique. This is the core of our linear kernelization because it states that given a \dom D, we can decompose the graph into a \textit{linear number} of regions.
+We are now utilizing the final tool in our toolbox. Alber, Fellows and Niedermeier \cite[Proposition 1]{Alber2004} gave an explicit greedy algorithm to construct a maximal \dreg for a \dom. 
+The existence of this algorithm is the core for all following works because they always involve region decompositions. For example, Garnero and Sau used it for \rbdom \cite{Garnero2017} and \tdom \cite{Garnero2018}. This missing puzzle piece will now assemble everything we have set-up so far giving us the linear kernelization we are looking for.
 
-% TODO Better English? to span
+For the following lemma, Alber, Fellows and Niedermeier\cite{Alber2004} required a reduced instance and their reduction rules for \pdom differed form ours. Luckily, they do not rely on any specific properties following from a reduced graph and therefore, we can just use it for our kernelization algorithm as well.
 
-Although Alber, Fellows and Niedermeier\cite{Alber2004} gave different reduction rules and require a \textit{reduced} instance as an assumption for the following lemma, they do not use any specific properties exposed by these rules, which was already observed by Garnero and Stau \cite[Revision xx]{Garnero2018}.
-As every \sdom is also a \dom, we can safely apply it to our problem as well. 
-For a more detailed and formal proof, one can also refer to \cite[Proposition 1]{Garnero2018}.
+This was already observed by Garnero and Sau \cite[Revision 2018]{Garnero2018} and a more formal proof along with the description of the algorithm was provided.
+
+Because every \sdom is indeed also a \dom, we can safely apply it to \psdom as well. 
 
 \begin{lemma}[{\cite[Proposition 1 and Lemma 5]{Alber2004}}]\label{lemma:numRegions}
     Let G be a reduced plane graph and let D be a \sdom with $\abs{D}\geq 3$. There is a maximal D-region decomposition of G such that $\abs{R} \leq 3 \cdot \abs{D} - 6$.

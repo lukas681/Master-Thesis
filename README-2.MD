@@ -37,6 +37,7 @@ Acronyms
 34) Introduce notion of pendants
 35) Color scheme blindgerecht
 36) All quotations PERSON - CITE - WHAT 
+37) Reference to Monzy
 
 TODO: Look up unknown graph theoretic terms for me.
 
