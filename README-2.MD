@@ -39,6 +39,8 @@ Acronyms
 36) All quotations PERSON - CITE - WHAT 
 38) a/an semitotal dominating set=?
 37) Reference to Monzy
+38) “An arm, you goose! Who ever saw one that size? Why, it fills the whole window!”
+
 
 TODO: Look up unknown graph theoretic terms for me.
 
