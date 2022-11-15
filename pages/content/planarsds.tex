@@ -206,8 +206,9 @@ We now have all the definitions ready to formally define a maximal \dreg on plan
 % TODO: Wording: "kernel" is precise enough here.
 We are introducing a special subset of a region, namely \textit{simple region} where every vertex is a common neighbor of $v$ and $w$. 
 They will appear in many unexpected astonishing places and are an important tool to operate on small parts of a plane graph.
-The upcoming \cref{rgl:rthree} will bound the size of these \textit{simple regions}. Interestingly, in the first version of the paper about the linear kernel for \ptdom (\cite[Revision 2014]{Garnero2018}), they were not given independently but covered by one of their reduction rules (Rule 2). 
-As it turned out, the analysis is getting simpler if we treat them in a separate rule (In our case: \cref{rgl:rthree}) and so did Garnero and Sau in a revised version of their paper four years later (\cite{Garnero2018}).
+The upcoming \cref{rgl:rthree} will bound the size of these \textit{simple regions}. Interestingly, in the first version o
+f the paper about the linear kernel for \ptdom \cite[Revision 2014]{Garnero2018}, they were not given independently but covered by one of their reduction rules (Rule 2). 
+As it turned out, the analysis is getting simpler if we treat them in a separate rule (In our case: \cref{rgl:rthree}) and so did Garnero and Sau \cite{Garnero2018} in a revised version of their paper four years later.
 
 \begin{minipage}{\textwidth}
 \begin{definition}
@@ -459,12 +460,14 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
 % What happens if D != empty?
 \subsection{Reduction Rule III: Shrinking Simple Regions}
 
-If two vertices $v$ and $w$ share enough neighbors with each other, we can sometimes conclude at least one of them to be in a solution. 
+Recall that a simple region is a region, where the entire neighborhood of the poles is shared.  
+
 
 By planarity, a \textit{simple region} has at most two vertices from $N_1(v,w)$ (namely the border $\partial$), two vertices from $N_2(v,w)$ connected to the border and unlimited $N_3(v,w)$ vertices squeezed in the middle.
 
 With a more sophisticated analysis, we were able to modify this rule such that the bound given in \cite{Garnero2018} remained valid although we might have to add some more vertices as orginally described.
 
+In contr
 %  In order to gain the same bound as .
 
 %We notice that a reduction must preserve the $N_1(v,w)$ vertices, because they can be important as dominating vertices. 
@@ -492,8 +495,12 @@ With a more sophisticated analysis, we were able to modify this rule such that t
 %The lowest number of shared vertices we could come up with 
 %
 %
-%While first directly embedding the following \cref{rgl:rthree} into \cite[Revision 2014]{Garnero2018} into \cref{rgl:rtwo}, Garnero and Sau decided in \cite[Revision 2018]{Garnero2018} to the reduction into a separate rule simplyfing the further analysis. 
-%
+While first embedding a reduction procedure for the \ptdom directly into their rule two, Garnero and Sau \cite[arxiv, TCS]{Garnero2018} decided to decouple it into a separate rule.
+% Describe Rule?
+
+Unfortunately, a $\tdom$ is easier to handle 
+%% TODO Describe IDEA
+
 %For a total dominating set, it is sufficient to check ...
 %
 %
@@ -561,6 +568,7 @@ Recap that we denoted $\partial R$ as the set of boundary vertices of the (simpl
 
          \textbf{Contrary, assume} $V(R \setminus \partial R) \ncong P_3$. Again, let us denote this induced path as $(p_1,p_2,p_3)$. We observe that without contradicting the planarity of $G$ the induced subgraph of the vertices $G[R \setminus \partial R]$ must be a subgraph of a $P_j$ for $j = \abs{V(R \setminus \partial R)}$ and  $j \geq 3$.  By assumption, we either have this as either a $P_3$ with at least one missing edge or a larger $P_j$. Therefore, it is impossible to dominate all these vertices with one single vertex $p_i$ if we also assume that no vertex in $\partial R$ is dominating. Hence, we set $D' = D$.
 
+         In all cases $\abs{D} = \abs{D'}$
         \item[$\Leftarrow$] Consider a \sdom $D$ in $G'$. We show that $G$ has an \sdom with $\abs{D} \leq \abs{D'}$. By assumption, we have $\Dvw = \emptyset$. We analyze both cases separately.
 
          \textbf{First, assume} $V(R \setminus \partial R) \cong P_3$. Here, \cref{case:rto} has been applied and $V(R \setminus R)$ replaced by one single vertex $y$. We denote the induced path in $G$ as $(p_1,p_2,p_3)$.
@@ -570,6 +578,10 @@ Recap that we denoted $\partial R$ as the set of boundary vertices of the (simpl
          \textbf{Contrary, assume} $V(R \setminus \partial R) \ncong P_3$ and \cref{case:rtt} has been applied and $V(R \setminus R)$ replaced by two vertices $y$ and $y'$. Observe that neither $y$ nor $y'$ is useful in any \sdom in $G'$: If both $y, y' \in D'$, we simply replace them by $v$ and $w$ and if only $y \in D$ (resp. $y'$), then we need either $v \in D'$ or $w \in D'$ to dominate $y'$ and again, we replace them by $v$ and $w$. 
          We can even ignore that $y$ or $y'$ is important as a witness, because as $d(v,w) \leq 2$, $v$, $w$ and $v$ always witness each other.
          Hence \textit{at least one of} $\{v,w \}$ must be in \sdom simulating an ``OR-gadget''. Therefore, also $V(R \partial R)$ is dominated by either $v$ or $w$. All the witnesses stayed the same and hence, we simply set $D = D'$.
+         
+         In all of the cases $\abs{D} = \abs{D'}$
+
+
     \end{enumerate}
  
 \end{proof}

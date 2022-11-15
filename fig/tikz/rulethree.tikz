@@ -14,11 +14,11 @@
 		\node [style=DOM] (13) at (-6.75, 0) {};
 		\node [style=BLACK] (14) at (-0.75, 0) {};
 		\node [style=NONE] (15) at (-3.75, 3.5) {};
-		\node [style=NTWO] (16) at (-3.75, 2.75) {};
+		\node [style=BRGRAY] (16) at (-3.75, 2.75) {};
 		\node [style=BRGRAY] (17) at (-3.75, 1.5) {};
 		\node [style=BRGRAY] (21) at (-3.75, -0.5) {};
 		\node [style=BRGRAY] (22) at (-3.75, -1.5) {};
-		\node [style=NTWO] (23) at (-3.75, -2.5) {};
+		\node [style=BRGRAY] (23) at (-3.75, -2.5) {};
 		\node [style=NONE] (24) at (-3.75, -3.25) {};
 		\node [style=BLACK] (25) at (-3.75, 0.75) {};
 		\node [style=BLACK] (26) at (-3.75, -0.75) {};
@@ -126,16 +126,16 @@
 			 to [in=240, out=15] (14.center)
 			 to [in=-15, out=120] (15.center)
 			 to [in=60, out=-165] cycle;
-		\draw (16) to (13);
+		\draw [style=ULTRAGRAY] (16) to (13);
 		\draw [style=ULTRAGRAY] (13) to (17);
 		\draw [style=ULTRAGRAY] (17) to (14);
 		\draw [style=ULTRAGRAY] (14) to (21);
 		\draw [style=ULTRAGRAY] (21) to (13);
 		\draw [style=ULTRAGRAY] (13) to (22);
 		\draw [style=ULTRAGRAY] (22) to (14);
-		\draw (23) to (13);
-		\draw (14) to (23);
-		\draw (16) to (14);
+		\draw [style=ULTRAGRAY] (23) to (13);
+		\draw [style=ULTRAGRAY] (14) to (23);
+		\draw [style=ULTRAGRAY] (16) to (14);
 		\draw (23) to (24);
 		\draw (16) to (15);
 		\draw [style=ULTRAGRAY] (23) to (22);
