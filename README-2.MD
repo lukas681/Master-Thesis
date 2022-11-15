@@ -39,7 +39,8 @@ Acronyms
 36) All quotations PERSON - CITE - WHAT 
 38) a/an semitotal dominating set=?
 37) Reference to Monzy
-38) “An arm, you goose! Who ever saw one that size? Why, it fills the whole window!”
+38) “An arm, you goose! Who ever saw one that size? Why, it fills the whole window!”. Caroll Quote somewhere
+39)  GEB, quote
 
 
 TODO: Look up unknown graph theoretic terms for me.
@@ -72,7 +73,7 @@ D-region Decomposition
 
  Color Selection via adobe color wheel
 
-
+o“This idea that there is generality in the specific is of far-reaching importance.”
  ## bibliopgraphy
 
  * JabRef for managing *.bib file
