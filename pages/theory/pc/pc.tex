@@ -1,9 +1,22 @@
 For an introduction into classical complexity theory. Refer to the standard textbooks aaran und cpo.
 Rely an \cite[]{}
-
 \section{Parametrized Complexity}
 
-* Decision Problem
+\paragraph{Ways to cope with NP-hard problem} Usually 
+
+\begin{center}
+    \begin{tikzpicture}
+        \begin{scope}[blend mode = normal,opacity=0.75]
+            \fill[red!30!white]   ( 90:1.2) circle (2);
+            \fill[green!30!white] (210:1.2) circle (2);
+            \fill[blue!30!white]  (330:1.2) circle (2);
+        \end{scope}
+        \node at ( 90:2)    {\textbf{Generality}};
+        \node at ( 210:2)   {$\mathbf{\mathcal{O}(n^c)}$};
+        \node at ( 330:2)   {\textbf{Exactness}};
+        \node [font=\Large] {$\emptyset$};
+    \end{tikzpicture}
+\end{center}
 
 
 \begin{definition}[Parametrized Problem{\cite[Def 1.1]{Cygan2015}}]
@@ -16,7 +29,6 @@ Rely an \cite[]{}
 We will now clarify the basic terminology withing Parametrized Complexity. 
 We are now giving a short introduction into the world of parametrized complexity. 
 * General Introduction
-\paragraph{Ways to cope with NP-hard problem.}
 
 
 \subsection{Fixed Parameter Tractability}
