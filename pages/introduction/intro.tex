@@ -30,6 +30,15 @@ Now the ducks were fully satisfied with the solution! But while the chosen two d
 It looked so easy at first, but in the end, you had to try all the possible configurations while playing around with the number of ducks used (of course you did not tell the ducks that it was that simple, because they now think you are a wizard!). 
 You are wondering, whether there is a way to significantly reduce the number of configurations you have to try to find a solution.
 
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.9\columnwidth]{excalidraw/lake.png}
+    \caption[Introductions: Merganser Lake. Own Drawing. Embedded icons under public domain from {\href{https://creazilla.com/}{https://creazilla.com/}}]{\textit{Left: All water lilies are occupied by members of the \textit{geesiosi} clan! The handwritten arrows have been your first solution proposal which was refused by the \textit{Supreme Duck Decision Board}.
+    Right: Your second and final solution: Two ducks are enough to make all \textit{geesiosi}'s flee. Furthermore, they are only two water lilies apart (red line) and therefore have someone to quack together with!}}
+    \label{fig:duck-lake}
+\end{figure}
+
+
 Back in your beloved library, you found in some ancient scrolls that this problem has already been formalized by Henning \cite{Henning2019} as the \sdom problem which is a variant of the intensively studied \dom problem. 
 You read that both problems are \NPc~\cite{Garey1979,Henning2019} and they are probably very hard to solve.
 %After already forshadowed by Gödel \cite{Hartmanis1989} and Nash (CITE), 
@@ -45,23 +54,11 @@ Therefore, you have already been forced to assign a duck to one of those leaving
 You now also saw that none of the `quacking'-relations do cross with each other and you become curious if you can do something\ldots
 
 % FROM https://creazilla.com/nodes/41547-duck-clipart
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.9\columnwidth]{excalidraw/lake.png}
-    \caption[Introductions: Merganser Lake. Own Drawing. Embedded icons under public domain from {\href{https://creazilla.com/}{https://creazilla.com/}}]{\textit{Left: All water lilies are occupied by members of the \textit{geesiosi} clan! The handwritten arrows have been your first solution proposal which was refused by the \textit{Supreme Duck Decision Board}.
-    Right: Your second and final solution: Two ducks are enough to make all \textit{geesiosi}'s flee. Furthermore, they are only two water lilies apart (red line) and therefore have someone to quack together with!}}
-    \label{fig:duck-lake}
-\end{figure}
-
 \section{Content of the thesis}
 
-Introduced by Downey and Fellows \cite{Downey1999a}, parametrized complexity extends the classical theory with a framework that allows a more finely-grained analysis of computational problems. The idea is to measure a problem in terms of input size and an additional parameter $k$. This parameter denotes, how difficult the problem is: A larger parameter means a harder problem instance. We say that a problem is \textit{Fixed-Parameter Tractable} (FPT) if problem instances of size $n$ can be solved in $f(n)n^{\mathcal{O}(1)}$ time for some function $f$ independent of $n$. 
-
-Although the \sdom problem has already got a lot of attention regarding classical complexity (CITE), only a few results are currently known for the parametrized variant. These results are given in \cref{ch:complexity-status}.
-
+Emerged during the last two decades, \textit{parametrized complexity} is a well-established branch of modern theoretical computer science that showed many practical implications. 
 In this thesis, we continue the systematic analysis of the \sdom problem through the lens of \textit{parametrized complexity}. 
 
-% TODO Check again in the end
 \begin{itemize}
     \item \Cref{ch:prelim} will give the necessary definitions around \textit{graph theory} and \textit{parametrized complexity}.
     \item In \cref{ch:semitotal-domination} we will discuss the \sdom problem and its relation to \dom and \tdom in more detail. As they are closely related, we will gather the complexity status for various graph classes and compare them with each other in \cref{ch:complexity-status}. We will then show $\omega[2]$-intractability for general, bipartite, chordal, split and XXXX graphs.
@@ -70,19 +67,21 @@ In this thesis, we continue the systematic analysis of the \sdom problem through
 
 \end{itemize}
 
-As far as we have seen, even the w-hardness of the general case has not been explicitly proven in the literature. 
-
-In this thesis, we continue the journey toward a systematic analysis by stating some hardness results for specific graph classes for the problem.
-
 \paragraph{Our contributions}
-% TODO Better: 
 
-Our main contributions consist of first showing the $w[2]$-hardness of \sdom for XXXX graphs.
 
-\noindent As the \dom problem and the \tdom problem both admit a linear kernel for planar graphs, it is interesting to analyze whether these results also hold for the \sdom problem which lies in between these two. 
-%TODO by relxing the witness of these two provlemsproblems.
+We are the first to start a systematic .
 
-Having these kernels also for other variants like \eddom, \efdom, \cdom, \rbdom lent us great confidence that the result will also work for \sdom on planar graphs.
+While many authors already stated results that clearly belong in the area of \textit{parametrized complexity}, an explicit intractability analysis has not been done, yet.
+
+%As far as we have seen, even the w-hardness of the general case has not been explicitly proven in the literature. We are the first ones to actually do that for that problem
+
+On the Therefore, our main contributions consist of first showing the $\omega[2]$-hardness of \sdom for general, bipartite, chordal, split and XXXX graphs.
+
+
+As the \dom problem and the \tdom problem both admit a linear kernel for planar graphs, it is interesting to analyze whether these results also hold for the \sdom problem which lies in between these two. 
+
+The existence of linear kernels for other dominating variants like \eddom, \efdom, \cdom, \rbdom gave us confidence that the idea will work for \sdom on planar graphs as well. The fact that the semitotal domination number $y_{2t}$ is squeezed between the domination number $y$ and the total domination number $y_t$ (see \cref{ch:dominationProblems} and both \dom and \dom have explicit linear kernels for planar graphs supported this intuition, which now turned out to be correct.
 
 %% TODO Find more  .
 
