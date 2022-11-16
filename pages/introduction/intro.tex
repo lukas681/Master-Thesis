@@ -8,11 +8,11 @@
         \caption{Generated with Dall-E. \url{https://labs.openai.com/}. ``A duck dominating sitting on a sea rose''}
 \end{figure}
 
-\epigraph{\itshape We have seen [...], which is to say, all meaning comes from analogies.}{Douglas Richard Hofstadter, \textit{I am A Strange Loop}}
+\epigraph{\itshape We have seen [\ldots], which is to say, all meaning comes from analogies.}{Douglas Richard Hofstadter, \textit{I am A Strange Loop}}
 
 Quack! Quack! They were careless for a second and immediately the dreaded \textit{geesiosi} clan has taken the opportunity and conquered your befriended ducks' \textit{Merganser Lake}!
-Now they are sitting on all the beautiful water lilies refusing to give it back and the desperate ducks have asked for your assistance.
-The ducks have given you a map of the lake (see left side of \cref{fig:duck-lake}) where all the water lilies are marked in green.
+Now they are sitting on all the beautiful water lilies refusing to give them back and the desperate ducks have asked for your assistance.
+The ducks have given you a map of the lake (see the left side of \cref{fig:duck-lake}) where all the water lilies are marked in green.
 You instantly assured them of your help and started to analyze the situation!
 
 You quickly noticed that the \textit{geesiosi} members are very frightened of the ducks' quacking. 
@@ -31,23 +31,21 @@ It looked so easy at first, but in the end, you had to try all the possible conf
 You are wondering, whether there is a way to significantly reduce the number of configurations you have to try to find a solution.
 
 Back in your beloved library, you found in some ancient scrolls that this problem has already been formalized by Henning \cite{Henning2019} as the \sdom problem which is a variant of the intensively studied \dom problem. 
-
-%Finding the optimal places for lookout towers, 
-You read that both problems are \NPc~\cite{Garey1979,Henning2019} and they are probably very hard so solve.
+You read that both problems are \NPc~\cite{Garey1979,Henning2019} and they are probably very hard to solve.
 %After already forshadowed by Gödel \cite{Hartmanis1989} and Nash (CITE), 
 
-The first results of \NPcn were published independently by Cook \cite{Cook1971} in 1971 and Levin in 1973 \cite{Levin1973}. 
-Karp \cite{Karp1972} introduced the idea of problem reductions and started to systematically reduce 19 other problems to each other showing that all of them are equally hard to solve: An efficient way to solve one of them will immediately efficiently solve the others as well. Since then, thousands of problems have been found to be \NPc, among them \dom and \sdom. 
-Up to today, the question whether these \NPc problems can be solved efficiently is an open problem. 
+The first results of \NPcn had been published independently by Cook \cite{Cook1971} in 1971 and Levin in 1973 \cite{Levin1973}. 
+Karp \cite{Karp1972} had introduced the idea of problem reductions and had started to systematically reduce 19 other problems to each other showing that all of them are equally hard to solve: An efficient way to solve one of them will efficiently solve the others. Since then, thousands of problems were \NPc, among them \dom and \sdom. 
+Up to today, the question of whether these \NPc problems can be solved efficiently remains an open problem, they write. 
 
-Even though it is believed that they can't in the general case, there is still hope if additional information about the underlying structure of the problem is known. 
+Even though it is believed that they can't in the general case, there would still be hope if additional information about the underlying structure of the problem is known. 
 Before solving the full problem it might be worth discovering parts that are easier than the rest and solving them first. You look back into the map (\cref{fig:duck-lake}) and see that there is one water lily that only had one neighbor.
-Therefore, you have already been forced to assign a duck to one of those leaving you with a kernel of the problem that can not further be reduced.
+Therefore, you have already been forced to assign a duck to one of those leaving you with a slightly simple map to be considered.
 
-You now also saw that none of the `quacking'-relations do cross with each other and started to think about how to use this information...
+You now also saw that none of the `quacking'-relations do cross with each other and you become curious if you can do something\ldots
 
 % FROM https://creazilla.com/nodes/41547-duck-clipart
-\begin{figure}
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.9\columnwidth]{excalidraw/lake.png}
     \caption[Introductions: Merganser Lake. Own Drawing. Embedded icons under public domain from {\href{https://creazilla.com/}{https://creazilla.com/}}]{\textit{Left: All water lilies are occupied by members of the \textit{geesiosi} clan! The handwritten arrows have been your first solution proposal which was refused by the \textit{Supreme Duck Decision Board}.
@@ -55,15 +53,23 @@ You now also saw that none of the `quacking'-relations do cross with each other 
     \label{fig:duck-lake}
 \end{figure}
 
-\textbf{Problem Definition}
-
-
 \section{Content of the thesis}
 
-In this thesis, we continue the systematic analysis of the \sdom problem by focusing on the parametrized complexity of the problem. 
+In this thesis, we continue the systematic analysis of the \sdom problem through the lens of \textit{parametrized complexity}.
 
-Although the problem already had a lot of attention regarding classical complexity (CITE), only a few results are currently known for the parametrized variant. 
 
+%Not sure, whether the following should be here ... TODO Move away.
+Introduced by Downey and Fellows \cite{Downey1999a}, parametrized complexity extends the classical theory with a framework that allows a more finely-grained analysis of computational problems. The idea is to measure a problem in terms of input size and an additional parameter $k$. This parameter denotes, how difficult the problem is: A larger parameter means a harder problem instance. We say that a problem is \textit{Fixed-Parameter Tractable} (FPT) if problem instances of size $n$ can be solved in $f(n)n^{\mathcal{O}(1)}$ time for some function $f$ independent of $n$. 
+
+Although the \sdom problem has already got a lot of attention regarding classical complexity (CITE), only a few results are currently known for the parametrized variant. These results are given in \cref{ch:complexity-status}.
+
+% Albers approach again?
+
+
+% w intractability
+Second we systematically 
+
+% WRONG
 As far as we have seen, even the w-hardness of the general case has not been explicitly proven in the literature. 
 
 In this thesis, we continue the journey toward a systematic analysis by stating some hardness results for specific graph classes for the problem.
@@ -85,7 +91,7 @@ Following the approach from ... which already relies on the technique given in, 
 With some modifications, we were able to transfer the approach given by Garnero and Sau in \cite{Garnero2018} to the \sdom problem.
 
 \begin{restatable}[]{theorem}{centraltheo}\label{thm:central}
-    The \sdom problem parametrized by solution size admits a linear kernel on planar graphs. There exists a polynomial-time algorithms that given a planar graph $(G, k)$, either correctly reports that $(G, k)$ is a NO-instance or returns an equivalent instance $(G', k)$ such that $\abs{V(G')} \leq \kernelsize \cdot k$.
+    The \sdom problem parametrized by solution size admits a linear kernel on planar graphs. There exists a polynomial-time algorithm that given a planar graph $(G, k)$, either correctly reports that $(G, k)$ is a NO-instance or returns an equivalent instance $(G', k)$ such that $\abs{V(G')} \leq \kernelsize \cdot k$.
 \end{restatable}
 
 \dom problem and \tdom problem, both already 

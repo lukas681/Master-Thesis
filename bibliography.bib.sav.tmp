@@ -85,6 +85,7 @@
   year      = {2019},
   isbn      = {978-1-107-05776-0; 978-1-107-41515-7},
   doi       = {10.1017/9781107415157},
+  file      = {:Fomin2019 - Kernelization. Theory of Parameterized Preprocessing.bib:bib},
   keywords  = {68-02, 68P01, 68Q17, 68Q25, 68R10, 68W01, 90C27},
   language  = {English},
   zbl       = {1426.68003},
@@ -563,4 +564,4 @@
   number   = {3},
   pages    = {597-609},
   volume   = {32},
-  abstract = {A triangulated graph is a graph in which for every cycle of length ℓ > 3, there is an edge joining two nonconsecutive vertices. In this paper we study triangulated graphs and show that they play an important role in the elimination process. The results have appl
+  abstract = {A triangulated graph is a graph in which for every cycle of length ℓ > 3, there is an edge joining two nonconsecutive vertices. In this paper we study triangulated graphs
