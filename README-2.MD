@@ -28,7 +28,7 @@
 26) cref vs Cref upper and lower cases.
 27) This in the end;: https://blog.wordvice.com/avoid-fillers-powerful-writing/
 Acronyms
-28) Difference between plane and planar graph
+28) Difference between plane and planar graph FIXED
 29) Buy grammarly premium and cross check.
 30) Implement these facy boxes
 31) Capitalizing    
@@ -41,7 +41,7 @@ Acronyms
 37) Reference to Monzy
 38) “An arm, you goose! Who ever saw one that size? Why, it fills the whole window!”. Caroll Quote somewhere
 39)  GEB, quote
-
+40) Chapter, First letter big even in sentence. FIXED
 
 TODO: Look up unknown graph theoretic terms for me.
 

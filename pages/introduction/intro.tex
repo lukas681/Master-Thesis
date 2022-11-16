@@ -55,21 +55,21 @@ You now also saw that none of the `quacking'-relations do cross with each other 
 
 \section{Content of the thesis}
 
-In this thesis, we continue the systematic analysis of the \sdom problem through the lens of \textit{parametrized complexity}.
-
-
-%Not sure, whether the following should be here ... TODO Move away.
 Introduced by Downey and Fellows \cite{Downey1999a}, parametrized complexity extends the classical theory with a framework that allows a more finely-grained analysis of computational problems. The idea is to measure a problem in terms of input size and an additional parameter $k$. This parameter denotes, how difficult the problem is: A larger parameter means a harder problem instance. We say that a problem is \textit{Fixed-Parameter Tractable} (FPT) if problem instances of size $n$ can be solved in $f(n)n^{\mathcal{O}(1)}$ time for some function $f$ independent of $n$. 
 
 Although the \sdom problem has already got a lot of attention regarding classical complexity (CITE), only a few results are currently known for the parametrized variant. These results are given in \cref{ch:complexity-status}.
 
-% Albers approach again?
+In this thesis, we continue the systematic analysis of the \sdom problem through the lens of \textit{parametrized complexity}. 
 
+% TODO Check again in the end
+\begin{itemize}
+    \item \Cref{ch:prelim} will give the necessary definitions around \textit{graph theory} and \textit{parametrized complexity}.
+    \item In \cref{ch:semitotal-domination} we will discuss the \sdom problem and its relation to \dom and \tdom in more detail. As they are closely related, we will gather the complexity status for various graph classes and compare them with each other in \cref{ch:complexity-status}. We will then show $\omega[2]$-intractability for general, bipartite, chordal, split and XXXX graphs.
+    \item \Cref{ch:linkern} is the mainstay of this thesis. We are going to construct a linear kernel for \psdom following an approach first suggested by Alber, Fellows and Niedermeier \cite{Alber2004}. 
+    \item In \cref{ch:closing} we will give an outlook about open problems and further ideas on how to improve the kernel.
 
-% w intractability
-Second we systematically 
+\end{itemize}
 
-% WRONG
 As far as we have seen, even the w-hardness of the general case has not been explicitly proven in the literature. 
 
 In this thesis, we continue the journey toward a systematic analysis by stating some hardness results for specific graph classes for the problem.
@@ -86,9 +86,14 @@ Having these kernels also for other variants like \eddom, \efdom, \cdom, \rbdom 
 
 %% TODO Find more  .
 
+Assuming any \dom they saw that a planar graph can be decomposed in only a linear amount of smaller regions.
+Following up on this result, many other explicit linear kernels for dominating problems on planar graphs were found \cite{Guo2007, Garnero2017, Luo2013, Alber2006}. The kernel by Garnero and Sau \cite{Garnero2018} for \ptdom was of most use for use. Starting with their reduction rules we were able to 
+
+We will follow the same 
+
 Following the approach from ... which already relies on the technique given in, we give some simple data reduction rules for \sdom on planar graphs leading to a linear kernel. More precisely, we are going to prove the following central theorem of this thesis:
 
-With some modifications, we were able to transfer the approach given by Garnero and Sau in \cite{Garnero2018} to the \sdom problem.
+After adjusting the reduction rules, we were able to transfer the kernel given by Garnero and Sau \cite{Garnero2018} for \pdom to the \psdom problem achieving a kernel size of \kernelsize. 
 
 \begin{restatable}[]{theorem}{centraltheo}\label{thm:central}
     The \sdom problem parametrized by solution size admits a linear kernel on planar graphs. There exists a polynomial-time algorithm that given a planar graph $(G, k)$, either correctly reports that $(G, k)$ is a NO-instance or returns an equivalent instance $(G', k)$ such that $\abs{V(G')} \leq \kernelsize \cdot k$.
