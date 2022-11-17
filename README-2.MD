@@ -42,6 +42,7 @@ Acronyms
 38) “An arm, you goose! Who ever saw one that size? Why, it fills the whole window!”. Caroll Quote somewhere
 39)  GEB, quote
 40) Chapter, First letter big even in sentence. FIXED
+41) All colons correct
 
 TODO: Look up unknown graph theoretic terms for me.
 

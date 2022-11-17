@@ -1,31 +1,70 @@
-\section{Complexity Theory}
+\section{Computational Complexity Theory}
 
+Computational Complexity Theory discusses how many resources are needed for solving a given task or problem. 
+
+Classical complexity
+
+As NP ... Parametrized Complexity adds a new sight... to the existing models.
+% One sentence what it is
+
+% Developed Parametrized Complexity
 % WHAT IS COMPLEXITY THEORY
-For an introduction into classical complexity theory. Refer to the standard textbooks aaran und cpo.
 
-\subsection{Classical Compplexity}
+\subsection{Classical Complexity Theory}
 
-\subsection{Parametrized Complexity}
+\subsubsection*{Algorithms and Running Time}
 
-Introduced by Downey and Fellows \cite{Downey1999a}, parametrized complexity extends the classical theory with a framework that allows a more finely-grained analysis of computational problems. The idea is to measure a problem in terms of input size and an additional parameter $k$. This parameter denotes, how difficult the problem is: A larger parameter means a harder problem instance. We say that a problem is \textit{Fixed-Parameter Tractable} (FPT) if problem instances of size $n$ can be solved in $f(n)n^{\mathcal{O}(1)}$ time for some function $f$ independent of $n$. 
+\subsubsection*{Efficient Algorithms and \NPcn}
+
+The first results of \NPcn had been published independently by Cook \cite{Cook1971} in 1971 and Levin in 1973 \cite{Levin1973}. 
+Karp \cite{Karp1972} had introduced the idea of problem reductions and had started to systematically reduce 19 other problems to each other showing that all of them are equally hard to solve: An efficient way to solve one of them will efficiently solve the others. Since then, thousands of problems were \NPc, among them \dom and \sdom. 
+
+
+% What algorithms are consider good?
+% What is NP-Completeness?
+% 
+
+For an introduction into classical complexity theory, the reader can refer to \cite{Arora2006}.
 
 \paragraph{Coping with NP-hardness}
 
-Even though we do not expect \NPc problems to have a polynomial-time algorithm, .-..
+Even though we do not expect \NPc problems to have a polynomial-time algorithm.
+% What can we do?
 
-\begin{center}
+% Observe that there are three ingredients
+
+% Giving up polynomial time: EET algorithms
+
+% Giving Up exactness will give us approximation algorithm that often have polynomial time al
+
+% Last but not least: Givingup generality. Using specific information about the particular instance. Graph Class? Structural insights 
+
+
+
+\begin{figure}
+    \centering
+\resizebox{150px}{!}{%
     \begin{tikzpicture}
-        \begin{scope}[blend mode = normal,opacity=0.75]
-            \fill[red!30!white]   ( 90:1.2) circle (2);
-            \fill[green!30!white] (210:1.2) circle (2);
-            \fill[blue!30!white]  (330:1.2) circle (2);
+        \begin{scope}[blend mode=lighten,opacity=0.75]
+            \fill[TUMBlue]   ( 90:1.2) circle (2);
+            \fill[TUMAccentBlue] (210:1.2) circle (2);
+            \fill[TUMSecondaryBlue]  (330:1.2) circle (2);
         \end{scope}
         \node at ( 90:2)    {\textbf{Generality}};
         \node at ( 210:2)   {$\mathbf{\mathcal{O}(n^c)}$};
         \node at ( 330:2)   {\textbf{Exactness}};
         \node [font=\Large] {$\emptyset$};
     \end{tikzpicture}
-\end{center}
+}
+    \caption{\textit{Unless $P = NP$, any algorithm solving an \NPc problem can at most fulfill two of those properties}}
+    \label{fig:npc}
+\end{figure}
+
+Parametrized complexity ... Transition
+
+\subsection{Parametrized Complexity}
+
+Introduced by Downey and Fellows \cite{Downey1999a}, parametrized complexity extends the classical theory with a framework that allows a more finely-grained analysis of computational problems. The idea is to measure a problem in terms of input size and an additional parameter $k$. This parameter denotes, how difficult the problem is: A larger parameter means a harder problem instance. We say that a problem is \textit{Fixed-Parameter Tractable} (FPT) if problem instances of size $n$ can be solved in $f(n)n^{\mathcal{O}(1)}$ time for some function $f$ independent of $n$. 
 
 
 \begin{definition}[Parametrized Problem{\cite[Def 1.1]{Cygan2015}}]
