@@ -28,6 +28,9 @@ If not explicitly stated otherwise, the following definitions are taken from the
     A multigraph is a pair $(V,E)$ of disjoint sets together with a map $E \rightarrow V \cup [V]^2$ assigning to every edge either one or two vertices, its ends. Multigraphs can have loops and multiple edges.
     
     We usually denote the vertex set by $V(G)$ and its edge set by $E(G)$.
+
+    % TODO connected 
+
 \end{definition}
 
 Unless stated otherwise, we usually consider only \textit{simple graphs}, but the notion of \textit{multigraphs} gets important when we later talk about the \textit{underlying multigraph} of a \dreg. 
@@ -61,9 +64,17 @@ If a graph $G$ is isomorphic to another graph $h$, we denote $G \simeq H$.
     The \underline{distance} $d_G(v,w)$ from a vertex $v$ to a vertex $w$ in a graph $g$ is the length of the shortest path between $v$ and $w$. If $v$ and $w$ are not linked by any path in $G$, we set $d_G(v,w) = \infty$. Again, if $G$ is clear from the context, we omit the subscripted $G$ and just write $d(v,w)$ instead.
 \end{definition}
 
-\subsection{Graph Classes and Special Graphs}
+\subsection{Graph Classes}
 
 A \textit{graph class} is a set of graphs $\mathfrak{G}$ that is closed under isomorphism that is if $G \in \mathfrak{G}$ and a $H \simeq G$ then $H \in \mathfrak{G}$ as well. 
+
+\begin{definition}[Graph Parameters]
+Let \G be a graph.
+An  \underline{independent set} of $G$ is a set of pairwise non-adjacent vertices. 
+A \underline{clique} of $G$ is a set of pairwise adjacent vertices. 
+A \underline{vertex cover} of $G$ is a subset of vertices containing at least one endpoint of every edge. 
+A \underline{dominating set} is a subset $D$ of vertices such that all vertices not contained in are adjacent to some vertex in $D$.
+\end{definition}
 
 \begin{definition}[r-partite Graphs]
     Let $r \geq 2$ be an integer. A Graph $G = (V, E)$ is called \underline{r-partite} if $V$ admits a partition into $r$ classes such that every edge has its ends in different classes: Vertices in the same partition class must not be adjacent. 
@@ -72,25 +83,21 @@ A \textit{graph class} is a set of graphs $\mathfrak{G}$ that is closed under is
     An $r$-partite graph in which every two vertices from different partition classes are adjacent is called \underline{complete}. For the \underline{complete bipartite graph} on bipartitions $X \uplus Y$ of size $m$ and $n$, we shortly write $K_{m,n}$. 
 \end{definition}
 
-
 \begin{definition}[Complete Graph]
-    
-The complete graph $K_3$ on three vertices is called \underline{triangle}
+If all vertices of a graph \G are pairwise adjacent, we say that $G$ is \underline{complete}. 
+A complete graph on $n$ vertices is a $K_n$. A $K_3$ is called a \underline{triangle}.
 \end{definition}
 
 \begin{definition}[Chordal Graphs]
+For a graph \G, an edge that joins two vertices of a cycle, but is not itself an edge of the cycle is a \underline{chord} of that cycle.
 
-Chord..     
-
-A graph \G is \underline{chordal} (or \textit{triangulated})if each of its cycles of length at least four has a chord. In other words, it contains no induced cycle other than triangles.
-%TODO Forbitten minor characterization
+Furthermore, we say $G$ is \underline{chordal} (or \textit{triangulated}) if each of its cycles of length at least four has a chord. In other words, it contains no induced cycle other than triangles.
 
 \end{definition}
 Chordal graphs have some nice properties:
 
-
 \begin{definition}[Split Graphs]
-    
+A \underline{split graph} is a graph \G whose vertices can be partitioned into a clique and an independent set.    
 \end{definition}
 
 \begin{definition}[Path Graph $P_i$]
