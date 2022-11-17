@@ -66,7 +66,7 @@ If a graph $G$ is isomorphic to another graph $h$, we denote $G \simeq H$.
 
 \subsection{Graph Classes}
 
-A \textit{graph class} is a set of graphs $\mathfrak{G}$ that is closed under isomorphism that is if $G \in \mathfrak{G}$ and a $H \simeq G$ then $H \in \mathfrak{G}$ as well. 
+A \textit{graph class} is a set of graphs $\mathfrak{G}$ that is closed under isomorphism that is if $G \in \mathfrak{G}$ and a $H \simeq G$ then $H \in \mathfrak{G}$ as well.
 
 \begin{definition}[Graph Parameters]
 Let \G be a graph.
@@ -76,52 +76,44 @@ A \underline{vertex cover} of $G$ is a subset of vertices containing at least on
 A \underline{dominating set} is a subset $D$ of vertices such that all vertices not contained in are adjacent to some vertex in $D$.
 \end{definition}
 
-\begin{definition}[r-partite Graphs]
+\begin{graphclass}[r-partite]
     Let $r \geq 2$ be an integer. A Graph $G = (V, E)$ is called \underline{r-partite} if $V$ admits a partition into $r$ classes such that every edge has its ends in different classes: Vertices in the same partition class must not be adjacent. 
     A \textit{$2$-partite} graph is called \underline{bipartite}. 
     
     An $r$-partite graph in which every two vertices from different partition classes are adjacent is called \underline{complete}. For the \underline{complete bipartite graph} on bipartitions $X \uplus Y$ of size $m$ and $n$, we shortly write $K_{m,n}$. 
-\end{definition}
+\end{graphclass}
 
-\begin{definition}[Complete Graph]
+\begin{graphclass}[Complete]
 If all vertices of a graph \G are pairwise adjacent, we say that $G$ is \underline{complete}. 
 A complete graph on $n$ vertices is a $K_n$. A $K_3$ is called a \underline{triangle}.
-\end{definition}
+\end{graphclass}
 
-\begin{definition}[Chordal Graphs]
+
+%\begin{definition}[{\cite[IV. Triangulated Graphs]{Berge1966}}]
+%    A graph G is called \textit{chordal} (or in the older literature \textit{triangulated}) graphs if for every cycle $c = [p_1,...,p_n,p_1]$ of length $l > 3$ there is an edge of $G$ joining two non-consecutive vertices of c. Such vertices are called chords of the cycle   
+%\end{definition}
+
+\begin{graphclass}[Chordal]
 For a graph \G, an edge that joins two vertices of a cycle, but is not itself an edge of the cycle is a \underline{chord} of that cycle.
 
 Furthermore, we say $G$ is \underline{chordal} (or \textit{triangulated}) if each of its cycles of length at least four has a chord. In other words, it contains no induced cycle other than triangles.
 
-\end{definition}
-Chordal graphs have some nice properties:
+\end{graphclass}
 
-\begin{definition}[Split Graphs]
+\begin{graphclass}[Split]
 A \underline{split graph} is a graph \G whose vertices can be partitioned into a clique and an independent set.    
-\end{definition}
+\end{graphclass}
 
-\begin{definition}[Path Graph $P_i$]
-    
-\end{definition}
-
-\begin{definition}[Bipartite Graph, {\cite[p.5]{Bondy2008}}]
+\begin{graphclass}[Bipartite {\cite[p.5]{Bondy2008}}]
     
 A \textit{\bg} is a Graph G whose vertex set can be partitioned into two subsets X and Y, so that each edge has one end in X and one end in Y. Such a partition (X,Y) is called a \textit{bipartition} of G.
+\end{graphclass}
 
-\end{definition}
-
-
-\begin{definition}[Complete Graph]
+%\begin{definition}[Perfect Graphs]
     
-\end{definition}
+%\end{definition}
 
-\begin{definition}[Perfect Graphs]
-    
-\end{definition}
-
-Of high importance for this thesis is the class of planar graphs.
-
-\begin{definition}[Planar Graphs]
+\begin{graphclass}[Planar]
 
 A \textit{plane graph} is a pair $(V,E)$ of finite sets with the following properties:
 
@@ -137,7 +129,7 @@ A \textit{plane graph} is a pair $(V,E)$ of finite sets with the following prope
 
 An embedding in the plane, or \textit{planar embedding}, of an (abstract) graph $G$ is an isomorphism between $G$ and a plane graph $H$. A \textit{plane graph} can be seen as a concrete \textbf{embedding} of the planar graph into the ``plane'' $\mathbb{R}^2$.
 
-\end{definition}
+\end{graphclass}
 
 \input{pages/theory/pc/pc.tex}
 
