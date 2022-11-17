@@ -14,7 +14,7 @@
 In this chapter, we will introduce the core definitions used throughout this thesis. 
 Most of the definitions of graph theory are taken from Diestel \cite{Diekert2005}. 
 For definitions in the area of \textit{parametrized complexity}, the book by Cygan et al.\cite{Cygan2015} gives a very good introduction.
-For standard mathematical notation, the reader is referred to any introductory textbook into discrete maths. (e.g. \cite{Rosen2012})
+For standard mathematical notation, the reader is referred to any introductory textbook into discrete maths. (for example \cite{Rosen2012})
 
 \section{Graph Theory}
 
@@ -63,19 +63,31 @@ If a graph $G$ is isomorphic to another graph $h$, we denote $G \simeq H$.
 
 \subsection{Graph Classes and Special Graphs}
 
-We call the class of graphs without any special restrictions ``General Graphs''.
+A \textit{graph class} is a set of graphs $\mathfrak{G}$ that is closed under isomorphism that is if $G \in \mathfrak{G}$ and a $H \simeq G$ then $H \in \mathfrak{G}$ as well. 
 
 \begin{definition}[r-partite Graphs]
-    Let $r \geq 2$ be an integer. A Graph $G = (V,E)$ is called ``r-partite'' if V admits a partition into r classes such that every edge has its ends in different classes: Vertices in the same partition class must not be adjacent. 
+    Let $r \geq 2$ be an integer. A Graph $G = (V, E)$ is called \underline{r-partite} if $V$ admits a partition into $r$ classes such that every edge has its ends in different classes: Vertices in the same partition class must not be adjacent. 
+    A \textit{$2$-partite} graph is called \underline{bipartite}. 
     
-    For the case $r = 2$ we say that the G is ``bipartite'' 
-    %      %        TODO mage of a bipartite Graph
+    An $r$-partite graph in which every two vertices from different partition classes are adjacent is called \underline{complete}. For the \underline{complete bipartite graph} on bipartitions $X \uplus Y$ of size $m$ and $n$, we shortly write $K_{m,n}$. 
+\end{definition}
+
+
+\begin{definition}[Complete Graph]
     
+The complete graph $K_3$ on three vertices is called \underline{triangle}
 \end{definition}
 
 \begin{definition}[Chordal Graphs]
-    
+
+Chord..     
+
+A graph \G is \underline{chordal} (or \textit{triangulated})if each of its cycles of length at least four has a chord. In other words, it contains no induced cycle other than triangles.
+%TODO Forbitten minor characterization
+
 \end{definition}
+Chordal graphs have some nice properties:
+
 
 \begin{definition}[Split Graphs]
     
@@ -91,26 +103,28 @@ A \textit{\bg} is a Graph G whose vertex set can be partitioned into two subsets
 
 \end{definition}
 
-\begin{definition}[Complete Graph]
-    
-\end{definition}
 
 \begin{definition}[Complete Graph]
     
 \end{definition}
 
-\begin{definition}[Complete Graph]
+\begin{definition}[Perfect Graphs]
     
 \end{definition}
 
-\begin{definition}[Planar Graphs {\cite[Chapter 4]{diestel10}}]
+Of high importance for this thesis is the class of planar graphs.
+
+\begin{definition}[Planar Graphs]
 
 A \textit{plane graph} is a pair $(V,E)$ of finite sets with the following properties:
 
 \begin{itemize}
-    \item $V \subseteq \mathbb{R}^2$ (Vertices)
-    \item Every edge is an arc between two vertices 
-    \item different edges have different sets of endpoints
+    \item $V \subseteq \mathbb{R}^2$ (Vertices).
+    \vspace{-2mm}
+    \item Every edge is an arc between two vertices, 
+    \vspace{-2mm}
+    \item different edges have different sets of endpoints, and
+    \vspace{-2mm}
     \item The interior of an edge contains no vertex and no point of any other edge
 \end{itemize}
 

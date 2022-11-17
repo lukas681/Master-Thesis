@@ -131,7 +131,7 @@ Unlike the sets $N_1(v), N_2(v)$ and $N_3(v)$, in every of the distinct sets $N_
 Before stating the reduction rules, we want to clarify when we consider a graph \G to be \textit{reduced}. 
 
 \begin{definition}[\cite{Garnero2017}]\label{def:reduced}
-    A graph \G is reduced under a set of rules if either none of them can be applied to $G$ or the application of any of them creates a graph isomorphic to $G$.
+    A graph \G is \underline{reduced under} a set of rules if either none of them can be applied to $G$ or the application of any of them creates a graph isomorphic to $G$.
 \end{definition}
 
 This definition differs from the definition usually given in literature where a graph G is \textit{reduced} under a set of reduction rules if none of them can be applied to G anymore (compare e.g. \cite{Fomin2019}). Some of our reduction rules (\cref{rgl:rone} or \cref{rgl:rtwo}) could be applied \textit{ad infinitum} creating an endless loop that does not change $G$ anymore. Our definition guarantees termination in that case. All of the given reduction rules are local and only need the neighborhood of at most two vertices and replace them partially with gadgets of constant size. Checking whether the application of one of the rules creates an isomorphic graph can be accomplished in constant time.
