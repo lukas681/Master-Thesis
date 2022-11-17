@@ -1,36 +1,33 @@
-\chapter{Terminology Preliminaries}\label{ch:prelim}
-In this chapter, we will introduce the core definitions used in this thesis. 
+\chapter{Terminology and Preliminaries}\label{ch:prelim}
+
+\vspace*{-50pt}
+
+\begin{figure}[ht]
+        \includegraphics[width=0.35\textwidth, right]{img/gt-ducks.png}
+        \captionsetup{textformat=empty,labelformat=blank}
+        \caption{Generated with Dall-E. \url{https://labs.openai.com/}. ``Ducks learning graph theory while swimming on a sea sketched in color complex''}
+\end{figure}
+
+\epigraph{\itshape Another Deep quote here}{Lewis Caroll, \textit{XXXX}}
+
+
+In this chapter, we will introduce the core definitions used throughout this thesis. 
 Most of the definitions of graph theory are taken from Diestel \cite{Diekert2005}. 
 For definitions in the area of \textit{parametrized complexity}, the book by Cygan et al. \cite{Cygan2015} gives a very good introduction.
-
-%% TODO State Draft
-Continuing an intensive study of parametrized complexity of that problem. 
+For standard mathematical notation, the reader is referred to any introductory textbook into discrete maths. (e.g. \cite{Rosen2012})
 
 \section{Graph Theory}
-% In 1736, Euler Örst introduced the notion of graph theory. In the history of mathematics, the solution given by Euler of the well known Konigsberg bridge problem is
-%kconsidered to be the Örst theorem of graph theory. This has now become a subject
-%kgenerally regarded as a branch of a combinatorics. The theory of graph is an extremely
-%kuseful tool for solving combinatorial problems in di§erent areas such as geometry, algebra, number theory, topology, operations research, optimization and computer science.
 
-We quickly state the following definitions given by {\cite[p.~xxx]{diestel10}}.
+If not explicitly stated otherwise, the following definitions are taken from the book \textit{Graph Theory} written by Reinhard Diestel \cite{diestel10}.
+
+\subsection{Basic Terminology}
 
 %% TODO Path, Subgraph, Induced Subgraph, Copnnected 
 \begin{definition}[Graph {\cite[p. 3]{diestel10}}]
     A graph is a pair $G = (V, E)$ of two sets where $V$ denotes the vertices and $E \subseteq V \times V$ the edges of the graph.  A vertex $v \in V$ is incident with an edge $e \in E$ if $v \in e$. Two vertices $x, y$ are adjacent, or neighbours, if $\{x,y \} \in E$.
-    % Size of the Graph?
-\end{definition}
+    We usually denote the vertex set by $V(G)$ and its edge set by $E(G)$.
 
-%TODO Quote
-\begin{definition}[Vertex Degrees]
-    The \textit{degree} $d_G(v)$ (If G is clear, also $d(v)$) of a vertex $v$ is the number of neighbors of v. We call a vertex of degree 0 as isolated and one of degree 1 as a pendant.
-\end{definition}
-
-\begin{definition}[isomorphic Graphs, {\cite*[p. 3]{diestel10}}]
-Let \G and $G' = (V', E')$ be two graph. We call $G$ and $G'$ \underline{isomorphic}, if there exists a bijection $\phi: V \rightarrow V'$ with $\{x, y\} \in E \Leftrightarrow \phi(x)\phi(y) \in E'$ for all  $x,y \in V$. Such a map $\phi$ is called \underline{isomorphism}.
-\end{definition}
-If a graph $G$ is isomorphic to another graph $h$, we denote $G \simeq H$. 
-
-\begin{definition}[Special Graph Notations {\cite[p.~27]{diestel10}}]
+    Furthermore
     A simple Graph
     
     A directed Graph is a graph
@@ -40,21 +37,37 @@ If a graph $G$ is isomorphic to another graph $h$, we denote $G \simeq H$.
     A Planar Graph
 \end{definition}
 
+\begin{definition}[Subgraph and Induced Subgraph]
+    Let \G and $G' = (V', E')$ be two graphs. If $V' \subseteq V$ and $E' \subseteq E$ then $G'$ is a \underline{subgraph} of $G$. 
+
+    If $G$ is a subgraph of $G'$ and $G'$ contains all the edges fo $G$ with both endpoints in $V(G')$, then $G'$ is an \underline{induced subgraph} of $G$ and we write $G' = G[V(G')]$.
+\end{definition}
+
+
+%TODO Quote
+\begin{definition}[Degrees]
+    The \textit{degree} $d_G(v)$ (shortly $d(v)$ if $g$ is clear from the context) of a vertex $v$ is the number of neighbors of v. We call a vertex of degree 0 as \underline{isolated} and one of degree 1 as a \underline{pendant}.
+\end{definition}
+
 % TODO Quote e.g. The open neighborhood number of a graph
 \begin{definition}[Closed and Open Neighborhoods {\cite{Balakrishnan2012}}]
     Let \G be a (non-empty) graph. 
     The set of all neighbors of $v$ is the \underline{open neighborhood} of $v$ and denoted by $N(v)$; the set $N[v] = N(v) \Cup \{v\}$ is the \underline{closed neighborhood} f $v$ in $G$. When G needs to be made explicit, those open and closed neighborhoods are denoted by $N_G(v)$ and $N_G[v]$. 
 \end{definition}
 
-\begin{definition}[Subgpraph and Induced Subgraph]
+\begin{definition}[isomorphic Graphs, {\cite*[p. 3]{diestel10}}]
+Let \G and $G' = (V', E')$ be two graphs. We call $G$ and $G'$ \underline{isomorphic}, if there exists a bijection $\phi: V \rightarrow V'$ with $\{x, y\} \in E \Leftrightarrow \phi(x)\phi(y) \in E'$ for all  $x,y \in V$. Such a map $\phi$ is called \underline{isomorphism}.
+
+If a graph $G$ is isomorphic to another graph $h$, we denote $G \simeq H$. 
+\end{definition}
+
+%\begin{definition}[Special Graph Notations {\cite[p.~27]{diestel10}}]
+
+\begin{definition}[Paths and Cycles]
     asd
 \end{definition}
 
-\begin{definition}[Isomorphic Graph]
-    asd
-\end{definition}
-
-\subsection*{Graph Classes}
+\subsection{Graph Classes and Special Graphs}
 
 We call the class of graphs without any special restrictions ``General Graphs''.
 
@@ -84,6 +97,17 @@ A \textit{\bg} is a Graph G whose vertex set can be partitioned into two subsets
 
 \end{definition}
 
+\begin{definition}[Complete Graph]
+    
+\end{definition}
+
+\begin{definition}[Complete Graph]
+    
+\end{definition}
+
+\begin{definition}[Complete Graph]
+    
+\end{definition}
 
 \begin{definition}[Planar Graphs {\cite[Chapter 4]{diestel10}}]
 
@@ -100,8 +124,7 @@ An embedding in the plane, or \textit{planar embedding}, of an (abstract) graph 
 
 \end{definition}
 
-
-% Independent Set
+\input{pages/theory/pc/pc.tex}
 
 \chapter{On Parametrized Semitotal Domination}\label{ch:semitotal-domination}
 
@@ -116,7 +139,6 @@ An embedding in the plane, or \textit{planar embedding}, of an (abstract) graph 
 \epigraph{\itshape Todo select another quote}{Lewis Caroll, \textit{XXXX}}
 
 
-\input{pages/theory/pc/pc.tex}
 
 \section{The Domination Problem}
 
