@@ -22,25 +22,19 @@ If not explicitly stated otherwise, the following definitions are taken from the
 
 \subsection{Basic Terminology}
 
-%% TODO Path, Subgraph, Induced Subgraph, Copnnected 
-\begin{definition}[Graph {\cite[p. 3]{diestel10}}]
-    A graph is a pair $G = (V, E)$ of two sets where $V$ denotes the vertices and $E \subseteq V \times V$ the edges of the graph.  A vertex $v \in V$ is incident with an edge $e \in E$ if $v \in e$. Two vertices $x, y$ are adjacent, or neighbours, if $\{x,y \} \in E$.
+\begin{definition}[Graph]
+    A simple graph is a pair $G = (V, E)$ of two sets where $V$ denotes the vertices and $E \subseteq V \times V$ the edges of the graph.  A vertex $v \in V$ is incident with an edge $e \in E$ if $v \in e$. Two vertices $x, y$ are adjacent, or neighbours, if $\{x,y \} \in E$. By this definition, graph loops and multiple edges are excluded.
+    
+    A multigraph is a pair $(V,E)$ of disjoint sets together with a map $E \rightarrow V \cup [V]^2$ assigning to every edge either one or two vertices, its ends. Multigraphs can have loops and multiple edges.
+    
     We usually denote the vertex set by $V(G)$ and its edge set by $E(G)$.
-
-    Furthermore
-    A simple Graph
-    
-    A directed Graph is a graph
-    
-    A Multi Graph
-    
-    A Planar Graph
 \end{definition}
+
+Unless stated otherwise, we usually consider only \textit{simple graphs}.
 
 \begin{definition}[Subgraph and Induced Subgraph]
     Let \G and $G' = (V', E')$ be two graphs. If $V' \subseteq V$ and $E' \subseteq E$ then $G'$ is a \underline{subgraph} of $G$. 
-
-    If $G$ is a subgraph of $G'$ and $G'$ contains all the edges fo $G$ with both endpoints in $V(G')$, then $G'$ is an \underline{induced subgraph} of $G$ and we write $G' = G[V(G')]$.
+    If $G$ is a subgraph of $G'$ and $G'$ contains all the edges to $G$ with both endpoints in $V(G')$, then $G'$ is an \underline{induced subgraph} of $G$ and we write $G' = G[V(G')]$.
 \end{definition}
 
 
