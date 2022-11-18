@@ -137,18 +137,26 @@ An embedding in the plane, or \textit{planar embedding}, of an (abstract) graph 
 \vspace*{-50pt}
 
 \begin{figure}[ht]
-        \includegraphics[width=0.35\textwidth, right]{img/placeholder.png}
+        \includegraphics[width=0.35\textwidth, right]{img/chess.png}
         \captionsetup{textformat=empty,labelformat=blank}
         \caption{Generated with Dall-E. \url{https://labs.openai.com/}. ``A duck dominating sitting on a searose''}
 \end{figure}
 
 \epigraph{\itshape Todo select another quote}{Lewis Caroll, \textit{XXXX}}
 
+In connection with various chessboard problems, the concept of domination can be traced back to the mid-1800s.
+For example, de Jaenosch attempted in 1862 to solve the minimum number of queens required to fully cover an $n \times n$ -chessboard \cite{Jaenisch1862}. Because of the immense amount of publicationss related to domination, Haynes, Hedetniemi, and Slater started a comprehensive survey of the literature in graphs \cite{Haynes1998, Haynes1998b}. 
+20 years later, by a series of three more books, Haynes, Henning and Hedetniemi updated the survey with the latest developments \cite{Haynes2020, Haynes2021, Haynes2022}.
+
+\textit{Semitotal domination} was introduced by Goddard, Henning and McPillan \cite{Goddard2014}. 
+
+Since then many papers have 
+Henning started a new approach 
 
 
 \section{The Domination Problem}
 
-\begin{prb}[DOMINATING SET {\cite[p. 586]{Cygan2015}}]{prb:ds}
+\begin{prb}[DOMINATING SET DECISION {\cite[p. 586]{Cygan2015}}]{prb:ds}
     \begin{tabularx}{0.9\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input:} & Graph \G and an integer $k$\\
         \textbf{Question:} & Is there a set $X \subseteq V$ of size at most $k$ such that $N[X] = V$? \\
@@ -158,7 +166,7 @@ An embedding in the plane, or \textit{planar embedding}, of an (abstract) graph 
 
 Goddard, Henning and McPiallan a
 
-\begin{prb}[SEMITOTAL DOMINATING SET {\cite{Goddard2014}}]{prb:tds}
+\begin{prb}[SEMITOTAL DOMINATING SET DECISION {\cite{Goddard2014}}]{prb:tds}
     
     \begin{tabularx}{0.8\textwidth}{>{\hsize=0.35\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input:} & Graph \G and an integer $k$\\
@@ -167,14 +175,13 @@ Goddard, Henning and McPiallan a
         
 \end{prb}
 
-\begin{prb}[TOTAL DOMINATING SET {\cite[p. 596]{Cygan2015}}]{prb:sds}
+\begin{prb}[TOTAL DOMINATING SET DECISION {\cite[p. 596]{Cygan2015}}]{prb:sds}
     \begin{tabularx}{0.8\textwidth}{>{\hsize=0.35\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input:} & Graph \G and an integer $k$\\
         \textbf{Question:} & Does there exists a set $X \subseteq V$ of at most $k$ vertices of G such that for every $u \in V(G)$ there exists $v \in X$ with $\{u,v\} \in E$ \\
     \end{tabularx}
         
 \end{prb}
-
 
 \begin{figure}
      \begin{equation*}
@@ -185,15 +192,23 @@ Goddard, Henning and McPiallan a
 \end{figure}
 
 
+\begin{definition}[Domination Parameters]
+   The \underline{domination number} in a graph $G$ is the minimum cardinality of a \dom of $G$, denoted as $\gamma(G)$. 
+   The \underline{total domination number} is the minimum cardinality of a \tdom  of $G$, denoted by $\gamma_t(G)$.
+   The \underline{semitotal domination number} is the minimum cardinality of a \sdom of $G$, denoted by $\gamma_t(G)$
+\end{definition}
 
-Dominating Set
+% Henning?
 
-Semitotal Dominating Set
 
-Total Dominating Set
+Since every \tdom is also a \sdom and every \sdom is also a \dom , we have the following fact first observed by Goddard and Henning \cite{Goddard2014}. 
 
-we denote y as the dominating number. Clearly $y_t < y_s < y_d$.
-Notatio of an independent set
+\begin{fact}
+For every graph $G$ with no isolated vertex, $\gamma(G) \leq \gamma_{t2}(G) \leq \gamma_t(G)$
+\end{fact}
+
+We can see that the semitotal domination number $\gamma_{t2}$ is squeezed between the \textit{domination} number and the \textit{total domination} number. It turns out that for some graphs, all of these inequalities can be strict. See \cref{figd:dsexamples} for an example, where $\gamma(G) < \gamma_{t2} < \gamma_t(G)$.
+
 \subsection{Preliminaries}
 
 * Witness
