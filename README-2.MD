@@ -44,6 +44,13 @@ Acronyms
 40) Chapter, First letter big even in sentence. FIXED
 41) All colons correct
 
+
+
+## maybwe qzuote
+“The chessboard is the world, the pieces are the phenomena of the
+Universe, the rules of the game are what we call the laws of Nature
+and the player on the other side is hidden from us”
+(Thomas Huxley)
 TODO: Look up unknown graph theoretic terms for me.
 
 Note that if not mentioned other wise, parametrized by solution size.

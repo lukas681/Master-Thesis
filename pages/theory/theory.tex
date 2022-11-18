@@ -139,22 +139,25 @@ An embedding in the plane, or \textit{planar embedding}, of an (abstract) graph 
 \begin{figure}[ht]
         \includegraphics[width=0.35\textwidth, right]{img/chess.png}
         \captionsetup{textformat=empty,labelformat=blank}
-        \caption{Generated with Dall-E. \url{https://labs.openai.com/}. ``A duck dominating sitting on a searose''}
+        \caption{Generated with Dall-E. \url{https://labs.openai.com/}. ``Duck playing chess''}
 \end{figure}
 
 \epigraph{\itshape Todo select another quote}{Lewis Caroll, \textit{XXXX}}
 
 In connection with various chessboard problems, the concept of domination can be traced back to the mid-1800s.
-For example, de Jaenosch attempted in 1862 to solve the minimum number of queens required to fully cover an $n \times n$ -chessboard \cite{Jaenisch1862}. Because of the immense amount of publicationss related to domination, Haynes, Hedetniemi, and Slater started a comprehensive survey of the literature in graphs \cite{Haynes1998, Haynes1998b}. 
+For example, de Jaenosch attempted in 1862 to solve the minimum number of queens required to fully cover an n x n-chessboard \cite{Jaenisch1862}. Because of the immense amount of publications related to domination, Haynes, Hedetniemi, and Slater started a comprehensive survey of the literature in graphs \cite{Haynes1998, Haynes1998b}. 
 20 years later, by a series of three more books, Haynes, Henning and Hedetniemi updated the survey with the latest developments \cite{Haynes2020, Haynes2021, Haynes2022}.
 
-\textit{Semitotal domination} was introduced by Goddard, Henning and McPillan \cite{Goddard2014}. 
+After introducing the problem, we will dedicate the rest of this chapter to giving a current status about the complexity status of \dom, \sdom and \tdom on various graph classes. 
+% Surprisingly, there are cases where the complexity of \dom and \tdom differes (e)
+%If both \dom and \tdom are already hard for a class, we already have a strong assumption that this also holds for \sdom as well.
 
-Since then many papers have 
-Henning started a new approach 
 
+%Interestingly, most of them mimic each other for one specific class, but there are some exceptions, where this is not the case.
 
 \section{The Domination Problem}
+
+\textit{Semitotal domination} was introduced by Goddard, Henning and McPillan \cite{Goddard2014} as a relaxed form of \textit{total domination}. 
 
 \begin{prb}[DOMINATING SET DECISION {\cite[p. 586]{Cygan2015}}]{prb:ds}
     \begin{tabularx}{0.9\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
@@ -217,14 +220,12 @@ We can see that the semitotal domination number $\gamma_{t2}$ is squeezed betwee
 
 Let $D$ be a dominating set of G and $w \in V(G) \setminus D$. For any neighbor $v \in D \cap N(w)$, we say that $d_1$ \textit{dominates} $w$ For two dominating vertices $d_1, d_2in D$. If 
 
-\sdom
-
-%\subsection{Some useful notation}
-
-
 Definition, dominating number
 
 \section{Complexity Status of \sdom}\label{ch:complexity-status}
+
+% Surprisingly, there are cases where the complexity of \dom and \tdom differes (e)
+%If both \dom and \tdom are already hard for a class, we already have a strong assumption that this also holds for \sdom as well.
 
 \section{\hmath $w[i]$-Intractibility}
 

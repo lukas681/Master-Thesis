@@ -46,7 +46,7 @@ $13k$ for \name{Feedback Vertex Set}\xspace \cite{Bonamy2016} and further linear
 \name{Cycle Packing}\xspace in \cite{Garnero2019}.
 
 % TODO Where from?
-In the impending years, many results generalized this approach to larger graph classes. Fomin and Thilikos \cite{Fomin2004} started by proofing that the initial reduction rules \cite{Alber2004} can also be extended to obtain a linear kernel on graphs with bounded genus $g$ for \dom.
+In the impending years, many results generalized this approach to larger graph classes. Fomin and Thilikos \cite{Fomin2004} started by proving that the initial reduction rules \cite{Alber2004} can also be extended to obtain a linear kernel on graphs with bounded genus $g$ for \dom.
 Gutner \cite{Gutner2009} advanced in 2008 by giving a linear kernel for $K_{3,h}$-topological-minor-free graph classes and a polynomial kernel for $K_h$-topological-minor-free graph classes. 
 % TODO following required?
 % In 2007 they extended it to show that graphs of bounded degeneracy are FPT (\cite{Alon2007}). 
@@ -210,7 +210,6 @@ The upcoming \cref{rgl:rthree} will bound the size of these \textit{simple regio
 f the paper about the linear kernel for \ptdom \cite[Revision 2014]{Garnero2018}, they were not given independently but covered by one of their reduction rules (Rule 2). 
 As it turned out, the analysis is getting simpler if we treat them in a separate rule (In our case: \cref{rgl:rthree}) and so did Garnero and Sau \cite{Garnero2018} in a revised version of their paper four years later.
 
-\begin{minipage}{\textwidth}
 \begin{definition}
     A simple $vw$-region is a $vw$-region such that:
     \begin{enumerate}
@@ -219,7 +218,6 @@ As it turned out, the analysis is getting simpler if we treat them in a separate
     \end{enumerate}
 
 \end{definition}
-\end{minipage}
 
 \cref{fig:simpleRegionExample} shows an example of a simple region containing 9 distinct vertices.
 
@@ -233,11 +231,9 @@ As it turned out, the analysis is getting simpler if we treat them in a separate
 
 In the analysis, we will also use properties of the \textit{underlying multigraph} of a \dreg $\mathfrak{R}$. Refer to \cref{fig:maxRegionDecompose} for an example.
 
-\begin{minipage}{\textwidth}
 \begin{definition}\label{def:unterlyingMG}
     Let \G be a plane graph, let $D \subseteq V$ and let $\mathfrak{R}$ be a \dreg of G. The underlying multigraph $G_\mathfrak{R} = (V_\mathfrak{R}, E _\mathfrak{R})$ of $\mathfrak{R}$ is such that  $V_\mathfrak{R} = D$ and there is an edge $\{v,w\} \in E_\mathfrak{R}$ for each vw-region $R(v,w) \in \mathfrak{R}$
 \end{definition}
-\end{minipage}
 
 \section{The Big Picture}
 \Cref{fig:overview} gives a high-level overview of how we are going to obtain the linear kernel for \psdom. We will first derive three different reduction rules (\cref{rgl:rone,rgl:rtwo,rgl:rthree} are green in the overview), prove that they preserve the solution size $k$ and run in polynomial-time. 
@@ -384,7 +380,7 @@ Note that if we would not distinguish between these two cases and had added one 
 
 Again by \cref{fact:f2} we know for \cref{case:c2,case:c3} that $v \in D$ and similar to \cref{rgl:rone} we can simplify the neighborhood $N_{2,3}(v)$. \cref{fact:f1} states, that these vertices are only useful for witnessing $v$, but do not go beyond what $v$ already witnesses. Observe that removing $N_{2,3}$ can not break any connectivity as all vertices in  $N_{2,3}(v)$ are confined in $v$. The cases where $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$ are not required and in a later analysis only the existence of these two sets is required and the application of \cref{rgl:rthree} will be critical.
 
-Before proofing \cref{rgl:rtwo} we will deduce some \textit{facts} which are implied by the definitions above. These facts justify the definition of the sets $\Dvw$, $\Dv$ and $\Dw$.
+Before proving \cref{rgl:rtwo} we will deduce some \textit{facts} which are implied by the definitions above. These facts justify the definition of the sets $\Dvw$, $\Dv$ and $\Dw$.
 
 \begin{fact}\label{fact:f1}
     Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref{rgl:rtwo} on $v,w$. If $\Dvw = \emptyset$, then G has a solution if and only if it has a solution containing at least one of the two vertices $\{v,w \}$.
