@@ -12,7 +12,7 @@
 
 \input{pages/bipartite-fg.tex}
 \begin{theorem}
-    Semitotal Dominating Set is $\omega[2]$ hard for bipartite Graphs
+    \sdom is $\omega[2]$ hard for bipartite Graphs
 \end{theorem}
 
 \begin{proof}
@@ -24,9 +24,9 @@
     \end{enumerate}
     \paragraph*{Observation:} G' is clearly bipartite as all $y'_j$ and $x'_i$ form again an Independent Set. Setting  $X' = X \cup \{u_2\} \cup \bigcup y'_i$ and $Y' = Y \cup \{u_1\} \cup \bigcup {x'_i}$ form the partitions of bipartite G'.
 
-    \begin{corollary} G has a Dominating Set of size k iff G has a semitotal Dominating Set of size $k' = k + 2$
+    \begin{corollary} G has a dominating Set of size k iff G has a semitotal Dominating Set of size $k' = k + 2$
     \end{corollary} 
-     $\Rightarrow$: Asume there exists a Dominating Set D in G with size k. $DS = D\cup \{d_1,d_2\}$ is a semitotal Dominating Set in $G'$ with size $k' = k+2 $ , because $d_1$ dominates $u_1$ and all $x'_i$; $d_2$ dominates $u_2$ and all $y'_i$. Hence, it is a semitotal Dominating Set, because $\forall v \in (D \cap X): d(v, d_1) = 2$ and $\forall v \in (D \cap Y): d(v, d_2) = 2$
+     $\Rightarrow$: Assume there exists a Dominating Set D in G with size k. $DS = D\cup \{d_1,d_2\}$ is a semitotal Dominating Set in $G'$ with size $k' = k+2 $ , because $d_1$ dominates $u_1$ and all $x'_i$; $d_2$ dominates $u_2$ and all $y'_i$. Hence, it is a semitotal Dominating Set, because $\forall v \in (D \cap X): d(v, d_1) = 2$ and $\forall v \in (D \cap Y): d(v, d_2) = 2$
 
     $\Leftarrow$: On the contrary, asume any Semitotal Dominating Set $SD$ in $G'$ with size $k'$. WLOG we can asume that $u_1, u_2 \notin DS$. 
     
