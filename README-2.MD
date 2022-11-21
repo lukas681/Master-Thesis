@@ -53,7 +53,7 @@ and the player on the other side is hidden from us”
 (Thomas Huxley)
 TODO: Look up unknown graph theoretic terms for me.
 
-Note that if not mentioned other wise, parametrized by solution size.
+Note that if not mentioned other wise, parameterized by solution size.
 
 V(R) defined?
 Define penadant vertices
@@ -90,7 +90,7 @@ o“This idea that there is generality in the specific is of far-reaching import
 
 * Pal..
 * Supervisor at TUM
-* Jan Arne for introducing me into the fascinating world of Parametrized Complexity.
+* Jan Arne for introducing me into the fascinating world of parameterized Complexity.
 * ITU Algorithms Group
 
 * Martin for fighting danish universitxy bureauxracy. 

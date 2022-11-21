@@ -13,7 +13,7 @@
 
 In this chapter, we will introduce the core definitions used throughout this thesis. 
 Most of the definitions of graph theory are taken from Diestel \cite{Diekert2005}. 
-For definitions in the area of \textit{parametrized complexity}, the book by Cygan et al.\cite{Cygan2015} gives a very good introduction.
+For definitions in the area of \textit{parameterized complexity}, the book by Cygan et al.\cite{Cygan2015} gives a very good introduction.
 For standard mathematical notation, the reader is referred to any introductory textbook into discrete maths. (for example \cite{Rosen2012})
 
 \section{Graph Theory}
@@ -133,7 +133,7 @@ An embedding in the plane, or \textit{planar embedding}, of an (abstract) graph 
 
 \input{pages/theory/pc/pc.tex}
 
-\chapter{On Parametrized Semitotal Domination}\label{ch:semitotal-domination}
+\chapter{On parameterized Semitotal Domination}\label{ch:semitotal-domination}
 
 \vspace*{-50pt}
 
@@ -191,15 +191,15 @@ Goddard, Henning and McPiallan a
      \begin{equation*}
          \tikzfig{fig/tikz/ds-examples}
      \end{equation*}
-    \caption[An example for various dominating sets]{\textit{An example  for a \dom, \sdom and \tdom, where $\gamma(G) < \gamma_{2t}(G) < \gamma_t(G)$ are strict. In the first case, only two vertices suffice to dominate all others. In the second one, we need a witness between $d_1$ and $d_2$ that is at most distance two. In the last case, $d_1$ and $d_2$ both need a neighbor in the \tdom.}}
+    \caption[An example for various dominating sets]{\textit{An example for a dominating set, semitotal dominating set and a total dominating set, where $\gamma(G) < \gamma_{2t}(G) < \gamma_t(G)$ are strict. In the first case, only two vertices suffice to dominate all others. In the second one, we need a witness between $d_1$ and $d_2$ that is at most distance two. In the last case, $d_1$ and $d_2$ both need a neighbor in the total dominating set.}}
     \label{figd:dsexamples}
 \end{figure}
 
 
 \begin{definition}[Domination Parameters]
    The \underline{domination number} in a graph $G$ is the minimum cardinality of a \dom of $G$, denoted as $\gamma(G)$. 
-   The \underline{total domination number} is the minimum cardinality of a \tdom  of $G$, denoted by $\gamma_t(G)$.
-   The \underline{semitotal domination number} is the minimum cardinality of a \sdom of $G$, denoted by $\gamma_t(G)$
+   The \underline{total domination number} is the minimum cardinality of a total dominating set of $G$, denoted by $\gamma_t(G)$.
+   The \underline{semitotal domination number} is the minimum cardinality of a semitotal dominating set of $G$, denoted by $\gamma_t(G)$
 \end{definition}
 
 % Henning?

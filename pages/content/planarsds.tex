@@ -9,7 +9,7 @@
 
 \epigraph{\itshape The best way to explain it is to do it.}{Lewis Caroll, \textit{Alice in Wonderland}}
 
-We are going to present a polynomial-time preprocessing procedure giving a linear kernel for \psdom parametrized by solution size. Based on the technique first introduced by Alber, Fellows and Niedermeier \cite{Alber2004} in 2004, an abundance of similar results to other domination problems emerged which gave us the belief we can transfer these results to \sdom. \cref{tbl:kernels} gives an overview of the status of kernels for the planar case on various domination problems. All of these results introduce reduction rules bounding the number of vertices inside so-called ``regions'' which can be obtained by a special decomposition of the planar graph. 
+We are going to present a polynomial-time preprocessing procedure giving a linear kernel for \psdom parameterized by solution size. Based on the technique first introduced by Alber, Fellows and Niedermeier \cite{Alber2004} in 2004, an abundance of similar results to other domination problems emerged which gave us the belief we can transfer these results to \sdom. \cref{tbl:kernels} gives an overview of the status of kernels for the planar case on various domination problems. All of these results introduce reduction rules bounding the number of vertices inside so-called ``regions'' which can be obtained by a special decomposition of the planar graph. 
 % TODO: Add the running time of this algorithm there.
 \begin{table}[h]
 \begin{minipage}[th]{\linewidth}
@@ -250,13 +250,13 @@ Then we use the existence of a maximal \dreg~$\mathfrak{R}$ on planar graphs to 
 
 \section{The Reduction Rules}
 
-Following the ideas proposed by Garnero and Sau \cite[Revision 2014]{Garnero2018}, we state modified reduction rules that after exhaustive application will lead to a linear kernel. We note that especially for \cref{rgl:rtwo}, we relied on the first version of the paper electronically published at \textit{arXiv}, because in the following years they improved their kernel size at the cost of making them more specific to \tdom and the latest rules stated will not work for \psdom. By a deeper look into the structure of simple regions, we were able to give a slightly more complex reduction \cref{rgl:rthree} that achieves the same bound as proven in \cite{Garnero2018}.  
-The main challenge in our case was to preserve possible witness properties in the graph because a vertex inside a region can be important as a witness for vertices in another region. This was not a problem for \tdom, because there, these witnesses must be close and they do not have an effect on more distanced vertices. 
+Following the ideas proposed by Garnero and Sau \cite[arXiv v2]{Garnero2018}, we state modified reduction rules that after exhaustive application will lead to a linear kernel. We note that especially for \cref{rgl:rtwo}, we relied on the second version of the paper electronically submitted to \textit{arXiv} because in the following years they improved their kernel size at the cost of making them more specific to \tdom and the latest rules stated will not work for \psdom. By a deeper look into the structure of simple regions, we were able to give a slightly more complex reduction \cref{rgl:rthree} that achieves the same bound as proven in \cite{Garnero2018}.  
+The main challenge in our case was to preserve possible witness properties in the graph because a vertex inside a region can be important as a witness for vertices in another region. This was not an issue for \tdom, because there, these witnesses must be close and they do not have an effect on more distanced vertices. 
 \subsection{Reduction Rule I: Shrinking $N_3(v)$}
 
 % Maybe we can even remove all N_3's because later, only the case v in a pair could be important. We do not have a connected graph.
 
-The idea of the first rule is the observation that a vertex $v' \in N_{2,3}(v)$ dominates $v$ and possibly vertices from $N_2(v)$ and $N_3(v)$. As $N(v') \subseteq N(v)$ and the \cref{fact:witnessTwin} that a witness for $v'$ is also a witness for $v$, we can use $v$ instead of $v'$ as a dominating vertex. Therefore, we can remove $N_{2,3}$ from the graph. Nevertheless, $v'$ can be a witness for $v$ itself and might be required in a solution. Our rule ensures that at least one $N_3(v)$-vertex is preserved. An example for this rule is shown in \cref{fig:ruleOne}.
+The idea of the first rule is the observation that a vertex $v' \in N_{2,3}(v)$ dominates $v$ and possibly vertices from $N_2(v)$ and $N_3(v)$. As $N(v') \subseteq N(v)$ and the \cref{fact:witnessTwin} that a witness for $v'$ is also a witness for $v$, we can use $v$ instead of $v'$ as a dominating vertex. Therefore, we can remove $N_{2,3}$ from the graph. Nevertheless, $v'$ can be a witness for $v$ itself and might be required in a solution. Our rule ensures that at least one $N_3(v)$-vertex is preserved. An example of this rule is shown in \cref{fig:ruleOne}.
 
 \begin{fact}\label{fact:witnessTwin}
 Let \G, $v \in V$ and $v' \in N_{2,3}(v)$. Any witness $w \neq v$ for $v'$ is also a witness for $v$. % Reformulate as v can be a witness for $w'$
@@ -322,7 +322,7 @@ Note that we need our definition of a reduced instance given in \ref{def:reduced
 
 \subsection{Reduction Rule II: Shrinking the Size of a Region}
 
-The second rule is the heart of the whole reduction and it aims to minimize the neighborhood of two distinct vertices. The rule follows Garnero and Sau's approach \cite{Garnero2018} for \ptdom. Especially \cref{rgl:rtwo} given in the latest version of \cite{Garnero2018} was not transferable to \psdom, because it heavily relies on the property of a \tdom that a witness $w$ for $v$ \textbf{must} be a direct neighbor of $w$. In the case of the more relaxed \sdom, the witness is allowed to be further away.
+The second rule is the heart of the whole reduction and it aims to minimize the neighborhood of two distinct vertices. The rule follows Garnero and Sau's approach \cite{Garnero2018} for \ptdom. Especially \cref{rgl:rtwo} given in the latest version of \cite{Garnero2018} was not transferable to \psdom, because it heavily relies on the property of a total dominating set that a witness $w$ for $v$ \textbf{must} be a direct neighbor of $w$. In the case of the more relaxed \sdom, the witness is allowed to be further away.
 
 % TODO: Force connectivity, improve kerne bound
 % TODO: Reformulate
@@ -495,7 +495,7 @@ In contr
 While first embedding a reduction procedure for the \ptdom directly into their rule two, Garnero and Sau \cite{Garnero2018} decided to decouple it into a separate rule.
 % Describe Rule?
 
-Unfortunately, a $\tdom$ is easier to handle 
+Unfortunately, a total dominating set is easier to handle 
 %% TODO Describe IDEA
 
 %For a total dominating set, it is sufficient to check ...
@@ -833,13 +833,13 @@ With slight modifications, the proof given by Garnero and Sau \cite[arXiv v2]{Ga
 \subsection{Bounding the Number of Regions}
 
 We are now utilizing the final tool in our toolbox. Alber, Fellows and Niedermeier \cite[Proposition 1]{Alber2004} gave an explicit greedy algorithm to construct a maximal \dreg for a \dom. 
-The existence of this algorithm is the core for all following works because they always involve region decompositions. For example, Garnero and Sau used it for \rbdom \cite{Garnero2017} and \tdom \cite{Garnero2018}. This missing puzzle piece will now assemble everything we have set-up so far giving us the linear kernelization we are looking for.
+The existence of this algorithm is the core for all following works because they always involve region decompositions. For example, Garnero and Sau used it for \rbdom \cite{Garnero2017} and \tdom \cite{Garnero2018}. This missing puzzle piece will now assemble everything we have set up so far giving us the linear kernelization we are looking for.
 
-For the following lemma, Alber, Fellows and Niedermeier\cite{Alber2004} required a reduced instance and their reduction rules for \pdom differed form ours. Luckily, they do not rely on any specific properties following from a reduced graph and therefore, we can just use it for our kernelization algorithm as well.
+For the following lemma, Alber, Fellows and Niedermeier\cite{Alber2004} required a reduced instance and their reduction rules for \pdom differed from ours. Luckily, they do not rely on any specific properties following from a reduced graph and therefore, we can just use it for our kernelization algorithm as well.
 
 This was already observed by Garnero and Sau \cite{Garnero2018} and a more formal proof along with the description of the algorithm was provided.
 
-Because every \sdom is indeed also a \dom, we can safely apply it to \psdom as well. 
+Because every semitotal dominating set is indeed also a dominating set, we can safely apply it to \psdom as well. 
 
 \begin{lemma}[{\cite[Proposition 1 and Lemma 5]{Alber2004}}]\label{lemma:numRegions}
     Let G be a reduced plane graph and let D be a \sdom with $\abs{D}\geq 3$. There is a maximal D-region decomposition of G such that $\abs{R} \leq 3 \cdot \abs{D} - 6$.

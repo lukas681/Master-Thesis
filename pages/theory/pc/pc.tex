@@ -4,10 +4,10 @@ Computational Complexity Theory discusses how many resources are needed for solv
 
 Classical complexity
 
-As NP ... Parametrized Complexity adds a new sight... to the existing models.
+As NP ... parameterized Complexity adds a new sight... to the existing models.
 % One sentence what it is
 
-% Developed Parametrized Complexity
+% Developed parameterized Complexity
 % WHAT IS COMPLEXITY THEORY
 
 \subsection{Classical Complexity Theory}
@@ -62,36 +62,36 @@ Even though we do not expect \NPc problems to have a polynomial-time algorithm.
     \label{fig:npc}
 \end{figure}
 
-Parametrized complexity ... Transition
+parameterized complexity ... Transition
 
-\subsection{Parametrized Complexity}
+\subsection{parameterized Complexity}
 
-Introduced by Downey and Fellows \cite{Downey1999a}, parametrized complexity extends the classical theory with a framework that allows a more finely-grained analysis of computational problems. The idea is to measure a problem in terms of input size and an additional parameter $k$. This parameter denotes, how difficult the problem is: A larger parameter means a harder problem instance. We say that a problem is \textit{Fixed-Parameter Tractable} (FPT) if problem instances of size $n$ can be solved in $f(n)n^{\mathcal{O}(1)}$ time for some function $f$ independent of $n$. 
+Introduced by Downey and Fellows \cite{Downey1999a}, parameterized complexity extends the classical theory with a framework that allows a more finely-grained analysis of computational problems. The idea is to measure a problem in terms of input size and an additional parameter $k$. This parameter denotes, how difficult the problem is: A larger parameter means a harder problem instance. We say that a problem is \textit{Fixed-Parameter Tractable} (FPT) if problem instances of size $n$ can be solved in $f(n)n^{\mathcal{O}(1)}$ time for some function $f$ independent of $n$. 
 
 
-\begin{definition}[Parametrized Problem{\cite[Def 1.1]{Cygan2015}}]
-    A parametrized problem is a $L\subseteq\Sigma^*\times \mathbb{N}$ ($\Sigma$ finite fixed alphabet) for an instance $(x,k)\in \Sigma^*\times \mathbb{N}$, where k is called the \textit{parameter}.
+\begin{definition}[parameterized Problem{\cite[Def 1.1]{Cygan2015}}]
+    A parameterized problem is a $L\subseteq\Sigma^*\times \mathbb{N}$ ($\Sigma$ finite fixed alphabet) for an instance $(x,k)\in \Sigma^*\times \mathbb{N}$, where k is called the \textit{parameter}.
 \end{definition}
 
 \begin{definition}[Instance Size]
-    The \textbf{size of an instance} of an instance $(x,k)$ of a parametrized problem is $\abs{(x,k)} = \abs{x} + k$
+    The \textbf{size of an instance} of an instance $(x,k)$ of a parameterized problem is $\abs{(x,k)} = \abs{x} + k$
 \end{definition}
-We will now clarify the basic terminology withing Parametrized Complexity. 
-We are now giving a short introduction into the world of parametrized complexity. 
+We will now clarify the basic terminology withing parameterized Complexity. 
+We are now giving a short introduction into the world of parameterized complexity. 
 * General Introduction
 
 
 \subsection{Fixed Parameter Tractability}
 
 \begin{definition} [The Class FPT {\cite[Def 1.2]{Cygan2015}}]
-    A parametrized problem $L\subseteq\Sigma^*\times\mathbb{N}$ is called \textit{fixed-parameter tractable} if there exists an algorithm A (called a \textit{fixed-parameter algorithm}), a computable function $f:\mathbb{N} \rightarrow \mathbb{N}$ and a constant c such that, given $(x,k) \in \Sigma^* \times \mathbb{N}$, the algorithm $\mathcal{A}$ correctly decides whether $(x,k) \in L$ in time bounded by $f(k) \cdot |(x,k)|^c$. The complexity class containing all fixed-parameter tractable problems is called \textit{FPT}
+    A parameterized problem $L\subseteq\Sigma^*\times\mathbb{N}$ is called \textit{fixed-parameter tractable} if there exists an algorithm A (called a \textit{fixed-parameter algorithm}), a computable function $f:\mathbb{N} \rightarrow \mathbb{N}$ and a constant c such that, given $(x,k) \in \Sigma^* \times \mathbb{N}$, the algorithm $\mathcal{A}$ correctly decides whether $(x,k) \in L$ in time bounded by $f(k) \cdot |(x,k)|^c$. The complexity class containing all fixed-parameter tractable problems is called \textit{FPT}
 \end{definition}
 
 
 \subsection{Kernelization}
 
 \begin{definition}[kernelization Algoritm{\cite[Def 2.1]{Cygan2015}}]
-A \textit{Kernelization Algorithm} or \textit{kernel} is an algorithm $\mathfrak{A}$ for a parametrized Problem Q, that given an instance $(I,k)$ of Q works in polynomial time and returns an equivalent instance $(I', k')$ of Q. Moreover, we require that $size_{\mathfrak{A}}(k) \leq g(k)$ for some computable function $g:\mathbb{N} \rightarrow \mathbb{N}$
+A \textit{Kernelization Algorithm} or \textit{kernel} is an algorithm $\mathfrak{A}$ for a parameterized Problem Q, that given an instance $(I,k)$ of Q works in polynomial time and returns an equivalent instance $(I', k')$ of Q. Moreover, we require that $size_{\mathfrak{A}}(k) \leq g(k)$ for some computable function $g:\mathbb{N} \rightarrow \mathbb{N}$
 \end{definition}
 
 %TODO better
@@ -129,8 +129,8 @@ A \textbf{reduction rule} is a function $\Sigma* \times \mathbb{N}$ that maps an
 \subsection{Fixed Parameter Intractability: The w-Hierarchy}
 \subsection{Compare to classical NP-Hardness theory}
 
-\subsubsection{Parametrized Reductions}
-\begin{definition}[Parametrized Reduction {\cite[Def 13.1]{Cygan2015}}] Let $A,B\subseteq \Sigma^*\times\mathbb{N}$ two parametrized problems. A \textit{Parametrized Reduction} from A to B is an algorithm that, given an instance $(x,k)$ of A, outputs an instance $(x', k')$ of B such that
+\subsubsection{parameterized Reductions}
+\begin{definition}[parameterized Reduction {\cite[Def 13.1]{Cygan2015}}] Let $A,B\subseteq \Sigma^*\times\mathbb{N}$ two parameterized problems. A \textit{parameterized Reduction} from A to B is an algorithm that, given an instance $(x,k)$ of A, outputs an instance $(x', k')$ of B such that
 
     \begin{itemize}
         \item $(x,k)$ is a \textcolor{gray}{yes instance} of A \textbf{iff} $(x',k')$ is a \textcolor{gray}{yes instance} of B
