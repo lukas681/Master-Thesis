@@ -33,7 +33,7 @@ We are going to present a polynomial-time preprocessing procedure giving a linea
 \footnotetext[2]{Improved their own results from first $694k$ \cite[arXiv v2]{Garnero2018}}
 \setcounter{footnote}{\value{mpfootnote}}
 \end{minipage}
-\caption{An overview about existing kernels for planar dominating set variants}
+\caption{An overview about existing kernels for planar dominating problems}
 \label{tbl:kernels}
 \end{table}
 
@@ -54,7 +54,7 @@ In 2012 Philip, Raman and Sikdar \cite{Philip2012} showed that $K_{i,j}$-free gr
 In an attempt to expand these ideas to other problems as well, Bodlaender et al. \cite{Bodlaender2016} proved that all problems expressible in counting monadic second-order logic satisfying a coverability property admit a polynomial kernel on graphs of bounded genus $g$. These meta-results are interesting from a theoretical point of view, but the constants for the kernels obtained by these methods are too large to be of practical interest. 
 The question of how an efficient kernel for the \psdom problem can be constructed remains. In the following, we will transfer the linear kernel for \ptdom described by Garnero and Sau \cite[arXiv v2]{Garnero2018} to \psdom giving us an explicitly constructed kernel with ``reasonable'' small constants. Therefore, we were able to modify the original reduction rules to fit into \psdom. Our main challenge was to ensure that vertices that are important as witnesses are being preserved. 
 
- \paragraph{The Main Idea} A given a planar graph \G with a given vertex set $D \subseteq V$ can be decomposed into at most $3 \cdot \abs{D} -6$ so-called ``regions'' (see \cref{def:region}). If $D$ is a given semitotal dominating set of size $\abs{D}$, the total number of regions in this decomposition depends \underline{linearly} on the size of $D$. If we define \textit{reduction rules} (see \cref{rgl:rone,rgl:rtwo,rgl:rthree})  minimizing the number of vertices in and around a region, we can bound the size of a reduced graph. In our case, we give rules to reduce a region down to a constant number of vertices. We can create an equivalent instance of $G$ whose number of remaining vertices depends linearly on the size of an enquiried solution. Such a reduction gives a \textit{kernel} for \psdom.
+ \paragraph{The Main Idea} A given planar graph \G with a given vertex set $D \subseteq V$ can be decomposed into at most $3 \cdot \abs{D} -6$ so-called ``regions'' (see \cref{def:region}). If $D$ is a given semitotal dominating set of size $\abs{D}$, the total number of regions in this decomposition depends \underline{linearly} on the size of $D$. If we define \textit{reduction rules} (see \cref{rgl:rone,rgl:rtwo,rgl:rthree})  minimizing the number of vertices in and around a region, we can bound the size of a reduced graph. In our case, we give rules to reduce a region down to a constant number of vertices. We can create an equivalent instance of $G$ whose number of remaining vertices depends linearly on the size of an enquiried solution. Such a reduction gives a \textit{kernel} for \psdom.
 
 Interestingly, the reduction rules do not rely on the decomposition itself, but rather consider the neighborhood of every pair of vertices in the graph. The decomposition itself has just used a tool for analyzing the kernel size after the reduction.
 
@@ -122,7 +122,7 @@ Unlike the sets $N_1(v), N_2(v)$ and $N_3(v)$, in every of the distinct sets $N_
         \begin{equation*}
             \tikzfig{fig/tikz/ntwoimportant}
     \end{equation*}
-    \caption[$N_i(v,w)$]{\textit{Left:} $\{d_1, d_2\}$ with $d_2 \in N_2(v,w)$ form the only minimal semitotal dominating set. \textit{Right:} $d_1 \in N_1(v,w)$ and $d_2 \in N_3(v,w)$ optimal.}
+    \caption[$N_i(v,w)$]{\textit{Left:} $\{d_1, d_2\}$ with $d_2 \in N_2(v,w)$ form the only minimum semitotal dominating set. \textit{Right:} $d_1 \in N_1(v,w)$ and $d_2 \in N_3(v,w)$ optimal.}
     \label{fig:alldominating}
 \end{figure}
 
@@ -294,15 +294,15 @@ By assumption, $v'$ is witnessed by a vertex $w \neq v$ with $d(v', w) \leq 2$. 
 \end{lemma}
 \begin{proof}
     \begin{enumerate}
-        \item[$\Rightarrow$] Let $D$ be a semitotal dominating set in $G$ of size $k$. 
+        \item[$\Rightarrow$] Let $D$ be an sds set in $G$ of size $k$. 
         Because \cref{rgl:rone} has been applied, we can assume $N_{2,3}(v) \neq \emptyset$ in $G$. 
         
-        To dominate all vertices from $N_3(v)$ we either need $v \in D$ or at least one other vertex $d \in N_{2,3}(v) \cap D$. In the latter case, we can replace this vertex by $v$ directly. By \cref{fact:witnessTwin}, we know that a witness for $d$  (which is not  $v$) is also a witness for $v$ and therefore, the replacing preserves the semitotal dominating set. Henceforth, we assume $v \in D$ and $N_{2,3}(v)$ is already dominated by $v$.
+        To dominate all vertices from $N_3(v)$ we either need $v \in D$ or at least one other vertex $d \in N_{2,3}(v) \cap D$. In the latter case, we can replace this vertex by $v$ directly. By \cref{fact:witnessTwin}, we know that a witness for $d$  (which is not  $v$) is also a witness for $v$ and therefore, the replacing preserves the sds. Henceforth, we assume $v \in D$ and $N_{2,3}(v)$ is already dominated by $v$.
 
         If \cref{rgl:rone} has removed at least one dominating vertex from $N_{2,3}(v)$, we set $D' = D \setminus N_{2,3}(v) \cup \{v'\}$ otherwise $D = D'$. 
-        In the first case this vertex in $N_{2,3}(v) \cap D$ could have possibly been a witness for $v$, so we select $v' \in D'$ as a witness for $v$ ensuring $D'$ to be semitotal dominating set. In both cases, $v'$ is by assumption dominated by $v$ and  $\abs{D} \leq \abs{D'}$.
+        In the first case this vertex in $N_{2,3}(v) \cap D$ could have possibly been a witness for $v$, so we select $v' \in D'$ as a witness for $v$ ensuring $D'$ to be an sds. In both cases, $v'$ is by assumption dominated by $v$ and  $\abs{D} \leq \abs{D'}$.
 
-        \item[$\Leftarrow$]  Assume $D'$ to be a semitotal dominating set in $G'$. We can assume that $v \in D'$, because $v'$ has to be dominated and it is always better to choose $v$ instead of $v$.
+        \item[$\Leftarrow$]  Assume $D'$ to be an sds in $G'$. We can assume that $v \in D'$, because $v'$ has to be dominated and it is always better to choose $v$ instead of $v$.
 
         If $v' \in D'$ is a witness for $v$ in $G'$, we have to preserve a witness in $G$ as well. As we know that $N_3(v) \neq \emptyset$, we can replace it with an arbitrary vertex $d \in N_3(v)$ in $G$. 
         
@@ -387,7 +387,7 @@ Before proving \cref{rgl:rtwo} we will deduce some \textit{facts} which are impl
     Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref{rgl:rtwo} on $v,w$. If $\Dvw = \emptyset$, then G has a solution if and only if it has a solution containing at least one of the two vertices $\{v,w \}$.
 \end{fact}
 \begin{proof}
-Because $\Dvw = \emptyset$, any SDS of $G$ has to contain $v$ or $w$, or at least four vertices from $N_{2,3}(v,w)$. In the second case, these four vertices can be replaced with $v$, $w$ and two neighbors of $v$ and $w$ still forming a semitotal dominating set.
+Because $\Dvw = \emptyset$, any SDS of $G$ has to contain $v$ or $w$, or at least four vertices from $N_{2,3}(v,w)$. In the second case, these four vertices can be replaced with $v$, $w$ and two neighbors of $v$ and $w$ still forming an sds.
 \end{proof}
 
 The second fact states that if  $\Dv$ (resp. $\Dw$) is empty, too, we only need to consider solutions containing $w$ (or $v$):
@@ -403,12 +403,13 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
 
 \noindent Now we are ready to prove the correctness of \cref{rgl:rtwo}
 \begin{lemma}\label{lemma:correctnesstwo}
-    Let \G be a plane graph, $v, w \in V$ and \GB be the graph obtained after application of \cref{rgl:rtwo} on the pair $\{v, w\}$. Then $G$ has semitotal dominating set of size $k$ if and only if $G'$ has semitotal dominating set of size $k$.
+    Let \G be a plane graph, $v, w \in V$ and \GB be the graph obtained after application of \cref{rgl:rtwo} on the pair $\{v, w\}$. Then $G$ has a semitotal dominating set of size $k$ if and only if $G'$ has a semitotal dominating set of size $k$.
 \end{lemma}
 \begin{proof}
     We will prove the claim by analyzing the different cases of the rule independently.     
     \begin{enumerate}
-        \item[$\Rightarrow$] Consider a semitotal dominating set $D$ in $G$. We show that $G'$ also has a semitotal dominating set with $\abs{D'} \leq \abs{D}$. By assumption, we have $\Dvw = \emptyset$.
+        \item[$\Rightarrow$] Consider am sds $D$ in $G$. 
+        We show that $G'$ also has a sds with $\abs{D'} \leq \abs{D}$. By assumption, we have $\Dvw = \emptyset$.
         \begin{enumerate}
             \item  $ \Dv = \emptyset  \wedge \Dw = \emptyset $: By applying \cref{fact:f2} twice, we know that both  $v, w \in D$. Therefore, $v'$,$w'$, and potentially $y$ and $y'$ are dominated by $v$ or $w$ in $G'$.
             
@@ -450,7 +451,7 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
             \item  $\Dv \neq \emptyset \wedge \Dw = \emptyset$: Clearly, $v \in D'$ to dominate $v'$. If $v \in D'$, we set $D =  D' \setminus \{v'\} \cup d$ for some vertex $d \in N_{2,3}(v,w)$ and otherwise $D = D'$. If $v'$ was the witness of $v$, it is now replaced by $d$ and $D$ is an SDS with $\abs{D} \leq \abs{D'}$.
             \item  $\Dv = \emptyset \wedge \Dw \neq \emptyset$: Symmetrical to previous case.
         \end{enumerate} 
-        In all cases, we have shown that $\abs{D} \leq \abs{D'}$ and $D$ is a semitotal dominating set of $G$.
+        In all cases, we have shown that $\abs{D} \leq \abs{D'}$ and $D$ is a sds of $G$.
     \end{enumerate}
 
 \end{proof}
@@ -546,7 +547,7 @@ Recap that we denoted $\partial R$ as the set of boundary vertices of the (simpl
     \begin{enumerate}
         \item[$\Rightarrow$] 
         
-        Consider a semitotal dominating set $D$ in $G$. We show that $G'$ also has a semitotal dominating set with $\abs{D'} \leq \abs{D}$. By assumption, we have $\abs{V(R) \setminus \{v, w\}} \geq 5$, $R$ is a simple region and therefor $d(v,w) \leq 2$.
+        Consider an sds $D$ in $G$. We show that $G'$ also has an sds with $\abs{D'} \leq \abs{D}$. By assumption, we have $\abs{V(R) \setminus \{v, w\}} \geq 5$, $R$ is a simple region and therefor $d(v,w) \leq 2$.
 
         First, we can safely assume that the set of border vertices  $\partial R$ contains exactly two vertices.
         If $\abs{\partial R \setminus \{v,w\}}  < 2$, the region could not have vertices strictly inside, because the boundary path of $\partial R$ does not enclose any vertices.
@@ -566,7 +567,7 @@ Recap that we denoted $\partial R$ as the set of boundary vertices of the (simpl
          \textbf{Contrary, assume} $V(R \setminus \partial R) \ncong P_3$. Again, let us denote this induced path as $(p_1,p_2,p_3)$. We observe that without contradicting the planarity of $G$ the induced subgraph of the vertices $G[R \setminus \partial R]$ must be a subgraph of a $P_j$ for $j = \abs{V(R \setminus \partial R)}$ and  $j \geq 3$.  By assumption, we either have this as either a $P_3$ with at least one missing edge or a larger $P_j$. Therefore, it is impossible to dominate all these vertices with one single vertex $p_i$ if we also assume that no vertex in $\partial R$ is dominating. Hence, we set $D' = D$.
 
          In all cases $\abs{D} = \abs{D'}$
-        \item[$\Leftarrow$] Consider a semitotal dominating set $D$ in $G'$. We show that $G$ has a semitotal dominating set with $\abs{D} \leq \abs{D'}$. By assumption, we have $\Dvw = \emptyset$. We analyze both cases separately.
+        \item[$\Leftarrow$] Consider an sds $D$ in $G'$. We show that $G$ has an sds with $\abs{D} \leq \abs{D'}$. By assumption, we have $\Dvw = \emptyset$. We analyze both cases separately.
 
          \textbf{First, assume} $V(R \setminus \partial R) \cong P_3$. Here, \cref{case:rto} has been applied and $V(R \setminus R)$ replaced by one single vertex $y$. We denote the induced path in $G$ as $(p_1,p_2,p_3)$.
          If $y \in D'$, we set $D = D' \setminus \{y\} \cup \{p_2\}$. We know that $p_2$ dominates $p_1$,$p_3$ in $G$ and witnesses the same vertices as in $G'$. 
@@ -574,7 +575,7 @@ Recap that we denoted $\partial R$ as the set of boundary vertices of the (simpl
 
          \textbf{Contrary, assume} $V(R \setminus \partial R) \ncong P_3$ and \cref{case:rtt} has been applied and $V(R \setminus R)$ replaced by two vertices $y$ and $y'$. Observe that neither $y$ nor $y'$ is useful in any \sdom in $G'$: If both $y, y' \in D'$, we simply replace them by $v$ and $w$ and if only $y \in D$ (resp. $y'$), then we need either $v \in D'$ or $w \in D'$ to dominate $y'$ and again, we replace them by $v$ and $w$. 
          We can even ignore that $y$ or $y'$ is important as a witness, because as $d(v,w) \leq 2$, $v$, $w$ and $v$ always witness each other.
-         Hence \textit{at least one of} $\{v,w \}$ must be in a semitotal dominating set simulating an ``OR-gadget''. Therefore, also $V(R \partial R)$ is dominated by either $v$ or $w$. All the witnesses stayed the same and hence, we simply set $D = D'$.
+         Hence \textit{at least one of} $\{v,w \}$ must be in a sds simulating an ``OR-gadget''. Therefore, also $V(R \partial R)$ is dominated by either $v$ or $w$. All the witnesses stayed the same and hence, we simply set $D = D'$.
          
          In all of the cases $\abs{D} = \abs{D'}$
 
@@ -749,7 +750,7 @@ We continue to bound the number of vertices that do not lay inside any region of
 \noindent The following lemma states that no vertex from $N_1(v)$ will be outside of a maximal \dreg which was already proven by Alber, Fellows and Niedermeier \cite[Lemma 6]{Alber2004}.
 
 \begin{lemma}\label{lemma:noneinside}
-    Let \G be a plane graph and $\mathfrak{R}$ be a maximal \dreg of a \dom $D$. If $u \in N_1(v)$ for some vertex $v \in D$ then $u \in V(\mathfrak{R})$.
+    Let \G be a plane graph and $\mathfrak{R}$ be a maximal \dreg of a dominating set $D$. If $u \in N_1(v)$ for some vertex $v \in D$ then $u \in V(\mathfrak{R})$.
 \end{lemma}
 
 In the following, we define $\dGR(v) = \abs{\{R(v,w) \in \mathfrak{R}, w \in D\}}$ to be the number of regions in $\mathfrak{R}$ having $v$ as a pole. 
@@ -773,7 +774,7 @@ With slight modifications, the proof given by Garnero and Sau \cite[arXiv v2]{Ga
     
     We use the size bound of a simple region we have proven in \cref{lemma:simpleregionbound}. In particular, we are going to show that $V \setminus V(\mathfrak{R}) \leq 48 \cdot \abs{\mathfrak{R}} + 2 \cdot \abs{D}$. \Cref{lemma:numRegions} will then give the desired bound.
     
-    Let $D$ be a semitotal dominating set, $\mathfrak{R}$ be a maximal \dreg and $v \in D$. Since $D$ dominates all vertices in the graph, we can consider $V$ as $\bigcup_{v \in D}N(v)$ and thus, we only need to bound the sizes of $N_1(v)\setminus \VR$, $N_2(v) \setminus \VR$ and $N_3(v) \setminus \VR$ separately.
+    Let $D$ be an sds, $\mathfrak{R}$ be a maximal \dreg and $v \in D$. Since $D$ dominates all vertices in the graph, we can consider $V$ as $\bigcup_{v \in D}N(v)$ and thus, we only need to bound the sizes of $N_1(v)\setminus \VR$, $N_2(v) \setminus \VR$ and $N_3(v) \setminus \VR$ separately.
     
     \noindent$\mathbf{N_3(v)}$: As we know that \cref{rgl:rone} has been exhaustively applied, we trivially see that $\abs{N_3(v)} \leq 1$ and hence, 
     
@@ -857,7 +858,7 @@ Because every semitotal dominating set is indeed also a dominating set, we can s
 
 \begin{proof}
     Let \G be the plane input graph and $G'=(V',E')$ be the graph obtained by the exhaustive application of \cref{rgl:rone,rgl:rtwo,rgl:rthree}.
-    As none of our rules change the size of a possible solution $D' \subseteq V'$ in $G'$, we know by \cref{lemma:correctnessone}, \cref{lemma:correctnesstwo} and \cref{lemma:correctnessthree} that $G'$ has a \sdom of size $k$ if and only if $G$ has a semitotal dominating set of size $k$.
+    As none of our rules change the size of a possible solution $D' \subseteq V'$ in $G'$, we know by \cref{lemma:correctnessone}, \cref{lemma:correctnesstwo} and \cref{lemma:correctnessthree} that $G'$ has a \sdom of size $k$ if and only if $G$ has an sds set of size $k$.
     Furthermore, by \cref{lemma:runtime}, the preprocessing procedure runs in polynomial time.
     
     By taking the size of each region proven in \cref{lemma:outside}, the total number of regions in a maximal \dreg~(\cref{lemma:numRegions}) and the number of vertices that can lay outside of any region (\cref{lemma:outside}), we obtain the following bound:
@@ -865,6 +866,6 @@ Because every semitotal dominating set is indeed also a dominating set, we can s
     \begin{equation}
          87 \cdot (3k - 6) + 97 \cdot k + k < \kernelsize \cdot k
     \end{equation}
-    \noindent If $\abs{V(G')} > \kernelsize \cdot k$ $G$ we replace $G'$ by one single vertex $v$, which is trivially a \emph{no}-instance, because $v$ has no witness to form a semitotal dominating set.
+    \noindent If $\abs{V(G')} > \kernelsize \cdot k$ $G$ we replace $G'$ by one single vertex $v$, which is trivially a \emph{no}-instance, because $v$ has no witness to form an sds.
 
 \end{proof}

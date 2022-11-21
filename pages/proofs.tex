@@ -24,15 +24,16 @@
     \end{enumerate}
     \paragraph*{Observation:} G' is clearly bipartite as all $y'_j$ and $x'_i$ form again an Independent Set. Setting  $X' = X \cup \{u_2\} \cup \bigcup y'_i$ and $Y' = Y \cup \{u_1\} \cup \bigcup {x'_i}$ form the partitions of bipartite G'.
 
-    \begin{corollary} G has a dominating Set of size k iff G has a semitotal Dominating Set of size $k' = k + 2$
+    \begin{corollary} G has a dominating set of size k iff G has a semitotal Dominating Set of size $k' = k + 2$
     \end{corollary} 
-     $\Rightarrow$: Assume there exists a Dominating Set D in G with size k. $DS = D\cup \{d_1,d_2\}$ is a semitotal Dominating Set in $G'$ with size $k' = k+2 $ , because $d_1$ dominates $u_1$ and all $x'_i$; $d_2$ dominates $u_2$ and all $y'_i$. Hence, it is a semitotal Dominating Set, because $\forall v \in (D \cap X): d(v, d_1) = 2$ and $\forall v \in (D \cap Y): d(v, d_2) = 2$
+     $\Rightarrow$: Assume there exists a ds $D$ in $G$ with size §k§. $DS = D\cup \{d_1,d_2\}$ is a ds in $G'$ with size $k' = k+2 $ , because $d_1$ dominates $u_1$ and all $x'_i$; $d_2$ dominates $u_2$ and all $y'_i$. Hence, it is an sds, because $\forall v \in (D \cap X): d(v, d_1) = 2$ and $\forall v \in (D \cap Y): d(v, d_2) = 2$
 
-    $\Leftarrow$: On the contrary, asume any Semitotal Dominating Set $SD$ in $G'$ with size $k'$. WLOG we can asume that $u_1, u_2 \notin DS$. 
+    $\Leftarrow$: On the contrary, assume any sds $SD$ in $G'$ with size $k'$. WLOG we can assume that $u_1, u_2 \notin DS$. 
     
-    Our construction forces $d_1$, $d_2 \in DS$. Because all $x'_i$ are only important in dominating $x_i$ ($y'_i$ for $y_i$ resp.) as $d_1, d_2 \in DS$. If $x'_i \in DS$ we simply exchange it with $x_i$ (for $y'_i$ and $y_i$ respectively) in our S keeping the size of the dominating set. $D = DS \setminus \{ d_1,d_2\}$ give us a Dominating Set in G with size $ k = k' - 2$
+    Our construction forces $d_1$, $d_2 \in DS$. Because all $x'_i$ are only important in dominating $x_i$ ($y'_i$ for $y_i$ resp.) as $d_1, d_2 \in DS$. If $x'_i \in DS$ we simply exchange it with $x_i$ (for $y'_i$ and $y_i$ respectively) in our S keeping the size of the ds. $D = DS \setminus \{ d_1,d_2\}$ give us a ds in $G$ with size $ k = k' - 2$
 
-    As G' can be constructed in $\mathcal{O}(n)$ and parameter k is only blown up by a constant, this reduction is a FPT reduction. As Dominating Set is $w[2]$ hard for bipartite Graphs (CITE) so is Semitotal Dominating Set.
+    %TODO CITE HARDNESS
+    As G' can be constructed in $\mathcal{O}(n)$ and parameter k is only blown up by a constant, this reduction is an FPT reduction. As \dom is $w[2]$ hard for bipartite Graphs so is \sdom.
 \end{proof}
 
 \begin{theorem}
@@ -106,10 +107,10 @@
 
 
     \begin{corollary}
-    G has a Dominating Set of size k iff $G'$ has a dominating set of size $k+1$
+    G has a dominating set of size k iff $G'$ has a dominating set of size $k+1$
     \end{corollary}
     \begin{subproof}
-    Asume a Dominating Set D of size k in G. $D \cup \{u\}$ is a semitotal Dominating Set in G' of size k + 1, because $u$ dominates $t$ and for each $v \in DS: d(v, u) \leq 2$.
+    Assume a ds $D$ of size $k$ in $G$. $D \cup \{u\}$ is a sds in G' of size k + 1, because $u$ dominates $t$ and for each $v \in DS: d(v, u) \leq 2$.
 
     Contrary, asume a semitotal Dominating Set $SD$ in $G'$. In order to dominate $t$, $u \in SD$ must hold, hence already dominating the complete subgraph $K_{n+1}$. If a vertex $k_i \in SD$, we exchange it with $v_i$ still preserving a Dominating Set. Taking $D = SD - \{ u \}$ gives our desired Dominating Set of size k.
     \end{subproof}
