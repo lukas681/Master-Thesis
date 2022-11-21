@@ -30,7 +30,7 @@ We are going to present a polynomial-time preprocessing procedure giving a linea
 \end{tabularx}
 
 \footnotetext[1]{There is a master's thesis by Halseth \cite{Halseth2016} claiming a bound of $43k$, but a conference or journal version was not found.}
-\footnotetext[2]{Improved their own results from first $694k$ \cite[Revision 2012]{Garnero2018}}
+\footnotetext[2]{Improved their own results from first $694k$ \cite[arXiv v2]{Garnero2018}}
 \setcounter{footnote}{\value{mpfootnote}}
 \end{minipage}
 \caption{An overview about existing kernels for planar dominating set variants}
@@ -52,7 +52,7 @@ Gutner \cite{Gutner2009} advanced in 2008 by giving a linear kernel for $K_{3,h}
 % In 2007 they extended it to show that graphs of bounded degeneracy are FPT (\cite{Alon2007}). 
 In 2012 Philip, Raman and Sikdar \cite{Philip2012} showed that $K_{i,j}$-free graph classes admit a polynomial kernel. 
 In an attempt to expand these ideas to other problems as well, Bodlaender et al. \cite{Bodlaender2016} proved that all problems expressible in counting monadic second-order logic satisfying a coverability property admit a polynomial kernel on graphs of bounded genus $g$. These meta-results are interesting from a theoretical point of view, but the constants for the kernels obtained by these methods are too large to be of practical interest. 
-The question of how an efficient kernel for the \psdom problem can be constructed remains. In the following, we will transfer the linear kernel for \ptdom described by Garnero and Sau \cite[Revision 2014]{Garnero2018} to \psdom giving us an explicitly constructed kernel with ``reasonable'' small constants. Therefore, we were able to modify the original reduction rules to fit into \psdom. Our main challenge was to ensure that vertices that are important as witnesses are being preserved. 
+The question of how an efficient kernel for the \psdom problem can be constructed remains. In the following, we will transfer the linear kernel for \ptdom described by Garnero and Sau \cite[arXiv v2]{Garnero2018} to \psdom giving us an explicitly constructed kernel with ``reasonable'' small constants. Therefore, we were able to modify the original reduction rules to fit into \psdom. Our main challenge was to ensure that vertices that are important as witnesses are being preserved. 
 
  \paragraph{The Main Idea} A given a planar graph \G with a given vertex set $D \subseteq V$ can be decomposed into at most $3 \cdot \abs{D} -6$ so-called ``regions'' (see \cref{def:region}). If $D$ is a given \sdom~of size $\abs{D}$, the total number of regions in this decomposition depends \underline{linearly} on the size of $D$. If we define \textit{reduction rules} (see \cref{rgl:rone,rgl:rtwo,rgl:rthree})  minimizing the number of vertices in and around a region, we can bound the size of a reduced graph. In our case, we give rules to reduce a region down to a constant number of vertices. We can create an equivalent instance of $G$ whose number of remaining vertices depends linearly on the size of an enquiried solution. Such a reduction gives a \textit{kernel} for \psdom.
 
@@ -60,7 +60,7 @@ Interestingly, the reduction rules do not rely on the decomposition itself, but 
 
 \section{Definitions}
 
-Before giving the exact reduction rules, we need some definitions exposing the nice properties we are going to exploit. These are the same as given by Garnero and Sau for \ptdom in \cite[Revision 2014]{Garnero2018} and for \prbdom in \cite{Garnero2017}) which in turn reused ideas introduced by Alber, Fellows and Niedermeier \cite{Alber2004} for \pdom.
+Before giving the exact reduction rules, we need some definitions exposing the nice properties we are going to exploit. These are the same as given by Garnero and Sau for \ptdom in \cite[arXiv v2]{Garnero2018} and for \prbdom in \cite{Garnero2017} which in turn reused ideas introduced by Alber, Fellows and Niedermeier \cite{Alber2004} for \pdom.
 
 The main idea is to partition the neighborhoods of both a single vertex and a pair of vertices, respectively into three distinct subsets which intuitively classify how much these vertices are confined and how closely they are related to the rest of the graph
 
@@ -140,7 +140,7 @@ This definition differs from the definition usually given in literature where a 
 
 Alber, Fellows and Niedermeier \cite{Alber2004} gave a novel approach to look at planar graphs. In their analysis, they stated a constructive algorithm that decomposes a planar graph into local ``regions''. Intuitively, assume that we have a fixed plane embedding of a planar graph \G. If we pick two distinct vertices $v$ and $w$ from a given \sdom $D \subseteq V$ that are at most of distance two apart, we can try to find two distinct paths from $v$ to $w$ that span up the boundaries of a face and enclose as many other vertices as possible. 
 
-The following definitions are based on those given by Garnero and Sau in \cite[Revision 2014]{Garnero2018} and will lead toward a clean definition of a \textit{region} and what we understand as a \dreg. More detailed explanations and concrete examples can be found in their paper.
+The following definitions are based on those given by Garnero and Sau in \cite[arXiv v2]{Garnero2018} and will lead toward a clean definition of a \textit{region} and what we understand as a \dreg. More detailed explanations and concrete examples can be found in their paper.
 
 % TODO Define Contracting and clockwise order
 \begin{definition}
@@ -207,7 +207,7 @@ We now have all the definitions ready to formally define a maximal \dreg on plan
 We are introducing a special subset of a region, namely \textit{simple region} where every vertex is a common neighbor of $v$ and $w$. 
 They will appear in many unexpected astonishing places and are an important tool to operate on small parts of a plane graph.
 The upcoming \cref{rgl:rthree} will bound the size of these \textit{simple regions}. Interestingly, in the first version o
-f the paper about the linear kernel for \ptdom \cite[Revision 2014]{Garnero2018}, they were not given independently but covered by one of their reduction rules (Rule 2). 
+f the paper about the linear kernel for \ptdom \cite[arXiv v2]{Garnero2018}, they were not given independently but covered by one of their reduction rules (Rule 2). 
 As it turned out, the analysis is getting simpler if we treat them in a separate rule (In our case: \cref{rgl:rthree}) and so did Garnero and Sau \cite{Garnero2018} in a revised version of their paper four years later.
 
 \begin{definition}
@@ -250,7 +250,7 @@ Then we use the existence of a maximal \dreg~$\mathfrak{R}$ on planar graphs to 
 
 \section{The Reduction Rules}
 
-Following the ideas proposed by Garnero and Sau \cite[Revision 2014]{Garnero2018}, we state modified reduction rules that after exhaustive application will lead to a linear kernel. We note that especially for \cref{rgl:rtwo}, we relied on the first version of the paper electronically published at \textit{arXiv}, because in the following years they improved their kernel size at the cost of making them more specific to \tdom and the latest rules stated will not work for \psdom. By a deeper look into the structure of simple regions, we were able to give a slightly more complex reduction \cref{rgl:rthree} that achieves the same bound as proven in \cite[Revision 2018]{Garnero2018}.  
+Following the ideas proposed by Garnero and Sau \cite[Revision 2014]{Garnero2018}, we state modified reduction rules that after exhaustive application will lead to a linear kernel. We note that especially for \cref{rgl:rtwo}, we relied on the first version of the paper electronically published at \textit{arXiv}, because in the following years they improved their kernel size at the cost of making them more specific to \tdom and the latest rules stated will not work for \psdom. By a deeper look into the structure of simple regions, we were able to give a slightly more complex reduction \cref{rgl:rthree} that achieves the same bound as proven in \cite{Garnero2018}.  
 The main challenge in our case was to preserve possible witness properties in the graph because a vertex inside a region can be important as a witness for vertices in another region. This was not a problem for \tdom, because there, these witnesses must be close and they do not have an effect on more distanced vertices. 
 \subsection{Reduction Rule I: Shrinking $N_3(v)$}
 
@@ -322,7 +322,7 @@ Note that we need our definition of a reduced instance given in \ref{def:reduced
 
 \subsection{Reduction Rule II: Shrinking the Size of a Region}
 
-The second rule is the heart of the whole reduction and it aims to minimize the neighborhood of two distinct vertices. The rule follows Garnero and Sau's approach \cite{Garnero2018} for \ptdom. Especially rule two given in the latest version of \cite[Revision 2018]{Garnero2018} were not transferable to \psdom, because it heavily relies on the property of a \tdom that a witness $w$ for $v$ \textbf{must} be a direct neighbor of $w$. In the case of the more relaxed \sdom, the witness is allowed to be farther away.
+The second rule is the heart of the whole reduction and it aims to minimize the neighborhood of two distinct vertices. The rule follows Garnero and Sau's approach \cite{Garnero2018} for \ptdom. Especially \cref{rgl:rtwo} given in the latest version of \cite{Garnero2018} was not transferable to \psdom, because it heavily relies on the property of a \tdom that a witness $w$ for $v$ \textbf{must} be a direct neighbor of $w$. In the case of the more relaxed \sdom, the witness is allowed to be further away.
 
 % TODO: Force connectivity, improve kerne bound
 % TODO: Reformulate
@@ -332,7 +332,7 @@ It can be observed that in the worst case four vertices are needed to semi-total
 
 Before we give the concrete reduction rule, we need to define three sets. Intuitively, we first try to find a set $\tilde D \subseteq N_{2,3}(v,w)$ of size at most three dominating $N_3(v,w)$ without using $v$ or $w$. If no such set exists, we allow $v$ (resp. $w$) and try to find one again. If we now find such a set, we can conclude that $v$ ($w$) must be part of a solution.
 
-\begin{definition}
+\begin{definition}\label{def:dvv}
 Let \G be a graph and let $v,w \in V$. We now consider all the sets that can dominate $N_3(v,w)$:
 \begin{align}
     \Dvw & = \{ \tilde D \subseteq N_{2,3}(v,w)            \mid N_3(v,w) \subseteq \bigcup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3                  \} \\
@@ -348,7 +348,7 @@ Assuming that $v$ and $w$ are closely connected with $d(v,w) \leq 2$, it might s
 We are now ready to state \cref{rgl:rtwo}:
 
 \begin{rgl}\label{rgl:rtwo}
-    Let \G be a graph and $v,$ be two distinct vertices from $V$. If $\mathbf{\Dvw = \emptyset}$ we apply the following:
+    Let \G be a graph and $v, w$ be two distinct vertices from $V$. If $\mathbf{\Dvw = \emptyset}$ (\cref{def:dvv}) we apply the following:
     \begin{caseof}
         \case{if $\Dv =  \emptyset$ and $D_w = \emptyset$\label{case:c1}}
 
@@ -374,6 +374,7 @@ We are now ready to state \cref{rgl:rtwo}:
 %% Description Case 1
 In \cref{case:c1}, we know by \cref{fact:f2} that $v$ and $w$ must be in $D$. Therefore, we introduce two forcing vertices $v'$ and $w'$ in $G'$ and remove $N_{2,3}(v,w)$ as these vertices are dominated by $v$ and $w$.
 But if we remove $N_{2,3}(v,w)$ entirely, we could lose solutions: First, the case that $v$ is a direct witness of $w$ ($d(v,w) = 2$) and that there is one intermediate witness on a path of length three from $v$ to $w$ via vertices in $N_{2,3}(v,w)$, which could be a witness for both $v$ and $w$ at the same time. 
+
 
 Note that if we would not distinguish between these two cases and had added one intermediate vertex in both of them, we would possibly have generated some wrong solutions, because $v$ could always witness $w$.
 
@@ -461,7 +462,7 @@ Recall that a simple region is a region, where the entire neighborhood of the po
 
 By planarity, a \textit{simple region} has at most two vertices from $N_1(v,w)$ (namely the border $\partial$), two vertices from $N_2(v,w)$ connected to the border and unlimited $N_3(v,w)$ vertices squeezed in the middle.
 
-With a more sophisticated analysis, we were able to modify this rule such that the bound given in \cite{Garnero2018} remained valid although we might have to add some more vertices as orginally described.
+With a more sophisticated analysis, we were able to modify this rule such that the bound given in \cite{Garnero2018} remained valid although we might have to add some more vertices as originally described.
 
 In contr
 %  In order to gain the same bound as .
@@ -491,7 +492,7 @@ In contr
 %The lowest number of shared vertices we could come up with 
 %
 %
-While first embedding a reduction procedure for the \ptdom directly into their rule two, Garnero and Sau \cite[arxiv, TCS]{Garnero2018} decided to decouple it into a separate rule.
+While first embedding a reduction procedure for the \ptdom directly into their rule two, Garnero and Sau \cite{Garnero2018} decided to decouple it into a separate rule.
 % Describe Rule?
 
 Unfortunately, a $\tdom$ is easier to handle 
@@ -639,7 +640,7 @@ Therefore, $R$ has at most four boundary vertices and $\abs{N_1(v,w) \cap V(R)} 
 Clearly, the worst case is achieved, if the two confluent paths $P_1$ and $P_2$ are vertex-disjoint. 
 \end{proof}
 
-\begin{lemma}\cite[See Fact 5]{Garnero2018}\label{lemma:ntwocover}
+\begin{lemma}\cite[See Fact 5, arXiv v2]{Garnero2018}\label{lemma:ntwocover}
     Given a reduced plane graph \G and a $vw$-region $R$, $N_2(v,w) \cap V(R)$ can be covered by at most 6 simple regions.
 \end{lemma}
 \begin{proof}
@@ -670,7 +671,7 @@ We continue by giving a constant bound on the number of simple regions that cove
     \end{enumerate}
 \end{lemma}
 
-Observe that in the first case, we can assume that no case of \cref{rgl:rtwo} has been applied, but the claim is a direct consequence of the assumption $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$. If \cref{case:c2} or \cref{case:c3} have been applied, $N_{2,3}(v,w)$ gets reduced and the second case can be applied. For the sake of completeness, we will restate (a slightly adjusted version of) the proof from Garnero and Sau \cite[Revision 2014, Fact 6]{Garnero2018}. 
+Observe that in the first case, we can assume that no case of \cref{rgl:rtwo} has been applied, but the claim is a direct consequence of the assumption $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$. If \cref{case:c2} or \cref{case:c3} have been applied, $N_{2,3}(v,w)$ gets reduced and the second case can be applied. For the sake of completeness, we will restate (a slightly adjusted version of) the proof from Garnero and Sau \cite[Fact 6, arXiv v2]{Garnero2018}. 
 
 Note that this analysis provides a quick upper bound that might not be tight and executing it more sophisticated could yield a better bound because taking both $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$ in concern, our regions might get even more restricted.
 
@@ -681,7 +682,7 @@ Note that this analysis provides a quick upper bound that might not be tight and
         \item Because $\Dv \neq \emptyset$ there exists $D = \{v,u,u'\} \in \Dv$ (a smaller set will give a better bound). By definition we know that $D$ dominates $N_3(v,w)$ and also $N_3(v,w) \setminus N(v)$. Therefore, all vertices in $N_3(v,w) \setminus N(v)$ must be neighbors of $w$ and either $u$ or $u'$ and in the worst case at most three simple regions are required. By assumption, $\Dw \neq \emptyset$ as well, and therefore $N_3(v,w) \setminus N(w)$ is bounded by at most three simple regions, too.
         By planarity, we can cover the remaining common neighbors in $N_3(v,w) \cap N(v) \cap N(w)$ with at most 5 vertices and in total, we can cover \textbf{$\mathbf{N_3(v,w) \cap R(v,w)}$ by at most $\mathbf{3 + 3 +5 = 11}$} simple regions.
 
-        \item No property of a reduced instance is used, so the proof shown in \cite[Revision 2018]{Garnero2018} holds. 
+        \item No property of a reduced instance is used, so the proof shown in \cite{Garnero2018} holds. 
 
         % \item Now assume that $N_{2,3}(w) \cap N_3(v,w) = \emptyset$. Then all neighbors of $v$ in $N_3(v,w)$ are from the remaining $N_1(v)$ vertices. These vertices have only neighbors in from $N_{2,3}$ and at least one that is different from $N(v)$ (by definition of $N_1(v)$). Therefore they must be from $N(w) \cap  N_{2,3}(v,w)$.
     
@@ -765,7 +766,7 @@ In the following, we define $\dGR(v) = \abs{\{R(v,w) \in \mathfrak{R}, w \in D\}
     Let \G be a plane graph reduced under \cref*{rgl:rone,rgl:rtwo} and let D be a \sdom of G. For a maximal \dreg $\mathfrak{R}$,  $\abs{V \setminus (V(\mathfrak{R}) \cup D)} \leq 97 \abs{D}$
 \end{proposition}
 
-With slight modifications, the proof given by Garnero and Sau \cite[Revision 2014]{Garnero2018} will also apply for \sdom. Although we assume $G$ to be entirely reduced, the following proof only relies on \cref{rgl:rone,rgl:rthree}. The proof uses the observation that vertices from $N_2(v)$ that lie outside of a region must span simple regions between those from $\{v\} \cup N_1(v)$.
+With slight modifications, the proof given by Garnero and Sau \cite[arXiv v2]{Garnero2018} will also apply for \sdom. Although we assume $G$ to be entirely reduced, the following proof only relies on \cref{rgl:rone,rgl:rthree}. The proof uses the observation that vertices from $N_2(v)$ that lie outside of a region must span simple regions between those from $\{v\} \cup N_1(v)$.
 
 \begin{proof}
     Again, we will follow the proof proposed by Alber, Fellows, Niedermeier \cite[Proposition 2]{Alber2004}. 
@@ -836,7 +837,7 @@ The existence of this algorithm is the core for all following works because they
 
 For the following lemma, Alber, Fellows and Niedermeier\cite{Alber2004} required a reduced instance and their reduction rules for \pdom differed form ours. Luckily, they do not rely on any specific properties following from a reduced graph and therefore, we can just use it for our kernelization algorithm as well.
 
-This was already observed by Garnero and Sau \cite[Revision 2018]{Garnero2018} and a more formal proof along with the description of the algorithm was provided.
+This was already observed by Garnero and Sau \cite{Garnero2018} and a more formal proof along with the description of the algorithm was provided.
 
 Because every \sdom is indeed also a \dom, we can safely apply it to \psdom as well. 
 
