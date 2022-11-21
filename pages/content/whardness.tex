@@ -1,7 +1,6 @@
 \subsection{\hmath $W[2]$-hard on Bipartite Graphs}
 
 We are showing that \sdom is $\omega[2]$-hard on bipartite graphs by a parameterized reduction from \dom on bipartite graphs which is known to be $\omega{2}$-hard (\cite[Theorem 1]{Raman2008}).
-
 % \input{fig/tikz/bipartite-fg.tex}
 
 \begin{figure}[!ht]
@@ -29,14 +28,14 @@ We are showing that \sdom is $\omega[2]$-hard on bipartite graphs by a parameter
     \end{enumerate}
     \paragraph*{Observation:} The constructed $G'$ is bipartite because $A$ and $B$ form an independent set on G' that can be cross-wise attached to one of the previous vertex sets. Setting  $X' = X \cup \{u_2,d_1\} \cup B$ and $Y' = X \cup \{u_1,d_2\} \cup A$ form the partitions of the new bipartite G'.
 
-    \begin{corollary} G has a \dom of size $k$ iff G has a \sdom of size $k' = k + 2$
+    \begin{corollary} G has a dominating set of size $k$ iff $G$ has an semitotal dominating set of size $k' = k + 2$
     \end{corollary} 
     \begin{enumerate}
 % TODO: Better name for A and B # add it to figure
-    \item[$\Rightarrow$] Assume a \dom in $G$ of size $k$. We know that $D' = D\cup \{d_1,d_2\}$ is a \sdom in $G'$ of size $k' = k + 2$, because $d_1$ dominates $u_1$ and all $a_i \in A$; $d_2$ dominates $u_2$ and all $b_i \in B$. The rest is dominated by the same vertices as they were in $G$, but now all of them have either $d_1$ or $d_2$ as a witness.
+    \item[$\Rightarrow$] Assume a dominating set in $G$ of size $k$. We know that $D' = D\cup \{d_1,d_2\}$ is an semitotal dominating set in $G'$ of size $k' = k + 2$, because $d_1$ dominates $u_1$ and all $a_i \in A$; $d_2$ dominates $u_2$ and all $b_i \in B$. The rest is dominated by the same vertices as they were in $G$, but now all of them have either $d_1$ or $d_2$ as a witness.
     More formally, we have by construction of $G'$ that $\forall v \in (D \cap X): d(v, d_1) = 2$ and $\forall v \in (D \cap Y): d(v, d_2) = 2$.
 
-    \item[$\Leftarrow$] On the contrary, assume any \sdom $D'$ in $G'$ with size $k'$. Without loss of generality, we can assume that $u_1, u_2 \notin D'$, because choosing $d_1$ and $d_2$ instead is always as least as good and does not violate any witnesses. Therefore, the construction forces $d_1$, $d_2 \in D'$. 
+    \item[$\Leftarrow$] On the contrary, assume any semitotal dominating set $D'$ in $G'$ with size $k'$. Without loss of generality, we can assume that $u_1, u_2 \notin D'$, because choosing $d_1$ and $d_2$ instead is always as least as good and does not violate any witnesses. Therefore, the construction forces $d_1$, $d_2 \in D'$. 
 
     All $a_i \in A$ can only be useful to dominate their partnering $x_i$ ($b_i \in B$ for $y_i$), because $d_1, d_2 \in D$ is the only second neighbor they have.
     If $a_i,b_i \in D'$ we replace it with $x_i$ and $y_i$ preserving the size $D$. As $d_1$ and $d_2$ suffice to provide a witness for every vertex in the graph and do not lose any other witnesses, this operation is sound.
@@ -146,9 +145,9 @@ The following lemma shows that
     G has a Dominating Set of size k iff $G'$ has a dominating set of size $k+1$
     \end{corollary}
     \begin{subproof}
-    Asume a Dominating Set D of size k in G. $D \cup \{u\}$ is a Semitotal Dominating Set in G' of size k + 1, because $u$ dominates $t$ and for each $v \in DS: d(v, u) \leq 2$.
+    Asume a Dominating Set D of size k in G. $D \cup \{u\}$ is an semitotal Dominating Set in G' of size k + 1, because $u$ dominates $t$ and for each $v \in DS: d(v, u) \leq 2$.
 
-    Contrary, asume a Semitotal Dominating Set $SD$ in $G'$. In order to dominate $t$, $u \in SD$ must hold, hence already dominating the complete subgraph $K_{n+1}$. If a vertex $k_i \in SD$, we exchange it with $v_i$ still preserving a Dominating Set. Taking $D = SD - \{ u \}$ gives our desired Dominating Set of size k.
+    Contrary, asume an semitotal Dominating Set $SD$ in $G'$. In order to dominate $t$, $u \in SD$ must hold, hence already dominating the complete subgraph $K_{n+1}$. If a vertex $k_i \in SD$, we exchange it with $v_i$ still preserving a Dominating Set. Taking $D = SD - \{ u \}$ gives our desired Dominating Set of size k.
     \end{subproof}
     As this reduction runs in FPT time and the parameter is only bounded by a function of k, this is a FPT reduction. As Dominating Set on Chordal Graphs is $w[2]-hard$, so is SDS on Chordal Graphs.
 

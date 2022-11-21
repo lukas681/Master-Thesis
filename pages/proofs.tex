@@ -24,9 +24,9 @@
     \end{enumerate}
     \paragraph*{Observation:} G' is clearly bipartite as all $y'_j$ and $x'_i$ form again an Independent Set. Setting  $X' = X \cup \{u_2\} \cup \bigcup y'_i$ and $Y' = Y \cup \{u_1\} \cup \bigcup {x'_i}$ form the partitions of bipartite G'.
 
-    \begin{corollary} G has a Dominating Set of size k iff G has a Semitotal Dominating Set of size $k' = k + 2$
+    \begin{corollary} G has a Dominating Set of size k iff G has an semitotal Dominating Set of size $k' = k + 2$
     \end{corollary} 
-     $\Rightarrow$: Asume there exists a Dominating Set D in G with size k. $DS = D\cup \{d_1,d_2\}$ is a Semitotal Dominating Set in $G'$ with size $k' = k+2 $ , because $d_1$ dominates $u_1$ and all $x'_i$; $d_2$ dominates $u_2$ and all $y'_i$. Hence, it is a Semitotal Dominating Set, because $\forall v \in (D \cap X): d(v, d_1) = 2$ and $\forall v \in (D \cap Y): d(v, d_2) = 2$
+     $\Rightarrow$: Asume there exists a Dominating Set D in G with size k. $DS = D\cup \{d_1,d_2\}$ is an semitotal Dominating Set in $G'$ with size $k' = k+2 $ , because $d_1$ dominates $u_1$ and all $x'_i$; $d_2$ dominates $u_2$ and all $y'_i$. Hence, it is an semitotal Dominating Set, because $\forall v \in (D \cap X): d(v, d_1) = 2$ and $\forall v \in (D \cap Y): d(v, d_2) = 2$
 
     $\Leftarrow$: On the contrary, asume any Semitotal Dominating Set $SD$ in $G'$ with size $k'$. WLOG we can asume that $u_1, u_2 \notin DS$. 
     
@@ -109,9 +109,9 @@
     G has a Dominating Set of size k iff $G'$ has a dominating set of size $k+1$
     \end{corollary}
     \begin{subproof}
-    Asume a Dominating Set D of size k in G. $D \cup \{u\}$ is a Semitotal Dominating Set in G' of size k + 1, because $u$ dominates $t$ and for each $v \in DS: d(v, u) \leq 2$.
+    Asume a Dominating Set D of size k in G. $D \cup \{u\}$ is an semitotal Dominating Set in G' of size k + 1, because $u$ dominates $t$ and for each $v \in DS: d(v, u) \leq 2$.
 
-    Contrary, asume a Semitotal Dominating Set $SD$ in $G'$. In order to dominate $t$, $u \in SD$ must hold, hence already dominating the complete subgraph $K_{n+1}$. If a vertex $k_i \in SD$, we exchange it with $v_i$ still preserving a Dominating Set. Taking $D = SD - \{ u \}$ gives our desired Dominating Set of size k.
+    Contrary, asume an semitotal Dominating Set $SD$ in $G'$. In order to dominate $t$, $u \in SD$ must hold, hence already dominating the complete subgraph $K_{n+1}$. If a vertex $k_i \in SD$, we exchange it with $v_i$ still preserving a Dominating Set. Taking $D = SD - \{ u \}$ gives our desired Dominating Set of size k.
     \end{subproof}
     As this reduction runs in FPT time and the parameter is only bounded by a function of k, this is a FPT reduction. As Dominating Set on Chordal Graphs is $w[2]-hard$, so is SDS on Chordal Graphs.
 
