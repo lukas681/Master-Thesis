@@ -375,11 +375,15 @@ But if we remove $N_{2,3}(v,w)$ entirely, we could lose solutions: First, the ca
 
 Note that if we would not distinguish between these two cases and had added one intermediate vertex in both of them, we would possibly have generated some wrong solutions, because $v$ could always witness $w$.
 
-\begin{figure}[!ht]
+
+\begin{figure}[ht]
     \begin{equation*}
+    \resizebox{\textwidth}{!}{
         \tikzfig{fig/tikz/ruletwo}
+    }
     \end{equation*}
-    \caption[Application of \cref{rgl:rtwo}]{\textit{}.}
+    \caption[Application of \cref{rgl:rtwo}]{\textit{An application of \cref{rgl:rtwo}: (a) In case 1 $\Dv = \Dw = \emptyset$ (\cref{case:c1}), both $v$ and $w$ must be in the sds and we can remove $N_{2,3}$ and add $\{v',w'\}$. Furthermore, we need to preserve a path of length 3 from $v$ to $w$ by adding $\{y,y'\}$ as well. (b) \cref{case:c2} has been applied and the $N_{2,3}(v)$ removed.}
+    }
     \label{fig:ruleTwo}
 \end{figure}
 
