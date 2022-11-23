@@ -319,13 +319,13 @@ Note that we need our definition of a reduced instance given in \ref{def:reduced
 
 \subsection{Reduction Rule II: Shrinking the Size of a Region}
 
-The second rule is the heart of the whole reduction and it aims to minimize the neighborhood of two distinct vertices. The rule follows Garnero and Sau's approach \cite{Garnero2018} for \ptdom. Especially \cref{rgl:rtwo} given in \cite[arXiv v2]{Garnero2018} was not transferable to \psdom, because it heavily relies on the property of a total dominating set that a witness $w$ for $v$ \textbf{must} be a direct neighbor of $w$. In the case of the more relaxed \sdom, the witness is allowed to be further away.
+The second rule is the heart of the whole reduction and  minimizes the neighborhood of two distinct vertices. The rule follows Garnero and Sau's approach \cite{Garnero2018} for \ptdom. Especially \cref{rgl:rtwo} given in \cite[arXiv v2]{Garnero2018} was not transferable to \psdom, because it heavily relies on the property of a total dominating set that a witness $w$ for $v$ \textbf{must} be a direct neighbor of $w$. In the case of the more relaxed \sdom, the witness is allowed to be further away.
 
 % TODO: Force connectivity, improve kerne bound
 % TODO: Reformulate
 % Extending the approach for a linear kernel for \dom proposed by Alber et al. in \cite{Alber2004}, Garnero and Sau transferred these results in \cite{Garnero2018} to the \tdom problem. 
 
-It can be observed that in the worst case four vertices are needed to semi-totally dominate $N(v,w)$ of two vertices $v,w \in V$: $v$, $w$ and two witnesses for them. Exemplary, observe the graph consisting of two distinct $K_{1,m}$ with $m \in \mathbb{N}$ with centers $v$ and $w$.
+It can be observed that in the worst case four vertices are needed to semitotally dominate $N(v,w)$ of two vertices $v,w \in V$: $v$, $w$ and two witnesses for them. Exemplary, observe the graph consisting of two distinct $K_{1,m}$ with $m \in \mathbb{N}$ with centers $v$ and $w$.
 
 Before we give the concrete reduction rule, we need to define three sets. Intuitively, we first try to find a set $\tilde D \subseteq N_{2,3}(v,w)$ of size at most three dominating $N_3(v,w)$ without using $v$ or $w$. If no such set exists, we allow $v$ (resp. $w$) and try to find one again. If we now find such a set, we can conclude that $v$ ($w$) must be part of a solution.
 
@@ -342,7 +342,7 @@ Furthermore, we shortly denote $\bigcup \Dv = \bigcup\limits_{D \in \Dv}D $ and 
 
 Assuming that $v$ and $w$ are closely connected with $d(v,w) \leq 2$, it might suffice to consider only sets of size at most three, because an intermediate vertex could witness $v$ and $w$ at the same time. In the later analysis, the \dreg exactly creates regions around $N(v,w)$ requiring at least one path from $v$ to $w$ lengthed two. As the following rule is only used to locally investigate such regions, we could add the requirement of a distance of two to it and work with sets of size at most three. We believe that this could further improve the kernel. 
 
-We are now ready to state \cref{rgl:rtwo}:
+We are now ready to state \cref{rgl:rtwo}. An exemplary application is shown in \cref{fig:ruleTwo}.
 
 \begin{rgl}\label{rgl:rtwo}
     Let \G be a graph and $v, w$ be two distinct vertices from $V$. If $\mathbf{\Dvw = \emptyset}$ (\cref{def:dvv}) we apply the following:
@@ -375,6 +375,15 @@ But if we remove $N_{2,3}(v,w)$ entirely, we could lose solutions: First, the ca
 
 Note that if we would not distinguish between these two cases and had added one intermediate vertex in both of them, we would possibly have generated some wrong solutions, because $v$ could always witness $w$.
 
+\begin{figure}[!ht]
+    \begin{equation*}
+        \tikzfig{fig/tikz/ruletwo}
+    \end{equation*}
+    \caption[Application of \cref{rgl:rtwo}]{\textit{}.}
+    \label{fig:ruleTwo}
+\end{figure}
+
+
 
 Again by \cref{fact:f2} we know for \cref{case:c2,case:c3} that $v \in D$ and similar to \cref{rgl:rone} we can simplify the neighborhood $N_{2,3}(v)$. \cref{fact:f1} states, that these vertices are only useful for witnessing $v$, but do not go beyond what $v$ already witnesses. Observe that removing $N_{2,3}$ can not break any connectivity as all vertices in  $N_{2,3}(v)$ are confined in $v$. The cases where $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$ are not required and in a later analysis only the existence of these two sets is required and the application of \cref{rgl:rthree} will be critical.
 
@@ -404,9 +413,8 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
 \end{lemma}
 \begin{proof}
     We will prove the claim by analyzing the different cases of the rule independently.     
-    \begin{enumerate}
-        \item[$\Rightarrow$] Consider am sds $D$ in $G$. 
-        We show that $G'$ also has a sds with $\abs{D'} \leq \abs{D}$. By assumption, we have $\Dvw = \emptyset$.
+
+    Consider am sds $D$ in $G$.  We show that $G'$ also has a sds with $\abs{D'} \leq \abs{D}$. By assumption, we have $\Dvw = \emptyset$.
         \begin{enumerate}
             \item  $ \Dv = \emptyset  \wedge \Dw = \emptyset $: By applying \cref{fact:f2} twice, we know that both  $v, w \in D$. Therefore, $v'$,$w'$, and potentially $y$ and $y'$ are dominated by $v$ or $w$ in $G'$.
             
@@ -437,7 +445,7 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
             \item  $ \Dv = \emptyset  \wedge \Dw \neq  \emptyset $: Symmetrical to previous case.
         \end{enumerate}
 
-        \item[$\Leftarrow$] Let $D'$ be a \sdom in $G'$ and $\Dvw =  \emptyset$. We show that $G$ has a SDS $D$ with $\abs{D} \leq \abs{D'}$ by distinguishing the different cases again. 
+        Let $D'$ be a \sdom in $G'$ and $\Dvw =  \emptyset$. We show that $G$ has a SDS $D$ with $\abs{D} \leq \abs{D'}$ by distinguishing the different cases again. 
         \begin{enumerate}
             \item  $\Dv = \emptyset \wedge \Dw = \emptyset$: In any case we know that $v,w \in D$ to dominate $v'$ and $w'$ and therefore also dominating $N_{2,3}(v,w)$ in $G$. To preserve the distance $d(v,w)$ the rule might have introduced additional vertices $y$ and $y'$.            
             \begin{itemize}
@@ -449,7 +457,6 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
             \item  $\Dv = \emptyset \wedge \Dw \neq \emptyset$: Symmetrical to previous case.
         \end{enumerate} 
         In all cases, we have shown that $\abs{D} \leq \abs{D'}$ and $D$ is a sds of $G$.
-    \end{enumerate}
 
 \end{proof}
 % What happens if D != empty?
@@ -541,9 +548,6 @@ Recap that we denoted $\partial R$ as the set of boundary vertices of the (simpl
 \end{lemma}
 \begin{proof}
     % TODO: Decide vw in Border? and properly define them as a set.
-    \begin{enumerate}
-        \item[$\Rightarrow$] 
-        
         Consider an sds $D$ in $G$. We show that $G'$ also has an sds with $\abs{D'} \leq \abs{D}$. By assumption, we have $\abs{V(R) \setminus \{v, w\}} \geq 5$, $R$ is a simple region and therefor $d(v,w) \leq 2$.
 
         First, we can safely assume that the set of border vertices  $\partial R$ contains exactly two vertices.
@@ -575,10 +579,6 @@ Recap that we denoted $\partial R$ as the set of boundary vertices of the (simpl
          Hence \textit{at least one of} $\{v,w \}$ must be in a sds simulating an ``OR-gadget''. Therefore, also $V(R \partial R)$ is dominated by either $v$ or $w$. All the witnesses stayed the same and hence, we simply set $D = D'$.
          
          In all of the cases $\abs{D} = \abs{D'}$
-
-
-    \end{enumerate}
- 
 \end{proof}
 
 The application of \cref{rgl:rthree} gives us a bound on the number of vertices inside a \sr. 
