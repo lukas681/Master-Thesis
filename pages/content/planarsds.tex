@@ -376,14 +376,14 @@ Removing $N_{2,3}(v,w)$ entirely, could lose paths of length less than three and
 % : First, the case that $v$ is a direct witness of $w$ ($d(v,w) = 2$) and that there is one intermediate witness on a path of length three from $v$ to $w$ via vertices in $N_{2,3}(v,w)$, which could be a witness for both $v$ and $w$ at the same time. 
 %Note that if we would not distinguish between these two cases and had added one intermediate vertex in both of them, we would possibly have generated some wrong solutions, because $v$ could always witness $w$.
 
-
 \begin{figure}[ht]
     \begin{equation*}
     \resizebox{\textwidth}{!}{
         \tikzfig{fig/tikz/ruletwo}
     }
     \end{equation*}
-    \caption[Application of \cref{rgl:rtwo}]{\textit{An application of \cref{rgl:rtwo}: (a) $\Dv = \Dw = \emptyset$ \cref{case:c1}, both $v$ and $w$ must be in the sds and we can remove $N_{2,3}$ and add $\{v',w'\}$. Furthermore, we need to preserve a path of length 3 from $v$ to $w$ by adding $\{y,y'\}$ as well. (b) \cref{case:c2} has been applied and the $N_{2,3}(v)$ removed. Observe that those vertices that cross the dotted line are vertices from $N_1(v)$ and not removed.\cref{case:c3} is symmetric.}
+    \caption[Application of \cref{rgl:rtwo}]{\textit{An application of \cref{rgl:rtwo}: (a) $\Dv = \Dw = \emptyset$ and \cref{case:c1} applies.
+    Both $v$ and $w$ must be in the sds and we can remove $N_{2,3}(v,w)$ and add $\{v',w'\}$. Furthermore, we need to preserve a path of length 3 from $v$ to $w$ by adding $\{y,y'\}$ as well. (b) \cref{case:c2} has been applied and the $N_{2,3}(v)$ removed. Observe that those vertices that cross the dotted line are vertices from $N_1(v)$ and not removed.\cref{case:c3} is symmetric.}
     }
     \label{fig:ruleTwo}
 \end{figure}
@@ -398,19 +398,24 @@ The case where $\Dv \neq \emptyset \wedge \Dw \neq \emptyset$ is not necessary f
 Before proving \cref{rgl:rtwo} we will deduce some \textit{facts} which are implied by the definitions above. These facts justify the definition of the sets $\Dvw$, $\Dv$ and $\Dw$.
 
 \begin{fact}\label{fact:f1}
-    Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref{rgl:rtwo} on $v,w$. If $\Dvw = \emptyset$, then G has a solution if and only if it has a solution containing at least one of the two vertices $\{v,w \}$.
+    Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref{rgl:rtwo} on $v,w$. If $\Dvw = \emptyset$, then $G$ has a solution of size at most $k$ if and only if it has a solution of size at most $k$ containing at least one of the two vertices $\{v,w \}$.
 \end{fact}
 \begin{proof}
-Because $\Dvw = \emptyset$, any SDS of $G$ has to contain $v$ or $w$, or at least four vertices from $N_{2,3}(v,w)$. In the second case, these four vertices can be replaced with $v$, $w$ and two neighbors of $v$ and $w$ still forming an sds.
+Because $\Dvw = \emptyset$, a sds of $G$ must contain at least one of $\{v, w \}$ or at least four vertices from $N_{2,3}(v,w)$. 
+In the second case, these four vertices can be replaced with $v$, $w$ and two neighbors of $v$ and $w$ as witnesses.
+In all cases $k$ becomes either smaller or stays unchanged.
 \end{proof}
 
-The second fact states that if  $\Dv$ (resp. $\Dw$) is empty, too, we only need to consider solutions containing $w$ (or $v$):
+The second fact states that if  $\Dv$ (resp. $\Dw$) is empty, too, we only need to consider solutions containing $w$ (resp. $v$):
 
 \begin{fact}\label{fact:f2}
-    Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref{rgl:rtwo} on $v, w$. If $\Dvw = \emptyset$ and $\Dw = \emptyset$ (resp. $\Dv = \emptyset$) then $G'$ has a solution if and only if it has a solution containing $v$ (resp. $w$).
+    Let \G be a graph, let $v,w \in V$, and let $G'$ be the graph obtained by the application of \cref{rgl:rtwo} on $v, w$. If $\Dvw = \emptyset$ and $\Dw = \emptyset$ (resp. $\Dv = \emptyset$) then $G'$ has a solution of size at most $k$ if and only if it has a solution containing $v$ of size at most $k$ (resp. $w$).
 \end{fact}
 \begin{proof}
-As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ with $u, u' \in N_{2,3}(v,w)$ can dominate $N_3(v,w)$. Since also $\Dvw = \emptyset$ any SDS of G has to contain $v$ or at least four vertices by \cref{fact:f1}. In the last case, we again replace these four vertices with $v$, $w$ and two neighbors respectively and we can conclude that $v$ belongs to the solution.
+As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ with $u, u' \in N_{2,3}(v,w)$ can dominate $N_3(v,w)$. 
+Since also $\Dvw = \emptyset$ any sds of G has to contain $v$ or at least four vertices by \cref{fact:f1}.
+In the last case, we replace these four vertices with $v$, $w$ and two neighbors respectively and we can conclude that $v$ belongs to the solution.
+Again, $k$ becomes either smaller or stays unchanged.
 \end{proof}
 
 % On the opposite side, if $\Dvw \neq \emptyset$, we have ... 
@@ -443,7 +448,7 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
                 Even if the rule has removed a vertex $z \in D \cap N_{2,3}(v,w)$, we can ignore that, because \cref{fact:f1} states that $v$ and $w$ will witness the same vertices as $z$ did. Hence, we set $D' = D \setminus N_{2,3}(v,w)$.
             \end{itemize}
             
-            In all of the cases, it follows that $D'$ is a SDS of $G'$ with $\abs{D'} \leq \abs{D}$ 
+            In all of the cases, it follows that $D'$ is a sds of $G'$ with $\abs{D'} \leq \abs{D}$ 
             
             \item  $ \Dv \neq \emptyset  \wedge \Dw = \emptyset$: As $\Dw = \emptyset$ and \cref{fact:f2}, we know that $v \in D$ and $v$ dominates $N_{2,3}(v)$. 
             If a vertex $d \in D \cap N_{2,3}(v)$ was removed, we set $D' = D \setminus N_{2,3}(v) \cup \{v'\}$, else $D' = D$.
@@ -453,7 +458,7 @@ As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ w
             \item  $ \Dv = \emptyset  \wedge \Dw \neq  \emptyset $: Symmetrical to previous case.
         \end{enumerate}
 
-        Let $D'$ be a \sdom in $G'$ and $\Dvw =  \emptyset$. We show that $G$ has a SDS $D$ with $\abs{D} \leq \abs{D'}$ by distinguishing the different cases again. 
+        Let $D'$ be a \sdom in $G'$ and $\Dvw =  \emptyset$. We show that $G$ has an sds $D$ with $\abs{D} \leq \abs{D'}$ by distinguishing the different cases again. 
         \begin{enumerate}
             \item  $\Dv = \emptyset \wedge \Dw = \emptyset$: In any case we know that $v,w \in D$ to dominate $v'$ and $w'$ and therefore also dominating $N_{2,3}(v,w)$ in $G$. To preserve the distance $d(v,w)$ the rule might have introduced additional vertices $y$ and $y'$.            
             \begin{itemize}
@@ -702,7 +707,7 @@ Note that this analysis provides a quick upper bound that might not be tight and
 
 
 \begin{lemma}[\#Vertices inside a Region after \cref{rgl:rone,rgl:rtwo,rgl:rthree}]\label{lemma:inside}
-    Let \G be a plane graph reduced under \cref{rgl:rone,rgl:rtwo,rgl:rthree}. Furthermore, let $D$ be an SDS of G and let $v,w \in D$. Any $vw$-region R contains at most 87 vertices distinct from its poles.
+    Let \G be a plane graph reduced under \cref{rgl:rone,rgl:rtwo,rgl:rthree}. Furthermore, let $D$ be an sds of G and let $v,w \in D$. Any $vw$-region R contains at most 87 vertices distinct from its poles.
 \end{lemma}
 \begin{proof} 
     By \cref{lemma:nonecover,lemma:ntwocover} and \cref{lemma:simpleregionbound} to bound the number of vertices inside a simple region, we know that $\abs{N_1(v,w) \cap V(R)} \leq 4$. Furthermore, $\abs{N_2(v,w) \cap V(R)} \leq 6 \cdot 4 = 24$, because after the reduction a simple region has at most 4 vertices distinct from its poles and has at most 6 simpler regions covering all $N_2(v, w)$.
