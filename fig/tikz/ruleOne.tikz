@@ -45,6 +45,8 @@
 		\node [style=none] (45) at (0.75, 0.5) {};
 		\node [style=none] (46) at (-3.25, 0.75) {$v$};
 		\node [style=none] (48) at (3.75, 0.75) {$v$};
+		\node [style=none] (49) at (-6, 3.5) {$G$};
+		\node [style=none] (51) at (1, 3.5) {$G'$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (3) to (7);

@@ -290,25 +290,22 @@ By assumption, $v'$ is witnessed by a vertex $w \neq v$ with $d(v', w) \leq 2$. 
 \noindent We can now prove the correctness of this rule.
 
 \begin{lemma}\label{lemma:correctnessone}
-    Let \G be a graph and let $v \in V$. If $G'$ is the graph obtained by applying \cref{rgl:rone}   on $G$, then $G$ has a semitotal dominating set of size $k$ if and only if $G'$ has a semitotal dominating set of size $k$.
+    Let \G be a graph and let $v \in V$. If $G'$ is the graph obtained by applying \cref{rgl:rone} on $G$, then $G$ has a semitotal dominating set of size $k$ if and only if $G'$ has a semitotal dominating set of size $k$.
+
 \end{lemma}
 \begin{proof}
-    \begin{enumerate}
-        \item[$\Rightarrow$] Let $D$ be an sds set in $G$ of size $k$. 
-        Because \cref{rgl:rone} has been applied, we can assume $N_{2,3}(v) \neq \emptyset$ in $G$. 
-        
-        To dominate all vertices from $N_3(v)$ we either need $v \in D$ or at least one other vertex $d \in N_{2,3}(v) \cap D$. In the latter case, we can replace this vertex by $v$ directly. By \cref{fact:witnessTwin}, we know that a witness for $d$  (which is not  $v$) is also a witness for $v$ and therefore, the replacing preserves the sds. Henceforth, we assume $v \in D$ and $N_{2,3}(v)$ is already dominated by $v$.
+        Assume $D$ to be an sds set in $G$ of size $k$. 
+        Because \cref{rgl:rone} has been applied, we can assume $N_{2}(v) \neq \emptyset$ in $G$.  % Prev N23?
+        To dominate $N_3(v)$, $\abs{D \cap (N_{2,3}(v) \cup \{v\})} \neq \emptyset$.
+        By \cref{fact:witnessTwin}, we know that a witness for $d$  (which is not  $v$) is also a witness for $v$ and therefore, we can replace any $D \cap N_{2,3}(v)$ by $v$ in $D$. Henceforth, assume $v \in D$ and $N_{2,3}(v)$ is already dominated by $v$.
+        If $\abs{D \cap (N_{2,3}(v))} \geq 1$, set $D' = D \setminus N_{2,3}(v) \cup \{v'\}$, else $D' = D$. 
+        A $z \in D \cap N_{2,3}(v)$ could have been a witness for $v$ and therefore we choose $v' \in D'$ preserving witnesses. In both cases, $v'$ is by assumption dominated by $v$ and $\abs{D} \leq \abs{D'}$.
 
-        If \cref{rgl:rone} has removed at least one dominating vertex from $N_{2,3}(v)$, we set $D' = D \setminus N_{2,3}(v) \cup \{v'\}$ otherwise $D = D'$. 
-        In the first case this vertex in $N_{2,3}(v) \cap D$ could have possibly been a witness for $v$, so we select $v' \in D'$ as a witness for $v$ ensuring $D'$ to be an sds. In both cases, $v'$ is by assumption dominated by $v$ and  $\abs{D} \leq \abs{D'}$.
-
-        \item[$\Leftarrow$]  Assume $D'$ to be an sds in $G'$. We can assume that $v \in D'$, because $v'$ has to be dominated and it is always better to choose $v$ instead of $v$.
-
-        If $v' \in D'$ is a witness for $v$ in $G'$, we have to preserve a witness in $G$ as well. As we know that $N_3(v) \neq \emptyset$, we can replace it with an arbitrary vertex $d \in N_3(v)$ in $G$. 
-        
-        In the second case, the witness for $v$ came either from a vertex $o \in N_1(v)$ or some neighbor $N(o) \setminus N(v)$ outside the neighborhood of $v$ which has not been touched by this reduction rule. 
-        In summary, if $v' \in D'$, we set $D = D' \cup \{d\} \setminus \{v'\}$ for any $d \in N_3(v)$ and otherwise $D = D'$. In both cases, $N_{2,3}(v)$ is dominated by $v$ and $\abs{D} = \abs{D'}$.
-    \end{enumerate}
+        Let $D'$ be an sds in $G'$. We assume that $v \in v'$ because $v'$ has to be dominated and $v$ is always a better choice than $v'$.
+        If $v' \in D'$  then we have to preserve a witness for $v$ in $G$. We know $N_3(v) \neq \emptyset$ and therefore replace it with an arbitrary vertex $d \in N_3(v)$ in $G$. 
+        If a witness for $v$ came from $N_1(v) \cup \{ N(w) \setminus N(v) | w \in N_1(v)\}$, they have not been touched by the reduction.
+        In summary, if $v' \in D'$, we set $D = D' \cup \{d\} \setminus \{v'\}$ for a $d \in N_3(v)$ and otherwise $D = D'$. 
+        In both cases, $N_{2,3}(v)$ is dominated by $v$ and $\abs{D} = \abs{D'}$.
 \end{proof}
 
 \begin{lemma}
@@ -322,7 +319,7 @@ Note that we need our definition of a reduced instance given in \ref{def:reduced
 
 \subsection{Reduction Rule II: Shrinking the Size of a Region}
 
-The second rule is the heart of the whole reduction and it aims to minimize the neighborhood of two distinct vertices. The rule follows Garnero and Sau's approach \cite{Garnero2018} for \ptdom. Especially \cref{rgl:rtwo} given in the latest version of \cite{Garnero2018} was not transferable to \psdom, because it heavily relies on the property of a total dominating set that a witness $w$ for $v$ \textbf{must} be a direct neighbor of $w$. In the case of the more relaxed \sdom, the witness is allowed to be further away.
+The second rule is the heart of the whole reduction and it aims to minimize the neighborhood of two distinct vertices. The rule follows Garnero and Sau's approach \cite{Garnero2018} for \ptdom. Especially \cref{rgl:rtwo} given in \cite[arXiv v2]{Garnero2018} was not transferable to \psdom, because it heavily relies on the property of a total dominating set that a witness $w$ for $v$ \textbf{must} be a direct neighbor of $w$. In the case of the more relaxed \sdom, the witness is allowed to be further away.
 
 % TODO: Force connectivity, improve kerne bound
 % TODO: Reformulate

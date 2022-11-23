@@ -450,6 +450,7 @@
   eprint   = {1211.0978},
   keywords = {Computer Science - Data Structures and Algorithms ; 05C85, 05C10 ; G.2.2},
   url      = {https://dmtcs.episciences.org/4487},
+  note     = {Sometimes we explicitly refer to the arXiv version: \url{https://doi.org/10.48550/arXiv.1211.0978}}
 }
 
 @BOOK{Cygan2015,
@@ -733,7 +734,4 @@ url="https://doi.org/10.1007/978-1-4684-2001-2_9"
 @Article{Canoy2022,
   author   = {Canoy, Sergio Rosales jun. and Aradais, Alkajim A.},
   journal  = {Advances and Applications in Discrete Mathematics},
-  title    = {2-outer-independent semitotal domination in graphs},
-  year     = {2022},
-  issn     = {0974-1658},
-  pages  
+  title    
