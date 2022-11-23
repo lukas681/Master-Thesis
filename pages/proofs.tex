@@ -110,7 +110,7 @@
     G has a dominating set of size k iff $G'$ has a dominating set of size $k+1$
     \end{corollary}
     \begin{subproof}
-    Assume a ds $D$ of size $k$ in $G$. $D \cup \{u\}$ is a sds in G' of size k + 1, because $u$ dominates $t$ and for each $v \in DS: d(v, u) \leq 2$.
+    Assume a ds $D$ of size $k$ in $G$. $D \cup \{u\}$ is an sds in G' of size k + 1, because $u$ dominates $t$ and for each $v \in DS: d(v, u) \leq 2$.
 
     Contrary, asume a semitotal Dominating Set $SD$ in $G'$. In order to dominate $t$, $u \in SD$ must hold, hence already dominating the complete subgraph $K_{n+1}$. If a vertex $k_i \in SD$, we exchange it with $v_i$ still preserving a Dominating Set. Taking $D = SD - \{ u \}$ gives our desired Dominating Set of size k.
     \end{subproof}
