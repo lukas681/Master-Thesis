@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group 'edu.itu.dk'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    implementation group: 'org.jgrapht', name: 'jgrapht-core', version: '1.5.1'
+    implementation group: 'org.jgrapht', name: 'jgrapht-ext', version: '1.5.1'
+
+}
+
+test {
+    useJUnitPlatform()
+}

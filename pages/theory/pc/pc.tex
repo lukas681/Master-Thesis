@@ -1,85 +1,105 @@
 \section{Computational Complexity Theory}
 
-Computational Complexity Theory discusses how many resources are needed for solving a given task or problem. 
-
-Classical complexity
-
-As NP ... parameterized Complexity adds a new sight... to the existing models.
-% One sentence what it is
-
-% Developed parameterized Complexity
-% WHAT IS COMPLEXITY THEORY
-
-\subsection{Classical Complexity Theory}
-
- % MINIMIZATION PROBLEMS
-
-\subsubsection*{Algorithms and Running Time}
-
-\subsubsection*{Efficient Algorithms and \NPcn}
-
-The first results of \NPcn had been published independently by Cook \cite{Cook1971} in 1971 and Levin in 1973 \cite{Levin1973}. 
-Karp \cite{Karp1972} had introduced the idea of problem reductions and had started to systematically reduce 19 other problems to each other showing that all of them are equally hard to solve: An efficient way to solve one of them will efficiently solve the others. Since then, thousands of problems were \NPc, among them \dom and \sdom. 
+Computational complexity investigates the question of how many computational resources are required to solve a specific problem. 
 
 
-% What algorithms are consider good?
-% What is NP-Completeness?
-% 
+We are now ready to introduce the two most important classes of classical complexity theory:
 
-For an introduction into classical complexity theory, the reader can refer to \cite{Arora2006}.
+\begin{cc}[The Class \Pt~ {\cite{Arora2006}}]{cc:pnp}
 
-\paragraph{Coping with NP-hardness}
+    If we denote \DTIME as the set of decision problems that are in $\mathcal{O}(n^k)$ time solvable by a deterministic Turing Machine, we can define the class \Pt as:
 
-Even though we do not expect \NPc problems to have a polynomial-time algorithm.
+    \[ \mathrm{P} := \bigcup_{k \in \mathbb{N}}(\mathrm{DTIME}(n^k))\]
+
+\end{cc}
+
+\begin{cc}[The Class \NP~ {\cite{Arora2006}}]{cc:pnp}
+
+    A language $L \subseteq \{0,1\}^*$ is in \Pt if there exists a polynomial $p: \mathbb{N} \rightarrow \mathbb{N}$ and a polynomial-time Turing Machine $M$ such that for every $x \in \{0,1\}^*$,
+
+    \[ x \in L \Leftrightarrow \exists u \in \{0,1\}^{p(|x|)} \mathnormal{s.t.} M(x,u) = 1 \]
+
+    \noindent If $x \in L$ and $u \in \{ 0,1 \}^{p(|x|)}$ satisfy $M(x,u) = 1$, then we call $u$  a \textit{certificate} for $x$.
+\end{cc}
+
+\Pt denotes the class of all problems that are \textit{efficiently solvable} whereas \NP contains all problems whose solution can efficiently be verified.
+
+\subsection{\NPcn}
+A major discovery in the early 1970s was the fact that some problems in \NP are \textit{at least as hard as} as any other language.
+This property is called \NP-hardness.
+
+The first results of \NPcn had been published independently by Cook \cite{Cook1971} and Levin \cite{Levin1973} after Karp \cite{Karp1972} had introduced the idea of problem reductions showing that some problems can be reduced among each other.
+An efficient way to solve one of them will efficiently solve the others. 
+
+For a comprehensive introduction to classical complexity theory, the reader is referred to \cite{Arora2006}.
+
+\begin{definition}[{Reductions, \NP-hardness and \NPcn \cite{Arora2006}}]
+We say that a language $A\subseteq \{0,1\}^*$ is \textit{polynomial-time Karp reducible} to a language $B \subseteq \{0,1\}^*$ (denote $A \leq_p B$) if there is a poly-time computable function $f: \{0,1\}^* \rightarrow \{0,1\}^*$ such that for every $x \in \{0,1\}^*$, $x \in A$ if and only if $f(x) \in B$.
+
+We say that $B$ is \NP-hard if $A \leq_p B$ for every $A \in \NP$. 
+We say that $B$ is \NPc if $B$ is \NP-hard and $B \in NP$.
+\end{definition}
+
+There are thousands of \NPc problems in the wild that we do not expect to be solvable in polynomial time.
+The famous question of whether $P = NP$ or not is still one of the biggest open questions in mathematics bountied with one million dollars by the \textit{Clay Mathematical Institute} \cite{Fortnow2021}.
+
+For example, \dom and \sdom and \tdom are \NPc.
+
+\paragraph{Coping with \NPcn}
+
+Even though we do not expect \NPc problems to have a polynomial-time algorithm, there are a few ways to cope with them. We can 
+
+\begin{itemize}
+    \item give up the exactness of a solution to possibly find fast \textit{approximation algorithms},
+    \item give up the search for polynomial-time algorithms and seek for a good \textit{Exact Exponential Time Algorithm} instead, and 
+    \item\textbf{restrict the input to special cases.}
+\end{itemize}
+
+The main methodology used in this thesis is called \textit{parametrized complexity} and attaches to the third technique listed.
+
 % What can we do?
 
 % Observe that there are three ingredients
 
 % Giving up polynomial time: EET algorithms
 
-% Giving Up exactness will give us approximation algorithm that often have polynomial time al
+% Giving Up exactness will give us an approximation algorithm that often have polynomial time al
 
-% Last but not least: Givingup generality. Using specific information about the particular instance. Graph Class? Structural insights 
+% Last but not least: Giving up generality. Using specific information about the particular instance. Graph Class? Structural insights 
 
+%\begin{figure}
+%    \centering
+%\resizebox{150px}{!}{%
+%    \begin{tikzpicture}
+%        \begin{scope}[blend mode=lighten,opacity=0.75]
+%            \fill[TUMBlue]   ( 90:1.2) circle (2);
+%            \fill[TUMAccentBlue] (210:1.2) circle (2);
+%            \fill[TUMSecondaryBlue]  (330:1.2) circle (2);
+%        \end{scope}
+%        \node at ( 90:2)    {\textbf{Generality}};
+%        \node at ( 210:2)   {$\mathbf{\mathcal{O}(n^c)}$};
+%        \node at ( 330:2)   {\textbf{Exactness}};
+%        \node [font=\Large] {$\emptyset$};
+%    \end{tikzpicture}
+%}
+%    \caption{\textit{Unless $P = NP$, any algorithm solving an \NPc problem can at most fulfill two of those properties}}
+%    \label{fig:npc}
+%\end{figure}
+\subsection{Parameterized Complexity}
 
-
-\begin{figure}
-    \centering
-\resizebox{150px}{!}{%
-    \begin{tikzpicture}
-        \begin{scope}[blend mode=lighten,opacity=0.75]
-            \fill[TUMBlue]   ( 90:1.2) circle (2);
-            \fill[TUMAccentBlue] (210:1.2) circle (2);
-            \fill[TUMSecondaryBlue]  (330:1.2) circle (2);
-        \end{scope}
-        \node at ( 90:2)    {\textbf{Generality}};
-        \node at ( 210:2)   {$\mathbf{\mathcal{O}(n^c)}$};
-        \node at ( 330:2)   {\textbf{Exactness}};
-        \node [font=\Large] {$\emptyset$};
-    \end{tikzpicture}
-}
-    \caption{\textit{Unless $P = NP$, any algorithm solving an \NPc problem can at most fulfill two of those properties}}
-    \label{fig:npc}
-\end{figure}
-
-parameterized complexity ... Transition
-
-\subsection{parameterized Complexity}
-
-Introduced by Downey and Fellows \cite{Downey1999a}, parameterized complexity extends the classical theory with a framework that allows a more finely-grained analysis of computational problems. The idea is to measure a problem in terms of input size and an additional parameter $k$. This parameter denotes, how difficult the problem is: A larger parameter means a harder problem instance. We say that a problem is \textit{Fixed-Parameter Tractable} (FPT) if problem instances of size $n$ can be solved in $f(n)n^{\mathcal{O}(1)}$ time for some function $f$ independent of $n$. 
+Introduced by Downey and Fellows \cite{Downey1999a}, parameterized complexity extends the classical theory with a framework that allows a more finely-grained analysis of computationally hard problems. 
+The idea is to measure a problem in terms of input size and an additional parameter $k$. 
+This parameter denotes, how difficult the problem is: A larger parameter means a harder problem instance while smaller values can let to practical algorithms. 
+We say that a problem is \textit{Fixed-Parameter Tractable} (FPT) if problem instances of size $n$ can be solved in $f(n)n^{\mathcal{O}(1)}$ time for some function $f$ independent of $n$. 
 
 
-\begin{definition}[parameterized Problem{\cite[Def 1.1]{Cygan2015}}]
+\begin{definition}[Parameterized Problem {\cite[Def 1.1]{Cygan2015}}]
     A parameterized problem is a $L\subseteq\Sigma^*\times \mathbb{N}$ ($\Sigma$ finite fixed alphabet) for an instance $(x,k)\in \Sigma^*\times \mathbb{N}$, where k is called the \textit{parameter}.
 \end{definition}
 
 \begin{definition}[Instance Size]
     The \textbf{size of an instance} of an instance $(x,k)$ of a parameterized problem is $\abs{(x,k)} = \abs{x} + k$
 \end{definition}
-We will now clarify the basic terminology withing parameterized Complexity. 
-We are now giving a short introduction into the world of parameterized complexity. 
-* General Introduction
-
 
 \subsection{Fixed Parameter Tractability}
 

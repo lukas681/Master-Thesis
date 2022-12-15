@@ -420,9 +420,10 @@ Again, $k$ becomes either smaller or stays unchanged.
 
 % On the opposite side, if $\Dvw \neq \emptyset$, we have ... 
 
-\noindent Now we are ready to prove the correctness of \cref{rgl:rtwo}
+We now have all the tools to prove the correctness of \cref{rgl:rtwo}.
+
 \begin{lemma}\label{lemma:correctnesstwo}
-    Let \G be a plane graph, $v, w \in V$ and \GB be the graph obtained after application of \cref{rgl:rtwo} on the pair $\{v, w\}$. Then $G$ has a semitotal dominating set of size $k$ if and only if $G'$ has a semitotal dominating set of size $k$.
+    Let \G be a plane graph, $v, w \in V$ and \GB be the graph obtained after application of \cref{rgl:rtwo} on the pair $\{v, w\}$. Then $G$ has a semitotal dominating set of size at most $k$ if and only if $G'$ has a semitotal dominating set of size at most $k$.
 \end{lemma}
 \begin{proof}
 We will prove the claim by independently analyzing the different cases.     
