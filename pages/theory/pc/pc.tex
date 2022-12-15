@@ -2,12 +2,11 @@
 
 Computational complexity investigates the question of how many computational resources are required to solve a specific problem. 
 
-
-We are now ready to introduce the two most important classes of classical complexity theory:
+We are going to introduce two of the most important classes of problems of classical complexity theory:
 
 \begin{cc}[The Class \Pt~ {\cite{Arora2006}}]{cc:pnp}
 
-    If we denote \DTIME as the set of decision problems that are in $\mathcal{O}(n^k)$ time solvable by a deterministic Turing Machine, we can define the class \Pt as:
+    If we denote \DTIME as the set of decision problems that are solvable in $\mathcal{O}(n^k)$ time by a deterministic Turing Machine, we can define the class \Pt as:
 
     \[ \mathrm{P} := \bigcup_{k \in \mathbb{N}}(\mathrm{DTIME}(n^k))\]
 
@@ -17,12 +16,12 @@ We are now ready to introduce the two most important classes of classical comple
 
     A language $L \subseteq \{0,1\}^*$ is in \Pt if there exists a polynomial $p: \mathbb{N} \rightarrow \mathbb{N}$ and a polynomial-time Turing Machine $M$ such that for every $x \in \{0,1\}^*$,
 
-    \[ x \in L \Leftrightarrow \exists u \in \{0,1\}^{p(|x|)} \mathnormal{s.t.} M(x,u) = 1 \]
+    \[ x \in L \Leftrightarrow \exists u \in \{0,1\}^{p(|x|)} \mathnormal{s.t.~} M(x,u) = 1 \]
 
     \noindent If $x \in L$ and $u \in \{ 0,1 \}^{p(|x|)}$ satisfy $M(x,u) = 1$, then we call $u$  a \textit{certificate} for $x$.
 \end{cc}
 
-\Pt denotes the class of all problems that are \textit{efficiently solvable} whereas \NP contains all problems whose solution can efficiently be verified.
+\Pt denotes the class of all problems that are \textit{efficiently solvable} whereas \NP contains all problems whose solution can efficiently be verified. Note that $P \subseteq NP$.
 
 \subsection{\NPcn}
 A major discovery in the early 1970s was the fact that some problems in \NP are \textit{at least as hard as} as any other language.
