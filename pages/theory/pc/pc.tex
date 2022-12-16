@@ -1,8 +1,7 @@
 \section{Computational Complexity Theory}
 
 Computational complexity investigates the question of how many computational resources are required to solve a specific problem. 
-
-We are going to introduce two of the most important classes of problems of classical complexity theory:
+We are about to introduce two of the most important classes of problems in classical complexity theory:
 
 \begin{cc}[The Class \Pt~ {\cite{Arora2006}}]{cc:pnp}
 
@@ -21,126 +20,90 @@ We are going to introduce two of the most important classes of problems of class
     \noindent If $x \in L$ and $u \in \{ 0,1 \}^{p(|x|)}$ satisfy $M(x,u) = 1$, then we call $u$  a \textit{certificate} for $x$.
 \end{cc}
 
-\Pt denotes the class of all problems that are \textit{efficiently solvable} whereas \NP contains all problems whose solution can efficiently be verified. Note that $P \subseteq NP$.
+\Pt denotes the class of all problems that are \textit{efficiently solvable} whereas \NP contains all problems whose solution can efficiently be verified. Note that $P \subseteq NP$, but the opposite is unknown.
 
 \subsection{\NPcn}
-A major discovery in the early 1970s was the fact that some problems in \NP are \textit{at least as hard as} as any other language.
-This property is called \NP-hardness.
-
-The first results of \NPcn had been published independently by Cook \cite{Cook1971} and Levin \cite{Levin1973} after Karp \cite{Karp1972} had introduced the idea of problem reductions showing that some problems can be reduced among each other.
-An efficient way to solve one of them will efficiently solve the others. 
-
+A major discovery in the early 1970s was the fact that some problems in \NP are \textit{at least as hard as} as any other problem in \NP by reducing them to each other spanning a whole ``web of reductions'' \cite{Arora2006}.
+The first results in this area had been published independently by Cook \cite{Cook1971} and Levin \cite{Levin1973} after Karp \cite{Karp1972} had introduced this idea of problem reductions.
+The Cook-Levin-Theorem \cite{Cook1971} states that the \SAT is \NPc, which implies that one single algorithm for any of these problems would be enough to efficiently solve all of them. 
 For a comprehensive introduction to classical complexity theory, the reader is referred to \cite{Arora2006}.
+
+To obtain a kernel one can introduce \textit{reduction rules} that take the instance  
 
 \begin{definition}[{Reductions, \NP-hardness and \NPcn \cite{Arora2006}}]
 We say that a language $A\subseteq \{0,1\}^*$ is \textit{polynomial-time Karp reducible} to a language $B \subseteq \{0,1\}^*$ (denote $A \leq_p B$) if there is a poly-time computable function $f: \{0,1\}^* \rightarrow \{0,1\}^*$ such that for every $x \in \{0,1\}^*$, $x \in A$ if and only if $f(x) \in B$.
 
-We say that $B$ is \NP-hard if $A \leq_p B$ for every $A \in \NP$. 
-We say that $B$ is \NPc if $B$ is \NP-hard and $B \in NP$.
+\noindent We say that a problem $B$ is \NPh if $A \leq_p B$ for every $A \in \NP$ and $B$ is \NPc if additionally $B \in NP$ holds.
 \end{definition}
 
-There are thousands of \NPc problems in the wild that we do not expect to be solvable in polynomial time.
-The famous question of whether $P = NP$ or not is still one of the biggest open questions in mathematics bountied with one million dollars by the \textit{Clay Mathematical Institute} \cite{Fortnow2021}.
-
-For example, \dom and \sdom and \tdom are \NPc.
+There are thousands of \NPc problems we do not expect to be solvable in polynomial time.
+The famous question of whether $P = NP$ or not is still one of the biggest open questions in mathematics bountied with one million dollars by the \textit{Clay Mathematical Institute} \cite{Fortnow2021}. 
+Most of the domination problems like \dom, \sdom, \tdom are \NPc.
 
 \paragraph{Coping with \NPcn}
 
-Even though we do not expect \NPc problems to have a polynomial-time algorithm, there are a few ways to cope with them. We can 
+Even though we do not expect \NPc problems to have a polynomial-time algorithm, there are some strategies to cope with them. 
+We can either give up the exactness of a solution to possibly find fast \textit{approximation algorithms} or abandon the search for a polynomial-time algorithm in favor of finding good \textit{Exact Exponential (EEA) Algorithms} instead.
 
-\begin{itemize}
-    \item give up the exactness of a solution to possibly find fast \textit{approximation algorithms},
-    \item give up the search for polynomial-time algorithms and seek for a good \textit{Exact Exponential Time Algorithm} instead, and 
-    \item\textbf{restrict the input to special cases.}
-\end{itemize}
+A third technique is using additional structural parameters of a specific problem instance and therefore \textbf{restricting the input to special cases}. 
+This idea lead to the development of \textit{Parameterized complexity}.
 
-The main methodology used in this thesis is called \textit{parametrized complexity} and attaches to the third technique listed.
-
-% What can we do?
-
-% Observe that there are three ingredients
-
-% Giving up polynomial time: EET algorithms
-
-% Giving Up exactness will give us an approximation algorithm that often have polynomial time al
-
-% Last but not least: Giving up generality. Using specific information about the particular instance. Graph Class? Structural insights 
-
-%\begin{figure}
-%    \centering
-%\resizebox{150px}{!}{%
-%    \begin{tikzpicture}
-%        \begin{scope}[blend mode=lighten,opacity=0.75]
-%            \fill[TUMBlue]   ( 90:1.2) circle (2);
-%            \fill[TUMAccentBlue] (210:1.2) circle (2);
-%            \fill[TUMSecondaryBlue]  (330:1.2) circle (2);
-%        \end{scope}
-%        \node at ( 90:2)    {\textbf{Generality}};
-%        \node at ( 210:2)   {$\mathbf{\mathcal{O}(n^c)}$};
-%        \node at ( 330:2)   {\textbf{Exactness}};
-%        \node [font=\Large] {$\emptyset$};
-%    \end{tikzpicture}
-%}
-%    \caption{\textit{Unless $P = NP$, any algorithm solving an \NPc problem can at most fulfill two of those properties}}
-%    \label{fig:npc}
-%\end{figure}
-\subsection{Parameterized Complexity}
+\subsection{Definitions in Parameterized Complexity}\label{cha:param}
 
 Introduced by Downey and Fellows \cite{Downey1999a}, parameterized complexity extends the classical theory with a framework that allows a more finely-grained analysis of computationally hard problems. 
-The idea is to measure a problem in terms of input size and an additional parameter $k$. 
-This parameter denotes, how difficult the problem is: A larger parameter means a harder problem instance while smaller values can let to practical algorithms. 
-We say that a problem is \textit{Fixed-Parameter Tractable} (FPT) if problem instances of size $n$ can be solved in $f(n)n^{\mathcal{O}(1)}$ time for some function $f$ independent of $n$. 
+The idea is to measure a problem in terms of input size and an additional (structural) parameter $k$. 
 
+We like to find an algorithm that is only exponential in a function $f(k)$, but polynomial in the instance size.
+$k$ denotes how difficult the problem is: 
+
+If $k$ is small then the problem can still be considered tractable although the underlying \NPh problem counts as intractable in general.
+Therefore $k$ can be seen as a measure of the difficulty of a given instance.
+
+% One more sentence
 
 \begin{definition}[Parameterized Problem {\cite[Def 1.1]{Cygan2015}}]
     A parameterized problem is a $L\subseteq\Sigma^*\times \mathbb{N}$ ($\Sigma$ finite fixed alphabet) for an instance $(x,k)\in \Sigma^*\times \mathbb{N}$, where k is called the \textit{parameter}.
+
+    The \underline{size of an instance} of an instance $(x,k)$ of a parameterized problem is $\abs{(x,k)} = \abs{x} + k$ where the parameter $k$ is encoded in unary by convention.
 \end{definition}
 
-\begin{definition}[Instance Size]
-    The \textbf{size of an instance} of an instance $(x,k)$ of a parameterized problem is $\abs{(x,k)} = \abs{x} + k$
-\end{definition}
+\subsection{Fixed-Parameter Tractability}
+We say that a problem is \textit{fixed-parameter tractable (fpt)} if problem instances of size $n$ can be solved in $f(k)n^{\mathcal{O}(1)}$ time for some function $f$ independent of $n$. 
+Like the class \Pt can be seen as a notion of \textit{tractability} in classical complexity theory, there is an equivalent in parameterized complexity, which we denote as \FPTl (\FPT) and which we can define the following way:
 
-\subsection{Fixed Parameter Tractability}
-
-\begin{definition} [The Class FPT {\cite[Def 1.2]{Cygan2015}}]
+\begin{cc} [The Class \FPT~{\cite[Def 1.2]{Cygan2015}}]{cc:fpt}
     A parameterized problem $L\subseteq\Sigma^*\times\mathbb{N}$ is called \textit{fixed-parameter tractable} if there exists an algorithm A (called a \textit{fixed-parameter algorithm}), a computable function $f:\mathbb{N} \rightarrow \mathbb{N}$ and a constant c such that, given $(x,k) \in \Sigma^* \times \mathbb{N}$, the algorithm $\mathcal{A}$ correctly decides whether $(x,k) \in L$ in time bounded by $f(k) \cdot |(x,k)|^c$. The complexity class containing all fixed-parameter tractable problems is called \textit{FPT}
-\end{definition}
-
-
+\end{cc}
 \subsection{Kernelization}
 
-\begin{definition}[kernelization Algoritm{\cite[Def 2.1]{Cygan2015}}]
-A \textit{Kernelization Algorithm} or \textit{kernel} is an algorithm $\mathfrak{A}$ for a parameterized Problem Q, that given an instance $(I,k)$ of Q works in polynomial time and returns an equivalent instance $(I', k')$ of Q. Moreover, we require that $size_{\mathfrak{A}}(k) \leq g(k)$ for some computable function $g:\mathbb{N} \rightarrow \mathbb{N}$
+A kernelization algorithm is a natural and intuitive way to approach problems and can be seen as a preprocessing procedure that simplifies parts of an instance already before the actual solving algorithm is run. A visualization of this idea can be seen in \cref{fig:kernelization}.
+
+\begin{definition}[Kernelization and Reduction Rules {\cite[Def 2.1]{Cygan2015}}]
+A \textit{kernelization algorithm} or \textit{kernel} is an algorithm $\mathfrak{A}$ for a parameterized problem $Q$ that given an instance $(I,k)$ of $Q$ runs in polynomial time and returns an equivalent instance $(I', k')$ of $Q$. Moreover, we require that $size_{\mathfrak{A}}(k) \leq g(k)$ for some computable function $g:\mathbb{N} \rightarrow \mathbb{N}$.
+
+A \underline{reduction rule} is a function $\phi:\Sigma^* \times \mathbb{N} \rightarrow \Sigma^* \times \mathbb{N}$ that maps an instance $(x,k)$ to an equivalent instance $(x',k')$ such that $\phi$ is computable in time polynomial in $\abs{x}$ and $k$.
+
+A reduction rule is \underline{sound} (or \underline{safe}) if $(I, k) \Leftrightarrow (I',k')$.
 \end{definition}
-
-%TODO better
-If we bound the size of the kernel by a linear function $f(m) = \mathcal{O}(k)$, we say that the problem admits a \textbf{linear kernel}. 
-
-%Examplary, if we reduce a graph for a graph problem in such a way that we can garuantee that our reduced graph only has a a few vertices \textbf{linear} in  $k$ left
-
-The main idea, preprocessing algorithm, shrink size as much as possible, sound reduction rules,small output instance
 
 \begin{definition}[Output size of a Preprocessing Procedure {\cite[p. 18]{Cygan2015}}] The output size of a preprocessing algorithms $\mathfrak{A}$ is defined as 
 
     \[\mathrm{size}_{\mathfrak{A}}(k) = \sup\{\abs{I'} + l': (I',k')= \mathfrak{A}(I,k), I \in \Sigma^* \} \]
 \end{definition}
 
-possibly infinite
+If we bound the size of the kernel by a polynomial function $f(m) = \mathcal{O}(k)$, we say that the problem admits a \textbf{linear kernel}.  
 
-Clearly, if there exists a kernelization algorithm for a problem $L$ and an algorithm $\mathfrak{A}$ with any runtime to decide $L$, the problem is in $FPT$ because after the kernelization pre-processing has been applied, the size of the reduced instance is a function merely in $k$ and independent of the input size $n$. In \cref{ch:linkern} we will explicitly construct a kernel for \psdom and hence showing it to be in \textit{FPT}. 
+If there exists a kernelization algorithm for a problem $L$ and an algorithm $\mathfrak{A}$ with any runtime to decide $L$, the problem is in $FPT$ because after the kernelization pre-processing has been applied, the size of the reduced instance is a function merely in $k$ and independent of the input size $n$. In \cref{ch:linkern} we will explicitly construct a kernel for \psdom and hence show it to be in \textit{FPT}. 
 
-% Interstingly, als the converse?
-
-\begin{definition}[Reduction Rules {\cite[p. 18]{Cygan2015}}]
-A \textbf{reduction rule} is a function $\phi:\Sigma^* \times \mathbb{N} \rightarrow \Sigma^* \times \mathbb{N}$ that maps an instance $(x,k)$ to an equivalent instance $(x',k')$ such that $phi$ is computable in time polynomial in $\abs{x}$ and $k$
-\end{definition}
+\begin{figure}
+    \centering
+    \input{fig/mathcha/kernelization.tikz}
+    \caption{\textit{Kernelization: Reducing an instance $(I,k)$ of size $n$ to a smaller instance $(I', k')$ in polynomial time while bounding the size by a function $g(k)$}}
+    \label{fig:kernelization}
+\end{figure}
 
 \begin{definition}[Equivalent Instance {\cite[p. 18]{Cygan2015}}]
      This is a test
-\end{definition}
-
-\begin{definition}{Soundness of a rule}
-
 \end{definition}
 
 A \textbf{reduction rule} is a function $\Sigma* \times \mathbb{N}$ that maps an instance $(x,k)$ to an equivalent instance $(x',k')$ such that xx is computable in time polynomial in $\abs{x}$ and $k$

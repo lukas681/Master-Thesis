@@ -43,6 +43,7 @@ Acronyms
 39)  GEB, quote
 40) Chapter, First letter big even in sentence. FIXED
 41) All colons correct
+42) Replace FPT by \FPT
 
 
 
