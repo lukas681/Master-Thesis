@@ -70,7 +70,7 @@ We say that a problem is \textit{fixed-parameter tractable (fpt)} if problem ins
 Like the class \Pt can be seen as a notion of \textit{tractability} in classical complexity theory, there is an equivalent in parameterized complexity, which we denote as \FPTl (\FPT) and which we can define the following way:
 
 \begin{cc} [The Class \FPT~{\cite[Def 1.2]{Cygan2015}}]{cc:fpt}
-    A parameterized problem $L\subseteq\Sigma^*\times\mathbb{N}$ is called \textit{fixed-parameter tractable} if there exists an algorithm A (called a \textit{fixed-parameter algorithm}), a computable function $f:\mathbb{N} \rightarrow \mathbb{N}$ and a constant c such that, given $(x,k) \in \Sigma^* \times \mathbb{N}$, the algorithm $\mathcal{A}$ correctly decides whether $(x,k) \in L$ in time bounded by $f(k) \cdot |(x,k)|^c$. The complexity class containing all fixed-parameter tractable problems is called \textit{FPT}
+    A parameterized problem $L\subseteq\Sigma^*\times\mathbb{N}$ is called \textit{fixed-parameter tractable} if there exists an algorithm A (called a \textit{fixed-parameter algorithm}), a computable function $f:\mathbb{N} \rightarrow \mathbb{N}$ and a constant c such that, given $(x,k) \in \Sigma^* \times \mathbb{N}$, the algorithm $\mathcal{A}$ correctly decides whether $(x,k) \in L$ in time bounded by $f(k) \cdot |(x,k)|^c$. The complexity class containing all fixed-parameter tractable problems is called \FPT.
 \end{cc}
 \subsection{Kernelization}
 
@@ -86,36 +86,61 @@ A \underline{reduction rule} is a function $\phi:\Sigma^* \times \mathbb{N} \rig
 A reduction rule is \underline{sound} (or \underline{safe}) if $(I, k) \in Q \Leftrightarrow (I',k') \in Q$.
 \end{definition}
 
-\begin{definition}[Output size of a Preprocessing Procedure {\cite[p. 18]{Cygan2015}}] The output size of a preprocessing algorithms $\mathfrak{A}$ is defined as 
+We can give a precise definition of the size of the kernel, after a preprocessing algorithm $\mathfrak{A}$ has been executed.
+$size_{\mathfrak{A}}$ denotes the largest size of any instance $I$ after $\mathfrak{A}$ has been applied.
+We consider the size to be infinite if it cannot be bounded by a function in $k$.
 
-    \[\mathrm{size}_{\mathfrak{A}}(k) = \sup\{\abs{I'} + l': (I',k')= \mathfrak{A}(I,k), I \in \Sigma^* \} \]
+\begin{definition}[Output size of a Preprocessing Algorithm {\cite[p. 18]{Cygan2015}}] The output size of a preprocessing algorithms $\mathfrak{A}$ is defined as 
+
+    \[\mathrm{size}_{\mathfrak{A}}(k) = \sup\{\abs{I'} + k': (I',k')= \mathfrak{A}(I,k), I \in \Sigma^* \} \]
 \end{definition}
 
-If we bound the size of the kernel by a polynomial function $f(m) = \mathcal{O}(k)$, we say that the problem admits a \textbf{linear kernel}.  
+If we bound $\mathrm{size}_{\mathfrak{A}}$ by a polynomial in $k$, we say that the problem admits a \textbf{polynomial kernel}.  
+Analogous, if the size after the reduction is only linear $k$, we refer to it as a \textbf{linear} kernel.
 
-If we first find the kernel to a parameterized problem $Q$ and then solve this kernel using a fast exact exponential time algorithm yields a running time of $|(I,k)|^c + f(k)$ where 
+% If we first find the kernel to a parameterized problem $Q$ and then solve this kernel using a fast exact exponential time algorithm yields a running time of $|(I,k)|^c + f(k)$ where 
 
-If there exists a kernelization algorithm for a problem $L$ and an algorithm $\mathfrak{A}$ with any runtime to decide $L$, the problem is in $FPT$ because after the kernelization pre-processing has been applied, the size of the reduced instance is a function merely in $k$ and independent of the input size $n$. In \cref{ch:linkern} we will explicitly construct a kernel for \psdom and hence show it to be in \textit{FPT}. 
+% If there exists a kernelization algorithm for a problem $L$ and an algorithm $\mathfrak{A}$ with any runtime to decide $L$, the problem is in $FPT$ because after the kernelization pre-processing has been applied, the size of the reduced instance is a function merely in $k$ and independent of the input size $n$.
 
 \begin{figure}
     \centering
     \input{fig/mathcha/kernelization.tikz}
-    \caption{\textit{Kernelization: Reducing an instance $(I,k)$ of size $n$ to a smaller instance $(I', k')$ in polynomial time while bounding the size by a function $g(k)$}.}
+    \caption{\textit{Kernelization: Reducing an instance $(I,k)$ of size $n$ to a smaller instance $(I', k')$ in polynomial time. The size of the kernel is a function $g(k)$ only dependent on $k$.}}
     \label{fig:kernelization}
 \end{figure}
 
-\begin{definition}[Equivalent Instance {\cite[p. 18]{Cygan2015}}]
-     This is a test
-\end{definition}
+% TODO Do we need this definition?
+%\begin{definition}[Equivalent Instance {\cite[p. 18]{Cygan2015}}]
+%     This is a test
+%\end{definition}
 
-A \textbf{reduction rule} is a function $\Sigma* \times \mathbb{N}$ that maps an instance $(x,k)$ to an equivalent instance $(x',k')$ such that xx is computable in time polynomial in $\abs{x}$ and $k$
+% Relation between Kernelization and FPT
+The following lemma \Cref{lemma:fptiskernel} shows the relation between the complexity class \FPT and a kernelization algorithm. 
+If we find a kernelization algorithm $\mathfrak{A}$ for a (decidable) problem $P$, we immediately obtain an fpt algorithm by first running the $\mathfrak{A}$ on an instance $I$ of $P$ in polynomial time.
+Assuming that $P$ can be solved by an algorithm $\mathfrak{M}$ running in time $g(n)$ we can use the fact that the kernel is bounded by a function $f(k)$ and apply $\mathfrak{M}$ on the kernel resulting in a  total running time of the order $\mathcal{O}(g(f(k)) \cdot \mathrm{poly}(n))$ which is fpt.
+Surprisingly, also the converse is true:
 
-\subsection{Fixed Parameter Intractability: The w-Hierarchy}
-\subsection{Compare to classical NP-Hardness theory}
+\begin{lemma}[{\cite{Cygan2015}}]\label{lemma:fptiskernel}
+    If a parametrized problem $Q$ is \FPT if and only if it admits a kernelization algorithm.
+\end{lemma}
+
+ In \cref{ch:linkern} we will use this and by explicitly constructing a kernel for \psdom, we show membership of the problem in \FPT. 
+
+\subsection{Fixed Parameter Intractability}
+It is natural to ask whether all parametrized problems are fpt as well.
+
+% Class w[1] and w[2]
+
+
+Clique and Dominating set
+
+
+% History. 
+
+% Why this is important
 
 \subsubsection{parameterized Reductions}
 \begin{definition}[parameterized Reduction {\cite[Def 13.1]{Cygan2015}}] Let $A,B\subseteq \Sigma^*\times\mathbb{N}$ two parameterized problems. A \textit{parameterized Reduction} from A to B is an algorithm that, given an instance $(x,k)$ of A, outputs an instance $(x', k')$ of B such that
-
     \begin{itemize}
         \item $(x,k)$ is a \textcolor{gray}{yes instance} of A \textbf{iff} $(x',k')$ is a \textcolor{gray}{yes instance} of B
         \item $k' \leq g(k)$ for some computable function $g$
