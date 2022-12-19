@@ -121,7 +121,7 @@ Assuming that $P$ can be solved by an algorithm $\mathfrak{M}$ running in time $
 Surprisingly, also the converse is true:
 
 \begin{lemma}\label{lemma:fptiskernel}
-    If a parametrized problem $Q$ is \FPT if and only if it admits a kernelization algorithm.
+    If a parameterized problem $Q$ is \FPT if and only if it admits a kernelization algorithm.
 \end{lemma}
 
  In \cref{ch:linkern} we will use this and by explicitly constructing a kernel for \psdom, we show membership of the problem in \FPT. 
@@ -130,16 +130,13 @@ Surprisingly, also the converse is true:
 
 It is natural to ask whether all (hard) problems are also fixed-parameter tractable.
 The answer is no and parameterized complexity has another tool in its toolbox that can be used to show that a problem is unlikely to be in \FPT.
+We now carefully transfer our definitions given in \cref{ch:npc} to the parameterized setting. 
 
 The idea is to transfer the concepts of \NP-hardness and reductions from the classical setting to the parameterized world.
 This raises the need for a new type of reduction that must ensure that a reduced instance $(I', k')$ is not only created in fpt time, but the new parameter $k'$ depends only on the size of the parameter in the original instance.
 
-There exists a whole hierarchy of classes $\FPT \subseteq \WONE \subseteq \WTWO \subseteq ...$, which is known as the \WHIERARCHY.
-
-% \subsubsection{Parameterized Reductions}
-
-We can now carefully transfer our definitions given in \cref{ch:npc} to the parametrized setting. 
-We first define the notion of a \textit{parameterized reduction} which is a type of reduction that preserves hardness in the parameterized setting.
+There exists a whole hierarchy of classes $\FPT \subseteq \WONE \subseteq \WTWO \subseteq ... \subseteq \Wt \subseteq ...$, which is known as the \WHIERARCHY.
+It is strongly believed that $\FPT \subsetneq W[t]$ and therefore, we do not expect the existence of an algorithm solving any \Wt-hard problem in fpt time.
 
 \begin{definition}[Parameterized Reduction] Let $A,B\subseteq \Sigma^*\times\mathbb{N}$ two parameterized problems. A \textit{parameter preserving reduction} from $A$ to $B$ is an algorithm that, given an instance $(x,k)$ of $A$, outputs an instance $(x', k')$ of $B$ such that:
     \begin{itemize}
@@ -149,9 +146,7 @@ We first define the notion of a \textit{parameterized reduction} which is a type
     \end{itemize}
 \end{definition}
 
-If there exists a parameterized reduction transforming a W[t]-hard problem A to another problem B, then 
-
-The following two \cref{lem:cfptr,lem:trans} \cite{Cygan2015} are crucial for proving parameterized intractability and transfer properties, which we had in the classical setting as well.
+As shown in \cref{lem:cfptr,lem:trans} \cite{Cygan2015} this definition ensures that reductions are transitive and closed under fpt reductions.
 
 \begin{lemma}[Closed under fpt-reductions]\label{lem:cfptr}
     If there is a parameterized reduction from $A$ to $B$ and $B \in \FPT$, then $A \in \FPT$, too.
@@ -170,6 +165,9 @@ We are now ready to define two of the most important classes for fpt.-intractabi
 complete, if
 We will omit a comprehensive introduction of the W-hierarchy as it is not required for proofing the 
 
+If there exists a parameterized reduction transforming a \Wt-hard problem $A$ to another problem $B$, then $B$ is \Wt-hard as well.
+We can define the classes \WONE and \WTWO, by giving two problems that are complete for these classes.
+
 \begin{cc}[The W-hierarchy]{cc:wi}
 
     \clique is fpt-complete for \WONE.
@@ -178,6 +176,7 @@ We will omit a comprehensive introduction of the W-hierarchy as it is not requir
 
 \end{cc}
 
-It is strongly believed that $\FPT \subsetneq W[i]$ and therefore, we do not expect the existence of an algorithm solving any $W[i]$-hard problem in fpt time.
 
-For more background information in parameterized compelxity, we refer the reader to \cite{Cygan2015, Fomin2019}
+We have omitted a more precise definition via the \wsat problem as it is not important for our work.
+We refer the interested reader to \cite{Cygan2015, Fomin2019} for more details.
+
