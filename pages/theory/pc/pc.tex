@@ -128,34 +128,18 @@ Surprisingly, also the converse is true:
 
 \subsection{Reductions and Parameterized Intractability}
 
-It is natural to ask whether all hard problems are also fixed-parameter tractable.
-It turns out that this is not the case and parameterized complexity answers this question by providing another tool that allows showing that a problem is unlikely to be in \FPT using a different notion of \textit{reductions}.
+It is natural to ask whether all (hard) problems are also fixed-parameter tractable.
+The answer is no and parameterized complexity has another tool in its toolbox that can be used to show that a problem is unlikely to be in \FPT.
 
-The idea is to replace the concept of \NP-hardness from the classical setting with a definition of W-hardness for the parameterized framework.
-These reductions have to make sure that the equivalent instance is not only created in fpt-time, but must also ensure that the new parameter depends only on the value of the original parameter.
+The idea is to transfer the concepts of \NP-hardness and reductions from the classical setting to the parameterized world.
+This raises the need for a new type of reduction that must ensure that a reduced instance $(I', k')$ is not only created in fpt time, but the new parameter $k'$ depends only on the size of the parameter in the original instance.
 
-Again there exists a whole hierarchy of classes $\FPT \subseteq \WONE \subseteq \WTWO \subseteq ...$ for which the question whether these inclusions are strict is open.
-qwk
-Although W[i] spans up a whole hierarchy of complexity classes, in this work we only need the classes \WONE and \WTWO.
+There exists a whole hierarchy of classes $\FPT \subseteq \WONE \subseteq \WTWO \subseteq ...$, which is known as the \WHIERARCHY.
 
-Like the class \NP gives strong evidence
-must be adjusted
+% \subsubsection{Parameterized Reductions}
 
-As we can see the class \FPT as some parameterized equivalent for the \P in the classical settings, we might ask wether there is also a notion of \textit{parameterized intractability}.
-Are there any problems that are not fixed-p
-
-It turns out that there is whole hierarchy, the so called W-hierarchy.
-
-Before defining these classes, we need a 
-
-% TODO Better formulation!
-We can transfer the definitions given in \cref{ch:npc} to the parametrized setting as well. 
-We will establish a similar notion for \textit{hardness}
-
-Before defining these classes, we need the notion of a \textit{parameterized reduction} that transfers fixed-parameter tractability.
-These reduction preserve \textit{hardness} in the parameterized setting.
-
-\subsubsection{Parameterized Reductions}
+We can now carefully transfer our definitions given in \cref{ch:npc} to the parametrized setting. 
+We first define the notion of a \textit{parameterized reduction} which is a type of reduction that preserves hardness in the parameterized setting.
 
 \begin{definition}[Parameterized Reduction] Let $A,B\subseteq \Sigma^*\times\mathbb{N}$ two parameterized problems. A \textit{parameter preserving reduction} from $A$ to $B$ is an algorithm that, given an instance $(x,k)$ of $A$, outputs an instance $(x', k')$ of $B$ such that:
     \begin{itemize}
@@ -164,6 +148,8 @@ These reduction preserve \textit{hardness} in the parameterized setting.
         \item runs in fpt-time $f(k)\cdot |x|^{\mathcal{O}(1)}$ for some computable function f.
     \end{itemize}
 \end{definition}
+
+If there exists a parameterized reduction transforming a W[t]-hard problem A to another problem B, then 
 
 The following two \cref{lem:cfptr,lem:trans} \cite{Cygan2015} are crucial for proving parameterized intractability and transfer properties, which we had in the classical setting as well.
 
