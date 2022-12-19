@@ -143,48 +143,49 @@ An embedding in the plane, or \textit{planar embedding}, of an (abstract) graph 
         \caption{Generated with Dall-E. \url{https://labs.openai.com/}. ``Duck playing chess''}
 \end{figure}
 
-\epigraph{\itshape In computer science, parameterized complexity is a framework for studying the complexity of computational problems, in which the complexity of a problem is not just a function of the size of the input, but also a function of one or more additional parameters that describe the problem instance. }{chatGPT, \textit{2022}}
+%\epigraph{\itshape In computer science, parameterized complexity is a framework for studying the complexity of computational problems, in which the complexity of a problem is not just a function of the size of the input, but also a function of one or more additional parameters that describe the problem instance. }{chatGPT, \textit{2022}}
+\epigraph{\itshape TODO: Find a nice quote for here!}{chatGPT, \textit{2022}}
 
 In connection with various chessboard problems, the concept of domination can be traced back to the mid-1800s.
-For example, de Jaenosch attempted in 1862 to solve the minimum number of queens required to fully cover an n x n-chessboard \cite{Jaenisch1862}. Because of the immense amount of publications related to domination, Haynes, Hedetniemi, and Slater started a comprehensive survey of the literature \cite{Haynes1998, Haynes1998b}. 
-20 years later, by a series of three more books, Haynes, Henning and Hedetniemi updated the survey with the latest developments \cite{Haynes2020, Haynes2021, Haynes2022}.
+For example, De Jaenosch attempted in 1862 to solve the minimum number of queens required to fully cover an $n \times n$-chessboard \cite{Jaenisch1862}. Because of the immense amount of publications related to domination, Haynes, Hedetniemi, and Slater started a comprehensive survey of the literature in 1998 \cite{Haynes1998, Haynes1998b}. 
+20 years later, by a series of three more books, Haynes, Henning and Hedetniemi complemented the survey with the latest developments \cite{Haynes2020, Haynes2021, Haynes2022}.
 
-After introducing the problem, we will dedicate the rest of this chapter to giving a current status about the complexity status of \dom, \sdom and \tdom on various graph classes. 
+We are now introducing the problems of \dom, \sdom and \tdom and dedicate the rest of the chapter to giving a current status about the complexity status of various graph classes. 
+
+% We will see that most cases mirror each other for the three different problems, but sometimes there seems to be 
+
 % Surprisingly, there are cases where the complexity of \dom and \tdom differes (e)
 %If both \dom and \tdom are already hard for a class, we already have a strong assumption that this also holds for \sdom as well.
 
-
 %Interestingly, most of them mimic each other for one specific class, but there are some exceptions, where this is not the case.
 
-\section{The Domination Problem}
+\section{Definition of Domination Problems}
+
+We are now going to define three domination problems, namely, \dom, \sdom and \tdom.
+Formally, a \dom 
+% DOM SET
+\begin{prb}[\DOM~{\cite[p. 586]{Cygan2015}}]{prb:ds}
+    \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
+        \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
+        \textbf{Question} & Is there a set $X \subseteq V$ of size at most $k$ such that $N[X] = V$? \\
+    \end{tabularx}
+\end{prb}
+
 
 \textit{Semitotal domination} was introduced by Goddard, Henning and McPillan \cite{Goddard2014} as a relaxed form of \textit{total domination}. 
 
-\begin{prb}[DOMINATING SET DECISION {\cite[p. 586]{Cygan2015}}]{prb:ds}
-    \begin{tabularx}{0.9\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
-        \textbf{Input:} & Graph \G and an integer $k$\\
-        \textbf{Question:} & Is there a set $X \subseteq V$ of size at most $k$ such that $N[X] = V$? \\
+\begin{prb}[\SDOM~{\cite{Goddard2014}}]{prb:tds}
+    \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
+        \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
+        \textbf{Question} & Is there a subset $X \subseteq V$ with $\abs{X} \leq k$ such that $N[X] = V$ and for all $d_1 \in X$ there exists another $d_2 \in X$ such that $d(d_1, d_2) \leq 2$?\\
     \end{tabularx}
 \end{prb}
 
-
-Goddard, Henning and McPiallan a
-
-\begin{prb}[SEMITOTAL DOMINATING SET DECISION {\cite{Goddard2014}}]{prb:tds}
-    
-    \begin{tabularx}{0.8\textwidth}{>{\hsize=0.35\hsize}X>{\hsize=0.8\hsize}X}
-        \textbf{Input:} & Graph \G and an integer $k$\\
-        \textbf{Question:} & Is there a subset $X \subseteq V$ of size at most $k$ such that $N[X] = V$ and for all $d_1 \in X$ there exists another $d_2 \in X$ such that $d(d_1, d_2) \leq 2$?\\
+\begin{prb}[\TDOM~{\cite[p. 596]{Cygan2015}}]{prb:sds}
+    \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
+        \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
+        \textbf{Question} & Does there exists a set $X \subseteq V$ with $\abs{X}\leq k$ vertices such that for every $u \in V(G)$ there exists $v \in X$ with $\{u,v\} \in E$ \\
     \end{tabularx}
-        
-\end{prb}
-
-\begin{prb}[TOTAL DOMINATING SET DECISION {\cite[p. 596]{Cygan2015}}]{prb:sds}
-    \begin{tabularx}{0.8\textwidth}{>{\hsize=0.35\hsize}X>{\hsize=0.8\hsize}X}
-        \textbf{Input:} & Graph \G and an integer $k$\\
-        \textbf{Question:} & Does there exists a set $X \subseteq V$ of at most $k$ vertices of G such that for every $u \in V(G)$ there exists $v \in X$ with $\{u,v\} \in E$ \\
-    \end{tabularx}
-        
 \end{prb}
 
 \begin{figure}
