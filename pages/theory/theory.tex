@@ -161,30 +161,35 @@ We are now introducing the problems of \dom, \sdom and \tdom and dedicate the re
 
 \section{Definition of Domination Problems}
 
-We are now going to define three domination problems, namely, \dom, \sdom and \tdom.
-Formally, a \dom 
-% DOM SET
+We are now going to define the three most important domination problems for this work: \dom, \sdom and \tdom.
+For a specific dominating set $D$, we say that a vertex $d \in D$ is a \textit{dominating vertex} or \textit{dominator}. We say that $d$ \textit{dominates} all of its neighbors.
+
+The \dom problem asks for a subset $D$ of vertices whose set of neighbors covers all the other vertices.
+In other words: every vertex $v \notin D$ has at least one neighbor in $D$.
+
 \begin{prb}[\DOM~{\cite[p. 586]{Cygan2015}}]{prb:ds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
-        \textbf{Question} & Is there a set $X \subseteq V$ of size at most $k$ such that $N[X] = V$? \\
+        \textbf{Question} & Is there a set {$X \subseteq V$} of size at most $k$ such that ${N[X] = V}$? \\
     \end{tabularx}
 \end{prb}
 
-
-\textit{Semitotal domination} was introduced by Goddard, Henning and McPillan \cite{Goddard2014} as a relaxed form of \textit{total domination}. 
-
-\begin{prb}[\SDOM~{\cite{Goddard2014}}]{prb:tds}
-    \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
-        \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
-        \textbf{Question} & Is there a subset $X \subseteq V$ with $\abs{X} \leq k$ such that $N[X] = V$ and for all $d_1 \in X$ there exists another $d_2 \in X$ such that $d(d_1, d_2) \leq 2$?\\
-    \end{tabularx}
-\end{prb}
+The \tdom problem adds one additional constraint: Every vertex $v \in D$ in the dominating set must also be dominated by some vertex $v' \in D$.
+% TODO: Interesting Property?
 
 \begin{prb}[\TDOM~{\cite[p. 596]{Cygan2015}}]{prb:sds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
         \textbf{Question} & Does there exists a set $X \subseteq V$ with $\abs{X}\leq k$ vertices such that for every $u \in V(G)$ there exists $v \in X$ with $\{u,v\} \in E$ \\
+    \end{tabularx}
+\end{prb}
+
+Finally, \sdomin was introduced by Goddard, Henning and McPillan \cite{Goddard2014} as a relaxation of \tdomin. Here the idea 
+
+\begin{prb}[\SDOM~{\cite{Goddard2014}}]{prb:tds}
+    \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
+        \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
+        \textbf{Question} & Is there a subset $X \subseteq V$ with $\abs{X} \leq k$ such that ${N[X] = V}$ and for all $d_1 \in X$ there exists another $d_2 \in X$ such that ${d(d_1, d_2) \leq 2}$?\\
     \end{tabularx}
 \end{prb}
 
