@@ -44,7 +44,8 @@ Acronyms
 40) Chapter, First letter big even in sentence. FIXED
 41) All colons correct
 42) Replace FPT by \FPT
-
+43) All OMEGA to e
+44) Environment command for W hardness + highlighting
 
 
 ## maybwe qzuote

@@ -12,7 +12,6 @@ We are about to introduce two of the most important classes of problems in class
 \end{cc}
 
 \begin{cc}[The Class \NP~ {\cite{Arora2006}}]{cc:pnp}
-
     A language $L \subseteq \{0,1\}^*$ is in \Pt if there exists a polynomial $p: \mathbb{N} \rightarrow \mathbb{N}$ and a polynomial-time Turing Machine $M$ such that for every $x \in \{0,1\}^*$,
 
     \[ x \in L \Leftrightarrow \exists u \in \{0,1\}^{p(|x|)} \mathnormal{s.t.~} M(x,u) = 1 \]
@@ -20,9 +19,9 @@ We are about to introduce two of the most important classes of problems in class
     \noindent If $x \in L$ and $u \in \{ 0,1 \}^{p(|x|)}$ satisfy $M(x,u) = 1$, then we call $u$  a \textit{certificate} for $x$.
 \end{cc}
 
-\Pt denotes the class of all problems that are \textit{efficiently solvable} whereas \NP contains all problems whose solution can efficiently be verified. Note that $P \subseteq NP$, but the opposite is unknown.
+\Pt denotes the class of all problems that are \textit{efficiently solvable} whereas \NP contains all problems whose solution can efficiently be verified. Note that $\Pt \subseteq \NP$, but the opposite is unknown.
 
-\subsection{\NPcn}
+\subsection{\NPcn}\label{ch:npc}
 A major discovery in the early 1970s was the fact that some problems in \NP are \textit{at least as hard as} as any other problem in \NP by reducing them to each other spanning a whole ``web of reductions'' \cite{Arora2006}.
 The first results in this area had been published independently by Cook \cite{Cook1971} and Levin \cite{Levin1973} after Karp \cite{Karp1972} had introduced this idea of problem reductions.
 The Cook-Levin-Theorem \cite{Cook1971} states that the \SAT is \NPc, which implies that one single algorithm for any of these problems would be enough to efficiently solve all of them. 
@@ -35,7 +34,7 @@ We say that a language $A\subseteq \{0,1\}^*$ is \textit{polynomial-time Karp re
 \end{definition}
 
 There are thousands of \NPc problems we do not expect to be solvable in polynomial time.
-The famous question of whether $P = NP$ or not is still one of the biggest open questions in mathematics bountied with one million dollars by the \textit{Clay Mathematical Institute} \cite{Fortnow2021}. 
+The famous question of whether $\Pt = \NP$ or not is still one of the biggest open questions in mathematics bountied with one million dollars by the \textit{Clay Mathematical Institute} \cite{Fortnow2021}. 
 Most of the domination problems like \dom, \sdom, \tdom are \NPc.
 
 \paragraph{Coping with \NPcn}
@@ -56,10 +55,11 @@ $k$ denotes how difficult the problem is:
 
 If $k$ is small then the problem can still be considered tractable although the underlying \NPh problem counts as intractable in general.
 Therefore $k$ can be seen as a measure of the difficulty of a given instance.
+If not marked otherwise, all definitions are taken from \cite{Cygan2015}.
 
 % One more sentence
 
-\begin{definition}[Parameterized Problem {\cite[Def 1.1]{Cygan2015}}]
+\begin{definition}[Parameterized Problem]
     A parameterized problem is a $L\subseteq\Sigma^*\times \mathbb{N}$ ($\Sigma$ finite fixed alphabet) for an instance $(x,k)\in \Sigma^*\times \mathbb{N}$, where k is called the \textit{parameter}.
 
     The \underline{size of an instance} of an instance $(x,k)$ of a parameterized problem is $\abs{(x,k)} = \abs{x} + k$ where the parameter $k$ is encoded in unary by convention.
@@ -69,7 +69,7 @@ Therefore $k$ can be seen as a measure of the difficulty of a given instance.
 We say that a problem is \textit{fixed-parameter tractable (fpt)} if problem instances of size $n$ can be solved in $f(k)n^{\mathcal{O}(1)}$ time for some function $f$ independent of $n$. 
 Like the class \Pt can be seen as a notion of \textit{tractability} in classical complexity theory, there is an equivalent in parameterized complexity, which we denote as \FPTl (\FPT) and which we can define the following way:
 
-\begin{cc} [The Class \FPT~{\cite[Def 1.2]{Cygan2015}}]{cc:fpt}
+\begin{cc} [The Class \FPT]{cc:fpt}
     A parameterized problem $L\subseteq\Sigma^*\times\mathbb{N}$ is called \textit{fixed-parameter tractable} if there exists an algorithm A (called a \textit{fixed-parameter algorithm}), a computable function $f:\mathbb{N} \rightarrow \mathbb{N}$ and a constant c such that, given $(x,k) \in \Sigma^* \times \mathbb{N}$, the algorithm $\mathcal{A}$ correctly decides whether $(x,k) \in L$ in time bounded by $f(k) \cdot |(x,k)|^c$. The complexity class containing all fixed-parameter tractable problems is called \FPT.
 \end{cc}
 \subsection{Kernelization}
@@ -78,7 +78,7 @@ A kernelization algorithm is a natural and intuitive way to approach problems an
 A visualization of this idea can be seen in \cref{fig:kernelization}.
 One can introduce \textit{reduction rules} that iteratively reduce the instance until we are left with a small kernel.   
 
-\begin{definition}[Kernelization and Reduction Rules {\cite[Def 2.1]{Cygan2015}}]
+\begin{definition}[Kernelization and Reduction Rules]
 A \textit{kernelization algorithm} or \textit{kernel} is an algorithm $\mathfrak{A}$ for a parameterized problem $Q$ that given an instance $(I,k)$ of $Q$ runs in polynomial time and returns an equivalent instance $(I', k')$ of $Q$. Moreover, we require that $size_{\mathfrak{A}}(k) \leq g(k)$ for some computable function $g:\mathbb{N} \rightarrow \mathbb{N}$.
 
 A \underline{reduction rule} is a function $\phi:\Sigma^* \times \mathbb{N} \rightarrow \Sigma^* \times \mathbb{N}$ that maps an instance $(x,k)$ to an equivalent instance $(x',k')$ such that $\phi$ is computable in time polynomial in $\abs{x}$ and $k$.
@@ -90,7 +90,7 @@ We can give a precise definition of the size of the kernel, after a preprocessin
 $size_{\mathfrak{A}}$ denotes the largest size of any instance $I$ after $\mathfrak{A}$ has been applied.
 We consider the size to be infinite if it cannot be bounded by a function in $k$.
 
-\begin{definition}[Output size of a Preprocessing Algorithm {\cite[p. 18]{Cygan2015}}] The output size of a preprocessing algorithms $\mathfrak{A}$ is defined as 
+\begin{definition}[Output size of a Preprocessing Algorithm] The output size of a preprocessing algorithms $\mathfrak{A}$ is defined as 
 
     \[\mathrm{size}_{\mathfrak{A}}(k) = \sup\{\abs{I'} + k': (I',k')= \mathfrak{A}(I,k), I \in \Sigma^* \} \]
 \end{definition}
@@ -115,37 +115,87 @@ Analogous, if the size after the reduction is only linear $k$, we refer to it as
 %\end{definition}
 
 % Relation between Kernelization and FPT
-The following lemma \Cref{lemma:fptiskernel} shows the relation between the complexity class \FPT and a kernelization algorithm. 
+The following \cref{lemma:fptiskernel} shows the relation between the complexity class \FPT and a kernelization algorithm. 
 If we find a kernelization algorithm $\mathfrak{A}$ for a (decidable) problem $P$, we immediately obtain an fpt algorithm by first running the $\mathfrak{A}$ on an instance $I$ of $P$ in polynomial time.
 Assuming that $P$ can be solved by an algorithm $\mathfrak{M}$ running in time $g(n)$ we can use the fact that the kernel is bounded by a function $f(k)$ and apply $\mathfrak{M}$ on the kernel resulting in a  total running time of the order $\mathcal{O}(g(f(k)) \cdot \mathrm{poly}(n))$ which is fpt.
 Surprisingly, also the converse is true:
 
-\begin{lemma}[{\cite{Cygan2015}}]\label{lemma:fptiskernel}
+\begin{lemma}\label{lemma:fptiskernel}
     If a parametrized problem $Q$ is \FPT if and only if it admits a kernelization algorithm.
 \end{lemma}
 
  In \cref{ch:linkern} we will use this and by explicitly constructing a kernel for \psdom, we show membership of the problem in \FPT. 
 
-\subsection{Fixed Parameter Intractability}
-It is natural to ask whether all parametrized problems are fpt as well.
+\subsection{Reductions and Parameterized Intractability}
 
-% Class w[1] and w[2]
+It is natural to ask whether all hard problems are also fixed-parameter tractable.
+It turns out that this is not the case and parameterized complexity answers this question by providing another tool that allows showing that a problem is unlikely to be in \FPT using a notion of \textit{reductions}.
 
+The idea is to replace the concept of \NPh from the classical setting with the definition of  W-hardness.
+These reductions have to make sure that the equivalent instance is not only created in fpt-time, but also does not blow up the solution size of the resulting instance.
+Although W[i] spans up a whole hierarchy of complexity classes, in this work we only need the classes \WONE and \WTWO.
 
-Clique and Dominating set
+Like the class \NP gives strong evidence
+must be adjusted
 
+The class \FPT can be seen as a parameterized equivalent to the class \P in the classical setting. 
 
-% History. 
+The conc ept of W-hardness transfer
 
-% Why this is important
+Again 
 
-\subsubsection{parameterized Reductions}
-\begin{definition}[parameterized Reduction {\cite[Def 13.1]{Cygan2015}}] Let $A,B\subseteq \Sigma^*\times\mathbb{N}$ two parameterized problems. A \textit{parameterized Reduction} from A to B is an algorithm that, given an instance $(x,k)$ of A, outputs an instance $(x', k')$ of B such that
+As we can see the class \FPT as some parameterized equivalent for the \P in the classical settings, we might ask wether there is also a notion of \textit{parameterized intractability}.
+Are there any problems that are not fixed-p
+
+It turns out that there is whole hierarchy, the so called W-hierarchy.
+
+Before defining these classes, we need a 
+
+% TODO Better formulation!
+We can transfer the definitions given in \cref{ch:npc} to the parametrized setting as well. 
+We will establish a similar notion for \textit{hardness}
+
+Before defining these classes, we need the notion of a \textit{parameterized reduction} that transfers fixed-parameter tractability.
+These reduction preserve \textit{hardness} in the parameterized setting.
+
+\subsubsection{Parameterized Reductions}
+
+\begin{definition}[Parameterized Reduction {\cite[Def 13.1]{Cygan2015}}] Let $A,B\subseteq \Sigma^*\times\mathbb{N}$ two parameterized problems. A \textit{parameter preserving reduction} from $A$ to $B$ is an algorithm that, given an instance $(x,k)$ of $A$, outputs an instance $(x', k')$ of $B$ such that:
     \begin{itemize}
-        \item $(x,k)$ is a \textcolor{gray}{yes instance} of A \textbf{iff} $(x',k')$ is a \textcolor{gray}{yes instance} of B
-        \item $k' \leq g(k)$ for some computable function $g$
-        \item the running time is $f(k)\cdot |x|^{\mathcal{O}(1)}$ (FPT!)
+        \item $(x,k)$ is a \textcolor{gray}{yes instance} of A \textbf{iff} $(x',k')$ is a \textcolor{gray}{yes instance} of B,
+        \item $k' \leq g(k)$ for some computable function $g$, and
+        \item runs in fpt-time $f(k)\cdot |x|^{\mathcal{O}(1)}$ for some computable function f.
     \end{itemize}
 \end{definition}
-    \subsubsection{The $w$-hierarchy}
 
+The following two \cref{lem:cfptr,lem:trans} \cite{Cygan2015} are crucial for proving parameterized intractability and transfer properties, which we had in the classical setting as well.
+
+\begin{lemma}[Closed under fpt-reductions]\label{lem:cfptr}
+    If there is a parameterized reduction from $A$ to $B$ and $B \in \FPT$, then $A \in \FPT$, too.
+\end{lemma}
+
+\begin{lemma}[Transitivity] \label{lem:trans}
+    If there are parameterized reductions from $A$ to $B$ and from $B$ to $C$, then there is a parameterized reduction from $A$ to $C$.
+\end{lemma}
+
+Parameterized Complexity class? ParaNP?
+Whoe w hierarhcy.
+
+We say a problem is \textit{hard}
+% TODO. Make better.
+We are now ready to define two of the most important classes for fpt.-intractability.
+
+complete, if
+We will omit a comprehensive introduction of the W-hierarchy as it is not required for proofing the 
+
+\begin{cc}[The W-hierarchy]{cc:wi}
+
+    \clique is fpt-complete for \WONE.
+
+    \noindent \dom is fpt-complete for \WTWO.
+
+\end{cc}
+
+It is strongly believed that $\FPT \subsetneq W[i]$ and therefore, we do not expect the existence of an algorithm solving any $W[i]$-hard problem in fpt time.
+
+For more background information in parameterized compelxity, we refer the reader to \cite{Cygan2015, Fomin2019}
