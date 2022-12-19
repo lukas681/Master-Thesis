@@ -185,6 +185,13 @@ The \tdom problem adds one additional constraint: Every vertex $v \in D$ in the 
 \end{prb}
 
 Finally, \sdomin was introduced by Goddard, Henning and McPillan \cite{Goddard2014} as a relaxation of \tdomin. 
+Assume that we have an arbitrary dominating set $D$ for some (connected) graph \G that has size at most two.
+
+It is easy to observe that for each $v \in D$ there must be at least one other dominating vertex $v' \in D$ that is at most three steps away because otherwise, this would not be a dominating set. 
+By definition, there is always another neighboring dominating vertex for a total dominating set $D$.
+Therefore, it is natural to ask what happens, if we restrict the distance to at most two, which leads us straight to the idea of \sdomin.
+
+to still enforce another vertex from $D$ to be nearby, but allow to have intermediate  
 In this context, we say that $v$ witnesses $v'$ if $v,v' \in D$ and $d(v,v') \leq 2$ for a semitotal dominating set $D$.
 
 \begin{prb}[\SDOM~{\cite{Goddard2014}}]{prb:tds}
@@ -206,7 +213,7 @@ In this context, we say that $v$ witnesses $v'$ if $v,v' \in D$ and $d(v,v') \le
 \begin{definition}[Domination Parameters]
    The \underline{domination number} in a graph $G$ is the minimum cardinality of a dominating set of $G$, denoted as $\gamma(G)$. 
    The \underline{total domination number} is the minimum cardinality of a total dominating set (tds) of $G$, denoted by $\gamma_t(G)$.
-   The \underline{semitotal domination number} is the minimum cardinality of a semitotal dominating set (sds) of $G$, denoted by $\gamma_t(G)$
+   The \underline{semitotal domination number} is the minimum cardinality of a semitotal dominating set (sds) of $G$, denoted by $\gamma_t(G)$.
 \end{definition}
 
 % Henning?
