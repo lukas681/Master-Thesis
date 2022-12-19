@@ -162,9 +162,9 @@ We are now introducing the problems of \dom, \sdom and \tdom and dedicate the re
 \section{Definition of Domination Problems}
 
 We are now going to define the three most important domination problems for this work: \dom, \sdom and \tdom.
-For a specific dominating set $D$, we say that a vertex $d \in D$ is a \textit{dominating vertex} or \textit{dominator}. We say that $d$ \textit{dominates} all of its neighbors.
+For a specific dominating set $D$, we say that a vertex $d$ is a \textit{dominating vertex} or \textit{dominator} if $d \in D$. We say that $d$ \textit{dominates} all of its neighbors.
 
-The \dom problem asks for a subset $D$ of vertices whose set of neighbors covers all the other vertices.
+The \dom problem asks for a subset $D$ of size at most $k$ of vertices whose set of neighbors covers all the other vertices.
 In other words: every vertex $v \notin D$ needs to have at least one neighbor in $D$.
 
 \begin{prb}[\DOM~{\cite[p. 586]{Cygan2015}}]{prb:ds}
@@ -186,13 +186,12 @@ The \tdom problem adds one additional constraint: Every vertex $v \in D$ in the 
 
 Finally, \sdomin was introduced by Goddard, Henning and McPillan \cite{Goddard2014} as a relaxation of \tdomin. 
 Assume that we have an arbitrary dominating set $D$ for some (connected) graph \G that has size at most two.
-
 It is easy to observe that for each $v \in D$ there must be at least one other dominating vertex $v' \in D$ that is at most three steps away because otherwise, this would not be a dominating set. 
 By definition, there is always another neighboring dominating vertex for a total dominating set $D$.
 Therefore, it is natural to ask what happens, if we restrict the distance to at most two, which leads us straight to the idea of \sdomin.
 
-to still enforce another vertex from $D$ to be nearby, but allow to have intermediate  
 In this context, we say that $v$ witnesses $v'$ if $v,v' \in D$ and $d(v,v') \leq 2$ for a semitotal dominating set $D$.
+
 
 \begin{prb}[\SDOM~{\cite{Goddard2014}}]{prb:tds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
@@ -200,6 +199,8 @@ In this context, we say that $v$ witnesses $v'$ if $v,v' \in D$ and $d(v,v') \le
         \textbf{Question} & Is there a subset $X \subseteq V$ with $\abs{X} \leq k$ such that ${N[X] = V}$ and for all $d_1 \in X$ there exists another $d_2 \in X$ such that ${d(d_1, d_2) \leq 2}$?\\
     \end{tabularx}
 \end{prb}
+
+\Cref{fig:dsexamples} shows an examples where the on
 
 \begin{figure}
      \begin{equation*}
@@ -211,13 +212,12 @@ In this context, we say that $v$ witnesses $v'$ if $v,v' \in D$ and $d(v,v') \le
 
 
 \begin{definition}[Domination Parameters]
-   The \underline{domination number} in a graph $G$ is the minimum cardinality of a dominating set of $G$, denoted as $\gamma(G)$. 
+   The \underline{domination number} in a graph $G$ is the minimum cardinality of a dominating set (ds) of $G$, denoted as $\gamma(G)$. 
    The \underline{total domination number} is the minimum cardinality of a total dominating set (tds) of $G$, denoted by $\gamma_t(G)$.
    The \underline{semitotal domination number} is the minimum cardinality of a semitotal dominating set (sds) of $G$, denoted by $\gamma_t(G)$.
+
+   We say that a ds $D$ is \underline{minimal} if no proper subset $S' \subset S$ is a ds and that $D$ is a \underline{minimum} if it is the smallest ds.
 \end{definition}
-
-% Henning?
-
 
 Since every total dominating set is also a semitotal dominating set and every semitotal dominating set is also a dominating set , we have the following fact first observed by Goddard and Henning \cite{Goddard2014}. 
 
