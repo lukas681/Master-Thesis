@@ -129,20 +129,17 @@ Surprisingly, also the converse is true:
 \subsection{Reductions and Parameterized Intractability}
 
 It is natural to ask whether all hard problems are also fixed-parameter tractable.
-It turns out that this is not the case and parameterized complexity answers this question by providing another tool that allows showing that a problem is unlikely to be in \FPT using a notion of \textit{reductions}.
+It turns out that this is not the case and parameterized complexity answers this question by providing another tool that allows showing that a problem is unlikely to be in \FPT using a different notion of \textit{reductions}.
 
-The idea is to replace the concept of \NPh from the classical setting with the definition of  W-hardness.
-These reductions have to make sure that the equivalent instance is not only created in fpt-time, but also does not blow up the solution size of the resulting instance.
+The idea is to replace the concept of \NP-hardness from the classical setting with a definition of W-hardness for the parameterized framework.
+These reductions have to make sure that the equivalent instance is not only created in fpt-time, but must also ensure that the new parameter depends only on the value of the original parameter.
+
+Again there exists a whole hierarchy of classes $\FPT \subseteq \WONE \subseteq \WTWO \subseteq ...$ for which the question whether these inclusions are strict is open.
+qwk
 Although W[i] spans up a whole hierarchy of complexity classes, in this work we only need the classes \WONE and \WTWO.
 
 Like the class \NP gives strong evidence
 must be adjusted
-
-The class \FPT can be seen as a parameterized equivalent to the class \P in the classical setting. 
-
-The conc ept of W-hardness transfer
-
-Again 
 
 As we can see the class \FPT as some parameterized equivalent for the \P in the classical settings, we might ask wether there is also a notion of \textit{parameterized intractability}.
 Are there any problems that are not fixed-p
@@ -160,9 +157,9 @@ These reduction preserve \textit{hardness} in the parameterized setting.
 
 \subsubsection{Parameterized Reductions}
 
-\begin{definition}[Parameterized Reduction {\cite[Def 13.1]{Cygan2015}}] Let $A,B\subseteq \Sigma^*\times\mathbb{N}$ two parameterized problems. A \textit{parameter preserving reduction} from $A$ to $B$ is an algorithm that, given an instance $(x,k)$ of $A$, outputs an instance $(x', k')$ of $B$ such that:
+\begin{definition}[Parameterized Reduction] Let $A,B\subseteq \Sigma^*\times\mathbb{N}$ two parameterized problems. A \textit{parameter preserving reduction} from $A$ to $B$ is an algorithm that, given an instance $(x,k)$ of $A$, outputs an instance $(x', k')$ of $B$ such that:
     \begin{itemize}
-        \item $(x,k)$ is a \textcolor{gray}{yes instance} of A \textbf{iff} $(x',k')$ is a \textcolor{gray}{yes instance} of B,
+        \item $(x,k)$ is a \textcolor{darkgray}{\textbf{yes instance}} of A \textbf{iff} $(x',k')$ is a \textcolor{darkgray}{\textbf{yes instance}} of B,
         \item $k' \leq g(k)$ for some computable function $g$, and
         \item runs in fpt-time $f(k)\cdot |x|^{\mathcal{O}(1)}$ for some computable function f.
     \end{itemize}
@@ -178,8 +175,7 @@ The following two \cref{lem:cfptr,lem:trans} \cite{Cygan2015} are crucial for pr
     If there are parameterized reductions from $A$ to $B$ and from $B$ to $C$, then there is a parameterized reduction from $A$ to $C$.
 \end{lemma}
 
-Parameterized Complexity class? ParaNP?
-Whoe w hierarhcy.
+Parameterized Complexity class?
 
 We say a problem is \textit{hard}
 % TODO. Make better.
