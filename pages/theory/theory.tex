@@ -165,7 +165,7 @@ We are now going to define the three most important domination problems for this
 For a specific dominating set $D$, we say that a vertex $d \in D$ is a \textit{dominating vertex} or \textit{dominator}. We say that $d$ \textit{dominates} all of its neighbors.
 
 The \dom problem asks for a subset $D$ of vertices whose set of neighbors covers all the other vertices.
-In other words: every vertex $v \notin D$ has at least one neighbor in $D$.
+In other words: every vertex $v \notin D$ needs to have at least one neighbor in $D$.
 
 \begin{prb}[\DOM~{\cite[p. 586]{Cygan2015}}]{prb:ds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
@@ -174,7 +174,7 @@ In other words: every vertex $v \notin D$ has at least one neighbor in $D$.
     \end{tabularx}
 \end{prb}
 
-The \tdom problem adds one additional constraint: Every vertex $v \in D$ in the dominating set must also be dominated by some vertex $v' \in D$.
+The \tdom problem adds one additional constraint: Every vertex $v \in D$ in the dominating set must also be dominated by some vertex $v' \in D$ which we call the \textit{witness} of $v$.
 % TODO: Interesting Property?
 
 \begin{prb}[\TDOM~{\cite[p. 596]{Cygan2015}}]{prb:sds}
@@ -184,7 +184,8 @@ The \tdom problem adds one additional constraint: Every vertex $v \in D$ in the 
     \end{tabularx}
 \end{prb}
 
-Finally, \sdomin was introduced by Goddard, Henning and McPillan \cite{Goddard2014} as a relaxation of \tdomin. Here the idea 
+Finally, \sdomin was introduced by Goddard, Henning and McPillan \cite{Goddard2014} as a relaxation of \tdomin. 
+In this context, we say that $v$ witnesses $v'$ if $v,v' \in D$ and $d(v,v') \leq 2$ for a semitotal dominating set $D$.
 
 \begin{prb}[\SDOM~{\cite{Goddard2014}}]{prb:tds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}

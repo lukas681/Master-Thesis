@@ -21,7 +21,7 @@ frametitle={%
 \node[anchor=east,rectangle,fill=blue!20]
 {\strut Theorem~\thetheo:~#1};}}%
 }%
-\mdfsetup{innertopmargin=10pt,linecolor=blue!20,%
+\mdfsetup{innertopmargin=10pt,skipabove=20pt,skipbelow=20pt,linecolor=blue!20,%
 linewidth=2pt,topline=true,%
 frametitleaboveskip=\dimexpr-\ht\strutbox\relax
 }
@@ -47,14 +47,12 @@ frametitle={%
 \node[anchor=east,rectangle,fill=green!20]
 {\strut Lemma~\thelem:~#1};}}%
 }%
-\mdfsetup{innertopmargin=10pt,linecolor=green!20,%
+\mdfsetup{innertopmargin=5pt,skipabove=20pt,skipbelow=20pt,linecolor=green!20,%
 linewidth=2pt,topline=true,%
 frametitleaboveskip=\dimexpr-\ht\strutbox\relax
 }
 \begin{mdframed}[]\relax%
 \label{#2}}{\end{mdframed}}
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Proof
@@ -75,7 +73,7 @@ frametitle={%
 \node[anchor=east,rectangle,fill=red!20]
 {\strut Proof~\theprf:~#1};}}%
 }%
-\mdfsetup{innertopmargin=10pt,linecolor=red!20,%
+\mdfsetup{innertopmargin=5pt,skipabove=20pt,skipbelow=20pt,linecolor=red!20,%
 linewidth=2pt,topline=true,%
 frametitleaboveskip=\dimexpr-\ht\strutbox\relax
 }
@@ -101,7 +99,7 @@ frametitle={%
 \node[anchor=east,rectangle,fill=VeryLightBlue]
 {\strut ~#1};}}%
 }%
-\mdfsetup{innertopmargin=10pt,linecolor=TUMBlue,%
+\mdfsetup{innertopmargin=5pt,skipabove=20pt,skipbelow=20pt,linecolor=TUMBlue,%
 linewidth=2pt,topline=true,%
 frametitleaboveskip=\dimexpr-\ht\strutbox\relax
 }
@@ -127,8 +125,10 @@ frametitle={%
 \node[anchor=east,rectangle,fill=VeryLightBlue]
 {\strut ~#1};}}%
 }%
-\mdfsetup{innertopmargin=10pt,linecolor=TUMBlue,%
-linewidth=2pt,topline=true,%
+\mdfsetup{innertopmargin=5pt,
+linecolor=TUMBlue,%
+linewidth=2pt,
+topline=true,%
 frametitleaboveskip=\dimexpr-\ht\strutbox\relax
 }
 \begin{mdframed}[nobreak=true]\relax%
