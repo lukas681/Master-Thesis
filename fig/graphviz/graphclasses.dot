@@ -1,0 +1,135 @@
+digraph {
+  
+  rankdir="LR"
+  // Global Layouting
+  node [shape=record];
+
+// TODO Order
+// TODO CHeckChek implication directoin
+  Block  [label="Block"];  
+  ConvexBipartite  [label="Convex Bipartite"];
+     
+  { rank=same;
+        0 [style = invis];
+        01 [style = invis];
+        02 [style=invis];
+        0 -> 01 -> 02;
+  }
+
+  subgraph cluster_npc {
+    LOB [label="Line Graph of Bipartite"]
+    Perfect  [label="Perfect"]
+    Chordal [label="Chordal"];
+    ChordalBipartite  [label="Chordal Bipartite"];
+    Comparability  [label="Comparability"];
+    
+    Split  [label="Split"];
+    Bipartite [label="Bipartite"];
+
+    rankdir="BT"
+    label="NP-c";
+    graph[style=dotted];
+    }
+    
+  subgraph cluster_P {
+    Tree  [label="Tree"];
+    Interval  [label="Interval"];
+    CircularArc [label="Circular Arc"]; 
+    Permutation  [label="Permutation"];
+    CircularPermutation  [label="Circular Permutation"];
+    BipartitePermutation  [label="Bipartite Permutation"];
+    Convex  [label="Convex"];
+    KPolygon  [label="k-Polygon"];
+    KTreeFixed [label="k-tree, fixed $k$"];
+    Cograph  [label="Cograph"];  
+    Threshold  [label="Threshold"]; 
+    DilworthK  [label="Dilworth k"];  
+    P4tK1  [label="Free(P4, tK1), fixed t"];
+    DistanceHereditary  [label="Distance Hereditary"];
+    KPolygon  [label="k-Polygon"];
+    BoundedTolerance  [label="Bounded Tolarance"];
+    Trapezoid  [label="Trapezoid"];
+    KTrapezoid  [label="k-Trapezoid"];
+    CircularKTrapezoid  [label="Circular k-Trapezoid"];
+  
+    label="P"
+    graph[style=dotted];
+    };
+  
+  subgraph cluster_unknown {
+    Tolerance [label="Tolerance"];
+    ATFree  [label="AT-Free"];
+    CComparability  [label="Cocomparability"];
+    Tolerance  [label="Tolerance"];
+    StronglyChordal  [label="Strongly Chordal"];
+    DuallyChordal  [label="Dually Chordal"];
+    Circle  [label="Circle"];
+    Planar [label="Planar"];
+
+    rankdir="BT"
+    label="?"
+    graph[style=dotted];
+    };
+
+
+    // INSIDE NP and ?
+    Perfect -> Chordal
+    Perfect -> ATFree
+    Perfect -> Comparability
+	Perfect -> Circle
+    Perfect -> DuallyChordal
+    Perfect -> LOB
+    Perfect -> CircularArc
+    
+    Bipartite -> ChordalBipartite
+    Chordal -> Split
+
+    ATFree -> CComparability    
+
+    // INSIDE P
+    Permutation -> BipartitePermutation
+    Convex -> BipartitePermutation
+    
+    
+    CircularPermutation -> Permutation
+    BoundedTolerance -> Permutation
+    KPolygon -> Permutation
+
+    Perfect -> DistanceHereditary
+
+    ChordalBipartite -> Convex
+
+    Comparability -> CircularPermutation
+    
+    Circle -> KPolygon
+
+    Chordal -> StronglyChordal
+    DuallyChordal -> StronglyChordal
+
+    KTrapezoid -> Trapezoid
+
+    CircularKTrapezoid -> KTrapezoid
+
+    Trapezoid -> BoundedTolerance
+    Tolerance -> BoundedTolerance
+
+    CircularKTrapezoid -> CircularArc
+
+    CircularArc -> Interval
+    StronglyChordal -> Interval
+    BoundedTolerance -> Interval
+
+    DistanceHereditary -> Cograph
+    P4tK1 -> Cograph
+
+    Cograph -> Threshold
+    Split -> Threshold
+    Interval -> Threshold
+    DilworthK -> Threshold
+
+    Split -> KTreeFixed
+
+    ChordalBipartite -> Tree
+    KTreeFixed -> Tree
+    DistanceHereditary -> Tree
+}

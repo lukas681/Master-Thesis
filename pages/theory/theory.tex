@@ -144,10 +144,11 @@ An embedding in the plane, or \textit{planar embedding}, of an (abstract) graph 
 \end{figure}
 
 %\epigraph{\itshape In computer science, parameterized complexity is a framework for studying the complexity of computational problems, in which the complexity of a problem is not just a function of the size of the input, but also a function of one or more additional parameters that describe the problem instance. }{chatGPT, \textit{2022}}
-\epigraph{\itshape TODO: Find a nice quote for here!}{chatGPT, \textit{2022}}
+\epigraph{\itshape TODO: Make a nice chatGPT poem.}{chatGPT, \textit{2022}}
 
 In connection with various chessboard problems, the concept of domination can be traced back to the mid-1800s.
-For example, De Jaenosch attempted in 1862 to solve the minimum number of queens required to fully cover an $n \times n$-chessboard \cite{Jaenisch1862}. Because of the immense amount of publications related to domination, Haynes, Hedetniemi, and Slater started a comprehensive survey of the literature in 1998 \cite{Haynes1998, Haynes1998b}. 
+For example, De Jaenosch attempted in 1862 to solve the minimum number of queens required to fully cover an $n \times n$-chessboard \cite{Jaenisch1862}.
+Because of the immense amount of publications related to domination that followed, Haynes, Hedetniemi, and Slater started a comprehensive survey of the literature in 1998 \cite{Haynes1998, Haynes1998b}. 
 20 years later, by a series of three more books, Haynes, Henning and Hedetniemi complemented the survey with the latest developments \cite{Haynes2020, Haynes2021, Haynes2022}.
 
 We are now introducing the problems of \dom, \sdom and \tdom and dedicate the rest of the chapter to giving a current status about the complexity status of various graph classes. 
@@ -159,12 +160,13 @@ We are now introducing the problems of \dom, \sdom and \tdom and dedicate the re
 
 %Interestingly, most of them mimic each other for one specific class, but there are some exceptions, where this is not the case.
 
-\section{Definition of Domination Problems}
+\section{Domination Problems}
 
 We are now going to define the three most important domination problems for this work: \dom, \sdom and \tdom.
-For a specific dominating set $D$, we say that a vertex $d$ is a \textit{dominating vertex} or \textit{dominator} if $d \in D$. We say that $d$ \textit{dominates} all of its neighbors.
+Recall that a dominating set of a graph \G is a subset $D \subseteq V$, such that every vertex $V \setminus D$ is adjacent to some vertex in $D$.
+We say that a vertex $d$ is a \textit{dominating vertex} or \textit{dominator} if $d \in D$ and that $d$ \textit{dominates} all of its neighbors.
 
-The \dom problem asks for a subset $D$ of size at most $k$ of vertices whose set of neighbors covers all the other vertices.
+The \dom problem asks for a subset $D$ of size at most $k$ of vertices whose set of neighbors are adjacent o all the other vertices.
 In other words: every vertex $v \notin D$ needs to have at least one neighbor in $D$.
 
 \begin{prb}[\DOM~{\cite[p. 586]{Cygan2015}}]{prb:ds}
@@ -174,24 +176,22 @@ In other words: every vertex $v \notin D$ needs to have at least one neighbor in
     \end{tabularx}
 \end{prb}
 
+If we also demand the dominating vertices to be dominated, need the notion of \tdomin.
 The \tdom problem adds one additional constraint: Every vertex $v \in D$ in the dominating set must also be dominated by some vertex $v' \in D$ which we call the \textit{witness} of $v$.
-% TODO: Interesting Property?
 
 \begin{prb}[\TDOM~{\cite[p. 596]{Cygan2015}}]{prb:sds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
-        \textbf{Question} & Does there exists a set $X \subseteq V$ with $\abs{X}\leq k$ vertices such that for every $u \in V(G)$ there exists $v \in X$ with $\{u,v\} \in E$ \\
+        \textbf{Question} & Does there exists a set $X \subseteq V$ with $\abs{X}\leq k$ vertices such that for every $u \in V(G)$ there exists $v \in X$ with $\{u,v\} \in E$? \\
     \end{tabularx}
 \end{prb}
 
 Finally, \sdomin was introduced by Goddard, Henning and McPillan \cite{Goddard2014} as a relaxation of \tdomin. 
 Assume that we have an arbitrary dominating set $D$ for some (connected) graph \G that has size at most two.
 It is easy to observe that for each $v \in D$ there must be at least one other dominating vertex $v' \in D$ that is at most three steps away because otherwise, this would not be a dominating set. 
-By definition, there is always another neighboring dominating vertex for a total dominating set $D$.
-Therefore, it is natural to ask what happens, if we restrict the distance to at most two, which leads us straight to the idea of \sdomin.
-
-In this context, we say that $v$ witnesses $v'$ if $v,v' \in D$ and $d(v,v') \leq 2$ for a semitotal dominating set $D$.
-
+On the other side, by definition of a total dominating set $D$, every dominating vertex $d \in D$ has another vertex in $d' \in N(d) \cap D$ that is also dominating.
+It is natural to ask what happens if we restrict this distance property to be at most two, which leads us straight to the idea of \sdomin.
+For a semitotal dominating set $D$, we say that $v$ witnesses $v'$ if $v,v' \in D$ and $d(v,v') \leq 2$.
 
 \begin{prb}[\SDOM~{\cite{Goddard2014}}]{prb:tds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
@@ -200,15 +200,19 @@ In this context, we say that $v$ witnesses $v'$ if $v,v' \in D$ and $d(v,v') \le
     \end{tabularx}
 \end{prb}
 
-\Cref{fig:dsexamples} shows an examples where the on
+\Cref{fig:dsexamples} demonstrates that the minimum ds, sds and tds can strictly differ in the size on a fixed graph \G. a minimum ds (left) does not need any witnesses at all and we can choose $d_1$ and $d_2$ to dominate the graph. 
+As $d(d_1, d_2) = 3$, we have to introduce additional dominating vertices for a minimum sds (middle) and tds (right). 
+Their only purpose is, to bridge the gap between $d_1$ and $d_2$.
+% In a sds it is enough to use $d_3$, because $d(d_2,d_3) < d(d_1, d_3) \leq 2$.
 
 \begin{figure}
      \begin{equation*}
          \tikzfig{fig/tikz/ds-examples}
      \end{equation*}
-    \caption[An example for various dominating sets]{\textit{An example for a dominating set, semitotal dominating set and a total dominating set, where $\gamma(G) < \gamma_{2t}(G) < \gamma_t(G)$ are strict. In the first case, only two vertices suffice to dominate all others. In the second one, we need a witness between $d_1$ and $d_2$ that is at most distance two. In the last case, $d_1$ and $d_2$ both need a neighbor in the total dominating set.}}
-    \label{figd:dsexamples}
+    \caption[An example for various dominating sets]{\textit{An example for a minimum dominating set, semitotal dominating set and a total dominating set, where $\gamma(G) < \gamma_{2t}(G) < \gamma_t(G)$ are strict. In the first case, only two vertices suffice to dominate all others. In the second one, we need a witness between $d_1$ and $d_2$ that is at most distance two. In the last case, $d_1$ and $d_2$ both need a neighbor in the total dominating set.}}
+    \label{fig:dsexamples}
 \end{figure}
+
 
 \begin{definition}[Domination Numbers]
    The \underline{domination number} in a graph $G$ is the minimum cardinality of a dominating set (ds) of $G$, denoted as $\gamma(G)$. 
@@ -218,26 +222,61 @@ In this context, we say that $v$ witnesses $v'$ if $v,v' \in D$ and $d(v,v') \le
    We say that a ds $D$ is \underline{minimal} if no proper subset $S' \subset S$ is a ds and that $D$ is a \underline{minimum} if it is the smallest ds.
 \end{definition}
 
-Since every total dominating set is also a semitotal dominating set and every semitotal dominating set is also a dominating set, we have the following fact first observed by Goddard and Henning \cite{Goddard2014}. 
+Because any tds is also an sds and every sds is also a ds, $\gamma{t2}$ is squeezed between $\gamma$ and $\gamma_t$.
+The  following fact was first observed by Goddard and Henning \cite{Goddard2014}:
 
 \begin{fact}
 For every graph $G$ with no isolated vertex, $\gamma(G) \leq \gamma_{t2}(G) \leq \gamma_t(G)$
 \end{fact}
-
-We can see that the semitotal domination number $\gamma_{t2}$ is squeezed between the \textit{domination} number and the \textit{total domination} number. It turns out that for some graphs, all of these inequalities can be strict. See \cref{figd:dsexamples} for an example, where $\gamma(G) < \gamma_{t2} < \gamma_t(G)$.
-
-\subsection{Preliminaries}
-
-* Witness
-* u pendant ofrom a vertex c if $N(u) = \{w\}$
-* domination 
-
-Let $D$ be a dominating set of G and $w \in V(G) \setminus D$. For any neighbor $v \in D \cap N(w)$, we say that $d_1$ \textit{dominates} $w$ For two dominating vertices $d_1, d_2in D$. If 
-
-Definition, dominating number
+It turns out that for some graphs, all of these inequalities are strict. See \cref{figd:dsexamples} for an example, where $\gamma < \gamma_{t2} < \gamma_t$ and therefore.
 
 \section{Complexity Status of \sdom}\label{ch:complexity-status}
 
+We will now summarize the current result:
+
+We will complement the table given in \cite{Galby2020} with the latest results and add the parameterized complexity for those problems
+
+Results of this paper
+
+\begin{center}
+    
+\resizebox{0.95\textwidth}{!}{
+    \begin{tabularx}{1.2\textwidth}{lcccccc}
+        %TODO \arrayrulecolor{TUMAccentBlue}
+        \toprule
+        \textbf{Graph Class}    & \multicolumn{2}{c}{\textbf{\dom}} & \multicolumn{2}{c}{\textbf{\sdom}} & \multicolumn{2}{c}{\textbf{\tdom}}                               \\
+        \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+                                & Class.                            & Param.                             & Class.                             & Param.    & Class. & Param. \\
+        bipartite               & \NPcs                             & d                                  & \NPcs                              & Easdffasd & Fasdf  & Gasdf  \\
+        line graph of bipartite & \NPcs                             &                                    & \NPcs                              & Easdffasd & Fasdf  & Gasdf  \\
+        circle                  & \NPcs                             &                                    & \NPcs                              & Easdffasd & Fasdf  & Gasdf  \\
+        split                   & \NPcs                             & \WTWOhs                                    & \NPcs                              & Easdffasd & Fasdf  & Gasdf  \\
+        chordal bipartite       & \NPcs                             &                                    & \NPcs                              & Easdffasd & Fasdf  & Gasdf  \\
+        dually chordal          & \multicolumn{2}{c}{\Pt}           & Dasdf                              & Easdffasd                          & Fasdf     & Gasdf           \\
+        AT-free                 & \multicolumn{2}{c}{\Pt}                                & Casdfsd                            & Dasdf                              & Easdffasd & Fasdf\\
+        tolerance               & \multicolumn{2}{c}{\Pt}                                & Casdfsd                            & Dasdf                              & Easdffasd & Fasdf\\
+        \midrule
+        bounded clique-width    & \multicolumn{2}{c}{\Pt}                                &  \multicolumn{2}{c}{\Pt}                               &  \multicolumn{2}{c}{\Pt} \\
+        bounded mim-width       & \multicolumn{2}{c}{\Pt}                                &  \multicolumn{2}{c}{\Pt}                               &  \multicolumn{2}{c}{\Pt} \\
+        \midrule
+        TBD line graph          & TBD                               & TBD                                & TBD                                & Easdffasd & Fasdf  & Gasdf  \\
+        
+        \midrule
+        \bottomrule
+    \end{tabularx}
+}
+\end{center}
+
+        \begin{figure}
+            \centering
+        \resizebox{1.0\textwidth}{!}{
+        \input{fig/graphviz/test.tikz}
+            }
+        \caption{\textit{Currently, stilla test}}
+        \label{fig:kernelization}
+    \end{figure}
+
+% TODO Do we need this definition?
 % Surprisingly, there are cases where the complexity of \dom and \tdom differes (e)
 %If both \dom and \tdom are already hard for a class, we already have a strong assumption that this also holds for \sdom as well.
 

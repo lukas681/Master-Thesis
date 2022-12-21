@@ -31,6 +31,7 @@
 \usepackage{tabu}
 \usepackage{tablefootnote}
 \usepackage{tabularx}
+\usepackage{dcolumn}
 \usepackage{xltabular}
 \usepackage{wrapfig}
 \usepackage[framemethod=TikZ]{mdframed}
@@ -40,12 +41,12 @@
 
 \usepackage{graphics}
      \graphicspath{{fig/}}
-
 \usepackage[style=altlist,acronym]{glossaries}
+
+% Graph Drawing Libraries
 \usepackage{pgf}
 \usepackage{tikz}
 \usepackage{lib/tikzit}
-\usepackage{caption}
 \usepackage{lastpage}
 
 \usetikzlibrary{positioning,chains,fit,shapes,calc,er,automata}
@@ -89,11 +90,11 @@
 \input{pages/util/abstract}
 
 \mainmatter~
-   % \include{pages/introduction/intro}
+    \include{pages/introduction/intro}
     \include{pages/theory/theory}
     \include{pages/content/whardness} % Starting the actual content
-   % \include{pages/content/planarsds}
-    %\include{pages/content/outlook/open-q-further-research}
+    \include{pages/content/planarsds}
+    \include{pages/content/outlook/open-q-further-research}
 
 \backmatter~
   \microtypesetup{protrusion=false}
