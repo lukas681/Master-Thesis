@@ -1,83 +1,72 @@
 digraph {
   
-  rankdir="LR"
+  rankdir="TB"
+  newrank=true;
+  colorscheme="spectral11"
   // Global Layouting
-  node [shape=record];
+  node [shape=record,style="filled",fillcolor="white"];
+ 
+  "0" [style = invis]
 
-// TODO Order
-// TODO CHeckChek implication directoin
-  Block  [label="Block"];  
-  ConvexBipartite  [label="Convex Bipartite"];
-     
-  { rank=same;
-        0 [style = invis];
-        01 [style = invis];
-        02 [style=invis];
-        0 -> 01 -> 02;
-  }
-
+    "0" -> Perfect [style=invis]
+    
+// NP Complete
   subgraph cluster_npc {
-    LOB [label="Line Graph of Bipartite"]
-    Perfect  [label="Perfect"]
-    Chordal [label="Chordal"];
-    ChordalBipartite  [label="Chordal Bipartite"];
-    Comparability  [label="Comparability"];
-    
-    Split  [label="Split"];
-    Bipartite [label="Bipartite"];
-
-    rankdir="BT"
-    label="NP-c";
-    graph[style=dotted];
+    subgraph cluster_Whard {
+        Perfect  [label="Perfect",fillcolor=2];
+        Split  [label="Split",fillcolor=2];
+        Chordal [label="Chordal",fillcolor=2];
+    Bipartite [label="Bipartite",fillcolor=2];    
+        label="W[2]-hard";
+        graph[style=dotted];
     }
-    
-  subgraph cluster_P {
-    Tree  [label="Tree"];
-    Interval  [label="Interval"];
-    CircularArc [label="Circular Arc"]; 
-    Permutation  [label="Permutation"];
-    CircularPermutation  [label="Circular Permutation"];
-    BipartitePermutation  [label="Bipartite Permutation"];
-    Convex  [label="Convex"];
-    KPolygon  [label="k-Polygon"];
-    KTreeFixed [label="k-tree, fixed $k$"];
-    Cograph  [label="Cograph"];  
-    Threshold  [label="Threshold"]; 
-    DilworthK  [label="Dilworth k"];  
-    P4tK1  [label="Free(P4, tK1), fixed t"];
-    DistanceHereditary  [label="Distance Hereditary"];
-    KPolygon  [label="k-Polygon"];
-    BoundedTolerance  [label="Bounded Tolarance"];
-    Trapezoid  [label="Trapezoid"];
-    KTrapezoid  [label="k-Trapezoid"];
-    CircularKTrapezoid  [label="Circular k-Trapezoid"];
-  
-    label="P"
-    graph[style=dotted];
-    };
-  
-  subgraph cluster_unknown {
-    Tolerance [label="Tolerance"];
-    ATFree  [label="AT-Free"];
-    CComparability  [label="Cocomparability"];
-    Tolerance  [label="Tolerance"];
-    StronglyChordal  [label="Strongly Chordal"];
-    DuallyChordal  [label="Dually Chordal"];
-    Circle  [label="Circle"];
-    Planar [label="Planar"];
+    Planar [label="Planar",fillcolor=6];
+    LOB [label="Line Graph of Bipartite",fillcolor=6];
+    ChordalBipartite  [label="Chordal Bipartite",fillcolor=1];
+    Comparability  [label="Comparability",fillcolor=1]; 
 
-    rankdir="BT"
-    label="?"
     graph[style=dotted];
-    };
+  }
+  //  Block  [label="Block"];
+    ConvexBipartite  [label="Convex Bipartite"];
+  
+ // Polytime;
+    Interval  [label="Interval",fillcolor=9];
+    CircularArc [label="Circular Arc",fillcolor=9]; 
+    Permutation  [label="Permutation",fillcolor=9];
+    CircularPermutation  [label="Circular Permutation",fillcolor=9];
+    BipartitePermutation  [label="Bipartite Permutation",fillcolor=9];
+    Convex  [label="Convex",fillcolor=9];
+    KPolygon  [label="k-Polygon",fillcolor=9];
+    KTreeFixed [label="k-tree, fixed $k$",fillcolor=9];
+    Cograph  [label="Cograph",fillcolor=9];  
+    Threshold  [label=  "Threshold",fillcolor=9]; 
+    DilworthK  [label="Dilworth k",fillcolor=9];  
+    P4tK1  [label="Free(P4, tK1), fixed t",fillcolor=9];
+    DistanceHereditary  [label="Distance Hereditary",fillcolor=9];
+    KPolygon  [label="k-Polygon",fillcolor=9];
+    BoundedTolerance  [label="Bounded Tolarance",fillcolor=9];
+    Trapezoid  [label="Trapezoid",fillcolor=9];
+    KTrapezoid  [label="k-Trapezoid",fillcolor=9];
+    CircularKTrapezoid  [label="Circular k-Trapezoid",fillcolor=9];
+    Tree  [label="Tree",fillcolor=9];
+
+ // Unknown
+ 
+    Tolerance [label="Tolerance",fillcolor="gray",style="filled"];
+    ATFree  [label="AT-Free",fillcolor="gray"];
+    CComparability  [label="Cocomparability",fillcolor="gray"];
+    Tolerance  [label="Tolerance",fillcolor="gray"];
+    StronglyChordal  [label="Strongly Chordal",fillcolor="gray"];
+    DuallyChordal  [label="Dually Chordal",fillcolor="gray"];
+    Circle  [label="Circle",fillcolor="gray"];
 
 
     // INSIDE NP and ?
     Perfect -> Chordal
-    Perfect -> ATFree
     Perfect -> Comparability
+    Perfect -> Tolerance
 	Perfect -> Circle
-    Perfect -> DuallyChordal
     Perfect -> LOB
     Perfect -> CircularArc
     
@@ -100,6 +89,7 @@ digraph {
     ChordalBipartite -> Convex
 
     Comparability -> CircularPermutation
+    Comparability -> Bipartite
     
     Circle -> KPolygon
 
@@ -109,6 +99,8 @@ digraph {
     KTrapezoid -> Trapezoid
 
     CircularKTrapezoid -> KTrapezoid
+    CComparability -> KTrapezoid
+
 
     Trapezoid -> BoundedTolerance
     Tolerance -> BoundedTolerance
@@ -132,4 +124,7 @@ digraph {
     ChordalBipartite -> Tree
     KTreeFixed -> Tree
     DistanceHereditary -> Tree
+    Planar -> Tree
+    
+    ChordalBipartite -> CircularKTrapezoid  [style=invis] 
 }
