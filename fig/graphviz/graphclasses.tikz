@@ -1,0 +1,95 @@
+
+\begin{tikzpicture}[>=latex,line join=bevel,]
+%%
+\begin{scope}
+  \pgfsetstrokecolor{black}
+  \pgfsetdash{{\pgflinewidth}{2pt}}{0pt}
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw [dotted] (620.5bp,430.0bp) -- (620.5bp,733.0bp) -- (1130.5bp,733.0bp) -- (1130.5bp,430.0bp) -- cycle;
+\end{scope}
+\begin{scope}
+  \pgfsetstrokecolor{black}
+  \pgfsetdash{{\pgflinewidth}{2pt}}{0pt}
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw [dotted] (628.5bp,503.0bp) -- (628.5bp,725.0bp) -- (796.5bp,725.0bp) -- (796.5bp,503.0bp) -- cycle;
+  \draw (712.5bp,713.5bp) node {W[2]-hard};
+\end{scope}
+  \node (Perfect) at (754.5bp,675.5bp) [draw,fill=darkred,ellipse] {Perfect};
+  \node (Chordal) at (673.5bp,602.5bp) [draw,fill=darkred,ellipse] {Chordal};
+  \node (Split) at (663.5bp,529.5bp) [draw,fill=darkred,ellipse] {Split};
+  \node (Bipartite) at (748.5bp,529.5bp) [draw,fill=darkred,ellipse] {Bipartite};
+  \node (LOB) at (895.5bp,602.5bp) [draw,fill=red,ellipse] {Line Graph of Bipartite};
+  \node (Comparability) at (1063.5bp,602.5bp) [draw,fill=red,ellipse] {Comparability};
+  \node (ChordalBipartite) at (781.5bp,456.5bp) [draw,fill=red,ellipse] {Chordal Bipartite};
+  \node (Planar) at (661.5bp,456.5bp) [draw,fill=yellowgreen,ellipse] {Planar};
+  \coordinate (0) at (754.5bp,759.5bp);
+  \node (CircularArc) at (492.5bp,310.5bp) [draw,fill=darkgreen,ellipse] {Circular Arc};
+  \node (DistanceHereditary) at (265.5bp,456.5bp) [draw,fill=darkgreen,ellipse] {Distance Hereditary};
+  \node (Tolerance) at (1165.5bp,237.5bp) [draw,fill=gray,ellipse] {Tolerance};
+  \node (Circle) at (1338.5bp,602.5bp) [draw,fill=gray,ellipse] {Circle};
+  \node (KTreeFixed) at (545.5bp,456.5bp) [draw,fill=darkgreen,ellipse] {k-tree, fixed \$k\$};
+  \node (Threshold) at (375.5bp,18.5bp) [draw,fill=darkgreen,ellipse] {Threshold};
+  \node (StronglyChordal) at (363.5bp,529.5bp) [draw,fill=gray,ellipse] {Strongly Chordal};
+  \node (Tree) at (600.5bp,383.5bp) [draw,fill=darkgreen,ellipse] {Tree};
+  \node (Convex) at (906.5bp,237.5bp) [draw,fill=darkgreen,ellipse] {Convex};
+  \node (CircularKTrapezoid) at (781.5bp,383.5bp) [draw,fill=darkgreen,ellipse] {Circular k-Trapezoid};
+  \node (CircularPermutation) at (1236.5bp,164.5bp) [draw,fill=darkgreen,ellipse] {Circular Permutation};
+  \node (ConvexBipartite) at (868.5bp,759.5bp) [draw,fill=white,ellipse] {Convex Bipartite};
+  \node (Interval) at (484.5bp,91.5bp) [draw,fill=darkgreen,ellipse] {Interval};
+  \node (Permutation) at (1147.5bp,91.5bp) [draw,fill=darkgreen,ellipse] {Permutation};
+  \node (BipartitePermutation) at (1034.5bp,18.5bp) [draw,fill=darkgreen,ellipse] {Bipartite Permutation};
+  \node (KPolygon) at (1347.5bp,310.5bp) [draw,fill=darkgreen,ellipse] {k-Polygon};
+  \node (Cograph) at (264.5bp,383.5bp) [draw,fill=darkgreen,ellipse] {Cograph};
+  \node (DilworthK) at (338.5bp,91.5bp) [draw,fill=darkgreen,ellipse] {Dilworth k};
+  \node (P4tK1) at (83.5bp,456.5bp) [draw,fill=darkgreen,ellipse] {Free(P4, tK1), fixed t};
+  \node (BoundedTolerance) at (1058.5bp,164.5bp) [draw,fill=darkgreen,ellipse] {Bounded Tolarance};
+  \node (Trapezoid) at (1058.5bp,237.5bp) [draw,fill=darkgreen,ellipse] {Trapezoid};
+  \node (KTrapezoid) at (1058.5bp,310.5bp) [draw,fill=darkgreen,ellipse] {k-Trapezoid};
+  \node (ATFree) at (1174.5bp,456.5bp) [draw,fill=gray,ellipse] {AT-Free};
+  \node (CComparability) at (1101.5bp,383.5bp) [draw,fill=gray,ellipse] {Cocomparability};
+  \node (DuallyChordal) at (363.5bp,602.5bp) [draw,fill=gray,ellipse] {Dually Chordal};
+  \draw [->] (Perfect) ..controls (724.64bp,648.33bp) and (711.94bp,637.19bp)  .. (Chordal);
+  \draw [->] (Chordal) ..controls (669.95bp,576.29bp) and (668.58bp,566.55bp)  .. (Split);
+  \draw [->] (Perfect) ..controls (807.49bp,647.82bp) and (831.76bp,635.6bp)  .. (LOB);
+  \draw [->] (Perfect) ..controls (833.33bp,657.79bp) and (914.89bp,640.15bp)  .. (Comparability);
+  \draw [->] (Bipartite) ..controls (760.34bp,503.03bp) and (765.04bp,492.91bp)  .. (ChordalBipartite);
+  \draw [->] (Comparability) ..controls (1001.3bp,585.38bp) and (998.35bp,584.67bp)  .. (995.5bp,584.0bp) .. controls (927.6bp,567.91bp) and (848.73bp,551.17bp)  .. (Bipartite);
+  \draw [->] (Perfect) ..controls (655.64bp,641.38bp) and (516.57bp,582.13bp)  .. (469.5bp,475.0bp) .. controls (449.64bp,429.81bp) and (466.9bp,371.44bp)  .. (CircularArc);
+  \draw [->] (Perfect) ..controls (618.59bp,667.76bp) and (323.41bp,650.45bp)  .. (292.5bp,621.0bp) .. controls (255.63bp,585.87bp) and (256.84bp,521.14bp)  .. (DistanceHereditary);
+  \draw [->] (Perfect) ..controls (904.88bp,664.74bp) and (1276.5bp,632.03bp)  .. (1276.5bp,530.5bp) .. controls (1276.5bp,530.5bp) and (1276.5bp,530.5bp)  .. (1276.5bp,382.5bp) .. controls (1276.5bp,331.29bp) and (1231.9bp,287.15bp)  .. (Tolerance);
+  \draw [->] (Perfect) ..controls (874.01bp,672.25bp) and (1104.3bp,663.53bp)  .. (1290.5bp,621.0bp) .. controls (1293.3bp,620.35bp) and (1296.2bp,619.58bp)  .. (Circle);
+  \draw [->] (Split) ..controls (620.55bp,502.66bp) and (600.26bp,490.45bp)  .. (KTreeFixed);
+  \draw [->] (Split) ..controls (594.83bp,527.21bp) and (516.06bp,518.57bp)  .. (469.5bp,475.0bp) .. controls (413.31bp,422.42bp) and (412.5bp,388.46bp)  .. (412.5bp,311.5bp) .. controls (412.5bp,311.5bp) and (412.5bp,311.5bp)  .. (412.5bp,163.5bp) .. controls (412.5bp,121.66bp) and (397.67bp,75.073bp)  .. (Threshold);
+  \draw [->] (Chordal) ..controls (589.22bp,582.2bp) and (505.26bp,562.97bp)  .. (StronglyChordal);
+  \draw [->] (Planar) ..controls (639.24bp,429.59bp) and (630.0bp,418.84bp)  .. (Tree);
+  \draw [->] (ChordalBipartite) ..controls (842.57bp,429.74bp) and (860.16bp,417.8bp)  .. (871.5bp,402.0bp) .. controls (900.83bp,361.15bp) and (906.49bp,300.71bp)  .. (Convex);
+  \draw [->] (ChordalBipartite) ..controls (707.33bp,426.4bp) and (666.39bp,410.34bp)  .. (Tree);
+  \draw [->] (Comparability) ..controls (1165.8bp,563.47bp) and (1238.5bp,522.42bp)  .. (1238.5bp,457.5bp) .. controls (1238.5bp,457.5bp) and (1238.5bp,457.5bp)  .. (1238.5bp,309.5bp) .. controls (1238.5bp,268.93bp) and (1237.7bp,221.93bp)  .. (CircularPermutation);
+  \draw [->] (Interval) ..controls (443.94bp,64.079bp) and (425.79bp,52.255bp)  .. (Threshold);
+  \draw [->] (CircularArc) ..controls (490.49bp,255.01bp) and (487.18bp,165.18bp)  .. (Interval);
+  \draw [->] (Permutation) ..controls (1105.4bp,64.079bp) and (1086.6bp,52.255bp)  .. (BipartitePermutation);
+  \draw [->] (CircularPermutation) ..controls (1203.5bp,137.16bp) and (1189.2bp,125.76bp)  .. (Permutation);
+  \draw [->] (Convex) ..controls (938.83bp,181.69bp) and (992.53bp,90.656bp)  .. (BipartitePermutation);
+  \draw [->] (KPolygon) ..controls (1357.1bp,259.72bp) and (1364.9bp,188.25bp)  .. (1329.5bp,146.0bp) .. controls (1300.5bp,111.44bp) and (1250.5bp,98.541bp)  .. (Permutation);
+  \draw [->] (KTreeFixed) ..controls (565.5bp,429.68bp) and (573.73bp,419.06bp)  .. (Tree);
+  \draw [->] (Cograph) ..controls (264.5bp,338.18bp) and (264.5bp,284.25bp)  .. (264.5bp,238.5bp) .. controls (264.5bp,238.5bp) and (264.5bp,238.5bp)  .. (264.5bp,163.5bp) .. controls (264.5bp,122.4bp) and (259.44bp,106.32bp)  .. (283.5bp,73.0bp) .. controls (293.35bp,59.356bp) and (307.84bp,48.648bp)  .. (Threshold);
+  \draw [->] (DilworthK) ..controls (351.82bp,64.941bp) and (357.16bp,54.697bp)  .. (Threshold);
+  \draw [->] (P4tK1) ..controls (153.8bp,427.92bp) and (188.48bp,414.32bp)  .. (Cograph);
+  \draw [->] (DistanceHereditary) ..controls (265.14bp,430.29bp) and (265.01bp,420.55bp)  .. (Cograph);
+  \draw [->] (DistanceHereditary) ..controls (414.88bp,423.84bp) and (511.54bp,403.35bp)  .. (Tree);
+  \draw [->] (BoundedTolerance) ..controls (861.26bp,139.1bp) and (630.2bp,110.52bp)  .. (Interval);
+  \draw [->] (BoundedTolerance) ..controls (1091.5bp,137.16bp) and (1105.8bp,125.76bp)  .. (Permutation);
+  \draw [->] (Trapezoid) ..controls (1058.5bp,211.29bp) and (1058.5bp,201.55bp)  .. (BoundedTolerance);
+  \draw [->] (KTrapezoid) ..controls (1058.5bp,284.29bp) and (1058.5bp,274.55bp)  .. (Trapezoid);
+  \draw [->] (CircularKTrapezoid) ..controls (664.21bp,353.68bp) and (600.71bp,338.08bp)  .. (CircularArc);
+  \draw [->] (CircularKTrapezoid) ..controls (893.68bp,353.75bp) and (954.13bp,338.25bp)  .. (KTrapezoid);
+  \draw [->] (Tolerance) ..controls (1125.8bp,210.17bp) and (1108.2bp,198.47bp)  .. (BoundedTolerance);
+  \draw [->] (ATFree) ..controls (1147.7bp,429.42bp) and (1136.4bp,418.41bp)  .. (CComparability);
+  \draw [->] (CComparability) ..controls (1086.0bp,356.85bp) and (1079.7bp,346.48bp)  .. (KTrapezoid);
+  \draw [->] (StronglyChordal) ..controls (368.88bp,484.25bp) and (374.5bp,430.38bp)  .. (374.5bp,384.5bp) .. controls (374.5bp,384.5bp) and (374.5bp,384.5bp)  .. (374.5bp,309.5bp) .. controls (374.5bp,232.93bp) and (429.66bp,155.98bp)  .. (Interval);
+  \draw [->] (DuallyChordal) ..controls (363.5bp,576.29bp) and (363.5bp,566.55bp)  .. (StronglyChordal);
+  \draw [->] (Circle) ..controls (1340.5bp,535.67bp) and (1344.8bp,397.67bp)  .. (KPolygon);
+%
+\end{tikzpicture}

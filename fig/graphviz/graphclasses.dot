@@ -13,17 +13,17 @@ digraph {
 // NP Complete
   subgraph cluster_npc {
     subgraph cluster_Whard {
-        Perfect  [label="Perfect",fillcolor=2];
-        Split  [label="Split",fillcolor=2];
-        Chordal [label="Chordal",fillcolor=2];
-    Bipartite [label="Bipartite",fillcolor=2];    
+        Perfect  [label="Perfect",fillcolor=darkred];
+        Split  [label="Split",fillcolor=darkred];
+        Chordal [label="Chordal",fillcolor=darkred];
+    Bipartite [label="Bipartite",fillcolor=darkred];    
         label="W[2]-hard";
         graph[style=dotted];
     }
-    Planar [label="Planar",fillcolor=6];
-    LOB [label="Line Graph of Bipartite",fillcolor=6];
-    ChordalBipartite  [label="Chordal Bipartite",fillcolor=1];
-    Comparability  [label="Comparability",fillcolor=1]; 
+    Planar [label="Planar",fillcolor=yellowgreen];
+    LOB [label="Line Graph of Bipartite",fillcolor=red];
+    ChordalBipartite  [label="Chordal Bipartite",fillcolor=red];
+    Comparability  [label="Comparability",fillcolor=red]; 
 
     graph[style=dotted];
   }
@@ -31,28 +31,27 @@ digraph {
     ConvexBipartite  [label="Convex Bipartite"];
   
  // Polytime;
-    Interval  [label="Interval",fillcolor=9];
-    CircularArc [label="Circular Arc",fillcolor=9]; 
-    Permutation  [label="Permutation",fillcolor=9];
-    CircularPermutation  [label="Circular Permutation",fillcolor=9];
-    BipartitePermutation  [label="Bipartite Permutation",fillcolor=9];
-    Convex  [label="Convex",fillcolor=9];
-    KPolygon  [label="k-Polygon",fillcolor=9];
-    KTreeFixed [label="k-tree, fixed $k$",fillcolor=9];
-    Cograph  [label="Cograph",fillcolor=9];  
-    Threshold  [label=  "Threshold",fillcolor=9]; 
-    DilworthK  [label="Dilworth k",fillcolor=9];  
-    P4tK1  [label="Free(P4, tK1), fixed t",fillcolor=9];
-    DistanceHereditary  [label="Distance Hereditary",fillcolor=9];
-    KPolygon  [label="k-Polygon",fillcolor=9];
-    BoundedTolerance  [label="Bounded Tolarance",fillcolor=9];
-    Trapezoid  [label="Trapezoid",fillcolor=9];
-    KTrapezoid  [label="k-Trapezoid",fillcolor=9];
-    CircularKTrapezoid  [label="Circular k-Trapezoid",fillcolor=9];
-    Tree  [label="Tree",fillcolor=9];
+    Interval  [label="Interval",fillcolor=darkgreen];
+    CircularArc [label="Circular Arc",fillcolor=darkgreen]; 
+    Permutation  [label="Permutation",fillcolor=darkgreen];
+    CircularPermutation  [label="Circular Permutation",fillcolor=darkgreen];
+    BipartitePermutation  [label="Bipartite Permutation",fillcolor=darkgreen];
+    Convex  [label="Convex",fillcolor=darkgreen];
+    KPolygon  [label="k-Polygon",fillcolor=darkgreen];
+    KTreeFixed [label="k-tree, fixed $k$",fillcolor=darkgreen];
+    Cograph  [label="Cograph",fillcolor=darkgreen];  
+    Threshold  [label=  "Threshold",fillcolor=darkgreen]; 
+    DilworthK  [label="Dilworth k",fillcolor=darkgreen];  
+    P4tK1  [label="Free(P4, tK1), fixed t",fillcolor=darkgreen];
+    DistanceHereditary  [label="Distance Hereditary",fillcolor=darkgreen];
+    KPolygon  [label="k-Polygon",fillcolor=darkgreen];
+    BoundedTolerance  [label="Bounded Tolarance",fillcolor=darkgreen];
+    Trapezoid  [label="Trapezoid",fillcolor=darkgreen];
+    KTrapezoid  [label="k-Trapezoid",fillcolor=darkgreen];
+    CircularKTrapezoid  [label="Circular k-Trapezoid",fillcolor=darkgreen];
+    Tree  [label="Tree",fillcolor=darkgreen];
 
  // Unknown
- 
     Tolerance [label="Tolerance",fillcolor="gray",style="filled"];
     ATFree  [label="AT-Free",fillcolor="gray"];
     CComparability  [label="Cocomparability",fillcolor="gray"];
