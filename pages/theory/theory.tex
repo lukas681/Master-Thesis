@@ -234,38 +234,62 @@ It turns out that for some graphs, all of these inequalities are strict. See \cr
 
 We will now summarize the current result:
 
+General case NP complete, Goddard et al.
+A first summerized overview was provided in \cite{Galby2020}, but recent advances demand an updated list which we provide in this section. 
+Some already then open problems resolved like: (? marks)
+
+Some other advances have been found: (Block graph?)
+
+Systematic study initiated by Henning and Pandey (List their papers on the topic) + Results
+
+Polynomial time algorithms exist for the following graph classe.
+
+Figure x depcits the current state
+
 We will complement the table given in \cite{Galby2020} with the latest results and add the parameterized complexity for those problems
+
 
 Results of this paper
 
 \begin{center}
     
 \resizebox{0.95\textwidth}{!}{
-    \begin{tabularx}{1.2\textwidth}{lcccccc}
+    \begin{tabularx}{1.4\textwidth}{lcccccc}
         %TODO \arrayrulecolor{TUMAccentBlue}
         \toprule
         \textbf{Graph Class}    & \multicolumn{2}{c}{\textbf{\dom}} & \multicolumn{2}{c}{\textbf{\sdom}} & \multicolumn{2}{c}{\textbf{\tdom}}                               \\
         \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
                                 & Class.                            & Param.                             & Class.                             & Param.    & Class. & Param. \\
-        bipartite               & \NPcs                             & d                                  & \NPcs                              & Easdffasd & Fasdf  & Gasdf  \\
-        line graph of bipartite & \NPcs                             &                                    & \NPcs                              & Easdffasd & Fasdf  & Gasdf  \\
-        circle                  & \NPcs                             &                                    & \NPcs                              & Easdffasd & Fasdf  & Gasdf  \\
-        split                   & \NPcs                             & \WTWOhs                                    & \NPcs                              & Easdffasd & Fasdf  & Gasdf  \\
-        chordal bipartite       & \NPcs                             &                                    & \NPcs                              & Easdffasd & Fasdf  & Gasdf  \\
-        dually chordal          & \multicolumn{2}{c}{\Pt}           & Dasdf                              & Easdffasd                          & Fasdf     & Gasdf           \\
-        AT-free                 & \multicolumn{2}{c}{\Pt}                                & Casdfsd                            & Dasdf                              & Easdffasd & Fasdf\\
-        tolerance               & \multicolumn{2}{c}{\Pt}                                & Casdfsd                            & Dasdf                              & Easdffasd & Fasdf\\
+        bipartite               & \NPcs \cite{Bertossi1984}                             &  \WTWOhs                                 & \NPcs \cite{Henning2019}                              & & \NPcs \cite{Pfaff1983} &   \\
+        line graph of bipartite & \NPcs \cite{Korobitsin1992}                             &                                    & \NPcs \cite{Galby2020}                              &  & \NPcs \cite{McRae1995}  &   \\
+        circle                  & \NPcs \cite{Keil1993}                             & ?                                    & \NPcs                              &  &  \NPcs \cite{McRae1995} &   \\
+        split                   & \NPcs \cite{Bertossi1984}                             & \WTWOhs                                    & \NPcs \cite{Henning2019}                              &  & \NPcs \cite{}  &   \\
+        chordal bipartite       & \NPcs                             &                                    & \NPcs \cite{Henning2019}                             &  & \Pt  &   \\
+        dually chordal          & \multicolumn{2}{c}{\Pt \cite{Brandstaedt1998} }           &     ?                          &                           &   ?   &            \\
+        strongly chordal        & \multicolumn{2}{c}{\Pt \cite{} }           &     \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}                            &   XXX   &            \\
+        AT-free                 & \multicolumn{2}{c}{\Pt \cite{Kratsch2000}}                                & ?                            &                               & \multicolumn{2}{c}{\Pt \cite{Kratsch2000}} \\
+        tolerance               & \multicolumn{2}{c}{\Pt}                                &                TODO             & TODo                               & TODO   & TODO \\
+        cocopmarability         & \multicolumn{2}{c}{TODO}                                &                TODO             & TODo                               & TODO  & TODO \\
+        planar & \NPcs (Sources!) & \FPT                               & \NPcs                             & \FPT                               &  \NPcs & \FPT \\
         \midrule
         bounded clique-width    & \multicolumn{2}{c}{\Pt}                                &  \multicolumn{2}{c}{\Pt}                               &  \multicolumn{2}{c}{\Pt} \\
-        bounded mim-width       & \multicolumn{2}{c}{\Pt}                                &  \multicolumn{2}{c}{\Pt}                               &  \multicolumn{2}{c}{\Pt} \\
+        bounded mim-width       & \multicolumn{2}{c}{\Pt \cite{Belmonte2011,BuiXuan2013}}                                &  \multicolumn{2}{c}{\Pt \cite{Galby2020}}                               &  \multicolumn{2}{c}{\Pt \cite{Belmonte2011,BuiXuan2013}} \\
         \midrule
+
         TBD line graph          & TBD                               & TBD                                & TBD                                & Easdffasd & Fasdf  & Gasdf  \\
         
+        TBD block graph (contained s.ch)          & TBD                               & TBD                               & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}  & Gasdf  \\
+        TBD directed path graph (contained s.ch)          & TBD                               & TBD                               & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}  & Gasdf  \\
         \midrule
         \bottomrule
     \end{tabularx}
 }
 \end{center}
+
+% TODO use this sentence: Further, as the problem is NP-complete
+%in planar graphs, designing approximation algorithms for the problem in planar graphs is a good research
+%direction.
+% https://arxiv.org/pdf/2109.02142.pdf
 
 % @DEPRACTED. Does not scale well.
 \begin{figure}
@@ -275,7 +299,7 @@ Results of this paper
          }
         \caption{\textit{Computational Complexity of \sdom.}}
         \label{fig:kernelization}
-    \end{figure}
+\end{figure}
 
 % TODO Do we need this definition?
 % Surprisingly, there are cases where the complexity of \dom and \tdom differes (e)
