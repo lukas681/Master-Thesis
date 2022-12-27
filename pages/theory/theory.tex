@@ -254,24 +254,36 @@ Results of this paper
 \begin{center}
     
 \resizebox{1.0\textwidth}{!}{
-    \begin{tabularx}{1.5\textwidth}{lllllll}
+    \begin{tabularx}{1.6\textwidth}{lllllll}
         \arrayrulecolor{TUMBlue}\toprule
         \textbf{Graph Class}    & \multicolumn{2}{c}{\textbf{\dom}} & \multicolumn{2}{c}{\textbf{\sdom}} & \multicolumn{2}{c}{\textbf{\tdom}}                               \\
         \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
-                                & Class.                            & Param.                             & Class.                             & Param.    & Class. & Param. \\
-        bipartite               & \NPcs \cite{Bertossi1984}                             &  \WTWOhs                                 & \NPcs \cite{Henning2019}                              & & \NPcs \cite{Pfaff1983} &   \\
+                                & classical                            & Parameterized                             & classical                              & Parameterized    & classical & Paraeterized. \\
+        bipartite               & \NPcs \cite{Bertossi1984}                             &  \WTWOhs                                 & \NPcs \cite{Henning2019}                              & \WTWOhs (this) & \NPcs \cite{Pfaff1983} &   \\
+
         line graph of bipartite & \NPcs \cite{Korobitsin1992}                             &                                    & \NPcs \cite{Galby2020}                              &  & \NPcs \cite{McRae1995}  &   \\
-        circle                  & \NPcs \cite{Keil1993}                             & ?                                    & \NPcs                              &  &  \NPcs \cite{McRae1995} &   \\
-        split                   & \NPcs \cite{Bertossi1984}                             & \WTWOhs                                    & \NPcs \cite{Henning2019}                              &  & \NPcs \cite{}  &   \\
-        chordal bipartite       & \NPcs                             &                                    & \NPcs \cite{Henning2019}                             &  & \Pt  &   \\
+
+        circle                  & \NPcs \cite{Keil1993}                             & \WONEhs \cite{Bousquet2012}                                     & \NPcs \cite{Kloks2021}                              &  &  \NPcs \cite{McRae1995} &   \\
+
+        split                   & \NPcs \cite{Bertossi1984}                             & \WTWOhs                                    & \NPcs \cite{Henning2019}                              &  \WTWO (this) & \NPcs \cite{Laskar1983}  &   \\
+
+        chordal bipartite       & \NPcs \cite{Mueller1987}                             &                                    & \NPcs \cite{Henning2019}                             &  & \multicolumn{2}{c}{\Pt \cite{Damaschke1990}}   \\
+
         dually chordal          & \multicolumn{2}{c}{\Pt \cite{Brandstaedt1998} }           &     ?                          &                           &   ?   &            \\
-        strongly chordal        & \multicolumn{2}{c}{\Pt \cite{} }           &     \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}                            &   XXX   &            \\
-        AT-free                 & \multicolumn{2}{c}{\Pt \cite{Kratsch2000}}                                & ?                            &                               & \multicolumn{2}{c}{\Pt \cite{Kratsch2000}} \\
+
+        strongly chordal        & \multicolumn{2}{c}{\Pt \cite{} }           &     \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}                            &   \NPcs \cite{Farber194}   &            \\
+
+        AT-free                 & \multicolumn{2}{c}{\Pt \cite{Kratsch2000}}                                & \multicolumn{2}{c}{\Pt \cite{Kloks2021} }                               & \multicolumn{2}{c}{\Pt \cite{Kratsch2000}} \\
+
         tolerance               & \multicolumn{2}{c}{\Pt}                                &                TODO             & TODo                               & TODO   & TODO \\
-        cocopmarability         & \multicolumn{2}{c}{TODO}                                &                TODO             & TODo                               & TODO  & TODO \\
+
+        cocomperability         & \multicolumn{2}{c}{TODO}                                &                TODO             & TODo                               & TODO  & TODO \\
+        
         planar & \NPcs (Sources!) & \FPT                               & \NPcs                             & \FPT                               &  \NPcs & \FPT \\
+
         \midrule
         bounded clique-width    & \multicolumn{2}{c}{\Pt \cite{Courcelle1990}}                                &  \multicolumn{2}{c}{\Pt \cite{Courcelle1990}}                               &  \multicolumn{2}{c}{\Pt \cite{Courcelle1990}} \\
+
         bounded mim-width       & \multicolumn{2}{c}{\Pt \cite{Belmonte2011,BuiXuan2013}}                                &  \multicolumn{2}{c}{\Pt \cite{Galby2020}}                               &  \multicolumn{2}{c}{\Pt \cite{Belmonte2011,BuiXuan2013}} \\
         \midrule
 
@@ -297,7 +309,7 @@ Results of this paper
         \resizebox{1.0\textwidth}{!}{
          \input{fig/mathcha/classes.tikz}
          }
-        \caption{\textit{Computational Complexity of \sdom.}}
+        \caption{\textit{Computational Complexity of \sdom. TODO: Block Graph, Directed Path Graph, line Graph, Chordal Perfect graph (??), AT-free Polytime sovable}}
         \label{fig:kernelization}
 \end{figure}
 
