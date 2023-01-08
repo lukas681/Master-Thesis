@@ -1,0 +1,17 @@
+TY  - JOUR
+AU  - Liu, Chunmei
+AU  - Song, Yinglei
+PY  - 2009
+DA  - 2009/07/01
+TI  - Parameterized dominating set problem in chordal graphs: complexity and lower bound
+JO  - Journal of Combinatorial Optimization
+SP  - 87
+EP  - 97
+VL  - 18
+IS  - 1
+AB  - In this paper, we study the parameterized dominating set problem in chordal graphs. The goal of the problem is to determine whether a given chordal graph G=(V,E) contains a dominating set of size k or not, where k is an integer parameter. We show that the problem is W[1]-hard and it cannot be solved in time $|V|^{o({\sqrt{k}})}$unless 3SAT can be solved in subexponential time. In addition, we show that the upper bound of this problem can be improved to $O(2^{\sqrt{k}}|V|^{2\sqrt{k}})$when the underlying graph G is an interval graph.
+SN  - 1573-2886
+UR  - https://doi.org/10.1007/s10878-008-9141-5
+DO  - 10.1007/s10878-008-9141-5
+ID  - Liu2009
+ER  - 

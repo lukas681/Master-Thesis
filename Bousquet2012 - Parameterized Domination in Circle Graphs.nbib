@@ -1,0 +1,56 @@
+PMID- 23874144
+OWN - NLM
+STAT- PubMed-not-MEDLINE
+LR  - 20211021
+IS  - 1382-6905 (Print)
+IS  - 1382-6905 (Linking)
+VI  - 20
+IP  - 2
+DP  - 2010 Apr 15
+TI  - Parameterized Complexity and Inapproximability of Dominating Set Problem in 
+      Chordal and Near Chordal Graphs.
+PG  - 1-15
+AB  - In this paper, we study the parameterized complexity of Dominating Set problem in 
+      chordal graphs and near chordal graphs. We show the problem is W[2]-hard and 
+      cannot be solved in time n(o(k)) in chordal and s-chordal (s > 3) graphs unless 
+      W[1]=FPT. In addition, we obtain inapproximability results for computing a 
+      minimum dominating set in chordal and near chordal graphs. Our results prove that 
+      unless NP=P, the minimum dominating set in a chordal or s-chordal (s > 3) graph 
+      cannot be approximated within a ratio of [Formula: see text] ln n in polynomial 
+      time, where n is the number of vertices in the graph and 0 < c < 1 is the 
+      constant from the inapproximability of the minimum dominating set in general 
+      graphs. In other words, our results suggest that restricting to chordal or 
+      s-chordal graphs can improve the approximation ratio by no more than a factor of 
+      3. We then extend our techniques to find similar results for the Independent 
+      Dominating Set problem and the Connected Dominating Set problem in chordal or 
+      near chordal graphs.
+FAU - Liu, Chunmei
+AU  - Liu C
+AD  - Dept. of Systems and Computer Science, Howard University, Washington, DC 20059, 
+      USA chunmei@scs.howard.edu.
+FAU - Song, Yinglei
+AU  - Song Y
+LA  - eng
+GR  - G12 RR003048/RR/NCRR NIH HHS/United States
+GR  - G12 RR003048-21A1/RR/NCRR NIH HHS/United States
+PT  - Journal Article
+PL  - United States
+TA  - J Comb Optim
+JT  - Journal of combinatorial optimization
+JID - 101270744
+PMC - PMC3713774
+MID - NIHMS277197
+OTO - NOTNLM
+OT  - Chordal graphs
+OT  - Dominating set
+OT  - Independent dominating set
+OT  - Parameterized complexity
+EDAT- 2010/04/15 00:00
+MHDA- 2010/04/15 00:01
+CRDT- 2013/07/23 06:00
+PHST- 2013/07/23 06:00 [entrez]
+PHST- 2010/04/15 00:00 [pubmed]
+PHST- 2010/04/15 00:01 [medline]
+AID - 10.1007/s10878-010-9317-7 [doi]
+PST - ppublish
+SO  - J Comb Optim. 2010 Apr 15;20(2):1-15. doi: 10.1007/s10878-010-9317-7.
