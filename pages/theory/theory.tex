@@ -227,7 +227,7 @@ Because any tds is also an sds and every sds is also a ds, $\gamma{t2}$ is squee
 The  following fact was first observed by Goddard and Henning \cite{Goddard2014}:
 
 \begin{fact}
-For every graph $G$ with no isolated vertex, $\gamma(G) \leq \gamma_{t2}(G) \leq \gamma_t(G)$
+For every graph $G$ with no isolated vertex, $\gamma(G) \leq \gamma_{t2}(G) \leq \gamma_t(G)$.
 \end{fact}
 It turns out that for some graphs, all of these inequalities are strict. See \cref{figd:dsexamples} for an example, where $\gamma < \gamma_{t2} < \gamma_t$ and therefore.
 
@@ -241,6 +241,7 @@ In the meanwhile, new polynomial time algorithms have been shown for \textit{dua
 Furthermore, a linear time algorithm has been found for interval graphs \cite{Pradhan2021} beating the previous $\mathcal{O}(n^2)$ algorithm given by Henning and Pandey \cite{Henning2019}.
 
 On the negative side, \sdom on \textit{circle graphs} graphs and \textit{undirected path graphs} is \NPc. 
+
 Our results are highlighted. All complexity results are shown in the table \cref{tab:complexities}.
 
 
@@ -249,6 +250,7 @@ Our results are highlighted. All complexity results are shown in the table \cref
 % TODO Mark those results that only rely on the mim-width
     \begin{table}[ht]
     \caption{\textit{Comparison between the complexities of \dom, \sdom and \tdom in the classical and parameterized setting. Open problems are marked with an ``?''.}}
+    \label{tab:complexities}
 \resizebox{1.0\textwidth}{!}{
     \begin{tabularx}{1.5\textwidth}{lllllll}
 
@@ -263,7 +265,7 @@ Our results are highlighted. All complexity results are shown in the table \cref
         
         circle                                & \NPcs \cite{Keil1993}                                   & \WONEhs \cite{Bousquet2012}                  & \NPcs \cite{Kloks2021}                                  & ? (?)  & \NPcs \cite{McRae1995}                       & \WONEhs \cite{Bousquet2012} \\
         
-        chordal                               & \NPcs \cite{Booth1982}                                  & \WTWOhs \cite{Raman2008}                     & \NPcs \cite{Henning2019}                                & \WTWOhs (this)               & \NPcs \cite{Laskar1983}                      & \WTWOhs \cite{Chang1998} by \textit{split}                            \\
+        chordal                               & \NPcs \cite{Booth1982}                                  & \WTWOhs \cite{Raman2008}                     & \NPcs \cite{Henning2019}                                & \WTWOhs (this)               & \NPcs \cite{Laskar1983}                      & \WONEhs \cite{Chang1998} by \textit{split}                            \\
         
         $s$-chordal                           & \NPcs \cite{Liu2011}                                    & \WTWOhs \cite{Liu2011}                       & XXX                                                     & XX                         & \NPcs \cite{Liu2011}                         & \WONEhs \cite{Liu2011}      \\
         
