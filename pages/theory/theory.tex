@@ -233,49 +233,26 @@ It turns out that for some graphs, all of these inequalities are strict. See \cr
 
 \section{Complexity Status of \sdom}\label{ch:complexity-status}
 
-Complexity states mirror with each other 
+This chapter complements the complexity status of \sdom surveyed by Galby et. al \cite{Galby2020} with the latest developments and adds the corresponding parameterized complexities. 
+If not mentioned otherwise, our problem is always parameterized by solution size.
 
-This section tries to capture what is currently known about the relation between \dom, \sdom and \tdom respectively to their complexities in the classical or the parameterized settings. 
+In the meanwhile, new polynomial time algorithms have been shown for \textit{dually chordal}, \textit{strongly chordal} \cite{Tripathi2021}, \textit{AT-free} \cite{Kloks2021} and \textit{block} \cite{Henning2022} graphs.
+Furthermore, a linear time algorithm has been found for interval graphs \cite{Pradhan2021} beating the previous $\mathcal{O}(n^2)$ algorithm given by Henning and Pandey \cite{Henning2019}.
 
-If not menioned otherwise, parameterizedation by solution size.
+On the negative side, \sdom on \textit{circle graphs} graphs and \textit{undirected path graphs} is \NPc. 
 
+% TODO: Make table out of that
+All complexigty results are shown in \cref{tab:complexities}.
 
-We will now summarize the current result:
-
-General case NP complete, Goddard et al.
-A first summerized overview was provided in \cite{Galby2020}, but recent advances demand an updated list which we provide in this section. 
-Some already then open problems resolved like: (? marks)
-
-Some other advances have been found: (Block graph?)
-
-Systematic study initiated by Henning and Pandey (List their papers on the topic) + Results
-
-Polynomial time algorithms exist for the following graph classe.
-
-Figure x depcits the current state
-
-We will complement the table given in \cite{Galby2020} with the latest results and add the parameterized complexity for those problems
-Resolved complexities: "Strongly CHordal" (P), Tolerance 
-Partially: Circle: W-hardness unproven, but NP-c.
-
-Further new results, or not mentioned in the paperL planar graphs
-
-
-
-Results of this paper
+% Some words to parameterized complexity
 
 \begin{center}
 
-    % Interesting Survey about all graph classes
-    % Probably missing according to Henning: https://core.ac.uk/download/pdf/82724702.pdf LINE GRAPH, INTERVAL GRAPH, PERMUTATION GRAPHm. Distance Heriditary Graph?, k-polygon graph, partial k tree<
+    % Probably missing according to Henning: https://core.ac.uk/download/pdf/82724702.pdf LINE GRAPH Distance Heriditary Graph?, 
 
     % Add girth results: https://link.springer.com/content/pdf/10.1007/978-1-4614-6525-6.pdf?pdf=button
 
-    % TODO: Line Graph of Bipartite unkniwn
-    % Proof not available for split graph. Nothing found for split graphs
-
 % Reduction from \cite{Change1998} to show NP hardness works preserves solution size and hence is also a FPT reduction!
-% TODO search for a better source for NP completeness total domination 
 
 \resizebox{1.0\textwidth}{!}{
     \begin{tabularx}{1.8\textwidth}{lllllll}
@@ -287,7 +264,7 @@ Results of this paper
         
         line graph of bipartite               & \NPcs \cite{Korobitsin1992}                             & TODO                                         & \NPcs \cite{Galby2020}                                  &                            & \NPcs \cite{McRae1995}                       &                             \\
         
-        circle                                & \NPcs \cite{Keil1993}                                   & \WONEhs \cite{Bousquet2012}                  & \NPcs \cite{Kloks2021}                                  & \textbf{Open} w[1] whp [6] & \NPcs \cite{McRae1995}                       & \WONEhs \cite{Bousquet2012} \\
+        circle                                & \NPcs \cite{Keil1993}                                   & \WONEhs \cite{Bousquet2012}                  & \NPcs \cite{Kloks2021}                                  & \textbf{Open} & \NPcs \cite{McRae1995}                       & \WONEhs \cite{Bousquet2012} \\
         
         chordal                               & \NPcs \cite{Booth1982}                                  & \WTWOhs \cite{Raman2008}                     & \NPcs \cite{Henning2019}                                & \WTWO (this)               & \NPcs \cite{Laskar1983}                      &                             \\
         
@@ -299,11 +276,9 @@ Results of this paper
         
         $t$-claw-free, $t>3$                  & \NPcs \cite{Cygan2011}                                  & \WTWOhs \cite{Cygan2011}                     & Prob. Unknown                                           & Unknown                    & \NPcs \cite{McRae1995}                       & Prob. Unknown               \\
         
-        %         split                                    & \NPcs \cite{Bertossi1984}                               & \WTWOhs \cite{Raman2008}                     & \NPcs \cite{Henning2019}                                & \WTWOhs (this) & \NPcs \cite{Laskar1983}                      & \WTWOhs                              \\
-        
         chordal bipartite                     & \NPcs \cite{Mueller1987}                                & Probably Open                                & \NPcs \cite{Henning2019}                                & Open?                      & \multicolumn{2}{c}{\Pt \cite{Damaschke1990}}                               \\
         
-        dually chordal                        & \multicolumn{2}{c}{\Pt \cite{Brandstaedt1998} }         & ?                                            &                                                         & ?                          &                                                                            \\
+        dually chordal                        & \multicolumn{2}{c}{\Pt \cite{Brandstaedt1998} }         & Unkown                                             & Unkown & ?                          &                                                                            \\
         
         strongly chordal                      & \multicolumn{2}{c}{\Pt \cite{Farber1984} }            & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}  & \NPcs \cite{Farber1984}                                 &                                                                                                         \\
         
@@ -314,37 +289,39 @@ Results of this paper
         % cocomperability                          & \multicolumn{2}{c}{\Pt \cite{Kratsch1993}}                                & Unknwon (?)                                         & Unknown ?                                                    & \multicolumn{2}{c}{\Pt \cite{Kratsch1993}}                                                                       \\
        block                        &                                                      \multicolumn{2}{c}{\Pt \cite{Farber1984} }                                          & \multicolumn{2}{c}{\Pt \cite{Henning2022}}              & \multicolumn{2}{c}{\Pt \cite{Chang1989}}                                                                       \\
         
-        planar                                & \NPcs (Sources!)                                        & \FPT \cite{Alber2004}                        & \NPcs                                                   & \FPT                       & \NPcs                                        & \FPT \cite{Garnero2018}     \\
+        planar                                & \NPcs (Sources!)                                        & \FPT \cite{Alber2004}                        & \NPcs                                                   & \FPT \textbf{(this)}                       & \NPcs                                        & \FPT \cite{Garnero2018}     \\
         
         undirected path                                & \NPcs \cite{Booth1982}                                   & \FPT \cite{Figueiredo1990} & \NPcs \cite{Henning2022}  & Unkown                     & \NPcs \cite{Lan2014}                         & Unkown  (?)                     \\
+
+        interval                  & \multicolumn{2}{c}{\Pt \cite{Chang1998a}}                                          & \multicolumn{2}{c}{\Pt \cite{Pradhan2021}} &                                         \multicolumn{2}{c}{\Pt \cite{Bertossi1986}}                       \\
 
         \midrule
         bounded clique-width                  & \multicolumn{2}{c}{\Pt \cite{Courcelle1990}}            & \multicolumn{2}{c}{\Pt \cite{Courcelle1990}} & \multicolumn{2}{c}{\Pt \cite{Courcelle1990}}                                                                                                                      \\
         
         bounded mim-width                     & \multicolumn{2}{c}{\Pt \cite{Belmonte2011,BuiXuan2013}} & \multicolumn{2}{c}{\Pt \cite{Galby2020}}     & \multicolumn{2}{c}{\Pt \cite{Belmonte2011,BuiXuan2013}}                                                                                                           \\
         \midrule
+
+        %k polyon                              & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
+        
+        %line graph                        & TBD                                                     & TBD                                          & TBD                                                     & Easdffasd                  & Fasdf                                        & Gasdf                       \\
         
         
-        TBD line graph                        & TBD                                                     & TBD                                          & TBD                                                     & Easdffasd                  & Fasdf                                        & Gasdf                       \\
-        
-        TBD interval graphj                   & TBD                                                     & TBD                                          & TBD                                                     & Easdffasd                  & Fasdf                                        & Gasdf                       \\
+        %  TBD chordal perfect graph (contained) & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
         
         
-        TBD chordal perfect graph (contained) & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
+        % TBD Graph girth 3 or 4                & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
         
-        k polyon                              & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
+        % TBD Graph girth gew 5                 & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
         
-        TBD Graph girth 3 or 4                & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
+        % TBD degen.                            & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
         
-        TBD Graph girth gew 5                 & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
-        
-        TBD degen.                            & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
-        
-        TBD Bounded Max degree                & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
+        % bTBD Bounded Max degree                & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
         \midrule
         \bottomrule
+    \label{tab:complexities}
     \end{tabularx}
 }
+
 \end{center}
 
 % TODO use this sentence: Further, as the problem is NP-complete
@@ -358,11 +335,12 @@ Results of this paper
     \resizebox{1.0\textwidth}{!}{
         \input{fig/mathcha/classes.tikz}
     }
-    \caption{\textit{Computational Complexity of \sdom. TODO: Block Graph, Directed Path Graph, line Graph, Chordal Perfect graph (??), AT-free Polytime sovable, make general and then to perfect, planar circle ..., Check direction circular k tapezoid}}
+    \caption{\textit{Computational Complexity of \sdom. Graph classes that admit a polynomial time algorithm are marked in \textit{green}, those with an fpt algorithm in \textit{yellow} and those that are not fpt in \textit{red}. If the parameterized complexity is unknown, no color is used. This updates the figure given in \cite{Galby2020}.}}
+    
+    %TODO: Block Graph, Directed Path Graph, line Graph, Chordal Perfect graph (??), AT-free Polytime sovable, make general and then to perfect, planar circle ..., Check direction circular k tapezoid}}
     \label{fig:kernelization}
 \end{figure}
 
-% TODO Do we need this definition?
 % Surprisingly, there are cases where the complexity of \dom and \tdom differes (e)
 %If both \dom and \tdom are already hard for a class, we already have a strong assumption that this also holds for \sdom as well.
 
@@ -373,7 +351,6 @@ Now some w[i] hard classes.
 \subsection{Warm-Up: \hmath $W[2]$-hard on General Graphs}
 
 % TODO can we conclude anything for AT Free Graphs?
-%% TODO Extend to r-partite
 
 As any \bg with bipartition can be split further into \rpg this results also implies the \wone-hardness of \rpg
 
