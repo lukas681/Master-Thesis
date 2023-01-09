@@ -234,6 +234,7 @@ It turns out that for some graphs, all of these inequalities are strict. See \cr
 \section{Complexity Status of \sdom}\label{ch:complexity-status}
 
 This chapter complements the complexity status of \sdom surveyed by Galby et. al \cite{Galby2020} with the latest developments and adds the corresponding parameterized complexities. 
+It is interesting to see, how most of the results are mirrored across \dom, \sdom and \tdom.
 If not mentioned otherwise, our problem is always parameterized by solution size.
 
 In the meanwhile, new polynomial time algorithms have been shown for \textit{dually chordal}, \textit{strongly chordal} \cite{Tripathi2021}, \textit{AT-free} \cite{Kloks2021} and \textit{block} \cite{Henning2022} graphs.
@@ -247,20 +248,16 @@ All complexigty results are shown in \cref{tab:complexities}.
 % Some words to parameterized complexity
 
 \begin{center}
-
-    % Probably missing according to Henning: https://core.ac.uk/download/pdf/82724702.pdf LINE GRAPH Distance Heriditary Graph?, 
-
     % Add girth results: https://link.springer.com/content/pdf/10.1007/978-1-4614-6525-6.pdf?pdf=button
-
-% Reduction from \cite{Change1998} to show NP hardness works preserves solution size and hence is also a FPT reduction!
 
 \resizebox{1.0\textwidth}{!}{
     \begin{tabularx}{1.8\textwidth}{lllllll}
+
         \arrayrulecolor{TUMBlue}\toprule
         \textbf{Graph Class}                  & \multicolumn{2}{c}{\textbf{\dom}}                       & \multicolumn{2}{c}{\textbf{\sdom}}           & \multicolumn{2}{c}{\textbf{\tdom}}                                                                                                                                \\
         \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
                                               & classical                                               & Parameterized                                & classical                                               & Parameterized              & classical                                    & Parameterized               \\
-        bipartite                             & \NPcs \cite{Bertossi1984}                               & \WTWOhs                                      & \NPcs \cite{Henning2019}                                & \WTWOhs (this)             & \NPcs \cite{Pfaff1983}                       &                             \\
+        bipartite                             & \NPcs \cite{Bertossi1984}                               & \WTWOhs                                      & \NPcs \cite{Henning2019}                                & \WTWO (this)             & \NPcs \cite{Pfaff1983}                       &                             \\
         
         line graph of bipartite               & \NPcs \cite{Korobitsin1992}                             & TODO                                         & \NPcs \cite{Galby2020}                                  &                            & \NPcs \cite{McRae1995}                       &                             \\
         
@@ -270,35 +267,35 @@ All complexigty results are shown in \cref{tab:complexities}.
         
         $s$-chordal                           & \NPcs \cite{Liu2011}                                    & \WTWOhs \cite{Liu2011}                       & XXX                                                     & XX                         & \NPcs \cite{Liu2011}                         & \WONEhs \cite{Liu2011}      \\
         
-        split                                 & \NPcs \cite{Bertossi1984}                               & \WTWOhs XXXX false! \cite{Raman2008}         & \NPcs \cite{Henning2019}                                & \WTWO Lemma XX             & \NPcs \cite{Laskar1983}                      & \WONEhs \cite{Chang1998}    \\
+        split                                 & \NPcs \cite{Bertossi1984}                               & \WTWOhs XXXX false! \cite{Raman2008}         & \NPcs \cite{Henning2019}                                & \WTWOhs Lemma XX             & \NPcs \cite{Laskar1983}                      & \WONEhs \cite{Chang1998}    \\
         
-        3-claw-free                           & \NPcs \cite{Cygan2011}                                  & \FPT \cite{Cygan2011}                        & Prob. Unk                                               & Prob. Unk                  & \NPcs \cite{McRae1995}                       & Unknown                     \\
+        3-claw-free                           & \NPcs \cite{Cygan2011}                                  & \FPTt \cite{Cygan2011}                        & Prob. Unk                                               & Prob. Unk                  & \NPcs \cite{McRae1995}                       & Unknown                     \\
         
         $t$-claw-free, $t>3$                  & \NPcs \cite{Cygan2011}                                  & \WTWOhs \cite{Cygan2011}                     & Prob. Unknown                                           & Unknown                    & \NPcs \cite{McRae1995}                       & Prob. Unknown               \\
         
-        chordal bipartite                     & \NPcs \cite{Mueller1987}                                & Probably Open                                & \NPcs \cite{Henning2019}                                & Open?                      & \multicolumn{2}{c}{\Pt \cite{Damaschke1990}}                               \\
+        chordal bipartite                     & \NPcs \cite{Mueller1987}                                & Probably Open                                & \NPcs \cite{Henning2019}                                & Open?                      & \multicolumn{2}{c}{\Ptt \cite{Damaschke1990}}                               \\
         
-        dually chordal                        & \multicolumn{2}{c}{\Pt \cite{Brandstaedt1998} }         & Unkown                                             & Unkown & ?                          &                                                                            \\
+        dually chordal                        & \multicolumn{2}{c}{\Ptt \cite{Brandstaedt1998} }         & Unkown                                             & Unkown & ?                          &                                                                            \\
         
-        strongly chordal                      & \multicolumn{2}{c}{\Pt \cite{Farber1984} }            & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}  & \NPcs \cite{Farber1984}                                 &                                                                                                         \\
+        strongly chordal                      & \multicolumn{2}{c}{\Ptt \cite{Farber1984} }            & \multicolumn{2}{c}{\Ptt \cite{Tripathi2021}}  & \NPcs \cite{Farber1984}                                 &                                                                                                         \\
         
-        AT-free                               & \multicolumn{2}{c}{\Pt \cite{Kratsch2000}}              & \multicolumn{2}{c}{\Pt \cite{Kloks2021} }    & \multicolumn{2}{c}{\Pt \cite{Kratsch2000}}                                                                                                                        \\
+        AT-free                               & \multicolumn{2}{c}{\Ptt \cite{Kratsch2000}}              & \multicolumn{2}{c}{\Ptt \cite{Kloks2021} }    & \multicolumn{2}{c}{\Ptt \cite{Kratsch2000}}                                                                                                                        \\
         
-        tolerance                             & \multicolumn{2}{c}{\Pt Source!}                         & Unknown                                      & Unkown                                                  & Unknown                    & Unknown                                                                    \\
+        tolerance                             & \multicolumn{2}{c}{\Ptt Source!}                         & Unknown                                      & Unkown                                                  & Unknown                    & Unknown                                                                    \\
         
         % cocomperability                          & \multicolumn{2}{c}{\Pt \cite{Kratsch1993}}                                & Unknwon (?)                                         & Unknown ?                                                    & \multicolumn{2}{c}{\Pt \cite{Kratsch1993}}                                                                       \\
-       block                        &                                                      \multicolumn{2}{c}{\Pt \cite{Farber1984} }                                          & \multicolumn{2}{c}{\Pt \cite{Henning2022}}              & \multicolumn{2}{c}{\Pt \cite{Chang1989}}                                                                       \\
+       block                        &                                                      \multicolumn{2}{c}{\Ptt \cite{Farber1984} }                                          & \multicolumn{2}{c}{\Ptt \cite{Henning2022}}              & \multicolumn{2}{c}{\Ptt \cite{Chang1989}}                                                                       \\
         
-        planar                                & \NPcs (Sources!)                                        & \FPT \cite{Alber2004}                        & \NPcs                                                   & \FPT \textbf{(this)}                       & \NPcs                                        & \FPT \cite{Garnero2018}     \\
+        planar                                & \NPcs (Sources!)                                        & \FPTt \cite{Alber2004}                        & \NPcs                                                   & \FPT \textbf{(this)}                       & \NPcs                                        & \FPTt \cite{Garnero2018}     \\
         
-        undirected path                                & \NPcs \cite{Booth1982}                                   & \FPT \cite{Figueiredo1990} & \NPcs \cite{Henning2022}  & Unkown                     & \NPcs \cite{Lan2014}                         & Unkown  (?)                     \\
+        undirected path                                & \NPcs \cite{Booth1982}                                   & \FPTt \cite{Figueiredo2022} & \NPcs \cite{Henning2022}  & Unkown                     & \NPcs \cite{Lan2014}                         & Unkown  (?)                     \\
 
-        interval                  & \multicolumn{2}{c}{\Pt \cite{Chang1998a}}                                          & \multicolumn{2}{c}{\Pt \cite{Pradhan2021}} &                                         \multicolumn{2}{c}{\Pt \cite{Bertossi1986}}                       \\
+        interval                  & \multicolumn{2}{c}{\Ptt \cite{Chang1998a}}                                          & \multicolumn{2}{c}{\Ptt \cite{Pradhan2021}} &                                         \multicolumn{2}{c}{\Ptt \cite{Bertossi1986}}                       \\
 
         \midrule
-        bounded clique-width                  & \multicolumn{2}{c}{\Pt \cite{Courcelle1990}}            & \multicolumn{2}{c}{\Pt \cite{Courcelle1990}} & \multicolumn{2}{c}{\Pt \cite{Courcelle1990}}                                                                                                                      \\
+        bounded clique-width                  & \multicolumn{2}{c}{\Ptt \cite{Courcelle1990}}            & \multicolumn{2}{c}{\Ptt \cite{Courcelle1990}} & \multicolumn{2}{c}{\Ptt \cite{Courcelle1990}}                                                                                                                      \\
         
-        bounded mim-width                     & \multicolumn{2}{c}{\Pt \cite{Belmonte2011,BuiXuan2013}} & \multicolumn{2}{c}{\Pt \cite{Galby2020}}     & \multicolumn{2}{c}{\Pt \cite{Belmonte2011,BuiXuan2013}}                                                                                                           \\
+        bounded mim-width                     & \multicolumn{2}{c}{\Ptt \cite{Belmonte2011,BuiXuan2013}} & \multicolumn{2}{c}{\Ptt \cite{Galby2020}}     & \multicolumn{2}{c}{\Ptt \cite{Belmonte2011,BuiXuan2013}}                                                                                                           \\
         \midrule
 
         %k polyon                              & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
