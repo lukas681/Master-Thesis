@@ -233,8 +233,8 @@ circular permutation
 
 \end{minipage}};
 % Text Node
-\draw  [fill={rgb, 255:red, 184; green, 233; blue, 134 }  ,fill opacity=1 ]  (-89.1,171.27) -- (-11.1,171.27) -- (-11.1,200.27) -- (-89.1,200.27) -- cycle  ;
-\draw (-50.1,185.77) node  [font=\small] [align=left] {\begin{minipage}[lt]{50.18pt}\setlength\topsep{0pt}
+\draw  [fill={rgb, 255:red, 184; green, 233; blue, 134 }  ,fill opacity=1 ]  (-80.1,236.27) -- (-2.1,236.27) -- (-2.1,265.27) -- (-80.1,265.27) -- cycle  ;
+\draw (-41.1,250.77) node  [font=\small] [align=left] {\begin{minipage}[lt]{50.18pt}\setlength\topsep{0pt}
 \begin{center}
 $\displaystyle k$-polygon
 \end{center}
@@ -377,8 +377,8 @@ undirected path
 \draw    (91.63,344.3) -- (117.85,399.3) ;
 \draw [shift={(118.71,401.11)}, rotate = 244.51] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
 % Connection
-\draw    (-50.29,200.27) .. controls (-54.82,277.85) and (-5.41,344.51) .. (97.95,400.27) ;
-\draw [shift={(99.52,401.11)}, rotate = 208.17] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+\draw    (-40.72,265.27) .. controls (-42.54,333.81) and (-1.28,379.41) .. (83.09,402.08) ;
+\draw [shift={(84.37,402.42)}, rotate = 194.82] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
 % Connection
 \draw    (272.04,-4.4) .. controls (229.96,68.55) and (189.83,147.43) .. (151.66,232.21) ;
 \draw [shift={(151.08,233.49)}, rotate = 294.22] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
@@ -392,8 +392,8 @@ undirected path
 \draw    (34.11,203.42) .. controls (-103.76,470.65) and (-33.58,593.28) .. (244.67,571.32) ;
 \draw [shift={(244.67,571.32)}, rotate = 175.49] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
 % Connection
-\draw    (-49.82,-0.73) -- (-50.08,169.27) ;
-\draw [shift={(-50.08,171.27)}, rotate = 270.09] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+\draw    (-49.33,-0.73) -- (-41.64,234.27) ;
+\draw [shift={(-41.57,236.27)}, rotate = 268.13] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
 % Connection
 \draw    (148.08,280.49) .. controls (183.8,393.42) and (229.28,484.34) .. (284.54,553.23) ;
 \draw [shift={(285.37,554.27)}, rotate = 231.13] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
