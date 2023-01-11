@@ -170,7 +170,7 @@ We say that a vertex $d$ is a \textit{dominating vertex} or \textit{dominator} i
 The \dom problem asks for a subset $D$ of size at most $k$ of vertices whose set of neighbors are adjacent o all the other vertices.
 In other words: every vertex $v \notin D$ needs to have at least one neighbor in $D$.
 
-\begin{prb}[\DOM~{\cite[p. 586]{Cygan2015}}]{prb:ds}
+\begin{prb}[\uppercase{\DOM}~{\cite[p. 586]{Cygan2015}}]{prb:ds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
         \textbf{Question} & Is there a set {$X \subseteq V$} of size at most $k$ such that ${N[X] = V}$? \\
@@ -180,7 +180,7 @@ In other words: every vertex $v \notin D$ needs to have at least one neighbor in
 If we also demand the dominating vertices to be dominated, need the notion of \tdomin.
 The \tdom problem adds one additional constraint: Every vertex $v \in D$ in the dominating set must also be dominated by some vertex $v' \in D$ which we call the \textit{witness} of $v$.
 
-\begin{prb}[\TDOM~{\cite[p. 596]{Cygan2015}}]{prb:sds}
+\begin{prb}[\uppercase{\TDOM}~{\cite[p. 596]{Cygan2015}}]{prb:sds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
         \textbf{Question} & Does there exists a set $X \subseteq V$ with $\abs{X}\leq k$ vertices such that for every $u \in V(G)$ there exists $v \in X$ with $\{u,v\} \in E$? \\
@@ -194,7 +194,7 @@ On the other side, by definition of a total dominating set $D$, every dominating
 It is natural to ask what happens if we restrict this distance property to be at most two, which leads us straight to the idea of \sdomin.
 For a semitotal dominating set $D$, we say that $v$ witnesses $v'$ if $v,v' \in D$ and $d(v,v') \leq 2$.
 
-\begin{prb}[\SDOM~{\cite{Goddard2014}}]{prb:tds}
+\begin{prb}[\uppercase{\SDOM}~{\cite{Goddard2014}}]{prb:tds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
         \textbf{Question} & Is there a subset $X \subseteq V$ with $\abs{X} \leq k$ such that ${N[X] = V}$ and for all $d_1 \in X$ there exists another $d_2 \in X$ such that ${d(d_1, d_2) \leq 2}$?\\
@@ -233,21 +233,39 @@ It turns out that for some graphs, all of these inequalities are strict. See \cr
 
 \section{Complexity Status of \sdom}\label{ch:complexity-status}
 
-This chapter complements the complexity status of \sdom surveyed by Galby et. al \cite{Galby2020} with the latest developments and adds the corresponding parameterized complexities. 
-It is interesting to see, how most of the results are mirrored across \dom, \sdom and \tdom.
-If not mentioned otherwise, our problem is always parameterized by solution size.
+Goddard et al. \cite{Goddard2014} first showed that \sdoms is \NPc in the general case and initiated further analysis.  
+This section complements the complexity status of \sdom first surveyed by Galby et al. \cite{Galby2020} with the latest results.
+Furthermore, we have added another column showing the parameterized complexity. 
 
-In the meanwhile, new polynomial time algorithms have been shown for \textit{dually chordal}, \textit{strongly chordal} \cite{Tripathi2021}, \textit{AT-free} \cite{Kloks2021} and \textit{block} \cite{Henning2022} graphs.
-Furthermore, a linear time algorithm has been found for interval graphs \cite{Pradhan2021} beating the previous $\mathcal{O}(n^2)$ algorithm given by Henning and Pandey \cite{Henning2019}.
+\cref{tab:complexities} shows the currently known complexities for \DOM, \SDOM and \TDOM when restricted to specific graph classes next to each other and \cref{fig:bigpicture} visualizes the big picture.
 
-On the negative side, \sdom on \textit{circle graphs} graphs and \textit{undirected path graphs} is \NPc. 
+A polynomial-time algorithm has been shown for graphs of bounded \textit{mim}-width by Galby et al. \cite{Galby2020}.
+Because decomposition trees of constant \textit{mim}-width can be found for permutation, convex, interval, (circular k-) trapezoid, circular permutation, Dilworth-$k$, $k$-polygon, circular arc, complements of $d$-degenerate, bipartite permutation and convex bipartite graphs in polynomial time \cite{Belmonte2011}, this algorithm immediately implies the existence of a polynomial time algorithm for these graph classes as well. 
+Additionally, Galby et. al resolved the complexity for \textit{bipartite permutation} and \textit{convex bipartite} graphs.
 
-Our results are highlighted. All complexity results are shown in the table \cref{tab:complexities}.
+Furthermore, new polynomial time algorithms have been discovered for \textit{strongly chordal} \cite{Tripathi2021}, \textit{AT-free} \cite{Kloks2021} and \textit{block} \cite{Henning2022} graphs and a new linear time algorithm has been found for interval graphs \cite{Pradhan2021} beating the previous $\mathcal{O}(n^2)$-algorithm given by Henning and Pandey \cite{Henning2019}.
 
+On the negative side, \sdom on \textit{circle graphs} \cite{Kloks2021} graphs and \textit{undirected path graphs} \cite{Henning2019} was shown to be \NPc.
+
+As $\gamma_{2t}$ is squeezed between $\gamma$ and $\gamma_t$, a comparison of the computational complexity of \sdom and \tdom for specific graph classes on the dominating problems might already indicate the complexity of \sdoms.
+There is symmetry between these domination problems and the complexity of many graph classes mirrors each other.
+Nevertheless, it looks like \sdoms has more in common with \doms than with \tdoms.
+For example for \textit{chordal bipartite} graphs, \sdoms and \doms are \NPc while it is polynomial-time solvable for \tdoms. 
+Contrary, \sdoms and \doms have a polynomial-time algorithm for \textit{strongly chordal} graphs, but \tdoms is \NPc.
+In all currently known cases, \sdom follows the complexity of \dom.
+
+This thesis does the first steps in approaching the problem from the perspective of \textit{Parameterized Complexity}. 
+If not mentioned otherwise, the problem is always parameterized by the size of a solution and the results of this thesis are highlighted in \textbf{bold} text.
+Therefore, we have added the parameterized complexity for those graph classes as well and used it as an orientation.
+As we do not believe that \sdoms is fundamentally different than \doms, the idea was that also the parameterized complexity mirror for \sdoms. 
+We were able to prove \WTWO-hardness for \textit{bipartite} and \textit{split} graphs by giving a graph structure preserving reducing from \doms-
+
+on the positive side, we were able to give an explicit construction of a kernel for the \textit{planar} case, which also exists for \doms and \tdoms as well.
+
+It would be interesting to close the remaining complexity gaps.
+A discussion about those open problems can be found at the end of this thesis in \cref{ch:closing}.
 
 \begin{center}
-    % Add girth results: https://link.springer.com/content/pdf/10.1007/978-1-4614-6525-6.pdf?pdf=button
-% TODO Mark those results that only rely on the mim-width
     \begin{table}[ht]
     \caption{\textit{Comparison between the complexities of \dom, \sdom and \tdom in the classical and parameterized setting. Open problems are marked with an ``?''.}}
     \label{tab:complexities}
@@ -282,7 +300,7 @@ Our results are highlighted. All complexity results are shown in the table \cref
         undirected path                                & \NPcs \cite{Booth1982}                                   & \FPTt \cite{Figueiredo2022} & \NPcs \cite{Henning2022}  & ?                     & \NPcs \cite{Lan2014}                         & ?                     \\
         % 2022 paper for DS proved it not for TDS, so whp. not known for TDS
 
-        dually chordal                        & \multicolumn{2}{c}{\Ptt \cite{Brandstaedt1998} }         & \multicolumn{2}{c}{?} &                           \multicolumn{2}{c}{\Ptt \cite{Kratsch1997}}                                                                            \\
+        dually chordal                        & \multicolumn{2}{c}{\Ptt \cite{Brandstaedt1998} }         & \multicolumn{2}{c}{? (partial res. \cite{Galby2020})} &                           \multicolumn{2}{c}{\Ptt \cite{Kratsch1997}}                                                                            \\
         
         strongly chordal                      & \multicolumn{2}{c}{\Ptt \cite{Farber1984} }            & \multicolumn{2}{c}{\Ptt \cite{Tripathi2021}}  & \NPcs \cite{Farber1984}                                 &                                                                                                         \\
         
@@ -334,10 +352,10 @@ Our results are highlighted. All complexity results are shown in the table \cref
     \resizebox{1.0\textwidth}{!}{
         \input{fig/mathcha/classes.tikz}
     }
-    \caption{\textit{Computational Complexity of \sdom. Graph classes that admit a polynomial time algorithm are marked in \textit{green}, those with an fpt algorithm in \textit{yellow} and those that are not fpt in \textit{red}. If the parameterized complexity is unknown, no color is used. This updates the figure given in \cite{Galby2020}.}}
+    \caption{\textit{Computational Complexity of \sdom. Graph classes that admit a polynomial time algorithm are marked in \textit{green}, those with an fpt algorithm in \textit{yellow} and those that are not fpt in \textit{red}. If the parameterized complexity is unknown, no color is used. This updates the figure given in the survey by Galby et al. \cite{Galby2020}.}}
     
     %TODO: Block Graph, Directed Path Graph, line Graph, Chordal Perfect graph (??), AT-free Polytime sovable, make general and then to perfect, planar circle ..., Check direction circular k tapezoid}}
-    \label{fig:kernelization}
+    \label{fig:bigpicture}
 \end{figure}
 
 % Surprisingly, there are cases where the complexity of \dom and \tdom differes (e)
