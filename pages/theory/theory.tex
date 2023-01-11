@@ -170,7 +170,7 @@ We say that a vertex $d$ is a \textit{dominating vertex} or \textit{dominator} i
 The \dom problem asks for a subset $D$ of size at most $k$ of vertices whose set of neighbors are adjacent o all the other vertices.
 In other words: every vertex $v \notin D$ needs to have at least one neighbor in $D$.
 
-\begin{prb}[\uppercase{\DOM}~{\cite[p. 586]{Cygan2015}}]{prb:ds}
+\begin{prb}[\MakeUppercase{\DOM}~{\cite[p. 586]{Cygan2015}}]{prb:ds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
         \textbf{Question} & Is there a set {$X \subseteq V$} of size at most $k$ such that ${N[X] = V}$? \\
@@ -180,7 +180,7 @@ In other words: every vertex $v \notin D$ needs to have at least one neighbor in
 If we also demand the dominating vertices to be dominated, need the notion of \tdomin.
 The \tdom problem adds one additional constraint: Every vertex $v \in D$ in the dominating set must also be dominated by some vertex $v' \in D$ which we call the \textit{witness} of $v$.
 
-\begin{prb}[\uppercase{\TDOM}~{\cite[p. 596]{Cygan2015}}]{prb:sds}
+\begin{prb}[\MakeUppercase{\TDOM}~{\cite[p. 596]{Cygan2015}}]{prb:sds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
         \textbf{Question} & Does there exists a set $X \subseteq V$ with $\abs{X}\leq k$ vertices such that for every $u \in V(G)$ there exists $v \in X$ with $\{u,v\} \in E$? \\
@@ -194,7 +194,7 @@ On the other side, by definition of a total dominating set $D$, every dominating
 It is natural to ask what happens if we restrict this distance property to be at most two, which leads us straight to the idea of \sdomin.
 For a semitotal dominating set $D$, we say that $v$ witnesses $v'$ if $v,v' \in D$ and $d(v,v') \leq 2$.
 
-\begin{prb}[\uppercase{\SDOM}~{\cite{Goddard2014}}]{prb:tds}
+\begin{prb}[\MakeUppercase{\SDOM}~{\cite{Goddard2014}}]{prb:tds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
         \textbf{Question} & Is there a subset $X \subseteq V$ with $\abs{X} \leq k$ such that ${N[X] = V}$ and for all $d_1 \in X$ there exists another $d_2 \in X$ such that ${d(d_1, d_2) \leq 2}$?\\
@@ -258,9 +258,7 @@ This thesis does the first steps in approaching the problem from the perspective
 If not mentioned otherwise, the problem is always parameterized by the size of a solution and the results of this thesis are highlighted in \textbf{bold} text.
 Therefore, we have added the parameterized complexity for those graph classes as well and used it as an orientation.
 As we do not believe that \sdoms is fundamentally different than \doms, the idea was that also the parameterized complexity mirror for \sdoms. 
-We were able to prove \WTWO-hardness for \textit{bipartite} and \textit{split} graphs by giving a graph structure preserving reducing from \doms-
-
-on the positive side, we were able to give an explicit construction of a kernel for the \textit{planar} case, which also exists for \doms and \tdoms as well.
+We were able to prove \WTWO-hardness for \textit{bipartite} and \textit{split} graphs by giving a graph structure preserving reducing from \doms. On the positive side, we give an explicit construction of a kernel for the \textit{planar} case, which also exists for \doms and \tdoms as well.
 
 It would be interesting to close the remaining complexity gaps.
 A discussion about those open problems can be found at the end of this thesis in \cref{ch:closing}.
@@ -352,9 +350,11 @@ A discussion about those open problems can be found at the end of this thesis in
     \resizebox{1.0\textwidth}{!}{
         \input{fig/mathcha/classes.tikz}
     }
-    \caption{\textit{Computational Complexity of \sdom. Graph classes that admit a polynomial time algorithm are marked in \textit{green}, those with an fpt algorithm in \textit{yellow} and those that are not fpt in \textit{red}. If the parameterized complexity is unknown, no color is used. This updates the figure given in the survey by Galby et al. \cite{Galby2020}.}}
+    \caption{\textit{Computational Complexity of \sdom. Graph classes that admit a polynomial time algorithm are marked in \textit{green}, those with an fpt algorithm in \textit{yellow}, those that are not fpt in \textit{red} and those that are unknown are left \textit{white}.
+    An additional ``?''  marks those problems, where the classical complexity is also unknown.
+    This updates the figure given in the survey by Galby et al. \cite{Galby2020}. Note that we assume the parameterization by solution size.}}
     
-    %TODO: Block Graph, Directed Path Graph, line Graph, Chordal Perfect graph (??), AT-free Polytime sovable, make general and then to perfect, planar circle ..., Check direction circular k tapezoid}}
+    %TODO:Chordal Perfect graph (??), AT-free Polytime sovable, make general and then to perfect, planar circle ..., Check direction circular k tapezoid}}
     \label{fig:bigpicture}
 \end{figure}
 
