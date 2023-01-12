@@ -1,0 +1,41 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=BLACK] (0) at (0.5, 2) {};
+		\node [style=BLACK] (1) at (-2, 2) {};
+		\node [style=BLACK] (2) at (-2, -0.5) {};
+		\node [style=BLACK] (3) at (0.5, -0.5) {};
+		\node [style=BLACK] (4) at (3, -0.25) {};
+		\node [style=BLACK] (8) at (3, 2) {};
+		\node [style=DOM] (9) at (-4.25, 0.75) {};
+		\node [style=BLACK] (10) at (-4.5, -1) {};
+		\node [style=none] (11) at (-3, 2.75) {};
+		\node [style=none] (12) at (1.5, 2.75) {};
+		\node [style=none] (13) at (1.5, -1.5) {};
+		\node [style=none] (14) at (-3, -1.5) {};
+		\node [style=none] (15) at (-4.75, 1.5) {$d$};
+		\node [style=none] (16) at (-5, -0.25) {$u$};
+		\node [style=BLACK] (17) at (4, 2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0) to (3);
+		\draw (3) to (2);
+		\draw (1) to (2);
+		\draw (0) to (1);
+		\draw (1) to (3);
+		\draw [in=345, out=-180] (4) to (3);
+		\draw (0) to (2);
+		\draw (0) to (8);
+		\draw (9) to (1);
+		\draw (2) to (9);
+		\draw (9) to (3);
+		\draw (0) to (9);
+		\draw (9) to (10);
+		\draw [style=EDGEDASHED] (14.center) to (13.center);
+		\draw [style=EDGEDASHED] (12.center) to (13.center);
+		\draw [style=EDGEDASHED] (12.center) to (11.center);
+		\draw [style=EDGEDASHED] (11.center) to (14.center);
+		\draw [style=EDGE, in=105, out=-60] (0) to (4);
+		\draw [style=EDGE, in=45, out=-165, looseness=1.25] (8) to (3);
+		\draw [style=EDGE, in=30, out=135, looseness=0.50] (17) to (1);
+	\end{pgfonlayer}
+\end{tikzpicture}

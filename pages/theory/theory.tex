@@ -229,22 +229,19 @@ The  following fact was first observed by Goddard and Henning \cite{Goddard2014}
 \begin{fact}
 For every graph $G$ with no isolated vertex, $\gamma(G) \leq \gamma_{t2}(G) \leq \gamma_t(G)$.
 \end{fact}
-It turns out that for some graphs, all of these inequalities are strict. See \cref{figd:dsexamples} for an example, where $\gamma < \gamma_{t2} < \gamma_t$ and therefore.
+It turns out that for some graphs, all of these inequalities are strict. See \cref{figd:dsexamples} for an example, where $\gamma < \gamma_{t2} < \gamma_t$.
 
 \section{Complexity Status of \sdom}\label{ch:complexity-status}
 
-Goddard et al. \cite{Goddard2014} first showed that \sdoms is \NPc in the general case and initiated further analysis.  
-This section complements the complexity status of \sdom first surveyed by Galby et al. \cite{Galby2020} with the latest results.
-Furthermore, we have added another column showing the parameterized complexity. 
-
-\cref{tab:complexities} shows the currently known complexities for \DOM, \SDOM and \TDOM when restricted to specific graph classes next to each other and \cref{fig:bigpicture} visualizes the big picture.
+Goddard et al. \cite{Goddard2014} first showed that \sdoms is \NPc in the general case and triggered the systematic analysis of the problem.  
+\cref{tab:complexities} complements the complexity status for \DOM, \SDOM and \TDOM when restricted to specific graph classes which was first surveyed by Galby et al. \cite{Galby2020} and adds an extra column showing the parameterized complexity. 
+Furthermore, \cref{fig:bigpicture} visualizes the big picture of graph inclusions.
 
 A polynomial-time algorithm has been shown for graphs of bounded \textit{mim}-width by Galby et al. \cite{Galby2020}.
-Because decomposition trees of constant \textit{mim}-width can be found for permutation, convex, interval, (circular k-) trapezoid, circular permutation, Dilworth-$k$, $k$-polygon, circular arc, complements of $d$-degenerate, bipartite permutation and convex bipartite graphs in polynomial time \cite{Belmonte2011}, this algorithm immediately implies the existence of a polynomial time algorithm for these graph classes as well. 
+Because decomposition trees of constant \textit{mim}-width can be found for \textit{permutation}, \textit{convex}, \textit{interval}, \textit{(circular k-)} \textit{trapezoid}, \textit{circular permutation}, \textit{Dilworth-$k$}, \textit{$k$-polygon}, \textit{circular arc}, \textit{complements of $d$-degenerate}, \textit{bipartite permutation} and \textit{convex bipartite} graphs in polynomial time \cite{Belmonte2011}, this algorithm immediately implies the existence of a polynomial time algorithm for these graph classes as well. 
 Additionally, Galby et. al resolved the complexity for \textit{bipartite permutation} and \textit{convex bipartite} graphs.
 
 Furthermore, new polynomial time algorithms have been discovered for \textit{strongly chordal} \cite{Tripathi2021}, \textit{AT-free} \cite{Kloks2021} and \textit{block} \cite{Henning2022} graphs and a new linear time algorithm has been found for interval graphs \cite{Pradhan2021} beating the previous $\mathcal{O}(n^2)$-algorithm given by Henning and Pandey \cite{Henning2019}.
-
 On the negative side, \sdom on \textit{circle graphs} \cite{Kloks2021} graphs and \textit{undirected path graphs} \cite{Henning2019} was shown to be \NPc.
 
 As $\gamma_{2t}$ is squeezed between $\gamma$ and $\gamma_t$, a comparison of the computational complexity of \sdom and \tdom for specific graph classes on the dominating problems might already indicate the complexity of \sdoms.
@@ -254,19 +251,20 @@ For example for \textit{chordal bipartite} graphs, \sdoms and \doms are \NPc whi
 Contrary, \sdoms and \doms have a polynomial-time algorithm for \textit{strongly chordal} graphs, but \tdoms is \NPc.
 In all currently known cases, \sdom follows the complexity of \dom.
 
-This thesis does the first steps in approaching the problem from the perspective of \textit{Parameterized Complexity}. 
+This thesis goes the first step in approaching the problem from the perspective of \textit{parameterized complexity}.
 If not mentioned otherwise, the problem is always parameterized by the size of a solution and the results of this thesis are highlighted in \textbf{bold} text.
 Therefore, we have added the parameterized complexity for those graph classes as well and used it as an orientation.
-As we do not believe that \sdoms is fundamentally different than \doms, the idea was that also the parameterized complexity mirror for \sdoms. 
-We were able to prove \WTWO-hardness for \textit{bipartite} and \textit{split} graphs by giving a graph structure preserving reducing from \doms. On the positive side, we give an explicit construction of a kernel for the \textit{planar} case, which also exists for \doms and \tdoms as well.
+As we do not believe that \sdoms is fundamentally different than \doms, our intuition is that also the parameterized complexity mimicks \sdoms. 
+We were able to prove \WTWO-hardness for \textit{bipartite} and \textit{split} graphs by giving a graph structure preserving reducing from \doms and we give an explicit construction of a kernel for the \textit{planar} case, which exists for \doms \cite{Alber2004} and \tdoms \cite{Garnero2019} as well.
 
-It would be interesting to close the remaining complexity gaps.
-A discussion about those open problems can be found at the end of this thesis in \cref{ch:closing}.
+Many gaps are still open for further research.
+A discussion about them can be found at the end of this thesis in \cref{ch:closing}.
 
 \begin{center}
     \begin{table}[ht]
     \caption{\textit{Comparison between the complexities of \dom, \sdom and \tdom in the classical and parameterized setting. Open problems are marked with an ``?''.}}
     \label{tab:complexities}
+
 \resizebox{1.0\textwidth}{!}{
     \begin{tabularx}{1.5\textwidth}{lllllll}
 
@@ -283,7 +281,7 @@ A discussion about those open problems can be found at the end of this thesis in
         
         chordal                               & \NPcs \cite{Booth1982}                                  & \WTWOhs \cite{Raman2008}                     & \NPcs \cite{Henning2019}                                & \WTWOhs (this)               & \NPcs \cite{Laskar1983}                      & \WONEhs \cite{Chang1998} by \textit{split}                            \\
         
-        $s$-chordal                           & \NPcs \cite{Liu2011}                                    & \WTWOhs \cite{Liu2011}                       & XXX                                                     & XX                         & \NPcs \cite{Liu2011}                         & \WONEhs \cite{Liu2011}      \\
+        $s$-chordal , $s > 3$                          & \NPcs \cite{Liu2011}                                    & \WTWOhs \cite{Liu2011}                       & XXX                                                     & XX                         & \NPcs \cite{Liu2011}                         & \WONEhs \cite{Liu2011}      \\
         
         split                                 & \NPcs \cite{Bertossi1984}                               & \WTWOhs \cite{Raman2008}         & \NPcs \cite{Henning2019}                                & \WTWOhs \textbf{this}             & \NPcs \cite{Laskar1983}                      & \WONEhs \cite{Chang1998}    \\
         
@@ -350,9 +348,8 @@ A discussion about those open problems can be found at the end of this thesis in
     \resizebox{1.0\textwidth}{!}{
         \input{fig/mathcha/classes.tikz}
     }
-    \caption{\textit{Computational Complexity of \sdom. Graph classes that admit a polynomial time algorithm are marked in \textit{green}, those with an fpt algorithm in \textit{yellow}, those that are not fpt in \textit{red} and those that are unknown are left \textit{white}.
-    An additional ``?''  marks those problems, where the classical complexity is also unknown.
-    This updates the figure given in the survey by Galby et al. \cite{Galby2020}. Note that we assume the parameterization by solution size.}}
+    \caption{\textit{Computational Complexity of \sdom. Graph classes that admit a polynomial time algorithm are marked in \textit{green}, those with an fpt algorithm in \textit{yellow}, those that are not fpt by solution size in \textit{red} and those that are unknown are left \textit{white}.
+    An additional ``?''  marks those problems, where the classical complexity is also unknown.}}
     
     %TODO:Chordal Perfect graph (??), AT-free Polytime sovable, make general and then to perfect, planar circle ..., Check direction circular k tapezoid}}
     \label{fig:bigpicture}

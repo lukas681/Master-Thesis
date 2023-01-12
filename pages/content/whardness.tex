@@ -1,58 +1,71 @@
-\subsection{\hmath $W[2]$-hard on Bipartite Graphs}
 
-We are showing that \sdom is $\omega[2]$-hard on bipartite graphs by a parameterized reduction from \dom on bipartite graphs which is known to be $\omega{2}$-hard (\cite[Theorem 1]{Raman2008}).
-% \input{fig/tikz/bipartite-fg.tex}
+\section{Fixed-Parameter Intractability}
 
-\begin{figure}[!ht]
+We will first show that \sdom is \WTWOhs-hard on \textit{bipartite graphs} by a parameterized reduction from \dom on bipartite graphs which is known to be \WONEhs.
+
+\begin{figure}[ht]
     \label{fig:neighborhoodSingle}
     \begin{equation*}
         \tikzfig{fig/tikz/wbipartite}
     \end{equation*}
-\caption{\textit{Constructing a bipartite G' from the bipartite graph $K_{m,n}$ by duplicating all vertices and adding exactly two forced witnesses.}}
+\caption{\textit{Constructing a bipartite $G'$ from the bipartite graph $K_{m,n}$ by duplicating all vertices and adding exactly two forced witnesses.}}
 \end{figure}
 
-%\begin{theorem}
-%The \dom problem is $\omega[2]$-complete for bipartite graphs. (\cite[Theorem 1]{Raman2008})
-%\end{theorem}
-
 \begin{theorem}
-    \sdom is $\omega[2]$ hard for bipartite Graphs
+    \sdom is \WTWOhs-hard when restricted to bipartite graphs.
 \end{theorem}
 
 \begin{proof}
-    Given a bipartite Graph $G = ( \{X \cup Y\}, E)$, we construct a bipartite Graph $G' = (\{X' \cup Y'\},E')$ in the following way:
+    Given a bipartite $G = ( \{X \cup Y\}, E)$, we construct a bipartite graph $G' = (\{X' \cup Y'\},E')$:
     \begin{enumerate}
-        \item For each vertex $x_i \in X$, we add a new vertex $a_i \in A$  and an edge $\{x_i, a_i\}$ in between. 
-        \item For each vertex $y_j \in Y$, we add a new vertex $b_j \in B$ and an edge $\{y_j, b_j\}$ in between.
+        \item For each $x_i \in X$, we add a new vertex $a_i \in A$  and an edge $\{x_i, a_i\}$ in between. 
+        \item For each $y_j \in Y$, we add a new vertex $b_j \in B$ and an edge $\{y_j, b_j\}$ in between.
         \item We add fource vertices with with edges $\{u_1, d_1\}$ and $\{u_2, d_2\}$, and connect them with all $\{d_1, a_i\}$ and $\{d_2, b_j\}$ ($i \in [m]$ and $j \in [n]$) respectively.
     \end{enumerate}
     \paragraph*{Observation:} The constructed $G'$ is bipartite because $A$ and $B$ form an independent set on G' that can be cross-wise attached to one of the previous vertex sets. Setting  $X' = X \cup \{u_2,d_1\} \cup B$ and $Y' = X \cup \{u_1,d_2\} \cup A$ form the partitions of the new bipartite G'.
 
-    \begin{corollary} $G$ has a dominating set of size $k$ iff $G$ has a semitotal dominating set of size $k' = k + 2$
+    \begin{corollary} $G$ has a dominating set (ds) of size $k$ if and only if $G'$ has a semitotal dominating set (sds) of size $k' = k + 2$.
     \end{corollary} 
-    \begin{enumerate}
-% TODO: Better name for A and B # add it to figure
-    \item[$\Rightarrow$] Assume a ds in $G$ of size $k$. We know that $D' = D\cup \{d_1,d_2\}$ is an sds in $G'$ of size $k' = k + 2$, because $d_1$ dominates $u_1$ and all $a_i \in A$; $d_2$ dominates $u_2$ and all $b_i \in B$. The rest is dominated by the same vertices as they were in $G$, but now all of them have either $d_1$ or $d_2$ as a witness.
+    First assume a ds in $G$ of size $k$. 
+    We know that $D' = D\cup \{d_1,d_2\}$ is an sds in $G'$ of size $k' = k + 2$, because $d_1$ dominates $u_1$ and all $a_i \in A$; $d_2$ dominates $u_2$ and all $b_i \in B$. 
+    The rest is dominated by the same vertices as they were in $G$, but now all of them have either $d_1$ or $d_2$ as a witness.
     More formally, we have by construction of $G'$ that $\forall v \in (D \cap X): d(v, d_1) = 2$ and $\forall v \in (D \cap Y): d(v, d_2) = 2$.
 
-    \item[$\Leftarrow$] On the contrary, assume any sds $D'$ in $G'$ with size $k'$. Without loss of generality, we can assume that $u_1, u_2 \notin D'$, because choosing $d_1$ and $d_2$ instead is always as least as good and does not violate any witnesses. Therefore, the construction forces $d_1$, $d_2 \in D'$. 
-
+    Contrary, assume any sds $D'$ in $G'$ with size $k'$. Without loss of generality, we can assume that $u_1, u_2 \notin D'$, because choosing $d_1$ and $d_2$ instead is always as least as good and does not violate any witnesses. Therefore, the construction forces $d_1$, $d_2 \in D'$. 
     All $a_i \in A$ can only be useful to dominate their partnering $x_i$ ($b_i \in B$ for $y_i$), because $d_1, d_2 \in D$ is the only second neighbor they have.
     If $a_i,b_i \in D'$ we replace it with $x_i$ and $y_i$ preserving the size $D$. As $d_1$ and $d_2$ suffice to provide a witness for every vertex in the graph and do not lose any other witnesses, this operation is sound.
+    Hence, $D = D' \setminus \{ d_1,d_2\}$ gives a ds in $G$ of size $ k = k' - 2$
     
-    % flip before?
-    
-    In the end, $D = D' \setminus \{ d_1,d_2\}$ gives us a ds in $G$ with size $ k = k' - 2$
-    
-    \end{enumerate}
-    As G' can be constructed in linear time and the parameter $k$ is only blown up by a constant, this reduction is an FPT reduction.  Because \dom is already $w[2]$-hard on bipartite graphs (\cite), we imply that \sdom is $w[2]$-hard as well.
+    As $G'$ can be constructed in linear time and the parameter $k$ is only blown up by a constant, this reduction is an fpt reduction.  
+    Because \dom is already \WTWOhs-hard on bipartite graphs \cite[Th. 1]{Raman2008}, we imply that \sdom is $w[2]$-hard as well.
 \end{proof}
 
-\subsection{\hmath $W[2]$-hard on Split Graphs}
+Next, we will prove intractability for \textit{split} graphs which directly implies intractability for \textit{chordal} graphs as well.
 
-TODO Getting started with that.
+\begin{theorem}
+    \sdom is \WONEhs-hard when restricted to \textit{split} graphs.
+\end{theorem}
+\begin{proof}
+    Given a split graph \G with an independent set $I = \{z_i\}$ and a clique $K = \{k_z\}$ we construct a split graph $G'$ in the following way:
 
-\subsection{\hmath $W[2]$-hard on Chordal Graphs}
+    Given a split graph \G 
+
+    \begin{corollary} $G$ has a a ds of size $k$ if and only if $G'$ has a sds of size $k' = k + 1$.
+
+    \end{corollary} 
+
+
+\end{proof}
+
+\begin{figure}[ht]
+    \label{fig:neighborhoodSingle}
+    \begin{equation*}
+        \tikzfig{fig/tikz/split}
+    \end{equation*}
+\caption{\textit{Constructing another split graph $G'$ by increasing the size of the complete graph by one and adding one additional vertex $u$.}}
+\end{figure}
+
+\subsection{\hmath $W[2]$-hard on s Chordal IDK}
 
 % TODO: Fix everything here.
 Although the previous result implies $w[2]$-hardness for chordal graphs, we found another reduction from \dom on chordal graphs.
