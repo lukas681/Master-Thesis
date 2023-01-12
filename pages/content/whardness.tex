@@ -16,17 +16,16 @@ We will first show that \sdom is \WTWOhs-hard on \textit{bipartite graphs} by a 
 \end{theorem}
 
 \begin{proof}
-    Given a bipartite $G = ( \{X \cup Y\}, E)$, we construct a bipartite graph $G' = (\{X' \cup Y'\},E')$:
-    \begin{enumerate}
+    Given a bipartite $G = ( X \cup Y, E)$, we construct a bipartite graph $G' = (\{X' \cup Y'\},E')$:
+    \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
         \item For each $x_i \in X$, we add a new vertex $a_i \in A$  and an edge $\{x_i, a_i\}$ in between. 
         \item For each $y_j \in Y$, we add a new vertex $b_j \in B$ and an edge $\{y_j, b_j\}$ in between.
         \item We add fource vertices with with edges $\{u_1, d_1\}$ and $\{u_2, d_2\}$, and connect them with all $\{d_1, a_i\}$ and $\{d_2, b_j\}$ ($i \in [m]$ and $j \in [n]$) respectively.
     \end{enumerate}
     \paragraph*{Observation:} The constructed $G'$ is bipartite because $A$ and $B$ form an independent set on G' that can be cross-wise attached to one of the previous vertex sets. Setting  $X' = X \cup \{u_2,d_1\} \cup B$ and $Y' = X \cup \{u_1,d_2\} \cup A$ form the partitions of the new bipartite G'.
-
-    \begin{corollary} $G$ has a dominating set (ds) of size $k$ if and only if $G'$ has a semitotal dominating set (sds) of size $k' = k + 2$.
-    \end{corollary} 
-    First assume a ds in $G$ of size $k$. 
+    It is left to show that $G$ has a ds $D$ of size $k$ if and only if $G'$ has a sds $D'$ of size $k' = k + 2$.
+ 
+    First, assume a ds $D$ in $G$ of size $k$. 
     We know that $D' = D\cup \{d_1,d_2\}$ is an sds in $G'$ of size $k' = k + 2$, because $d_1$ dominates $u_1$ and all $a_i \in A$; $d_2$ dominates $u_2$ and all $b_i \in B$. 
     The rest is dominated by the same vertices as they were in $G$, but now all of them have either $d_1$ or $d_2$ as a witness.
     More formally, we have by construction of $G'$ that $\forall v \in (D \cap X): d(v, d_1) = 2$ and $\forall v \in (D \cap Y): d(v, d_2) = 2$.
@@ -34,7 +33,7 @@ We will first show that \sdom is \WTWOhs-hard on \textit{bipartite graphs} by a 
     Contrary, assume any sds $D'$ in $G'$ with size $k'$. Without loss of generality, we can assume that $u_1, u_2 \notin D'$, because choosing $d_1$ and $d_2$ instead is always as least as good and does not violate any witnesses. Therefore, the construction forces $d_1$, $d_2 \in D'$. 
     All $a_i \in A$ can only be useful to dominate their partnering $x_i$ ($b_i \in B$ for $y_i$), because $d_1, d_2 \in D$ is the only second neighbor they have.
     If $a_i,b_i \in D'$ we replace it with $x_i$ and $y_i$ preserving the size $D$. As $d_1$ and $d_2$ suffice to provide a witness for every vertex in the graph and do not lose any other witnesses, this operation is sound.
-    Hence, $D = D' \setminus \{ d_1,d_2\}$ gives a ds in $G$ of size $ k = k' - 2$
+    Hence, $D = D' \setminus \{ d_1,d_2\}$ gives a ds in $G$ of size $ k = k' - 2$.
     
     As $G'$ can be constructed in linear time and the parameter $k$ is only blown up by a constant, this reduction is an fpt reduction.  
     Because \dom is already \WTWOhs-hard on bipartite graphs \cite[Th. 1]{Raman2008}, we imply that \sdom is $w[2]$-hard as well.
@@ -42,27 +41,30 @@ We will first show that \sdom is \WTWOhs-hard on \textit{bipartite graphs} by a 
 
 Next, we will prove intractability for \textit{split} graphs which directly implies intractability for \textit{chordal} graphs as well.
 
+
 \begin{theorem}
     \sdom is \WONEhs-hard when restricted to \textit{split} graphs.
 \end{theorem}
 \begin{proof}
-    Given a split graph \G with an independent set $I = \{z_i\}$ and a clique $K = \{k_z\}$ we construct a split graph $G'$ in the following way:
-
-    Given a split graph \G 
-
-    \begin{corollary} $G$ has a a ds of size $k$ if and only if $G'$ has a sds of size $k' = k + 1$.
-
-    \end{corollary} 
-
-
+    Given a split graph $G = \{(K \cup I), E\}$ transform it to a split graph $G'$ by adding two vertices $d$ and $u$ and edges $\{d,u\} \cup \{d, k_i\}$ for all $k_i \in K$. \cref{fig.splitgraph} visualizes this reduction.
+    Because $d$ only increases the size of the clique $K$ by one and $u$ fits into the independent set I, $G'$ is again a split graph. 
+    It is left to show that $G$ has a ds of size $k$ if and only if $G'$ has a sds of size $k' = k + 1$.
+    
+    First, assume any ds $D$ of size $k$ in $G$. 
+    Letting $D' = D \cup d$ gives an sds in $G'$.
+    The contrary assume an sds $D'$ of size $k$ in $G'$.
+    If a vertex $v \in D \cap I$, we simply flip it to a neighbor in $K$ preserving the dominating set. 
+    $d \in D'$ is only used in $G'$ for dominating $u$ and can be ignored in $G$.
+    Therefore letting $D = D' \setminus \{d\}$ gives a valid ds in $G$ of size $ k-1$.
+    Together with the fact that \dom is \WTWOhs-hard on \textit{split} graphs \cite{Raman2008}, the claim follows.
 \end{proof}
 
 \begin{figure}[ht]
-    \label{fig:neighborhoodSingle}
+    \label{fig:splitgraph}
     \begin{equation*}
         \tikzfig{fig/tikz/split}
     \end{equation*}
-\caption{\textit{Constructing another split graph $G'$ by increasing the size of the complete graph by one and adding one additional vertex $u$.}}
+\caption{\textit{Constructing another split graph $G'$ by increasing the size of the complete graph by one with a new vertex $d$ and adding one additional vertex $u$.}}
 \end{figure}
 
 \subsection{\hmath $W[2]$-hard on s Chordal IDK}
@@ -145,7 +147,7 @@ The following lemma shows that
     \end{subproof}
    
     \begin{corollary}
-    G is Chordal iff G' is chordal.    
+    G is chordal iff G' is chordal.    
     \end{corollary}
     \begin{subproof}
     $\Rightarrow$: Assume $G$ chordal. Then exists a total elimination order $o = (v_1, ..., v_n)$ in G where removing $v_j$ sequentially returns cliques in $N(v_i)$.
@@ -155,17 +157,11 @@ The following lemma shows that
 
 
     \begin{corollary}
-    G has a Dominating Set of size k iff $G'$ has a sds of size $k+1$
+    G has a Dominating Set of size k iff $G'$ has an sds of size $k+1$
     \end{corollary}
     \begin{subproof}
     Assume a ds $D$ of size $k$ in $G$. $D \cup \{u\}$ is an sds in $G'$ of size $k + 1$, because $u$ dominates $t$ and for each $v \in DS: d(v, u) \leq 2$.
-
     Contrary, assume an sds $SD$ in $G'$. To dominate $t$, $u \in SD$ must hold, hence already dominating the complete subgraph $K_{n+1}$. If a vertex $k_i \in SD$, we exchange it with $v_i$ not losing the domination property. Taking $D = SD - \{ u \}$ gives our desired ds of size $k$.
     \end{subproof}
     As this reduction runs in FPT time and the parameter is only bounded by a function of k, this is an FPT reduction. As \dom on Chordal Graphs is $w[2]-hard$, so is \sdom on Chordal Graphs.
-
-    %TODO partial elemination order
-%    \begin{corollary}
-%    SDS is $w[2]$ hard on Chordal Grpahs 
- %   \end{corollary}
 \end{proof}

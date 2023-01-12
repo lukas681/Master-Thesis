@@ -353,7 +353,7 @@
 		\draw (173.center) to (171);
 		\draw (174.center) to (171);
 		\draw (171) to (175.center);
-		\draw [style=ULTRAGRAY] (179) to (158);
+		\draw [style=EDGE] (179) to (158);
 		\draw [style=ULTRAGRAY] (158) to (178);
 		\draw [style=ULTRAGRAY] (158) to (177);
 		\draw [style=ULTRAGRAY] (176) to (158);
