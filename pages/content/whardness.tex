@@ -20,18 +20,22 @@ We will first show that \sdom is \WTWOhs-hard on \textit{bipartite graphs} by a 
     \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
         \item For each $x_i \in X$, we add a new vertex $a_i \in A$  and an edge $\{x_i, a_i\}$ in between. 
         \item For each $y_j \in Y$, we add a new vertex $b_j \in B$ and an edge $\{y_j, b_j\}$ in between.
-        \item We add fource vertices with with edges $\{u_1, d_1\}$ and $\{u_2, d_2\}$, and connect them with all $\{d_1, a_i\}$ and $\{d_2, b_j\}$ ($i \in [m]$ and $j \in [n]$) respectively.
+        \item We add four vertices with edges $\{u_1, d_1\}$ and $\{u_2, d_2\}$, and connect them with all $\{d_1, a_i\}$ and $\{d_2, b_j\}$ ($i \in [m]$ and $j \in [n]$) respectively.
     \end{enumerate}
-    \paragraph*{Observation:} The constructed $G'$ is bipartite because $A$ and $B$ form an independent set on G' that can be cross-wise attached to one of the previous vertex sets. Setting  $X' = X \cup \{u_2,d_1\} \cup B$ and $Y' = X \cup \{u_1,d_2\} \cup A$ form the partitions of the new bipartite G'.
+
+    Observe that $G'$ is bipartite because $A$ and $B$ form an independent set on $G'$ that can be cross-wise attached to one of the previous vertex sets. 
+    Setting  $X' = X \cup \{u_2,d_1\} \cup B$ and $Y' = X \cup \{u_1,d_2\} \cup A$ form the partitions of the new bipartite $G'$.
+
     It is left to show that $G$ has a ds $D$ of size $k$ if and only if $G'$ has a sds $D'$ of size $k' = k + 2$.
  
     First, assume a ds $D$ in $G$ of size $k$. 
     We know that $D' = D\cup \{d_1,d_2\}$ is an sds in $G'$ of size $k' = k + 2$, because $d_1$ dominates $u_1$ and all $a_i \in A$; $d_2$ dominates $u_2$ and all $b_i \in B$. 
     The rest is dominated by the same vertices as they were in $G$, but now all of them have either $d_1$ or $d_2$ as a witness.
-    More formally, we have by construction of $G'$ that $\forall v \in (D \cap X): d(v, d_1) = 2$ and $\forall v \in (D \cap Y): d(v, d_2) = 2$.
+    therefore by construction of $G'$ we have $\forall v \in (D \cap X): d(v, d_1) = 2$ and $\forall v \in (D \cap Y): d(v, d_2) = 2$.
 
-    Contrary, assume any sds $D'$ in $G'$ with size $k'$. Without loss of generality, we can assume that $u_1, u_2 \notin D'$, because choosing $d_1$ and $d_2$ instead is always as least as good and does not violate any witnesses. Therefore, the construction forces $d_1$, $d_2 \in D'$. 
-    All $a_i \in A$ can only be useful to dominate their partnering $x_i$ ($b_i \in B$ for $y_i$), because $d_1, d_2 \in D$ is the only second neighbor they have.
+    Contrary, assume an sds $D'$ in $G'$ with size $k'$. 
+    Wlog assume that $u_1, u_2 \notin D'$, because choosing $d_1$ and $d_2$ is always equally good and does break witness properties and therefore the construction forces $d_1$, $d_2 \in D'$.
+    All $a_i \in A$ can only be used to dominate their neighboring $x_i$ ($b_i \in B$ for $y_i$), because $d_1, d_2 \in D$ is the only second neighbor they have.
     If $a_i,b_i \in D'$ we replace it with $x_i$ and $y_i$ preserving the size $D$. As $d_1$ and $d_2$ suffice to provide a witness for every vertex in the graph and do not lose any other witnesses, this operation is sound.
     Hence, $D = D' \setminus \{ d_1,d_2\}$ gives a ds in $G$ of size $ k = k' - 2$.
     
@@ -40,7 +44,6 @@ We will first show that \sdom is \WTWOhs-hard on \textit{bipartite graphs} by a 
 \end{proof}
 
 Next, we will prove intractability for \textit{split} graphs which directly implies intractability for \textit{chordal} graphs as well.
-
 
 \begin{theorem}
     \sdom is \WONEhs-hard when restricted to \textit{split} graphs.

@@ -42,18 +42,16 @@ Unless stated otherwise, we usually consider only \textit{simple graphs}, but th
 \end{definition}
 
 
-%TODO Quote
 \begin{definition}[Degrees]
     Let \G be a graph. The \textit{degree} $d_G(v)$ (shortly $d(v)$ if $G$ is clear from the context) of a vertex $v \in V$ is the number of neighbors of v. We call a vertex of degree $0$ as \underline{isolated} and one of degree $1$ as a \underline{pendant}. If all the vertices of $G$ have the same degree $k$, then $g$ is $k$-regular.
 \end{definition}
 
-% TODO Quote e.g. The open neighborhood number of a graph
 \begin{definition}[Closed and Open Neighborhoods {\cite{Balakrishnan2012}}]
     Let \G be a (non-empty) graph. 
     The set of all neighbors of $v$ is the \underline{open neighborhood} of $v$ and denoted by $N(v)$; the set $N[v] = N(v) \cup \{v\}$ is the \underline{closed neighborhood} f $v$ in $G$. When G needs to be made explicit, those open and closed neighborhoods are denoted by $N_G(v)$ and $N_G[v]$. 
 \end{definition}
 
-\begin{definition}[isomorphic Graphs]
+\begin{definition}[Isomorphic Graphs]
 Let \G and $G' = (V', E')$ be two graphs. We call $G$ and $G'$ \underline{isomorphic}, if there exists a bijection $\phi: V \rightarrow V'$ with $\{x, y\} \in E \Leftrightarrow \phi(x)\phi(y) \in E'$ for all  $x,y \in V$. Such a map $\phi$ is called \underline{isomorphism}.
 
 If a graph $G$ is isomorphic to another graph $h$, we denote $G \simeq H$. 
