@@ -166,8 +166,6 @@ We are now introducing the problems of \dom, \sdom and \tdom and dedicate the re
 We are now going to define the three most important domination problems for this work: \dom, \sdom and \tdom.
 Recall that a dominating set of a graph \G is a subset $D \subseteq V$, such that every vertex $V \setminus D$ is adjacent to some vertex in $D$.
 We say that a vertex $d$ is a \textit{dominating vertex} or \textit{dominator} if $d \in D$ and that $d$ \textit{dominates} all of its neighbors.
-
-The \dom problem asks for a subset $D$ of size at most $k$ of vertices whose set of neighbors are adjacent o all the other vertices.
 In other words: every vertex $v \notin D$ needs to have at least one neighbor in $D$.
 
 \begin{prb}[\MakeUppercase{\DOM}~{\cite[p. 586]{Cygan2015}}]{prb:ds}
@@ -176,6 +174,18 @@ In other words: every vertex $v \notin D$ needs to have at least one neighbor in
         \textbf{Question} & Is there a set {$X \subseteq V$} of size at most $k$ such that ${N[X] = V}$? \\
     \end{tabularx}
 \end{prb}
+
+The \dom problem asks for a subset $D$ of size at most $k$ whose set of neighbors are adjacent to all the other remaining vertices in a graph.
+The following \cref{fact:distance} motivates the definition of the following variants of the problem.
+\begin{fact}\label{fact:distance} Let \G be a connected graph and $D$ a ds with $\abs{D} > 1$. 
+For any $v_1 \in D$ there exists at least one $v_2$ with $d(v_1,v_2) \leq 3$.
+\end{fact}
+\begin{proof}
+Assume a ds $D$ and $v_1 \in D$ for which no other dominating vertex is in a distance less than three.
+Then exists $v_2$ with $d(v_1,v_2) > 3$. 
+By connectivity there is a path $p = (v_1, p_1, p_2, ...,  p_i, v_2)$ from $v_1$ to $v_2$ and no $p_i \in D $. 
+For $D$ to be a valid ds, $p_2,...p_{i-1}$ have to be dominated by a neighbor as well and therefore, there must exist a $u \in N(p_2) \cap D$ with $d(v_1, u) \leq 2$ giving a contradiction.
+\end{proof}
 
 If we also demand the dominating vertices to be dominated, need the notion of \tdomin.
 The \tdom problem adds one additional constraint: Every vertex $v \in D$ in the dominating set must also be dominated by some vertex $v' \in D$ which we call the \textit{witness} of $v$.
