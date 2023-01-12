@@ -15,19 +15,20 @@ Now they are sitting on all the beautiful water lilies refusing to give them bac
 The ducks have given you a map of the lake (see the left side of \cref{fig:duck-lake}) and marked all the water lilies in green.
 You instantly assured to help and started to analyze their situation!
 
-You quickly observed that the \textit{geesiosi} members are somehow very frightened of the ducks' quacking and it seems that one single duck can free up an entire water lily by sitting there and drive away all the geese on neighboring plants! 
+Additionally, you see that the \textit{geesiosi} members are very frightened of the ducks' quacking and you conclude that one single duck could free up an entire water lily by sitting there driving away all the geese on neighboring plants! 
 After thinking about this for a while you realized that this might indeed be the key observation to regaining the lake. 
 After some more deep contemplating, you came up with a good assignment of ducks to water lilies, where only a minimum number of ducks is required to liberate the whole territory again.
 
 Happy with your idea, you present it to the \textit{Supreme Duck Decision Board}, but unfortunately, you could not fully convince them and the \textit{Chief Strategy Duck} shared her worries with you: 
-``We have to hold the fort and protect the lake against another future rush of the \textit{geesiosi}!'', they said, ``and it is a very tedious task for to sit alone at a water lily waiting the whole day! They would rather want to have at least someone around to quack with together!''
+``We have to hold the fort and protect the lake against another future rush of the \textit{geesiosi}!'', they said, ``and it is a very tedious task  to sit alone at a water lily waiting the whole day! They would rather want to have at least someone around to quack with together!''
 %____
 
 You suggest revising your solution making sure that there is always another friend sitting at most two water lilies away. After a short retreat, you came up with a new solution where only two warrior ducks (see the right side of \cref{fig:duck-lake}) are required and they only have one lily in between. 
 
-Now the ducks were fully satisfied with the solution! But while the chosen two ducks were being sent out over the water's surface, you were still thinking about the problem.
-It looked so easy at first, but in the end, you had to try all the possible configurations while playing around with the number of ducks used (of course you did not tell the ducks that it was that simple, because they now think you are a wizard!). 
-You are wondering, whether there is a way to significantly reduce the number of configurations you have to try to find a solution.
+The ducks were fully satisfied with the solution now! 
+But while you see the chosen two ducks being sent out over the water's surface, you were still thinking about the problem.
+It looked so easy at first, but in the end, you had to try all the possible configurations while playing around with the number of ducks used (of course you did not tell the ducks that it was that simple, because they now think you are a wizard!).
+You wonder whether there is a way to significantly reduce the number of configurations you have to try to find a solution.
 
 \begin{figure}[t]
     \centering
@@ -37,20 +38,10 @@ You are wondering, whether there is a way to significantly reduce the number of 
     \label{fig:duck-lake}
 \end{figure}
 
+Back in your library, you read in ancient scrolls that this problem has already been formalized by Henning \cite{Henning2019} as the \sdom problem which is a variant of the intensively studied \dom problem. 
+You read that both problems are \NPc~\cite{Garey1979,Henning2019} and they are probably very hard to solve in the general case, but there might still be hope if additional information is known. 
+You look back into the map (\cref{fig:duck-lake}) and observe that none of the `quacking'-relations do cross with each other and you are getting curious if this can be used to build up something\ldots
 
-Back in your beloved library, you found in some ancient scrolls that this problem has already been formalized by Henning \cite{Henning2019} as the \sdom problem which is a variant of the intensively studied \dom problem. 
-You read that both problems are \NPc~\cite{Garey1979,Henning2019} and they are probably very hard to solve.
-%After already forshadowed by Gödel \cite{Hartmanis1989} and Nash (CITE), 
-
-Up to today, the question of whether these \NPc problems can be solved efficiently remains an open problem, they write. 
-
-Even though it is believed that they can't in the general case, there would still be hope if additional information about the underlying structure of the problem is known. 
-Before solving the full problem it might be worth discovering parts that are easier than the rest and solving them first. You look back into the map (\cref{fig:duck-lake}) and see that there is one water lily that only had one neighbor.
-Therefore, you had already been forced to assign a duck to one of those in every case which left you with a slightly simple map to be considered. Are there more such tricks that can be applied beforehand?
-
-You observe that none of the `quacking'-relations do cross with each other and you are getting curious if this can be used to build up something\ldots
-
-% FROM https://creazilla.com/nodes/41547-duck-clipart
 \section{Content of the Thesis}
 
 Emerged during the last two decades, \textit{parameterized complexity} is a well-established branch of modern theoretical computer science that showed many practical implications. 
