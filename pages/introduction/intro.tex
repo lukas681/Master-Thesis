@@ -47,29 +47,32 @@ You look back into the map (\cref{fig:duck-lake}) and observe that none of the `
 Emerged during the last two decades, \textit{parameterized complexity} is a well-established branch of modern theoretical computer science that showed many practical implications. 
 In this thesis, we continue the systematic analysis of the \sdom problem through the lens of \textit{parameterized complexity}. 
 
+% TODO Add last implication as soon as available
 \begin{itemize}
-    \item \Cref{ch:prelim} will give the necessary definitions around \textit{graph theory} and \textit{parameterized complexity}.
-    \item In \cref{ch:semitotal-domination} we will discuss the \sdom problem and its relation to \dom and \tdom in more detail. As they are closely related, we will gather the complexity status for various graph classes and compare them with each other in \cref{ch:complexity-status}. We will then show $\omega[2]$-intractability for general, bipartite, chordal, split and XXXX graphs.
-    \item \Cref{ch:linkern} is the mainstay of this thesis. We are going to construct a linear kernel for \psdom following an approach first suggested by Alber, Fellows and Niedermeier \cite{Alber2004}. 
-    \item In \cref{ch:closing} we will give an outlook about open problems and further ideas on how to improve the kernel.
-
+    \item \Cref{ch:prelim} will give the necessary definitions in the fields of \textit{graph theory} and \textit{parameterized complexity}.
+    \item In \cref{ch:semitotal-domination} we will discuss the \sdom problem and its relation to \dom and \tdom in more detail. 
+    As they are closely related, we will gather the complexity status for various graph classes and compare them with each other in \cref{ch:complexity-status}. We will then show $\WTWO$-intractability for general, bipartite, split (and chordal) graphs.
+    \item \Cref{ch:linkern} is the mainstay of this thesis. 
+    We are going to construct a linear kernel for \psdom following an approach first suggested by Alber, Fellows and Niedermeier \cite{Alber2004}. 
+    \item In \cref{ch:closing} we will give further ideas on how to improve the kernel and an outlook about interesting open problems for \sdom in general.
 \end{itemize}
 
 \paragraph{Our contributions}
 
-While many authors already stated positive results (e.g. polynomial time algorithms for graphs of bounded mim-width \cite{Galby2020}, strongly chordal graphs \cite{Tripathi2021}, AT-free graphs \cite{Kloks2021} or interval graphs \cite{Henning2019}, \sdom restricted to bipartite graphs, chordal bipartite graphs, split graphs, planar graphs \cite{Henning2019}, circle graphs \cite{Kloks2021} and other graph classes remains \NPc.
+While many authors have already stated positive results - for example, there exist polynomial-time algorithms for \emph{AT-free}, \emph{block} and \emph{interval} graphs as well as for \emph{graphs of bounded mim-width}, \emph{graphs of bounded clique-width} \cite{Kloks2021, Galby2020,Courcelle1990,Henning2022,Henning2019} - \NP-completeness was shown for various graph classes like general graphs, \emph{split}, \emph{planar}, \emph{chordal bipartite} and \emph{circle} graphs \cite{Henning2019, Kloks2021}.
+
+%For example, there exist polynomial time algorithms for graphs of bounded mim-width \cite{Galby2020}, strongly chordal graphs \cite{Tripathi2021}, AT-free graphs \cite{Kloks2021} or interval graphs \cite{Henning2019}, \sdom restricted to bipartite graphs, chordal bipartite graphs, split graphs, planar graphs \cite{Henning2019}, circle graphs \cite{Kloks2021} and other graph classes remains \NPc.
 
 We are going to further investigate these \NPc cases by applying the framework of \textit{parameterized complexity}. 
-We could show $\omega[2]$-intractability for general, bipartite, chordal, split and perfect graphs using parameterized reductions from \dom.
+We could show $\WTWOhs$-intractability for general, bipartite, chordal, split and perfect graphs using parameterized reductions from \dom when parameterized by solution size.
 
-In a groundbreaking paper, Alber, Fellows and Niedermeier \cite{Alber2004} gave the first linear kernel for \pdom. 
-They saw that a planar graph can be decomposed into a linear number of smaller regions. 
+In a groundbreaking paper, Alber, Fellows and Niedermeier \cite{Alber2004} first gave a linear kernel for \pdom. 
+They recognized that a planar graph can be decomposed into a linear number of smaller regions. 
 This motivated the introduction of local reduction rules that shrink the number of vertices in such a region to a constant size. 
 Following up on this result, many other explicit linear kernels for dominating problems on planar graphs were found \cite{Guo2007, Garnero2017, Luo2013, Alber2006}. 
 This has made us believe that we can also transfer such results to \psdom as well.
-
-It turns out that our premonition was true and by adjusting the reduction rules given by Garnero and Sau \cite{Garnero2018} \footnote{We will rely on two different versions of this paper throughout the thesis. The \textit{arXiv} versions are explicitly marked.} for \ptdom, we were able to give an explicit kernel for \psdom of size $\kernelsize k$. 
-More precisely, we proved the following central theorem of this thesis:
+Our premonition turned out to be true and by adjusting the reduction rules given by Garnero and Sau \cite{Garnero2018}\footnote{We will rely on two different versions of this paper throughout the thesis. The \textit{arXiv} versions are explicitly marked.} for \ptdom, we were able to give an explicit kernel for \psdom of size $\kernelsize k$. 
+More precisely, we are going to prove the following theorem:
 
 \begin{restatable}[]{theorem}{centraltheo}\label{thm:central}
     The \sdom problem parameterized by solution size admits a linear kernel on planar graphs. There exists a polynomial-time algorithm that given a planar graph $(G, k)$, either correctly reports that $(G, k)$ is a NO-instance or returns an equivalent instance $(G', k)$ such that $\abs{V(G')} \leq \kernelsize \cdot k$.
