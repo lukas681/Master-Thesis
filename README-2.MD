@@ -1,51 +1,53 @@
 # CHECKLIST BEFORE HANDIN
 
-1) All TODOS resolved?
-2) align environment correct numbering
-3) All figures correctly referenced?
-4) Captions detailed enough? Reviewed
-5) Quotations
-6) Citations correctly. All pages given correctly?
-7) Neighbours vs neighbors
-8) CREFS* / CREF correctly distinguished.
-9) Regions quoted correcty?
-10) Quotation Signs correct?
-11) vw-region spelled correctly
-12) Try to fix all compiler warnings
-13) planar and plane?
-14) Quote Lemma XX or nur XX? Set in href settings?
-15) Add a duck somewhere.
-16) Check all lemma / theorem / proposition references and their name
-17) Color scheme for regions and vertices consistent? + Color scheme for all other environments
-18) Which paper should I use as a reference.
-19) Make side notes
-20) Remove duplicate labels in the whole document
-21) Remove Journal Citings with the actual paper and not the editor
-22) Make arrows in Drawing thicker to make it better readable
+1) All TODOS resolved? OK
+2) align environment correct numbering OK
+3) All figures correctly referenced? OK
+4) Captions detailed enough? Reviewed OK
+5) Quotations OK
+6) Citations correctly. All pages given correctly? OK
+7) Neighbours vs neighbors OK
+8) CREFS* / CREF correctly distinguished. OK
+9) Regions quoted correcty? 
+10) Quotation Signs correct?  
+11) vw-region spelled correctly OK
+12) Try to fix all compiler warnings NO
+13) planar and plane? OK
+14) Quote Lemma XX or nur XX? Set in href settings? OK
+15) Add a duck somewhere. OK, more than one duck added ..
+16) Check all lemma / theorem / proposition references and their name OK
+17) Color scheme for regions and vertices consistent? + Color scheme for all other environments OK
+18) Which paper should I use as a reference. OK arXiv ok...
+19) Make side notes (Maybe still an idea.)
+20) Remove duplicate labels in the whole document 
+21) Remove Journal Citings with the actual paper and not the editor OK
+22) Make arrows in Drawing thicker to make it better readable NOTED DOWN IN PRINTOUT
 23) Check distance definitino: Waht about infinity? 
-24) Bipartite Graph definedp
-25) Remove case 2.and adjust all refs
-26) cref vs Cref upper and lower cases.
+24) Bipartite Graph definedp OK
+25) Remove case 2.and adjust all refs OK
+26) cref vs Cref upper and lower cases. OK
 27) This in the end;: https://blog.wordvice.com/avoid-fillers-powerful-writing/
 Acronyms
-28) Difference between plane and planar graph FIXED
-29) Buy grammarly premium and cross check.
-30) Implement these facy boxes
-31) Capitalizing    
-32) Uniform: Underline or bolt in definitions emphasizes
-33) Examples for R2
-34) Introduce notion of pendants
-35) Color scheme blindgerecht
-36) All quotations PERSON - CITE - WHAT 
-38) a/a semitotal dominating set=?
-37) Reference to Monzy
-38) “An arm, you goose! Who ever saw one that size? Why, it fills the whole window!”. Caroll Quote somewhere
-39)  GEB, quote
-40) Chapter, First letter big even in sentence. FIXED
-41) All colons correct
-42) Replace FPT by \FPT
-43) All OMEGA to e
-44) Environment command for W hardness + highlighting
+28) Difference between plane and planar graph FIXED 
+29) 
+30) 29) Buy grammarly premium and cross check.
+31) Implement these facy boxes OK, they are already nice!
+32) Capitalizing OK, but check again in the end
+33) Uniform: Underline or bolt in definitions emphasizes DONE, underline
+34) Examples for R2, Added.
+35) Introduce notion of pendants, Added.
+36) Color scheme blindgerecht LOL
+37) All quotations PERSON - CITE - WHAT  OK
+38) a/a semitotal dominating set=? OK
+39) Reference to Monzy in PENDING
+40) “An arm, you goose! Who ever saw one that size? Why, it fills the whole window!”. Caroll Quote somewhere
+41)  GEB, quote DONE.
+
+42) Chapter, First letter big even in sentence. FIXED
+43) All colons correct ... Check again in the end   .
+44) Replace FPT by \FPT
+45) All OMEGA to e
+46) Environment command for W hardness + highlighting OK
 
 
 ## maybwe qzuote

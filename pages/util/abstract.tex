@@ -5,25 +5,25 @@
 For a graph \G, a set $D$ is called a \textit{semitotal dominating set}, if $D$ is a dominating set and every vertex $v \in D$ is within distance two to another witness $v' \in D$. 
 The \msdom problem is to find a semitotal dominating set of minimum cardinality. 
 The semitotal domination number $\gamma_{t2}(G)$ is the minimum cardinality of a semitotal dominating set and is squeezed between the domination number $\gamma(G)$ and the total domination number $\gamma_t(G)$.
- Given \G and a positive integer $k$, the \sdomd problem asks if $\gamma_{2t} \leq k$.
+ Given \G and a positive integer $k$, the \sdomd problem asks if $\gamma_{t2} \leq k$.
 
-After introduced by Goddard, Henning and McPillan \cite{Goddard2014}, \NP-completeness was shown for various graph classes like general graphs, \emph{split}, \emph{planar}, \emph{chordal bipartite} and \emph{circle} graphs \cite{Henning2019, Kloks2021}.
+After introduced by Goddard, Henning and McPillan \cite{Goddard2014}, \NP-completeness of the problem was shown for various graph classes like general graphs, \emph{split}, \emph{planar}, \emph{chordal bipartite} and \emph{circle} graphs \cite{Henning2019, Kloks2021}.
 Contrary, there exist polynomial-time algorithms for \emph{AT-free}, \emph{block} and \emph{interval} graphs as well as for \emph{graphs of bounded mim-width}, \emph{graphs of bounded clique-width} \cite{Kloks2021, Galby2020,Courcelle1990,Henning2022,Henning2019}.
-After giving an update on the problem, we start a systematic look through the lens of \textit{parameterized complexity} by showing that \sdom is $\WTWOhs$-hard for bipartite graphs and split graphs when parameterized by solution size.
-On the positive side, we extend a technique proposed by Alber et al. \cite{Alber2004} for \dom to construct a linear kernel of size $\kernelsize k$ for \sdom in planar graphs by giving suitable reduction rules.
+After giving a status about the complexity of the problem, we start a systematic look through the lens of \textit{parameterized complexity} by showing that \sdom is $\WTWOhs$-hard for bipartite graphs and split graphs when parameterized by solution size.
+On the positive side, we extend a technique proposed by Alber et al. \cite{Alber2004} for \dom to construct a linear kernel of size $\kernelsize k$ for \sdom on planar graphs by giving introducing reduction rules.
  
- This result further complements known linear kernels for other domination problems like \cdom, \rbdom, \efdom, \eddom, \idom and \dirdom on planar graphs.
+ This result complements known linear kernels for other domination problems like \cdom, \rbdom, \efdom, \eddom, \idom, and \dirdom on planar graphs.
 
-\textbf{Keywords: }Domination; Semitotal Domination; Parameterized Complexity; Planar Graphs; Linear Kernel 
+\textbf{Keywords: }Domination; Semitotal Domination; Parameterized Complexity; Planar Graphs; Linear Kernel; Problem Reduction; Graph Theory
 } 
 \end{abstract}
 
-\chapter{Zusammenfassung}
+\newpage
 
 \begin{abstract}
 {\sffamily
 
-Ein Graph \G und eine Menge $D$ wird als \textit{halbtotale stabile Menge} bezeichnet, falls $D$ eine stabile Menge und jeder Knoten $v \in D$ maximal einen Abstand von zwei zu einem anderen Zeugen $v' \in D$ besitzt. 
+Ein Graph \G und eine Menge $D$ wird als \textit{halbtotale stabile Menge} bezeichnet, falls $D$ eine stabile Menge ist und jeder Knoten $v \in D$ maximal einen Abstand von zwei zu einem anderen Zeugen $v' \in D$ besitzt. 
 
 Das \msdom Problem frägt nach einer halbtotalen stabilen Menge von minimaler Kardinalität. 
 Sei $\gamma_{t2}(G)$ die minimale Kardinalität einer halbtotalen stabilen Menge. Diese ist zwischen der minimalen stabilen Menge $\gamma(G)$ and der minimalen total stabilen Menge $\gamma_t(G)$ eingezwängt.
@@ -36,7 +36,6 @@ Nach einer umfassenden Analyse zum Stand des Problems, beginnen wir eine systema
 Basierend auf vorangegangener Arbeit \cite{Alber2004,Garnero2018} war es uns möglich Reduktionsregeln anzugeben, die einen linearen Problemkern der Größe $\kernelsize k$ für plättbare Graphen erzeugt.
  Dies vervollständigt existierende lineare Problemkerne ähnlicher Problem wie \cdom, \rbdom, \efdom, \eddom, \idom oder \dirdom.
 
-
-\textbf{Schlagworte}: Stabile Menge; Halbtotale Stabile Menge; Parametrisierte Komplexität; Plättbare Graphen; Linearer Problemkern 
+\textbf{Schlagworte}: Stabile Menge; Halbtotale Stabile Menge; Parametrisierte Komplexität; Plättbare Graphen; Linearer Problemkern; Problemreduktion; Graph Theorie
 }
 \end{abstract}
