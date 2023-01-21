@@ -11,14 +11,13 @@
 \epigraph{\itshape ``All we have to decide is what to do with the time that is given to us.''}{J. R. R. Tolkien, \textit{Gandalf} in \textit{Lord of the Rings}}
 
 
-In this chapter, we will introduce the core definitions used throughout this thesis. 
-Most of the definitions of graph theory are taken from \cite{Diekert2005}. 
-For definitions in the area of \textit{parameterized complexity}, the book written by Cygan et al. \cite{Cygan2015} gives an excellent introduction.
-For standard mathematical notation, the reader is referred to any introductory textbook into discrete mathematics (e.g. \cite{Rosen2012}).
-
+This chapter will introduce the core definitions used throughout this thesis. 
+Most of the graph theory definitions are taken from \cite{Diekert2005}. 
+For definitions in the area of \textit{parameterized complexity}, the book by Cygan et al. \cite{Cygan2015} gives an excellent introduction.
+For standard mathematical notation, we refer the reader to any introductory textbook into discrete mathematics (e.g., \cite{Rosen2012}).
 \section{Graph Theory}
 
-If not explicitly stated otherwise, the following definitions are taken from the book \textit{Graph Theory} written by Reinhard Diestel \cite{diestel10}.
+If not explicitly stated otherwise, the following definitions were taken from the book \textit{Graph Theory} written by Reinhard Diestel \cite{diestel10}.
 
 \subsection{Basic Terminology}
 
@@ -28,22 +27,19 @@ If not explicitly stated otherwise, the following definitions are taken from the
     A multigraph is a pair $(V, E)$ of disjoint sets together with a map $E \rightarrow V \cup [V]^2$ assigning to every edge either one or two vertices, its ends. Multigraphs can have loops and multiple edges.
     
     We usually denote the vertex set by $V(G)$ and its edge set by $E(G)$.
-
-
-    % TODO connected 
-
 \end{definition}
 
-Unless stated otherwise, we usually consider only \textit{simple graphs}, but the notion of \textit{multigraphs} gets important when we later talk about the \textit{underlying multigraph} of a \dreg. 
+Unless stated otherwise, we usually consider only \textit{simple graphs}, but the notion of \textit{multigraphs} gets essential when we later talk about the \textit{underlying multigraph} of a \dreg. 
 
 \begin{definition}[Subgraph and Induced Subgraph]
     Let \G and $G' = (V', E')$ be two graphs. If $V' \subseteq V$ and $E' \subseteq E$ then $G'$ is a \underline{subgraph} of $G$. 
-    If $G$ is a subgraph of $G'$ and $G'$ contains all the edges to $G$ with both endpoints in $V(G')$, then $G'$ is an \underline{induced subgraph} of $G$ and we write $G' = G[V(G')]$.
+    If $G$ is a subgraph of $G'$ and $G'$ contains all the edges to $G$ with both endpoints in $V(G')$, then $G'$ is an \underline{induced subgraph} of $G$, and we write $G' = G[V(G')]$.
 \end{definition}
 
-
 \begin{definition}[Degrees]
-    Let \G be a graph. The \textit{degree} $d_G(v)$ (shortly $d(v)$ if $G$ is clear from the context) of a vertex $v \in V$ is the number of neighbors of v. We call a vertex of degree $0$ as \underline{isolated} and one of degree $1$ as a \underline{pendant}. If all the vertices of $G$ have the same degree $k$, then $g$ is $k$-regular.
+    Let \G be a graph. The \textit{degree} $d_G(v)$ (shortly $d(v)$ if $G$ is clear from the context) of a vertex $v \in V$ is the number of neighbors of v. 
+    We call a vertex of degree $0$ \underline{isolated}, and one of degree $1$ a \underline{pendant}. 
+    If all the vertices of $G$ have the same degree $k$, then $g$ is $k$-regular.
 \end{definition}
 
 \begin{definition}[Closed and Open Neighborhoods {\cite{Balakrishnan2012}}]
@@ -58,14 +54,16 @@ If a graph $G$ is isomorphic to another graph $h$, we denote $G \simeq H$.
 \end{definition}
 
 \begin{definition}[Paths and Cycles]
-    A path is a non-empty graph $P = (V,E)$ of the form $V = \bigcup_{i  \in [k]} \{x_i\}$ and $E = \bigcup_{i \in  [k-1]} \{x_ix_{i+1}\}$ where the $x_i$ are distinct. The vertices $x_0$ and $x_k$ are \underline{linked} by $P$ and are called the \textit{ends} of $P$. The \underline{length} of a path is its number of edges and the path on $n$ vertices is denoted by  $P_n$. We refer to a path $P$ by a natural sequence of its vertices: $P = x_0x_1...x_k$. Such a path $P$ is a path between $x_0$ and $x_k$, or a $x_0,x_k$-path.
+    A path is a non-empty graph $P = (V,E)$ of the form $V = \bigcup_{i  \in [k]} \{x_i\}$ and $E = \bigcup_{i \in  [k-1]} \{x_ix_{i+1}\}$ where all the $x_i$'s are distinct. 
+    The vertices $x_0$ and $x_k$ are \underline{linked} by $P$ and are called the \textit{ends} of $P$. The \underline{length} of a path is its number of edges, and the path on $n$ vertices is denoted by  $P_n$. 
+    We refer to a path $P$ by a natural sequence of its vertices: $P = x_0x_1...x_k$. Such a path $P$ is a path between $x_0$ and $x_k$, or a $x_0,x_k$-path.
     If $P = x_0...x_k$ is a path and $k \geq 2$, the graph with vertex set $V(P)$ and edge set $E(P) \cup \{x_kx_0\}$ is a \underline{cycle}. The cycle on $n$ vertices is denoted as $C_n$.
     The \underline{distance} $d_G(v,w)$ from a vertex $v$ to a vertex $w$ in a graph $g$ is the length of the shortest path between $v$ and $w$. If $v$ and $w$ are not linked by any path in $G$, we set $d_G(v,w) = \infty$. Again, if $G$ is clear from the context, we omit the subscripted $G$ and just write $d(v,w)$ instead.
 \end{definition}
 
 \subsection{Graph Classes}
 
-A \textit{graph class} is a set of graphs $\mathfrak{G}$ that is closed under isomorphism that is if $G \in \mathfrak{G}$ and a $H \simeq G$ then $H \in \mathfrak{G}$ as well.
+A \textit{graph class} is a set of graphs $\mathfrak{G}$ that is closed under isomorphism, that is, if $G \in \mathfrak{G}$ and a $H \simeq G$ then $H \in \mathfrak{G}$ as well.
 
 \begin{definition}[Graph Parameters]
 Let \G be a graph.
@@ -125,7 +123,7 @@ A \textit{plane graph} is a pair $(V,E)$ of finite sets with the following prope
     \item The interior of an edge contains no vertex and no point of any other edge
 \end{itemize}
 
-An embedding in the plane, or \textit{planar embedding}, of an (abstract) graph $G$ is an isomorphism between $G$ and a plane graph $H$. A \textit{plane graph} can be seen as a concrete \textbf{embedding} of the planar graph into the ``plane'' $\mathbb{R}^2$.
+An embedding in the plane, or \textit{plane embedding}, of an (abstract) graph $G$ is an isomorphism between $G$ and a plane graph $H$. A \textit{plane graph} can is a concrete \textbf{embedding} of the planar graph into the ``plane'' $\mathbb{R}^2$.
 
 \end{graphclass}
 
@@ -141,137 +139,133 @@ An embedding in the plane, or \textit{planar embedding}, of an (abstract) graph 
         \caption{Generated with Dall-E. \url{https://labs.openai.com/}. ``Duck playing chess''}
 \end{figure}
 
-%\epigraph{\itshape In computer science, parameterized complexity is a framework for studying the complexity of computational problems, in which the complexity of a problem is not just a function of the size of the input, but also a function of one or more additional parameters that describe the problem instance. }{chatGPT, \textit{2022}}
-% Maybe add some sentences from here: https://link.springer.com/content/pdf/10.1007/978-1-4419-7997-1.pdf?pdf=button p.243
 \epigraph{\itshape ``This set must be small, but also complete, \\ 
 to conquer the
 graph with ease and fleet, \\
 with vertices chosen so carefully, \\
 the solution is found, so elegantly.''
-}{ChatGPT, Generated by OpenAI Language Model, Knowledge Cutoff: 2021-09}
+}{ChatGPT, Generated by \emph{OpenAi Language Model}, \\
+Knowledge Cutoff: 2021-09}
 
 In connection with various chessboard problems, the concept of domination can be traced back to the mid-1800s.
-For example, De Jaenosch attempted in 1862 to solve the minimum number of queens required to fully cover an $n \times n$-chessboard \cite{Jaenisch1862}.
+For example, De Jaenosch attempted in 1862 to find the minimum number of queens required to fully cover an $n \times n$-chessboard \cite{Jaenisch1862}.
 Because of the immense amount of publications related to domination that followed, Haynes, Hedetniemi, and Slater started a comprehensive survey of the literature in 1998 \cite{Haynes1998, Haynes1998b}. 
-20 years later, by a series of three more books, Haynes, Henning and Hedetniemi complemented the survey with the latest developments \cite{Haynes2020, Haynes2021, Haynes2022}.
+Twenty years later, through a series of three more books, Haynes, Henning and Hedetniemi complemented the survey with the latest developments \cite{Haynes2020, Haynes2021, Haynes2022}.
 
-We are now introducing the problems of \dom, \sdom and \tdom and dedicate the rest of the chapter to giving a current status about the complexity status of various graph classes. 
-
-% We will see that most cases mirror each other for the three different problems, but sometimes there seems to be 
-
-% Surprisingly, there are cases where the complexity of \dom and \tdom differes (e)
-%If both \dom and \tdom are already hard for a class, we already have a strong assumption that this also holds for \sdom as well.
-
-%Interestingly, most of them mimic each other for one specific class, but there are some exceptions, where this is not the case.
+We are now introducing the problems of \dom, \sdom, and \tdom and dedicate the rest of the chapter to giving a current status about the complexity on various graph classes. 
 
 \section{Domination Problems}
 
-We are now going to define the three most important domination problems for this work: \dom, \sdom and \tdom.
-Recall that a dominating set of a graph \G is a subset $D \subseteq V$, such that every vertex $V \setminus D$ is adjacent to some vertex in $D$.
+We will define this work's three most important domination problems: \dom, \sdom, and \tdom.
+Recall that a dominating set of a graph \G is a subset $D \subseteq V$, such that every vertex from $V \setminus D$ is adjacent to some vertex in $D$.
 We say that a vertex $d$ is a \textit{dominating vertex} or \textit{dominator} if $d \in D$ and that $d$ \textit{dominates} all of its neighbors.
-In other words: every vertex $v \notin D$ needs to have at least one neighbor in $D$.
 
 \begin{prb}[\MakeUppercase{\DOM}~{\cite[p. 586]{Cygan2015}}]{prb:ds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
-        \textbf{Question} & Is there a set {$X \subseteq V$} of size at most $k$ such that ${N[X] = V}$? \\
+        \textbf{Question} & Is there a set {$D \subseteq V$} of size at most $k$ such that ${N[D] = V}$? \\
     \end{tabularx}
 \end{prb}
 
 The \dom problem asks for a subset $D$ of size at most $k$ whose set of neighbors are adjacent to all the other remaining vertices in a graph.
-The following \cref{fact:distance} motivates the definition of the following variants of the problem.
+Assume that we have an arbitrary dominating set $D$ for some connected graph $G$ with at least two vertices.
+For each $v \in D$, there must be at least one other dominating vertex $v' \in D$ that is at most three steps away.
+Proven in \cref{fact:distance}, this motivates the definition of the following problem variants.
+
 \begin{fact}\label{fact:distance} Let \G be a connected graph and $D$ a ds with $\abs{D} > 1$. 
-For any $v_1 \in D$ there exists at least one $v_2$ with $d(v_1,v_2) \leq 3$.
+For any $v_1 \in D$ there exists at least one other $v_2 \in D$ with $d(v_1,v_2) \leq 3$.
 \end{fact}
 \begin{proof}
+
 Assume a ds $D$ and $v_1 \in D$ for which no other dominating vertex is in a distance less than three.
 Then exists $v_2$ with $d(v_1,v_2) > 3$. 
 By connectivity there is a path $p = (v_1, p_1, p_2, ...,  p_i, v_2)$ from $v_1$ to $v_2$ and no $p_i \in D $. 
-For $D$ to be a valid ds, $p_2,...p_{i-1}$ have to be dominated by a neighbor as well and therefore, there must exist a $u \in N(p_2) \cap D$ with $d(v_1, u) \leq 2$ giving a contradiction.
+For $D$ to be a valid ds, $p_2,...p_{i-1}$ have to be dominated by a neighbor as well, and therefore, there must exist a $u \in N(p_2) \cap D$ with $d(v_1, u) \leq 2$ giving a contradiction.
 \end{proof}
+We obtain the following variants if we lower the maximal allowed distance between two vertices in $D$.
 
-If we also demand the dominating vertices to be dominated, need the notion of \tdomin.
-The \tdom problem adds one additional constraint: Every vertex $v \in D$ in the dominating set must also be dominated by some vertex $v' \in D$ which we call the \textit{witness} of $v$.
+Requiring every vertex $v \in V$ to have another direct neighbor in $D$ leads to the \tdom problem. 
+We denote this neighbor as a \textit{witness} of $v$.
 
 \begin{prb}[\MakeUppercase{\TDOM}~{\cite[p. 596]{Cygan2015}}]{prb:sds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
-        \textbf{Question} & Does there exists a set $X \subseteq V$ with $\abs{X}\leq k$ vertices such that for every $u \in V(G)$ there exists $v \in X$ with $\{u,v\} \in E$? \\
+        \textbf{Question} & Is there a set $D \subseteq V$ of size at most $k$ such that for every $u \in V(G)$ there exists $v \in D$ with $\{u,v\} \in E$? \\
     \end{tabularx}
 \end{prb}
 
-Finally, \sdomin was introduced by Goddard, Henning and McPillan \cite{Goddard2014} as a relaxation of \tdomin. 
-Assume that we have an arbitrary dominating set $D$ for some (connected) graph \G that has size at most two.
-It is easy to observe that for each $v \in D$ there must be at least one other dominating vertex $v' \in D$ that is at most three steps away because otherwise, this would not be a dominating set. 
-On the other side, by definition of a total dominating set $D$, every dominating vertex $d \in D$ has another vertex in $d' \in N(d) \cap D$ that is also dominating.
 It is natural to ask what happens if we restrict this distance property to be at most two, which leads us straight to the idea of \sdomin.
-For a semitotal dominating set $D$, we say that $v$ witnesses $v'$ if $v,v' \in D$ and $d(v,v') \leq 2$.
+For a semitotal dominating set $D$, we say that $v$ \emph{witnesses} $v'$ if $v, v' \in D$ and $d(v,v') \leq 2$.
+\sdomin was introduced by Goddard, Henning and McPillan \cite{Goddard2014} as a relaxation of \tdomin. 
 
 \begin{prb}[\MakeUppercase{\SDOM}~{\cite{Goddard2014}}]{prb:tds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
-        \textbf{Question} & Is there a subset $X \subseteq V$ with $\abs{X} \leq k$ such that ${N[X] = V}$ and for all $d_1 \in X$ there exists another $d_2 \in X$ such that ${d(d_1, d_2) \leq 2}$?\\
+        \textbf{Question} & Is there a subset $D \subseteq V$ with $\abs{D} \leq k$ such that ${N[D] = V}$ and for all $d_1 \in X$ there exists another $d_2 \in X$ such that ${d(d_1, d_2) \leq 2}$?\\
     \end{tabularx}
 \end{prb}
-
-\Cref{fig:dsexamples} demonstrates that the minimum ds, sds and tds can strictly differ in the size on a fixed graph \G. a minimum ds (left) does not need any witnesses at all and we can choose $d_1$ and $d_2$ to dominate the graph. 
-As $d(d_1, d_2) = 3$, we have to introduce additional dominating vertices for a minimum sds (middle) and tds (right). 
-Their only purpose is, to bridge the gap between $d_1$ and $d_2$.
-% In a sds it is enough to use $d_3$, because $d(d_2,d_3) < d(d_1, d_3) \leq 2$.
 
 \begin{figure}
      \begin{equation*}
          \tikzfig{fig/tikz/ds-examples}
      \end{equation*}
-    \caption[An example for various dominating sets]{\textit{An example for a minimum dominating set, semitotal dominating set and a total dominating set, where $\gamma(G) < \gamma_{2t}(G) < \gamma_t(G)$ are strict. In the first case, only two vertices suffice to dominate all others. In the second one, we need a witness between $d_1$ and $d_2$ that is at most distance two. In the last case, $d_1$ and $d_2$ both need a neighbor in the total dominating set.}}
+    \caption[An example for various dominating sets]{\textit{An example for a minimum dominating set, semitotal dominating set and a total dominating set, where $\gamma(G) < \gamma_{2t}(G) < \gamma_t(G)$ are strict. 
+    In the first case, only two vertices suffice to dominate all others.
+    In the second one, we need a witness between $d_1$ and $d_2$ at most distance two. 
+    In the last case, $d_1$ and $d_2$ both need a neighbor in the total dominating set.}}
     \label{fig:dsexamples}
 \end{figure}
-
 
 \begin{definition}[Domination Numbers]
    The \underline{domination number} in a graph $G$ is the minimum cardinality of a dominating set (ds) of $G$, denoted as $\gamma(G)$. 
    The \underline{total domination number} is the minimum cardinality of a total dominating set (tds) of $G$, denoted by $\gamma_t(G)$.
-   The \underline{semitotal domination number} is the minimum cardinality of a semitotal dominating set (sds) of $G$, denoted by $\gamma_t(G)$.
+   The \underline{semitotal domination number} is the minimum cardinality of a semitotal dominating set (sds) of $G$, denoted by $\gamma_{t2}(G)$.
 
    We say that a ds $D$ is \underline{minimal} if no proper subset $S' \subset S$ is a ds and that $D$ is a \underline{minimum} if it is the smallest ds.
 \end{definition}
 
-Because any tds is also an sds and every sds is also a ds, $\gamma{t2}$ is squeezed between $\gamma$ and $\gamma_t$.
+Because any tds is also an sds and every sds is also a ds, $\gamma_{t2}$ is squeezed between $\gamma$ and $\gamma_t$.
 The  following fact was first observed by Goddard and Henning \cite{Goddard2014}:
 
 \begin{fact}
 For every graph $G$ with no isolated vertex, $\gamma(G) \leq \gamma_{t2}(G) \leq \gamma_t(G)$.
 \end{fact}
-It turns out that for some graphs, all of these inequalities are strict. See \cref{fig:dsexamples} for an example, where $\gamma < \gamma_{t2} < \gamma_t$.
+
+There are graphs where this inequality is strict.
+\Cref{fig:dsexamples} demonstrates that the minimum ds, sds, and tds can strictly differ in size on a fixed graph \G. 
+A ds does not need witnesses, and we can choose two vertices $d_1$ and $d_2$ to dominate the graph; this is the only minimum solution.
+As $d(d_1, d_2) = 3$, we have to introduce additional dominating vertices for a minimum sds (middle) and tds (right). 
+Their only purpose is to bridge the gap between $d_1$ and $d_2$, but they have no function as dominators
 
 \section{Complexity Status of \sdom}\label{ch:complexity-status}
 
-Goddard et al. \cite{Goddard2014} first showed that \sdoms is \NPc in the general case and triggered the systematic analysis of the problem.  
-\cref{tab:complexities} complements the complexity status for \DOM, \SDOM and \TDOM when restricted to specific graph classes which was first surveyed by Galby et al. \cite{Galby2020} and adds an extra column showing the parameterized complexity. 
-Furthermore, \cref{fig:bigpicture} visualizes the big picture of graph inclusions.
+Goddard et al. \cite{Goddard2014} first showed that \SDOM is \NPc in the general case and initiated the systematic analysis of the problem.  
+\cref{tab:complexities} complements the complexity status for \doms, \sdoms, and \tdoms when restricted to specific graph classes, which was first surveyed by Galby et al. \cite{Galby2020}
+We also added another column showing the known parameterized complexity. 
+\cref{fig:bigpicture} visualizes the big picture and the inclusions among the graph classes.
 
-A polynomial-time algorithm has been shown for graphs of bounded \textit{mim}-width by Galby et al. \cite{Galby2020}.
+A polynomial-time algorithm was shown for graphs of bounded \textit{mim}-width by Galby et al. \cite{Galby2020}.
 Because decomposition trees of constant \textit{mim}-width can be found for \textit{permutation}, \textit{convex}, \textit{interval}, \textit{(circular k-)} \textit{trapezoid}, \textit{circular permutation}, \textit{Dilworth-$k$}, \textit{$k$-polygon}, \textit{circular arc}, \textit{complements of $d$-degenerate}, \textit{bipartite permutation} and \textit{convex bipartite} graphs in polynomial time \cite{Belmonte2011}, this algorithm immediately implies the existence of a polynomial time algorithm for these graph classes as well. 
-Additionally, Galby et. al resolved the complexity for \textit{bipartite permutation} and \textit{convex bipartite} graphs.
+Additionally, Galby et al. resolved the complexity for \textit{bipartite permutation} and \textit{convex bipartite} graphs.
 
 Furthermore, new polynomial time algorithms have been discovered for \textit{strongly chordal} \cite{Tripathi2021}, \textit{AT-free} \cite{Kloks2021} and \textit{block} \cite{Henning2022} graphs and a new linear time algorithm has been found for interval graphs \cite{Pradhan2021} beating the previous $\mathcal{O}(n^2)$-algorithm given by Henning and Pandey \cite{Henning2019}.
-On the negative side, \sdom on \textit{circle graphs} \cite{Kloks2021} graphs and \textit{undirected path graphs} \cite{Henning2019} was shown to be \NPc.
+On the negative side, \sdom on \textit{circle graphs} \cite{Kloks2021} graphs, and \textit{undirected path graphs} \cite{Henning2019} was shown to be \NPc.
 
-As $\gamma_{2t}$ is squeezed between $\gamma$ and $\gamma_t$, a comparison of the computational complexity of \sdom and \tdom for specific graph classes on the dominating problems might already indicate the complexity of \sdoms.
-There is symmetry between these domination problems and the complexity of many graph classes mirrors each other.
+As $\gamma_{t2}$ is squeezed between $\gamma$ and $\gamma_t$, a comparison of the computational complexity of \sdom and \tdom for specific graph classes on the dominating problems might also suggest the complexity of \sdoms.
+There seems to be a symmetry between these domination problems where the complexity of many graph classes mirrors each other.
 Nevertheless, it looks like \sdoms has more in common with \doms than with \tdoms.
-For example for \textit{chordal bipartite} graphs, \sdoms and \doms are \NPc while it is polynomial-time solvable for \tdoms. 
+For instance, \textit{chordal bipartite} graphs, \sdoms and \doms are \NPc, while it is polynomial-time solvable for \tdoms. 
 Contrary, \sdoms and \doms have a polynomial-time algorithm for \textit{strongly chordal} graphs, but \tdoms is \NPc.
 In all currently known cases, \sdom follows the complexity of \dom.
 
-This thesis goes the first step in approaching the problem from the perspective of \textit{parameterized complexity}.
-If not mentioned otherwise, the problem is always parameterized by the size of a solution and the results of this thesis are highlighted in \textbf{bold} text.
-Therefore, we have added the parameterized complexity for those graph classes as well and used it as an orientation.
+This thesis goes the first step into approaching the problem from the perspective of \textit{parameterized complexity}.
+If not mentioned otherwise, the problem is always parameterized by the size of a solution, and the results of this thesis are highlighted in \textbf{bold} text.
+We have also added the parameterized complexity for those graph classes and used it as an orientation.
 As we do not believe that \sdoms is fundamentally different than \doms, our intuition is that also the parameterized complexity mimicks \sdoms. 
-We were able to prove \WTWO-hardness for \textit{bipartite} and \textit{split} graphs by giving a graph structure preserving reducing from \doms and we give an explicit construction of a kernel for the \textit{planar} case, which exists for \doms \cite{Alber2004} and \tdoms \cite{Garnero2019} as well.
+We were able to prove \WTWO-hardness for \textit{bipartite} and \textit{split} graphs by giving a graph structure preserving reducing from \doms. We provide an explicit construction of a kernel for the \textit{planar} case, which exists for \doms \cite{Alber2004} and \tdoms \cite{Garnero2019} as well.
 
 Many gaps are still open for further research.
-A discussion about them can be found at the end of this thesis in \cref{ch:closing}.
+We will discuss these questions at the end of this thesis in \cref{ch:closing}.
 
 \begin{center}
     \begin{table}[ht]
@@ -309,7 +303,7 @@ A discussion about them can be found at the end of this thesis in \cref{ch:closi
         undirected path                                & \NPcs \cite{Booth1982}                                   & \FPTt \cite{Figueiredo2022} & \NPcs \cite{Henning2022}  & ?                     & \NPcs \cite{Lan2014}                         & ?                     \\
         % 2022 paper for DS proved it not for TDS, so whp. not known for TDS
 
-        dually chordal                        & \multicolumn{2}{c}{\Ptt \cite{Brandstaedt1998} }         & \multicolumn{2}{c}{? (partial res. \cite{Galby2020})} &                           \multicolumn{2}{c}{\Ptt \cite{Kratsch1997}}                                                                            \\
+        dually chordal                        & \multicolumn{2}{c}{\Ptt \cite{Brandstaedt1998} }         & \multicolumn{2}{c}{? (attempted \cite{Galby2020})} &                           \multicolumn{2}{c}{\Ptt \cite{Kratsch1997}}                                                                            \\
         
         strongly chordal                      & \multicolumn{2}{c}{\Ptt \cite{Farber1984} }            & \multicolumn{2}{c}{\Ptt \cite{Tripathi2021}}  & \NPcs \cite{Farber1984}                                 &                                                                                                         \\
         
@@ -350,7 +344,6 @@ A discussion about them can be found at the end of this thesis in \cref{ch:closi
     \end{table}
 \end{center}
 
-% TODO use this sentence: Further, as the problem is NP-complete
 %in planar graphs, designing approximation algorithms for the problem in planar graphs is a good research
 %direction.
 % https://arxiv.org/pdf/2109.02142.pdf
@@ -361,12 +354,8 @@ A discussion about them can be found at the end of this thesis in \cref{ch:closi
     \resizebox{1.0\textwidth}{!}{
         \input{fig/mathcha/classes.tikz}
     }
-    \caption{\textit{Computational Complexity of \sdom. Graph classes that admit a polynomial time algorithm are marked in \textit{green}, those with an fpt algorithm in \textit{yellow}, those that are not fpt by solution size in \textit{red} and those that are unknown are left \textit{white}.
-    An additional ``?''  marks those problems, where the classical complexity is also unknown.}}
+    \caption{\textit{Computational Complexity of \sdom. Graph classes that admit a polynomial time algorithm are marked in \textit{green}, those with an fpt algorithm in \textit{yellow}, those that are not fpt by solution size in \textit{red}, and those that are unknown are left \textit{white}.
+    An ``?''  marks those problems, where the classical complexity is also unknown.}}
     
-    %TODO:Chordal Perfect graph (??), AT-free Polytime sovable, make general and then to perfect, planar circle ..., Check direction circular k tapezoid}}
     \label{fig:bigpicture}
 \end{figure}
-
-% Surprisingly, there are cases where the complexity of \dom and \tdom differes (e)
-%If both \dom and \tdom are already hard for a class, we already have a strong assumption that this also holds for \sdom as well.
