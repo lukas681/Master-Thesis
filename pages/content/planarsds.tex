@@ -4,12 +4,12 @@
 \begin{figure}[ht]
 \includegraphics[width=.3\textwidth, right]{img/constructing.png}
         \captionsetup{textformat=empty,labelformat=blank}
-        \caption{Generated with Dall-E. \url{https://labs.openai.com/}. ``more ducks building and working on  a high stack in the water using an excavator and tools and machines''}
+        \caption[Generated with Dalle-E. Knowledge Cutoff 09-2022]{Generated with Dall-E. \url{https://labs.openai.com/}. ``more ducks building and working on  a high stack in the water using an excavator and tools and machines''}
 \end{figure}
 
 \epigraph{\itshape The best way to explain it is to do it.}{Lewis Caroll, \textit{Alice in Wonderland}}
 
-We are going to present a polynomial-time preprocessing procedure giving a linear kernel for \psdom parameterized by solution size. Based on the technique first introduced by Alber, Fellows and Niedermeier \cite{Alber2004} in 2004, an abundance of similar results to other domination problems emerged which gave us the belief we can transfer these results to \sdom. \cref{tbl:kernels} gives an overview of the status of kernels for the planar case on various domination problems. All of these results introduce reduction rules bounding the number of vertices inside so-called ``regions'' which can be obtained by a special decomposition of the planar graph. 
+We will present a polynomial-time preprocessing procedure giving a linear kernel for \psdom parameterized by solution size. Based on the technique first introduced by Alber, Fellows, and Niedermeier \cite{Alber2004} in 2004, an abundance of similar results to other domination problems emerged which gave us the belief we can transfer these results to \sdom. \cref{tbl:kernels} gives an overview of the status of kernels for the planar case on various domination problems. All of these results introduce reduction rules bounding the number of vertices inside so-called ``regions'' which can be obtained by a special decomposition of the planar graph. 
 % TODO: Add the running time of this algorithm there.
 \begin{table}[h]
 \begin{minipage}[th]{\linewidth}
@@ -75,12 +75,13 @@ The main idea is to partition the neighborhoods of both a single vertex and a pa
     For $i,j \in [1,3]$, we denote $N_{i,j} (v) := N_i(v) \cup N_j(v)$. Furthermore, we call a vertex $v'$ \textit{confined} by a vertex $v$, if $N(v') \subseteq N[v]$.
 \end{definition}
 
-\begin{figure}[]
+\begin{figure}[h]
     \label{fig:neighborhoodSingle}
     \begin{equation*}
         \tikzfig{fig/tikz/neighborhoods-single-vertex}
     \end{equation*}
-    \caption[The neighbordhood of a single Vertex $v$]{\textit{The neighborhood of a single vertex v split to $N_1(v)$ (purple), $N_2(v)$ (blue), and $N_3(v)$ (green). $N_1(v)$'s are those having neighbors outside $N(v)$, $N_2(v)$'s are a buffer between $N_1(v)$ and $N_3(v)$, and $N_3(v)$-vertices are confined in $N(v)$}.}
+   \caption[The neighbordhood of a single Vertex $v$]{\textit{The neighborhood of a single vertex v split to $N_1(v)$ \textbf{\textcolor{NONE}{(purple)}}, $N_2(v)$ \textbf{\textcolor{NTWO}{(blue)}}, and $N_3(v)$ \textbf{\textcolor{NTHREE}{(olive)}}.
+    $N_1(v)$'s are those having neighbors outside $N(v)$, $N_2(v)$'s are a buffer between $N_1(v)$ and $N_3(v)$, and $N_3(v)$-vertices are confined in $N(v)$}.}
 \end{figure}
 
 \begin{xltabular}{\textwidth}{lX}
@@ -110,7 +111,7 @@ Next, we are going to extend this notation to a pair of vertices. Using this, \c
     \begin{equation*}
         \tikzfig{fig/tikz/neighborhoods-two-vertices}
     \end{equation*}
-    \caption[$N_i(v,w)$]{\textit{The neighborhood of a pair of vertices. Vertices from $N_3(v,w)$ are colored green, $N_2(v,w)$'s blue and $N_1(v,w)$'s purple.
+    \caption[The neighborhood of a pair of vertices]{\textit{The neighborhood of a pair of vertices. Vertices from $N_3(v,w)$ are colored \textcolor{NTHREE}{olive}, $N_2(v,w)$'s \textcolor{NTWO}{blue} and $N_1(v,w)$'s \textcolor{NONE}{purple}.
     Note that $z \in N_1(w)$, because there is an edge to a neighbor of $v$, but $z \notin N_1(v,w)$ (and rather $z \in N_3(v,w)$)}.}
     \label{fig:neighborhoodDouble}
 \end{figure}
@@ -122,7 +123,7 @@ Unlike the sets $N_1(v), N_2(v)$ and $N_3(v)$, in every of the distinct sets $N_
         \begin{equation*}
             \tikzfig{fig/tikz/ntwoimportant}
     \end{equation*}
-    \caption[$N_i(v,w)$]{\textit{Left:} $\{d_1, d_2\}$ with $d_2 \in N_2(v,w)$ form the only minimum semitotal dominating set. \textit{Right:} $d_1 \in N_1(v,w)$ and $d_2 \in N_3(v,w)$ optimal.}
+    \caption[Example for $N_2(v,w)$ dominating]{\textit{Left:} $\{d_1, d_2\}$ with $d_2 \in N_2(v,w)$ form the only minimum semitotal dominating set. \textit{Right:} $d_1 \in N_1(v,w)$ and $d_2 \in N_3(v,w)$ optimal.}
     \label{fig:alldominating}
 \end{figure}
 
@@ -225,7 +226,7 @@ As it turned out, the analysis is getting simpler if we treat them in a separate
     \begin{equation*}
         \tikzfig{fig/tikz/simple-region-example}
     \end{equation*}
-   \caption[A Simple Region]{\textit{A simple region with two vertices from $N_1(v,w)$ (purple) setting the boundary, two vertices from $N_2(v,w)$ (blue) and some vertices from $N_3(v,w)$ (green) in between.}}
+   \caption[A simple region]{\textit{A simple region with two vertices from $N_1(v,w)$ (\textcolor{NONE}{purple}) setting the boundary, two vertices from $N_2(v,w)$ (\textcolor{NTWO}{blue}) and some vertices from $N_3(v,w)$ (\textcolor{NTHREE}{olive}) in between.}}
     \label{fig:simpleRegionExample}
 \end{figure}
 
@@ -245,7 +246,7 @@ Then we use the existence of a maximal \dreg~$\mathfrak{R}$ on planar graphs to 
         \tikzfig{fig/tikz/overview}
     }
     \end{equation*}
-    \caption[Structure of the Proof]{\textit{The plan for obtaining a linear kernel for \psdom. Starting with the reduction rules (Green) we will derive the number of vertices inside and outside of a $vw$-region.}}\label{fig:overview}
+    \caption[Structure of the Proofs]{\textit{The plan for obtaining a linear kernel for \psdom. Starting with the reduction rules (\textcolor{green}{green}) we will derive the number of vertices inside and outside of a $vw$-region.}}\label{fig:overview}
 \end{figure}
 
 \section{The Reduction Rules}
@@ -263,7 +264,7 @@ Let \G, $v \in V$ and $v' \in N_{2,3}(v)$. Any witness $w \neq v$ for $v'$ is al
 \end{fact}
 \begin{proof}
 
-By assumption, $v'$ is witnessed by a vertex $w \neq v$ with $d(v', w) \leq 2$. It follows directly from the definition of $v' \in N_{2,3}(v)$ that $N(v') \subseteq N[v]$ and hence $v'$ is \textit{confined} inside the neighborhood of $v$. Every path $P = (v', n, w)$ from $v'$ to possible witness $w$ within two steps must pass at least one vertex $n \in N[v]$ as all neighbors. This implies that there exists also a path from $v$ to $w$ with a length of at most two and $v$  
+By assumption, $v'$ is witnessed by a vertex $w \neq v$ with $d(v', w) \leq 2$. It follows directly from the definition of $v' \in N_{2,3}(v)$ that $N(v') \subseteq N[v]$ and hence $v'$ is \textit{confined} inside the neighborhood of $v$. Every path $P = (v', n, w)$ from $v'$ to possible witness $w$ within two steps must pass at least one vertex $n \in N[v]$ as all neighbors. This implies that there also exists a path from $v$ to $w$ with a length of at most two and $v$  
 
 % Maybe add a note that it can also point outside of N(v)
 % we know that $w$ is either $v$, a direct neighbor of $v$ or can be reached via one step over a $N_1(v)$ vertex, hence $w \in N(v) \cup \bigcup\limits_{z \in N_1(v)} N(z) $. Clearly, $d(v, w) \leq 2$.
@@ -275,7 +276,7 @@ By assumption, $v'$ is witnessed by a vertex $w \neq v$ with $d(v', w) \leq 2$. 
     \begin{equation*}
         \tikzfig{fig/tikz/ruleOne}
     \end{equation*}
-    \caption{\textit{Simplifying $N_{23}(v)$: As $N_3(v) \geq 1$, we remove $N_{23}(v)$ and add a new witness $v'$. $N_1(v)$ remains untouched.}}
+    \caption[Application of \cref{rgl:rone}]{\textit{Simplifying $N_{23}(v)$: As $N_3(v) \geq 1$, we remove $N_{23}(v)$ and add a new witness $v'$. $N_1(v)$ remains untouched.}}
     \label{fig:ruleOne}
 \end{figure}
 
@@ -383,7 +384,7 @@ Removing $N_{2,3}(v,w)$ entirely, could lose paths of length less than three and
     }
     \end{equation*}
     \caption[Application of \cref{rgl:rtwo}]{\textit{An application of \cref{rgl:rtwo}: (a) $\Dv = \Dw = \emptyset$ and \cref{case:c1} applies.
-    Both $v$ and $w$ must be in the sds and we can remove $N_{2,3}(v,w)$ and add $\{v',w'\}$. Furthermore, we need to preserve a path of length 3 from $v$ to $w$ by adding $\{y,y'\}$ as well. (b) \cref{case:c2} has been applied and the $N_{2,3}(v)$ removed. Observe that those vertices that cross the dotted line are vertices from $N_1(v)$ and not removed.\cref{case:c3} is symmetric.}
+    Both $v$ and $w$ must be in the sds and we can remove $N_{2,3}(v,w)$ and add $\{v',w'\}$. Furthermore, we need to preserve a path of length 3 from $v$ to $w$ by adding $\{y,y'\}$ as well. (b) \cref{case:c2} has been applied and the $N_{2,3}(v)$ removed. Observe that those vertices that cross the dotted line are vertices from $N_1(v)$ and not removed. \cref{case:c3} is symmetric.}
     }
     \label{fig:ruleTwo}
 \end{figure}
@@ -670,7 +671,7 @@ Clearly, the worst case is achieved, if the two confluent paths $P_1$ and $P_2$ 
     \begin{equation*}
         \tikzfig{fig/tikz/maxntwo}
     \end{equation*}
-    \caption[Bounding number of simple regions with $N_2(v,w)$ inside a $vw$-region R]{\textit{Bounding the maximum number of simple regions inside a region $R(v,w)$. $N_2(v,w)$ is covered by 6 green (simple) regions. The two dashed edges indicate that they are among the 8 possible pairs of vertices, but a simple region between them would contradict the planarity.}}
+    \caption[Bounding number of simple regions with $N_2(v,w)$ inside a $vw$-region R]{\textit{Bounding the maximum number of simple regions inside a region $R(v,w)$. $N_2(v,w)$ is covered by 6 \textcolor{NTWO}{blue} regions. The two dashed edges indicate that they are among the 8 possible pairs of vertices, but a simple region between them would contradict the planarity.}}
     \label{fig:maxntwoinside}
 \end{figure}
 

@@ -5,7 +5,7 @@
 \begin{figure}[ht]
         \includegraphics[width=0.35\textwidth, right]{img/gt-ducks.png}
         \captionsetup{textformat=empty,labelformat=blank}
-        \caption{Generated with Dall-E. \url{https://labs.openai.com/}. ``Ducks learning graph theory while swimming on a sea sketched in color complex''}
+        \caption[Generated with Dalle-E. Knowledge Cutoff 09-2022]{Generated with Dall-E. \url{https://labs.openai.com/}. ``Ducks learning graph theory while swimming on a sea sketched in color complex''}
 \end{figure}
 
 \epigraph{\itshape ``All we have to decide is what to do with the time that is given to us.''}{J. R. R. Tolkien, \textit{Gandalf} in \textit{Lord of the Rings}}
@@ -136,7 +136,7 @@ An embedding in the plane, or \textit{plane embedding}, of an (abstract) graph $
 \begin{figure}[ht]
         \includegraphics[width=0.35\textwidth, right]{img/chess.png}
         \captionsetup{textformat=empty,labelformat=blank}
-        \caption{Generated with Dall-E. \url{https://labs.openai.com/}. ``Duck playing chess''}
+        \caption[Generated with Dalle-E. Knowledge Cutoff 09-2022]{Generated with Dall-E. \url{https://labs.openai.com/}. ``Duck playing chess''}
 \end{figure}
 
 \epigraph{\itshape ``This set must be small, but also complete, \\ 
@@ -282,13 +282,13 @@ We will discuss these questions at the end of this thesis in \cref{ch:closing}.
                                               & classical                                               & Parameterized                                & classical                                               & Parameterized              & classical                                    & Parameterized               \\
         bipartite                             & \NPcs \cite{Bertossi1984}                               & \WTWOhs \cite{Raman2008}                                      & \NPcs \cite{Henning2019}                                & \WTWOhs (this)             & \NPcs \cite{Pfaff1983}                       & \WTWOhs (cite!)                             \\
         
-        line graph of bipartite               & \NPcs \cite{Korobitsin1992}                             & ? (?) & \NPcs \cite{Galby2020}                                  &     ?         (?)              & \NPcs \cite{McRae1995}                       &  ? (?)                            \\
+        line graph of bipartite               & \NPcs \cite{Korobitsin1992}                             & ? & \NPcs \cite{Galby2020}                                  &     ?         (?)              & \NPcs \cite{McRae1995}                       &  ?                            \\
         
         circle                                & \NPcs \cite{Keil1993}                                   & \WONEhs \cite{Bousquet2012}                  & \NPcs \cite{Kloks2021}                                  & ? (?)  & \NPcs \cite{McRae1995}                       & \WONEhs \cite{Bousquet2012} \\
         
         chordal                               & \NPcs \cite{Booth1982}                                  & \WTWOhs \cite{Raman2008}                     & \NPcs \cite{Henning2019}                                & \WTWOhs (this)               & \NPcs \cite{Laskar1983}                      & \WONEhs \cite{Chang1998} by \textit{split}                            \\
         
-        $s$-chordal , $s > 3$                          & \NPcs \cite{Liu2011}                                    & \WTWOhs \cite{Liu2011}                       & XXX                                                     & XX                         & \NPcs \cite{Liu2011}                         & \WONEhs \cite{Liu2011}      \\
+        $s$-chordal , $s > 3$                          & \NPcs \cite{Liu2011}                                    & \WTWOhs \cite{Liu2011}                       & ? (?)                                                     & ? (?)                         & \NPcs \cite{Liu2011}                         & \WONEhs \cite{Liu2011}      \\
         
         split                                 & \NPcs \cite{Bertossi1984}                               & \WTWOhs \cite{Raman2008}         & \NPcs \cite{Henning2019}                                & \WTWOhs \textbf{this}             & \NPcs \cite{Laskar1983}                      & \WONEhs \cite{Chang1998}    \\
         
@@ -354,8 +354,8 @@ We will discuss these questions at the end of this thesis in \cref{ch:closing}.
     \resizebox{1.0\textwidth}{!}{
         \input{fig/mathcha/classes.tikz}
     }
-    \caption{\textit{Computational Complexity of \sdom. Graph classes that admit a polynomial time algorithm are marked in \textit{green}, those with an fpt algorithm in \textit{yellow}, those that are not fpt by solution size in \textit{red}, and those that are unknown are left \textit{white}.
-    An ``?''  marks those problems, where the classical complexity is also unknown.}}
+    \caption[Graph inclusions]{\textit{Computational Complexity of \sdom. Graph classes that admit a polynomial time algorithm are marked in \textbf{\textcolor{MATHAGREEN}{green}}, those with an fpt algorithm in \textbf{\textcolor{MATHAYELLOW}{yellow}}, those that are not fpt by solution size in \textbf{\textcolor{MATHARED}{red}}, and those that are unknown are left \textit{white}.
+    An \textbf{?} denotes problems where the classical complexity is also unknown.}}
     
     \label{fig:bigpicture}
 \end{figure}

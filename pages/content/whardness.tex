@@ -1,14 +1,14 @@
 
 \section{Fixed-Parameter Intractability}
 
-We will first show that \sdom is \WTWOhs-hard on \textit{bipartite graphs} by a parameterized reduction from \dom on bipartite graphs which is known to be \WONEhs.
+We will start by giving some intractability results and show that \sdom is \WTWOhs-hard on \textit{bipartite graphs} by a parameterized reduction from \dom on bipartite graphs, which is known to be \WTWOhs \cite{Raman2008}.
 
 \begin{figure}[ht]
-    \label{fig:neighborhoodSingle}
+    \label{fig:bipartiteConstruction}
     \begin{equation*}
         \tikzfig{fig/tikz/wbipartite}
     \end{equation*}
-\caption{\textit{Constructing a bipartite $G'$ from the bipartite graph $K_{m,n}$ by duplicating all vertices and adding exactly two forced witnesses.}}
+\caption[Construction bipartite]{\textit{Reducing to a bipartite $G'$ from the bipartite graph $K_{m,n}$ by duplicating all vertices and adding exactly two forced witnesses.}}
 \end{figure}
 
 \begin{theorem}
@@ -16,50 +16,58 @@ We will first show that \sdom is \WTWOhs-hard on \textit{bipartite graphs} by a 
 \end{theorem}
 
 \begin{proof}
+    We reduce from \dom and consider only $X, Y \neq \emptyset$.
     Given a bipartite $G = ( X \cup Y, E)$, we construct a bipartite graph $G' = (\{X' \cup Y'\},E')$:
-    \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+    \begin{enumerate}[topsep=0pt,itemsep=0ex,partopsep=1ex,parsep=1ex]
         \item For each $x_i \in X$, we add a new vertex $a_i \in A$  and an edge $\{x_i, a_i\}$ in between. 
         \item For each $y_j \in Y$, we add a new vertex $b_j \in B$ and an edge $\{y_j, b_j\}$ in between.
-        \item We add four vertices with edges $\{u_1, d_1\}$ and $\{u_2, d_2\}$, and connect them with all $\{d_1, a_i\}$ and $\{d_2, b_j\}$ ($i \in [m]$ and $j \in [n]$) respectively.
+        \item We add two $P_2$'s with the vertices $u_j,d_j$ and connect their ends to all $a_i$ (resp. $b_i$).
     \end{enumerate}
 
-    Observe that $G'$ is bipartite because $A$ and $B$ form an independent set on $G'$ that can be cross-wise attached to one of the previous vertex sets. 
-    Setting  $X' = X \cup \{u_2,d_1\} \cup B$ and $Y' = X \cup \{u_1,d_2\} \cup A$ form the partitions of the new bipartite $G'$.
-
+    $G'$ is bipartite because $A$ and $B$ form an independent set on $G'$ that can be cross-wise attached to $X$ and $Y$. 
+    $X' = X \cup \{u_2,d_1\} \cup B$ and $Y' = X \cup \{u_1,d_2\} \cup A$ form the partitions of the new bipartite $G'$.
     It is left to show that $G$ has a ds $D$ of size $k$ if and only if $G'$ has a sds $D'$ of size $k' = k + 2$.
  
     First, assume a ds $D$ in $G$ of size $k$. 
     We know that $D' = D\cup \{d_1,d_2\}$ is an sds in $G'$ of size $k' = k + 2$, because $d_1$ dominates $u_1$ and all $a_i \in A$; $d_2$ dominates $u_2$ and all $b_i \in B$. 
-    The rest is dominated by the same vertices as they were in $G$, but now all of them have either $d_1$ or $d_2$ as a witness.
-    therefore by construction of $G'$ we have $\forall v \in (D \cap X): d(v, d_1) = 2$ and $\forall v \in (D \cap Y): d(v, d_2) = 2$.
+    The same vertices dominate the rest as they were in $G$, but now they all have either $d_1$ or $d_2$ as a witness.
+    Therefore,  $\forall v \in (D \cap X) \cup (D \cap Y): (d(v, d_1) = 2 \vee d(v, d_2)=2)$.
 
     Contrary, assume an sds $D'$ in $G'$ with size $k'$. 
-    Wlog assume that $u_1, u_2 \notin D'$, because choosing $d_1$ and $d_2$ is always equally good and does break witness properties and therefore the construction forces $d_1$, $d_2 \in D'$.
-    All $a_i \in A$ can only be used to dominate their neighboring $x_i$ ($b_i \in B$ for $y_i$), because $d_1, d_2 \in D$ is the only second neighbor they have.
-    If $a_i,b_i \in D'$ we replace it with $x_i$ and $y_i$ preserving the size $D$. As $d_1$ and $d_2$ suffice to provide a witness for every vertex in the graph and do not lose any other witnesses, this operation is sound.
-    Hence, $D = D' \setminus \{ d_1,d_2\}$ gives a ds in $G$ of size $ k = k' - 2$.
-    
-    As $G'$ can be constructed in linear time and the parameter $k$ is only blown up by a constant, this reduction is an fpt reduction.  
-    Because \dom is already \WTWOhs-hard on bipartite graphs \cite[Th. 1]{Raman2008}, we imply that \sdom is $w[2]$-hard as well.
+    Wlog, assume that $d_1, d_2 \in D$ and $u_1,u_2 \notin D$, because choosing $d_i$ is preferred to $u_i$.
+    By technical assumption $X, Y \neq \emptyset$, $u_i$ can not be a witness for $d_i$.
+    If $a_i,b_i \in D'$ we replace it with $x_i$ and $y_i$ preserving the size $D$.
+    A $a_i \in A$ can only be used to dominate their neighboring $x_i$ ($b_i \in B$ for $y_i$), because $\abs{N(a_i)} = 2$ and $d_1,d_2\in D'$.
+
+    As $d_1$ and $d_2$ suffice to provide a witness for every vertex in the graph, this operation is sound.
+    Hence, $D = D' \setminus \{ d_1,d_2\}$ gives a ds in $G$ of size $ k = k' + 2$.
+
+    As $G'$ can be constructed in linear time and $k$ does not depend on the input size, this reduction is an fpt reduction.  
+    Because \dom is \WTWOhs-hard on bipartite graphs \cite[Th. 1]{Raman2008}, we conclude that \sdom is $w[2]$-hard as well.
 \end{proof}
 
-Next, we will prove intractability for \textit{split} graphs which directly implies intractability for \textit{chordal} graphs as well.
+Next, we will prove intractability for \textit{split} and \textit{chordal} graphs.
 
 \begin{theorem}
-    \sdom is \WONEhs-hard when restricted to \textit{split} graphs.
+    \sdom is \WONEhs-hard when restricted to \textit{split} and \textit{chordal} graphs.
 \end{theorem}
+
 \begin{proof}
-    Given a split graph $G = \{(K \cup I), E\}$ transform it to a split graph $G'$ by adding two vertices $d$ and $u$ and edges $\{d,u\} \cup \{d, k_i\}$ for all $k_i \in K$. \cref{fig.splitgraph} visualizes this reduction.
-    Because $d$ only increases the size of the clique $K$ by one and $u$ fits into the independent set I, $G'$ is again a split graph. 
-    It is left to show that $G$ has a ds of size $k$ if and only if $G'$ has a sds of size $k' = k + 1$.
+    We reduce from \dom on \textit{split} graphs which is visualized in \cref{fig:splitgraph}.
+    Given a split graph $G = \{(K \cup I), E\}$, we transform it to a split graph $G'$ by adding two vertices $d$ and $u$ and edges $\{d,u\} \cup \{d, k_i\}$ for all $k_i \in K$. 
+    The vertex $d$ increases the size of the clique $K$ by one, and $u$ fits into the independent set $I$.
+    Therefore, $G'$ is split, too. 
+    It is left to show that $G$ has a ds of size $k$ if and only if $G'$ has an sds of size $k' = k + 1$.
     
-    First, assume any ds $D$ of size $k$ in $G$. 
-    Letting $D' = D \cup d$ gives an sds in $G'$.
-    The contrary assume an sds $D'$ of size $k$ in $G'$.
-    If a vertex $v \in D \cap I$, we simply flip it to a neighbor in $K$ preserving the dominating set. 
+    Assume any ds $D$ of size $k$ in $G$. 
+    Setting $D' = D \cup \{d\}$ gives an sds in $G'$ of size $k+1$.
+
+    Contrarily, assume an sds $D'$ of size $k$ in $G'$.
+    If $D \cap I \neq \emptyset$, we flip these to their neighbor in $K$, preserving the dominating set. 
     $d \in D'$ is only used in $G'$ for dominating $u$ and can be ignored in $G$.
     Therefore letting $D = D' \setminus \{d\}$ gives a valid ds in $G$ of size $ k-1$.
-    Together with the fact that \dom is \WTWOhs-hard on \textit{split} graphs \cite{Raman2008}, the claim follows.
+    The claim follows because \dom is \WTWOhs-hard on \textit{split} graphs \cite{Raman2008}.
+
 \end{proof}
 
 \begin{figure}[ht]
@@ -67,16 +75,16 @@ Next, we will prove intractability for \textit{split} graphs which directly impl
     \begin{equation*}
         \tikzfig{fig/tikz/split}
     \end{equation*}
-\caption{\textit{Constructing another split graph $G'$ by increasing the size of the complete graph by one with a new vertex $d$ and adding one additional vertex $u$.}}
+\caption[Constructing split graph]{\textit{Constructing a split graph $G'$ by increasing the size of the complete graph by one with a new vertex $d$ and adding one additional pendant $u$. The clique $K$ is highlighted in \textbf{\textcolor{TUMBlue}{blue}}}}
 \end{figure}
 
-\subsection{\hmath $W[2]$-hard on s Chordal IDK}
+\subsection{\hmath  $W[2]$-hard on s Chordal IDK}
 
 % TODO: Fix everything here.
 Although the previous result implies $w[2]$-hardness for chordal graphs, we found another reduction from \dom on chordal graphs.
 
 
-We will introduce the notion of an elimination ordering.
+We will introduce the notion of elimination ordering.
 
 \begin{definition}[{\cite[Theorem 1]{Rose1960}}]
     In a graph \G with n vertices, a vertex is called \textbf{simplicial} if and only if the subgraph of $G$ induced by the vertex set $\{v\} \cup N(v)$ is a complete graph.
@@ -126,6 +134,7 @@ The following lemma shows that
     \caption{Induction Step}
     \label{fig:induction-step}
 \end{figure}
+
         Asuming that $N(v_i)$ forms a clique in G, we show that it also forms a clique in G' by induction over the number of neighbors $z = abs(N(v_i))$ in G.
 
         \begin{itemize}

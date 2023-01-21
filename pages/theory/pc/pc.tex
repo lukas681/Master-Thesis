@@ -83,7 +83,7 @@ A reduction rule is \underline{sound} (or \underline{safe}) if $(I, k) \in Q \Le
 
 We can precisely define the kernel's size after executing a preprocessing algorithm $\mathfrak{A}$.
 
-\begin{definition}[Output size of a Preprocessing Algorithm] The output size of a preprocessing algorithms $\mathfrak{A}$ is defined as 
+\begin{definition}[Output Size of a Preprocessing Algorithm] The output size of a preprocessing algorithms $\mathfrak{A}$ is defined as 
 
     \[\mathrm{size}_{\mathfrak{A}}(k) = \sup\{\abs{I'} + k': (I',k')= \mathfrak{A}(I,k), I \in \Sigma^* \} \]
 \end{definition}
@@ -96,7 +96,7 @@ If we bound $\mathrm{size}_{\mathfrak{A}}$ by a polynomial in $k$, we say that t
 \begin{figure}
     \centering
     \input{fig/mathcha/kernelization.tikz}
-    \caption{\textit{The Idea of Kernelization: Reducing an instance $(I,k) \in Q$ of size $n$ to a smaller instance $(I', k') \in Q$ in polynomial time. 
+    \caption[Idea of kernelization]{\textit{The Idea of Kernelization: Reducing an instance $(I,k) \in Q$ of size $n$ to a smaller instance $(I', k') \in Q$ in polynomial time. 
     The resulting size of the kernel is a function $g(k)$ only dependent on $k$.}
     }
     \label{fig:kernelization}
@@ -133,7 +133,7 @@ It is strongly believed that $\FPT \subsetneq \Wt$ and therefore, we do not expe
 
 \cref{lem:cfptr,lem:trans} shwon in \cite{Cygan2015} show this definition ensures that reductions are transitive and closed under fpt reductions.
 
-\begin{lemma}[Closed under fpt-reductions]\label{lem:cfptr}
+\begin{lemma}[Closed Under fpt-reductions]\label{lem:cfptr}
     If there is a parameterized reduction from $A$ to $B$ and $B \in \FPT$, then $A \in \FPT$.
 \end{lemma}
 
@@ -142,7 +142,7 @@ It is strongly believed that $\FPT \subsetneq \Wt$ and therefore, we do not expe
 \end{lemma}
 
 If there exists a parameterized reduction transforming a \Wt-hard problem $A$ to another problem $B$, then $B$ is \Wt-hard as well.
-We can define the classes \WONE and \WTWO, by giving two problems that are complete for these classes.
+We can define the classes \WONE and \WTWO by giving two problems that are complete for these classes.
 
 \begin{cc}[The Classes \WONE ~{\cite{Downey1995}} and \WTWO ~{\cite{Cygan2015}}]{cc:wi}\begin{align*}
         \\[-2em] & \\[-3em]
