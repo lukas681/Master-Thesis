@@ -143,7 +143,7 @@ Unlike the sets $N_1(v), N_2(v)$ and $N_3(v)$, in every of the distinct sets $N_
             \tikzfig{fig/tikz/ntwoimportant}
     \end{equation*}
     \caption[Example for $N_2(v,w)$ dominating]{Contrary to $N_i(v)$, vertices from all $N_i(v,w)$ can be dominators. 
-    \textit{Left: $\{d_1, d_2\}$ with $d_2 \in N_2(v,w)$ form the only minimum semitotal dominating set. Right: $d_1 \in N_1(v,w)$ and $d_2 \in N_3(v,w)$ optimal.}
+    Left: $\{d_1, d_2\}$ with $d_2 \in N_2(v,w)$ form the only minimum sds. Right: $d_1 \in N_1(v,w)$ and $d_2 \in N_3(v,w)$ optimal.}
     \label{fig:alldominating}
 \end{figure}
 
@@ -219,8 +219,8 @@ We now have all the definitions ready to formally define a maximal \dreg on plan
     \begin{equation*}
         \tikzfig{fig/tikz/region-example}
     \end{equation*}
-    \caption[Region Decomposition]{\textit{Left: A maximal \dreg $\mathfrak{R}$, where $D = \{d_1,d_2,d_3\}$ form am sds. 
-    There are two regions between $d_2$ and $d_1$ (\textbf{\textcolor{FILLPURPLE}{purple}} and \textbf{\textcolor{FILLDARKBLUE}{pink}}), one region between $d_1$ and $d_3$ (\textbf{\textcolor{FILLDARKBLUE}{purple}}) and one region between $d_2$ and $d_3$ (\textbf{\textcolor{FILLGREEN}{green}}). 
+     \caption[Region Decomposition]{\textit{Left: A maximal \dreg $\mathfrak{R}$, where $D = \{d_1,d_2,d_3\}$ form am sds. 
+   There are two regions between $d_2$ and $d_1$ (\textbf{\textcolor{FILLPURPLE}{purple}} and \textbf{\textcolor{TUMBlue}{blue}}), one region between $d_1$ and $d_3$ (\textbf{\textcolor{FILLDARKBLUE}{purple}}) and one region between $d_2$ and $d_3$ (\textbf{\textcolor{MATHAGREEN}{green}}). 
     Observe that this \dreg, some neighbors of $d_1$ are not covered by any $vw$-region for any $v,w \in D$. 
     Our reduction rules are going to take care of them and bound this number of vertices to obtain the kernel. 
     Right: The corresponding underlying multigraph $G_{\mathfrak{R}}$. Every edge denotes a region between $d_i$ and $d_j$.}}\label{fig:maxRegionDecompose}
@@ -254,12 +254,16 @@ As it turned out, the analysis is getting simpler if we treat them in a separate
 In the analysis, we will also use properties of the \textit{underlying multigraph} of a \dreg $\mathfrak{R}$. Refer to \cref{fig:maxRegionDecompose} for an example.
 
 \begin{definition}\label{def:unterlyingMG}
-    Let \G be a plane graph, let $D \subseteq V$ and let $\mathfrak{R}$ be a \dreg of G. The underlying multigraph $G_\mathfrak{R} = (V_\mathfrak{R}, E _\mathfrak{R})$ of $\mathfrak{R}$ is such that  $V_\mathfrak{R} = D$ and there is an edge $\{v,w\} \in E_\mathfrak{R}$ for each vw-region $R(v,w) \in \mathfrak{R}$
+    Let \G be a plane graph, let $D \subseteq V$ and let $\mathfrak{R}$ be a \dreg of G. The underlying multigraph $G_\mathfrak{R} = (V_\mathfrak{R}, E _\mathfrak{R})$ of $\mathfrak{R}$ is such that  $V_\mathfrak{R} = D$ and there is an edge $\{v,w\} \in E_\mathfrak{R}$ for each vw-region $R(v,w) \in \mathfrak{R}$.
 \end{definition}
 
 \section{The Big Picture}
-\Cref{fig:overview} gives a high-level overview of how we are going to obtain the linear kernel for \psdom. We will first derive three different reduction rules (\cref{rgl:rone,rgl:rtwo,rgl:rthree} are green in the overview), prove that they preserve the solution size $k$ and run in polynomial-time. 
-Then we use the existence of a maximal \dreg~$\mathfrak{R}$ on planar graphs to bound the number of vertices that fly around a given region $R \in \mathfrak{R}$. This will lead us towards a bound on the number of vertices inside R. Furthermore, we observe that the number of vertices that are not enclosed in R, but lie outside the border is bounded, too. We will often encounter hidden simple regions which are reduced by \cref{rgl:rthree} and therefore of constant size by \cref{lemma:simpleregionbound}. As we know that the total number of regions R in the \dreg is linear in $k$, we obtained a linear kernel for the \psdom as well.
+The following \Cref{fig:overview} gives an overview on how to obtain a linear kernel for \psdom.
+ We will first define three polynomial-time reduction rules (\cref{rgl:rone,rgl:rtwo,rgl:rthree} are green in the overview) and prove that they preserve the solution size $k$. 
+We will use the existence of a maximal \dreg~$\mathfrak{R}$ on planar graphs to bound the number of vertices that fly around a given region $R \in \mathfrak{R}$ after the reduction rules have exhaustively been applied. 
+Additionally, \cref{rgl:rone} helps us to bound on the number of vertices that are not enclosed by any $R$. 
+
+We will often encounter hidden simple regions which are reduced by \cref{rgl:rthree} and therefore of constant size by \cref{lemma:simpleregionbound}. As we know that the total number of regions R in the \dreg is linear in $k$, we obtained a linear kernel for the \psdom as well.
 \begin{figure}[!ht]
     \begin{equation*}
     \scalebox{.9}
@@ -272,8 +276,15 @@ Then we use the existence of a maximal \dreg~$\mathfrak{R}$ on planar graphs to 
 
 \section{The Reduction Rules}
 
-Following the ideas proposed by Garnero and Sau \cite[arXiv v2]{Garnero2018}, we state modified reduction rules that after exhaustive application will lead to a linear kernel. We note that especially for \cref{rgl:rtwo}, we relied on the second version of the paper electronically submitted to \textit{arXiv} because in the following years they improved their kernel size at the cost of making them more dependent on properties of a total dominating set and the latest rules stated will not work for \psdom. By a deeper look into the structure of simple regions, we were able to give a slightly more complex reduction \cref{rgl:rthree} that achieves the same bound as proven in \cite{Garnero2018}.  
-The main challenge in our case was to preserve possible witness properties in the graph because a vertex inside a region can be important as a witness for vertices in another region. This was not an issue for a total dominating set, because there, these witnesses must be close and they do not have an effect on more distanced vertices. 
+Following the ideas proposed by Garnero and Sau \cite[arXiv v2]{Garnero2018}, we state adjusted reduction rules leading to a linear kernel after exhaustive application. 
+Especially in \cref{rgl:rtwo}, we relied on the second revision of the paper electronically submitted to \textit{arXiv}.
+In the later version, the authors improved their results by giving a better kernel size, but it turned out that these rules just work for \tdom, but not for \sdom anymore.
+After looking deeper into the structure of a simple region, we were able to give a slightly more complex reduction \cref{rgl:rthree} having the same bounds as in \cite{Garnero2018}.  
+Our main challenge was to preserve the witness properties of a sds.
+ because a vertex inside a region can be important as a witness for vertices in another region. 
+A tds has fewer side effects as the witnesses are direct neighbors of the dominators and they do not have too much influence on the rest of the graph as the witnesses have in a sds.
+Therefore, we had to make sure that the effect of vertices to more distanced vertices is preserved by the reduction.
+
 \subsection{Reduction Rule I: Shrinking $N_3(v)$}
 
 % Maybe we can even remove all N_3's because later, only the case v in a pair could be important. We do not have a connected graph.
@@ -285,13 +296,11 @@ Let \G, $v \in V$ and $v' \in N_{2,3}(v)$. Any witness $w \neq v$ for $v'$ is al
 \end{fact}
 \begin{proof}
 
-By assumption, $v'$ is witnessed by a vertex $w \neq v$ with $d(v', w) \leq 2$. It follows directly from the definition of $v' \in N_{2,3}(v)$ that $N(v') \subseteq N[v]$ and hence $v'$ is \textit{confined} inside the neighborhood of $v$. Every path $P = (v', n, w)$ from $v'$ to possible witness $w$ within two steps must pass at least one vertex $n \in N[v]$ as all neighbors. This implies that there also exists a path from $v$ to $w$ with a length of at most two and $v$  
-
-% Maybe add a note that it can also point outside of N(v)
-% we know that $w$ is either $v$, a direct neighbor of $v$ or can be reached via one step over a $N_1(v)$ vertex, hence $w \in N(v) \cup \bigcup\limits_{z \in N_1(v)} N(z) $. Clearly, $d(v, w) \leq 2$.
+Assume $v' \in N_{2,3}(v)$ and a witness $w \neq v$ for $v$ with $d(w,v') \leq 2$. 
+By definition of $N_{2,3}(v)$, $N(v') \subseteq N[v]$ and $v'$ is \textit{confined} inside the neighborhood of $v$. 
+Therefore every path from $v'$ to the witness $w$ within two steps must pass at least one other vertex $p \in N(v) \cup \{v\}$ and $\{w\} \in N(p)$.
+If $p = v$ then $w$ is a direct witness for $v$ and if $p \in N(v)$, there exists a path of length 2 from $v$ to $w$.
 \end{proof}
-
-
 
 \begin{figure}[!ht]
     \begin{equation*}
@@ -305,28 +314,30 @@ By assumption, $v'$ is witnessed by a vertex $w \neq v$ with $d(v', w) \leq 2$. 
     Let \G be a graph and let $v \in V$. If $\abs{\Nthreev} \geq 1$:
     \begin{itemize}
         \item remove $N_{2,3}(v)$ from G,
-        \item add a vertex $v'$ and an edge $\{v, v'\}$
+        \item add a vertex $v'$ and an edge $\{v, v'\}$.
     \end{itemize}
 \end{rgl}
 
-\noindent We can now prove the correctness of this rule.
+\noindent We will now prove the correctness of this rule.
 
 \begin{lemma}\label{lemma:correctnessone}
-    Let \G be a graph and let $v \in V$. If $G'$ is the graph obtained by applying \cref{rgl:rone} on $G$, then $G$ has a semitotal dominating set of size $k$ if and only if $G'$ has a semitotal dominating set of size $k$.
-
+    Let \G be a graph and let $v \in V$. If $G'$ is the graph obtained by applying \cref{rgl:rone} on $G$, then $G$ has a sds of size $k$ if and only if $G'$ has a sds of size $k$.
 \end{lemma}
 \begin{proof}
         Assume $D$ to be an sds set in $G$ of size $k$. 
-        Because \cref{rgl:rone} has been applied, we can assume $N_{2}(v) \neq \emptyset$ in $G$.  % Prev N23?
-        To dominate $N_3(v)$, $\abs{D \cap (N_{2,3}(v) \cup \{v\})} \neq \emptyset$.
-        By \cref{fact:witnessTwin}, we know that a witness for $d$  (which is not  $v$) is also a witness for $v$ and therefore, we can replace any $D \cap N_{2,3}(v)$ by $v$ in $D$. Henceforth, assume $v \in D$ and $N_{2,3}(v)$ is already dominated by $v$.
+        Because \cref{rgl:rone} was applied, we know that $N_{3}(v) \neq \emptyset$ in $G$.
+        $N_3(v)$ must be dominated, so $\abs{D \cap (N_{2,3}(v) \cup \{v\})} \neq \emptyset$. 
+        Denote one of those as $d$.
+        If $v \notin D$, we know by \ref{fact:witnessTwin} that a witness for $d \neq v$ is also a witness for $v$ and therefore, we replace $d$ with $v \in D$.
+            Now assume $v \in D$ and $N_{2,3}(v)$ is already dominated by $v$.
         If $\abs{D \cap (N_{2,3}(v))} \geq 1$, set $D' = D \setminus N_{2,3}(v) \cup \{v'\}$, else $D' = D$. 
-        A $z \in D \cap N_{2,3}(v)$ could have been a witness for $v$ and therefore we choose $v' \in D'$ preserving witnesses. In both cases, $v'$ is by assumption dominated by $v$ and $\abs{D} \leq \abs{D'}$.
+        A $z \in D \cap N_{2,3}(v)$ could have been a witness for $v$ and therefore we choose $v' \in D'$ preserving witnesses. In both cases, $v'$ is dominated by $v$ and $\abs{D} \leq \abs{D'}$.
 
-        Let $D'$ be an sds in $G'$. We assume that $v \in v'$ because $v'$ has to be dominated and $v$ is always a better choice than $v'$.
-        If $v' \in D'$  then we have to preserve a witness for $v$ in $G$. We know $N_3(v) \neq \emptyset$ and therefore replace it with an arbitrary vertex $d \in N_3(v)$ in $G$. 
-        If a witness for $v$ came from $N_1(v) \cup \{ N(w) \setminus N(v) | w \in N_1(v)\}$, they have not been touched by the reduction.
-        In summary, if $v' \in D'$, we set $D = D' \cup \{d\} \setminus \{v'\}$ for a $d \in N_3(v)$ and otherwise $D = D'$. 
+        Let $D'$ be an sds in $G'$. We assume that $v \in D'$ because $v'$ has to be dominated and $v$ is a better choice than $v'$.
+        If $v' \in D'$ we have to preserve a witness for $v$ in $G$. We know $N_3(v) \neq \emptyset$ and therefore replace it with an arbitrary vertex $d \in N_3(v)$ in $G$. 
+        If a witness for $v$ came from outside of $N_{2,3}(v,w)$, they have not been touched by the reduction
+        %$N_1(v) \cup \{ N(w) \setminus N(v) | w \in N_1(v)\}$, they have not been touched by the reduction.
+        Therefore, if $v' \in D'$, we set $D = D' \cup \{d\} \setminus \{v'\}$ for a $d \in N_3(v)$ and otherwise $D = D'$. 
         In both cases, $N_{2,3}(v)$ is dominated by $v$ and $\abs{D} = \abs{D'}$.
 \end{proof}
 
@@ -337,19 +348,21 @@ By assumption, $v'$ is witnessed by a vertex $w \neq v$ with $d(v', w) \leq 2$. 
     As \cref{rgl:rone} stayed the same, the proof directly follows \cite[Lemma 2]{Alber2004}.
 \end{proof}
 
-Note that we need our definition of a reduced instance given in \ref{def:reduced}. If \cref{rgl:rthree} is being applied, it will still leave us with a vertex $z\in N_3(v)$ allowing this rule to be applied again.
-
+Note that we need our definition of a reduced instance given in \cref{def:reduced}. 
+If \cref{rgl:rthree} is being applied, it will still leave us with a vertex $z\in N_3(v)$ allowing this rule to be applied over and over again.
 \subsection{Reduction Rule II: Shrinking the Size of a Region}
 
-The second rule is the heart of the whole reduction and  minimizes the neighborhood of two distinct vertices. The rule follows Garnero and Sau's approach \cite{Garnero2018} for \ptdom. Especially \cref{rgl:rtwo} given in \cite[arXiv v2]{Garnero2018} was not transferable to \psdom, because it heavily relies on the property of a total dominating set that a witness $w$ for $v$ \textbf{must} be a direct neighbor of $w$. In the case of the more relaxed \sdom, the witness is allowed to be further away.
+The second rule is the heart of the whole reduction and minimizes the neighborhood of two distinct vertices. The rule follows Garnero and Sau's approach \cite{Garnero2018} for \ptdom. Especially \cref{rgl:rtwo} given in \cite[arXiv v2]{Garnero2018} was not transferable to \psdom, because it heavily relies on the property of a total dominating set that a witness $w$ for $v$ \textbf{must} be a direct neighbor of $w$. 
+In an sds, the witness is allowed to be further away which must be taken into account when reducing the graph.
 
-% TODO: Force connectivity, improve kerne bound
-% TODO: Reformulate
 % Extending the approach for a linear kernel for \dom proposed by Alber et al. in \cite{Alber2004}, Garnero and Sau transferred these results in \cite{Garnero2018} to the \tdom problem. 
 
-It can be observed that in the worst case four vertices are needed to semitotally dominate $N(v,w)$ of two vertices $v,w \in V$: $v$, $w$ and two witnesses for them. Exemplary, observe the graph consisting of two distinct $K_{1,m}$ with $m \in \mathbb{N}$ with centers $v$ and $w$.
+It can be observed that in the worst case, four vertices are required to semitotally dominate $N(v,w)$ of two vertices $v,w \in V$: $v$, $w$ and two witnesses for them. 
+Exemplary, observe the graph consisting of two distinct $K_{1,m}$ with $m \in \mathbb{N}$ with centers $v$ and $w$.
 
-Before we give the concrete reduction rule, we need to define three sets. Intuitively, we first try to find a set $\tilde D \subseteq N_{2,3}(v,w)$ of size at most three dominating $N_3(v,w)$ without using $v$ or $w$. If no such set exists, we allow $v$ (resp. $w$) and try to find one again. If we now find such a set, we can conclude that $v$ ($w$) must be part of a solution.
+Before we give the concrete reduction rule, we need to define three sets. Intuitively, we first try to find a set $\tilde D \subseteq N_{2,3}(v,w)$ of size at most three dominating $N_3(v,w)$ without using $v$ or $w$. If no such set exists, we allow $v$ (resp. $w$) and try to find one again. 
+If we now find such a set, we can conclude that $v$ ($w$) must be part of a solution.
+If such a set does not exist, we set $v,w$ and two neighbors to be in $D$, which is guaranteed to be a solution.
 
 \begin{definition}\label{def:dvv}
 Let \G be a graph and let $v,w \in V$. We now consider all the sets that can dominate $N_3(v,w)$:
@@ -362,7 +375,16 @@ Let \G be a graph and let $v,w \in V$. We now consider all the sets that can dom
 Furthermore, we shortly denote $\bigcup \Dv = \bigcup\limits_{D \in \Dv}D $ and $\bigcup \Dw = \bigcup\limits_{D \in \Dw}D$.
 \end{definition}
 
-Assuming that $v$ and $w$ are closely connected with $d(v,w) \leq 2$, it might suffice to consider only sets of size at most three, because an intermediate vertex could witness $v$ and $w$ at the same time. In the later analysis, the \dreg exactly creates regions around $N(v,w)$ requiring at least one path from $v$ to $w$ lengthed two. As the following rule is only used to locally investigate such regions, we could add the requirement of a distance of two to it and work with sets of size at most three. We believe that this could further improve the kernel. 
+% TODO Maybe make better text here.
+$\Dvw$ contains subsets of $N_{2,3}(v,w)$ of size at most three that dominate $N_3(v,w)$.
+If $\Dvw \neq \emptyset$, we cannot reduce much because all subsets could be part of a minimum solution that does not use $v$ and $w$ at all.
+On the other hand, the sets $\Dv, \Dw$ try to activate $v$ (resp. $w$) and two more vertices in $N_{2,3}$ to dominate $N_3(v,w)$ with less than four vertices.
+If at least one of $\Dv,\Dw \neq \emptyset$, we know that there are better solutions than just selecting both $v,w$ and two neighbors with $v$ or $w$ and then we can reduce $N(v,w)$ respectively.
+
+Note: Assuming that $v$ and $w$ are closely connected with $d(v,w) \leq 2$, it might suffice to consider only sets of size at most three, because an intermediate vertex could witness $v$ and $w$ at the same time. 
+In the later analysis, the \dreg exactly creates regions around $N(v,w)$ requiring at least one path from $v$ to $w$ lengthed two. 
+As the following rule is only used to locally investigate such regions, we could add the requirement of a distance of two to it and work with sets of size at most three. 
+We believe that this could further improve the kernel and a deeper discussion can be found at the end of this thesis \cref{ch:closing}.
 
 We are now ready to state \cref{rgl:rtwo}. An exemplary application is shown in \cref{fig:ruleTwo}.
 
@@ -390,7 +412,6 @@ We are now ready to state \cref{rgl:rtwo}. An exemplary application is shown in 
     \end{caseof}
 \end{rgl}
 
-%% Description Case 1
 In \cref{case:c1}, we know by \cref{fact:f2} that $v$ and $w$ must be in $D$. 
 Therefore, we introduce two forcing vertices $v'$ and $w'$ in $G'$ and remove $N_{2,3}(v,w)$ as these vertices are dominated by $v$ and $w$.
 Removing $N_{2,3}(v,w)$ entirely, could lose paths of length less than three and destroy solutions: If $d(v,w) \leq 2$ then $v$ can directly witness $w$ and if $d(v,w) = 3$, one vertex on this path could be a witness for both.
@@ -404,19 +425,19 @@ Removing $N_{2,3}(v,w)$ entirely, could lose paths of length less than three and
         \tikzfig{fig/tikz/ruletwo}
     }
     \end{equation*}
-    \caption[Application of \cref{rgl:rtwo}]{\textit{An application of \cref{rgl:rtwo}: (a) $\Dv = \Dw = \emptyset$ and \cref{case:c1} applies.
-    Both $v$ and $w$ must be in the sds and we can remove $N_{2,3}(v,w)$ and add $\{v',w'\}$. Furthermore, we need to preserve a path of length 3 from $v$ to $w$ by adding $\{y,y'\}$ as well. (b) \cref{case:c2} has been applied and the $N_{2,3}(v)$ removed. Observe that those vertices that cross the dotted line are vertices from $N_1(v)$ and not removed. \cref{case:c3} is symmetric.}
+    \caption[Application of \cref{rgl:rtwo}]{\textit{An application of \cref{rgl:rtwo}: (1) $\Dv = \Dw = \emptyset$ and \cref{case:c1} applies.
+    Both $v$ and $w$ must be in the sds and we can remove $N_{2,3}(v,w)$ and add $\{v',w'\}$. Furthermore, we need to preserve a path of length 3 from $v$ to $w$ by adding $\{y,y'\}$ as well. 
+    (2) \cref{case:c2} has been applied and the $N_{2,3}(v)$ removed. Observe that those vertices that cross the dotted line are vertices from $N_1(v)$ and not removed. 
+    ~\cref{case:c3} is symmetric.}
     }
     \label{fig:ruleTwo}
 \end{figure}
 
-Again by \cref{fact:f2} we know for \cref{case:c2,case:c3} that $v \in D$ and similar to \cref{rgl:rone} we can simplify the neighborhood $N_{2,3}(v)$. \cref{fact:f1} states, that these vertices are only useful for witnessing $v$, but do not go beyond what $v$ already witnesses. 
+Again by \cref{fact:f2} we know for \cref{case:c2,case:c3} that $v \in D$ (resp. $w \in D$) and similar to \cref{rgl:rone} we can simplify the neighborhood $N_{2,3}(v)$ ($N_{2,3}(w)$). 
+\cref{fact:f1} states, that these vertices are only useful for witnessing $v$, but do not go beyond what $v$ already witnesses. 
 Observe that removing $N_{2,3}$ cannot break any connectivity as all vertices in  $N_{2,3}(v)$ are confined in $v$. 
 
 The case where $\Dv \neq \emptyset \wedge \Dw \neq \emptyset$ is not necessary for reasons clarified later.
-
-%The cases where $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$ are not required and in a later analysis only the existence of these two sets is required and the application of \cref{rgl:rthree} will be critical.
-
 Before proving \cref{rgl:rtwo} we will deduce some \textit{facts} which are implied by the definitions above. These facts justify the definition of the sets $\Dvw$, $\Dv$ and $\Dw$.
 
 \begin{fact}\label{fact:f1}
@@ -435,20 +456,19 @@ The second fact states that if  $\Dv$ (resp. $\Dw$) is empty, too, we only need 
 \end{fact}
 \begin{proof}
 As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ with $u, u' \in N_{2,3}(v,w)$ can dominate $N_3(v,w)$. 
-Since also $\Dvw = \emptyset$ any sds of G has to contain $v$ or at least four vertices by \cref{fact:f1}.
-In the last case, we replace these four vertices with $v$, $w$ and two neighbors respectively and we can conclude that $v$ belongs to the solution.
+Since also $\Dvw = \emptyset$ any sds of $G$ must contain $v$ or at least four other vertices by \cref{fact:f1}.
+In the latter case, we replace these four vertices with $v$, $w$ and two neighbors respectively can conclude that $v$ belongs to the solution.
 Again, $k$ becomes either smaller or stays unchanged.
 \end{proof}
 
-% On the opposite side, if $\Dvw \neq \emptyset$, we have ... 
-
-We now have all the tools to prove the correctness of \cref{rgl:rtwo}.
+Using these two facts, we can now prove the correctness of \cref{rgl:rtwo}.
 
 \begin{lemma}\label{lemma:correctnesstwo}
-    Let \G be a plane graph, $v, w \in V$ and \GB be the graph obtained after application of \cref{rgl:rtwo} on the pair $\{v, w\}$. Then $G$ has a semitotal dominating set of size at most $k$ if and only if $G'$ has a semitotal dominating set of size at most $k$.
+    Let \G be a plane graph, $v, w \in V$ and \GB be the graph obtained after application of \cref{rgl:rtwo} on the pair $\{v, w\}$. Then $G$ has an sds of size at most $k$ if and only if $G'$ has an sds of size at most $k$.
 \end{lemma}
 \begin{proof}
-We will prove the claim by independently analyzing the different cases.     
+
+We will prove the claim by analyzing the different cases independently.     
 
 Assume an sds $D$ in $G$ and by assumption $\Dvw = \emptyset$. 
 We show that $G'$ has an sds with $\abs{D'} \leq \abs{D}$. 
@@ -456,36 +476,42 @@ We show that $G'$ has an sds with $\abs{D'} \leq \abs{D}$.
         \item Assume $ \Dv = \emptyset  \wedge \Dw = \emptyset $. By \cref{fact:f2}, both $v, w \in D$.
         Therefore, $v'$,$w'$, and potentially $y$ and $y'$ are dominated by $v$ or $w$ in $G'$.
         
-        We have three cases: Either $v$ and $w$ have their witnesses (e.g. via two distinct $N_1(v,w)$-vertices); they are of distance three and share one witness on a path from $v$ to $w$ (which could go through $N_{2,3}(v,w)$ and therefore will be kept by the vertices $y$ and $y$) is required, or they can be of distance less than three, such that they already witness each other directly. 
-        Furthermore, a direct edge $\{v,w\}$ will not be reduced. 
+        We have three cases: Either $v$ and $w$ have their own witnesses ($d(v,w) > 2$), or they share one witness on a path from $v$ to $w$ ($d(v,w)= 2$) is required, or they witness each other directly. ($d(v,w) <2$).
+        Not that the rule preserves these distances.
 
-        We will now build $D'$ depending on which vertices from $D \cap N_{2,3}(v,w)$ have been removed. 
-        % Add figure.
+        We will now build a sds $D'$ in $G'$ depending on which vertices from $D \cap N_{2,3}(v,w)$ have been removed. 
+
         \begin{itemize}
-            \item If the rule has not removed any $d \in D$, we simply set $D' = D$. If $v$ was a witness for $w$ (and vice versa), \cref{rgl:rtwo} will preserve it by introducing the vertex $y$. Otherwise, these witnesses are preserved.
+            \item If the rule has not removed any $d \in D$, we simply set $D' = D$. 
+            If $v$ was a witness for $w$ (and vice versa), \cref{rgl:rtwo} will preserve the distance by introducing the vertex $y$. 
+            Furthermore, a direct edge $\{v,w\}$ will be preserved and therefore, no witness relations being destroyed.
+
             \item If $d(v,w) > 3$, then $v$ and $w$ are not sharing any common witnesses. 
             If the rule has removed a vertex from $D \cap N(v)$, we set $D' = D \setminus N_{2,3}(v,w) \cup \{v'\}$.
             If the rule has removed a vertex from $D \cap N(w)$, we  set $D' = D \setminus N_{2,3}(v,w) \cup \{w'\}$.
             If the rule has removed a vertex from $(D \cap N(v))$ and a vertex from $(D \cap N(w))$, we set $D' = D \setminus N_{2,3}(v,w) \cup \{v', w'\}$.
-            \item If $d(v,w) = 3$ and the vertices $y$ and $y'$ get introduced preserving one path from $v$ to $w$, because there have been a path via $N_{2,3}(v,w)$-vertices containing a single witness for both $v$ and $w$.
-            If the rule removed a dominating vertex $D \cap N_{2,3}(v, w)$, we set $D' = D \setminus N_{2,3}(v,w) \cup \{y\}$. Note that we could also choose $y' \in D'$, because $y$'s only function is to be a single witness for $v$ and $w$ and every other vertex it could be a witness for, will also be witnessed by $v,w \in D'$ (\cref{fact:f1}).
+            \item If $d(v,w) = 3$ and the vertices $y$ and $y'$ get introduced preserving one path from $v$ to $w$, because there has been a path via $N_{2,3}(v,w)$-vertices containing a single witness for both $v$ and $w$.
+            If the rule removed a dominating vertex from $D \cap N_{2,3}(v, w)$, we set $D' = D \setminus N_{2,3}(v,w) \cup \{y\}$. Note that we could also choose $y' \in D'$, because $y$'s only function is to be a single witness for $v$ and $w$ and every other vertex it could be a witness for, will also be witnessed by $v,w \in D'$ (\cref{fact:f1}).
             \item If $d(v,w) \leq 2$, then $v$ and $w$ directly witness each other and the reduction must preserve this relation, which is accomplished by introducing the single bridging vertex $y$. 
             Even if the rule has removed a vertex $z \in D \cap N_{2,3}(v,w)$, we can ignore that, because \cref{fact:f1} states that $v$ and $w$ will witness the same vertices as $z$ did. Hence, we set $D' = D \setminus N_{2,3}(v,w)$.
         \end{itemize}
         
         In all of the cases, it follows that $D'$ is an sds of $G'$ with $\abs{D'} \leq \abs{D}$ 
         
-        \item  $ \Dv \neq \emptyset  \wedge \Dw = \emptyset$: As $\Dw = \emptyset$ and \cref{fact:f2}, we know that $v \in D$ and $v$ dominates $N_{2,3}(v)$. 
-        If a vertex $d \in D \cap N_{2,3}(v)$ was removed, we set $D' = D \setminus N_{2,3}(v) \cup \{v'\}$, else $D' = D$.
-        Deleting dominating vertices $d \in D \cap N_{2,3}(v)$ does not destroy the witness properties of the graph, because by \cref{fact:f1} we know that everything $d$ could witness, is also witnessed by $v$. 
-        If $d$ was a witness for $v$, we have replaced it with $v'$ in $G'$.
-        Note that otherwise a vertex from $N_1(v) \cup \{ p \in (N(z) \setminus N(v)) | z \in N_1(v) \}$ is a witness for $v$ that is not touched by this reduction. Clearly, $\abs{D'} \leq \abs{D}$ holds.
-        \item  $ \Dv = \emptyset  \wedge \Dw \neq  \emptyset $: Symmetrical to previous case.
+        \item  Now, assume $ \Dv \neq \emptyset  \wedge \Dw = \emptyset$: As $\Dw = \emptyset$ and \cref{fact:f2}, we know that $v \in D$ and $v$ dominates $N_{2,3}(v)$. 
+        If a vertex $d \in D \cap N_{2,3}(v)$ was removed, we set $D' = D \setminus N_{2,3}(v) \cup \{v'\}$, and $D' = D$ otherwise.
+        Deleting $d$ does not destroy the witness properties of the graph, because by \cref{fact:f1} $v$ already witnesses everything $d$ could. 
+        If $d$ was a witness for $v$, we have replaced it with $v'$ in $G'$ as the new witness.
+        All witnesses outside of $N_{2,3}(v)$  for $v$ have not been modified and clearly, $\abs{D'} \leq \abs{D}$ holds.
+%        $N_1(v) \cup \{ p \in (N(z) \setminus N(v)) | z \in N_1(v) \}$ 
+        \item  $ \Dv = \emptyset  \wedge \Dw \neq  \emptyset $: The proof is symmetrical to the previous case.
     \end{enumerate}
 
-    Let $D'$ be a \sdom in $G'$ and $\Dvw =  \emptyset$. We show that $G$ has an sds $D$ with $\abs{D} \leq \abs{D'}$ by distinguishing the different cases again. 
+    Let $D'$ be a sds in $G'$ and $\Dvw =  \emptyset$. 
+    We show that $G$ has an sds $D$ with $\abs{D} \leq \abs{D'}$ by case distinction. 
     \begin{enumerate}
-        \item  $\Dv = \emptyset \wedge \Dw = \emptyset$: In any case we know that $v,w \in D$ to dominate $v'$ and $w'$ and therefore also dominating $N_{2,3}(v,w)$ in $G$. To preserve the distance $d(v,w)$ the rule might have introduced additional vertices $y$ and $y'$.            
+        \item  $\Dv = \emptyset \wedge \Dw = \emptyset$: In any case we know that $v,w \in D$ to dominate $v'$ and $w'$ and therefore dominating $N_{2,3}(v,w)$ in $G$. 
+        To preserve the distance $d(v,w)$ the rule might have introduced additional vertices $y$ and $y'$ in the following two cases:            
         \begin{itemize}
             \item If only $y$ was introduced we know that there was a common neighbor $n \in N(v) \cap N(w)$ of $v$ and $w$. $y$ allows $v$ to witness $w$ (and vice versa) and is not part of a solution itself. (assuming $y \notin D'$). Hence, we set $D = D'$.
             \item If $y$ and $y'$ were added, a solution could use one of them to provide a single witness for $v$ and $w$. There exists a path $p = (v, n_1, n_2, w)$ from $v$ to $w$ in $G$ only using vertices from $N_{2,3}(v,w)$. As $n_1$ and $n_2$ both witness $v$ and $w$, we put one of them in $D$ if at least one of $y$ or $y$ are dominating vertices in $G'$.
@@ -497,23 +523,27 @@ We show that $G'$ has an sds with $\abs{D'} \leq \abs{D}$.
     In all cases, we have shown that $\abs{D} \leq \abs{D'}$ and $D$ is an sds of $G$.
 
 \end{proof}
+
+% Note that for \cref{case:c1}, it is not enough to just add an edge $\{v,w\}$ to allow them to witness each other. 
+
 % What happens if D != empty?
+
 \subsection{Reduction Rule III: Shrinking Simple Regions}
 
 Recall that a simple region is a region, where the entire neighborhood of the poles is shared.  
-
-
 By planarity, a \textit{simple region} has at most two vertices from $N_1(v,w)$ (namely the border $\partial$), two vertices from $N_2(v,w)$ connected to the border and unlimited $N_3(v,w)$ vertices squeezed in the middle.
 
-With a more sophisticated analysis, we were able to modify this rule such that the bound given in \cite{Garnero2018} remained valid although we might have to add some more vertices as originally described.
+Unlike in a normal $vw$-region, every \textit{simple region} can be semitotally dominated by at most two vertices: $v$ and $w$, because $v$ instantly witnesses $w$. 
+This contrasts \tdom, where $v$ does not necessarily witness $w$ in a \textit{simple region}.
 
-In contr
-%  In order to gain the same bound as .
+% It turns out that there \textit{simple regions} where only one vertex $v$ is a dominator (see \cref{})
+
+Furthermore, there is one case, where one single vertex is enough to 
+
+We were able to modify the rule such that the bound given in \cite{Garnero2018}.
+% Therefor we asked in which cases \underline{choosing exactly one vertex in $N(v) \cap N(w) \setminus N_1(v,w)$} can expose a better solution than picking $v$ and $w$. 
 
 %We notice that a reduction must preserve the $N_1(v,w)$ vertices, because they can be important as dominating vertices. 
-% Unlike other regions (where we would need three vertices in the worst case), a simple region can be semitotally dominated by at most two vertices: $v$ and $w$, because $v$ instantly witnesses $w$. Therefor we asked in which cases \underline{choosing exactly one vertex in $N(v) \cap N(w) \setminus N_1(v,w)$} can expose a better solution than picking $v$ and $w$. 
-
-% TODO Refer to 4.5 figure with simple regions
 
 % Note a N_3(v,w) can also be on the border!
 %General Idea: sharing neighbors already force v or w into ds
@@ -525,26 +555,11 @@ In contr
 %Sometimes it is possible to cover all with only one vertex from $N_x$
 %
 %choosing two of the shared vertices yields a better solution than $v$ and $w$: One common neighbor is already enough to dominate $v$ and $w$ and can be witnesses by a  
-%
-%Furthermore, we also know that $v$ directly witnesses $w$ 
-%
-%There are some situations where a 
-%
-%Furthermore, in order to witness   
-% PRoblem
-%The lowest number of shared vertices we could come up with 
-%
-%
-While first embedding a reduction procedure for the \ptdom directly into their rule two, Garnero and Sau \cite{Garnero2018} decided to decouple it into a separate rule.
-% Describe Rule?
+While first embedding a reduction procedure for the \ptdom directly into their rule two, Garnero and Sau \cite{Garnero2018} decided to later decouple it into a separate rule.
+A tds is easier to handle because of the strict witness property and therefore, we had to come up with a novel reduction rule for \textit{simple regions}.
 
-Unfortunately, a total dominating set is easier to handle 
-%% TODO Describe IDEA
+This reduction rule will be our ``swiss-army-knife'' to be used on many different places where \textit{simple regions} can be found.
 
-%For a total dominating set, it is sufficient to check ...
-%
-%
-%This reduction rule is a ``swiss-army-knife'' and simple regions found at various places will  
 %
 %For \tdom it is sufficient to replace these vertices with one single intermediate vertex $h$, because no solution would use $h$ without either including $v$ or $w$ as well as $h$ must also be dominated. Resembling an ``OR''-Gadget.
 %
@@ -553,11 +568,6 @@ Unfortunately, a total dominating set is easier to handle
 %
 %A vertex on the border $\partial R$ must not necessarily be in $N_1(v,w)$ if it has no neighbors outside. In that case it belongs to $N_3(v,w)$. To circumvent any misunderstandings, we will in \cref{rgl:rthree} use the set $V(R \setminus \partial R)$
 %
-% SHORTLY DISCUSS THIS RULE
-
-
-% CASE TWO: OR GADGET, Compare to TDS
-
 
 \begin{rgl}\label{rgl:rthree}
     Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and $w$. If $\abs{V(R) \setminus \{v, w\}} \geq 5$ apply the following:
@@ -578,23 +588,43 @@ Unfortunately, a total dominating set is easier to handle
                     \item add vertices $y$, $y'$ and four edges $\{v,y\}$, $\{v, y'\}$, $\{y, w\}$ and $\{y', w\}$
             \end{itemize}
         \end{caseof}
-Recap that we denoted $\partial R$ as the set of boundary vertices of the (simple) region $R$, which includes $v$ and $w$ and possibly up to two vertices on the border of $R$
+Recap that we denoted $\partial R$ as the set of boundary vertices of the  \textit{simple region} $R$, which includes $v$ and $w$ and possibly up to two vertices on the border of $R$.
 
 \end{rgl}
+Before proving the correctness of this rule, we will quickly discuss the idea behind it.
+
+In \cref{case:rtt} we need at most two vertices to dominate $V(R \setminus \partial R)$ and the best way to do that is using $v$,$w$ or both.
+Adding two distinct vertices $y$ and $y'$ simulates an $\mathrm{OR}$ gadget, because either $\{y,y'\} \subseteq D$, $v \in D$ or $w \in D$ for any sds $D$ in $G$.
+If we would add only one vertex $y$ (see \cref{case:rto}), then $y \in D$ dominates $v$ and $w$, and could potentially be witnessed by another neighbor outside $N_{2,3}(v,w)$.
+This would lead to $v,w \notin D$ in $G'$ and a smaller solution, although $G$ requires at least one of them.
+To preserve this property, our construction needs to add two vertices.
+
+In \cref{case:rto} we dominate $V(R \setminus \partial R) \cong P_3$ with one single vertex $p_2$ in the middle without using $v$ or $w$.
+This vertex is represented by the new vertex $y$ in $G'$ which witnesses and dominates the same vertices as $p_2$ in $G$.
+% This gadget in a tds $D$, would force $v\in D$ or $w \in D$ because choosing $y \in D$ would still require a neighboring witness.
+If we would use the same gadget as in \cref{case:rtt}, we deteriorate our solution because  $v$ or $w$ would be forced into a sds $D$ in $G'$, but only $p_2 \in D$ might be enough in $G$.
+See \cref{fig:rulethree} for an example of both cases.
+
+
+
+
 \begin{lemma}[Correctness of \cref{rgl:rthree}]\label{lemma:correctnessthree}
-    Let \G be a plane graph, $v, w \in V$ and \GB be the graph obtained after application of \cref{rgl:rthree} on the pair $\{v, w\}$. Then $G$ has semitotal dominating set of size $k$ if and only if $G'$ has semitotal dominating set of size $k$.
+    Let \G be a plane graph, $v, w \in V$ and \GB be the graph obtained after application of \cref{rgl:rthree} on the pair $\{v, w\}$. Then $G$ has an sds of size $k$ if and only if $G'$ has an sds of size $k$.
 \end{lemma}
 \begin{proof}
     % TODO: Decide vw in Border? and properly define them as a set.
-        Consider an sds $D$ in $G$. We show that $G'$ also has an sds with $\abs{D'} \leq \abs{D}$. By assumption, we have $\abs{V(R) \setminus \{v, w\}} \geq 5$, $R$ is a simple region and therefor $d(v,w) \leq 2$.
+        Consider an sds $D$ in $G$. We show that $G'$ also has an sds with $\abs{D'} \leq \abs{D}$. 
+        By assumption, we have $\abs{V(R) \setminus \{v, w\}} \geq 5$, $R$ is a simple region and therefore $d(v,w) \leq 2$.
+        We can assume that the border $\partial R$ consists of exactly two vertices, because if $\abs{\partial R \setminus \{v,w\}}  < 2$, the region's boundary path would not enclose an area.
+        Consequently, $\abs{V(R \setminus \partial R)} \geq 3$.
 
-        First, we can safely assume that the set of border vertices  $\partial R$ contains exactly two vertices.
-        If $\abs{\partial R \setminus \{v,w\}}  < 2$, the region could not have vertices strictly inside, because the boundary path of $\partial R$ does not enclose any vertices.
-        Hence, at least three vertices must lie strictly inside $R$.
-
-        On the other side, we only need to observe those cases, where both $v,w \notin D$. Again, if a vertex $v' \in V(R \setminus \partial R)$ together with $v$ or $w$ are in $D$, we can replace them with both $v$ and $w$ which preserves the dominating and witnessing properties and we can set $D' = D \setminus \{v'\} \cup \{v,w\}$. Note that even if $v'$ was a sole witness for $v$, we know that $d(v,w) \leq 2$, and therefore $v$ is a witness for $w$ and vice versa. If no vertex in $V(R \setminus \partial R)$ is dominating, we just set $D' = D$. 
-
-        Furthermore, we assume $\abs{D \cap V(R \setminus \partial R)} \leq 1$ (at most one vertex strictly inside the region is dominating) because otherwise, we replace those two vertices by $v$ and $w$ which trivially dominate and witness the same vertices.
+        Observe that if a vertex $v' \in V(R \setminus \partial R) \cap D$ together with $v \in D$ or $w\in D$, we replace them with both $v$ and $w$ and set $D' = D \setminus \{v'\} \cup \{v,w\}$.  
+        If $v'$ was used as a witness for $v$ (or $w$), we know that $v$ and $w$ witness each other in a simple region. 
+        If $V(R \setminus \partial R) \cap D = \emptyset$, we just set $D' = D$. 
+        For the following cases, we can assume $v,w \notin D$
+        Furthermore, $\abs{D \cap V(R \setminus \partial R)} \leq 1$ 
+        % (at most one vertex strictly inside the region is dominating) 
+        because otherwise, we replace them with $v$ and $w$ trivially dominating and witnessing $R$.
 
         If $\abs{\partial R \setminus \{v,w\} \cap D} \geq 1$ we can replace the vertex with $v$ or $w$ and set $D' = D \setminus V(R \setminus \partial R) \cup \{v\}$ (TODO Argument why this is ok)
 
