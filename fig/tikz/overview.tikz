@@ -8,7 +8,7 @@
 		\node [style=TEXTHIGH, text width=7.5cm] (7) at (6, -14.75) {\sdom has a linear linear kernel of size at most $\kernelsize k$  [\Cref{thm:central}]};
 		\node [style=TEXTHIGHYELLOW, text width=6cm] (8) at (7.75, 3.25) {Ex. max \dreg with $\abs{R} \leq 3* \abs{D}-6$ [\Cref{lemma:numRegions}]};
 		\node [style=TEXTHIGHGREEN] (10) at (-2, -3) {Reduction [\Cref{rgl:rthree}]};
-		\node [style=TEXTHIGHGRAY, text width=4cm] (11) at (14.5, 0.5) {$N_2(v,w) $ by 6 simple regions [\Cref{lemma:ntwocover}]};
+		\node [style=TEXTHIGHGRAY, text width=4cm] (11) at (14.75, 0) {$N_2(v,w) $ by 6 simple regions [\Cref{lemma:ntwocover}]};
 		\node [style=TEXTHIGHGRAY, text width=4cm] (12) at (13.25, -3.75) {$N_3(v,w) $ by at most 14  simple regions [\Cref{lemma:rtwosr}]};
 		\node [style=none] (13) at (-12.75, 2.5) {};
 		\node [style=none] (14) at (-12, -0.75) {};
