@@ -847,9 +847,8 @@ In the following, we define $\dGR(v) = \abs{\{R(v,w) \in \mathfrak{R}, w \in D\}
 With slight modifications, the proof given by Garnero and Sau \cite[arXiv v2]{Garnero2018} will also apply for \sdom. Although we assume $G$ to be entirely reduced, the following proof only relies on \cref{rgl:rone,rgl:rthree}. The proof uses the observation that vertices from $N_2(v)$ that lie outside of a region must span simple regions between those from $\{v\} \cup N_1(v)$.
 
 \begin{proof}
-    Again, we will follow the proof proposed by Alber, Fellows, Niedermeier \cite[Proposition 2]{Alber2004}. 
-    
-    We use the size bound of a simple region we have proven in \cref{lemma:simpleregionbound}. In particular, we are going to show that $V \setminus V(\mathfrak{R}) \leq 48 \cdot \abs{\mathfrak{R}} + 2 \cdot \abs{D}$. \Cref{lemma:numRegions} will then give the desired bound.
+    e will follow the proof proposed by Alber, Fellows, Niedermeier \cite[Proposition 2]{Alber2004} and use the size bound of a simple region we have proven in \cref{lemma:simpleregionbound}. 
+    In particular, we are going to show that $V \setminus V(\mathfrak{R}) \leq 48 \cdot \abs{\mathfrak{R}} + 2 \cdot \abs{D}$. \Cref{lemma:numRegions} will then give the desired bound.
     
     Let $D$ be an sds, $\mathfrak{R}$ be a maximal \dreg and $v \in D$. Since $D$ dominates all vertices in the graph, we can consider $V$ as $\bigcup_{v \in D}N(v)$ and thus, we only need to bound the sizes of $N_1(v)\setminus \VR$, $N_2(v) \setminus \VR$ and $N_3(v) \setminus \VR$ separately.
     
@@ -870,12 +869,8 @@ With slight modifications, the proof given by Garnero and Sau \cite[arXiv v2]{Ga
         \end{split}
     \end{equation}
     
-    
-    % TODO Now uses the lemma in the revised version. 
-    % TODO Formally Proof that
-    % TODO Make a picture for that case 
-    
-    \noindent$\mathbf{N_1(v)}$: Because every semitotal dominating set is also a dominating set, we can apply \cref{lemma:noneinside} and conclude that $N_1(v) \subseteq V(\mathfrak{R})$. Hence,
+    \noindent$\mathbf{N_1(v)}$: Because every sds is a ds, we can apply \cref{lemma:noneinside} and conclude that $N_1(v) \subseteq V(\mathfrak{R})$. 
+    Hence,
     
     \[\abs{\bigcup_{v \in D}N_1(v) \setminus V(\mathfrak{R})} = 0\]
     
@@ -885,8 +880,8 @@ With slight modifications, the proof given by Garnero and Sau \cite[arXiv v2]{Ga
         \begin{alignedat}[b]{2}
             \abs{V \setminus V(\mathfrak{R}) \cup D)} &\leq 32 \cdot \abs{\mathfrak{R}} + \abs{D} & \zerotext[4em]{(\cref{lemma:numRegions})}\\ 
             &\leq 32 \cdot (3 \abs{D} - 6) + \abs{D} &\\
-            &\leq  96 \abs{D} + \abs{D} &\\
-            &= 97 \abs{D}
+            &\leq  96 \cdot \abs{D} + \abs{D} &\\
+            &= 97 \cdot \abs{D}
         \end{alignedat}
     \end{equation}
     
