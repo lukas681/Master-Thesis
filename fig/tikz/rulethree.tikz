@@ -83,10 +83,10 @@
 		\node [style=none] (94) at (-12, -2.5) {};
 		\node [style=none] (95) at (-10.5, -2.5) {};
 		\node [style=none] (96) at (-10.5, 2.75) {};
-		\node [style=none] (97) at (3, 1.5) {};
-		\node [style=none] (98) at (5, 1.5) {};
-		\node [style=none] (99) at (5, -1.5) {};
-		\node [style=none] (100) at (3, -1.5) {};
+		\node [style=none] (97) at (3, 2) {};
+		\node [style=none] (98) at (5, 2) {};
+		\node [style=none] (99) at (5, -2) {};
+		\node [style=none] (100) at (3, -2) {};
 		\node [style=none] (101) at (-13.5, 3.75) {$R \setminus \partial R$};
 		\node [style=none] (102) at (1.25, 3.25) {$R \setminus \partial R$};
 		\node [style=none] (103) at (-12.5, 2.25) {};
@@ -94,7 +94,7 @@
 		\node [style=none] (105) at (2.5, 1.25) {};
 		\node [style=none] (106) at (-13.5, 3) {};
 		\node [style=none] (107) at (1.25, 2.5) {};
-		\node [style=none] (108) at (4.25, 2.25) {$P_1$};
+		\node [style=none] (108) at (4.25, 2.75) {$P_1$};
 		\node [style=none] (109) at (4.25, 0.75) {$P_2$};
 		\node [style=none] (110) at (4.25, -0.75) {$P_3$};
 	\end{pgfonlayer}

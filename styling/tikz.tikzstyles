@@ -37,3 +37,4 @@
 \tikzstyle{simple dashed directed edge}=[->, draw=black, dashed]
 \tikzstyle{SLIGHTLYDASHED}=[-, dotted, fill=none, draw={rgb,255: red,128; green,128; blue,128}]
 \tikzstyle{simple dashed directed edge}=[->, draw=black, line width=0.75mm, dashed]
+\tikzstyle{simple}=[->, draw=black, thick, ]

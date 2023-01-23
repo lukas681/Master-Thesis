@@ -530,44 +530,22 @@ We show that $G'$ has an sds with $\abs{D'} \leq \abs{D}$.
 
 \subsection{Reduction Rule III: Shrinking Simple Regions}
 
-Recall that a simple region is a region, where the entire neighborhood of the poles is shared.  
-By planarity, a \textit{simple region} has at most two vertices from $N_1(v,w)$ (namely the border $\partial$), two vertices from $N_2(v,w)$ connected to the border and unlimited $N_3(v,w)$ vertices squeezed in the middle.
+We will now introduce a rule that simplifies \textit{simple regions}.
+This reduction rule will be our \href{https://en.wikipedia.org/wiki/Swiss_Army_knife}{swiss-army-knife} used in many places a \textit{simple region} can be found.
+Interestingly, the idea of having such a rule separately was introduced in a later version of Garnero and Sau's \cite{Garnero2018} paper for \ptdom.
+In their first revision, this rule was circuitously included in the definition of \cref{rgl:rtwo}.
+Later they decided to decouple it into a separate rule, which makes the arguments easier to follow and improves the kernel size by allowing a more sophisticated analysis.
 
-Unlike in a normal $vw$-region, every \textit{simple region} can be semitotally dominated by at most two vertices: $v$ and $w$, because $v$ instantly witnesses $w$. 
-This contrasts \tdom, where $v$ does not necessarily witness $w$ in a \textit{simple region}.
+Recall that in a \textit{simple region} $R$ the entire neighborhood of the poles $v$ and $w$ is shared.  
+By planarity, a \textit{simple region} has at most two vertices from $N_1(v,w)$ (namely the border $\partial$ R), two vertices from $N_2(v,w)$ connected to the border and unlimited $N_3(v,w)$ vertices squeezed in the middle.
+Unlike in a normal $vw$-region, every \textit{simple region} can be semitotally dominated by at most two vertices: $v$ and $w$, because $v$ instantly witnesses $w$ and $V(R)$ is dominated by them as well and we can assume $V(R) \cap D = \emptyset$.
+This does not hold for a tds, because $v$ and $w$ do not witness each other and probably a vertex from inside the region must be used as a witness for a pole.
+But on the other side, the witness for a vertex $d \in D \cap V(R \setminus \partial R)$ in a sds can have a witness outside the region and a solution without $v$ or $w$ can exist. 
+In a tds where we know that $v$ or $w$ must be part of a solution, we can replace all inner vertices with one vertex $y$ and simulate an $\mathnormal{OR}$ gadget.
+If $y \in D$ in a tds $D$, then immediately either $v \in D$ or $w \in D$ to witness $y$ as well. But if $y \in D$ then $v \in D$ or $w \in D$ to dominate $y$.
+However, for a sds the situation is different because the witness for $y$ is not necessarily $v$ or $w$.
 
-% It turns out that there \textit{simple regions} where only one vertex $v$ is a dominator (see \cref{})
-
-Furthermore, there is one case, where one single vertex is enough to 
-
-We were able to modify the rule such that the bound given in \cite{Garnero2018}.
-% Therefor we asked in which cases \underline{choosing exactly one vertex in $N(v) \cap N(w) \setminus N_1(v,w)$} can expose a better solution than picking $v$ and $w$. 
-
-%We notice that a reduction must preserve the $N_1(v,w)$ vertices, because they can be important as dominating vertices. 
-
-% Note a N_3(v,w) can also be on the border!
-%General Idea: sharing neighbors already force v or w into ds
-%
-%A worst-case shared neighborhood has exactly 5 vertices (see fig.)
-%
-%We know that $v$ witnesses $w$ (and vice versa) and therefore, we can always semitotal dominate with at most to vertices. 
-%
-%Sometimes it is possible to cover all with only one vertex from $N_x$
-%
-%choosing two of the shared vertices yields a better solution than $v$ and $w$: One common neighbor is already enough to dominate $v$ and $w$ and can be witnesses by a  
-While first embedding a reduction procedure for the \ptdom directly into their rule two, Garnero and Sau \cite{Garnero2018} decided to later decouple it into a separate rule.
 A tds is easier to handle because of the strict witness property and therefore, we had to come up with a novel reduction rule for \textit{simple regions}.
-
-This reduction rule will be our ``swiss-army-knife'' to be used on many different places where \textit{simple regions} can be found.
-
-%
-%For \tdom it is sufficient to replace these vertices with one single intermediate vertex $h$, because no solution would use $h$ without either including $v$ or $w$ as well as $h$ must also be dominated. Resembling an ``OR''-Gadget.
-%
-%% TODO: Refactor.
-%However, for \sdom the situation is a bit different: There could be another witness for $h$ than $v$ or $w$ (for example a $N_1(v,w)$-vertex) and we might generate smaller solutions. Therefore, our gadget consists of two vertices $h_1$ and $h_2$. A solution would either contain $h_1$ and $h_2$ or at least $v$ or $w$. In the first case, we replace it with $v$ and $w$ which is still a \sdom.
-%
-%A vertex on the border $\partial R$ must not necessarily be in $N_1(v,w)$ if it has no neighbors outside. In that case it belongs to $N_3(v,w)$. To circumvent any misunderstandings, we will in \cref{rgl:rthree} use the set $V(R \setminus \partial R)$
-%
 
 \begin{rgl}\label{rgl:rthree}
     Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and $w$. If $\abs{V(R) \setminus \{v, w\}} \geq 5$ apply the following:
@@ -593,20 +571,17 @@ Recap that we denoted $\partial R$ as the set of boundary vertices of the  \text
 \end{rgl}
 Before proving the correctness of this rule, we will quickly discuss the idea behind it.
 
-In \cref{case:rtt} we need at most two vertices to dominate $V(R \setminus \partial R)$ and the best way to do that is using $v$,$w$ or both.
-Adding two distinct vertices $y$ and $y'$ simulates an $\mathrm{OR}$ gadget, because either $\{y,y'\} \subseteq D$, $v \in D$ or $w \in D$ for any sds $D$ in $G$.
-If we would add only one vertex $y$ (see \cref{case:rto}), then $y \in D$ dominates $v$ and $w$, and could potentially be witnessed by another neighbor outside $N_{2,3}(v,w)$.
+In \cref{case:rtt} we need at most two vertices to dominate $V(R \setminus \partial R)$ because only an induced path with three vertices could be dominated by one vertex.
+The best way to do that is using $v$,$w$ or both and we add two vertices $y$ and $y'$ to simulte an $\mathrm{OR}$ gadget.
+Either $\{y,y'\} \subseteq D$, $v \in D$ or $w \in D$ for any sds $D$ in $G$.
+If we would add only one vertex $y$ (see \cref{case:rto}), then $y \in D$ dominates $v$ and $w$, and could potentially be witnessed by another neighbor outside $V(R \partial R)$.
 This would lead to $v,w \notin D$ in $G'$ and a smaller solution, although $G$ requires at least one of them.
 To preserve this property, our construction needs to add two vertices.
 
 In \cref{case:rto} we dominate $V(R \setminus \partial R) \cong P_3$ with one single vertex $p_2$ in the middle without using $v$ or $w$.
 This vertex is represented by the new vertex $y$ in $G'$ which witnesses and dominates the same vertices as $p_2$ in $G$.
-% This gadget in a tds $D$, would force $v\in D$ or $w \in D$ because choosing $y \in D$ would still require a neighboring witness.
 If we would use the same gadget as in \cref{case:rtt}, we deteriorate our solution because  $v$ or $w$ would be forced into a sds $D$ in $G'$, but only $p_2 \in D$ might be enough in $G$.
 See \cref{fig:rulethree} for an example of both cases.
-
-
-
 
 \begin{lemma}[Correctness of \cref{rgl:rthree}]\label{lemma:correctnessthree}
     Let \G be a plane graph, $v, w \in V$ and \GB be the graph obtained after application of \cref{rgl:rthree} on the pair $\{v, w\}$. Then $G$ has an sds of size $k$ if and only if $G'$ has an sds of size $k$.
@@ -636,11 +611,12 @@ See \cref{fig:rulethree} for an example of both cases.
          \textbf{Contrary, assume} $V(R \setminus \partial R) \ncong P_3$. Again, let us denote this induced path as $(p_1,p_2,p_3)$. We observe that without contradicting the planarity of $G$ the induced subgraph of the vertices $G[R \setminus \partial R]$ must be a subgraph of a $P_j$ for $j = \abs{V(R \setminus \partial R)}$ and  $j \geq 3$.  By assumption, we either have this as either a $P_3$ with at least one missing edge or a larger $P_j$. Therefore, it is impossible to dominate all these vertices with one single vertex $p_i$ if we also assume that no vertex in $\partial R$ is dominating. Hence, we set $D' = D$.
 
          In all cases $\abs{D} = \abs{D'}$
-        \item[$\Leftarrow$] Consider an sds $D$ in $G'$. We show that $G$ has an sds with $\abs{D} \leq \abs{D'}$. By assumption, we have $\Dvw = \emptyset$. We analyze both cases separately.
+         Consider an sds $D$ in $G'$. We show that $G$ has an sds with $\abs{D} \leq \abs{D'}$. By assumption, we have $\Dvw = \emptyset$. We analyze both cases separately.
 
          \textbf{First, assume} $V(R \setminus \partial R) \cong P_3$. Here, \cref{case:rto} has been applied and $V(R \setminus R)$ replaced by one single vertex $y$. We denote the induced path in $G$ as $(p_1,p_2,p_3)$.
          If $y \in D'$, we set $D = D' \setminus \{y\} \cup \{p_2\}$. We know that $p_2$ dominates $p_1$,$p_3$ in $G$ and witnesses the same vertices as in $G'$. 
          Otherwise, we just set $D = D'$. 
+
 
          \textbf{Contrary, assume} $V(R \setminus \partial R) \ncong P_3$ and \cref{case:rtt} has been applied and $V(R \setminus R)$ replaced by two vertices $y$ and $y'$. Observe that neither $y$ nor $y'$ is useful in any \sdom in $G'$: If both $y, y' \in D'$, we simply replace them by $v$ and $w$ and if only $y \in D$ (resp. $y'$), then we need either $v \in D'$ or $w \in D'$ to dominate $y'$ and again, we replace them by $v$ and $w$. 
          We can even ignore that $y$ or $y'$ is important as a witness, because as $d(v,w) \leq 2$, $v$, $w$ and $v$ always witness each other.
