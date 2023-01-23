@@ -264,6 +264,9 @@ We have also added the parameterized complexity for those graph classes and used
 As we do not believe that \sdoms is fundamentally different than \doms, our intuition is that also the parameterized complexity mimicks \sdoms. 
 We were able to prove \WTWO-hardness for \textit{bipartite} and \textit{split} graphs by giving a graph structure preserving reducing from \doms. We provide an explicit construction of a kernel for the \textit{planar} case, which exists for \doms \cite{Alber2004} and \tdoms \cite{Garnero2019} as well.
 
+We would like to mention that membership of \psdom in \FPT already follows from \cite{Alber2002}.
+Their algorithm \pdomp can be used to obtain an fpt algorithm of order $\mathcal{O}(c^{\sqrt{k}}n)$ for some constant $c$ and solution size $k$.
+
 Many gaps are still open for further research.
 We will discuss these questions at the end of this thesis in \cref{ch:closing}.
 

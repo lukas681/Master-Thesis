@@ -97,6 +97,14 @@
 		\node [style=none] (108) at (4.25, 2.75) {$P_1$};
 		\node [style=none] (109) at (4.25, 0.75) {$P_2$};
 		\node [style=none] (110) at (4.25, -0.75) {$P_3$};
+		\node [style=none] (111) at (-10.75, 4.5) {$b$};
+		\node [style=none] (112) at (11.75, 4.5) {$b$};
+		\node [style=none] (113) at (4.25, 4.5) {$b$};
+		\node [style=none] (114) at (-3.25, 4.5) {$b$};
+		\node [style=none] (115) at (4.25, -4.25) {$b'$};
+		\node [style=none] (116) at (11.75, -4.25) {$b'$};
+		\node [style=none] (117) at (-3.25, -4.25) {$b'$};
+		\node [style=none] (118) at (-10.75, -4.25) {$b'$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=FILLBLUE] (11.center)

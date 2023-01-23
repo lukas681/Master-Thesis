@@ -145,7 +145,7 @@ The following lemma shows that
 
             Let $k_i$ be the vertex that was connected with $n_i$ during step 1. All we have to show is that $v_{z+1}$ and $k_{z+1}$ extend our previous clique, hence are fully connected with $N(v_i)$.
             
-            $v_{z+1}$ connects to $N(v_i)$ in G by assumption. By our construction, there exists an edge to $k_1,...,k_z$, because we add an edge $(n_{z+1}, k_i)$ if there is an edge from $(n_{z+1}, n_i)$. (See fig \ref{fig:induction-step})
+            $v_{z+1}$ connects to $N(v_i)$ in G by assumption. By our construction, there exists an edge to $k_1,...,k_z$, because we add an edge $(n_{z+1}, k_i)$ if there is an edge from $(n_{z+1}, n_i)$. (See \cref{fig:induction-step})
 
             $k_{z+1}$ form a complete subgraph with the other $k_i$ and is connected to all $n_i$ by construction because the edge $(n_{z+1},n_i)$ exists.  
 
@@ -163,7 +163,7 @@ The following lemma shows that
     \end{corollary}
     \begin{subproof}
     $\Rightarrow$: Assume $G$ chordal. Then exists a total elimination order $o = (v_1, ..., v_n)$ in G where removing $v_j$ sequentially returns cliques in $N(v_i)$.
-    Define $o' = (v_1, ..., v_n, k_1, ..., k_n, u, t)$. Applying corollary \ref*{cliqueNeighbor} states that $(v_1, ... v_n)$ always gives cliques in G and according to corollary \ref*{cliqueNeighbor} also in G'. As the rest is directly part of a clique in G' by definition with an additional vertex of degree 1, o' is a total elimination order for $G'$, hence G' chordal.
+    Define $o' = (v_1, ..., v_n, k_1, ..., k_n, u, t)$. Applying \cref{cliqueNeighbor} states that $(v_1, ... v_n)$ always gives cliques in G and according to corollary \ref*{cliqueNeighbor} also in G'. As the rest is directly part of a clique in G' by definition with an additional vertex of degree 1, o' is a total elimination order for $G'$, hence G' chordal.
     $\Leftarrow$: Holds as o' is always a total elimination order in G' and removing the complete subgraph $K_{n+1}$ and $u$ gives a total elimination order in G.
     \end{subproof}
 

@@ -51,7 +51,7 @@ Fomin and Thilikos \cite{Fomin2004} started by proving that the initial reductio
 Gutner \cite{Gutner2009} advanced in 2008 by giving a linear kernel for $K_{3,h}$-topological-minor-free graph classes and a polynomial kernel for $K_h$-topological-minor-free graph classes. 
 In 2012 Philip, Raman, and Sikdar \cite{Philip2012} showed that $K_{i,j}$-free graph classes admit a polynomial kernel. 
 In an attempt to further expand these ideas to other problems, Bodlaender et al. \cite{Bodlaender2016} proved that all problems expressible in counting monadic second-order logic satisfying a coverability property admit a polynomial kernel on graphs of bounded genus $g$. 
-Interesting from a theoretical point of view, the constants in these meta theorems for the kernels obtained are too large to be of practical interest. 
+Interesting from a theoretical point of view, the constants in these meta-theorems for the kernels obtained are too large to be of practical interest. 
 The question of how an efficient kernel for the \psdom problem can be constructed remains. 
 
 In this chapter, we will transfer the linear kernel with ``reasonable'' small constants for \ptdom described by Garnero and Sau \cite[arXiv v2]{Garnero2018} to \psdom. 
@@ -63,8 +63,9 @@ We could modify the original reduction rules to preserve the witness properties 
  After, we bound the size of a resulting graph by proving that for a fixed $k$ each region has only a constant number of vertices near by. 
 Such a reduction gives us a \textit{kernel} for \psdom.
 
-Interestingly, the reduction rules do not rely on the decomposition it self, but rather consider the neighborhood of every pair of vertices in the graph. 
+Interestingly, the reduction rules do not rely on the decomposition itself, but rather consider the neighborhood of every pair of vertices in the graph. 
 The decomposition has just been used as a tool to analyze the kernel size after the reduction.
+
 
 \section{Definitions}
 
@@ -271,7 +272,7 @@ We will often encounter hidden simple regions which are reduced by \cref{rgl:rth
         \tikzfig{fig/tikz/overview}
     }
     \end{equation*}
-    \caption[Structure of the Proofs]{\textit{The plan for obtaining a linear kernel for \psdom. Starting with the reduction rules (\textcolor{green}{green}) we will derive the number of vertices inside and outside of a $vw$-region.}}\label{fig:overview}
+    \caption[Structure of the Proofs]{\textit{The plan for obtaining a linear kernel for \psdom. Starting with the reduction rules in \textcolor{green}{green} we will derive the number of vertices inside and outside of a $vw$-region. Lemmas to bind the number of vertices are marked in \textbf{\textcolor{MATHAYELLOW}{yellow}.}}}\label{fig:overview}
 \end{figure}
 
 \section{The Reduction Rules}
@@ -328,7 +329,7 @@ If $p = v$ then $w$ is a direct witness for $v$ and if $p \in N(v)$, there exist
         Because \cref{rgl:rone} was applied, we know that $N_{3}(v) \neq \emptyset$ in $G$.
         $N_3(v)$ must be dominated, so $\abs{D \cap (N_{2,3}(v) \cup \{v\})} \neq \emptyset$. 
         Denote one of those as $d$.
-        If $v \notin D$, we know by \ref{fact:witnessTwin} that a witness for $d \neq v$ is also a witness for $v$ and therefore, we replace $d$ with $v \in D$.
+        If $v \notin D$, we know by \cref{fact:witnessTwin} that a witness for $d \neq v$ is also a witness for $v$ and therefore, we replace $d$ with $v \in D$.
             Now assume $v \in D$ and $N_{2,3}(v)$ is already dominated by $v$.
         If $\abs{D \cap (N_{2,3}(v))} \geq 1$, set $D' = D \setminus N_{2,3}(v) \cup \{v'\}$, else $D' = D$. 
         A $z \in D \cap N_{2,3}(v)$ could have been a witness for $v$ and therefore we choose $v' \in D'$ preserving witnesses. In both cases, $v'$ is dominated by $v$ and $\abs{D} \leq \abs{D'}$.
@@ -341,7 +342,7 @@ If $p = v$ then $w$ is a direct witness for $v$ and if $p \in N(v)$, there exist
         In both cases, $N_{2,3}(v)$ is dominated by $v$ and $\abs{D} = \abs{D'}$.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{complex:rone}
     A plane graph $G$ of $n$ vertices is reduced under \cref{rgl:rone} in time $\mathcal{O}(n)$
 \end{lemma}
 \begin{proof}
@@ -524,9 +525,15 @@ We show that $G'$ has an sds with $\abs{D'} \leq \abs{D}$.
 
 \end{proof}
 
-% Note that for \cref{case:c1}, it is not enough to just add an edge $\{v,w\}$ to allow them to witness each other. 
+We will now prove that the reduction takes polynomial time:
 
-% What happens if D != empty?
+\begin{corollary}\label{complex:rtwo}
+\cref{rgl:rtwo} can be applied in $\mathcal{O}(d(v) + d(w))$ time on two vertices $v$ and $w$.
+\end{corollary}
+\begin{proof}
+As mentioned in \cite{Garnero2018}, we can construct $\Dvw, \Dv$ and $\Dw$ in $\mathcal{O}(2^{\sqrt{3}})(d(v) + d(w))$ fpt time thanks to the algorithn \pdomp \cite{Alber2002}.
+The transformation can be done again in order $\mathcal{O}(d(v) + d(w))$.
+\end{proof}
 
 \subsection{Reduction Rule III: Shrinking Simple Regions}
 
@@ -591,7 +598,7 @@ See \cref{fig:rulethree} for an example of both cases.
 \begin{proof}
         Consider an sds $D$ in $G$. We show that $G'$ also has an sds with $\abs{D'} \leq \abs{D}$. 
         By assumption, we have $\abs{V(R) \setminus \{v, w\}} \geq 5$, $R$ is a simple region and therefore $d(v,w) \leq 2$.
-        We can assume that the border $\partial R$ consists of exactly two vertices, because if $\abs{\partial R \setminus \{v,w\}}  < 2$, the region's boundary path would not enclose an area.
+        We can assume that the border $\partial R$ consists of exactly two vertices $b, b'$, because if $\abs{\partial R \setminus \{v,w\}}  < 2$, the region's boundary path would not enclose an area.
         Consequently, $\abs{V(R \setminus \partial R)} \geq 3$.
 
         Observe that if a vertex $v' \in V(R \setminus \partial R) \cap D$ together with $v \in D$ or $w\in D$, we replace them with both $v$ and $w$ and set $D' = D \setminus \{v'\} \cup \{v,w\}$.  
@@ -602,39 +609,52 @@ See \cref{fig:rulethree} for an example of both cases.
         % BORDER VERTICES
         It will be enough to only consider cases where no border vertex is dominating. 
         If $\abs{\partial R \setminus \{v,w\} \cap D} \geq 1$ then there is at least one other $v' \in V(R) \cap D$ to dominate all vertices inside the region.
-        If a pole $v \in D$ or $w \in D$, we set $D' = D \setminus V(R \setminus \partial R)$, otherwise there is at least one vertex $d \in (V(R) \setminus \partial R) \cap D$ and we replace it with one of the poles and $D' = D \setminus V(R \setminus \partial R) \cup \{v\}$.
-        This works, because at least on $b \in \partial R \setminus \{v, w\}$ and $b,v$ together witness the same vertices as $d$ did: $b$ witnesses all vertices in $N(w) \cup N(v)$ and $v$ those neighbors from the opposite border vertices to $b$.
+        If a pole $v \in D$ or $w \in D$, we set $D' = D \setminus V(R \setminus \partial R)$, otherwise there is at least one vertex $d \in (V(R) \setminus \partial R) \cap D$ and we replace it with one of the poles: $D' = D \setminus V(R \setminus \partial R) \cup \{v\}$.
+        This works, because at least one $b \in \partial R \setminus \{v, w\}$ and $b,v$ together witness the same vertices as $d$ did: $b$ witnesses all vertices in $N(w) \cup N(v)$ and $v$ those neighbors from the opposite border vertices to $b$.
 
-        \\~
+        \vspace*{1em}
+        
+        In summary, we only need to consider only $v,w \notin D$, $\partial R \cap D = \emptyset$, $\abs{V(R \setminus \partial R)} \geq 3$ and $\abs{(V(R) \setminus \partial R) \cap D} \leq 1$.
 
-        In summary, we only need to consider only $v,w \notin D$, $\partial R \cap D = \emptyset$, $\abs{V(R \setminus \partial R)} \geq 3$ and $\abs{V(R) \setminus \partial R \cap D}leq 1$.
+        First assume \cref{case:rto} has applied on $G$ and $V(R \setminus \partial R) \cong P_3$. 
+        We denote this induced path as $(p_1,p_2,p_3)$.         
+         If neither $\{p_1,p_2,p_3\} \cap D = \emptyset$, we set $D' = D$, trivially preserving a sds. 
+         Otherwise, $p_2 \in D$ is forced because this is the only way to dominate $V(R \setminus \partial R)$ with exactly one vertex inside. 
+         We set $D' = D \setminus \{p2\} \cup \{y\}$ and dominate $\{y,y'\}$ and witnesse $N(v) \cup N(w)$ which are the same as $p_2$ did. 
+         This case is depicted in \cref{fig:rulethree} on the \textit{right}.
 
-         \textbf{First, assume} $V(R \setminus \partial R) \cong P_3$. We denote this induced path as $(p_1,p_2,p_3)$.         
-         If neither $p_1,p_2,p_3 \in D$, we set $D' = D$, trivially preserving a \sdom. Otherwise, $p_2 \in D$ is forced because this is the only way to dominate $V(R \setminus \partial R)$ with exactly one vertex inside. We know that \cref{case:rto} has been applied and we set $D' = D \setminus \{p2\} \cup \{y\}$. which dominates $\{y,y'\}$ and witnesses $N(v) \cup N(w)$ which are the same vertices as $p_2$ did. This case is depicted in \cref{fig:rulethree}.
+         Now assume \cref{case:rtt} has applied and $V(R \setminus \partial R) \ncong P_3$. 
+         Let us denote this induced path as $(p_1,p_2,p_3)$. We observe that without contradicting the planarity of $G$ the induced subgraph of the vertices $G[V(R \setminus \partial R)]$ is a subgraph of path lengthed $\abs{V(R \setminus \partial R)}$ and at most three. 
 
-         \textbf{Contrary, assume} $V(R \setminus \partial R) \ncong P_3$. Again, let us denote this induced path as $(p_1,p_2,p_3)$. We observe that without contradicting the planarity of $G$ the induced subgraph of the vertices $G[R \setminus \partial R]$ must be a subgraph of a $P_j$ for $j = \abs{V(R \setminus \partial R)}$ and  $j \geq 3$.  By assumption, we either have this as either a $P_3$ with at least one missing edge or a larger $P_j$. Therefore, it is impossible to dominate all these vertices with one single vertex $p_i$ if we also assume that no vertex in $\partial R$ is dominating. Hence, we set $D' = D$.
+          By assumption, we either have a $P_3$ with at least one missing edge or a larger path. 
+          In both cases, it is impossible to dominate this path with only one single vertex from the path.
+         Hence, we set $D' = D$ and the path is dominated by $v$ or $w$
+         In both cases $\abs{D} = \abs{D'}$
+         
+         Consider an sds $D$ in $G'$ of size $\abs{D}$. 
+         We show that $G$ has an sds with $\abs{D} \leq \abs{D'}$. 
+         We analyze both cases separately.
 
-         In all cases $\abs{D} = \abs{D'}$
-         Consider an sds $D$ in $G'$. We show that $G$ has an sds with $\abs{D} \leq \abs{D'}$. By assumption, we have $\Dvw = \emptyset$. We analyze both cases separately.
-
-         \textbf{First, assume} $V(R \setminus \partial R) \cong P_3$. Here, \cref{case:rto} has been applied and $V(R \setminus R)$ replaced by one single vertex $y$. We denote the induced path in $G$ as $(p_1,p_2,p_3)$.
-         If $y \in D'$, we set $D = D' \setminus \{y\} \cup \{p_2\}$. We know that $p_2$ dominates $p_1$,$p_3$ in $G$ and witnesses the same vertices as in $G'$. 
+         Assume $V(R \setminus \partial R) \cong P_3$ and \cref{case:rto} has applied and $V(R \setminus R)$ replaced by one single vertex $y$. 
+         We denote the induced path in $G$ as $(p_1,p_2,p_3)$.
+         If $y \in D'$, we set $D = D' \setminus \{y\} \cup \{p_2\}$. 
+         We know that $p_2$ dominates $p_1$,$p_3$ in $G$ and witnesses the same vertices as in $G'$, namely $N(v) \cup N(w) \cup \{b, b'\}$
          Otherwise, we just set $D = D'$. 
 
+         Contrary assume $V(R \setminus \partial R) \ncong P_3$ and \cref{case:rtt} has been applied.
+         $V(R \setminus R)$ was replaced by two vertices $y$ and $y'$.
+         Observe that neither $y$ nor $y'$ are useful in $D'$ in $G'$: If both $y, y' \in D'$, we replace them by $v$ and $w$.
+         If only $y \in D$ (resp. $y' \in D$), we need either $v \in D'$ or $w \in D'$ to dominate $y'$ ($y'$) and again, we replace them by $v$ and $w$. 
 
-         \textbf{Contrary, assume} $V(R \setminus \partial R) \ncong P_3$ and \cref{case:rtt} has been applied and $V(R \setminus R)$ replaced by two vertices $y$ and $y'$. Observe that neither $y$ nor $y'$ is useful in any \sdom in $G'$: If both $y, y' \in D'$, we simply replace them by $v$ and $w$ and if only $y \in D$ (resp. $y'$), then we need either $v \in D'$ or $w \in D'$ to dominate $y'$ and again, we replace them by $v$ and $w$. 
-         We can even ignore that $y$ or $y'$ is important as a witness, because as $d(v,w) \leq 2$, $v$, $w$ and $v$ always witness each other.
-         Hence \textit{at least one of} $\{v,w \}$ must be in an sds simulating an ``OR-gadget''. Therefore, also $V(R \partial R)$ is dominated by either $v$ or $w$. All the witnesses stayed the same and hence, we simply set $D = D'$.
-         
-         In all of the cases $\abs{D} = \abs{D'}$
+         $y$ or $y'$ are unimporant as witnesses, $v$ and $w$ witness each other and everything that could be witnesed by $y$ or $y'$ is witnessed by $\{v,w\}$ as well.
+         This simulates an $\mathnormal{OR}$ gadget in $\{v, w\}$.
+        Hence $D = D'$ and $\abs{D} = \abs{D'}$.
 \end{proof}
-
+    
 The application of \cref{rgl:rthree} gives us a bound on the number of vertices inside a \sr. 
 \begin{corollary}\label{lemma:simpleregionbound}
     Let \G be a graph, $v, w\in V$ and R a \sr~ between $v$ and $w$. If \cref{rgl:rthree} has been applied, this simple region has a size of at most 4.
 \end{corollary}
-% TODO Verify that
-% TODO Maybe add a figure here.
 
 \begin{proof}
     If $\abs{V(R) \setminus \{v, w\}} < 5$ then the rule would not have changed G and the size of the region would already be smaller than 5.
@@ -642,6 +662,19 @@ The application of \cref{rgl:rthree} gives us a bound on the number of vertices 
 \end{proof}
 
 
+The runtime of \cref{rgl:rthree} is polynomial. 
+Note that there could be more than one $vw$-region, but every execution of \cref{rgl:rthree} reduces the graph and therefore \cref{rgl:rthree} might simply be applied again on $v$ and $w$.
+In this claim, it is to suffice to observe one fixed $vw$-region between $v$ and $w$.
+
+\begin{corollary}\label{complex:rthree}
+        \cref{rgl:rthree} on two vertices $v$ and $w$ is applied in time $\mathcal{O}(d(v) + d(w))$.
+\end{corollary}
+
+\begin{proof}
+Constructing one simple $vw$-region can be done by the algorithm proposed in \cite{Alber2004} in time $\mathcal{O}(d(v) +(dw))$.
+Check whether an $P_3$ is induced inside $V(R \setminus \partial R)$ can be done in constant time and the reduction itself is constant in $\max(d(v), d(w))$.
+\end{proof}
+    
 \begin{figure}[!ht]
     \begin{equation*}
         \tikzfig{fig/tikz/rulethree}
@@ -650,50 +683,54 @@ The application of \cref{rgl:rthree} gives us a bound on the number of vertices 
     \label{fig:rulethree}
 \end{figure}
 
-\subsection{Computing Maximal Simple Regions between two vertices}
-
-
-For the sake of completeness, we state an algorithm on how a maximal \sr between two vertices $v,w \in V$ can be computed in time $\mathcal{O}(d(v) + d(w))$.
+%\subsection{Computing Maximal Simple Regions between two vertices}
+%For the sake of completeness, we state an algorithm on how a maximal \sr between two vertices $v,w \in V$ can be computed in time $\mathcal{O}(d(v) + d(w))$.
 
 \section{Bounding the Size of the Kernel}
 
-We now put all the pieces together to prove the main result: A kernel which siye is linearly bounded by the solution size $k$. For that purpose, we distinguish between those vertices that are covered inside a region in a maximal \dreg and those that are not. 
-In both cases, our reduction rules bound the number of vertices to a constant size.
-As \cref{lemma:numRegions} states that for any given dominating set $D$, we can partition the whole graph into a linear number of regions in $k$, we know that we also only have linearly many vertices left in the whole graph.
-In particular, we show that given a \sdom $D$ of size $k$, there exists a maximal \dreg $\mathfrak{R}$ such that:
+We now put all the pieces together and prove the main result: A kernel which size is linearly bounded by the solution size $k$. 
+For that purpose, we distinguish between those vertices that are covered inside a region in a maximal \dreg and those that are not. 
+In both cases, our reduction rules bound the number of vertices to a constant size for a fixed region.
+\cref{lemma:numRegions} states that for any given dominating set $D$, we can partition the whole graph into a linear number of regions and we know that we have linearly many vertices left in the whole graph.
+In particular, we show that given a sds $D$ of size $k$, there exists a maximal \dreg $\mathfrak{R}$ such that:
 
 \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
-    \item $\mathfrak{R}$ has only at most $3 \abs{D} - 6$ regions
-    \item $V(\mathfrak{R})$ covers most vertices of V. There are at most $144 \cdot \abs{D}$ vertices outside of any region.
+    \item $\mathfrak{R}$ has only at most $3 \abs{D} - 6$ regions;
+    \item $V(\mathfrak{R})$ covers most vertices of V. 
+    There are at most $144 \cdot \abs{D}$ vertices outside of any region;
     \item each region of $\mathfrak{R}$ contains at most $139$ vertices.
 \end{enumerate}
 
-Combining these three statements will give us a linear kernel. \Cref{fig:overview} depicts these three goals in \textit{yellow}.
+The combination of these three statements will give us a linear kernel. 
+\cref{fig:overview} depicts these three goals in \textbf{\textcolor{MATHAYELLOW}{yellow}}.
+
 \subsection{Bounding the Size of a Region}
 
-We start with a more fine-grained analysis of the impact of the different cases of \cref{rgl:rtwo} on a $vw$-region. The main idea is to count the number of simple regions in the $vw$-region and then use the bound on the size of a simple region after \cref{rgl:rthree} was applied exhaustively. The bound was obtained in \cref{lemma:simpleregionbound}.   
+We start with a more fine-grained analysis of the impact of the different cases of \cref{rgl:rtwo} on a $vw$-region. 
+The main idea is to count the number of simple regions in the $vw$-region and then use the bound on the size of a simple region after \cref{rgl:rthree} was applied exhaustively. 
+The bound was obtained in \cref{lemma:simpleregionbound}.   
 
-%TODO Correct Citation
 \begin{lemma}\label{lemma:nonecover}
     Given a plane Graph \G and a $vw$-region $R$, let $D$ be a semitotal dominating set and let $\mathfrak{R}$ be a maximal \dreg of G. 
-    For any $vw$-regions $R \in \mathfrak{R}$ it holds that $\abs{N_1(v,w) \cap V(R)} \leq 4$ and these vertices lay exactly on the boundary $\partial R$ of $R$. 
+    For any $vw$-region $R \in \mathfrak{R}$ it holds that $\abs{N_1(v,w) \cap V(R)} \leq 4$ and these vertices lay exactly on the boundary $\partial R$ of $R$. 
 \end{lemma}
 \begin{proof}
-The same argument as proposed by Alber, Fellows and Niedermeier \cite{Alber2004}, and Garnero and Sau\cite[Proposition 2, Revision 2018]{Garnero2019} applies here:
+The same argument as proposed by Alber, Fellows and Niedermeier \cite{Alber2004}, and again used by Garnero and Sau \cite[Proposition 2]{Garnero2019} applies here as well:
 Let $P_1 = (v, u_1, u_2,w)$ and $P_2 = (v, u_3, u_4,w)$ be the two boundary paths enclosing the $vw$-region $R$. By the definition of a region, they have a length of at most 3. Because every vertex in $R$ belongs to $N(v,w)$, but a vertex from $N_1(v,w)$ also has neighbors outside $N(v,w)$, it \emph{must} lie on one of the boundary paths $P_1, P_2$.
 Therefore, $R$ has at most four boundary vertices and $\abs{N_1(v,w) \cap V(R)} \leq 4$.
 
-Clearly, the worst case is achieved, if the two confluent paths $P_1$ and $P_2$ are vertex-disjoint. 
+The worst case occurs when the two confluent paths $P_1$ and $P_2$ are vertex-disjoint. 
 \end{proof}
 
-\begin{lemma}\cite[See Fact 5, arXiv v2]{Garnero2018}\label{lemma:ntwocover}
+\begin{lemma}\cite[See Fact 5, arXiv]{Garnero2018}\label{lemma:ntwocover}
     Given a reduced plane graph \G and a $vw$-region $R$, $N_2(v,w) \cap V(R)$ can be covered by at most 6 simple regions.
 \end{lemma}
 \begin{proof}
-    Let $P_1 = (v,u_1, u_2,w)$ and $P_2 = (v, u_3, u_4, w)$ be the two boundary paths of $R$. As in the previous \cref{lemma:nonecover}, the worst case is achieved if they are vertex-disjoint. Otherwise, a smaller bound would be obtained.
+    Let $P_1 = (v,u_1, u_2,w)$ and $P_2 = (v, u_3, u_4, w)$ be the two boundary paths of $R$.
+    As in the previous \cref{lemma:nonecover}, the worst case is achieved if they are vertex-disjoint. Otherwise, a smaller bound would be obtained.
 
     By definition of $N_2(v,w)$, vertices from $N_2(v,w) \cap V(R)$ are common neighbors of $v$ or $w$ and one of $\{u_1,u_2,u_3,u_4\}$.
-    By planarity, we can cover $N_2(v,w) \cap V(R)$ with at most 6 simple regions among 8 pairs of vertices (See fig. \ref{fig:maxntwoinside}).
+    By planarity, we can cover $N_2(v,w) \cap V(R)$ with at most 6 simple regions among 8 pairs of vertices (See \cref{fig:maxntwoinside}).
 
     %Furthermore, assuming the graph to be reduced, any intermediate $N_3(v) \cup N_3(w)$ which could separate multiple simple regions between $v$ and $u_i$ has been deleted by \cref{rgl:rone} already.
 \end{proof}
@@ -712,7 +749,7 @@ We continue by giving a constant bound on the number of simple regions that cove
 \begin{lemma}\label{lemma:rtwosr}
     Given a plane Graph $G = (V,E)$ reduced under \cref{rgl:rtwo}  and a region R(v, w), if $\Dv \neq \emptyset $ (resp. $\Dw \neq \emptyset$), $N_3(v,w) \cap V(R)$ can be covered by: 
     \begin{enumerate}
-        \item $11$ \sr s~if $\Dw \neq \emptyset$,
+        \item $11$ \sr s~if $\Dw \neq \emptyset$ ($\Dw \neq \emptyset$),
         \item $14$ \sr s~if $N_{2,3}(v) \cap N_3(v,w) = \emptyset$
     \end{enumerate}
 \end{lemma}
@@ -728,7 +765,7 @@ Note that this analysis provides a quick upper bound that might not be tight and
         \item Because $\Dv \neq \emptyset$ there exists $D = \{v,u,u'\} \in \Dv$ (a smaller set will give a better bound). By definition we know that $D$ dominates $N_3(v,w)$ and also $N_3(v,w) \setminus N(v)$. Therefore, all vertices in $N_3(v,w) \setminus N(v)$ must be neighbors of $w$ and either $u$ or $u'$ and in the worst case at most three simple regions are required. By assumption, $\Dw \neq \emptyset$ as well, and therefore $N_3(v,w) \setminus N(w)$ is bounded by at most three simple regions, too.
         By planarity, we can cover the remaining common neighbors in $N_3(v,w) \cap N(v) \cap N(w)$ with at most 5 vertices and in total, we can cover \textbf{$\mathbf{N_3(v,w) \cap R(v,w)}$ by at most $\mathbf{3 + 3 +5 = 11}$} simple regions.
 
-        \item No property of a reduced instance is used, so the proof shown in \cite{Garnero2018} holds. 
+        \item Proof in \cite{Garnero2018} holds in our case as well.
 
         % \item Now assume that $N_{2,3}(w) \cap N_3(v,w) = \emptyset$. Then all neighbors of $v$ in $N_3(v,w)$ are from the remaining $N_1(v)$ vertices. These vertices have only neighbors in from $N_{2,3}$ and at least one that is different from $N(v)$ (by definition of $N_1(v)$). Therefore they must be from $N(w) \cap  N_{2,3}(v,w)$.
     
@@ -745,12 +782,13 @@ Note that this analysis provides a quick upper bound that might not be tight and
     Let \G be a plane graph reduced under \cref{rgl:rone,rgl:rtwo,rgl:rthree}. Furthermore, let $D$ be an sds of G and let $v,w \in D$. Any $vw$-region R contains at most 87 vertices distinct from its poles.
 \end{lemma}
 \begin{proof} 
-    By \cref{lemma:nonecover,lemma:ntwocover} and \cref{lemma:simpleregionbound} to bound the number of vertices inside a simple region, we know that $\abs{N_1(v,w) \cap V(R)} \leq 4$. Furthermore, $\abs{N_2(v,w) \cap V(R)} \leq 6 \cdot 4 = 24$, because after the reduction a simple region has at most 4 vertices distinct from its poles and has at most 6 simpler regions covering all $N_2(v, w)$.
+    By \cref{lemma:nonecover,lemma:ntwocover} and \cref{lemma:simpleregionbound} to bound the number of vertices inside a simple region, we know that $\abs{N_1(v,w) \cap V(R)} \leq 4$. 
+    Furthermore, $\abs{N_2(v,w) \cap V(R)} \leq 6 \cdot 4 = 24$, because after the reduction a simple region has at most 4 vertices distinct from its poles and has at most 6 simpler regions covering all $N_2(v, w)$.
     
-    It is remaining to bound for \nthi, but gladly we have \cref{rgl:rtwo}, which gracefully took care of them! We will now shortly do a distinction about the different cases of \cref{rgl:rtwo}. \Cref{fig:nthreeinside} shows the worst-case amount of simple regions the individual cases can have.
+    It is remaining to bound for \nthi, but gladly we have \cref{rgl:rtwo}, which gracefully took care of them! We will distinct between the cases of \cref{rgl:rtwo}. 
+    \Cref{fig:nthreeinside} shows the worst-case amount of simple regions the individual cases can have.
     
     \begin{caseofz}
-        %% TODO Check if that is correct and compare it with the latest paper
         \casez{\cref{rgl:rtwo} has \textbf{not} been applied in the following two cases: Either $\Dvw \neq \emptyset$ or $\Dvw = \emptyset \wedge \Dv \neq \emptyset \wedge \Dw \neq \emptyset$:}
 
         \begin{enumerate}
@@ -763,7 +801,8 @@ Note that this analysis provides a quick upper bound that might not be tight and
 
 %        \casez{If \cref{rgl:rtwo} \Cref{case:c2} has been applied} As we know that $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$, we can apply \cref{lemma:rtwosr} and although \cref{rgl:rtwo} has not changed the G, we can cover R with at most $11$ simple regions giving as $\nthi \leq 11 \cdot 6 = 66$ vertices. 
         
-        \casez{If \cref{rgl:rtwo} \Cref{case:c2,case:c3} have been applied, } we know that $N_{2,3}(v) \cap N_3(v,w) \subseteq N_{2,3}(v)$ was removed and replaced by one single vertex. Applying \cref{lemma:rtwosr}, we can cover $N_3(v,w) \setminus \{v'\} \cap V(R)$ with at most $14$ simple regions giving us $|\nthi| \leq 14 \cdot 4 + 1 = 57$.
+        \casez{If \cref{rgl:rtwo} \Cref{case:c2,case:c3} have been applied, } we know that $N_{2,3}(v) \cap N_3(v,w) \subseteq N_{2,3}(v)$ was removed and replaced by one single vertex. Applying \cref{lemma:rtwosr}, we can cover $N_3(v,w) \setminus \{v'\} \cap V(R)$ with at most $14$ simple regions giving us $\abs{\nthi} \leq 14 \cdot 4 + 1 = 57$.
+        We other case is symmetrical.
     \end{caseofz}
     
     \begin{figure}[!ht]
@@ -777,20 +816,13 @@ Note that this analysis provides a quick upper bound that might not be tight and
         \label{fig:nthreeinside}
     \end{figure}
     
-    All in all, as $V(R) = \{v, w\} \cup (N_1(v,w) \cup N_2(v,w) \cup N_3(v,w)) \cap V(R)$ we get 
+    All in all, as $V(R) = \{v, w\} \cup (N_1(v,w) \cup N_2(v,w) \cup N_3(v,w)) $ we get 
     
     \[V(R) \leq 2 + 4 + 24 + \max(27, 44, 4, 57) = 87 \]
 \end{proof}
 
 \subsection{Number of Vertices outside the Decomposition}
 We continue to bound the number of vertices that do not lay inside any region of a maximal \dreg $\mathfrak{R}$, that is, we bound the size of $V \setminus \VR$. \Cref{rgl:rone} ensures that we only have a small amount of $N_3(v)$-pendants. We then try to cover the rest with as few simple regions as possible, because, by application of \cref{rgl:rthree}, these simple regions are of constant size.
-
-%Ref to 4.3
-
-%\begin{lemma}
-%    \cite{Alber2004}
-%    (Deprecated) Every vertex in $u \in V \setminus V(\mathfrak{R})$ is either in D or belongs to a set $N_2(v) \cup N_3(v)$.
-%\end{lemma}
 
 \noindent The following lemma states that no vertex from $N_1(v)$ will be outside of a maximal \dreg which was already proven by Alber, Fellows and Niedermeier \cite[Lemma 6]{Alber2004}.
 
@@ -826,8 +858,7 @@ With slight modifications, the proof given by Garnero and Sau \cite[arXiv v2]{Ga
     \[\abs{\bigcup_{v \in D}N_3(v) \setminus V(\mathfrak{R})} \leq \abs{D}\]
     
     \noindent$\mathbf{N_2(v)}$: According to Garnero and Sau \cite[Proposition 2]{Garnero2018}, we know that $N_2(v) \setminus V(\mathfrak{R})$ in a reduced graph can be covered by at most $4 \dGR(v)$ simple regions between $v$ and some vertices from $N_1(v)$ on the boundary of a region in $\mathfrak{R}$. 
-    As their argument 
-    Figure \ref{fig:kernelSize} gives some intuition, but intuitively, we can span two simple regions to each of the vertices from $N_1(v)$ on the two border vertices for each $R \in \mathfrak{R}$.
+    \cref{fig:kernelSize} gives some intuition, but intuitively, we can span two simple regions to each of the vertices from $N_1(v)$ on the two border vertices for each $R \in \mathfrak{R}$.
     
     Because we assume $G$ to be reduced, by \cref{lemma:simpleregionbound} a simple region can have at least $4$ vertices distinct from its poles and hence,
     
@@ -835,7 +866,7 @@ With slight modifications, the proof given by Garnero and Sau \cite[arXiv v2]{Ga
         \begin{split}
             \abs{\bigcup_{v \in D} N_2(v) \setminus V(\mathfrak{R})} &\leq 4 \sum_{v \in D}4 \cdot \dGR(v) \\
             &= 16 \cdot \sum_{v \in D}\dGR(v) \\
-            &\overset{\text{Cor. \ref{lemma:polesBound}}}{\leq} 32 \abs{\mathfrak{R}}
+            &\overset{\text{\cref{lemma:polesBound}}}{\leq} 32 \abs{\mathfrak{R}}
         \end{split}
     \end{equation}
     
@@ -852,7 +883,7 @@ With slight modifications, the proof given by Garnero and Sau \cite[arXiv v2]{Ga
     
     \begin{equation}
         \begin{alignedat}[b]{2}
-            \abs{V \setminus V(\mathfrak{R}) \cup D)} &\leq 32 \cdot \abs{\mathfrak{R}} + \abs{D} & \zerotext[4em]{(Lemma \ref{lemma:numRegions})}\\ 
+            \abs{V \setminus V(\mathfrak{R}) \cup D)} &\leq 32 \cdot \abs{\mathfrak{R}} + \abs{D} & \zerotext[4em]{(\cref{lemma:numRegions})}\\ 
             &\leq 32 \cdot (3 \abs{D} - 6) + \abs{D} &\\
             &\leq  96 \abs{D} + \abs{D} &\\
             &= 97 \abs{D}
@@ -891,10 +922,18 @@ Because every semitotal dominating set is indeed also a dominating set, we can s
     Let G be a reduced plane graph and let D be a \sdom with $\abs{D}\geq 3$. There is a maximal D-region decomposition of G such that $\abs{R} \leq 3 \cdot \abs{D} - 6$.
 \end{lemma}
 
-\begin{lemma}[Running Time of Reduction Procedure]\label{lemma:runtime}
-    % TODOX Runs in polynomial Time. 
+Furthermore, the overall reduction procedure runs in polynomial time:
+
+\begin{lemma}\label{lemma:runtime}
+    A plane graph G can be reduced by \cref{rgl:rone,rgl:rtwo,rgl:rthree} in time $\mathcal{O}(\abs{(G)}^3)$
 \end{lemma}
 \begin{proof} 
+Testing whether \cref{rgl:rone} can be applied on every vertex takes $\sum_{v\in V} \mathcal{O}(d(v)) = \mathcal{O}(n)$.
+\cref{rgl:rtwo,rgl:rthree} must be applied on every pair of vertices and take time $\sum_{v,q \in V}\mathcal{O}(d(v) + d(w)) = \mathcal{O}(n^2)$
+we assume that checking for termination as we defined in \cref{def:reduced} takes only constant time in each step.
+In the worst case, in each iteration, only one rule will be applied and one vertex reduced. 
+Hence, we have to do at most $n$ iterations.
+Therefore, the graph can be reduced in time $\mathcal{O}(n^3)$.
 \end{proof}
 
 \noindent By utilizing all the previous results, we are now finally ready to proof the \cref{thm:central}: 

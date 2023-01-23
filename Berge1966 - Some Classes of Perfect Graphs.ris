@@ -1,0 +1,20 @@
+TY  - JOUR
+AU  - Alber
+AU  - Bodlaender
+AU  - Fernau
+AU  - Kloks
+AU  - Niedermeier
+PY  - 2002
+DA  - 2002/08/01
+TI  - Fixed Parameter Algorithms for DOMINATING SET and Related Problems on Planar Graphs 
+JO  - Algorithmica
+SP  - 461
+EP  - 493
+VL  - 33
+IS  - 4
+AB  - Abstract.  We present an algorithm that constructively produces a solution to the k -DOMINATING SET problem for planar graphs in time O(c^ \sqrt k   n) , where c=4^ 6\sqrt 34   . To obtain this result, we show that the treewidth of a planar graph with domination number γ (G)  is O(\sqrt \rule 0pt  4pt \smash γ (G)  ) , and that such a tree decomposition can be found in O(\sqrt \rule 0pt  4pt \smash γ (G)  n)  time. The same technique can be used to show that the k -FACE COVER problem (find a size k  set of faces that cover all vertices of a given plane graph) can be solved in O(c1^ \sqrt k   n)  time, where c1=3^ 36\sqrt 34    and k  is the size of the face cover set. Similar results can be obtained in the planar case for some variants of k -DOMINATING SET, e.g., k -INDEPENDENT DOMINATING SET and k -WEIGHTED DOMINATING SET.
+SN  - 1432-0541
+UR  - https://doi.org/10.1007/s00453-001-0116-5
+DO  - 10.1007/s00453-001-0116-5
+ID  - Alber2002
+ER  - 

@@ -10,15 +10,15 @@
 
 \epigraph{\itshape ``Peter does what he usually does when he doesn’t know what to do next: he gives up.''}{Qualityland, \textit{Marc-Uwe Kling}}
 
-This chapter discusses open problems for \sdom for further research.
+After occupying the water lilies for a couple of days, the \textit{geesiosi}s finally gave up and your ducks have the sea again for their own!
+but now the problem has aroused the duck's full curiosity and they start to think about the problem themselves! 
+After you have shown them a polynomial kernel of size $\kernelsize \cdot k$ and that this does probably not exist for \textit{split graphs}, \textit{chordal graphs} and \textit{bipartite} graphs, they started to gather their own questions.
+This is, what they have come up with:
+
 
 \noindent \textbf{Improving Kernel~}
-% Simple reembedding Procedure
-%In \cref{lemma:outside} we use the fact that after \cref{rgl:rone} has been applied $N_3(v) \leq 1$ \cref{rgl:rone} and this vertex can lie in a \dreg of a fixed plane embedding. 
-%The idea would be to 
-%This idea has already been used in \cite[Ch. 6]{Halseth2016} and would improve the overall kernel size by one.
-% Better improvement
-With $\kernelsize \cdot k$, the size of our kernel is very high and the theoretical bounds are too large for practical applications. 
+
+The constant of the kernel size $\kernelsize \cdot k$ is very high and the theoretical bounds are too large for practical applications. 
 It would be interesting to improve them it. 
 One idea would be the following:
 
@@ -30,8 +30,8 @@ therefore, requiring $d(v,w) \leq 3$ would be ok and we can still assume that \c
 $d(v,w)$ can be calculated in linear time and would not blow up our runtime.
 
 \noindent \textbf{Experimental Results~}
-According to experiments shown by Alber et al. \cite{Alber2004}, more than $79\%$ of the vertices and $88\%$ of the edges have been removed by the reduction rules from a sample set of random planar graphs with up to $4000$ vertices. 
-As our theoretical bounds are quite high, it would be interesting to see how much our reduction rules remove in practice. 
+Our analysis and its large constants refer to the worst-case scenario which tells us little about the performance applied to real-world instances.
+Already Alber et al. \cite{Alber2004} noticed that this kind of reduction behaves very well in nature and showed in an experimental setting for \pdom that more than $79\%$ of the vertices and $88\%$ of the edges have been removed by their reduction rules from a sample set of random planar graphs with up to $4000$ vertices. 
 
 \noindent \textbf{Other Open Prolems~}
 The classical complexities for \textit{dually chordal} and \textit{tolerance} graphs have already been asked for by Galby et al. \cite{Galby2020} and are still open.
