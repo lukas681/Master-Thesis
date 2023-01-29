@@ -71,7 +71,6 @@ The decomposition has just been used as a tool to analyze the kernel size after 
 
 Before stating the reduction rules, we need definitions to capture the ``nicen'' properties we are to exploit. 
 They are equal to those given by Garnero and Sau for \ptdom in \cite[arXiv v2]{Garnero2018} and for \prbdom in \cite{Garnero2017} which in turn reused ideas introduced by Alber, Fellows and Niedermeier \cite{Alber2004} for \pdom.
-
 The main idea is to partition the neighborhoods of both a single vertex and a pair of vertices respectively into three distinct subsets which intuitively classify how much these vertices are confined and how closely they are related to the rest of the graph.
 
 Recall for the following definition the open neighborhood $N(v) = \{u \in V : \{u,v\} \in E \}$ and the closed neighborhodd $N[v] = N(v) \cup \{v\}$ of a vertex $v$.
@@ -214,6 +213,8 @@ We now have all the definitions ready to formally define a maximal \dreg on plan
     \noindent A \dreg is \underline{maximal} if there is no region $R \notin \mathfrak{R}$ such that $\mathfrak{R}' = \mathfrak{R} \cup \{R\}$ is a \dreg~with $V(\mathfrak{R}) \subsetneq V(\mathfrak{R}')$.
 \end{definition}
 
+Intuitively, the first condition ensures that only a boundary path can be shared and the second one is that these boundary paths are indeed the delimiter between these regions.
+
 \cref{fig:maxRegionDecompose} gives an example of how to decompose a graph into a maximal \dreg for a given sds $D$ of size $3$.
 
 \begin{figure}[!ht]
@@ -227,11 +228,9 @@ We now have all the definitions ready to formally define a maximal \dreg on plan
     Right: The corresponding underlying multigraph $G_{\mathfrak{R}}$. Every edge denotes a region between $d_i$ and $d_j$.}}\label{fig:maxRegionDecompose}
 \end{figure}
 
-We are introducing a special subset of a region, namely \textit{simple region} where every vertex is a common neighbor of $v$ and $w$. 
+We are introducing a special subset of a region, namely a \textit{simple region} where every vertex is a common neighbor of $v$ and $w$. 
 They will appear in many unexpected astonishing places and are an important tool to operate on small parts of a plane graph.
-The upcoming \cref{rgl:rthree} will bound the size of these \textit{simple regions}. Interestingly, in the first version o
-f the paper about the linear kernel for \ptdom \cite[arXiv v2]{Garnero2018}, they were not given independently but covered by one of their reduction rules (Rule 2). 
-As it turned out, the analysis is getting simpler if we treat them in a separate rule (In our case: \cref{rgl:rthree}) and so did Garnero and Sau \cite{Garnero2018} in a revised version of their paper four years later.
+We will use the upcoming \cref{rgl:rthree} to bound the size of \textit{simple regions}. 
 
 \begin{definition}
     A simple $vw$-region is a $vw$-region such that:
