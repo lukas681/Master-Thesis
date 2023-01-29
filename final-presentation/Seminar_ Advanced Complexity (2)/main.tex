@@ -32,6 +32,10 @@ handout,
 \usepackage{lmodern}
 \usepackage{fontawesome}
 
+\usepackage{amssymb,stmaryrd,mathrsfs,dsfont,mathtools}
+% \usepackage{afterpage}
+% \usepackage{epigraph}
+\usepackage{amsthm}
 
 \usepackage{tikz,dot2texi}
 \usepackage{tikzsymbols}
@@ -106,9 +110,13 @@ style=authoryear,
   footline on = {every page, title page=false},
 }
 
+\input{../../styling/tikz.tikzstyles}
 
 \begin{document}
-% \input{../../settings/commands}
+
+\newcommand{\dom}	{Dominating Set}
+\newcommand{\tdom}{Total Doinating Set}
+\newcommand{\sdom}{Semitotal Dominating Set}
 
 \maketitle
 \include{content/intro}
