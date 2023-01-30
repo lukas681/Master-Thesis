@@ -43,14 +43,21 @@ handout,
 \usepackage{lipsum}
 \usepackage{xspace}
 
+
+\usepackage{xcolor}
+\PassOptionsToPackage{table,svgnames,dvipsnames}{xcolor}
+\usepackage{pgf}
+\input{../thesis/styling/tikz.tikzstyles}
 \usepackage{tikz}
+\usepackage{../thesis/lib/tikzit}
+
 \usepackage{beamerthemesplit}
 \usepackage{url}
 \usepackage{srcltx}
 \usepackage{hyperref}
 \usepackage{tabularx}
 \usepackage{tcolorbox}
-\usepackage{xcolor}
+
 
 \usepackage[
 backend=biber,
@@ -60,30 +67,9 @@ style=authoryear,
 \addbibresource{../thesis/bibliography.bib}
 \bibliography{../thesis/bibliography}
 
-\usetikzlibrary{mindmap}
-% For adding shadows.
-\usetikzlibrary{shadows}
-% Extra arrows tips.
+\usetikzlibrary{positioning,chains,fit,shapes,calc,er,automata}
 \usetikzlibrary{arrows.meta}
-% Old arrows.
-\usetikzlibrary{arrows}
-% Automata.
-\usetikzlibrary{automata}
-% For more positioning options.
-\usetikzlibrary{positioning}
-% Creating chains of nodes on a line.
-\usetikzlibrary{chains}
-% Fitting node to contain set of coordinates.
-\usetikzlibrary{fit}
-% Extra shapes for drawing.
-\usetikzlibrary{shapes}
-\usetikzlibrary{trees,shapes,snakes}
 
-% For markings on paths.
-\usetikzlibrary{decorations.markings}
-% For advanced calculations.
-\usetikzlibrary{calc}
-\usepackage{xcolor}
 \setbeamertemplate{bibliography entry article}{}
 \setbeamertemplate{bibliography entry title}{}
 \setbeamertemplate{bibliography entry location}{}
@@ -131,11 +117,9 @@ style=authoryear,
   \setbeamercovered{transparent}
   \setbeamertemplate{blocks}[rounded][shadow=true]
 
-\usepackage{../thesis/lib/tikzit}
-\input{../thesis/styling/tikz.tikzstyles}
 \input{../thesis/settings/abbreviations.tex}
 
-\DeclareUnicodeCharacter{0301}{*************************************}
+\input{../thesis/styling/tikz.tikzstyles}
 
 \begin{document}
 

@@ -59,9 +59,27 @@
 
 \end{frame}
 
-\begin{frame}[c]{Proof Outline}
+\begin{frame}[c]{Bounding Kernel Size}
 
-    We will now prove the correctness
+    Let D be sds of size $k$. There exists a maximal \dreg $\mathfrak{R}$ such that
+
+    \begin{enumerate}
+        \item $\mathfrak{R}$ has only at most $3 k - 6$ regions (\cite{Alber2004});
+        \item There are at most $97 \cdot k$ vertices outside of any region;
+        \item Each region  $R \in \mathfrak{R}$ contains at most $87$ vertices.
+    \end{enumerate}
+
+    \begin{figure}[!ht]
+    \resizebox{0.3\textwidth}{!}{
+         \tikzfig{../thesis/fig/tikz/region-presentation}
+    }
+    \end{figure}
+\
+
+    \textbf{Hence: } $87 \cdot (3k - 6) + 97 \cdot k + k < 359 \cdot k$
+
+    % TODO Resulting.
+
 
 \end{frame}
 

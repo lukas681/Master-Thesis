@@ -103,7 +103,7 @@
 % pass options to beamer
 \PassOptionsToClass{t, noamssymb, noamsthm}{beamer}
 % load 'xcolor' package with 'colortbl' package for compatibility
-\PassOptionsToClass{xcolor=table}{beamer}
+%\PassOptionsToClass{xcolor=table}{beamer}
 % pass tumbeamer class options down to beamer
 \PassOptionsToClass{\@classoptionslist}{beamer}
 \LoadClass{beamer}
