@@ -1,26 +1,109 @@
-\begin{frame}[c]{Example}
-     \begin{equation*}
+\section{Motivation}
+\begin{frame}[c]{Motivation}
+\begin{tcolorbox}[colback=TUMBlueLighter,title=\dom]
+    \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
+        \textbf{Input} & Graph $G = (V, E)$, $k \in \mathbb{N}$\\
+        \textbf{Question} & Is there a set {$D \subseteq V$} of size at most $k$ such that ${N[D] = V}$? \\
+    \end{tabularx}
+\end{tcolorbox}
+
+\begin{itemize}
+\item The domination number is the minimum cardinality of a ds of $G$, denotes as $\gamma(G)$
+\item \textbf{Observation:} In connected $G$ every $v\in D$ has another $z \in D$ with $d(v,z) \leq 3$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[c]{Motivation}
+\begin{tcolorbox}[colback=TUMBlueLighter,title=\tdom]
+    \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
+        \textbf{Input} & Graph $G = (V, E)$, $k \in \mathbb{N}$\\
+        \textbf{Question} & Is there a set $D \subseteq V$ of size at most $k$ such that for all $d_1 \in X$ exists $d_2 \in X \setminus \{d_1\}$ s.t. ${d(d_1, d_2) \leq 1}$? \\
+    \end{tabularx}
+\end{tcolorbox}
+
+\begin{itemize}
+    \item The total domination number is the minimum cardinality of a tds of $G$, denoted as $\gamma_t(G)$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[c]{Motivation}
+\begin{tcolorbox}[colback=TUMBlueLighter,title=\sdom]
+    \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
+        \textbf{Input}    & Graph $G = (V, E)$, $k \in \mathbb{N}$\\
+    \textbf{Question} & Is there a subset $D \subseteq V$ with $|D| \leq k$ such that ${N[D] = V}$ and for all $d_1 \in X$ there exists another $d_2 \in X$ such that ${d(d_1, d_2) \leq 2}$?
+    \end{tabularx}
+\end{tcolorbox}
+
+\begin{itemize}
+    \item The semitotal dominatinon number is the minimum cardinality of a sds of $G$, denoted as $\gamma_{2t}(G)$.
+    \item \textbf{Observation}: $\gamma(G) \leq  \mathbf{\gamma_{2t}(G)}  \leq \gamma{t}(G)$
+\end{itemize}
+\end{frame}
+
+\begin{frame}[c]{Example: $\gamma(G) < \mathbf{\gamma_{2t}(G)} < \gamma_t(G)$}
+\begin{figure}[!ht]
+    \resizebox{0.95\textwidth}{!}{
          \tikzfig{../thesis/fig/tikz/ds-examples}
-     \end{equation*}
+    }
+    \end{figure}
+\end{frame}
+
+
+\section{Theory}
+\begin{frame}[c]{Parameterized Complexity}
+    \begin{itemize}
+        \item Developed by Downey and Fellows \\
+        \item \textbf{Idea:~} Limit combinatorial explosion to some aspect of the problem\\
+        \item 
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}[c]{Fixed-parameter tractability}
+
+\end{frame}
+
+\begin{frame}[c]{Kernelization}
+\begin{itemize}
+    \item \textbf{Idea: } Preprocess an instance using \textit{Reduction Rules} until hard \textit{kernel} is found.
+\end{itemize}
+
+\begin{figure}
+\centering
+\resizebox{0.35\textwidth}{!} {
+\includegraphics{fig/pexels-yulia-ilina-10400351.jpg}
+}
+\end{figure}
 \end{frame}
 
 
 \begin{frame}[c]{Kernelization}
+% Moreover, we require that $size_{\mathfrak{A}}(k) \leq g(k)$ for some computable function $g:\mathbb{N} \rightarrow \mathbb{N}$.
+
+
+% \item A \textit{kernelization algorithm} or \textit{kernel} is an algorithm $\mathfrak{A}$ for a parameterized problem $Q$ that given an instance $(I,k)$ of $Q$ runs in polynomial time and returns an equivalent instance $(I', k')$ of $Q$. 
+% A \underline{reduction rule} is a function $\phi:\Sigma^* \times \mathbb{N} \rightarrow \Sigma^* \times \mathbb{N}$ that maps an instance $(x,k)$ to an equivalent instance $(x',k')$ such that $\phi$ is computable in time polynomial in $\abs{x}$ and $k$.
+%A reduction rule is \underline{sound} (or \underline{safe}) if $(I, k) \in Q \Leftrightarrow (I',k') \in Q$.
+
+\begin{itemize}
+    \item \textbf{Idea: } Preprocess an instance using \textit{Reduction Rules} until hard \textit{kernel} is found.
+\end{itemize}
+
+\begin{figure}
+\centering
+\resizebox{0.7\textwidth}{!}{
+    \input{../thesis/fig/mathcha/kernelization.tikz}
+}
+\end{figure}
 \end{frame}
 
-\begin{frame}[c]{Example}
-\end{frame}
 
-\begin{frame}[c]{Example}
-\end{frame}
-
-\begin{frame}[c]{Example}
-\end{frame}
-
-\begin{frame}[c]{Previous Results of \sdom}
+\begin{frame}[c]{Complexity Status}
  \begin{figure}
     \centering
-    \resizebox{0.55\textwidth}{!}{
+    \resizebox{0.9\textwidth}{!}{
         \input{../thesis/fig/mathcha/classes.tikz}
     }
 \end{figure}

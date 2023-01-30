@@ -48,14 +48,17 @@ handout,
 \usepackage{url}
 \usepackage{srcltx}
 \usepackage{hyperref}
-
-
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
 
 \usepackage[
 backend=biber,
 style=authoryear,
 ]{biblatex}
-\addbibresource{./aux/bib.bib}
+%\addbibresource{./aux/bib.bib}
+\addbibresource{../thesis/bibliography.bib}
+\bibliography{../thesis/bibliography}
 
 \usetikzlibrary{mindmap}
 % For adding shadows.
@@ -93,13 +96,13 @@ style=authoryear,
 
 
 % presentation metadata
-\title{Master Thesis}
-\subtitle{Semitotal Dominating Set}
+\title{Master's Thesis Presentation}
+\subtitle{On the Parameterized Complexity of Semitotal Dominating Set On Graph Classes}
 
 \author{Lukas Retschmeier}
 
 \institute{\theChairName\\\theDepartmentName\\\theUniversityName}
-\date[03/02/2022]{February 3\textsuperscript{rd}, 2022}
+\date[28/02/2023]{February 28\textsuperscript{th}, 2023}
 
 \footline{\insertauthor~|~\insertshorttitle~|~\insertshortdate}
 \newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}
@@ -132,8 +135,9 @@ style=authoryear,
 \input{../thesis/styling/tikz.tikzstyles}
 \input{../thesis/settings/abbreviations.tex}
 
-\begin{document}
+\DeclareUnicodeCharacter{0301}{*************************************}
 
+\begin{document}
 
 \maketitle
 % Agenda
@@ -163,5 +167,10 @@ style=authoryear,
 
 \include{content/intro}
 \include{content/theory}
+
+\include{content/kernel}
+
+\include{content/closing}
+\include{content/references}
 
 \end{document}
