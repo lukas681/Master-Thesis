@@ -33,7 +33,6 @@
 % .:: Required packages
 % ----------------------------------------------------------------------------
 
-\RequirePackage[table]{xcolor}
 \RequirePackage{pgfkeys}
 \RequirePackage{pgfopts}
 
@@ -62,11 +61,11 @@
 \typeout{unused classoptions: \@unusedoptionlist}
 
 % select color model based on option
-\if@tum@colormodel@cmyk@
-  \selectcolormodel{cmyk}
-\else
+%\if@tum@colormodel@cmyk@
+%  \selectcolormodel{cmyk}
+%\else
   \selectcolormodel{rgb}
-\fi
+%\fi
 
 
 % .:: Color definitions
