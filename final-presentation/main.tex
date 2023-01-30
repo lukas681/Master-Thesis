@@ -41,9 +41,14 @@ handout,
 \usepackage{tikzsymbols}
 \usepackage{tcolorbox}
 \usepackage{lipsum}
+\usepackage{xspace}
 
 \usepackage{tikz}
-\usepackage{../../lib/tikzit}
+\usepackage{beamerthemesplit}
+\usepackage{url}
+\usepackage{srcltx}
+\usepackage{hyperref}
+
 
 
 \usepackage[
@@ -84,6 +89,8 @@ style=authoryear,
 % load additional packages
 \usepackage{booktabs}
 \usepackage{soul}
+\usepackage{sidecap}
+
 
 % presentation metadata
 \title{Master Thesis}
@@ -96,29 +103,65 @@ style=authoryear,
 
 \footline{\insertauthor~|~\insertshorttitle~|~\insertshortdate}
 \newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}
+
 % macro to configure the style of the presentation
 \TUMbeamersetup{
-  title page = TUM tower,         % style of the title page
-  part page = TUM toc,            % style of part pages
+  title page = TUM centered,         % style of the title page
+  part page = TUM centered,            % style of part pages
   section page = TUM toc,         % style of section pages
   content page = TUM more space,  % style of normal content pages
   tower scale = 0.8,              % scaling factor of TUM tower (if used)
-  headline = TUM threeliner,      % which variation of headline to use
-  footline = TUM infoline,         % which variation of footline to use
+  headline = TUM empty,      % which variation of headline to use
+  footline = TUM empty,         % which variation of footline to use
   % configure on which pages headlines and footlines should be printed
-  headline on = {title page},
-  footline on = {every page, title page=false},
+  %headline on = {title default},
+  %footline on = {every page, title page=false},
 }
 
-\input{../../styling/tikz.tikzstyles}
+\usetheme[numbers,totalnumber,compress,sidebarshades]{PaloAlto}
+\mode<presentation>
+%\setbeamertemplate{footline}[frame number]
+  \usecolortheme[named=TUMBlue]{structure}
+  \setbeamercovered{transparent}
+  \useinnertheme{circles}
+  \usefonttheme[onlymath]{serif}
+  \setbeamercovered{transparent}
+  \setbeamertemplate{blocks}[rounded][shadow=true]
+
+\usepackage{../thesis/lib/tikzit}
+\input{../thesis/styling/tikz.tikzstyles}
+\input{../thesis/settings/abbreviations.tex}
 
 \begin{document}
 
-\newcommand{\dom}	{Dominating Set}
-\newcommand{\tdom}{Total Doinating Set}
-\newcommand{\sdom}{Semitotal Dominating Set}
 
 \maketitle
+% Agenda
+
+% Intro
+% Overview about results
+% Theory
+  % Parameterized Complexity and Kernelization
+  % Problem Definition
+
+% Current results for dominating set
+
+% chordal graphs
+% & bipartite graphs
+
+% Linear Kernel for SDS
+  % The main idea
+  % definitions
+  %  general idea
+    % Rule 1: A textbook rule
+    % Rule 2
+    % Rule 3
+  
+  % Overall kernel size
+
+% Further problems
+
 \include{content/intro}
+\include{content/theory}
 
 \end{document}

@@ -302,14 +302,14 @@
   \pgfuseshading{TUMBlue shading}
 }[action]{
   \pgfdeclareverticalshading{TUMBlue shading}{\paperwidth}{
-    color(0pt)=(TUMBlue);
-    color(\paperheight)=(TUMBlue)
+    color(0pt)=(TUMBlueLighter);
+    color(\paperheight)=(TUMBlueLighter)
   }
   \setlength{\@tum@titlewidth@}{\textwidth}
   \setlength{\@tum@authorwidth@}{.6\textwidth}
   \pgfqkeys{/TUM/beamer}{
     resources/tower image/.link = /TUM/beamer/resources/tower image white,
-    colortheme = TUM inverse,
+    colortheme = TUM default,
   }
   \usebeamercolor[fg]{normal text}
 }
@@ -452,8 +452,10 @@
 % redefine maketitle command to load selected layout
 \renewcommand{\maketitle}{
   \TUMframestyle{title page}
-  \begin{frame}[t]
+  \begin{frame}[plain]
+    \hspace*{-1.5cm}\parbox[t]{\textwidth}{
     \titlepage
+    }
   \end{frame}
   \TUMframestyle{content page}
 }
@@ -550,7 +552,7 @@
       leftskip=\@tum@hmargin@, rightskip=\@tum@hmargin@, ignorebg]{footline}
   \end{beamercolorbox}
 }[action]{
-  \setlength{\@tum@footheight@}{\@tum@vmargin@ - \@tum@footdepth@}
+%  \setlength{\@tum@footheight@}{\@tum@vmargin@ - \@tum@footdepth@}
 }
 
 \defbeamertemplate{footline}{TUM default}{
