@@ -451,12 +451,20 @@
 
 % redefine maketitle command to load selected layout
 \renewcommand{\maketitle}{
-  \TUMframestyle{title page}
+  {
+    \TUMframestyle{title page}
+    \begingroup
+    \makeatletter
+    \setlength{\hoffset}{-1\beamer@sidebarwidth}
+     \makeatother
   \begin{frame}[plain]
-    \hspace*{-1.5cm}\parbox[t]{\textwidth}{
+    %\begin{minipage}{\textwidth}
     \titlepage
-    }
+  %\end{minipage}
   \end{frame}
+  \endgroup
+  }
+
   \TUMframestyle{content page}
 }
 
@@ -552,6 +560,18 @@
       leftskip=\@tum@hmargin@, rightskip=\@tum@hmargin@, ignorebg]{footline}
   \end{beamercolorbox}
 }[action]{
+  \makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[ht=2.25ex,dp=1ex,right]{fg=TUMBlueLight, bg=TUMBlueLight}%
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+%  \setbeamertemplate{footline}[frame number]
 %  \setlength{\@tum@footheight@}{\@tum@vmargin@ - \@tum@footdepth@}
 }
 
