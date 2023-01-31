@@ -1,0 +1,61 @@
+% Latex template: mahmoud.s.fahmy@students.kasralainy.edu.eg
+% For more details: https://www.sharelatex.com/learn/Beamer
+
+\documentclass{beamer}					% Document class
+
+\usepackage[english]{babel}				% Set language
+\usepackage[utf8x]{inputenc}			% Set encoding
+
+\mode<presentation>						% Set options
+{
+  \usetheme{default}					% Set theme
+  \usecolortheme{default} 				% Set colors
+  \usefonttheme{default}  				% Set font theme
+  \setbeamertemplate{caption}[numbered]	% Set caption to be numbered
+}
+
+\usepackage{tikz}
+\usepackage{tikzsymbols}
+\usepackage{pgf}
+\input{../thesis/styling/tikz.tikzstyles}
+\usepackage{tikz}
+\usepackage{../thesis/lib/tikzit}
+
+% Uncomment this to have the outline at the beginning of each section highlighted.
+%\AtBeginSection[]
+%{
+%  \begin{frame}{Outline}
+%    \tableofcontents[currentsection]
+%  \end{frame}
+%}
+
+\usepackage{graphicx}					% For including figures
+\usepackage{booktabs}					% For table rules
+\usepackage{hyperref}					% For cross-referencing
+
+\title{Title for a minimal beamer presentation}	% Presentation title
+\author{Author One}								% Presentation author
+\institute{Name of institution}					% Author affiliation
+\date{\today}									% Today's date	
+
+\begin{document}
+
+% Title page
+% This page includes the informations defined earlier including title, author/s, affiliation/s and the date
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Slide with references}
+\begin{figure}
+    \centering
+
+    \makeatletter
+    \resizebox{0.9\textwidth}{!}{
+        \input{../thesis/fig/mathcha/classes.tikz}
+    }
+    \makeatother
+\end{figure}
+\end{frame}
+
+\end{document}
