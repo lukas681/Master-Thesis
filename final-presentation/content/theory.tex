@@ -50,64 +50,103 @@
     \end{figure}
 \end{frame}
 
-
 \section{Theory}
 \begin{frame}[c]{Parameterized Complexity}
     \begin{itemize}
-        \item Developed by Downey and Fellows \\
+        \item NP-hard? We expect problem to be  \textbf{at least} exponential \\
+        % \item Can we do something? Yes! \textbf{Parameterized Complexity} \\
         \item \textbf{Idea:~} Limit combinatorial explosion to some aspect of the problem\\
-        \item 
+        \item \textbf{Goal: } Find an algorithm running in time $\mathcal{O}(f(k) \cdot n^c)$ for \textbf{some} parameter k
+        \item In this work: by solution size
+        \item \textbf{Techniques: } Kernelization, Bounded Search Trees, ... 
     \end{itemize}
 
-\end{frame}
-
-\begin{frame}[c]{Fixed-Parameter Tractability}
+If possible, the problem is \textbf{fixed-parameter tractable}.
 
 \end{frame}
-
-\begin{frame}[c]{Kernelization}
-\begin{itemize}
-    \item \textbf{Idea: } Preprocess an instance using \textit{Reduction Rules} until hard \textit{kernel} is found.
-\end{itemize}
-
-\begin{figure}
-\centering
-\resizebox{0.35\textwidth}{!} {
-\includegraphics{fig/pexels-yulia-ilina-10400351.jpg}
-}
-\end{figure}
-\end{frame}
-
-
-\begin{frame}[c]{Kernelization}
-% Moreover, we require that $size_{\mathfrak{A}}(k) \leq g(k)$ for some computable function $g:\mathbb{N} \rightarrow \mathbb{N}$.
-
-
-% \item A \textit{kernelization algorithm} or \textit{kernel} is an algorithm $\mathfrak{A}$ for a parameterized problem $Q$ that given an instance $(I,k)$ of $Q$ runs in polynomial time and returns an equivalent instance $(I', k')$ of $Q$. 
-% A \underline{reduction rule} is a function $\phi:\Sigma^* \times \mathbb{N} \rightarrow \Sigma^* \times \mathbb{N}$ that maps an instance $(x,k)$ to an equivalent instance $(x',k')$ such that $\phi$ is computable in time polynomial in $\abs{x}$ and $k$.
-%A reduction rule is \underline{sound} (or \underline{safe}) if $(I, k) \in Q \Leftrightarrow (I',k') \in Q$.
-
-\begin{itemize}
-    \item \textbf{Idea: } Preprocess an instance using \textit{Reduction Rules} until hard \textit{kernel} is found.
-\end{itemize}
-
-\begin{figure}
-\centering
-\resizebox{0.7\textwidth}{!}{
-    \input{../thesis/fig/mathcha/kernelization.tikz}
-}
-\end{figure}
-\end{frame}
-
 
 \begin{frame}[c]{Complexity Status}
  \begin{figure}
     \centering
 
     \makeatletter
-    \resizebox{0.9\textwidth}{!}{
+    \resizebox{0.7\textwidth}{!}{
         \input{../thesis/fig/mathcha/classes.tikz}
     }
     \makeatother
 \end{figure}
 \end{frame}
+
+
+
+\begin{frame}[c]{Fixed-Parameter Intractability}
+    \begin{itemize}
+        \item  Class NP corresponds to whole hierarchy $W[i]$ in parameterized setting.
+        \item Problems at least $W[1]$-hard considered \textbf{fixed-parameter intractable}
+        \item \dom is $W[2]$-complete
+        \item \textbf{Tool for Proving Hardness}: FPT Reductions, preserving the parameter
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[c]{}
+    \begin{center}
+        \textbf{Warmup: Intractability Results}
+
+        \textit{$\omega_2$ hard on split, chordal and bipartite graphs}
+    \end{center}
+
+    \begin{itemize}
+        \item \textbf{Split Graph:} $G = \mathtt{Clique} + \mathtt{Independent Set}$
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}[c]{Split Graphs}
+
+    \begin{tcolorbox}[colback=TUMBlueLighter]
+        \sdom on \textit{split} and \textit{chordal} graphs is $\omega_2$-hard
+    \end{tcolorbox}
+
+    \begin{figure}[!ht]
+    \resizebox{0.35\textwidth}{!}{
+         \tikzfig{../thesis/fig/tikz/split}
+    }
+    \end{figure}
+
+    \textbf{Proof by  fpt-reduction from \pdom on split graphs:}
+
+    \begin{enumerate}
+        \item \textbf{Construct } G* by adding $v$ with pendant $z$ to clique. G* split
+        \item If ds $D$ in G, $D* = D \cup \{v\}$ is sds $D*$.
+        \item If sds $D*$ in $G*$, $D \setminus \{v\}$ is $D$ in $G$ 
+        \item Parameter $k$ only changed by constant
+    \end{enumerate}
+
+\end{frame}
+
+\begin{frame}[c]{Bipartite Graphs}
+
+    \begin{tcolorbox}[colback=TUMBlueLighter]
+        \sdom on \textit{bipartite} graphs is $\omega_2$-hard
+    \end{tcolorbox}
+
+    \begin{figure}[!ht]
+    \resizebox{0.4\textwidth}{!}{
+         \tikzfig{../thesis/fig/tikz/wbipartite}
+    }
+    \end{figure}
+
+    \textbf{Proof by fpt-reduction from \pdom on bipart. graphs:}
+
+    \begin{enumerate}
+        \item \textbf{Construct } Add new neighbor to each vertex and add $d_1,d_2,u_1,u_2$
+        \item If ds $D$ in G, then $D* = D \cup \{d_1,d_2\}$ is sds in $G*$
+        \item Assume sds $D*$ in $G*$. If $a_i \in D*$ ($b_i$), flip. $D = D* \setminus \{d_1,d_2\}$ is ds in $G$
+    \end{enumerate}
+
+    \end{frame}
+
+
+

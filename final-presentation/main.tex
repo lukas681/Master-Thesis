@@ -17,7 +17,6 @@
 % and provide a description and minimal working example of your problem.
 %%
 
-
 \documentclass[
 handout,
   english,            % define the document language (english, german)
@@ -79,6 +78,16 @@ style=authoryear,
 \usepackage{booktabs}
 \usepackage{soul}
 \usepackage{sidecap}
+
+\newcounter{casenum}
+\newenvironment{caseof}{\setcounter{casenum}{0}}{\vskip.5\baselineskip}
+% \newcommand{\case}[2]{\vskip.5\baselineskip\par\noindent {\bfseries Case \arabic{casenum}:} #1\\#2\addtocounter{casenum}{1}}
+\newcommand{\case}[2]{%
+  \par\addvspace{.5\baselineskip}%
+  \noindent \refstepcounter{casenum}\textbf{Case \thecasenum:}~#1\\*
+  #2\ifhmode\unskip\fi
+}
+
 
 
 % presentation metadata

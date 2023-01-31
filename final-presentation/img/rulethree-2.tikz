@@ -1,0 +1,102 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=BLACK] (47) at (-6.75, 0.25) {};
+		\node [style=BLACK] (48) at (-0.75, 0.25) {};
+		\node [style=NONE] (49) at (-3.75, 3.75) {};
+		\node [style=NTWO] (50) at (-3.75, 1.75) {};
+		\node [style=DOM] (52) at (-3.75, 0.25) {};
+		\node [style=NTHR] (54) at (-3.75, -1.25) {};
+		\node [style=NONE] (56) at (-3.75, -3) {};
+		\node [style=none] (57) at (0, 0.25) {$\rightarrow$};
+		\node [style=BLACK] (58) at (0.75, 0.25) {};
+		\node [style=BLACK] (59) at (6.75, 0.25) {};
+		\node [style=NONE] (60) at (3.75, 3.75) {};
+		\node [style=BRGRAY] (61) at (3.75, 1.75) {};
+		\node [style=BRGRAY] (63) at (3.75, 0.25) {};
+		\node [style=BRGRAY] (64) at (3.75, -1.25) {};
+		\node [style=NONE] (66) at (3.75, -3) {};
+		\node [style=DOM] (67) at (3.75, 0.5) {};
+		\node [style=none] (69) at (-7, 1) {$v$};
+		\node [style=none] (70) at (-0.75, 1) {$w$};
+		\node [style=none] (71) at (7, 1) {$w$};
+		\node [style=none] (72) at (0.75, 1) {$v$};
+		\node [style=none] (74) at (4.25, 1) {$y$};
+		\node [style=none] (75) at (4.5, 4) {};
+		\node [style=none] (76) at (3.75, 4.5) {};
+		\node [style=none] (77) at (3, 4) {};
+		\node [style=none] (78) at (-3, 4) {};
+		\node [style=none] (79) at (-3.75, 4.5) {};
+		\node [style=none] (80) at (-4.5, 4) {};
+		\node [style=none] (81) at (-4.5, -3.5) {};
+		\node [style=none] (82) at (-3, -3.5) {};
+		\node [style=none] (83) at (-3.75, -4) {};
+		\node [style=none] (84) at (3, -3.5) {};
+		\node [style=none] (85) at (3.75, -4) {};
+		\node [style=none] (86) at (4.5, -3.5) {};
+		\node [style=none] (90) at (0, 5.25) {$G[R\setminus\partial R] \cong P_3$};
+		\node [style=none] (97) at (-4.5, 2.25) {};
+		\node [style=none] (98) at (-2.5, 2.25) {};
+		\node [style=none] (99) at (-2.5, -1.75) {};
+		\node [style=none] (100) at (-4.5, -1.75) {};
+		\node [style=none] (102) at (-6.25, 3.5) {$R \setminus \partial R$};
+		\node [style=none] (104) at (-5, 1.5) {};
+		\node [style=none] (105) at (-5, 1.5) {};
+		\node [style=none] (107) at (-6.25, 2.75) {};
+		\node [style=none] (108) at (-3.25, 3) {$P_1$};
+		\node [style=none] (109) at (-3.25, 1) {$P_2$};
+		\node [style=none] (110) at (-3.25, -0.5) {$P_3$};
+		\node [style=none] (112) at (4.25, 4.75) {$b$};
+		\node [style=none] (113) at (-3.25, 4.75) {$b$};
+		\node [style=none] (115) at (-3.25, -4) {$b'$};
+		\node [style=none] (116) at (4.25, -4) {$b'$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=FILLBLUE] (56.center)
+			 to [in=240, out=15] (48.center)
+			 to [in=-15, out=120] (49.center)
+			 to [in=60, out=-165] (47.center)
+			 to [in=165, out=-60] cycle;
+		\draw (50) to (47);
+		\draw (52) to (48);
+		\draw (47) to (52);
+		\draw (47) to (54);
+		\draw (54) to (48);
+		\draw (50) to (48);
+		\draw (50) to (49);
+		\draw [style=FILLBLUE] (58.center)
+			 to [in=165, out=-60] (66.center)
+			 to [in=240, out=15] (59.center)
+			 to [in=-15, out=120] (60.center)
+			 to [in=60, out=-165] cycle;
+		\draw [style=ULTRAGRAY] (61) to (58);
+		\draw [style=ULTRAGRAY] (59) to (63);
+		\draw [style=ULTRAGRAY] (63) to (58);
+		\draw [style=ULTRAGRAY] (58) to (64);
+		\draw [style=ULTRAGRAY] (64) to (59);
+		\draw [style=ULTRAGRAY] (61) to (59);
+		\draw [style=ULTRAGRAY] (61) to (60);
+		\draw [bend right=15] (67) to (59);
+		\draw [bend left=15] (58) to (67);
+		\draw [style=FILLGREEN] (80.center) to (49);
+		\draw [style=FILLGREEN] (49) to (79.center);
+		\draw [style=FILLGREEN] (78.center) to (49);
+		\draw [style=FILLGREEN] (77.center) to (60);
+		\draw [style=FILLGREEN] (76.center) to (60);
+		\draw [style=FILLGREEN] (75.center) to (60);
+		\draw [style=FILLGREEN] (83.center) to (56);
+		\draw [style=FILLGREEN] (81.center) to (56);
+		\draw [style=FILLGREEN] (82.center) to (56);
+		\draw [style=FILLGREEN] (66) to (84.center);
+		\draw [style=FILLGREEN] (66) to (85.center);
+		\draw [style=FILLGREEN] (86.center) to (66);
+		\draw [style=EDGE] (52) to (54);
+		\draw [style=ULTRAGRAY] (64) to (63);
+		\draw [style=EDGE] (52) to (50);
+		\draw [style=ULTRAGRAY] (63) to (61);
+		\draw [style=EDGEDASHED] (97.center) to (98.center);
+		\draw [style=EDGEDASHED] (98.center) to (99.center);
+		\draw [style=EDGEDASHED] (99.center) to (100.center);
+		\draw [style=EDGEDASHED] (97.center) to (100.center);
+		\draw [style=simple directed edge, bend right] (107.center) to (105.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

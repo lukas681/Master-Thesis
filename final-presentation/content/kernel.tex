@@ -8,7 +8,39 @@
     \end{center}
 \end{frame}
 
+\begin{frame}[c]{Kernelization}
+\begin{itemize}
+    \item \textbf{Idea: } Preprocess an instance using \textit{Reduction Rules} until hard \textit{kernel} is found.
+\end{itemize}
 
+\begin{figure}
+\centering
+\resizebox{0.35\textwidth}{!} {
+\includegraphics{fig/pexels-yulia-ilina-10400351.jpg}
+}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[c]{Kernelization}
+% Moreover, we require that $size_{\mathfrak{A}}(k) \leq g(k)$ for some computable function $g:\mathbb{N} \rightarrow \mathbb{N}$.
+
+
+% \item A \textit{kernelization algorithm} or \textit{kernel} is an algorithm $\mathfrak{A}$ for a parameterized problem $Q$ that given an instance $(I,k)$ of $Q$ runs in polynomial time and returns an equivalent instance $(I', k')$ of $Q$. 
+% A \underline{reduction rule} is a function $\phi:\Sigma^* \times \mathbb{N} \rightarrow \Sigma^* \times \mathbb{N}$ that maps an instance $(x,k)$ to an equivalent instance $(x',k')$ such that $\phi$ is computable in time polynomial in $\abs{x}$ and $k$.
+%A reduction rule is \underline{sound} (or \underline{safe}) if $(I, k) \in Q \Leftrightarrow (I',k') \in Q$.
+
+\begin{itemize}
+    \item \textbf{Idea: } Preprocess an instance using \textit{Reduction Rules} until a hard \textit{kernel} is found.
+\end{itemize}
+
+\begin{figure}
+\centering
+\resizebox{0.5\textwidth}{!}{
+    \input{../thesis/fig/mathcha/kernelization.tikz}
+}
+\end{figure}
+\end{frame}
 
 \begin{frame}[c]{Related Works}
     \centering
@@ -32,36 +64,169 @@
 \subsection{Definitions}
 
 \begin{frame}[c]{Main Theorem}
-
+\begin{tcolorbox}[colback=TUMBlueLighter,title=The Main Theorem]
+    The \sdom problem parameterized by solution size admits a linear kernel on planar graphs.
+    There exists a polynomial-time algorithm that, given a planar graph $(G, k)$, either correctly reports that $(G, k)$ is a NO-instance or returns an equivalent instance $(G', k)$ such that $|V(G')| \leq xxx \cdot k$.
+\end{tcolorbox}
 \end{frame}
 
-\begin{frame}[c]{Introducing Region Decompositions}
-    % Picture of a region
-
+\begin{frame}[c]{Introducing \dreg}
+    \begin{tcolorbox}[colback=TUMBlueLighter,title=\dreg]
+        Given $G = (V, W)$ and $D \subseteq V$, a \dreg is a set $\mathfrak{R}$ with poles in $D$ such that:
+        \begin{itemize}
+            \item for any $vw$-region $R \in \mathfrak{R}$, it holds that $D \cap $
+        \end{itemize}
+    \end{tcolorbox}
 \end{frame}
 
 
-\subsection{Reduction Rules}
-
+\subsection{Rule 1}
 \begin{frame}[c]{Splitting up $N(v)$}
-
 \end{frame}
 
-\begin{frame}[c]{Rule 1: Shrinking $N_3(v)$}
+\begin{frame}[c]{Rule 1, Appetizer: Shrinking $N_3(v)$}
 
+    \begin{tcolorbox}[colback=TUMBlueLighter,title=]
+        Let \G be a graph and let $v \in V$. If $|N_3(v)| \geq 1$:
+        \begin{itemize}
+            \item remove $N_{2,3}(v)$ from G,
+            \item add a vertex $v'$ and an edge $\{v, v'\}$.
+        \end{itemize}
+    \end{tcolorbox}
+
+    \begin{figure}[!ht]
+    \resizebox{0.4\textwidth}{!}{
+         \tikzfig{../thesis/fig/tikz/ruleone}
+    }
+    \end{figure}
+    \begin{itemize}
+        \item \textbf{Idea: } Removing isolated vertices
+        \item Correctness: Omitted
+    \end{itemize}
 \end{frame}
 
+\subsection{Rule 2}
 \begin{frame}[c]{Rule 2}
+    \begin{figure}[!ht]
+    \resizebox{0.7\textwidth}{!}{
+         \tikzfig{../thesis/fig/tikz/ruletwo}
+    }
+    \end{figure}
+\end{frame}
 
+\subsection{Rule 3}
+\begin{frame}[c]{Rule 3: Shrinking the size of simple regions}
+
+    Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and $w$. If $|V(R) \setminus \{v, w\}| \geq 5$ apply the following:
+
+    \begin{caseof}
+        \case{If $G[R\setminus\partial R] \cong P_3$, then:}
+
+            \begin{itemize}
+                    \item remove $V(R\setminus\partial R)$
+                    \item add vertex $y$ with edges $\{v, y\}$ and $\{y, w\}$
+            \end{itemize}
+
+        \case{If $G[R\setminus\partial R] \ncong P_3$, then}
+
+            \begin{itemize}
+                    \item remove $V(R\setminus\partial R)$
+                    \item add vertices $y$, $y'$ and four edges $\{v,y\}$, $\{v, y'\}$, $\{y, w\}$ and $\{y', w\}$
+            \end{itemize}
+        \end{caseof}
 \end{frame}
 
 \begin{frame}[c]{Rule 3: Shrinking the size of simple regions}
 
+    \begin{caseof}
+        {\bfseries
+        \case{If $G[R\setminus\partial R] \cong P_3$, then:}
+
+            \begin{itemize}
+                    \item remove $V(R\setminus\partial R)$
+                    \item add vertex $y$ with edges $\{v, y\}$ and $\{y, w\}$
+            \end{itemize}
+        }
+
+        \case{If $G[R\setminus\partial R] \ncong P_3$, then}
+
+            \begin{itemize}
+                    \item remove $V(R\setminus\partial R)$
+                    \item add vertices $y$, $y'$ and four edges $\{v,y\}$, $\{v, y'\}$, $\{y, w\}$ and $\{y', w\}$
+            \end{itemize}
+        \end{caseof}
+
+    \begin{figure}[!ht]
+    \resizebox{0.35\textwidth}{!}{
+         \tikzfig{./img/rulethree-1}
+    }
+    \end{figure}
 \end{frame}
 
-\begin{frame}[c]{Bounding Kernel Size}
+\begin{frame}[c]{Rule 3: Shrinking the size of simple regions}
 
-    Let D be sds of size $k$. There exists a maximal \dreg $\mathfrak{R}$ such that
+    \begin{caseof}
+        \case{If $G[R\setminus\partial R] \cong P_3$, then:}
+
+            \begin{itemize}
+                    \item remove $V(R\setminus\partial R)$
+                    \item add vertex $y$ with edges $\{v, y\}$ and $\{y, w\}$
+            \end{itemize}
+        {\bfseries
+        \case{If $G[R\setminus\partial R] \ncong P_3$, then}
+
+            \begin{itemize}
+                    \item remove $V(R\setminus\partial R)$
+                    \item add vertices $y$, $y'$ and four edges $\{v,y\}$, $\{v, y'\}$, $\{y, w\}$ and $\{y', w\}$
+            \end{itemize}
+        }
+        \end{caseof}
+
+    \begin{figure}[!ht]
+    \resizebox{0.35\textwidth}{!}{
+         \tikzfig{./img/rulethree-2}
+    }
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}[c]{Notes}
+    \begin{itemize}
+        \item All the rule are sound 
+        \item and only change the solution size by a constant factor
+        \item they can be applied in pplynomial-time
+        \item Rule 3 is a swiss-army-knife to be found on many surprising places
+    \end{itemize}
+\end{frame}
+
+% ANIMATING BOUND
+\begin{frame}[c]{Bounding the Kernel: Idea 1}
+    \begin{figure}[!ht]
+    \resizebox{0.5\textwidth}{!}{
+         \tikzfig{./img/bounding-1}
+    }
+    \end{figure}
+\end{frame}
+\begin{frame}[c]{Bounding the Kernel: Idea 2}
+
+    \begin{figure}[!ht]
+    \resizebox{0.5\textwidth}{!}{
+         \tikzfig{./img/bounding-2}
+    }
+    \end{figure}
+\end{frame}
+\begin{frame}[c]{Bounding the Kernel: Idea 3}
+
+    \begin{figure}[!ht]
+    \resizebox{0.5\textwidth}{!}{
+         \tikzfig{./img/bounding-3}
+    }
+    \end{figure}
+\end{frame}
+
+\begin{frame}[c]{Summary: Bounding Kernel Size}
+
+    Let D be sds of size $k$. There exists a maximal \dreg $\mathfrak{R}$ such that:
 
     \begin{enumerate}
         \item $\mathfrak{R}$ has only at most $3 k - 6$ regions (\cite{Alber2004});
@@ -69,17 +234,15 @@
         \item Each region  $R \in \mathfrak{R}$ contains at most $87$ vertices.
     \end{enumerate}
 
-    \begin{figure}[!ht]
-    \resizebox{0.3\textwidth}{!}{
-         \tikzfig{../thesis/fig/tikz/region-presentation}
-    }
-    \end{figure}
-\
-
     \textbf{Hence: } $87 \cdot (3k - 6) + 97 \cdot k + k < 359 \cdot k$
 
-    % TODO Resulting.
+\end{frame}
 
-
+\begin{frame}[c]{Main Theorem}
+\begin{tcolorbox}[colback=TUMBlueLighter,title=The Main Theorem]
+    The \sdom problem parameterized by solution size admits a linear kernel on planar graphs.
+    There exists a polynomial-time algorithm that, given a planar graph $(G, k)$, either correctly reports that $(G, k)$ is a NO-instance or returns an equivalent instance $(G', k)$ such that $|V(G')| \leq xxx \cdot k$.
+\end{tcolorbox}
+\textbf{Proof: } Add Proof here.
 \end{frame}
 
