@@ -1,10 +1,11 @@
+% pdflatex  -synctex=1 -interaction=nonstopmode -file-line-error -recorder -output-directory="/mnt/c/Users/A613933/Documents/git/Master-Thesis/final-presentation"  "/mnt/c/Users/A613933/Documents/git/Master-Thesis/final-presentation/main.tex"'
 \section{Kernel}
 
 \begin{frame}[c]{}
     \begin{center}
         \textbf{A Linear Kernel for \psdom}
 
-        \textit{The main result of the thesis}
+        \textit{Another Explicit kernel for a Dominating Problem}
     \end{center}
 \end{frame}
 
@@ -31,7 +32,7 @@
 %A reduction rule is \underline{sound} (or \underline{safe}) if $(I, k) \in Q \Leftrightarrow (I',k') \in Q$.
 
 \begin{itemize}
-    \item \textbf{Idea: } Preprocess an instance using \textit{Reduction Rules} until a hard \textit{kernel} is found.
+    \item \textbf{Idea: } Preprocess an instance using \textit{Reduction Rules} until hard \textit{kernel} is found.
 \end{itemize}
 
 \begin{figure}
@@ -61,21 +62,62 @@
 \end{frame}
 
 
-\subsection{Definitions}
-
+%\subsection{Definitions}
 \begin{frame}[c]{Main Theorem}
 \begin{tcolorbox}[colback=TUMBlueLighter,title=The Main Theorem]
-    The \sdom problem parameterized by solution size admits a linear kernel on planar graphs.
+    \sdom parameterized by solution size admits a linear kernel on planar graphs.
     There exists a polynomial-time algorithm that, given a planar graph $(G, k)$, either correctly reports that $(G, k)$ is a NO-instance or returns an equivalent instance $(G', k)$ such that $|V(G')| \leq xxx \cdot k$.
 \end{tcolorbox}
 \end{frame}
 
-\begin{frame}[c]{Introducing \dreg}
-    \begin{tcolorbox}[colback=TUMBlueLighter,title=\dreg]
-        Given $G = (V, W)$ and $D \subseteq V$, a \dreg is a set $\mathfrak{R}$ with poles in $D$ such that:
+
+%%%% REGIONS DEFINITION
+\begin{frame}[c]{The xxxStone: Regions}
+     Introduced by Alber et al. \cite{Alber2004}, decomposition technique for planar graph.
+
+    \begin{tcolorbox}[colback=TUMBlueLighter,title=Region (Simplified)]
+        Given plane $G$ and $v,w \in V$, a region is a closed subset, such that
         \begin{itemize}
-            \item for any $vw$-region $R \in \mathfrak{R}$, it holds that $D \cap $
+            \item there are two non-crossing (but possibly overlapping) boundary paths
+            \item Every vertex in R belongs to $N(v,w)$
         \end{itemize}
+    \end{tcolorbox}
+
+        \begin{figure}[!ht]
+            \resizebox{0.35\textwidth}{!}{
+                \tikzfig{./img/region-base}
+            }
+        \end{figure}
+
+\end{frame}
+
+\begin{frame}[c]{The xxxStone: Regions}
+     Introduced by Alber et al. \cite{Alber2004}, decomposition technique for planar graph.
+
+    \begin{tcolorbox}[colback=TUMBlueLighter,title=Region (Simplified)]
+        Given plane $G$ and $v,w \in V$, a region is a closed subset, such that
+    \begin{itemize}
+        \item there are two non-crossing (but possibly overlapping) boundary paths
+        \item Every vertex in R belongs to $N(v,w)$
+    \end{itemize}
+    \end{tcolorbox}
+
+    \begin{figure}[!ht]
+    \resizebox{0.35\textwidth}{!}{
+         \tikzfig{./img/region-single}
+    }
+    \end{figure}
+
+
+\end{frame}
+
+
+
+
+%%%%
+\begin{frame}[c]{Introducing \dreg}
+    \begin{tcolorbox}[colback=TUMBlueLighter,title={\dreg\cite{Alber2004}}]
+        Given $G = (V, W)$ and $D \subseteq V$, a \dreg is a set $\mathfrak{R}$ with poles in $D$ such that:
     \end{tcolorbox}
 \end{frame}
 

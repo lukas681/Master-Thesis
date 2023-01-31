@@ -65,7 +65,78 @@ If possible, the problem is \textbf{fixed-parameter tractable}.
 
 \end{frame}
 
-\begin{frame}[c]{Complexity Status}
+\begin{frame}[c]{Complexity Comparison}
+
+    \resizebox{0.8\textwidth}{!}{
+    \begin{tabularx}{1.5\textwidth}{lllllll}
+
+        \arrayrulecolor{TUMBlue}\toprule
+
+        \textbf{Graph Class}                  & \multicolumn{2}{c}{\textbf{\dom}}                       & \multicolumn{2}{c}{\textbf{\sdom}}           & \multicolumn{2}{c}{\textbf{\tdom}}                                                                                                                                \\
+        \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}    & classical                                               & Parameterized                                & classical                                               & Parameterized              & classical                                    & Parameterized               \\
+        bipartite                             & \NPcs \cite{Bertossi1984}                               & \WTWOhs \cite{Raman2008}                                      & \NPcs \cite{Henning2019}                                & \WTWOhs (this)             & \NPcs \cite{Pfaff1983}                       & \WTWOhs (cite!)                             \\        
+        line graph of bipartite               & \NPcs \cite{Korobitsin1992}                             & ? & \NPcs \cite{Galby2020}                                  &     ?         (?)              & \NPcs \cite{McRae1995}                       &  ?                            \\
+        
+        circle                                & \NPcs \cite{Keil1993}                                   & \WONEhs \cite{Bousquet2012}                  & \NPcs \cite{Kloks2021}                                  & ? (?)  & \NPcs \cite{McRae1995}                       & \WONEhs \cite{Bousquet2012} \\
+        
+        chordal                               & \NPcs \cite{Booth1982}                                  & \WTWOhs \cite{Raman2008}                     & \NPcs \cite{Henning2019}                                & \WTWOhs (this)               & \NPcs \cite{Laskar1983}                      & \WONEhs \cite{Chang1998} by \textit{split}                            \\
+        
+        $s$-chordal , $s > 3$                          & \NPcs \cite{Liu2011}                                    & \WTWOhs \cite{Liu2011}                       & ? (?)                                                     & ? (?)                         & \NPcs \cite{Liu2011}                         & \WONEhs \cite{Liu2011}      \\
+        
+        split                                 & \NPcs \cite{Bertossi1984}                               & \WTWOhs \cite{Raman2008}         & \NPcs \cite{Henning2019}                                & \WTWOhs \textbf{this}             & \NPcs \cite{Laskar1983}                      & \WONEhs \cite{Chang1998}    \\
+        
+        3-claw-free                           & \NPcs \cite{Cygan2011}                                  & \FPTt \cite{Cygan2011}                        & Prob. Unk                                               & Prob. Unk                  & \NPcs \cite{McRae1995}                       & Unknown                     \\
+        
+        $t$-claw-free, $t>3$                  & \NPcs \cite{Cygan2011}                                  & \WTWOhs \cite{Cygan2011}                     & Prob. Unknown                                           & Unknown                    & \NPcs \cite{McRae1995}                       & Prob. Unknown               \\
+        
+        chordal bipartite                     & \NPcs \cite{Mueller1987}                                & ? (?)                                & \NPcs \cite{Henning2019}                                & ?                      & \multicolumn{2}{c}{\Ptt \cite{Damaschke1990}}                               \\
+        
+        planar                                & \NPcs (Sources!)                                        & \FPTt \cite{Alber2004}                        & \NPcs                                                   & \FPT \textbf{(this)}                       & \NPcs                                        & \FPTt \cite{Garnero2018}     \\
+        
+        undirected path                                & \NPcs \cite{Booth1982}                                   & \FPTt \cite{Figueiredo2022} & \NPcs \cite{Henning2022}  & ?                     & \NPcs \cite{Lan2014}                         & ?                     \\
+        % 2022 paper for DS proved it not for TDS, so whp. not known for TDS
+%
+        dually chordal                        & \multicolumn{2}{c}{\Ptt \cite{Brandstaedt1998} }         & \multicolumn{2}{c}{? (attempted \cite{Galby2020})} &                           \multicolumn{2}{c}{\Ptt \cite{Kratsch1997}}                                                                            \\
+        
+        strongly chordal                      & \multicolumn{2}{c}{\Ptt \cite{Farber1984} }            & \multicolumn{2}{c}{\Ptt \cite{Tripathi2021}}  & \NPcs \cite{Farber1984}                                 &                                                                                                         \\
+        
+        AT-free                               & \multicolumn{2}{c}{\Ptt \cite{Kratsch2000}}              & \multicolumn{2}{c}{\Ptt \cite{Kloks2021} }    & \multicolumn{2}{c}{\Ptt \cite{Kratsch2000}}                                                                                                                        \\
+        
+        tolerance                             & \multicolumn{2}{c}{\Ptt \cite{Giannopoulou2016}}                         & \multicolumn{2}{c}{?}                                                  & \multicolumn{2}{c}{?}                                                                    \\
+        
+        % cocomperability                          & \multicolumn{2}{c}{\Pt \cite{Kratsch1993}}                                & Unknwon (?)                                         & Unknown ?                                                    & \multicolumn{2}{c}{\Pt \cite{Kratsch1993}}                                                                       \\
+       block                        &                                                      \multicolumn{2}{c}{\Ptt \cite{Farber1984} }                                          & \multicolumn{2}{c}{\Ptt \cite{Henning2022}}              & \multicolumn{2}{c}{\Ptt \cite{Chang1989}}                                                                       \\
+        
+        interval                  & \multicolumn{2}{c}{\Ptt \cite{Chang1998a}}                                          & \multicolumn{2}{c}{\Ptt \cite{Pradhan2021}} &                                         \multicolumn{2}{c}{\Ptt \cite{Bertossi1986}}                       \\
+%
+        \midrule
+        bounded clique-width                  & \multicolumn{2}{c}{\Ptt \cite{Courcelle1990}}            & \multicolumn{2}{c}{\Ptt \cite{Courcelle1990}} & \multicolumn{2}{c}{\Ptt \cite{Courcelle1990}}                                                                                                                      \\
+        
+        bounded mim-width                     & \multicolumn{2}{c}{\Ptt \cite{Belmonte2011,BuiXuan2013}} & \multicolumn{2}{c}{\Ptt \cite{Galby2020}}     & \multicolumn{2}{c}{\Ptt \cite{Belmonte2011,BuiXuan2013}}                                                                                                           \\
+        \midrule
+%
+        %k polyon                              & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
+        
+        %line graph                        & TBD                                                     & TBD                                          & TBD                                                     & Easdffasd                  & Fasdf                                        & Gasdf                       \\
+        
+        
+        %  TBD chordal perfect graph (contained) & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
+        
+        
+        % TBD Graph girth 3 or 4                & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
+        
+        % TBD Graph girth gew 5                 & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
+        
+        % TBD degen.                            & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
+        
+        % bTBD Bounded Max degree                & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
+        %\midrule
+        %\bottomrule
+    \end{tabularx}
+}
+\end{frame}
+
+\begin{frame}[c]{Status \sdom}
  \begin{figure}
     \centering
 
@@ -77,8 +148,7 @@ If possible, the problem is \textbf{fixed-parameter tractable}.
 \end{figure}
 \end{frame}
 
-
-
+\subsection{Intractability}
 \begin{frame}[c]{Fixed-Parameter Intractability}
     \begin{itemize}
         \item  Class NP corresponds to whole hierarchy $W[i]$ in parameterized setting.

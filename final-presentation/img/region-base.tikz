@@ -1,0 +1,78 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=BLACK] (0) at (-5.5, 1.5) {};
+		\node [style=BLACK] (1) at (-6.25, -0.5) {};
+		\node [style=BLACK] (2) at (-2.5, -3.25) {};
+		\node [style=BLACK] (3) at (-3.75, 0.25) {};
+		\node [style=BLACK] (5) at (-1.5, 2.75) {};
+		\node [style=BLACK] (6) at (1.5, -1) {};
+		\node [style=BLACK] (7) at (-3.5, 1.25) {};
+		\node [style=BLACK] (9) at (1.25, 1.75) {};
+		\node [style=BLACK] (10) at (-5.5, 1.5) {};
+		\node [style=BLACK] (11) at (-2, -0.75) {};
+		\node [style=BLACK] (12) at (0.25, 0) {};
+		\node [style=BLACK] (13) at (-2.25, 1.25) {};
+		\node [style=BLACK] (14) at (-1, 0.5) {};
+		\node [style=BLACK] (15) at (-1.25, 4.25) {};
+		\node [style=BLACK] (16) at (2.25, -2.5) {};
+		\node [style=BLACK] (17) at (4, -1.5) {};
+		\node [style=BLACK] (18) at (4, 0.25) {};
+		\node [style=BLACK] (19) at (5, -0.25) {};
+		\node [style=BLACK] (20) at (0.5, -3.5) {};
+		\node [style=BLACK] (21) at (-4.75, -0.25) {};
+		\node [style=BLACK] (22) at (-1, -1.5) {};
+		\node [style=BLACK] (23) at (-1, -2.25) {};
+		\node [style=none] (27) at (5.75, 0) {};
+		\node [style=none] (28) at (4.75, -2.5) {};
+		\node [style=none] (29) at (1.75, -4) {};
+		\node [style=none] (30) at (-1, -3.5) {};
+		\node [style=none] (31) at (1.75, -1.75) {};
+		\node [style=none] (34) at (3.25, -2.75) {};
+		\node [style=none] (42) at (-2, 3.25) {};
+		\node [style=none] (43) at (-2.5, 1.75) {};
+		\node [style=none] (44) at (-5, 0.5) {};
+		\node [style=none] (45) at (-0.25, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=FILLPURPLE] (6) to (11);
+		\draw [style=FILLPURPLE] (11) to (3);
+		\draw [style=FILLPURPLE] (3) to (0);
+		\draw [style=FILLPURPLE] (0) to (1);
+		\draw [style=FILLPURPLE] (1) to (2);
+		\draw [bend right] (2) to (6);
+		\draw (2) to (3);
+		\draw [style=FILLGREEN] (7) to (0);
+		\draw [style=FILLGREEN] (0) to (5);
+		\draw [style=FILLGREEN] (5) to (14);
+		\draw [style=FILLGREEN] (14) to (13);
+		\draw [style=FILLGREEN] (13) to (7);
+		\draw [style=FILLDARKBLUE] (9) to (5);
+		\draw [style=FILLDARKBLUE] (5) to (10);
+		\draw [style=FILLDARKBLUE] (10) to (15);
+		\draw [style=FILLDARKBLUE] (15) to (9);
+		\draw (2) to (11);
+		\draw [style=FILLDARKBLUE] (14) to (12);
+		\draw (12) to (11);
+		\draw (13) to (5);
+		\draw (7) to (5);
+		\draw (6) to (18);
+		\draw (19) to (6);
+		\draw (17) to (6);
+		\draw (16) to (6);
+		\draw (16) to (17);
+		\draw (19) to (18);
+		\draw (6) to (20);
+		\draw (20) to (16);
+		\draw [bend left=45, looseness=1.25] (9) to (6);
+		\draw [style=FILLDARKBLUEINVISIBLE, bend right=15] (6) to (14);
+		\draw [style=FILLDARKBLUEINVISIBLE, bend right=15] (6) to (14);
+		\draw (14) to (12);
+		\draw (6) to (12);
+		\draw (21) to (10);
+		\draw (2) to (21);
+		\draw (23) to (6);
+		\draw (22) to (6);
+		\draw (22) to (2);
+		\draw (23) to (2);
+	\end{pgfonlayer}
+\end{tikzpicture}

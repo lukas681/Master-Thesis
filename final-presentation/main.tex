@@ -56,11 +56,15 @@ handout,
 \usepackage{hyperref}
 \usepackage{tabularx}
 \usepackage{tcolorbox}
+\usepackage{colortbl}
 
 
 \usepackage[
 backend=biber,
-style=authoryear,
+style=numeric,
+doi=false,
+isbn=false,
+url=false,
 ]{biblatex}
 %\addbibresource{./aux/bib.bib}
 \addbibresource{../thesis/bibliography.bib}
@@ -69,6 +73,12 @@ style=authoryear,
 \usetikzlibrary{positioning,chains,fit,shapes,calc,er,automata}
 \usetikzlibrary{arrows.meta}
 
+\renewcommand*{\bibfont}{\scriptsize}
+\setbeamerfont{bibliography item}{size=\footnotesize}
+\setbeamerfont{bibliography entry author}{size=\footnotesize}
+\setbeamerfont{bibliography entry title}{size=\footnotesize}
+\setbeamerfont{bibliography entry location}{size=\footnotesize}
+\setbeamerfont{bibliography entry note}{size=\footnotesize}
 \setbeamertemplate{bibliography entry article}{}
 \setbeamertemplate{bibliography entry title}{}
 \setbeamertemplate{bibliography entry location}{}
@@ -77,6 +87,7 @@ style=authoryear,
 % load additional packages
 \usepackage{booktabs}
 \usepackage{soul}
+\usepackage{multicol}
 \usepackage{sidecap}
 
 \newcounter{casenum}
@@ -88,11 +99,9 @@ style=authoryear,
   #2\ifhmode\unskip\fi
 }
 
-
-
 % presentation metadata
 \title{Master's Thesis Presentation}
-\subtitle{On the Parameterized Complexity of Semitotal Dominating Set On Graph Classes}
+\subtitle{On the Parameterized Complexity of \\ \sdom On Graph Classes}
 
 \author{Lukas Retschmeier}
 
