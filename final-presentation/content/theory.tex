@@ -3,7 +3,7 @@
 \begin{tcolorbox}[colback=TUMBlueLighter,title=\dom]
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input} & Graph $G = (V, E)$, $k \in \mathbb{N}$\\
-        \textbf{Question} & Is there a set {$D \subseteq V$} of size at most $k$ such that ${N[D] = V}$? \\
+        \textbf{Question} & Exists {$D \subseteq V$} with $|D| \leq k$ such that ${N[D] = V}$? \\
     \end{tabularx}
 \end{tcolorbox}
 
@@ -14,16 +14,19 @@
 
 \end{frame}
 
+\setbeamercovered{invisible}
 \begin{frame}[c]{Motivation}
 \begin{tcolorbox}[colback=TUMBlueLighter,title=\tdom]
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input} & Graph $G = (V, E)$, $k \in \mathbb{N}$\\
-        \textbf{Question} & Is there a set $D \subseteq V$ of size at most $k$ such that for all $d_1 \in X$ exists $d_2 \in X \setminus \{d_1\}$ s.t. ${d(d_1, d_2) \leq 1}$? \\
+        \textbf{Question} & Exists $D \subseteq V$ with $|D| \leq k$ such that \\ 
+       &  $\forall d_1 \in X :\exists d_2 \in D \setminus \{d_1\}$ with ${d(d_1, d_2) \leq 1}$? \\
     \end{tabularx}
 \end{tcolorbox}
 
 \begin{itemize}
     \item The total domination number is the minimum cardinality of a tds of $G$, denoted as $\gamma_t(G)$.
+    \item We say $d_1$ witnesses $d_2$ (and vice versa)
 \end{itemize}
 
 \end{frame}
@@ -32,13 +35,15 @@
 \begin{tcolorbox}[colback=TUMBlueLighter,title=\sdom]
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input}    & Graph $G = (V, E)$, $k \in \mathbb{N}$\\
-    \textbf{Question} & Is there a subset $D \subseteq V$ with $|D| \leq k$ such that ${N[D] = V}$ and for all $d_1 \in X$ there exists another $d_2 \in X$ such that ${d(d_1, d_2) \leq 2}$?
+        \textbf{Question} & Exists $D \subseteq V$ with $|D| \leq k$ such that  \\
+        & $\forall d_1 \in X :\exists d_2 \in D \setminus \{d_1\}$ with ${d(d_1, d_2) \leq 2}$? \\
     \end{tabularx}
 \end{tcolorbox}
 
 \begin{itemize}
     \item The semitotal domination number is the minimum cardinality of a sds of $G$, denoted as $\gamma_{2t}(G)$.
     \item \textbf{Observation}: $\gamma(G) \leq  \mathbf{\gamma_{2t}(G)}  \leq \gamma{t}(G)$
+    \item We say $d_1$ witnesses $d_2$ (and vice versa)
 \end{itemize}
 \end{frame}
 
@@ -65,8 +70,23 @@ If possible, the problem is \textbf{fixed-parameter tractable}.
 
 \end{frame}
 
+\subsection{Intractability}
+\begin{frame}[c]{Fixed-Parameter Intractability}
+    \begin{itemize}
+        \item  Class NP corresponds to whole hierarchy $W[i]$ in parameterized setting.
+        \item Problems at least $W[1]$-hard considered \textbf{fixed-parameter intractable}
+        \item \dom is $W[2]$-complete
+        \item \textbf{Tool for Proving Hardness}: FPT Reductions, preserving the parameter
+    \end{itemize}
+
+\end{frame}
+
+
+
 \begin{frame}[c]{Complexity Comparison}
 
+    \begin{table}
+    \centering
     \resizebox{0.8\textwidth}{!}{
     \begin{tabularx}{1.5\textwidth}{lllllll}
 
@@ -104,36 +124,18 @@ If possible, the problem is \textbf{fixed-parameter tractable}.
         
         tolerance                             & \multicolumn{2}{c}{\Ptt \cite{Giannopoulou2016}}                         & \multicolumn{2}{c}{?}                                                  & \multicolumn{2}{c}{?}                                                                    \\
         
-        % cocomperability                          & \multicolumn{2}{c}{\Pt \cite{Kratsch1993}}                                & Unknwon (?)                                         & Unknown ?                                                    & \multicolumn{2}{c}{\Pt \cite{Kratsch1993}}                                                                       \\
        block                        &                                                      \multicolumn{2}{c}{\Ptt \cite{Farber1984} }                                          & \multicolumn{2}{c}{\Ptt \cite{Henning2022}}              & \multicolumn{2}{c}{\Ptt \cite{Chang1989}}                                                                       \\
         
         interval                  & \multicolumn{2}{c}{\Ptt \cite{Chang1998a}}                                          & \multicolumn{2}{c}{\Ptt \cite{Pradhan2021}} &                                         \multicolumn{2}{c}{\Ptt \cite{Bertossi1986}}                       \\
-%
+
         \midrule
         bounded clique-width                  & \multicolumn{2}{c}{\Ptt \cite{Courcelle1990}}            & \multicolumn{2}{c}{\Ptt \cite{Courcelle1990}} & \multicolumn{2}{c}{\Ptt \cite{Courcelle1990}}                                                                                                                      \\
         
         bounded mim-width                     & \multicolumn{2}{c}{\Ptt \cite{Belmonte2011,BuiXuan2013}} & \multicolumn{2}{c}{\Ptt \cite{Galby2020}}     & \multicolumn{2}{c}{\Ptt \cite{Belmonte2011,BuiXuan2013}}                                                                                                           \\
         \midrule
-%
-        %k polyon                              & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
-        
-        %line graph                        & TBD                                                     & TBD                                          & TBD                                                     & Easdffasd                  & Fasdf                                        & Gasdf                       \\
-        
-        
-        %  TBD chordal perfect graph (contained) & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
-        
-        
-        % TBD Graph girth 3 or 4                & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
-        
-        % TBD Graph girth gew 5                 & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
-        
-        % TBD degen.                            & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
-        
-        % bTBD Bounded Max degree                & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
-        %\midrule
-        %\bottomrule
     \end{tabularx}
-}
+        }
+\end{table}
 \end{frame}
 
 \begin{frame}[c]{Status \sdom}
@@ -146,17 +148,6 @@ If possible, the problem is \textbf{fixed-parameter tractable}.
     }
     \makeatother
 \end{figure}
-\end{frame}
-
-\subsection{Intractability}
-\begin{frame}[c]{Fixed-Parameter Intractability}
-    \begin{itemize}
-        \item  Class NP corresponds to whole hierarchy $W[i]$ in parameterized setting.
-        \item Problems at least $W[1]$-hard considered \textbf{fixed-parameter intractable}
-        \item \dom is $W[2]$-complete
-        \item \textbf{Tool for Proving Hardness}: FPT Reductions, preserving the parameter
-    \end{itemize}
-
 \end{frame}
 
 
@@ -189,8 +180,8 @@ If possible, the problem is \textbf{fixed-parameter tractable}.
 
     \begin{enumerate}
         \item \textbf{Construct } G* by adding $v$ with pendant $z$ to clique. G* split
-        \item If ds $D$ in G, $D* = D \cup \{v\}$ is sds $D*$.
-        \item If sds $D*$ in $G*$, $D \setminus \{v\}$ is $D$ in $G$ 
+        \item If ds $D$ in G, $D' = D \cup \{v\}$ is sds $D'$.
+        \item If sds $D'$ in $G'$, $D \setminus \{v\}$ is $D$ in $G$ 
         \item Parameter $k$ only changed by constant
     \end{enumerate}
 
@@ -212,8 +203,8 @@ If possible, the problem is \textbf{fixed-parameter tractable}.
 
     \begin{enumerate}
         \item \textbf{Construct } Add new neighbor to each vertex and add $d_1,d_2,u_1,u_2$
-        \item If ds $D$ in G, then $D* = D \cup \{d_1,d_2\}$ is sds in $G*$
-        \item Assume sds $D*$ in $G*$. If $a_i \in D*$ ($b_i$), flip. $D = D* \setminus \{d_1,d_2\}$ is ds in $G$
+        \item If ds $D$ in G, then $D' = D \cup \{d_1,d_2\}$ is sds in $G'$
+        \item Assume sds $D'$ in $G'$. If $a_i \in D'$ ($b_i$), flip. $D = D' \setminus \{d_1,d_2\}$ is ds in $G$
     \end{enumerate}
 
     \end{frame}
