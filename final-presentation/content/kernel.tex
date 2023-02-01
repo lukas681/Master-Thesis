@@ -35,7 +35,7 @@
     \item \textbf{Idea: } Preprocess an instance using \textit{Reduction Rules} until hard \textit{kernel} is found.
 \end{itemize}
 
-\begin{figure}
+\pause \begin{figure}
 \centering
 \resizebox{0.5\textwidth}{!}{
     \input{../thesis/fig/mathcha/kernelization.tikz}
@@ -74,15 +74,15 @@
     Given a planar graph $G = (V ,E)$, we will:
 
     \begin{enumerate}
-        \item Split the neighborhoods of the graph;
-        \item Define reduction Rules
-        \item Use the region decomposition to analyse size of each region
+     \pause   \item Split the neighborhoods of the graph;
+     \pause   \item Define reduction Rules
+     \pause   \item Use the region decomposition to analyse size of each region
     \end{enumerate}
 \end{frame}
 %%%% REGIONS DEFINITION
 
 \subsection{Definitions}
-\begin{frame}[c]{The basic Principle: Regions}
+\begin{frame}[c]{The Basic Principle: Regions}
     % Introduced by Alber et al. \cite{Alber2004}, decomposition technique for planar graph.
 
     \begin{tcolorbox}[colback=TUMBlueLighter,title=Region (Simplified)]
@@ -92,7 +92,7 @@
             \item Every vertex in R belongs to $N(v,w)$
         \end{itemize}
     \end{tcolorbox}
-        \begin{figure}[!ht]
+    \pause \begin{figure}[!ht]
             \resizebox{0.35\textwidth}{!}{
                 \tikzfig{./img/region-base}
             }
@@ -124,7 +124,7 @@
             \item Regions are disjunct, but can share border vertices
         \end{itemize}
     \end{tcolorbox}
-    A region is \textbf{maximal}, if no $R \in \mathfrak{R}$ such that $\mathfrak{R}' = \mathfrak{R} \cup \{R\}$ is a \dreg with $V(\mathfrak{R})\subsetneq V(\mathfrak{R}')$.
+   \pause A region is \textbf{maximal}, if no $R \in \mathfrak{R}$ such that $\mathfrak{R}' = \mathfrak{R} \cup \{R\}$ is a \dreg with $V(\mathfrak{R})\subsetneq V(\mathfrak{R}')$.
 \end{frame}
 
 \begin{frame}[c]{Maximal \dreg}
@@ -135,27 +135,28 @@
     \end{figure}
 \end{frame}
 
-\begin{frame}[c]{Splitting up $N(v)$}
+\begin{frame}[c]{Splitting Up $N(v)$}
     \begin{figure}[!ht]
         \resizebox{0.5\textwidth}{!}{
             \tikzfig{../thesis/fig/tikz/neighborhoods-single-vertex}
         }
     \end{figure}
 \end{frame}
-\begin{frame}[c]{Splitting up $N(v)$}
+\begin{frame}[c]{Splitting Up $N(v)$}
  %Let \G be a graph and let $v \in V$. 
  We split $N(v)$ into three subsets:
     \begin{align}
-        N_1(v) & = \{u \in N(v) : N(u) \setminus N[v] \neq \emptyset \}              \\
-        N_2(v) & = \{u \in N(v)\setminus N_1(v) : N(u) \cap N_1(v) \neq \emptyset \} \\
-        N_3(v) & = N(v) \setminus (N_1(v) \cup N_2(v))
+       \pause N_1(v) & = \{u \in N(v) : N(u) \setminus N[v] \neq \emptyset \}              \\
+        \pause N_2(v) & = \{u \in N(v)\setminus N_1(v) : N(u) \cap N_1(v) \neq \emptyset \} \\
+        \pause N_3(v) & = N(v) \setminus (N_1(v) \cup N_2(v))
     \end{align}
     For $i,j \in [1,3]$, we denote $N_{i,j} (v) := N_i(v) \cup N_j(v)$. 
     %Furthermore, we call a vertex $v'$ \textit{confined} by a vertex $v$, if $N(v') \subseteq N[v]$.
 \end{frame}
 
 
-\begin{frame}[c]{Rule 1, Appetizer: Shrinking $N_3(v)$}
+\subsection{Rule 1}
+\begin{frame}[c]{Rule 1: Shrinking $N_3(v)$}
 
     \begin{tcolorbox}[colback=TUMBlueLighter,title=]
         Let \G be a graph and let $v \in V$. If $|N_3(v)| \geq 1$:
@@ -186,9 +187,9 @@
 
 \begin{frame}[c]{Splitting up $N(v,w)$}
     \begin{align}
-        N_1(v,w) & = \{u \in N(v,w) \mid N(u) \setminus (N(v,w)\cup \{v,w\}) \neq \emptyset \}  \\
-        N_2(v,w) & = \{u \in N(v,w)\setminus N_1(v,w) \mid N(u) \cap N_1(v,w) \neq \emptyset \} \\
-        N_3(v,w) & =  N(v,w) \setminus (N_1(v,w) \cup N_2(v,w))
+      \pause  N_1(v,w) & = \{u \in N(v,w) \mid N(u) \setminus (N(v,w)\cup \{v,w\}) \neq \emptyset \}  \\
+      \pause  N_2(v,w) & = \{u \in N(v,w)\setminus N_1(v,w) \mid N(u) \cap N_1(v,w) \neq \emptyset \} \\
+      \pause  N_3(v,w) & =  N(v,w) \setminus (N_1(v,w) \cup N_2(v,w))
     \end{align}
     For $i,j \in [1,3]$, we denote $N_{i,j}(v,w) = N_i(v,w) \cup N_j(v,w)$.
 \end{frame}
@@ -208,35 +209,58 @@
     If $\mathbf{\Dvw = \emptyset}$ we apply the following:
 
     \begin{caseof}
-        \case{if $\Dv =  \emptyset$ and $D_w = \emptyset$}
+       \case{if $\Dv =  \emptyset$ and $D_w = \emptyset$}
 
         \begin{itemize}
             \item Remove $N_{2,3}(v,w)$
             \item Add vertices $v'$ and $w'$ and two edges $\{v, v'\}$ and $\{w, w'\}$
             \item Preserve $d(v,w)$
         \end{itemize}
-        \case{if $\Dv \neq  \emptyset$ and $D_w = \emptyset$}
+        \pause \case{if $\Dv \neq  \emptyset$ and $D_w = \emptyset$}
 
         \begin{itemize}
             \item Remove $N_{2,3}(v)$
             \item Add $\{v, v'\}$
         \end{itemize}
         
-        \case{if $\Dv =  \emptyset$ and $D_w \neq \emptyset$} Symmetric
+        \pause \case{if $\Dv =  \emptyset$ and $D_w \neq \emptyset$} Symmetric
     \end{caseof}
 \end{frame}
 
 \subsection{Rule 2}
-\begin{frame}[c]{Rule 2: Shrinking Regions}
+\begin{frame}{Rule 2: Case 1}
     \begin{figure}[!ht]
-    \resizebox{0.6\textwidth}{!}{
-         \tikzfig{../thesis/fig/tikz/ruletwo}
+    \resizebox{0.7\textwidth}{!}{
+         \tikzfig{./img/rule2-case1}
     }
+\end{figure}
+\end{frame}
+
+\begin{frame}{Rule 2: Case 2}
+    \begin{figure}[!ht]
+    \resizebox{0.7\textwidth}{!}{
+         \tikzfig{./img/rule2-case2}
+    }
+\end{figure}
+\end{frame}
+
+\begin{frame}[c]{Simple Regions}
+    A simple $vw$-region is a $vw$-region such that:
+    \begin{enumerate}
+        \item its boundary paths have length at most 2, and
+        \item $V(R) \setminus \{v,w\} \subseteq N(v) \cap N(w)$.
+    \end{enumerate}
+
+    \pause\begin{figure}[!ht]
+        \resizebox{0.35\textwidth}{!}{
+            \tikzfig{../thesis/fig/tikz/simple-region-example}
+        }
     \end{figure}
+
 \end{frame}
 
 \subsection{Rule 3}
-\begin{frame}[c]{Rule 3: Shrinking the size of simple regions}
+\begin{frame}[c]{Rule 3: Shrinking the Size of Simple Regions}
 
     Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and $w$. If $|V(R) \setminus \{v, w\}| \geq 5$ apply the following:
 
@@ -257,11 +281,7 @@
         \end{caseof}
 \end{frame}
 
-\begin{frame}[c]{Simple Regions}
-
-\end{frame}
-
-\begin{frame}[c]{Rule 3: Shrinking the size of simple regions}
+\begin{frame}[c]{Rule 3: Shrinking the Size of Simple Regions}
 
     \begin{caseof}
         {\bfseries
@@ -288,7 +308,7 @@
     \end{figure}
 \end{frame}
 
-\begin{frame}[c]{Rule 3: Shrinking the size of simple regions}
+\begin{frame}[c]{Rule 3: Shrinking the Size of Simple Regions}
 
     \begin{caseof}
         \case{If $G[R\setminus\partial R] \cong P_3$, then:}
@@ -317,15 +337,15 @@
 
 \begin{frame}[c]{Notes}
     \begin{itemize}
-        \item All the rule are sound 
-        \item and only change the solution size by a constant factor
-        \item they can be applied in pplynomial-time
-        \item Rule 3 is a swiss-army-knife to be found on many surprising places
+        \pause \item We proved that all these rules are sound,
+        \pause \item change the solution size by only a constant factor
+        \pause \item and can be applied in poly-time.
     \end{itemize}
 \end{frame}
 
+\subsection{Kernel Size}
 % ANIMATING BOUND
-\begin{frame}[c]{Bounding the Kernel: Outside}   
+\begin{frame}[c]{Bounding the Kernel: Vertices Outside any Region}   
     \begin{figure}[!ht]
     \resizebox{0.35\textwidth}{!}{
          \tikzfig{./img/bounding-1}
@@ -339,13 +359,21 @@
            \pause \item $|N_3(v) \setminus V(\mathfrak{R})| = 1$, by Rule 1
         \end{enumerate}
 \end{frame}
-\begin{frame}[c]{Bounding the Kernel: Idea 2}
+\begin{frame}[c]{Bounding the Kernel: Inside a region}
 
     \begin{figure}[!ht]
     \resizebox{0.35\textwidth}{!}{
          \tikzfig{./img/bounding-2}
     }
     \end{figure}
+    For each $vw$-region, we have
+    \begin{enumerate}
+\pause        \item $|N_1(v,w)| \leq 4$ \cite{Alber2004} (vertices on border)
+\pause        \item $|N_2(v,w)| \leq 6 \cdot 4$ (simple regions to $N_1(v,w)$, Rule 3)
+\pause        \item $|N_3(v,w)| \leq \max(27,44,4,57) \cdot 4$ (proof omitted depending on Rule 2)
+    \end{enumerate}
+
+    \textbf{Total: } $|V(R)| = |\{v, w\} \cup (N_1(v,w) \cup N_2(v, w) \cup N_3(v, w))| \leq 87$
 \end{frame}
 \begin{frame}[c]{Bounding the Kernel: Number of Regions}
 
@@ -356,7 +384,7 @@
 
     \end{figure}
     \pause\begin{tcolorbox}[colback=TUMBlueLighter,title=Number of Regions \cite{Alber2004}]
-        Let G be a plane graph and let $D$ be a \sds with $|D| \geq 3$. There is a maximal \dreg of $G$ sucht that $|\mathfrak{R}| \leq 3 \cdot |D|- 6$.
+        Let G be a plane graph and let $D$ be a \sdom with $|D| \geq 3$. There is a maximal \dreg of $G$ sucht that $|\mathfrak{R}| \leq 3 \cdot |D|- 6$.
     \end{tcolorbox}
 
 \end{frame}
