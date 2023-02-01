@@ -109,7 +109,6 @@
 		\node [style=none] (213) at (2, 3.25) {$v'$};
 		\node [style=none] (214) at (12.5, 4.25) {$d_1$};
 		\node [style=none] (215) at (9.75, -2.75) {$d_2$};
-		\node [style=none] (218) at (15, -5.25) {(2)};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [bend left] (104) to (106);
