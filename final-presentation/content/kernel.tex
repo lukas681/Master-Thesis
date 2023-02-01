@@ -70,11 +70,19 @@
 \end{tcolorbox}
 \end{frame}
 
+\begin{frame}[c]{The Big Picture}
+    Given a planar graph $G = (V ,E)$, we will:
 
+    \begin{enumerate}
+        \item Split the neighborhoods of the graph;
+        \item Define reduction Rules
+        \item Use the region decomposition to analyse size of each region
+    \end{enumerate}
+\end{frame}
 %%%% REGIONS DEFINITION
 
 \subsection{Definitions}
-\begin{frame}[c]{The xxxStone: Regions}
+\begin{frame}[c]{The basic Principle: Regions}
     % Introduced by Alber et al. \cite{Alber2004}, decomposition technique for planar graph.
 
     \begin{tcolorbox}[colback=TUMBlueLighter,title=Region (Simplified)]
@@ -84,17 +92,14 @@
             \item Every vertex in R belongs to $N(v,w)$
         \end{itemize}
     \end{tcolorbox}
-
         \begin{figure}[!ht]
             \resizebox{0.35\textwidth}{!}{
                 \tikzfig{./img/region-base}
             }
         \end{figure}
-
 \end{frame}
 
-\begin{frame}[c]{The xxxStone: Regions}
-     % Introduced by Alber et al. \cite{Alber2004}, decomposition technique for planar graph.
+\begin{frame}[c]{The Basic Principle: Regions}
 
     \begin{tcolorbox}[colback=TUMBlueLighter,title=Region (Simplified)]
         Given plane $G$ and $v,w \in V$, a region is a closed subset, such that
@@ -115,7 +120,7 @@
     \begin{tcolorbox}[colback=TUMBlueLighter,title={\dreg\cite{Alber2004}}]
         Given $G = (V, W)$ and $D \subseteq V$, a \dreg is a set $\mathfrak{R}$ with poles in $D$ such that:
         \begin{itemize}
-            \item for any $vw$-region $R \in \mathfrak{R}$: $D \ cap V(R) = \{v, w\}$
+            \item for any $vw$-region $R \in \mathfrak{R}$: $D \cap V(R) = \{v, w\}$
             \item Regions are disjunct, but can share border vertices
         \end{itemize}
     \end{tcolorbox}
@@ -138,13 +143,15 @@
     \end{figure}
 \end{frame}
 \begin{frame}[c]{Splitting up $N(v)$}
- Let \G be a graph and let $v \in V$. We split $N(v)$ into three subsets:
+ %Let \G be a graph and let $v \in V$. 
+ We split $N(v)$ into three subsets:
     \begin{align}
-        \pause N_1(v) & = \{u \in N(v) : N(u) \setminus N[v] \neq \emptyset \}              \\
-        \pause N_2(v) & = \{u \in N(v)\setminus N_1(v) : N(u) \cap N_1(v) \neq \emptyset \} \\
+        N_1(v) & = \{u \in N(v) : N(u) \setminus N[v] \neq \emptyset \}              \\
+        N_2(v) & = \{u \in N(v)\setminus N_1(v) : N(u) \cap N_1(v) \neq \emptyset \} \\
         N_3(v) & = N(v) \setminus (N_1(v) \cup N_2(v))
     \end{align}
-    For $i,j \in [1,3]$, we denote $N_{i,j} (v) := N_i(v) \cup N_j(v)$. Furthermore, we call a vertex $v'$ \textit{confined} by a vertex $v$, if $N(v') \subseteq N[v]$.
+    For $i,j \in [1,3]$, we denote $N_{i,j} (v) := N_i(v) \cup N_j(v)$. 
+    %Furthermore, we call a vertex $v'$ \textit{confined} by a vertex $v$, if $N(v') \subseteq N[v]$.
 \end{frame}
 
 
@@ -164,13 +171,63 @@
     }
     \end{figure}
     \begin{itemize}
-        \item \textbf{Idea: } Removing isolated vertices
-        \item Correctness: Omitted
+        \item \textbf{Idea: } $v$ better choice than $N_{2,3}$
     \end{itemize}
 \end{frame}
 
-\subsection{Rule 2}
+\begin{frame}[c]{Splitting up $N(v,w)$}
+
+    \begin{figure}[!ht]
+        \resizebox{0.7\textwidth}{!}{
+            \tikzfig{../thesis/fig/tikz/neighborhoods-two-vertices}
+        }
+    \end{figure}
+\end{frame}
+
+\begin{frame}[c]{Splitting up $N(v,w)$}
+    \begin{align}
+        N_1(v,w) & = \{u \in N(v,w) \mid N(u) \setminus (N(v,w)\cup \{v,w\}) \neq \emptyset \}  \\
+        N_2(v,w) & = \{u \in N(v,w)\setminus N_1(v,w) \mid N(u) \cap N_1(v,w) \neq \emptyset \} \\
+        N_3(v,w) & =  N(v,w) \setminus (N_1(v,w) \cup N_2(v,w))
+    \end{align}
+    For $i,j \in [1,3]$, we denote $N_{i,j}(v,w) = N_i(v,w) \cup N_j(v,w)$.
+\end{frame}
+
+
+\begin{frame}[c]{Rule 2: Setting Up Our Weapons}
+    \textbf{Key Idea: } $N_{2,3}(v, w)$ can \textbf{always} be semitotally dominated with 4 vertices.
+    \pause\begin{align}
+        \Dvw & = \{ \tilde D \subseteq N_{2,3}(v,w)            \mid N_3(v,w) \subseteq \bigcup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3                  \} \\
+        \Dv  & = \{ \tilde D \subseteq N_{2,3}(v,w) \cup \{v\} \mid N_3(v,w) \subseteq \bigcup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3,\ v \in \tilde D \} \\
+        \Dw  & = \{ \tilde D \subseteq N_{2,3}(v,w) \cup \{w\} \mid N_3(v,w) \subseteq \bigcup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3,\ w \in \tilde D \}
+    \end{align}
+
+\end{frame}
+
 \begin{frame}[c]{Rule 2}
+    If $\mathbf{\Dvw = \emptyset}$ we apply the following:
+
+    \begin{caseof}
+        \case{if $\Dv =  \emptyset$ and $D_w = \emptyset$}
+
+        \begin{itemize}
+            \item Remove $N_{2,3}(v,w)$
+            \item Add vertices $v'$ and $w'$ and two edges $\{v, v'\}$ and $\{w, w'\}$
+            \item Preserve $d(v,w)$
+        \end{itemize}
+        \case{if $\Dv \neq  \emptyset$ and $D_w = \emptyset$}
+
+        \begin{itemize}
+            \item Remove $N_{2,3}(v)$
+            \item Add $\{v, v'\}$
+        \end{itemize}
+        
+        \case{if $\Dv =  \emptyset$ and $D_w \neq \emptyset$} Symmetric
+    \end{caseof}
+\end{frame}
+
+\subsection{Rule 2}
+\begin{frame}[c]{Rule 2: Shrinking Regions}
     \begin{figure}[!ht]
     \resizebox{0.6\textwidth}{!}{
          \tikzfig{../thesis/fig/tikz/ruletwo}
@@ -268,28 +325,40 @@
 \end{frame}
 
 % ANIMATING BOUND
-\begin{frame}[c]{Bounding the Kernel: Idea 1}
+\begin{frame}[c]{Bounding the Kernel: Outside}   
     \begin{figure}[!ht]
-    \resizebox{0.5\textwidth}{!}{
+    \resizebox{0.35\textwidth}{!}{
          \tikzfig{./img/bounding-1}
     }
     \end{figure}
+
+    \pause For each $d$ in sds $D$:
+    \begin{enumerate}
+           \pause \item $|N_1(v) \setminus V(\mathfrak{R})| = 0$ \cite{Alber2004}, On Border
+           \pause \item $|N_2(v) \setminus V(\mathfrak{R})| = 96$ \cite{Alber2004}: TODO Reasoning  
+           \pause \item $|N_3(v) \setminus V(\mathfrak{R})| = 1$, by Rule 1
+        \end{enumerate}
 \end{frame}
 \begin{frame}[c]{Bounding the Kernel: Idea 2}
 
     \begin{figure}[!ht]
-    \resizebox{0.5\textwidth}{!}{
+    \resizebox{0.35\textwidth}{!}{
          \tikzfig{./img/bounding-2}
     }
     \end{figure}
 \end{frame}
-\begin{frame}[c]{Bounding the Kernel: Idea 3}
+\begin{frame}[c]{Bounding the Kernel: Number of Regions}
 
     \begin{figure}[!ht]
-    \resizebox{0.5\textwidth}{!}{
+    \resizebox{0.35\textwidth}{!}{
          \tikzfig{./img/bounding-3}
     }
+
     \end{figure}
+    \pause\begin{tcolorbox}[colback=TUMBlueLighter,title=Number of Regions \cite{Alber2004}]
+        Let G be a plane graph and let $D$ be a \sds with $|D| \geq 3$. There is a maximal \dreg of $G$ sucht that $|\mathfrak{R}| \leq 3 \cdot |D|- 6$.
+    \end{tcolorbox}
+
 \end{frame}
 
 \begin{frame}[c]{Summary: Bounding Kernel Size}
@@ -302,14 +371,16 @@
         \item Each region  $R \in \mathfrak{R}$ contains at most $87$ vertices.
     \end{enumerate}
 
-    \textbf{Hence: } $87 \cdot (3k - 6) + 97 \cdot k + k < 359 \cdot k$
+    \textbf{Hence: } $|V| = \bigcup_{v \in D} N(v) = 87 \cdot (3k - 6) + 97 \cdot k + k < 359 \cdot k$
 
 \end{frame}
 
 \begin{frame}[c]{Main Theorem}
+    All reduction rules can be applied in poly/time, hence:
+
 \begin{tcolorbox}[colback=TUMBlueLighter,title=The Main Theorem]
     The \sdom problem parameterized by solution size admits a linear kernel on planar graphs.
-    There exists a polynomial-time algorithm that, given a planar graph $(G, k)$, either correctly reports that $(G, k)$ is a NO-instance or returns an equivalent instance $(G', k)$ such that $|V(G')| \leq xxx \cdot k$.
+    There exists a polynomial-time algorithm that, given a planar graph $(G, k)$, either correctly reports that $(G, k)$ is a NO-instance or returns an equivalent instance $(G', k)$ such that $|V(G')| \leq 359 \cdot k$.
 \end{tcolorbox}
 \textbf{Proof: } Add Proof here.
 \end{frame}
