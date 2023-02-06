@@ -1,7 +1,8 @@
 
 \section{Fixed-Parameter Intractability}
 
-We will start by giving some intractability results and show that \sdom is \WTWOhs-hard on \textit{bipartite graphs} by a parameterized reduction from \dom on bipartite graphs, which is known to be \WTWOhs \cite{Raman2008}.
+We will start by giving some intractability results and show that \sdom parameterized by the natural parameterization is \WTWOhs-hard on \textit{bipartite graphs} by fpt-reducing from \dom on bipartite graphs
+\dom on bipartite graphs is known to be \WTWOhs~\cite{Raman2008} when parameterized by solution size.
 
 \begin{figure}[ht]
     \label{fig:bipartiteConstruction}
@@ -12,7 +13,7 @@ We will start by giving some intractability results and show that \sdom is \WTWO
 \end{figure}
 
 \begin{theorem}
-    \sdom is \WTWOhs-hard when restricted to bipartite graphs.
+    \sdom parameterized by solution size is \WTWOhs-hard when restricted to bipartite graphs.
 \end{theorem}
 
 \begin{proof}
@@ -43,10 +44,10 @@ We will start by giving some intractability results and show that \sdom is \WTWO
     Hence, $D = D' \setminus \{ d_1,d_2\}$ gives a ds in $G$ of size $ k = k' + 2$.
 
     As $G'$ can be constructed in linear time and $k$ does not depend on the input size, this reduction is an fpt reduction.  
-    Because \dom is \WTWOhs-hard on bipartite graphs \cite[Th. 1]{Raman2008}, we conclude that \sdom is $w[2]$-hard as well.
+    Because \dom is \WTWOhs-hard on bipartite graphs~\cite[Th. 1]{Raman2008}, we conclude that \sdom is $w[2]$-hard as well.
 \end{proof}
 
-Next, we will prove intractability for \textit{split} and \textit{chordal} graphs.
+We will prove intractability for \textit{split} graphs.
 
 \begin{theorem}
     \sdom is \WONEhs-hard when restricted to \textit{split} and \textit{chordal} graphs.
@@ -66,7 +67,7 @@ Next, we will prove intractability for \textit{split} and \textit{chordal} graph
     If $D \cap I \neq \emptyset$, we flip these to their neighbor in $K$, preserving the dominating set. 
     $d \in D'$ is only used in $G'$ for dominating $u$ and can be ignored in $G$.
     Therefore letting $D = D' \setminus \{d\}$ gives a valid ds in $G$ of size $ k-1$.
-    The claim follows because \dom is \WTWOhs-hard on \textit{split} graphs \cite{Raman2008}.
+    The claim follows because \dom is \WTWOhs-hard on \textit{split} graphs~\cite{Raman2008}.
 
 \end{proof}
 

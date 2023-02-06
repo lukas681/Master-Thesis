@@ -62,7 +62,7 @@ All definitions are taken from~\cite{Cygan2015} if not marked otherwise.
 \end{definition}
 
 \subsection{Fixed-Parameter Tractability}
-We say that a problem is \textit{fixed-parameter tractable (fpt)} if problem instances of size $n$ can be solved in $f(k)n^{\mathcal{O}(1)}$ time for some function $f$ independent of $n$. 
+We say that a problem parameterized by some parameter $k$ is \textit{fixed-parameter tractable (fpt)} if problem instances of size $n$ can be solved in $f(k)n^{\mathcal{O}(1)}$ time for some function $f$ independent of $n$. 
 Like the class \Pt can be seen as a notion of \textit{tractability} in classical complexity theory, there is an equivalent in parameterized complexity, which we denote as \FPTl (\FPT):
 
 \begin{cc} [The Class \FPT]{cc:fpt}
@@ -73,7 +73,7 @@ Like the class \Pt can be seen as a notion of \textit{tractability} in classical
 A kernelization algorithm is a natural and intuitive way to approach problems and is a preprocessing procedure that simplifies parts of an instance before the actual solving algorithm runs. 
 The \cref{fig:kernelization} visualizes this idea.
 One can introduce different \textit{reduction rules} that iteratively reduce the instance until we are left with a small kernel. 
-Ideally, the size of this kernel is merely dependent on the parameter $k$.
+The size of this kernel must be merely dependent on the parameter $k$.
 
 \begin{definition}[Kernelization and Reduction Rules]
 A \textit{kernelization algorithm} or \textit{kernel} is an algorithm $\mathfrak{A}$ for a parameterized problem $Q$ that given an instance $(I,k)$ of $Q$ runs in polynomial time and returns an equivalent instance $(I', k')$ of $Q$. 
@@ -91,8 +91,8 @@ We can precisely define the kernel's size after executing a preprocessing algori
 \end{definition}
 
 
-$size_{\mathfrak{A}}$ denotes the largest size of any instance $I$ after $\mathfrak{A}$ has been applied.
-If no function merely dependent on $k$ can bound it, we consider it to be \emph{infinite}.
+\noindent $size_{\mathfrak{A}}$ denotes the largest size of any instance $I$ after $\mathfrak{A}$ has been applied.
+% If no function merely dependent on $k$ can bound it, we consider it to be \emph{infinite}.
 If we bound $\mathrm{size}_{\mathfrak{A}}$ by a polynomial in $k$, we say that the problem admits a \textbf{polynomial kernel} or a \textbf{linear} kernel analogously.
 
 \begin{figure}
@@ -133,7 +133,7 @@ It is strongly believed that $\FPT \subsetneq \Wt$ and therefore, we do not expe
     \end{itemize}
 \end{definition}
 
-\cref{lem:cfptr,lem:trans} shwon in~\cite{Cygan2015} show this definition ensures that reductions are transitive and closed under fpt reductions.
+\cref{lem:cfptr,lem:trans} stated in~\cite{Cygan2015} show that this definition ensures that reductions are transitive and closed under fpt reductions.
 
 \begin{lemma}[Closed Under fpt-reductions]\label{lem:cfptr}
     If there is a parameterized reduction from $A$ to $B$ and $B \in \FPT$, then $A \in \FPT$.

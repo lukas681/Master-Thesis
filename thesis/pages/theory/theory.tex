@@ -159,6 +159,16 @@ We are now introducing the problems of \dom, \sdom, and \tdom and dedicate the r
 We will define this work's three most important domination problems: \dom, \sdom, and \tdom.
 Recall that a dominating set of a graph \G is a subset $D \subseteq V$, such that every vertex from $V \setminus D$ is adjacent to some vertex in $D$.
 We say that a vertex $d$ is a \textit{dominating vertex} or \textit{dominator} if $d \in D$ and that $d$ \textit{dominates} all of its neighbors.
+Before defining the following problems, we give the following notion: 
+
+\begin{definition}[Domination Numbers]
+   The \underline{domination number} in a graph $G$ is the minimum cardinality of a dominating set (ds) of $G$, denoted as $\gamma(G)$. 
+   The \underline{total domination number} is the minimum cardinality of a total dominating set (tds) of $G$, denoted by $\gamma_t(G)$.
+   The \underline{semitotal domination number} is the minimum cardinality of a semitotal dominating set (sds) of $G$, denoted by $\gamma_{t2}(G)$.
+
+   We say that a ds $D$ is \underline{minimal} if no proper subset $S' \subset S$ is a ds and that $D$ is a \underline{minimum} if it is the smallest ds.
+\end{definition}
+
 
 \begin{prb}[\MakeUppercase{\DOM}~{\cite[p. 586]{Cygan2015}}]{prb:ds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
@@ -190,7 +200,7 @@ We denote this neighbor as a \textit{witness} of $v$.
 \begin{prb}[\MakeUppercase{\TDOM}~{\cite[p. 596]{Cygan2015}}]{prb:sds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
-        \textbf{Question} & Is there a set $D \subseteq V$ of size at most $k$ such that for every $u \in V(G)$ there exists $v \in D$ with $\{u,v\} \in E$? \\
+        \textbf{Question} & Is there a ds $D \subseteq V$ of size at most $k$, such that for every $u \in V(G)$ there exists $v \in D$ with $\{u,v\} \in E$? \\
     \end{tabularx}
 \end{prb}
 
@@ -201,7 +211,7 @@ For a semitotal dominating set $D$, we say that $v$ \emph{witnesses} $v'$ if $v,
 \begin{prb}[\MakeUppercase{\SDOM}~{\cite{Goddard2014}}]{prb:tsds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
-        \textbf{Question} & Is there a subset $D \subseteq V$ with $\abs{D} \leq k$ such that ${N[D] = V}$ and for all $d_1 \in X$ there exists another $d_2 \in X$ such that ${d(d_1, d_2) \leq 2}$?\\
+        \textbf{Question} & Is there a ds $D \subseteq V$ of size at most $k$, such that ${N[D] = V}$ and for all $d_1 \in D$ there exists another $d_2 \in D$ such that ${d(d_1, d_2) \leq 2}$?\\
     \end{tabularx}
 \end{prb}
 
@@ -215,14 +225,6 @@ For a semitotal dominating set $D$, we say that $v$ \emph{witnesses} $v'$ if $v,
     In the last case, $d_1$ and $d_2$ both need a neighbor in the total dominating set.}}
     \label{fig:dsexamples}
 \end{figure}
-
-\begin{definition}[Domination Numbers]
-   The \underline{domination number} in a graph $G$ is the minimum cardinality of a dominating set (ds) of $G$, denoted as $\gamma(G)$. 
-   The \underline{total domination number} is the minimum cardinality of a total dominating set (tds) of $G$, denoted by $\gamma_t(G)$.
-   The \underline{semitotal domination number} is the minimum cardinality of a semitotal dominating set (sds) of $G$, denoted by $\gamma_{t2}(G)$.
-
-   We say that a ds $D$ is \underline{minimal} if no proper subset $S' \subset S$ is a ds and that $D$ is a \underline{minimum} if it is the smallest ds.
-\end{definition}
 
 Because any tds is also an sds and every sds is also a ds, $\gamma_{t2}$ is squeezed between $\gamma$ and $\gamma_t$.
 The  following fact was first observed by Goddard and Henning~\cite{Goddard2014}:
@@ -240,39 +242,40 @@ Their only purpose is to bridge the gap between $d_1$ and $d_2$, but they have n
 \section{Complexity Status of \sdom}\label{ch:complexity-status}
 
 Goddard et al.~\cite{Goddard2014} first showed that \SDOM is \NPc in the general case and initiated the systematic analysis of the problem.  
-\cref{tab:complexities} complements the complexity status for \doms, \sdoms, and \tdoms when restricted to specific graph classes, which was first surveyed by Galby et al.~\cite{Galby2020}
+\cref{tab:complexities} complements the complexity status for \doms, \sdoms, and \tdoms when restricted to specific graph classes, which was first surveyed by Galby et al.~\cite{Galby2020}.
 We also added another column showing the known parameterized complexity. 
 \cref{fig:bigpicture} visualizes the big picture and the inclusions among the graph classes.
 
 A polynomial-time algorithm was shown for graphs of bounded \textit{mim}-width by Galby et al.~\cite{Galby2020}.
-Because decomposition trees of constant \textit{mim}-width can be found for \textit{permutation}, \textit{convex}, \textit{interval}, \textit{(circular k-)} \textit{trapezoid}, \textit{circular permutation}, \textit{Dilworth-$k$}, \textit{$k$-polygon}, \textit{circular arc}, \textit{complements of $d$-degenerate}, \textit{bipartite permutation} and \textit{convex bipartite} graphs in polynomial time~\cite{Belmonte2011}, this algorithm immediately implies the existence of a polynomial time algorithm for these graph classes as well. 
-Additionally, Galby et al. resolved the complexity for \textit{bipartite permutation} and \textit{convex bipartite} graphs.
+Because a branch decompositions of constant \textit{mim}-width can be found for \textit{permutation}, \textit{convex}, \textit{interval}, \textit{(circular k-)} \textit{trapezoid}, \textit{circular permutation}, \textit{Dilworth-$k$}, \textit{$k$-polygon}, \textit{circular arc}, \textit{complements of $d$-degenerate}, \textit{bipartite permutation} and \textit{convex bipartite} graphs in polynomial time~\cite{Belmonte2011}, this algorithm immediately implies the existence of a polynomial time algorithm for these graph classes as well. 
+Additionally, Galby et al. resolved the complexity for \textit{bipartite permutation} and \textit{convex bipartite} graphs.~\cite{Galby2020}
 
-Furthermore, new polynomial time algorithms have been discovered for \textit{strongly chordal}~\cite{Tripathi2021}, \textit{AT-free}~\cite{Kloks2021} and \textit{block}~\cite{Henning2022} graphs and a new linear time algorithm has been found for interval graphs~\cite{Pradhan2021} beating the previous $\mathcal{O}(n^2)$-algorithm given by Henning and Pandey~\cite{Henning2019}.
+Furthermore, new polynomial time algorithms have been devised for \textit{strongly chordal}~\cite{Tripathi2021}, \textit{AT-free}~\cite{Kloks2021} and \textit{block}~\cite{Henning2022} graphs and a new linear time algorithm has been found for interval graphs~\cite{Pradhan2021} beating the previous $\mathcal{O}(n^2)$-algorithm given by Henning and Pandey~\cite{Henning2019}.
 On the negative side, \sdom on \textit{circle graphs}~\cite{Kloks2021} graphs, and \textit{undirected path graphs}~\cite{Henning2019} was shown to be \NPc.
 
-As $\gamma_{t2}$ is squeezed between $\gamma$ and $\gamma_t$, a comparison of the computational complexity of \sdom and \tdom for specific graph classes on the dominating problems might also suggest the complexity of \sdoms.
-There seems to be a symmetry between these domination problems where the complexity of many graph classes mirrors each other.
-Nevertheless, it looks like \sdoms has more in common with \doms than with \tdoms.
+%As $\gamma_{t2}$ is squeezed between $\gamma$ and $\gamma_t$, a comparison of the computational complexity of \sdom and \tdom for specific graph classes on the dominating problems might also suggest the complexity of \sdoms.
+There seems to be a symmetry between these three domination problems where the complexity of many graph classes mirrors each other, but it looks like \sdoms has more in common with \doms than with \tdoms.
 For instance, \textit{chordal bipartite} graphs, \sdoms and \doms are \NPc, while it is polynomial-time solvable for \tdoms. 
 Contrary, \sdoms and \doms have a polynomial-time algorithm for \textit{strongly chordal} graphs, but \tdoms is \NPc.
-In all currently known cases, \sdom follows the complexity of \dom.
+In all currently known cases, \sdom follows the complexity of \dom in the classical and the parameterized setting.
 
 This thesis goes the first step into approaching the problem from the perspective of \textit{parameterized complexity}.
-If not mentioned otherwise, the problem is always parameterized by the size of a solution, and the results of this thesis are highlighted in \textbf{bold} text.
-We have also added the parameterized complexity for those graph classes and used it as an orientation.
-As we do not believe that \sdoms is fundamentally different than \doms, our intuition is that also the parameterized complexity mimicks \sdoms. 
-We were able to prove \WTWO-hardness for \textit{bipartite} and \textit{split} graphs by giving a graph structure preserving reducing from \doms. We provide an explicit construction of a kernel for the \textit{planar} case, which exists for \doms~\cite{Alber2004} and \tdoms~\cite{Garnero2019} as well.
+If not mentioned otherwise, the problem is always parameterized by the size of a solution.
+We have also added the parameterized complexity for those graph classes which we used as an orientation for the complexities of \sdom.
+%As we do not believe that \sdoms is fundamentally different than \doms, our intuition is that also the parameterized complexity mimicks \sdoms. 
+We were able to prove \WTWO-hardness for \textit{bipartite} and \textit{split} graphs by giving parameterized reducing from \doms by solution size. We provide an explicit construction of a kernel for the \textit{planar} case, which exists for \doms~\cite{Alber2004} and \tdoms~\cite{Garnero2019} as well.
 
 We would like to mention that membership of \psdom in \FPT already follows from~\cite{Alber2002}.
-Their algorithm \pdomp can be used to obtain an fpt algorithm of order $\mathcal{O}(c^{\sqrt{k}}n)$ for some constant $c$ and solution size $k$.
+Their algorithm \pdomp can be used to obtain an fpt algorithm with running time $\mathcal{O}(c^{\sqrt{k}}n)$ for some constant $c$ and solution size $k$.
+However, the constant is very large and we were able to give a kernel with reasonably small constants.
 
 Many gaps are still open for further research.
 We will discuss these questions at the end of this thesis in \cref{ch:closing}.
 
 \begin{center}
     \begin{table}[ht]
-    \caption{\textit{Comparison between the complexities of \dom, \sdom and \tdom in the classical and parameterized setting. Open problems are marked with an ``?''.}}
+    \caption{\textit{Comparison between the complexities of \dom, \sdom and \tdom in the classical and parameterized setting when parameterized by solution size. 
+    Open problems are marked with an ``?''.}}
     \label{tab:complexities}
 
 \resizebox{1.0\textwidth}{!}{
@@ -357,7 +360,7 @@ We will discuss these questions at the end of this thesis in \cref{ch:closing}.
     \resizebox{1.0\textwidth}{!}{
         \input{fig/mathcha/classes.tikz}
     }
-    \caption[Graph inclusions]{\textit{Computational Complexity of \sdom. Graph classes that admit a polynomial time algorithm are marked in \textbf{\textcolor{MATHAGREEN}{green}}, those with an fpt algorithm in \textbf{\textcolor{MATHAYELLOW}{yellow}}, those that are not fpt by solution size in \textbf{\textcolor{MATHARED}{red}}, and those that are unknown are left \textit{white}.
+    \caption[Graph inclusions]{\textit{Computational Complexity of \sdom. Graph classes that admit a polynomial time algorithm are marked in \textbf{\textcolor{MATHAGREEN}{green}}, those with an fpt algorithm when parameterized by solution size in \textbf{\textcolor{MATHAYELLOW}{yellow}}, those that are not fpt by solution size in \textbf{\textcolor{MATHARED}{red}}, and those that are unknown are left \textit{white}.
     An \textbf{?} denotes problems where the classical complexity is also unknown.}}
     
     \label{fig:bigpicture}
