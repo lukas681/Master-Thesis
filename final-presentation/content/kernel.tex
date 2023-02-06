@@ -48,15 +48,15 @@
     \resizebox{0.8\textwidth}{!}{
         \begin{tabularx}{\textwidth}{lcX}
             \textbf{Problem} & \textbf{Size}   & \textbf{Source}       \\
-            \pdom            & $67k$           & \cite{Diekert2005}    \\
-            \ptdom           & $410k$          & \cite{Garnero2018}    \\
+            \pdom            & $67k$           &~\cite{Diekert2005}    \\
+            \ptdom           & $410k$          &~\cite{Garnero2018}    \\
             \psdom           & $359 k$ & \textbf{This work}    \\
                              &                 &                       \\
-            \peddom          & $14k$           & \cite{Guo2007} \\
-            \pefdom          & $84k$           & \cite{Guo2007} \\
-            \prbdom          & $43k$           & \cite{Garnero2017}    \\
-            \pcdom           & $130k$          & \cite{Luo2013}        \\
-            \pdirdom         & Linear          & \cite{Alber2006}      \\
+            \peddom          & $14k$           &~\cite{Guo2007} \\
+            \pefdom          & $84k$           &~\cite{Guo2007} \\
+            \prbdom          & $43k$           &~\cite{Garnero2017}    \\
+            \pcdom           & $130k$          &~\cite{Luo2013}        \\
+            \pdirdom         & Linear          &~\cite{Alber2006}      \\
         \end{tabularx}
     }
 \end{frame}
@@ -83,7 +83,7 @@
 
 \subsection{Definitions}
 \begin{frame}[c]{The Basic Principle: Regions}
-    % Introduced by Alber et al. \cite{Alber2004}, decomposition technique for planar graph.
+    % Introduced by Alber et al.~\cite{Alber2004}, decomposition technique for planar graph.
 
     \begin{tcolorbox}[colback=TUMBlueLighter,title=Region (Simplified)]
         Given plane $G$ and $v,w \in V$, a region is a closed subset, such that
@@ -245,11 +245,14 @@
 \end{frame}
 
 \begin{frame}[c]{Simple Regions}
-    A simple $vw$-region is a $vw$-region such that:
-    \begin{enumerate}
-        \item its boundary paths have length at most 2, and
-        \item $V(R) \setminus \{v,w\} \subseteq N(v) \cap N(w)$.
-    \end{enumerate}
+
+    \begin{tcolorbox}[colback=TUMBlueLighter,title=The Main Theorem]
+        A simple $vw$-region is a $vw$-region such that:
+        \begin{enumerate}
+            \item its boundary paths have length at most 2, and
+            \item $V(R) \setminus \{v,w\} \subseteq N(v) \cap N(w)$.
+        \end{enumerate}
+    \end{tcolorbox}
 
     \pause\begin{figure}[!ht]
         \resizebox{0.35\textwidth}{!}{
@@ -262,9 +265,9 @@
 \subsection{Rule 3}
 \begin{frame}[c]{Rule 3: Shrinking the Size of Simple Regions}
 
-    Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and $w$. If $|V(R) \setminus \{v, w\}| \geq 5$ apply the following:
+Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and $w$. If $|V(R) \setminus \{v, w\}| \geq 5$ apply the following:
 
-    \begin{caseof}
+\begin{caseof}
         \case{If $G[R\setminus\partial R] \cong P_3$, then:}
 
             \begin{itemize}
@@ -354,8 +357,8 @@
 
     \pause For each $d$ in sds $D$:
     \begin{enumerate}
-           \pause \item $|N_1(v) \setminus V(\mathfrak{R})| = 0$ \cite{Alber2004}, On Border
-           \pause \item $|N_2(v) \setminus V(\mathfrak{R})| = 96$ \cite{Alber2004}: TODO Reasoning  
+           \pause \item $|N_1(v) \setminus V(\mathfrak{R})| = 0$~\cite{Alber2004}, On Border
+           \pause \item $|N_2(v) \setminus V(\mathfrak{R})| = 96$~\cite{Alber2004}: TODO Reasoning  
            \pause \item $|N_3(v) \setminus V(\mathfrak{R})| = 1$, by Rule 1
         \end{enumerate}
 \end{frame}
@@ -368,7 +371,7 @@
     \end{figure}
     For each $vw$-region, we have
     \begin{enumerate}
-\pause        \item $|N_1(v,w)| \leq 4$ \cite{Alber2004} (vertices on border)
+\pause        \item $|N_1(v,w)| \leq 4$~\cite{Alber2004} (vertices on border)
 \pause        \item $|N_2(v,w)| \leq 6 \cdot 4$ (simple regions to $N_1(v,w)$, Rule 3)
 \pause        \item $|N_3(v,w)| \leq \max(27,44,4,57) \cdot 4$ (proof omitted depending on Rule 2)
     \end{enumerate}
@@ -383,7 +386,7 @@
     }
 
     \end{figure}
-    \pause\begin{tcolorbox}[colback=TUMBlueLighter,title=Number of Regions \cite{Alber2004}]
+    \pause\begin{tcolorbox}[colback=TUMBlueLighter,title=Number of Regions~\cite{Alber2004}]
         Let G be a plane graph and let $D$ be a \sdom with $|D| \geq 3$. There is a maximal \dreg of $G$ sucht that $|\mathfrak{R}| \leq 3 \cdot |D|- 6$.
     \end{tcolorbox}
 

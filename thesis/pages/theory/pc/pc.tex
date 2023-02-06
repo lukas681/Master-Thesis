@@ -3,54 +3,56 @@
 Computational complexity investigates how many computational resources are required to solve a specific problem. 
 We are about to introduce two of the most important classes of problems in classical complexity theory:
 
-\begin{cc}[The Classes \Pt and \NP~{\cite{Arora2006}}]{cc:pnp}
+%\begin{cc}[The Classes \Pt and \NP~{\cite{Arora2006}}]{cc:pnp}
+%
+%    If we denote \DTIME as the set of decision problems that are solvable in $\mathcal{O}(n^k)$ time by a deterministic Turing Machine, we can define the class \Pt as:
+%
+%    \[ \mathrm{P} := \bigcup_{k \in \mathbb{N}}(\mathrm{DTIME}(n^k))\]
+%
+%
+%    \noindent A language $L \subseteq \{0,1\}^*$ is in \NP if there exists a polynomial $p: \mathbb{N} \rightarrow \mathbb{N}$ and a polynomial-time Turing Machine $M$ such that for every $x \in \{0,1\}^*$,
+%
+%    \[ x \in L \Leftrightarrow \exists u \in \{0,1\}^{p(|x|)} \mathnormal{s.t.~} M(x,u) = 1 \]
+%
+%    \noindent If $x \in L$ and $u \in \{ 0,1 \}^{p(|x|)}$ satisfy $M(x,u) = 1$, then we call $u$  a \textit{certificate} for $x$.
+%
+%\end{cc}
 
-    If we denote \DTIME as the set of decision problems that are solvable in $\mathcal{O}(n^k)$ time by a deterministic Turing Machine, we can define the class \Pt as:
+We denote \Pt as the class of all problems that can be solved by a \textit{Deterministic} Turing Mmachine in polynomial time, whereas \NP contains all problems that can be solved by a \textit{Non-Deterministic} Turing Machine in polynomial time.
+In other words \Pt contains problems that are \textit{efficiently solvable}, whereas \NP contains all problems whose solution can efficiently be verified. 
+Note that $\Pt \subseteq \NP$, but the reverse diretion is unknown.
 
-    \[ \mathrm{P} := \bigcup_{k \in \mathbb{N}}(\mathrm{DTIME}(n^k))\]
-
-
-    \noindent A language $L \subseteq \{0,1\}^*$ is in \NP if there exists a polynomial $p: \mathbb{N} \rightarrow \mathbb{N}$ and a polynomial-time Turing Machine $M$ such that for every $x \in \{0,1\}^*$,
-
-    \[ x \in L \Leftrightarrow \exists u \in \{0,1\}^{p(|x|)} \mathnormal{s.t.~} M(x,u) = 1 \]
-
-    \noindent If $x \in L$ and $u \in \{ 0,1 \}^{p(|x|)}$ satisfy $M(x,u) = 1$, then we call $u$  a \textit{certificate} for $x$.
-
-\end{cc}
-
-\Pt denotes the class of all problems that are \textit{efficiently solvable}, whereas \NP contains all problems whose solution can efficiently be verified. Note that $\Pt \subseteq \NP$, but the opposite is unknown.
 \subsection{\NPcn}\label{ch:npc}
-A significant discovery in the early 1970s was that some problems in \NP are \textit{at least as hard as} as any other problem in \NP. By spanning a whole ``web of reductions'' \cite{Arora2006} we get strong evidence that none of these problems can be solved efficiently.
-The first results in this new field were published independently by Cook \cite{Cook1971} and Levin \cite{Levin1973} after Karp \cite{Karp1972} had introduced the notion of problem reductions.
-The Cook-Levin-Theorem \cite{Cook1971} proved that the \SAT (\SATs) problem is \NPc any problem in $NP$ can be reduced to \SATs. 
-A single algorithm for one of these problems \NPc problems would instantly give a fast algorithm for the others as well. 
-We refer the reader to \cite{Arora2006} for a comprehensive introduction to classical complexity theory.
+A significant discovery in the early 1970s was that some problems in \NP are \textit{at least as hard as} as any other problem in \NP. By spanning a whole ``web of reductions''~\cite{Arora2006} we get strong evidence that none of these problems can be solved efficiently.
+The first results in this new field were published independently by Cook~\cite{Cook1971} and Levin~\cite{Levin1973} after Karp~\cite{Karp1972} had introduced the notion of problem reductions.
+The Cook-Levin-Theorem~\cite{Cook1971} states that the \SAT (\SATs) problem is \NPc and any problem in $NP$ can thus be reduced to \SATs. 
+A single algorithm for one \NPc problem would instantly give a fast algorithm for the others as well. 
+We refer the reader to~\cite{Arora2006} for a comprehensive introduction to classical complexity theory.
 
-\begin{definition}[{Reductions, \NP-hardness and \NPcn \cite{Arora2006}}]
+\begin{definition}[{Reductions, \NP-hardness and \NPcn~\cite{Arora2006}}]
 We say that a language $A\subseteq \{0,1\}^*$ is \textit{polynomial-time karp reducible} to a language $B \subseteq \{0,1\}^*$ (denote $A \leq_p B$) if there is a poly-time computable function $f: \{0,1\}^* \rightarrow \{0,1\}^*$ such that for every $x \in \{0,1\}^*$, $x \in A$ if and only if $f(x) \in B$.
 
 \noindent We say that a problem $B$ is \NPh if $A \leq_p B$ for every $A \in \NP$ and $B$ is \NPc if additionally $B \in NP$ holds.
 
 \end{definition}
 There are thousands of \NPc problems we do not expect to be solvable in polynomial time.
-Whether $\Pt \overset{?}{=} \NP$ is still one of the biggest open questions in mathematics and bountied with one million dollars by the \textit{Clay Mathematical Institute} \cite{Fortnow2021}. 
+Whether $\Pt \overset{?}{=} \NP$ is still one of the biggest open questions in mathematics and bountied with one million dollars by the \textit{Clay Mathematical Institute}~\cite{Fortnow2021}. 
 Most of the domination problems like \dom, \sdom, \tdom are \NPc.
 
-% \paragraph{Coping With \NPcn}
 
-We do not expect \NPc problems to have a polynomial-time algorithm, but strategies exist to cope with them. 
+We do not expect \NPc problems to have a polynomial-time algorithm, but strategies exist to cope with hardness. 
 We can either give up the exactness of a solution to possibly find fast \textit{approximation algorithms} or abandon the search for a polynomial-time algorithm in favor of finding good \textit{Exact Exponential (EEA) Algorithms} instead.
 A third technique is using additional structural parameters of a specific problem instance and therefore \textbf{restricting the input to special cases}. 
 This idea led to the development of \textit{parameterized complexity}.
 
 \section{Parameterized Complexity}\label{cha:param}
 
-Introduced by Downey and Fellows \cite{Downey1999a}, parameterized complexity extends the classical theory with a framework that allows a more dimensional analysis of computationally hard problems. 
+Introduced by Downey and Fellows~\cite{Downey1999a}, parameterized complexity extends the classical theory with a framework that allows a more dimensional analysis of computationally hard problems. 
 The idea is to extract an arbitrary parameter $k$ and find an algorithm that is only exponential in a function $f(k)$ but only polynomial in the instance size.
 $k$ denotes how complex the problem is: 
 $k$ can be seen as a measure of the difficulty of a given instance.
 If $k$ is small, the problem can still be considered tractable, although the underlying \NPh problem is generally intractable.
-All definitions are taken from \cite{Cygan2015} if not marked otherwise.
+All definitions are taken from~\cite{Cygan2015} if not marked otherwise.
 
 \begin{definition}[Parameterized Problem]
     A parameterized problem is a language $L\subseteq\Sigma^*\times \mathbb{N}$ where $\Sigma$ is a finite, fixed alphabet.
@@ -131,7 +133,7 @@ It is strongly believed that $\FPT \subsetneq \Wt$ and therefore, we do not expe
     \end{itemize}
 \end{definition}
 
-\cref{lem:cfptr,lem:trans} shwon in \cite{Cygan2015} show this definition ensures that reductions are transitive and closed under fpt reductions.
+\cref{lem:cfptr,lem:trans} shwon in~\cite{Cygan2015} show this definition ensures that reductions are transitive and closed under fpt reductions.
 
 \begin{lemma}[Closed Under fpt-reductions]\label{lem:cfptr}
     If there is a parameterized reduction from $A$ to $B$ and $B \in \FPT$, then $A \in \FPT$.
@@ -152,4 +154,4 @@ We can define the classes \WONE and \WTWO by giving two problems that are comple
     A problem $P$ is in the class \WONE (resp. \WTWO) if there is a parameterized reduction from $P$ to \is (\dom).
 \end{cc}
 
-A more profound introduction is not required for this work, and we refer the interested reader to \cite{Cygan2015, Fomin2019} for more details.
+A more profound introduction is not required for this work, and we refer the interested reader to~\cite{Cygan2015, Fomin2019} for more details.

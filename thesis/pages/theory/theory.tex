@@ -12,12 +12,12 @@
 
 
 This chapter will introduce the core definitions used throughout this thesis. 
-Most of the graph theory definitions are taken from \cite{Diekert2005}. 
-For definitions in the area of \textit{parameterized complexity}, the book by Cygan et al. \cite{Cygan2015} gives an excellent introduction.
-For standard mathematical notation, we refer the reader to any introductory textbook into discrete mathematics (e.g., \cite{Rosen2012}).
+Most of the graph theory definitions are taken from~\cite{Diekert2005}. 
+For definitions in the area of \textit{parameterized complexity}, the book by Cygan et al.~\cite{Cygan2015} gives an excellent introduction.
+For standard mathematical notation, we refer the reader to any introductory textbook into discrete mathematics (e.g.,~\cite{Rosen2012}).
 \section{Graph Theory}
 
-If not explicitly stated otherwise, the following definitions were taken from the book \textit{Graph Theory} written by Reinhard Diestel \cite{diestel10}.
+If not explicitly stated otherwise, definitions follow the book \textit{Graph Theory}~\cite{diestel10}.
 
 \subsection{Basic Terminology}
 
@@ -63,7 +63,7 @@ If a graph $G$ is isomorphic to another graph $h$, we denote $G \cong H$.
 
 \subsection{Graph Classes}
 
-A \textit{graph class} is a set of graphs $\mathfrak{G}$ that is closed under isomorphism, that is if $G \in \mathfrak{G}$ and a $H \cong G$ then $H \in \mathfrak{G}$ as well.
+A \textit{graph class} is a set of graphs sharing a common structural property.
 
 \begin{definition}[Graph Parameters]
 Let \G be a graph.
@@ -109,21 +109,21 @@ A \underline{split graph} is a graph \G whose vertices can be partitioned into a
     
 %\end{definition}
 
-\begin{graphclass}[Planar]
+\begin{graphclass}[Plane and Planar Graphs]
 
-A \textit{plane graph} is a pair $(V,E)$ of finite sets with the following properties:
+A \textit{plane graph} is a graph \G that can be drawn in such a way that no edges cross each other.
 
-\begin{itemize}
-    \item $V \subseteq \mathbb{R}^2$ (Vertices),
-    \vspace{-2mm}
-    \item Every edge is an arc between two vertices, 
-    \vspace{-2mm}
-    \item different edges have different sets of endpoints, and
-    \vspace{-2mm}
-    \item The interior of an edge contains no vertex and no point of any other edge
-\end{itemize}
-
-An embedding in the plane, or \textit{plane embedding}, of an (abstract) graph $G$ is an isomorphism between $G$ and a plane graph $H$. A \textit{plane graph} can is a concrete \textbf{embedding} of the planar graph into the ``plane'' $\mathbb{R}^2$.
+%\begin{itemize}
+%    \item $V \subseteq \mathbb{R}^2$ (Vertices),
+%    \vspace{-2mm}
+%    \item Every edge is an arc between two vertices, 
+%    \vspace{-2mm}
+%    \item different edges have different sets of endpoints, and
+%    \vspace{-2mm}
+%    \item The interior of an edge contains no vertex and no point of any other edge
+%\end{itemize}
+A \underline{plane} graph is a planar graph together with a concrete drawing in the plane the \textit{plane embedding} of $G$. 
+%A \textit{plane graph} can is a concrete \textbf{embedding} of the planar graph into the ``plane'' $\mathbb{R}^2$.
 
 \end{graphclass}
 
@@ -148,9 +148,9 @@ the solution is found, so elegantly.''
 Knowledge Cutoff: 2021-09}
 
 In connection with various chessboard problems, the concept of domination can be traced back to the mid-1800s.
-For example, De Jaenosch attempted in 1862 to find the minimum number of queens required to fully cover an $n \times n$-chessboard \cite{Jaenisch1862}.
-Because of the immense amount of publications related to domination that followed, Haynes, Hedetniemi, and Slater started a comprehensive survey of the literature in 1998 \cite{Haynes1998, Haynes1998b}. 
-Twenty years later, through a series of three more books, Haynes, Henning and Hedetniemi complemented the survey with the latest developments \cite{Haynes2020, Haynes2021, Haynes2022}.
+For example, De Jaenosch attempted in 1862 to find the minimum number of queens required to fully cover an $n \times n$-chessboard~\cite{Jaenisch1862}.
+Because of the immense amount of publications related to domination that followed, Haynes, Hedetniemi, and Slater started a comprehensive survey of the literature in 1998~\cite{Haynes1998, Haynes1998b}. 
+Twenty years later, through a series of three more books, Haynes, Henning and Hedetniemi complemented the survey with the latest developments~\cite{Haynes2020, Haynes2021, Haynes2022}.
 
 We are now introducing the problems of \dom, \sdom, and \tdom and dedicate the rest of the chapter to giving a current status about the complexity on various graph classes. 
 
@@ -196,7 +196,7 @@ We denote this neighbor as a \textit{witness} of $v$.
 
 It is natural to ask what happens if we restrict this distance property to be at most two, which leads us straight to the idea of \sdomin.
 For a semitotal dominating set $D$, we say that $v$ \emph{witnesses} $v'$ if $v, v' \in D$ and $d(v,v') \leq 2$.
-\sdomin was introduced by Goddard, Henning and McPillan \cite{Goddard2014} as a relaxation of \tdomin. 
+\sdomin was introduced by Goddard, Henning and McPillan~\cite{Goddard2014} as a relaxation of \tdomin. 
 
 \begin{prb}[\MakeUppercase{\SDOM}~{\cite{Goddard2014}}]{prb:tsds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
@@ -225,7 +225,7 @@ For a semitotal dominating set $D$, we say that $v$ \emph{witnesses} $v'$ if $v,
 \end{definition}
 
 Because any tds is also an sds and every sds is also a ds, $\gamma_{t2}$ is squeezed between $\gamma$ and $\gamma_t$.
-The  following fact was first observed by Goddard and Henning \cite{Goddard2014}:
+The  following fact was first observed by Goddard and Henning~\cite{Goddard2014}:
 
 \begin{fact}
 For every graph $G$ with no isolated vertex, $\gamma(G) \leq \gamma_{t2}(G) \leq \gamma_t(G)$.
@@ -239,17 +239,17 @@ Their only purpose is to bridge the gap between $d_1$ and $d_2$, but they have n
 
 \section{Complexity Status of \sdom}\label{ch:complexity-status}
 
-Goddard et al. \cite{Goddard2014} first showed that \SDOM is \NPc in the general case and initiated the systematic analysis of the problem.  
-\cref{tab:complexities} complements the complexity status for \doms, \sdoms, and \tdoms when restricted to specific graph classes, which was first surveyed by Galby et al. \cite{Galby2020}
+Goddard et al.~\cite{Goddard2014} first showed that \SDOM is \NPc in the general case and initiated the systematic analysis of the problem.  
+\cref{tab:complexities} complements the complexity status for \doms, \sdoms, and \tdoms when restricted to specific graph classes, which was first surveyed by Galby et al.~\cite{Galby2020}
 We also added another column showing the known parameterized complexity. 
 \cref{fig:bigpicture} visualizes the big picture and the inclusions among the graph classes.
 
-A polynomial-time algorithm was shown for graphs of bounded \textit{mim}-width by Galby et al. \cite{Galby2020}.
-Because decomposition trees of constant \textit{mim}-width can be found for \textit{permutation}, \textit{convex}, \textit{interval}, \textit{(circular k-)} \textit{trapezoid}, \textit{circular permutation}, \textit{Dilworth-$k$}, \textit{$k$-polygon}, \textit{circular arc}, \textit{complements of $d$-degenerate}, \textit{bipartite permutation} and \textit{convex bipartite} graphs in polynomial time \cite{Belmonte2011}, this algorithm immediately implies the existence of a polynomial time algorithm for these graph classes as well. 
+A polynomial-time algorithm was shown for graphs of bounded \textit{mim}-width by Galby et al.~\cite{Galby2020}.
+Because decomposition trees of constant \textit{mim}-width can be found for \textit{permutation}, \textit{convex}, \textit{interval}, \textit{(circular k-)} \textit{trapezoid}, \textit{circular permutation}, \textit{Dilworth-$k$}, \textit{$k$-polygon}, \textit{circular arc}, \textit{complements of $d$-degenerate}, \textit{bipartite permutation} and \textit{convex bipartite} graphs in polynomial time~\cite{Belmonte2011}, this algorithm immediately implies the existence of a polynomial time algorithm for these graph classes as well. 
 Additionally, Galby et al. resolved the complexity for \textit{bipartite permutation} and \textit{convex bipartite} graphs.
 
-Furthermore, new polynomial time algorithms have been discovered for \textit{strongly chordal} \cite{Tripathi2021}, \textit{AT-free} \cite{Kloks2021} and \textit{block} \cite{Henning2022} graphs and a new linear time algorithm has been found for interval graphs \cite{Pradhan2021} beating the previous $\mathcal{O}(n^2)$-algorithm given by Henning and Pandey \cite{Henning2019}.
-On the negative side, \sdom on \textit{circle graphs} \cite{Kloks2021} graphs, and \textit{undirected path graphs} \cite{Henning2019} was shown to be \NPc.
+Furthermore, new polynomial time algorithms have been discovered for \textit{strongly chordal}~\cite{Tripathi2021}, \textit{AT-free}~\cite{Kloks2021} and \textit{block}~\cite{Henning2022} graphs and a new linear time algorithm has been found for interval graphs~\cite{Pradhan2021} beating the previous $\mathcal{O}(n^2)$-algorithm given by Henning and Pandey~\cite{Henning2019}.
+On the negative side, \sdom on \textit{circle graphs}~\cite{Kloks2021} graphs, and \textit{undirected path graphs}~\cite{Henning2019} was shown to be \NPc.
 
 As $\gamma_{t2}$ is squeezed between $\gamma$ and $\gamma_t$, a comparison of the computational complexity of \sdom and \tdom for specific graph classes on the dominating problems might also suggest the complexity of \sdoms.
 There seems to be a symmetry between these domination problems where the complexity of many graph classes mirrors each other.
@@ -262,9 +262,9 @@ This thesis goes the first step into approaching the problem from the perspectiv
 If not mentioned otherwise, the problem is always parameterized by the size of a solution, and the results of this thesis are highlighted in \textbf{bold} text.
 We have also added the parameterized complexity for those graph classes and used it as an orientation.
 As we do not believe that \sdoms is fundamentally different than \doms, our intuition is that also the parameterized complexity mimicks \sdoms. 
-We were able to prove \WTWO-hardness for \textit{bipartite} and \textit{split} graphs by giving a graph structure preserving reducing from \doms. We provide an explicit construction of a kernel for the \textit{planar} case, which exists for \doms \cite{Alber2004} and \tdoms \cite{Garnero2019} as well.
+We were able to prove \WTWO-hardness for \textit{bipartite} and \textit{split} graphs by giving a graph structure preserving reducing from \doms. We provide an explicit construction of a kernel for the \textit{planar} case, which exists for \doms~\cite{Alber2004} and \tdoms~\cite{Garnero2019} as well.
 
-We would like to mention that membership of \psdom in \FPT already follows from \cite{Alber2002}.
+We would like to mention that membership of \psdom in \FPT already follows from~\cite{Alber2002}.
 Their algorithm \pdomp can be used to obtain an fpt algorithm of order $\mathcal{O}(c^{\sqrt{k}}n)$ for some constant $c$ and solution size $k$.
 
 Many gaps are still open for further research.
@@ -283,63 +283,63 @@ We will discuss these questions at the end of this thesis in \cref{ch:closing}.
         \textbf{Graph Class}                  & \multicolumn{2}{c}{\textbf{\dom}}                       & \multicolumn{2}{c}{\textbf{\sdom}}           & \multicolumn{2}{c}{\textbf{\tdom}}                                                                                                                                \\
         \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
                                               & classical                                               & Parameterized                                & classical                                               & Parameterized              & classical                                    & Parameterized               \\
-        bipartite                             & \NPcs \cite{Bertossi1984}                               & \WTWOhs \cite{Raman2008}                                      & \NPcs \cite{Henning2019}                                & \WTWOhs (this)             & \NPcs \cite{Pfaff1983}                       & \WTWOhs (cite!)                             \\
+        bipartite                             & \NPcs~\cite{Bertossi1984}                               & \WTWOhs~\cite{Raman2008}                                      & \NPcs~\cite{Henning2019}                                & \WTWOhs (this)             & \NPcs~\cite{Pfaff1983}                       & \WTWOhs (cite!)                             \\
         
-        line graph of bipartite               & \NPcs \cite{Korobitsin1992}                             & ? & \NPcs \cite{Galby2020}                                  &     ?         (?)              & \NPcs \cite{McRae1995}                       &  ?                            \\
+        line graph of bipartite               & \NPcs~\cite{Korobitsin1992}                             & ? & \NPcs~\cite{Galby2020}                                  &     ?         (?)              & \NPcs~\cite{McRae1995}                       &  ?                            \\
         
-        circle                                & \NPcs \cite{Keil1993}                                   & \WONEhs \cite{Bousquet2012}                  & \NPcs \cite{Kloks2021}                                  & ? (?)  & \NPcs \cite{McRae1995}                       & \WONEhs \cite{Bousquet2012} \\
+        circle                                & \NPcs~\cite{Keil1993}                                   & \WONEhs~\cite{Bousquet2012}                  & \NPcs~\cite{Kloks2021}                                  & ? (?)  & \NPcs~\cite{McRae1995}                       & \WONEhs~\cite{Bousquet2012} \\
         
-        chordal                               & \NPcs \cite{Booth1982}                                  & \WTWOhs \cite{Raman2008}                     & \NPcs \cite{Henning2019}                                & \WTWOhs (this)               & \NPcs \cite{Laskar1983}                      & \WONEhs \cite{Chang1998} by \textit{split}                            \\
+        chordal                               & \NPcs~\cite{Booth1982}                                  & \WTWOhs~\cite{Raman2008}                     & \NPcs~\cite{Henning2019}                                & \WTWOhs (this)               & \NPcs~\cite{Laskar1983}                      & \WONEhs~\cite{Chang1998} by \textit{split}                            \\
         
-        $s$-chordal , $s > 3$                          & \NPcs \cite{Liu2011}                                    & \WTWOhs \cite{Liu2011}                       & ? (?)                                                     & ? (?)                         & \NPcs \cite{Liu2011}                         & \WONEhs \cite{Liu2011}      \\
+        $s$-chordal , $s > 3$                          & \NPcs~\cite{Liu2011}                                    & \WTWOhs~\cite{Liu2011}                       & ? (?)                                                     & ? (?)                         & \NPcs~\cite{Liu2011}                         & \WONEhs~\cite{Liu2011}      \\
         
-        split                                 & \NPcs \cite{Bertossi1984}                               & \WTWOhs \cite{Raman2008}         & \NPcs \cite{Henning2019}                                & \WTWOhs \textbf{this}             & \NPcs \cite{Laskar1983}                      & \WONEhs \cite{Chang1998}    \\
+        split                                 & \NPcs~\cite{Bertossi1984}                               & \WTWOhs~\cite{Raman2008}         & \NPcs~\cite{Henning2019}                                & \WTWOhs \textbf{this}             & \NPcs~\cite{Laskar1983}                      & \WONEhs~\cite{Chang1998}    \\
         
-        3-claw-free                           & \NPcs \cite{Cygan2011}                                  & \FPTt \cite{Cygan2011}                        & Prob. Unk                                               & Prob. Unk                  & \NPcs \cite{McRae1995}                       & Unknown                     \\
+        3-claw-free                           & \NPcs~\cite{Cygan2011}                                  & \FPTt~\cite{Cygan2011}                        & Prob. Unk                                               & Prob. Unk                  & \NPcs~\cite{McRae1995}                       & Unknown                     \\
         
-        $t$-claw-free, $t>3$                  & \NPcs \cite{Cygan2011}                                  & \WTWOhs \cite{Cygan2011}                     & Prob. Unknown                                           & Unknown                    & \NPcs \cite{McRae1995}                       & Prob. Unknown               \\
+        $t$-claw-free, $t>3$                  & \NPcs~\cite{Cygan2011}                                  & \WTWOhs~\cite{Cygan2011}                     & Prob. Unknown                                           & Unknown                    & \NPcs~\cite{McRae1995}                       & Prob. Unknown               \\
         
-        chordal bipartite                     & \NPcs \cite{Mueller1987}                                & ? (?)                                & \NPcs \cite{Henning2019}                                & ?                      & \multicolumn{2}{c}{\Ptt \cite{Damaschke1990}}                               \\
+        chordal bipartite                     & \NPcs~\cite{Mueller1987}                                & ? (?)                                & \NPcs~\cite{Henning2019}                                & ?                      & \multicolumn{2}{c}{\Ptt~\cite{Damaschke1990}}                               \\
         
-        planar                                & \NPcs (Sources!)                                        & \FPTt \cite{Alber2004}                        & \NPcs                                                   & \FPT \textbf{(this)}                       & \NPcs                                        & \FPTt \cite{Garnero2018}     \\
+        planar                                & \NPcs~\cite{Garey1979}                                        & \FPTt~\cite{Alber2004}                        & \NPcs                                                   & \FPT \textbf{(this)}                       & \NPcs                                        & \FPTt~\cite{Garnero2018}     \\
         
-        undirected path                                & \NPcs \cite{Booth1982}                                   & \FPTt \cite{Figueiredo2022} & \NPcs \cite{Henning2022}  & ?                     & \NPcs \cite{Lan2014}                         & ?                     \\
+        undirected path                                & \NPcs~\cite{Booth1982}                                   & \FPTt~\cite{Figueiredo2022} & \NPcs~\cite{Henning2022}  & ?                     & \NPcs~\cite{Lan2014}                         & ?                     \\
         % 2022 paper for DS proved it not for TDS, so whp. not known for TDS
 
-        dually chordal                        & \multicolumn{2}{c}{\Ptt \cite{Brandstaedt1998} }         & \multicolumn{2}{c}{? (attempted \cite{Galby2020})} &                           \multicolumn{2}{c}{\Ptt \cite{Kratsch1997}}                                                                            \\
+        dually chordal                        & \multicolumn{2}{c}{\Ptt~\cite{Brandstaedt1998} }         & \multicolumn{2}{c}{? (attempted~\cite{Galby2020})} &                           \multicolumn{2}{c}{\Ptt~\cite{Kratsch1997}}                                                                            \\
         
-        strongly chordal                      & \multicolumn{2}{c}{\Ptt \cite{Farber1984} }            & \multicolumn{2}{c}{\Ptt \cite{Tripathi2021}}  & \NPcs \cite{Farber1984}                                 &                                                                                                         \\
+        strongly chordal                      & \multicolumn{2}{c}{\Ptt~\cite{Farber1984} }            & \multicolumn{2}{c}{\Ptt~\cite{Tripathi2021}}  & \NPcs~\cite{Farber1984}                                 &                                                                                                         \\
         
-        AT-free                               & \multicolumn{2}{c}{\Ptt \cite{Kratsch2000}}              & \multicolumn{2}{c}{\Ptt \cite{Kloks2021} }    & \multicolumn{2}{c}{\Ptt \cite{Kratsch2000}}                                                                                                                        \\
+        AT-free                               & \multicolumn{2}{c}{\Ptt~\cite{Kratsch2000}}              & \multicolumn{2}{c}{\Ptt~\cite{Kloks2021} }    & \multicolumn{2}{c}{\Ptt~\cite{Kratsch2000}}                                                                                                                        \\
         
-        tolerance                             & \multicolumn{2}{c}{\Ptt \cite{Giannopoulou2016}}                         & \multicolumn{2}{c}{?}                                                  & \multicolumn{2}{c}{?}                                                                    \\
+        tolerance                             & \multicolumn{2}{c}{\Ptt~\cite{Giannopoulou2016}}                         & \multicolumn{2}{c}{?}                                                  & \multicolumn{2}{c}{?}                                                                    \\
         
-        % cocomperability                          & \multicolumn{2}{c}{\Pt \cite{Kratsch1993}}                                & Unknwon (?)                                         & Unknown ?                                                    & \multicolumn{2}{c}{\Pt \cite{Kratsch1993}}                                                                       \\
-       block                        &                                                      \multicolumn{2}{c}{\Ptt \cite{Farber1984} }                                          & \multicolumn{2}{c}{\Ptt \cite{Henning2022}}              & \multicolumn{2}{c}{\Ptt \cite{Chang1989}}                                                                       \\
+        % cocomperability                          & \multicolumn{2}{c}{\Pt~\cite{Kratsch1993}}                                & Unknwon (?)                                         & Unknown ?                                                    & \multicolumn{2}{c}{\Pt~\cite{Kratsch1993}}                                                                       \\
+       block                        &                                                      \multicolumn{2}{c}{\Ptt~\cite{Farber1984} }                                          & \multicolumn{2}{c}{\Ptt~\cite{Henning2022}}              & \multicolumn{2}{c}{\Ptt~\cite{Chang1989}}                                                                       \\
         
-        interval                  & \multicolumn{2}{c}{\Ptt \cite{Chang1998a}}                                          & \multicolumn{2}{c}{\Ptt \cite{Pradhan2021}} &                                         \multicolumn{2}{c}{\Ptt \cite{Bertossi1986}}                       \\
+        interval                  & \multicolumn{2}{c}{\Ptt~\cite{Chang1998a}}                                          & \multicolumn{2}{c}{\Ptt~\cite{Pradhan2021}} &                                         \multicolumn{2}{c}{\Ptt~\cite{Bertossi1986}}                       \\
 
         \midrule
-        bounded clique-width                  & \multicolumn{2}{c}{\Ptt \cite{Courcelle1990}}            & \multicolumn{2}{c}{\Ptt \cite{Courcelle1990}} & \multicolumn{2}{c}{\Ptt \cite{Courcelle1990}}                                                                                                                      \\
+        bounded clique-width                  & \multicolumn{2}{c}{\Ptt~\cite{Courcelle1990}}            & \multicolumn{2}{c}{\Ptt~\cite{Courcelle1990}} & \multicolumn{2}{c}{\Ptt~\cite{Courcelle1990}}                                                                                                                      \\
         
-        bounded mim-width                     & \multicolumn{2}{c}{\Ptt \cite{Belmonte2011,BuiXuan2013}} & \multicolumn{2}{c}{\Ptt \cite{Galby2020}}     & \multicolumn{2}{c}{\Ptt \cite{Belmonte2011,BuiXuan2013}}                                                                                                           \\
+        bounded mim-width                     & \multicolumn{2}{c}{\Ptt~\cite{Belmonte2011,BuiXuan2013}} & \multicolumn{2}{c}{\Ptt~\cite{Galby2020}}     & \multicolumn{2}{c}{\Ptt~\cite{Belmonte2011,BuiXuan2013}}                                                                                                           \\
         \midrule
 
-        %k polyon                              & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
+        %k polyon                              & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt~\cite{Tripathi2021}}             & Gasdf                                                                                                   \\
         
         %line graph                        & TBD                                                     & TBD                                          & TBD                                                     & Easdffasd                  & Fasdf                                        & Gasdf                       \\
         
         
-        %  TBD chordal perfect graph (contained) & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
+        %  TBD chordal perfect graph (contained) & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt~\cite{Tripathi2021}}             & Gasdf                                                                                                   \\
         
         
-        % TBD Graph girth 3 or 4                & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
+        % TBD Graph girth 3 or 4                & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt~\cite{Tripathi2021}}             & Gasdf                                                                                                   \\
         
-        % TBD Graph girth gew 5                 & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
+        % TBD Graph girth gew 5                 & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt~\cite{Tripathi2021}}             & Gasdf                                                                                                   \\
         
-        % TBD degen.                            & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
+        % TBD degen.                            & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt~\cite{Tripathi2021}}             & Gasdf                                                                                                   \\
         
-        % bTBD Bounded Max degree                & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt \cite{Tripathi2021}}             & Gasdf                                                                                                   \\
+        % bTBD Bounded Max degree                & TBD                                                     & TBD                                          & \multicolumn{2}{c}{\Pt~\cite{Tripathi2021}}             & Gasdf                                                                                                   \\
         \midrule
         \bottomrule
     \end{tabularx}
