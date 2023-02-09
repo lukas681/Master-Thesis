@@ -30,10 +30,10 @@ $d(v,w)$ can be calculated in linear time and would not blow up our runtime.
 \noindent \textbf{Experimental Results~}
 Our analysis and its large constants refer to the worst-case scenario which tells us little about the performance applied to real-world instances.
 Already Alber et al.~\cite{Alber2004} noticed that this kind of reduction behaves very well in nature and showed in an experimental setting for \pdom that more than $79\%$ of the vertices and $88\%$ of the edges have been removed by their reduction rules from a sample set of random planar graphs with up to $4000$ vertices. 
+It would be interesting to see, how much random graphs are reduced using our reduction \cref{rgl:rone,rgl:rtwo,rgl:rthree}.
 
 \noindent \textbf{Other Open Prolems~}
 The classical complexities for \textit{dually chordal} and \textit{tolerance} graphs have already been asked for by Galby et al.~\cite{Galby2020} and are still open.
-
 Furthermore, it would be interesting to complement the parameterized complexities on the hard classes we have started in this work.
 open are those for \textit{circle}, \textit{chordal bipartite} and \textit{undirected path} graphs.
 We think that \sdoms on \textit{chordal bipartite} graphs is at least \WONEhs-hard when parameterized by solution size, but we have been unable to prove it.
@@ -41,4 +41,3 @@ Furthermore, the reduction for \textit{circle} graphs~\cite{Kloks2021} to show \
 Maybe these reductions can be adjusted to show \WONEhs-hardness for \sdoms as well.
 Last but not least, there exists an fpt algorithm for \doms on \textit{undirected path} graphs~\cite{Figueiredo2022}. 
 Does it transfer to \sdoms as well?
-
