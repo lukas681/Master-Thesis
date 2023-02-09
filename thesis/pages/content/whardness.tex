@@ -1,8 +1,8 @@
 
 \section{Fixed-Parameter Intractability}
 
-We will start by giving some intractability results and show that \sdom parameterized by the natural parameterization is \WTWOhs-hard on \textit{bipartite graphs} by fpt-reducing from \dom on bipartite graphs
-\dom on bipartite graphs is known to be \WTWOhs~\cite{Raman2008} when parameterized by solution size.
+We will start by giving some intractability results and show that \sdom parameterized by the natural parameterization is \WTWOhs-hard on \textit{bipartite graphs} and \textit{triangle-free graphs} by fpt-reducing from \dom on bipartite graphs
+\dom on bipartite graphs is known to be \WTWOhs~\cite{Raman2008} when parameterized with natural parameterization.
 
 \begin{figure}[ht]
     \label{fig:bipartiteConstruction}
@@ -12,7 +12,7 @@ We will start by giving some intractability results and show that \sdom paramete
 \caption[Construction bipartite]{\textit{Reducing to a bipartite $G'$ from the bipartite graph $K_{m,n}$ by duplicating all vertices and adding exactly two forced witnesses.}}
 \end{figure}
 
-\begin{theorem}
+\begin{theorem}\label{lemma:bipartite}
     \sdom parameterized by solution size is \WTWOhs-hard when restricted to bipartite graphs.
 \end{theorem}
 
@@ -44,30 +44,43 @@ We will start by giving some intractability results and show that \sdom paramete
     Hence, $D = D' \setminus \{ d_1,d_2\}$ gives a ds in $G$ of size $ k = k' + 2$.
 
     As $G'$ can be constructed in linear time and $k$ does not depend on the input size, this reduction is an fpt reduction.  
-    Because \dom is \WTWOhs-hard on bipartite graphs~\cite[Th. 1]{Raman2008}, we conclude that \sdom is $w[2]$-hard as well.
+    Because \dom is \WTWOhs-hard on bipartite graphs~\cite[Th. 1]{Raman2008}, we conclude that \sdom is \WTWOhs-hard when parameterized by solution size as well.
 \end{proof}
 
-We will prove intractability for \textit{split} graphs.
+We will prove intractability for \textit{split} graphs. 
+We use the fact that every dominating set in a split graph can directly be mapped to a corresponding semitotal dominating set.
 
-\begin{theorem}
+\begin{theorem}\label{lemma:splitgraph}
     \sdom is \WONEhs-hard when restricted to \textit{split} and \textit{chordal} graphs.
 \end{theorem}
 
 \begin{proof}
-    We reduce from \dom on \textit{split} graphs which is visualized in \cref{fig:splitgraph}.
-    Given a split graph $G = \{(K \cup I), E\}$, we transform it to a split graph $G'$ by adding two vertices $d$ and $u$ and edges $\{d,u\} \cup \{d, k_i\}$ for all $k_i \in K$. 
-    The vertex $d$ increases the size of the clique $K$ by one, and $u$ fits into the independent set $I$.
-    Therefore, $G'$ is split, too. 
-    It is left to show that $G$ has a ds of size $k$ if and only if $G'$ has an sds of size $k' = k + 1$.
-    
-    Assume any ds $D$ of size $k$ in $G$. 
-    Setting $D' = D \cup \{d\}$ gives an sds in $G'$ of size $k+1$.
 
-    Contrarily, assume an sds $D'$ of size $k$ in $G'$.
-    If $D \cap I \neq \emptyset$, we flip these to their neighbor in $K$, preserving the dominating set. 
-    $d \in D'$ is only used in $G'$ for dominating $u$ and can be ignored in $G$.
-    Therefore letting $D = D' \setminus \{d\}$ gives a valid ds in $G$ of size $ k-1$.
-    The claim follows because \dom is \WTWOhs-hard on \textit{split} graphs~\cite{Raman2008}.
+    We reduce from \dom on \textit{split} graphs which is visualized in \cref{fig:splitgraph}.
+    Given a split graph $G = \{V = (K \cup I), E\}$ with more than one vertex and a ds $D$ of size $k$, we can immediately obtain a sds $D'$ by flipping a few vertices:
+    If $I \cap D \neq \emptyset$ we replace them respectively with one arbitrary neighbor in $K$.
+    All vertices in $I$ are still being dominated and $D \cap K \neq \emptyset$ is sufficient to preserve domination $K$. 
+    Note that is necessary to catch the case, where $D \subseteq I$ and witnesses are missing (See \cref{fig:splitgraph}).
+    We now assume $D' = D \subseteq K$:
+    If $|D'| > 1$, we immediately obtain an sds as $D' \subseteq K$ and $k_1,k_2\in K$ witness each other.
+    If $D' = \{d\}$, we add any neighbor of $d$ to $D'$
+    
+    For the sake of completeness, $|V| \leq 1$, we instantly reject as there is no witness available.
+    In all cases $k' \leq k + 1$ and because \dom is \WTWOhs-hard on \textit{split} graphs~\cite{Raman2008} the claim follows.
+%    it to a split graph $G'$ by adding two vertices $d$ and $u$ and edges $\{d,u\} \cup \{d, k_i\}$ for all $k_i \in K$. 
+
+%    Given a split graph $G = \{(K \cup I), E\}$, we transform it to a split graph $G'$ by adding two vertices $d$ and $u$ and edges $\{d,u\} \cup \{d, k_i\}$ for all $k_i \in K$. 
+%    The vertex $d$ increases the size of the clique $K$ by one, and $u$ fits into the independent set $I$.
+%    Therefore, $G'$ is split, too. 
+%    It is left to show that $G$ has a ds of size $k$ if and only if $G'$ has an sds of size $k' = k + 1$.
+%    
+%    Assume any ds $D$ of size $k$ in $G$. 
+%    Setting $D' = D \cup \{d\}$ gives an sds in $G'$ of size $k+1$.
+
+%    Contrarily, assume an sds $D'$ of size $k$ in $G'$.
+ %   If $D \cap I \neq \emptyset$, we flip these to their neighbor in $K$, preserving the dominating set. 
+  %  $d \in D'$ is only used in $G'$ for dominating $u$ and can be ignored in $G$.
+   % Therefore letting $D = D' \setminus \{d\}$ gives a valid ds in $G$ of size $ k-1$.
 
 \end{proof}
 
@@ -76,7 +89,10 @@ We will prove intractability for \textit{split} graphs.
     \begin{equation*}
         \tikzfig{fig/tikz/split}
     \end{equation*}
-\caption[Constructing split graph]{\textit{Constructing a split graph $G'$ by increasing the size of the complete graph by one with a new vertex $d$ and adding one additional pendant $u$. The clique $K$ is highlighted in \textbf{\textcolor{TUMBlue}{blue}}}}
+\caption[Constructing split graph]{\textit{Obtaining a sds $D'$ form a given ds $D$ in a split graph by flipping all vertices $d_i$ to their corresponding neighbor in the clique $K$.
+The clique $K$ is highlighted in \textbf{\textcolor{TUMBlue}{blue}}
+Note that in $D$, no witnesses are available as $d(d_1,d_5) = 3$.
+After the flip operation, this is fixed.}}
 \end{figure}
 
 % \subsection{\hmath  $W[2]$-hard on s Chordal IDK}

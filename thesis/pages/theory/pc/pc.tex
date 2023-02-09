@@ -1,7 +1,7 @@
 \section{Computational Complexity Theory}
 
 Computational complexity investigates how many computational resources are required to solve a specific problem. 
-We are about to introduce two of the most important classes of problems in classical complexity theory:
+% We are about to introduce two of the most important classes of problems in classical complexity theory:
 
 %\begin{cc}[The Classes \Pt and \NP~{\cite{Arora2006}}]{cc:pnp}
 %
@@ -18,9 +18,9 @@ We are about to introduce two of the most important classes of problems in class
 %
 %\end{cc}
 
-We denote \Pt as the class of all problems that can be solved by a \textit{Deterministic} Turing Mmachine in polynomial time, whereas \NP contains all problems that can be solved by a \textit{Non-Deterministic} Turing Machine in polynomial time.
+We denote \Pt as the class of all problems that can be solved by a \textit{Deterministic Turing Machine} in polynomial time, whereas \NP contains all problems that can be solved by a \textit{Non-Deterministic} Turing Machine in polynomial time.
 In other words \Pt contains problems that are \textit{efficiently solvable}, whereas \NP contains all problems whose solution can efficiently be verified. 
-Note that $\Pt \subseteq \NP$, but the reverse diretion is unknown.
+Note that $\Pt \subseteq \NP$, but the reverse direction is unknown.
 
 \subsection{\NPcn}\label{ch:npc}
 A significant discovery in the early 1970s was that some problems in \NP are \textit{at least as hard as} as any other problem in \NP. By spanning a whole ``web of reductions''~\cite{Arora2006} we get strong evidence that none of these problems can be solved efficiently.
@@ -144,14 +144,13 @@ It is strongly believed that $\FPT \subsetneq \Wt$ and therefore, we do not expe
 \end{lemma}
 
 If there exists a parameterized reduction transforming a \Wt-hard problem $A$ to another problem $B$, then $B$ is \Wt-hard as well.
-We can define the classes \WONE and \WTWO by giving two problems that are complete for these classes.
-
-\begin{cc}[The Classes \WONE ~{\cite{Downey1995}} and \WTWO ~{\cite{Cygan2015}}]{cc:wi}\begin{align*}
-        \\[-2em] & \\[-3em]
-        \text{\is is } &\text{\WONE-complete.}\\
-        \text{\dom is } &\text{\WTWO-complete.}
-    \end{align*}
-    A problem $P$ is in the class \WONE (resp. \WTWO) if there is a parameterized reduction from $P$ to \is (\dom).
-\end{cc}
-
+We know that the \is problem is \WONE-complete and \dom is \WTWO-complete~\cite{Downey1995,Cygan2015}.
 A more profound introduction is not required for this work, and we refer the interested reader to~\cite{Cygan2015, Fomin2019} for more details.
+
+%\begin{cc}[The Classes \WONE ~{\cite{Downey1995}} and \WTWO ~{\cite{Cygan2015}}]{cc:wi}\begin{align*}
+%        \\[-2em] & \\[-3em]
+%        \text{\is is } &\text{\WONE-complete.}\\
+%        \text{\dom is } &\text{\WTWO-complete.}
+%    \end{align*}
+%    A problem $P$ is in the class \WONE (resp. \WTWO) if there is a parameterized reduction from $P$ to \is (\dom).
+%\end{cc}

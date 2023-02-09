@@ -111,8 +111,7 @@ A \underline{split graph} is a graph \G whose vertices can be partitioned into a
 
 \begin{graphclass}[Plane and Planar Graphs]
 
-A \textit{plane graph} is a graph \G that can be drawn in such a way that no edges cross each other.
-
+A \textit{plane graph} is a graph \G that can be drawn in the plane in such a way that no edges cross each other.
 %\begin{itemize}
 %    \item $V \subseteq \mathbb{R}^2$ (Vertices),
 %    \vspace{-2mm}
@@ -122,7 +121,7 @@ A \textit{plane graph} is a graph \G that can be drawn in such a way that no edg
 %    \vspace{-2mm}
 %    \item The interior of an edge contains no vertex and no point of any other edge
 %\end{itemize}
-A \underline{plane} graph is a planar graph together with a concrete drawing in the plane the \textit{plane embedding} of $G$. 
+A \underline{plane} graph is a planar graph together with a concrete drawing in the plane, the \underline{plane embedding} of $G$. 
 %A \textit{plane graph} can is a concrete \textbf{embedding} of the planar graph into the ``plane'' $\mathbb{R}^2$.
 
 \end{graphclass}
@@ -159,7 +158,7 @@ We are now introducing the problems of \dom, \sdom, and \tdom and dedicate the r
 We will define this work's three most important domination problems: \dom, \sdom, and \tdom.
 Recall that a dominating set of a graph \G is a subset $D \subseteq V$, such that every vertex from $V \setminus D$ is adjacent to some vertex in $D$.
 We say that a vertex $d$ is a \textit{dominating vertex} or \textit{dominator} if $d \in D$ and that $d$ \textit{dominates} all of its neighbors.
-Before defining the following problems, we give the following notion: 
+Before defining the following problems, we give the following terminology: 
 
 \begin{definition}[Domination Numbers]
    The \underline{domination number} in a graph $G$ is the minimum cardinality of a dominating set (ds) of $G$, denoted as $\gamma(G)$. 
@@ -200,7 +199,7 @@ We denote this neighbor as a \textit{witness} of $v$.
 \begin{prb}[\MakeUppercase{\TDOM}~{\cite[p. 596]{Cygan2015}}]{prb:sds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
-        \textbf{Question} & Is there a ds $D \subseteq V$ of size at most $k$, such that for every $u \in V(G)$ there exists $v \in D$ with $\{u,v\} \in E$? \\
+        \textbf{Question} & Is there a dominating set $D \subseteq V$ of size at most $k$, such that for every $u \in V(G)$ there exists $v \in D$ with $\{u,v\} \in E$? \\
     \end{tabularx}
 \end{prb}
 
@@ -211,7 +210,7 @@ For a semitotal dominating set $D$, we say that $v$ \emph{witnesses} $v'$ if $v,
 \begin{prb}[\MakeUppercase{\SDOM}~{\cite{Goddard2014}}]{prb:tsds}
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input} & Graph \G, $k \in \mathbb{N}$\\
-        \textbf{Question} & Is there a ds $D \subseteq V$ of size at most $k$, such that ${N[D] = V}$ and for all $d_1 \in D$ there exists another $d_2 \in D$ such that ${d(d_1, d_2) \leq 2}$?\\
+        \textbf{Question} & Is there a dominating set $D \subseteq V$ of size at most $k$, such that ${N[D] = V}$ and for all $d_1 \in D$ there exists another $d_2 \in D$ such that ${d(d_1, d_2) \leq 2}$?\\
     \end{tabularx}
 \end{prb}
 
@@ -248,14 +247,14 @@ We also added another column showing the known parameterized complexity.
 
 A polynomial-time algorithm was shown for graphs of bounded \textit{mim}-width by Galby et al.~\cite{Galby2020}.
 Because a branch decompositions of constant \textit{mim}-width can be found for \textit{permutation}, \textit{convex}, \textit{interval}, \textit{(circular k-)} \textit{trapezoid}, \textit{circular permutation}, \textit{Dilworth-$k$}, \textit{$k$-polygon}, \textit{circular arc}, \textit{complements of $d$-degenerate}, \textit{bipartite permutation} and \textit{convex bipartite} graphs in polynomial time~\cite{Belmonte2011}, this algorithm immediately implies the existence of a polynomial time algorithm for these graph classes as well. 
-Additionally, Galby et al. resolved the complexity for \textit{bipartite permutation} and \textit{convex bipartite} graphs.~\cite{Galby2020}
+Additionally, Galby et al.~\cite{Galby2020}resolved the complexity for \textit{bipartite permutation} and \textit{convex bipartite} graphs.
 
 Furthermore, new polynomial time algorithms have been devised for \textit{strongly chordal}~\cite{Tripathi2021}, \textit{AT-free}~\cite{Kloks2021} and \textit{block}~\cite{Henning2022} graphs and a new linear time algorithm has been found for interval graphs~\cite{Pradhan2021} beating the previous $\mathcal{O}(n^2)$-algorithm given by Henning and Pandey~\cite{Henning2019}.
 On the negative side, \sdom on \textit{circle graphs}~\cite{Kloks2021} graphs, and \textit{undirected path graphs}~\cite{Henning2019} was shown to be \NPc.
 
 %As $\gamma_{t2}$ is squeezed between $\gamma$ and $\gamma_t$, a comparison of the computational complexity of \sdom and \tdom for specific graph classes on the dominating problems might also suggest the complexity of \sdoms.
 There seems to be a symmetry between these three domination problems where the complexity of many graph classes mirrors each other, but it looks like \sdoms has more in common with \doms than with \tdoms.
-For instance, \textit{chordal bipartite} graphs, \sdoms and \doms are \NPc, while it is polynomial-time solvable for \tdoms. 
+For instance, on \textit{chordal bipartite} graphs, \sdoms and \doms are \NPc, while it is polynomial-time solvable for \tdoms. 
 Contrary, \sdoms and \doms have a polynomial-time algorithm for \textit{strongly chordal} graphs, but \tdoms is \NPc.
 In all currently known cases, \sdom follows the complexity of \dom in the classical and the parameterized setting.
 
@@ -265,10 +264,9 @@ We have also added the parameterized complexity for those graph classes which we
 %As we do not believe that \sdoms is fundamentally different than \doms, our intuition is that also the parameterized complexity mimicks \sdoms. 
 We were able to prove \WTWO-hardness for \textit{bipartite} and \textit{split} graphs by giving parameterized reducing from \doms by solution size. We provide an explicit construction of a kernel for the \textit{planar} case, which exists for \doms~\cite{Alber2004} and \tdoms~\cite{Garnero2019} as well.
 
-We would like to mention that membership of \psdom in \FPT already follows from~\cite{Alber2002}.
-Their algorithm \pdomp can be used to obtain an fpt algorithm with running time $\mathcal{O}(c^{\sqrt{k}}n)$ for some constant $c$ and solution size $k$.
-However, the constant is very large and we were able to give a kernel with reasonably small constants.
-
+We would like to mention that membership of \psdom in \FPT already follows from Alber et al.~\cite{Alber2002}.
+Their algorithm \pdomp can be used to obtain an fpt algorithm with running time $\mathcal{O}(c^{\sqrt{k}}n)$ for some large constant $c$ and solution size $k$.
+%The constant is very large and we were able to give a kernel with reasonably small constants.  % Why is the constant large
 Many gaps are still open for further research.
 We will discuss these questions at the end of this thesis in \cref{ch:closing}.
 
@@ -277,8 +275,13 @@ We will discuss these questions at the end of this thesis in \cref{ch:closing}.
     \caption{\textit{Comparison between the complexities of \dom, \sdom and \tdom in the classical and parameterized setting when parameterized by solution size. 
     Open problems are marked with an ``?''.}}
     \label{tab:complexities}
+    \begin{minipage}[th]{\linewidth}
+    \setcounter{mpfootnote}{\value{footnote}}
+    \renewcommand{\thempfootnote}{\arabic{mpfootnote}}
 
 \resizebox{1.0\textwidth}{!}{
+
+
     \begin{tabularx}{1.5\textwidth}{lllllll}
 
         \arrayrulecolor{TUMBlue}\toprule
@@ -286,30 +289,30 @@ We will discuss these questions at the end of this thesis in \cref{ch:closing}.
         \textbf{Graph Class}                  & \multicolumn{2}{c}{\textbf{\dom}}                       & \multicolumn{2}{c}{\textbf{\sdom}}           & \multicolumn{2}{c}{\textbf{\tdom}}                                                                                                                                \\
         \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
                                               & classical                                               & Parameterized                                & classical                                               & Parameterized              & classical                                    & Parameterized               \\
-        bipartite                             & \NPcs~\cite{Bertossi1984}                               & \WTWOhs~\cite{Raman2008}                                      & \NPcs~\cite{Henning2019}                                & \WTWOhs (this)             & \NPcs~\cite{Pfaff1983}                       & \WTWOhs (cite!)                             \\
+        bipartite                             & \NPcs~\cite{Bertossi1984}                               & \WTWOhs~\cite{Raman2008}                                      & \NPcs~\cite{Henning2019}                                & \WTWOhs \cref{lemma:bipartite}             & \NPcs~\cite{Pfaff1983}                       & ?                             \\
         
-        line graph of bipartite               & \NPcs~\cite{Korobitsin1992}                             & ? & \NPcs~\cite{Galby2020}                                  &     ?         (?)              & \NPcs~\cite{McRae1995}                       &  ?                            \\
+        line graph of bipartite               & \NPcs~\cite{Korobitsin1992}                             & ? & \NPcs~\cite{Galby2020}                                  &     ?                       & \NPcs~\cite{McRae1995}                       &  ?                            \\
         
-        circle                                & \NPcs~\cite{Keil1993}                                   & \WONEhs~\cite{Bousquet2012}                  & \NPcs~\cite{Kloks2021}                                  & ? (?)  & \NPcs~\cite{McRae1995}                       & \WONEhs~\cite{Bousquet2012} \\
+        circle                                & \NPcs~\cite{Keil1993}                                   & \WONEhs~\cite{Bousquet2012}                  & \NPcs~\cite{Kloks2021}                                  & ?  & \NPcs~\cite{McRae1995}                       & \WONEhs~\cite{Bousquet2012} \\
         
-        chordal                               & \NPcs~\cite{Booth1982}                                  & \WTWOhs~\cite{Raman2008}                     & \NPcs~\cite{Henning2019}                                & \WTWOhs (this)               & \NPcs~\cite{Laskar1983}                      & \WONEhs~\cite{Chang1998} by \textit{split}                            \\
+        chordal                               & \NPcs~\cite{Booth1982}                                  & \WTWOhs~\cite{Raman2008}                     & \NPcs~\cite{Henning2019}                                & \WTWOhs (\cref{lemma:splitgraph})               & \NPcs~\cite{Laskar1983}                      & \WONEhs~\cite{Chang1998} by \textit{split}                            \\
         
         $s$-chordal , $s > 3$                          & \NPcs~\cite{Liu2011}                                    & \WTWOhs~\cite{Liu2011}                       & ? (?)                                                     & ? (?)                         & \NPcs~\cite{Liu2011}                         & \WONEhs~\cite{Liu2011}      \\
         
-        split                                 & \NPcs~\cite{Bertossi1984}                               & \WTWOhs~\cite{Raman2008}         & \NPcs~\cite{Henning2019}                                & \WTWOhs \textbf{this}             & \NPcs~\cite{Laskar1983}                      & \WONEhs~\cite{Chang1998}    \\
+        split                                 & \NPcs~\cite{Bertossi1984}                               & \WTWOhs~\cite{Raman2008}         & \NPcs~\cite{Henning2019}                                & \WTWOhs (\cref{lemma:splitgraph})             & \NPcs~\cite{Laskar1983}                      & \WONEhs~\cite{Chang1998}    \\
         
-        3-claw-free                           & \NPcs~\cite{Cygan2011}                                  & \FPTt~\cite{Cygan2011}                        & Prob. Unk                                               & Prob. Unk                  & \NPcs~\cite{McRae1995}                       & Unknown                     \\
+        3-claw-free                           & \NPcs~\cite{Cygan2011}                                  & \FPTt~\cite{Cygan2011}                        & ?                                               & ? & \NPcs~\cite{McRae1995}                       & ? \\
         
-        $t$-claw-free, $t>3$                  & \NPcs~\cite{Cygan2011}                                  & \WTWOhs~\cite{Cygan2011}                     & Prob. Unknown                                           & Unknown                    & \NPcs~\cite{McRae1995}                       & Prob. Unknown               \\
+        $t$-claw-free, $t>3$                  & \NPcs~\cite{Cygan2011}                                  & \WTWOhs~\cite{Cygan2011}                     & ?                                           & ?                    & \NPcs~\cite{McRae1995}                       & ?               \\
         
-        chordal bipartite                     & \NPcs~\cite{Mueller1987}                                & ? (?)                                & \NPcs~\cite{Henning2019}                                & ?                      & \multicolumn{2}{c}{\Ptt~\cite{Damaschke1990}}                               \\
+        chordal bipartite                     & \NPcs~\cite{Mueller1987}                                & ?                                 & \NPcs~\cite{Henning2019}                                & ?                      & \multicolumn{2}{c}{\Ptt~\cite{Damaschke1990}}                               \\
         
-        planar                                & \NPcs~\cite{Garey1979}                                        & \FPTt~\cite{Alber2004}                        & \NPcs                                                   & \FPT \textbf{(this)}                       & \NPcs                                        & \FPTt~\cite{Garnero2018}     \\
+        planar                                & \NPcs~\cite{Garey1979}                                        & \FPTt~\cite{Alber2004}                        & \NPcs                                                   & \FPT (\cref{thm:central})                       & \NPcs                                        & \FPTt~\cite{Garnero2018}     \\
         
         undirected path                                & \NPcs~\cite{Booth1982}                                   & \FPTt~\cite{Figueiredo2022} & \NPcs~\cite{Henning2022}  & ?                     & \NPcs~\cite{Lan2014}                         & ?                     \\
         % 2022 paper for DS proved it not for TDS, so whp. not known for TDS
 
-        dually chordal                        & \multicolumn{2}{c}{\Ptt~\cite{Brandstaedt1998} }         & \multicolumn{2}{c}{? (attempted~\cite{Galby2020})} &                           \multicolumn{2}{c}{\Ptt~\cite{Kratsch1997}}                                                                            \\
+        dually chordal                        & \multicolumn{2}{c}{\Ptt~\cite{Brandstaedt1998} }         & \multicolumn{2}{c}{?\footnotemark} &                           \multicolumn{2}{c}{\Ptt~\cite{Kratsch1997}}                                                                            \\
         
         strongly chordal                      & \multicolumn{2}{c}{\Ptt~\cite{Farber1984} }            & \multicolumn{2}{c}{\Ptt~\cite{Tripathi2021}}  & \NPcs~\cite{Farber1984}                                 &                                                                                                         \\
         
@@ -346,7 +349,9 @@ We will discuss these questions at the end of this thesis in \cref{ch:closing}.
         \midrule
         \bottomrule
     \end{tabularx}
+    \footnotetext[1]{Galby et al. \cite{Galby2020} attempted it, but found a mistake in their reduction.}
 }
+\end{minipage}
     \end{table}
 \end{center}
 
@@ -360,7 +365,7 @@ We will discuss these questions at the end of this thesis in \cref{ch:closing}.
     \resizebox{1.0\textwidth}{!}{
         \input{fig/mathcha/classes.tikz}
     }
-    \caption[Graph inclusions]{\textit{Computational Complexity of \sdom. Graph classes that admit a polynomial time algorithm are marked in \textbf{\textcolor{MATHAGREEN}{green}}, those with an fpt algorithm when parameterized by solution size in \textbf{\textcolor{MATHAYELLOW}{yellow}}, those that are not fpt by solution size in \textbf{\textcolor{MATHARED}{red}}, and those that are unknown are left \textit{white}.
+    \caption[Graph inclusions]{\textit{Computational complexity of \sdom. Graph classes that admit a polynomial time algorithm are marked in \textbf{\textcolor{MATHAGREEN}{green}}, those with an fpt algorithm when parameterized by solution size in \textbf{\textcolor{MATHAYELLOW}{yellow}}, those that are not fpt by solution size in \textbf{\textcolor{MATHARED}{red}}, and those that are unknown are left \textit{white}.
     An \textbf{?} denotes problems where the classical complexity is also unknown.}}
     
     \label{fig:bigpicture}
