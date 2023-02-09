@@ -71,7 +71,15 @@ An  \underline{independent set} of $G$ is a set of pairwise non-adjacent vertice
 A \underline{clique} of $G$ is a set of pairwise adjacent vertices. 
 A \underline{vertex cover} of $G$ is a subset of vertices containing at least one endpoint of every edge. 
 A \underline{dominating set} is a subset $D$ of vertices such that all vertices not contained in are adjacent to some vertex in $D$.
+A \underline{dominating set} is a subset $D$ of vertices such that all vertices not contained in are adjacent to some vertex in $D$.
+The \underline{chromatic number}, $\xi(G)$, of a graph \G is the smallest number of colors, such that adjacent vertices in $V$ are colored differently.
+
 \end{definition}
+
+\begin{graphclass}[Perfect graph]
+If the chromatic number equals the size of the maximum clique, \G is called \underline{perfect}. 
+They are a superclass for many well-known other graph classes.
+\end{graphclass}
 
 \begin{graphclass}[r-partite]
     Let $r \geq 2$ be an integer. A Graph $G = (V, E)$ is called \underline{r-partite} if $V$ admits a partition into $r$ classes such that every edge has its ends in different classes: Vertices in the same partition class must not be adjacent. 
