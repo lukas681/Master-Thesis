@@ -27,7 +27,7 @@ We will start by giving some intractability results and show that \sdom paramete
 
     $G'$ is bipartite because $A$ and $B$ form an independent set on $G'$ that can be cross-wise attached to $X$ and $Y$. 
     $X' = X \cup \{u_2,d_1\} \cup B$ and $Y' = X \cup \{u_1,d_2\} \cup A$ form the partitions of the new bipartite $G'$.
-    It is left to show that $G$ has a ds $D$ of size $k$ if and only if $G'$ has a sds $D'$ of size $k' = k + 2$.
+    It is left to show that $G$ has a ds $D$ of size $k$ if and only if $G'$ has an sds $D'$ of size $k' = k + 2$.
  
     First, assume a ds $D$ in $G$ of size $k$. 
     We know that $D' = D\cup \{d_1,d_2\}$ is an sds in $G'$ of size $k' = k + 2$, because $d_1$ dominates $u_1$ and all $a_i \in A$; $d_2$ dominates $u_2$ and all $b_i \in B$. 
@@ -57,7 +57,7 @@ We use the fact that every dominating set in a split graph can directly be mappe
 \begin{proof}
 
     We reduce from \dom on \textit{split} graphs which is visualized in \cref{fig:splitgraph}.
-    Given a split graph $G = \{V = (K \cup I), E\}$ with more than one vertex and a ds $D$ of size $k$, we can immediately obtain a sds $D'$ by flipping a few vertices:
+    Given a split graph $G = \{V = (K \cup I), E\}$ with more than one vertex and a ds $D$ of size $k$, we can immediately obtain an sds $D'$ by flipping a few vertices:
     If $I \cap D \neq \emptyset$ we replace them respectively with one arbitrary neighbor in $K$.
     All vertices in $I$ are still being dominated and $D \cap K \neq \emptyset$ is sufficient to preserve domination $K$. 
     Note that is necessary to catch the case, where $D \subseteq I$ and witnesses are missing (See \cref{fig:splitgraph}).
@@ -89,8 +89,8 @@ We use the fact that every dominating set in a split graph can directly be mappe
     \begin{equation*}
         \tikzfig{fig/tikz/split}
     \end{equation*}
-\caption[Constructing split graph]{\textit{Obtaining a sds $D'$ form a given ds $D$ in a split graph by flipping all vertices $d_i$ to their corresponding neighbor in the clique $K$.
-The clique $K$ is highlighted in \textbf{\textcolor{TUMBlue}{blue}}
+\caption[Constructing split graph]{\textit{Obtaining an sds $D'$ form a given ds $D$ in a split graph by flipping all vertices $d_i$ to their corresponding neighbor in the clique $K$.
+The clique $K$ is highlighted in {\setulcolor{NTUMBlue}\ul{blue}}
 Note that in $D$, no witnesses are available as $d(d_1,d_5) = 3$.
 After the flip operation, this is fixed.}}
 \end{figure}

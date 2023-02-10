@@ -51,16 +51,16 @@ Fomin and Thilikos~\cite{Fomin2004} started by proving that the initial reductio
 Gutner~\cite{Gutner2009} advanced in 2008 by giving a linear kernel for $K_{3,h}$-topological-minor-free graph classes and a polynomial kernel for $K_h$-topological-minor-free graph classes. 
 In 2012 Philip, Raman, and Sikdar~\cite{Philip2012} showed that $K_{i,j}$-free graph classes admit a polynomial kernel. 
 In an attempt to further expand these ideas to other problems, Bodlaender et al.~\cite{Bodlaender2016} proved that all problems expressible in counting monadic second-order logic satisfying a coverability property admit a polynomial kernel on graphs of bounded genus $g$. 
-Interesting from a theoretical point of view, the constants in these meta-theorems for the kernels obtained are too large to be of practical interest. 
+Interestingly from a theoretical point of view, the constants in these meta-theorems for the kernels obtained are too large to be of practical interest. 
 The question of how an efficient kernel for the \psdom problem can be constructed remains. 
 
 In this chapter, we will transfer the linear kernel with ``reasonable'' small constants for \ptdom described by Garnero and Sau~\cite[arXiv v2]{Garnero2018} to \psdom. 
-We could modify the original reduction rules to preserve the witness properties of a sds. 
+We modified the original reduction rules to preserve the witness properties of an sds. 
 
  \paragraph{The Main Idea} A planar graph \G with a given vertex set $D \subseteq V$ can be decomposed into at most $(3 \cdot \abs{D}-6)$ so-called ``regions'' (\cref{def:region}). 
  If $D$ is a given sds of size $\abs{D}$, the total number of regions in this decomposition depends \underline{linearly} on the size of $D$. 
  We define \textit{reduction rules} (\cref{rgl:rone,rgl:rtwo,rgl:rthree}) to iteratively reduce the number of vertices around a region.
- After, we bound the size of a resulting graph by proving that for a fixed $k$ each region has only a constant number of vertices near by. 
+ After, we bound the size of a resulting graph by proving that for a fixed $k$ each region has only a constant number of vertices nearby. 
 Such a reduction gives us a \textit{kernel} for \psdom.
 
 Interestingly, the reduction rules do not rely on the decomposition itself, but rather consider the neighborhood of every pair of vertices in the graph. 
@@ -69,11 +69,11 @@ The decomposition has just been used as a tool to analyze the kernel size after 
 
 \section{Definitions}
 
-Before stating the reduction rules, we need definitions to capture the ``nicen'' properties we are to exploit. 
+Before stating the reduction rules, we need definitions to capture the ``nice'' properties we are to exploit. 
 They are equal to those given by Garnero and Sau for \ptdom in~\cite[arXiv v2]{Garnero2018} and for \prbdom in~\cite{Garnero2017} which in turn reused ideas introduced by Alber, Fellows and Niedermeier~\cite{Alber2004} for \pdom.
 The main idea is to partition the neighborhoods of both a single vertex and a pair of vertices respectively into three distinct subsets which intuitively classify how much these vertices are confined and how closely they are related to the rest of the graph.
 
-Recall for the following definition the open neighborhood ${N(v) = \{u \in V : \{u,v\} \in E \}}$ and the closed neighborhodd $N[v] = N(v) \cup \{v\}$ of a vertex $v$.
+Recall for the following definition that ${N(v) = \{u \in V : \{u,v\} \in E \}}$ and $N[v] = N(v) \cup \{v\}$ the closed neighborhood of a vertex $v$.
 
 \begin{definition}
     \label{def:nv}
@@ -91,7 +91,7 @@ Recall for the following definition the open neighborhood ${N(v) = \{u \in V : \
     \begin{equation*}
         \tikzfig{fig/tikz/neighborhoods-single-vertex}
     \end{equation*}
-   \caption[The neighbordhood of a single Vertex $v$]{\textit{The neighborhood of a single vertex v split to $N_1(v)$ \textbf{\textcolor{NONE}{(purple)}}, $N_2(v)$ \textbf{\textcolor{NTWO}{(blue)}}, and $N_3(v)$ \textbf{\textcolor{NTHREE}{(olive)}}.
+   \caption[The neighbordhood of a single Vertex $v$]{\textit{The neighborhood of a single vertex v split to $N_1(v)$ ({\setulcolor{NONE}\ul{purple}}), $N_2(v)$ ({\setulcolor{NTWO}\ul{blue}}), and $N_3(v)$ ({\setulcolor{NTHREE}\ul{olive}}).
     $N_1(v)$'s are those having neighbors outside $N(v)$, $N_2(v)$'s are a buffer between $N_1(v)$ and $N_3(v)$, and $N_3(v)$-vertices are confined in $N(v)$}.}
 \end{figure}
 
@@ -126,13 +126,13 @@ Next, we will extend this notation to a pair of vertices which we will later use
 Similiar as before, \textbf{$\mathbf{N_1(v,w)}$} contains vertices with at least one neighbor outside $N[v] \cup N[w]$, \textbf{$\mathbf{N_2(v, w)}$}-vertices are in between those from $N_3(v,w) \cup \{v, w\}$ and $N_1(v,w)$, and \textbf{$\mathbf{N_3(v,w)}$} contains vertices isolated from the rest of the graph. 
 
 A vertex $v \in N_i(v)$ is not necessarily also in $N_i(v,w)$! Observe the vertex $z$ in \cref{fig:neighborhoodDouble}. 
-Unlike the sets $N_1(v), N_2(v)$ and $N_3(v)$, in every of the distinct sets $N_i(v,w)$ ($i \in [3]$) can be vertices that belong to a sds. See \cref{fig:alldominating} for examples.
+Unlike the sets $N_1(v), N_2(v)$ and $N_3(v)$, in every one of the distinct sets $N_i(v,w)$ ($i \in [3]$) there can be vertices that belong to an sds. See \cref{fig:alldominating} for examples.
 
 \begin{figure}[]
     \begin{equation*}
         \tikzfig{fig/tikz/neighborhoods-two-vertices}
     \end{equation*}
-    \caption[The neighborhood of a pair of vertices]{\textit{The neighborhood of a pair of vertices. Vertices from $N_3(v,w)$ are colored \textcolor{NTHREE}{olive}, $N_2(v,w)$'s \textcolor{NTWO}{blue} and $N_1(v,w)$'s \textcolor{NONE}{purple}.
+    \caption[The neighborhood of a pair of vertices]{\textit{The neighborhood of a pair of vertices. Vertices from $N_3(v,w)$ are colored {\setulcolor{NTHREE}\ul{olive}}, $N_2(v,w)$'s {\setulcolor{NTWO}\ul{blue}} and $N_1(v,w)$'s {\setulcolor{NONE}\ul{purple}}.
     Note that $z \in N_1(w)$, because there is an edge to a neighbor of $v$, but $z \notin N_1(v,w)$ (and rather $z \in N_3(v,w)$)}.}
     \label{fig:neighborhoodDouble}
 \end{figure}
@@ -155,13 +155,17 @@ Before stating the reduction rules, we want to clarify when we consider a graph 
     A graph \G is \underline{reduced under} a set of rules if either none of them can be applied to $G$ or the application of any of them creates a graph isomorphic to $G$.
 \end{definition}
 
-\cref{def:reduced} differs from the definition usually used where a graph $G$ is \textit{reduced} under a set of reduction rules if none of them can be applied to G anymore (compare e.g.~\cite{Fomin2019}). Some of our reduction rules (\cref{rgl:rone} or \cref{rgl:rtwo}) could be applied \textit{ad infinitum} creating an endless loop that does not change $G$ anymore. Our definition guarantees termination in that case. All of the given reduction rules are local and only need the neighborhood of at most two vertices and replace them partially with gadgets of constant size. Checking whether the application of one of the rules creates an isomorphic graph can be accomplished in constant time.
+\cref{def:reduced} differs from the definition usually used where a graph $G$ is \textit{reduced} under a set of reduction rules if none of them can be applied to G anymore (compare e.g.~\cite{Fomin2019}). Some of our reduction rules (\cref{rgl:rone} or \cref{rgl:rtwo}) could be applied \textit{ad infinitum} creating an endless loop that does not change $G$ anymore. Our definition guarantees termination in that case. 
+All of the given reduction rules are local and only need the neighborhood of at most two vertices.
+They are replaced partially with gadgets of constant size.  
+Checking whether the application of one of the rules created an isomorphic graph can therefore be accomplished in constant time because only the neighbors of these vertices might have changed and recognizing this can already be done while the rule itself is active. 
+If all rules created an isomorphic graph, we exit the reduction procedure.
 
 \subsection{Regions in Planar Graphs}
 
 Alber, Fellows and Niedermeier~\cite{Alber2004} gave a novel approach to look at planar graphs. In their analysis, they stated a constructive algorithm that decomposes a planar graph into local ``regions''. Intuitively, assume that we have a fixed plane embedding of a planar graph \G. If we pick two distinct vertices $v$ and $w$ from a given \sdom $D \subseteq V$ that are at most of distance two apart, we can try to find two distinct paths from $v$ to $w$ that span up the boundaries of a face and enclose as many other vertices as possible. 
 
-The following definitions are based on those given by Garnero and Sau in~\cite[arXiv v2]{Garnero2018} and will lead toward a clean definition of a \textit{region} and what we understand as a \dreg. More detailed explanations and concrete examples can be found in their paper.
+The following definitions are based on those given by Garnero and Sau in~\cite[arXiv v2]{Garnero2018} and will lead towards a clean definition of a \textit{region} and what we understand as a \dreg. More detailed explanations and concrete examples can be found in their paper.
 
 % TODO Define Contracting and clockwise order
 \begin{definition}
@@ -213,8 +217,7 @@ We now have all the definitions ready to formally define a maximal \dreg on plan
     \noindent A \dreg is \underline{maximal} if there is no region $R \notin \mathfrak{R}$ such that $\mathfrak{R}' = \mathfrak{R} \cup \{R\}$ is a \dreg~with $V(\mathfrak{R}) \subsetneq V(\mathfrak{R}')$.
 \end{definition}
 
-Intuitively, the first condition ensures that only a boundary path can be shared and the second one is that these boundary paths are indeed the delimiter between these regions.
-
+Intuitively, the first condition ensures that only a boundary path can be shared and the second one is that these boundary paths are indeed the frontier between these regions.
 \cref{fig:maxRegionDecompose} gives an example of how to decompose a graph into a maximal \dreg for a given sds $D$ of size $3$.
 
 \begin{figure}[!ht]
@@ -222,13 +225,13 @@ Intuitively, the first condition ensures that only a boundary path can be shared
         \tikzfig{fig/tikz/region-example}
     \end{equation*}
      \caption[Region Decomposition]{\textit{Left: A maximal \dreg $\mathfrak{R}$, where $D = \{d_1,d_2,d_3\}$ form am sds. 
-   There are two regions between $d_2$ and $d_1$ (\textbf{\textcolor{FILLPURPLE}{purple}} and \textbf{\textcolor{TUMBlue}{blue}}), one region between $d_1$ and $d_3$ (\textbf{\textcolor{FILLDARKBLUE}{purple}}) and one region between $d_2$ and $d_3$ (\textbf{\textcolor{MATHAGREEN}{green}}). 
+   There are two regions between $d_2$ and $d_1$ ({\setulcolor{MATHARED}\ul{red}} and {\setulcolor{MATHABLUE}\ul{purple}}), one region between $d_1$ and $d_3$ ({\setulcolor{MATHABLUE}\ul{purple}}) and one region between $d_2$ and $d_3$ ({\setulcolor{MATHAGREEN}\ul{green}}). 
     Observe that this \dreg, some neighbors of $d_1$ are not covered by any $vw$-region for any $v,w \in D$. 
     Our reduction rules are going to take care of them and bound this number of vertices to obtain the kernel. 
     Right: The corresponding underlying multigraph $G_{\mathfrak{R}}$. Every edge denotes a region between $d_i$ and $d_j$.}}\label{fig:maxRegionDecompose}
 \end{figure}
 
-We are introducing a special subset of a region, namely a \textit{simple region} where every vertex is a common neighbor of $v$ and $w$. 
+We introduce a special subset of a region, namely a \textit{simple region} where every vertex is a common neighbor of $v$ and $w$. 
 They will appear in many unexpected astonishing places and are an important tool to operate on small parts of a plane graph.
 We will use the upcoming \cref{rgl:rthree} to bound the size of \textit{simple regions}. 
 
@@ -247,8 +250,8 @@ We will use the upcoming \cref{rgl:rthree} to bound the size of \textit{simple r
     \begin{equation*}
         \tikzfig{fig/tikz/simple-region-example}
     \end{equation*}
-   \caption[A simple region]{\textit{A simple region with two vertices from $N_1(v,w)$ (\textcolor{NONE}{purple}) setting the boundary, two vertices from $N_2(v,w)$ (\textcolor{NTWO}{blue}) and some vertices from $N_3(v,w)$ (\textcolor{NTHREE}{olive}) in between.}}
-    \label{fig:simpleRegionExample}
+   \caption[A simple region]{\textit{A simple region with two vertices from $N_1(v,w)$ ({\setulcolor{NONE}\ul{purple}}) setting the boundary, two vertices from $N_2(v,w)$ ({\setulcolor{NTWO}\ul{blue}}) and some vertices from $N_3(v,w)$ ({\setulcolor{NTHREE}\ul{olive}}) in between.}}
+   \label{fig:simpleRegionExample}
 \end{figure}
 
 In the analysis, we will also use properties of the \textit{underlying multigraph} of a \dreg $\mathfrak{R}$. Refer to \cref{fig:maxRegionDecompose} for an example.
@@ -260,7 +263,7 @@ In the analysis, we will also use properties of the \textit{underlying multigrap
 \section{The Big Picture}
 The following \Cref{fig:overview} gives an overview on how to obtain a linear kernel for \psdom.
  We will first define three polynomial-time reduction rules (\cref{rgl:rone,rgl:rtwo,rgl:rthree} are green in the overview) and prove that they preserve the solution size $k$. 
-We will use the existence of a maximal \dreg~$\mathfrak{R}$ on planar graphs to bound the number of vertices that fly around a given region $R \in \mathfrak{R}$ after the reduction rules have exhaustively been applied. 
+We will use the existence of a maximal \dreg~$\mathfrak{R}$ on planar graphs to bound the number of vertices that fly around a given region $R \in \mathfrak{R}$ after the reduction rules have been exhaustively applied. 
 Additionally, \cref{rgl:rone} helps us to bound on the number of vertices that are not enclosed by any $R$. 
 
 We will often encounter hidden simple regions which are reduced by \cref{rgl:rthree} and therefore of constant size by \cref{lemma:simpleregionbound}. As we know that the total number of regions R in the \dreg is linear in $k$, we obtained a linear kernel for the \psdom as well.
@@ -271,7 +274,8 @@ We will often encounter hidden simple regions which are reduced by \cref{rgl:rth
         \tikzfig{fig/tikz/overview}
     }
     \end{equation*}
-    \caption[Structure of the Proofs]{\textit{The plan for obtaining a linear kernel for \psdom. Starting with the reduction rules in \textcolor{green}{green} we will derive the number of vertices inside and outside of a $vw$-region. Lemmas to bind the number of vertices are marked in \textbf{\textcolor{MATHAYELLOW}{yellow}.}}}\label{fig:overview}
+    \caption[Structure of the Proofs]{\textit{The plan for obtaining a linear kernel for \psdom. Starting with the reduction rules in {\setulcolor{green}\ul{green}} we will derive the number of vertices inside and outside of a $vw$-region. Lemmas to bind the number of vertices are marked in {\setulcolor{MATHAYELLOW}\ul{yellow}}
+    }}\label{fig:overview}
 \end{figure}
 
 \section{The Reduction Rules}
@@ -280,9 +284,9 @@ Following the ideas proposed by Garnero and Sau~\cite[arXiv v2]{Garnero2018}, we
 Especially in \cref{rgl:rtwo}, we relied on the second revision of the paper electronically submitted to \textit{arXiv}.
 In the later version, the authors improved their results by giving a better kernel size, but it turned out that these rules just work for \tdom, but not for \sdom anymore.
 After looking deeper into the structure of a simple region, we were able to give a slightly more complex reduction \cref{rgl:rthree} having the same bounds as in~\cite{Garnero2018}.  
-Our main challenge was to preserve the witness properties of a sds.
- because a vertex inside a region can be important as a witness for vertices in another region. 
-A tds has fewer side effects as the witnesses are direct neighbors of the dominators and they do not have too much influence on the rest of the graph as the witnesses have in a sds.
+Our main challenge was to preserve the witness properties of an sds.
+This is because a vertex inside a region can be important as a witness for vertices in another region. 
+A tds has fewer side effects as the witnesses are direct neighbors of the dominators and they do not have too much influence on the rest of the graph as the witnesses have in an sds.
 Therefore, we had to make sure that the effect of vertices to more distanced vertices is preserved by the reduction.
 
 \subsection{Reduction Rule I: Shrinking $N_3(v)$}
@@ -321,7 +325,7 @@ If $p = v$ then $w$ is a direct witness for $v$ and if $p \in N(v)$, there exist
 \noindent We will now prove the correctness of this rule.
 
 \begin{lemma}\label{lemma:correctnessone}
-    Let \G be a graph and let $v \in V$. If $G'$ is the graph obtained by applying \cref{rgl:rone} on $G$, then $G$ has a sds of size $k$ if and only if $G'$ has a sds of size $k$.
+    Let \G be a graph and let $v \in V$. If $G'$ is the graph obtained by applying \cref{rgl:rone} on $G$, then $G$ has an sds of size $k$ if and only if $G'$ has an sds of size $k$.
 \end{lemma}
 \begin{proof}
         Assume $D$ to be an sds set in $G$ of size $k$. 
@@ -357,8 +361,8 @@ In an sds, the witness is allowed to be further away which must be taken into ac
 
 % Extending the approach for a linear kernel for \dom proposed by Alber et al. in~\cite{Alber2004}, Garnero and Sau transferred these results in~\cite{Garnero2018} to the \tdom problem. 
 
-It can be observed that in the worst case, four vertices are required to semitotally dominate $N(v,w)$ of two vertices $v,w \in V$: $v$, $w$ and two witnesses for them. 
-Exemplary, observe the graph consisting of two distinct $K_{1,m}$ with $m \in \mathbb{N}$ with centers $v$ and $w$.
+It can be observed that in the worst case, four vertices are required to semitotally dominate $N(v,w)$ for $v,w \in V$: $v$, $w$ and two witnesses for them. 
+For instance, observe the graph consisting of two distinct $K_{1,m}$ with $m \in \mathbb{N}$ with centers $v$ and $w$.
 
 Before we give the concrete reduction rule, we need to define three sets. Intuitively, we first try to find a set $\tilde D \subseteq N_{2,3}(v,w)$ of size at most three dominating $N_3(v,w)$ without using $v$ or $w$. If no such set exists, we allow $v$ (resp. $w$) and try to find one again. 
 If we now find such a set, we can conclude that $v$ ($w$) must be part of a solution.
@@ -378,13 +382,13 @@ Furthermore, we shortly denote $\bigcup \Dv = \bigcup\limits_{D \in \Dv}D $ and 
 % TODO Maybe make better text here.
 $\Dvw$ contains subsets of $N_{2,3}(v,w)$ of size at most three that dominate $N_3(v,w)$.
 If $\Dvw \neq \emptyset$, we cannot reduce much because all subsets could be part of a minimum solution that does not use $v$ and $w$ at all.
-On the other hand, the sets $\Dv, \Dw$ try to activate $v$ (resp. $w$) and two more vertices in $N_{2,3}$ to dominate $N_3(v,w)$ with less than four vertices.
+On the other hand, the sets $\Dv, \Dw$ try to activate $v$ (resp. $w$) and two more vertices in $N_{2,3}(v, w)$ to dominate $N_3(v,w)$ with less than four vertices.
 If at least one of $\Dv,\Dw \neq \emptyset$, we know that there are better solutions than just selecting both $v,w$ and two neighbors with $v$ or $w$ and then we can reduce $N(v,w)$ respectively.
 
 Note: Assuming that $v$ and $w$ are closely connected with $d(v,w) \leq 2$, it might suffice to consider only sets of size at most three, because an intermediate vertex could witness $v$ and $w$ at the same time. 
-In the later analysis, the \dreg exactly creates regions around $N(v,w)$ requiring at least one path from $v$ to $w$ lengthed two. 
+In the later analysis, the \dreg exactly creates regions around $N(v,w)$ requiring at least one path from $v$ to $w$ of length two. 
 As the following rule is only used to locally investigate such regions, we could add the requirement of a distance of two to it and work with sets of size at most three. 
-We believe that this could further improve the kernel and a deeper discussion can be found at the end of this thesis \cref{ch:closing}.
+We believe that this could further improve the kernel and a deeper discussion can be found at the end of this thesis, in  \cref{ch:closing}.
 
 We are now ready to state \cref{rgl:rtwo}. An exemplary application is shown in \cref{fig:ruleTwo}.
 
@@ -457,7 +461,7 @@ The second fact states that if  $\Dv$ (resp. $\Dw$) is empty, too, we only need 
 \begin{proof}
 As $\Dv = \emptyset$, no set of the form $\{v\}$, $\{v, u\}$ or $\{v, u, u'\}$ with $u, u' \in N_{2,3}(v,w)$ can dominate $N_3(v,w)$. 
 Since also $\Dvw = \emptyset$ any sds of $G$ must contain $v$ or at least four other vertices by \cref{fact:f1}.
-In the latter case, we replace these four vertices with $v$, $w$ and two neighbors respectively can conclude that $v$ belongs to the solution.
+In the latter case, we replace these four vertices with $v$, $w$ and two additional neighbors as witnesses.
 Again, $k$ becomes either smaller or stays unchanged.
 \end{proof}
 
@@ -474,12 +478,12 @@ Assume an sds $D$ in $G$ and by assumption $\Dvw = \emptyset$.
 We show that $G'$ has an sds with $\abs{D'} \leq \abs{D}$. 
     \begin{enumerate}
         \item Assume $ \Dv = \emptyset  \wedge \Dw = \emptyset $. By \cref{fact:f2}, both $v, w \in D$.
-        Therefore, $v'$,$w'$, and potentially $y$ and $y'$ are dominated by $v$ or $w$ in $G'$.
+        Therefore, $v'$, $w'$, and potentially $y$ and $y'$ are dominated by $v$ or $w$ in $G'$.
         
         We have three cases: Either $v$ and $w$ have their own witnesses ($d(v,w) > 2$), or they share one witness on a path from $v$ to $w$ ($d(v,w)= 2$) is required, or they witness each other directly. ($d(v,w) <2$).
         Not that the rule preserves these distances.
 
-        We will now build a sds $D'$ in $G'$ depending on which vertices from $D \cap N_{2,3}(v,w)$ have been removed. 
+        We will now build an sds $D'$ in $G'$ depending on which vertices from $D \cap N_{2,3}(v,w)$ have been removed. 
 
         \begin{itemize}
             \item If the rule has not removed any $d \in D$, we simply set $D' = D$. 
@@ -496,7 +500,7 @@ We show that $G'$ has an sds with $\abs{D'} \leq \abs{D}$.
             Even if the rule has removed a vertex $z \in D \cap N_{2,3}(v,w)$, we can ignore that, because \cref{fact:f1} states that $v$ and $w$ will witness the same vertices as $z$ did. Hence, we set $D' = D \setminus N_{2,3}(v,w)$.
         \end{itemize}
         
-        In all of the cases, it follows that $D'$ is an sds of $G'$ with $\abs{D'} \leq \abs{D}$ 
+        In all of the cases, it follows that $D'$ is an sds of $G'$ with $\abs{D'} \leq \abs{D}$.
         
         \item  Now, assume $ \Dv \neq \emptyset  \wedge \Dw = \emptyset$: As $\Dw = \emptyset$ and \cref{fact:f2}, we know that $v \in D$ and $v$ dominates $N_{2,3}(v)$. 
         If a vertex $d \in D \cap N_{2,3}(v)$ was removed, we set $D' = D \setminus N_{2,3}(v) \cup \{v'\}$, and $D' = D$ otherwise.
@@ -507,7 +511,7 @@ We show that $G'$ has an sds with $\abs{D'} \leq \abs{D}$.
         \item  $ \Dv = \emptyset  \wedge \Dw \neq  \emptyset $: The proof is symmetrical to the previous case.
     \end{enumerate}
 
-    Let $D'$ be a sds in $G'$ and $\Dvw =  \emptyset$. 
+    Let $D'$ be an sds in $G'$ and $\Dvw =  \emptyset$. 
     We show that $G$ has an sds $D$ with $\abs{D} \leq \abs{D'}$ by case distinction. 
     \begin{enumerate}
         \item  $\Dv = \emptyset \wedge \Dw = \emptyset$: In any case we know that $v,w \in D$ to dominate $v'$ and $w'$ and therefore dominating $N_{2,3}(v,w)$ in $G$. 
@@ -546,10 +550,10 @@ Recall that in a \textit{simple region} $R$ the entire neighborhood of the poles
 By planarity, a \textit{simple region} has at most two vertices from $N_1(v,w)$ (namely the border $\partial$ R), two vertices from $N_2(v,w)$ connected to the border and unlimited $N_3(v,w)$ vertices squeezed in the middle.
 Unlike in a normal $vw$-region, every \textit{simple region} can be semitotally dominated by at most two vertices: $v$ and $w$, because $v$ instantly witnesses $w$ and $V(R)$ is dominated by them as well and we can assume $V(R) \cap D = \emptyset$.
 This does not hold for a tds, because $v$ and $w$ do not witness each other and probably a vertex from inside the region must be used as a witness for a pole.
-But on the other side, the witness for a vertex $d \in D \cap V(R \setminus \partial R)$ in a sds can have a witness outside the region and a solution without $v$ or $w$ can exist. 
+But on the other side, the witness for a vertex $d \in D \cap V(R \setminus \partial R)$ in an sds can have a witness outside the region and a solution without $v$ or $w$ can exist. 
 In a tds where we know that $v$ or $w$ must be part of a solution, we can replace all inner vertices with one vertex $y$ and simulate an $\mathnormal{OR}$ gadget.
 If $y \in D$ in a tds $D$, then immediately either $v \in D$ or $w \in D$ to witness $y$ as well. But if $y \in D$ then $v \in D$ or $w \in D$ to dominate $y$.
-However, for a sds the situation is different because the witness for $y$ is not necessarily $v$ or $w$.
+However, for an sds the situation is different because the witness for $y$ is not necessarily $v$ or $w$.
 
 A tds is easier to handle because of the strict witness property and therefore, we had to come up with a novel reduction rule for \textit{simple regions}.
 
@@ -579,7 +583,7 @@ We defined $G[V]$ to be the induced subgraph on the vertices in $V$.
 Before proving the correctness of this rule, we will quickly discuss the idea behind it.
 
 In \cref{case:rtt} we need at most two vertices to dominate $V(R \setminus \partial R)$ because only an induced path with three vertices could be dominated by one vertex.
-The best way to do that is using $v$,$w$ or both and we add two vertices $y$ and $y'$ to simulate an $\mathrm{OR}$ gadget.
+The best way to do that is using $v$, $w$ or both and adding two vertices $y$ and $y'$ to simulate an $\mathrm{OR}$ gadget.
 Either $\{y,y'\} \subseteq D$, $v \in D$ or $w \in D$ for any sds $D$ in $G$.
 If we would add only one vertex $y$ (see \cref{case:rto}), then $y \in D$ dominates $v$ and $w$, and could potentially be witnessed by another neighbor outside $V(R \setminus \partial R)$.
 This would lead to $v,w \notin D$ in $G'$ and a smaller solution, although $G$ requires at least one of them.
@@ -587,7 +591,7 @@ To preserve this property, our construction needs to add two vertices.
 
 In \cref{case:rto} we dominate $V(R \setminus \partial R) \cong P_3$ with one single vertex $p_2$ in the middle without using $v$ or $w$.
 This vertex is represented by the new vertex $y$ in $G'$ which witnesses and dominates the same vertices as $p_2$ in $G$.
-If we would use the same gadget as in \cref{case:rtt}, we deteriorate our solution because  $v$ or $w$ would be forced into a sds $D$ in $G'$, but only $p_2 \in D$ might be enough in $G$.
+If we would use the same gadget as in \cref{case:rtt}, we deteriorate our solution because  $v$ or $w$ would be forced into an sds $D$ in $G'$, but only $p_2 \in D$ might be enough in $G$.
 See \cref{fig:rulethree} for an example of both cases.
 
 \begin{lemma}[Correctness of \cref{rgl:rthree}]\label{lemma:correctnessthree}
@@ -617,15 +621,15 @@ See \cref{fig:rulethree} for an example of both cases.
 
         First assume \cref{case:rto} has applied on $G$ and $V(R \setminus \partial R) \cong P_3$. 
         We denote this induced path as $(p_1,p_2,p_3)$.         
-         If neither $\{p_1,p_2,p_3\} \cap D = \emptyset$, we set $D' = D$, trivially preserving a sds. 
+         If neither $\{p_1,p_2,p_3\} \cap D = \emptyset$, we set $D' = D$, trivially preserving an sds. 
          Otherwise, $p_2 \in D$ is forced because this is the only way to dominate $V(R \setminus \partial R)$ with exactly one vertex inside. 
          We set $D' = D \setminus \{p2\} \cup \{y\}$ and dominate $\{y,y'\}$ and witnesse $N(v) \cup N(w)$ which are the same as $p_2$ did. 
          This case is depicted in \cref{fig:rulethree} on the \textit{right}.
 
          Now assume \cref{case:rtt} has applied and $V(R \setminus \partial R) \ncong P_3$. 
-         Let us denote this induced path as $(p_1,p_2,p_3)$. We observe that without contradicting the planarity of $G$ the induced subgraph of the vertices $G[V(R \setminus \partial R)]$ is a subgraph of path lengthed $\abs{V(R \setminus \partial R)}$ and at most three. 
+         Let us denote this induced path as $(p_1,p_2,p_3)$. We observe that without contradicting the planarity of $G$ the induced subgraph of the vertices $G[V(R \setminus \partial R)]$ is a subgraph of path of length $\abs{V(R \setminus \partial R)}$ and at most three. 
 
-          By assumption, we either have a $P_3$ with at least one missing edge or a larger path. 
+          By assumption, we either have a $P_3$ with at least one missing edge or a longer path. 
           In both cases, it is impossible to dominate this path with only one single vertex from the path.
          Hence, we set $D' = D$ and the path is dominated by $v$ or $w$
          In both cases $\abs{D} = \abs{D'}$
@@ -687,11 +691,11 @@ Check whether an $P_3$ is induced inside $V(R \setminus \partial R)$ can be done
 
 \section{Bounding the Size of the Kernel}
 
-We now put all the pieces together and prove the main result: A kernel which size is linearly bounded by the solution size $k$. 
+We now put all the pieces together and prove the main result: a kernel whose size is bounded by a linear function dependent only on the solution size $k$. 
 For that purpose, we distinguish between those vertices that are covered inside a region in a maximal \dreg and those that are not. 
 In both cases, our reduction rules bound the number of vertices to a constant size for a fixed region.
 \cref{lemma:numRegions} states that for any given dominating set $D$, we can partition the whole graph into a linear number of regions and we know that we have linearly many vertices left in the whole graph.
-In particular, we show that given a sds $D$ of size $k$, there exists a maximal \dreg $\mathfrak{R}$ such that:
+In particular, we show in the next sections that given an sds $D$ of size $k$, there exists a maximal \dreg $\mathfrak{R}$ such that:
 
 \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
     \item $\mathfrak{R}$ has only at most $3 \abs{D} - 6$ regions;
@@ -701,7 +705,7 @@ In particular, we show that given a sds $D$ of size $k$, there exists a maximal 
 \end{enumerate}
 
 The combination of these three statements will give us a linear kernel. 
-\cref{fig:overview} depicts these three goals in \textbf{\textcolor{MATHAYELLOW}{yellow}}.
+\cref{fig:overview} depicts these three goals in {\setulcolor{MATHAYELLOW}\ul{yellow}}.
 
 \subsection{Bounding the Size of a Region}
 
