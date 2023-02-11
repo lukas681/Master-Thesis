@@ -919,7 +919,7 @@ This was already observed by Garnero and Sau~\cite{Garnero2018} and a more forma
 Because every semitotal dominating set is indeed also a dominating set, we can safely apply it to \psdom as well. 
 
 \begin{lemma}[{\cite[Proposition 1 and Lemma 5]{Alber2004}}]\label{lemma:numRegions}
-    Let G be a reduced plane graph and let D be a \sdom with $\abs{D}\geq 3$. There is a maximal D-region decomposition of G such that $\abs{R} \leq 3 \cdot \abs{D} - 6$.
+    Let G be a reduced plane graph and let $D$ be a sds with $\abs{D}\geq 3$. There is a maximal D-region decomposition of G such that $\abs{R} \leq 3 \cdot \abs{D} - 6$.
 \end{lemma}
 
 Furthermore, the overall reduction procedure runs in polynomial time:
@@ -929,14 +929,14 @@ Furthermore, the overall reduction procedure runs in polynomial time:
 \end{lemma}
 \begin{proof} 
 Testing whether \cref{rgl:rone} can be applied on every vertex takes $\sum_{v\in V} \mathcal{O}(d(v)) = \mathcal{O}(n)$.
-\cref{rgl:rtwo,rgl:rthree} must be applied on every pair of vertices and take time $\sum_{v,q \in V}\mathcal{O}(d(v) + d(w)) = \mathcal{O}(n^2)$
+\cref{rgl:rtwo,rgl:rthree} must be applied on every pair of vertices and take time $\sum_{v,w \in V}\mathcal{O}(d(v) + d(w)) = \mathcal{O}(n^2)$
 we assume that checking for termination as we defined in \cref{def:reduced} takes only constant time in each step.
 In the worst case, in each iteration, only one rule will be applied and one vertex reduced. 
 Hence, we have to do at most $n$ iterations.
 Therefore, the graph can be reduced in time $\mathcal{O}(n^3)$.
 \end{proof}
 
-\noindent By utilizing all the previous results, we are now finally ready to proof the \cref{thm:central}: 
+\noindent By utilizing all the previous results, we are now finally ready to prove \cref{thm:central}: 
 
 \centraltheo*
 
