@@ -269,9 +269,9 @@ Additionally, \cref{rgl:rone} helps us to bound on the number of vertices that a
 We will often encounter hidden simple regions which are reduced by \cref{rgl:rthree} and therefore of constant size by \cref{lemma:simpleregionbound}. As we know that the total number of regions R in the \dreg is linear in $k$, we obtained a linear kernel for the \psdom as well.
 \begin{figure}[!ht]
     \begin{equation*}
-    \scalebox{.9}
+    \scalebox{0.8}
     {
-        \tikzfig{fig/tikz/overview}
+        \tikzfig{fig/tikz/obtainingKernel}
     }
     \end{equation*}
     \caption[Structure of the Proofs]{\textit{The plan for obtaining a linear kernel for \psdom. Starting with the reduction rules in {\setulcolor{green}\ul{green}} we will derive the number of vertices inside and outside of a $vw$-region. Lemmas to bind the number of vertices are marked in {\setulcolor{MATHAYELLOW}\ul{yellow}}
@@ -325,6 +325,7 @@ If $p = v$ then $w$ is a direct witness for $v$ and if $p \in N(v)$, there exist
 \end{minipage}
 
 \noindent We will now prove the correctness of this rule.
+
 
 \begin{lemma}\label{lemma:correctnessone}
     Let \G be a graph and let $v \in V$. If $G'$ is the graph obtained by applying \cref{rgl:rone} on $G$, then $G$ has an sds of size $k$ if and only if $G'$ has an sds of size $k$.
