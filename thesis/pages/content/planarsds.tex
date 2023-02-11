@@ -314,6 +314,7 @@ If $p = v$ then $w$ is a direct witness for $v$ and if $p \in N(v)$, there exist
     \label{fig:ruleOne}
 \end{figure}
 
+\begin{minipage}{\textwidth}
 \begin{rgl}\label{rgl:rone}
     Let \G be a graph and let $v \in V$. If $\abs{\Nthreev} \geq 1$:
     \begin{itemize}
@@ -321,6 +322,7 @@ If $p = v$ then $w$ is a direct witness for $v$ and if $p \in N(v)$, there exist
         \item add a vertex $v'$ and an edge $\{v, v'\}$.
     \end{itemize}
 \end{rgl}
+\end{minipage}
 
 \noindent We will now prove the correctness of this rule.
 
@@ -698,16 +700,15 @@ In both cases, our reduction rules bound the number of vertices to a constant si
 In particular, we show in the next sections that given an sds $D$ of size $k$, there exists a maximal \dreg $\mathfrak{R}$ such that:
 
 \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
-    \item $\mathfrak{R}$ has only at most $3 \abs{D} - 6$ regions;
-    \item $V(\mathfrak{R})$ covers most vertices of V. 
-    There are at most $97 \cdot \abs{D}$ vertices outside of any region;
-    \item each region of $\mathfrak{R}$ contains at most $139$ vertices.
+    \item Each region of $\mathfrak{R}$ contains at most $89$ vertices (\cref{chp:sizeRegion});
+    \item $V(\mathfrak{R})$ covers most vertices of $V$. There are at most $97 \cdot \abs{D}$ vertices outside of any region (\cref{cpt:outside});
+    \item $\mathfrak{R}$ has only at most $3 \abs{D} - 6$ regions (\cref{cpt:numRegion}).
 \end{enumerate}
 
 The combination of these three statements will give us a linear kernel. 
 \cref{fig:overview} depicts these three goals in {\setulcolor{MATHAYELLOW}\ul{yellow}}.
 
-\subsection{Bounding the Size of a Region}
+\subsection{Bounding the Size of a Region}\label{chp:sizeRegion}
 
 We start with a more fine-grained analysis of the impact of the different cases of \cref{rgl:rtwo} on a $vw$-region. 
 The main idea is to count the number of simple regions in the $vw$-region and then use the bound on the size of a simple region after \cref{rgl:rthree} was applied exhaustively. 
@@ -759,16 +760,20 @@ We continue by giving a constant bound on the number of simple regions that cove
 
 Observe that in the first case, we can assume that no case of \cref{rgl:rtwo} has been applied, but the claim is a direct consequence of the assumption $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$. If \cref{case:c2} or \cref{case:c3} have been applied, $N_{2,3}(v,w)$ gets reduced and the second case can be applied. For the sake of completeness, we will restate (a slightly adjusted version of) the proof from Garnero and Sau~\cite[Fact 6, arXiv v2]{Garnero2018}. 
 
-Note that this analysis provides a quick upper bound that might not be tight and executing it more sophisticated could yield a better bound because taking both $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$ in concern, our regions might get even more restricted.
+Note that this analysis provides a not necessarily tight upper bound and analyzing it more sophisticated will likely yield a better bound.
+This could possibly be improved, since taking both $\Dv \neq \emptyset$ and $\Dw \neq \emptyset$, our regions might get even more restricted.
 
 \begin{proof}
         We partition $N_3(v,w)$ into the distinct $N_3(v,w) \setminus N(w)$, $N_3(v,w) \setminus N(v)$ and $N_3(v,w) \cap N(v) \cap N(w)$ and then analyze how many simple regions can there be in the worst case.
 
     \begin{enumerate}
-        \item Because $\Dv \neq \emptyset$ there exists $D = \{v,u,u'\} \in \Dv$ (a smaller set will give a better bound). By definition we know that $D$ dominates $N_3(v,w)$ and also $N_3(v,w) \setminus N(v)$. Therefore, all vertices in $N_3(v,w) \setminus N(v)$ must be neighbors of $w$ and either $u$ or $u'$ and in the worst case at most three simple regions are required. By assumption, $\Dw \neq \emptyset$ as well, and therefore $N_3(v,w) \setminus N(w)$ is bounded by at most three simple regions, too.
+        \item Because $\Dv \neq \emptyset$ there exists $D = \{v,u,u'\} \in \Dv$ (a smaller set will give a better bound). 
+        By definition we know that $D$ dominates $N_3(v,w)$ and also $N_3(v,w) \setminus N(v)$. 
+        Therefore, all vertices in $N_3(v,w) \setminus N(v)$ must be neighbors of $w$ and either $u$ or $u'$ and in the worst case at most three simple regions are required. 
+        By assumption, $\Dw \neq \emptyset$ as well, and therefore $N_3(v,w) \setminus N(w)$ is bounded by at most three simple regions, too.
         By planarity, we can cover the remaining common neighbors in $N_3(v,w) \cap N(v) \cap N(w)$ with at most 5 vertices and in total, we can cover \textbf{$\mathbf{N_3(v,w) \cap R(v,w)}$ by at most $\mathbf{3 + 3 +5 = 11}$} simple regions.
 
-        \item Proof in~\cite{Garnero2018} holds in our case as well.
+        \item The proof in~\cite{Garnero2018} holds in our case as well.
 
         % \item Now assume that $N_{2,3}(w) \cap N_3(v,w) = \emptyset$. Then all neighbors of $v$ in $N_3(v,w)$ are from the remaining $N_1(v)$ vertices. These vertices have only neighbors in from $N_{2,3}$ and at least one that is different from $N(v)$ (by definition of $N_1(v)$). Therefore they must be from $N(w) \cap  N_{2,3}(v,w)$.
     
@@ -788,7 +793,7 @@ Note that this analysis provides a quick upper bound that might not be tight and
     By \cref{lemma:nonecover,lemma:ntwocover} and \cref{lemma:simpleregionbound} to bound the number of vertices inside a simple region, we know that $\abs{N_1(v,w) \cap V(R)} \leq 4$. 
     Furthermore, $\abs{N_2(v,w) \cap V(R)} \leq 6 \cdot 4 = 24$, because after the reduction a simple region has at most 4 vertices distinct from its poles and has at most 6 simpler regions covering all $N_2(v, w)$.
     
-    It is remaining to bound for \nthi, but gladly we have \cref{rgl:rtwo}, which gracefully took care of them! We will distinct between the cases of \cref{rgl:rtwo}. 
+    It is remaining to bound for \nthi, but gladly, \cref{rgl:rtwo} reduced them! We will distinguish between the cases of \cref{rgl:rtwo}. 
     \Cref{fig:nthreeinside} shows the worst-case amount of simple regions the individual cases can have.
     
     \begin{caseofz}
@@ -824,10 +829,12 @@ Note that this analysis provides a quick upper bound that might not be tight and
     \[V(R) \leq 2 + 4 + 24 + \max(27, 44, 4, 57) = 87 \]
 \end{proof}
 
-\subsection{Number of Vertices outside the Decomposition}
+We have proved the first step and bounded the number of vertices that lie inside a  single region to be at most $87$.
+
+\subsection{Number of Vertices Outside the Decomposition}\label{cpt:outside}
 We continue to bound the number of vertices that do not lay inside any region of a maximal \dreg $\mathfrak{R}$, that is, we bound the size of $V \setminus \VR$. \Cref{rgl:rone} ensures that we only have a small amount of $N_3(v)$-pendants. We then try to cover the rest with as few simple regions as possible, because, by application of \cref{rgl:rthree}, these simple regions are of constant size.
 
-\noindent The following lemma states that no vertex from $N_1(v)$ will be outside of a maximal \dreg which was already proven by Alber, Fellows and Niedermeier~\cite[Lemma 6]{Alber2004}.
+The following \cref{lemma:noneinside} states that no vertex from $N_1(v)$ will be outside of a maximal \dreg which was already proven by {Alber, Fellows and Niedermeier~\cite[Lemma 6]{Alber2004}}.
 
 \begin{lemma}\label{lemma:noneinside}
     Let \G be a plane graph and $\mathfrak{R}$ be a maximal \dreg of a dominating set $D$. If $u \in N_1(v)$ for some vertex $v \in D$ then $u \in V(\mathfrak{R})$.
@@ -850,7 +857,7 @@ In the following, we define $\dGR(v) = \abs{\{R(v,w) \in \mathfrak{R}, w \in D\}
 With slight modifications, the proof given by Garnero and Sau~\cite[arXiv v2]{Garnero2018} will also apply for \sdom. Although we assume $G$ to be entirely reduced, the following proof only relies on \cref{rgl:rone,rgl:rthree}. The proof uses the observation that vertices from $N_2(v)$ that lie outside of a region must span simple regions between those from $\{v\} \cup N_1(v)$.
 
 \begin{proof}
-    e will follow the proof proposed by Alber, Fellows, Niedermeier~\cite[Proposition 2]{Alber2004} and use the size bound of a simple region we have proven in \cref{lemma:simpleregionbound}. 
+    We will follow the proof proposed by Alber, Fellows, Niedermeier~\cite[Proposition 2]{Alber2004} and use the size bound of a simple region we have proven in \cref{lemma:simpleregionbound}. 
     In particular, we are going to show that $V \setminus V(\mathfrak{R}) \leq 48 \cdot \abs{\mathfrak{R}} + 2 \cdot \abs{D}$. \Cref{lemma:numRegions} will then give the desired bound.
     
     Let $D$ be an sds, $\mathfrak{R}$ be a maximal \dreg and $v \in D$. Since $D$ dominates all vertices in the graph, we can consider $V$ as $\bigcup_{v \in D}N(v)$ and thus, we only need to bound the sizes of $N_1(v)\setminus \VR$, $N_2(v) \setminus \VR$ and $N_3(v) \setminus \VR$ separately.
@@ -900,17 +907,12 @@ With slight modifications, the proof given by Garnero and Sau~\cite[arXiv v2]{Ga
 \end{figure}
 %
 
-% TODO: CITE ALBER AND SAU
-
-% TODO Maybe, we can make that simpler? No proof really uses the fact that the graph is reduced. Note, that they do not use the notion of a reduced instance in the proof.
-
-% TODO: Shift before other parts, because this result is heavily used
-\subsection{Bounding the Number of Regions}
+\subsection{Bounding the Number of Regions}\label{cpt:numRegions}
 
 We are now utilizing the final tool in our toolbox. Alber, Fellows and Niedermeier~\cite[Proposition 1]{Alber2004} gave an explicit greedy algorithm to construct a maximal \dreg for a \dom. 
 The existence of this algorithm is the core for all following works because they always involve region decompositions. For example, Garnero and Sau used it for \rbdom~\cite{Garnero2017} and \tdom~\cite{Garnero2018}. This missing puzzle piece will now assemble everything we have set up so far giving us the linear kernelization we are looking for.
 
-For the following lemma, Alber, Fellows and Niedermeier\cite{Alber2004} required a reduced instance and their reduction rules for \pdom differed from ours. Luckily, they do not rely on any specific properties following from a reduced graph and therefore, we can just use it for our kernelization algorithm as well.
+For the following lemma, Alber, Fellows and Niedermeie~\cite{Alber2004} required a reduced instance and their reduction rules for \pdom differed from ours. Luckily, they do not rely on any specific properties following from a reduced graph and therefore, we can just use it for our kernelization algorithm as well.
 
 This was already observed by Garnero and Sau~\cite{Garnero2018} and a more formal proof along with the description of the algorithm was provided.
 
@@ -946,7 +948,7 @@ Therefore, the graph can be reduced in time $\mathcal{O}(n^3)$.
     By taking the size of each region proven in \cref{lemma:outside}, the total number of regions in a maximal \dreg~(\cref{lemma:numRegions}) and the number of vertices that can lay outside of any region (\cref{lemma:outside}), we obtain the following bound:
     
     \begin{equation}
-         87 \cdot (3k - 6) + 97 \cdot k + k < \kernelsize \cdot k
+         87 \cdot (3k - 6) + 97 \cdot k  < \kernelsize \cdot k
     \end{equation}
     \noindent If $\abs{V(G')} > \kernelsize \cdot k$ $G$ we replace $G'$ by one single vertex $v$, which is trivially a \emph{no}-instance, because $v$ has no witness to form an sds.
 
