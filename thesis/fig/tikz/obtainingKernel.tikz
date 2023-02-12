@@ -34,8 +34,8 @@
 		\node [style=none] (33) at (4, -4.5) {};
 		\node [style=none] (34) at (3.25, -2.75) {};
 		\node [style=none] (35) at (3.25, -2.75) {};
-		\node [style=NTWO] (37) at (4.75, -5.5) {1};
-		\node [style=NTWO] (39) at (-7.25, -2.75) {2};
+		\node [style=NTWO] (37) at (4.75, -5.5) {2};
+		\node [style=NTWO] (39) at (-7.25, -2.75) {1};
 		\node [style=NTWO] (40) at (-6, 4.5) {3};
 		\node [style=none] (41) at (-5.25, 4.25) {};
 		\node [style=none] (42) at (-2, 3.25) {};
@@ -53,14 +53,14 @@
 		\node [style=none] (57) at (-9, -5) {};
 		\node [style=none] (58) at (0, -7.75) {};
 		\node [style=none] (59) at (0, -6.75) {};
-		\node [style=TEXTHIGH, text width=7.5cm] (60) at (0, -9.5) {\psdom has a linear linear kernel of size at most $\kernelsize k$  [\Cref{thm:central}]};
+		\node [style=TEXTHIGH, text width=7.5cm] (60) at (0, -9.5) {\psdom has a linear kernel of size at most $\kernelsize k$  [\Cref{thm:central}]};
 		\node [style=TEXTHIGH, text width=5cm] (61) at (10.5, -2.75) {$\abs{V\setminus(V(\mathfrak{R}) \cup D} \leq 97 \abs{D}$: [\Cref{lemma:outside}]};
-		\node [style=TEXTHIGH, text width=12cm] (62) at (-4.75, 8.5) {There exists maximal \dreg with $\abs{R} \leq 3* \abs{D}-6$ [\Cref{lemma:numRegions}]};
+		\node [style=TEXTHIGH, text width=12cm] (62) at (-4.75, 8.5) {There exists maximal \dreg $\mathfrak{R}$ with $\abs{R} \leq 3* \abs{D}-6$ [\Cref{lemma:numRegions}]};
 		\node [style=none] (63) at (-9.75, 0.75) {};
 		\node [style=none] (64) at (-8, -2) {};
 		\node [style=none] (65) at (-6, 7.25) {};
 		\node [style=none] (66) at (-6, 5.5) {};
-		\node [style=none] (67) at (7.5, -4) {};
+		\node [style=none] (67) at (7.25, -4.25) {};
 		\node [style=none] (68) at (5.75, -5) {};
 		\node [style=TEXTHIGH, text width=5cm] (69) at (-12.75, 1.75) {$\abs{V(R)} \leq 87$ [\Cref{lemma:inside}]};
 		\node [style=TEXTHIGHGRAY, text width=4cm] (70) at (-16.75, -1.5) {$\abs{N_2(v,w) \cap V(R)} \leq 24$ [\Cref{lemma:ntwocover}]};
@@ -68,9 +68,9 @@
 		\node [style=TEXTHIGHGRAY, text width=4cm] (72) at (-17, 5) {$ \abs{N_1(v,w) \cap V(R)} \leq 4 $ [\Cref{lemma:nonecover}]};
 		\node [style=none] (73) at (-15.5, 3.5) {};
 		\node [style=none] (74) at (-14.25, 2.75) {};
-		\node [style=none] (75) at (-15.25, -0.5) {};
+		\node [style=none] (75) at (-15, -0.25) {};
 		\node [style=none] (76) at (-15, 0.75) {};
-		\node [style=none] (77) at (-11.5, -3.5) {};
+		\node [style=none] (77) at (-11.75, -4.5) {};
 		\node [style=none] (78) at (-11.75, 0.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
@@ -147,11 +147,11 @@
 		\draw [style=EDGEDASHED, in=-135, out=-30, looseness=0.25] (56.center) to (55.center);
 		\draw [style=EDGEDASHED] (54.center) to (55.center);
 		\draw [style=simple dashed directed edge] (59.center) to (58.center);
-		\draw [style=simple directed edge] (65.center) to (66.center);
-		\draw [style=simple directed edge] (63.center) to (64.center);
-		\draw [style=simple directed edge] (67.center) to (68.center);
-		\draw [style=EDGE] (73.center) to (74.center);
-		\draw [style=EDGE] (75.center) to (76.center);
-		\draw [style=EDGE] (77.center) to (78.center);
+		\draw [style=EDGE] (65.center) to (66.center);
+		\draw [style=EDGE] (63.center) to (64.center);
+		\draw [style=EDGE] (67.center) to (68.center);
+		\draw [style=BLUE] (73.center) to (74.center);
+		\draw [style=BLUE] (75.center) to (76.center);
+		\draw [style=BLUE] (77.center) to (78.center);
 	\end{pgfonlayer}
 \end{tikzpicture}

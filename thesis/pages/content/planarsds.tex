@@ -19,7 +19,7 @@ All of these results introduce reduction rules bounding the number of vertices i
 \renewcommand{\thempfootnote}{\arabic{mpfootnote}}
 
 \begin{tabularx}{\textwidth}{lcX}
-\textbf{Problem} & \textbf{Best Known Kernel} & \textbf{Source} \\
+\textbf{Problem} & \textbf{Best Kernel} & \textbf{Source} \\
 \pdom &  $67k$ &~\cite{Diekert2005}\footnotemark\\
 \ptdom &  $410k$ &~\cite{Garnero2018}\footnotemark \\
 \psdom & $\kernelsize k$ & \cref{thm:central} \\
@@ -35,7 +35,7 @@ All of these results introduce reduction rules bounding the number of vertices i
 \footnotetext[2]{Improved their own results from first $694k$~\cite[arXiv v2]{Garnero2018}}
 \setcounter{footnote}{\value{mpfootnote}}
 \end{minipage}
-\caption{An overview about existing kernels for planar dominating problems}
+\caption{An overview about existing kernels for planar dominating problems.}
 \label{tbl:kernels}
 \end{table}
 In the following years, this approach bore fruits for other planar problems as well:
@@ -73,7 +73,7 @@ Before stating the reduction rules, we need definitions to capture the ``nice'' 
 They are equal to those given by Garnero and Sau for \ptdom in~\cite[arXiv v2]{Garnero2018} and for \prbdom in~\cite{Garnero2017} which in turn reused ideas introduced by Alber, Fellows and Niedermeier~\cite{Alber2004} for \pdom.
 The main idea is to partition the neighborhoods of both a single vertex and a pair of vertices respectively into three distinct subsets which intuitively classify how much these vertices are confined and how closely they are related to the rest of the graph.
 
-Recall for the following definition that ${N(v) = \{u \in V : \{u,v\} \in E \}}$ and $N[v] = N(v) \cup \{v\}$ the closed neighborhood of a vertex $v$.
+\noindent Recall for the following definition that ${N(v) = \{u \in V : \{u,v\} \in E \}}$ and ${N[v] = N(v) \cup \{v\}}$ the closed neighborhood of a vertex $v$.
 
 \begin{definition}
     \label{def:nv}
@@ -99,7 +99,7 @@ We will shortly discuss the definition of these sets:
 
 \begin{xltabular}{\textwidth}{lX}
 \textbf{$\mathbf{N_1(v)}$} & are all the neighbors of $v$ having at least one neighbor outside of $N(v)$ and connect $v$ with the rest of the graph. 
-They are the only vertices with the power to dominate vertices outside the neighborhood of $v$ \\
+They are the only vertices with the power to dominate vertices outside the neighborhood of $v$. \\
 
 \textbf{$\mathbf{N_2(v)}$} & contains all neighbors of $v$ not from $N_1(v)$ with at least one neighbor in $N_1(v)$. 
 These vertices do not have any function as dominators and are placed in between a vertex from $N_1(v)$ and those from  $N_3(v) \cup \{ v \}$. 
@@ -114,7 +114,7 @@ We will be using this observation in \cref{rgl:rone} to shrink $\abs{N_3(v)} \le
 Next, we will extend this notation to a pair of vertices which we will later use in  \cref{rgl:rtwo} to reduce the neighborhood of two vertices. We will classify how strongly the joined neighborhood $N(v) \cup N(w)$ of two vertices is connected to the rest of the graph.
 
 \begin{definition}
-    Let \G be a graph and $v,w \in V$. We denote by $N(v,w) := N(v) \cup N(w)$ the joined neighborhood $N(v) \cup N(w)$ of the pair $v,w$ and split $N(v,w)$ into three distinct subsets:
+    Let \G be a graph and $v,w \in V$. We denote by ${N(v,w) := N(v) \cup N(w)}$ the joined neighborhood $N(v) \cup N(w)$ of the pair $v,w$ and split $N(v,w)$ into three distinct subsets:
     \begin{align}
         N_1(v,w) & = \{u \in N(v,w) \mid N(u) \setminus (N(v,w)\cup \{v,w\}) \neq \emptyset \}  \\
         N_2(v,w) & = \{u \in N(v,w)\setminus N_1(v,w) \mid N(u) \cap N_1(v,w) \neq \emptyset \} \\
@@ -158,7 +158,7 @@ Before stating the reduction rules, we want to clarify when we consider a graph 
 \cref{def:reduced} differs from the definition usually used where a graph $G$ is \textit{reduced} under a set of reduction rules if none of them can be applied to G anymore (compare e.g.~\cite{Fomin2019}). Some of our reduction rules (\cref{rgl:rone} or \cref{rgl:rtwo}) could be applied \textit{ad infinitum} creating an endless loop that does not change $G$ anymore. Our definition guarantees termination in that case. 
 All of the given reduction rules are local and only need the neighborhood of at most two vertices.
 They are replaced partially with gadgets of constant size.  
-Checking whether the application of one of the rules created an isomorphic graph can therefore be accomplished in constant time because only the neighbors of these vertices might have changed and recognizing this can already be done while the rule itself is active. 
+Checking whether the application of one of the rules created an isomorphic graph can therefore be accomplished in constant time because only the neighbors of these vertices might have changed and recognizing this can already be done while each rule itself is active. 
 If all rules created an isomorphic graph, we exit the reduction procedure.
 
 \subsection{Regions in Planar Graphs}
@@ -262,20 +262,25 @@ In the analysis, we will also use properties of the \textit{underlying multigrap
 
 \section{The Big Picture}
 The following \Cref{fig:overview} gives an overview on how to obtain a linear kernel for \psdom.
- We will first define three polynomial-time reduction rules (\cref{rgl:rone,rgl:rtwo,rgl:rthree} are green in the overview) and prove that they preserve the solution size $k$. 
+ We will first define three polynomial-time reduction rules \cref{rgl:rone,rgl:rtwo,rgl:rthree}  and prove that they preserve the solution size $k$. 
 We will use the existence of a maximal \dreg~$\mathfrak{R}$ on planar graphs to bound the number of vertices that fly around a given region $R \in \mathfrak{R}$ after the reduction rules have been exhaustively applied. 
 Additionally, \cref{rgl:rone} helps us to bound on the number of vertices that are not enclosed by any $R$. 
 
 We will often encounter hidden simple regions which are reduced by \cref{rgl:rthree} and therefore of constant size by \cref{lemma:simpleregionbound}. As we know that the total number of regions R in the \dreg is linear in $k$, we obtained a linear kernel for the \psdom as well.
+
 \begin{figure}[!ht]
     \begin{equation*}
-    \scalebox{0.8}
+    \scalebox{0.78}
     {
         \tikzfig{fig/tikz/obtainingKernel}
     }
     \end{equation*}
-    \caption[Structure of the Proofs]{\textit{The plan for obtaining a linear kernel for \psdom. Starting with the reduction rules in {\setulcolor{green}\ul{green}} we will derive the number of vertices inside and outside of a $vw$-region. Lemmas to bind the number of vertices are marked in {\setulcolor{MATHAYELLOW}\ul{yellow}}
-    }}\label{fig:overview}
+    \caption[Structure of the Proofs]{\textit{The plan for obtaining a linear kernel for \psdom.
+    After \cref{rgl:rone,rgl:rtwo,rgl:rthree} have been applied, we analyze their impact and we prove the following bounds for any sds $D$.
+    In \circled{1}, we try to bound the maximal number of vertices \underline{inside} a region $R$ by analyzing the disjoint sets $N_1(v,w), N_2(v,w)$ and $N_3(v,w)$ independently for two given poles $v,w \in D$. 
+    Then, in \circled{2}, we bound the number of vertices that lay \underline{outside} and are not enclosed into any region of a maximal \dreg $\mathfrak{R}$. 
+    The arrows point to these regions.
+    Finally, in \circled{3}, we use the fact that a $\mathfrak{R}$ exists with at most $3 \cdot \abs{D} -6$ regions.}} \label{fig:overview}
 \end{figure}
 
 \section{The Reduction Rules}
@@ -324,6 +329,7 @@ If $p = v$ then $w$ is a direct witness for $v$ and if $p \in N(v)$, there exist
 \end{rgl}
 \end{minipage}
 
+~\\
 \noindent We will now prove the correctness of this rule.
 
 
@@ -349,7 +355,7 @@ If $p = v$ then $w$ is a direct witness for $v$ and if $p \in N(v)$, there exist
 \end{proof}
 
 \begin{lemma}\label{complex:rone}
-    A plane graph $G$ of $n$ vertices is reduced under \cref{rgl:rone} in time $\mathcal{O}(n)$
+    A plane graph $G$ of $n$ vertices is reduced under \cref{rgl:rone} in time $\mathcal{O}(n)$.
 \end{lemma}
 \begin{proof}
     As \cref{rgl:rone} stayed the same, the proof directly follows~\cite[Lemma 2]{Alber2004}.
@@ -703,11 +709,11 @@ In particular, we show in the next sections that given an sds $D$ of size $k$, t
 \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
     \item Each region of $\mathfrak{R}$ contains at most $89$ vertices (\cref{chp:sizeRegion});
     \item $V(\mathfrak{R})$ covers most vertices of $V$. There are at most $97 \cdot \abs{D}$ vertices outside of any region (\cref{cpt:outside});
-    \item $\mathfrak{R}$ has only at most $3 \abs{D} - 6$ regions (\cref{cpt:numRegion}).
+    \item $\mathfrak{R}$ has only at most $3 \abs{D} - 6$ regions (\cref{cpt:numRegions}).
 \end{enumerate}
 
 The combination of these three statements will give us a linear kernel. 
-\cref{fig:overview} depicts these three goals in {\setulcolor{MATHAYELLOW}\ul{yellow}}.
+\cref{fig:overview} gives a visualization of this plan.
 
 \subsection{Bounding the Size of a Region}\label{chp:sizeRegion}
 
@@ -830,7 +836,7 @@ This could possibly be improved, since taking both $\Dv \neq \emptyset$ and $\Dw
     \[V(R) \leq 2 + 4 + 24 + \max(27, 44, 4, 57) = 87 \]
 \end{proof}
 
-We have proved the first step and bounded the number of vertices that lie inside a  single region to be at most $87$.
+We have proved the first step and bounded the number of vertices that lay inside a  single region to be at most $87$.
 
 \subsection{Number of Vertices Outside the Decomposition}\label{cpt:outside}
 We continue to bound the number of vertices that do not lay inside any region of a maximal \dreg $\mathfrak{R}$, that is, we bound the size of $V \setminus \VR$. \Cref{rgl:rone} ensures that we only have a small amount of $N_3(v)$-pendants. We then try to cover the rest with as few simple regions as possible, because, by application of \cref{rgl:rthree}, these simple regions are of constant size.

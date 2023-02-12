@@ -24,6 +24,9 @@
 \newcommand{\green}[1]{\textcolor{mygreen}{#1}}
 \newcommand{\brown}[1]{\textcolor{brown}{#1}}
 
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
 % THEOREM ENVIRONMENTS
 \newtheorem{fact}{\protect\color{TUMSecondaryBlue} Fact}[section] % CHAPTER CHANGE TO SECTION TO GET ONE MORE LEVEL
 \newtheorem{rgl}  {\protect\color{TUMSecondaryBlue} Rule} 	
