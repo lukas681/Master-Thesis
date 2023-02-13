@@ -2,7 +2,7 @@
 \section{Fixed-Parameter Intractability}
 
 We will start by giving some intractability results and show that \sdom parameterized by the natural parameterization is \WTWOhs-hard on \textit{bipartite graphs} and \textit{triangle-free graphs} by fpt-reducing from \dom on bipartite graphs
-\dom on bipartite graphs is known to be \WTWOhs~\cite{Raman2008} when parameterized with natural parameterization.
+\dom on bipartite graphs is known to be \WTWOhs when parameterized with natural parameterization \cite{Raman2008}.
 
 \begin{figure}[ht]
     \label{fig:bipartiteConstruction}
@@ -56,43 +56,27 @@ We use the fact that every dominating set in a split graph can directly be mappe
 
 \begin{proof}
 
-    We reduce from \dom on \textit{split} graphs which is visualized in \cref{fig:splitgraph}.
-    Given a split graph $G = \{V = (K \cup I), E\}$ with more than one vertex and a ds $D$ of size $k$, we can immediately obtain an sds $D'$ by flipping a few vertices:
+    We reduce from \dom on \textit{split} graphs by showing that any ds in a split graph can be mapped to a sds on the same graph. 
+    Given a split graph $G = \{V = (K \cup I), E\}$ with $\abs{V} \geq 2$ and a ds $D$ of size $k$, we can immediately obtain an sds $D'$ by flipping a few vertices:
     If $I \cap D \neq \emptyset$ we replace them respectively with one arbitrary neighbor in $K$.
     All vertices in $I$ are still being dominated and $D \cap K \neq \emptyset$ is sufficient to preserve domination $K$. 
-    Note that is necessary to catch the case, where $D \subseteq I$ and witnesses are missing (See \cref{fig:splitgraph}).
-    We now assume $D' = D \subseteq K$:
+    Note that it is necessary to catch the case, where $D \subseteq I$ and witnesses are missing, which will only be guaranteed after the flip operation. (see \cref{fig:splitgraph}).
+    We now assume $D \subseteq K$ and set $D = D'$.
     If $|D'| > 1$, we immediately obtain an sds as $D' \subseteq K$ and $k_1,k_2\in K$ witness each other.
-    If $D' = \{d\}$, we add any neighbor of $d$ to $D'$
+    If $D' = \{d\}$, we add any neighbor of $d$ to $D'$.
     
     For the sake of completeness, if $|V| \leq 1$, we instantly reject as there is no witness available.
     In all cases $k' \leq k + 1$ and because \dom is \WTWOhs-hard on \textit{split} graphs~\cite{Raman2008} the claim follows.
-%    it to a split graph $G'$ by adding two vertices $d$ and $u$ and edges $\{d,u\} \cup \{d, k_i\}$ for all $k_i \in K$. 
-
-%    Given a split graph $G = \{(K \cup I), E\}$, we transform it to a split graph $G'$ by adding two vertices $d$ and $u$ and edges $\{d,u\} \cup \{d, k_i\}$ for all $k_i \in K$. 
-%    The vertex $d$ increases the size of the clique $K$ by one, and $u$ fits into the independent set $I$.
-%    Therefore, $G'$ is split, too. 
-%    It is left to show that $G$ has a ds of size $k$ if and only if $G'$ has an sds of size $k' = k + 1$.
-%    
-%    Assume any ds $D$ of size $k$ in $G$. 
-%    Setting $D' = D \cup \{d\}$ gives an sds in $G'$ of size $k+1$.
-
-%    Contrarily, assume an sds $D'$ of size $k$ in $G'$.
- %   If $D \cap I \neq \emptyset$, we flip these to their neighbor in $K$, preserving the dominating set. 
-  %  $d \in D'$ is only used in $G'$ for dominating $u$ and can be ignored in $G$.
-   % Therefore letting $D = D' \setminus \{d\}$ gives a valid ds in $G$ of size $ k-1$.
-
 \end{proof}
 
 \begin{figure}[ht]
-    \label{fig:splitgraph}
     \begin{equation*}
         \tikzfig{fig/tikz/split}
     \end{equation*}
 \caption[Constructing split graph]{\textit{Obtaining an sds $D'$ form a given ds $D$ in a split graph by flipping all vertices $d_i$ to their corresponding neighbor in the clique $K$.
 The clique $K$ is highlighted in {\setulcolor{TUMBlue}\ul{blue}}
 Note that in $D$, no witnesses are available as $d(d_1,d_5) = 3$.
-After the flip operation, this is fixed.}}
+After the flip operation, this is fixed.}} \label{fig:splitgraph}
 \end{figure}
 
  

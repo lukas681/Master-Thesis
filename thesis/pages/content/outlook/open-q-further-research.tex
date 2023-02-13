@@ -17,7 +17,7 @@ After you have shown a linear kernel of size $\kernelsize \cdot k$ and that it d
 \noindent \textbf{Improving Kernel~}
 The constant of the kernel size $\kernelsize \cdot k$ is very high and the usage of an exponential time algorithm yields a total running time of  $\mathcal{O}(2^{\kernelsize k} \cdot poly(n))$, which is too large for practical applications.
 It would be interesting to improve them and one idea would be the following:
-\cref{rgl:rtwo} uses the fact that $N(v,w)$ can be dominated by at most four vertices: $v$,$w$ and two neighbors as a witness.
+\cref{rgl:rtwo} uses the fact that $N(v,w)$ can be dominated by at most four vertices: $v$, $w$ and two neighbors as a witness.
 Observe that if $d(v,w) \leq 3$, this witness might be shared in an sds, because choosing one single witness on the path from $v$ to $w$ is sufficient to semitotally dominate $N(v,w)$.
 Therefore $\Dvw$, $\Dv$ and $\Dw$ could be redefined to contain sets of size at most two (instead of three) which will improve the reduction. 
 Note that in our analysis, the poles of a region $R$ in the \dreg $\mathfrak{R}$ satisfy $d(v,w) \leq 3$ by definition.
