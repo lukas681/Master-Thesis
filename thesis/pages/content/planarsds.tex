@@ -72,8 +72,7 @@ The decomposition has just been used as a tool to analyze the kernel size after 
 Before stating the reduction rules, we need definitions to capture the ``nice'' properties we are to exploit. 
 They are equal to those given by Garnero and Sau for \ptdom in~\cite[arXiv v2]{Garnero2018} and for \prbdom in~\cite{Garnero2017} which in turn reused ideas introduced by Alber, Fellows and Niedermeier~\cite{Alber2004} for \pdom.
 The main idea is to partition the neighborhoods of both a single vertex and a pair of vertices respectively into three distinct subsets which intuitively classify how much these vertices are confined and how closely they are related to the rest of the graph.
-
-\noindent Recall for the following definition that ${N(v) = \{u \in V : \{u,v\} \in E \}}$ and ${N[v] = N(v) \cup \{v\}}$ the closed neighborhood of a vertex $v$.
+Recall for the following definition that ${N(v) = \{u \in V : \{u,v\} \in E \}}$ and ${N[v] = N(v) \cup \{v\}}$ the closed neighborhood of a vertex $v$.
 
 \begin{definition}
     \label{def:nv}
@@ -172,9 +171,9 @@ The following definitions are based on those given by Garnero and Sau in~\cite[a
     Two simple paths $P_1, P_2$ in a plane graph G are \underline{confluent} if at least one of the following statements holds:
     
     \begin{enumerate}
-        \item they are vertex-disjoint
-        \item they are edge-disjoint and for every common vertex $u$, if $v_i, w_i$ are the neighbors of $u$ in $p_i$, for $i \in [1,2]$, it holds that $[v_1, w_1, v_2, w_2]$
-        \item they are confluent after contracting common edges
+        \item they are vertex-disjoint;
+        \item they are edge-disjoint and for every common vertex $u$, if $v_i, w_i$ are the neighbors of $u$ in $p_i$, for $i \in [1,2]$, it holds that $[v_1, w_1, v_2, w_2]$;
+        \item they are confluent after contracting common edges.
     \end{enumerate}
 \end{definition}
 
@@ -200,7 +199,7 @@ The following definitions are based on those given by Garnero and Sau in~\cite[a
     Two regions $R_1$ and $R_2$ are non-crossing, if:
     \begin{enumerate}
         \item $(R_1 \setminus \partial R_1) \cap R_2 = (R_2 \setminus \partial R_2) \cap R_1 = \emptyset$, and
-        \item the boundary paths of $R_1$ are pairwise confluent with the ones in $R_2$
+        \item the boundary paths of $R_1$ are pairwise confluent with the ones in $R_2$.
     \end{enumerate}
 \end{definition}
 
@@ -339,12 +338,13 @@ If $p = v$ then $w$ is a direct witness for $v$ and if $p \in N(v)$, there exist
 \begin{proof}
         Assume $D$ to be an sds set in $G$ of size $k$. 
         Because \cref{rgl:rone} was applied, we know that $N_{3}(v) \neq \emptyset$ in $G$.
-        $N_3(v)$ must be dominated, so $\abs{D \cap (N_{2,3}(v) \cup \{v\})} \neq \emptyset$. 
+        $N_3(v)$ must be dominated, so $\abs{D \cap (N_{2,3}(v) \cup \{v\})} \neq \emptyset$ in $G$. 
         Denote one of those as $d$.
-        If $v \notin D$, we know by \cref{fact:witnessTwin} that a witness for $d \neq v$ is also a witness for $v$ and therefore, we replace $d$ with $v \in D$.
+        If $v \notin D$, we know by \cref{fact:witnessTwin} that a witness for $d \neq v$ is also a witness for $v$ and therefore, we replace $d$ with $v$ in $D$.
             Now assume $v \in D$ and $N_{2,3}(v)$ is already dominated by $v$.
         If $\abs{D \cap (N_{2,3}(v))} \geq 1$, set $D' = D \setminus N_{2,3}(v) \cup \{v'\}$, else $D' = D$. 
-        A $z \in D \cap N_{2,3}(v)$ could have been a witness for $v$ and therefore we choose $v' \in D'$ preserving witnesses. In both cases, $v'$ is dominated by $v$ and $\abs{D} \leq \abs{D'}$.
+        A $z \in D \cap N_{2,3}(v)$ could have been a witness for $v$ and therefore we choose $v' \in D'$ in the first case preserving witnesses. 
+        In both cases, $v'$ is dominated by $v$ and $\abs{D} \leq \abs{D'}$.
 
         Let $D'$ be an sds in $G'$. We assume that $v \in D'$ because $v'$ has to be dominated and $v$ is a better choice than $v'$.
         If $v' \in D'$ we have to preserve a witness for $v$ in $G$. We know $N_3(v) \neq \emptyset$ and therefore replace it with an arbitrary vertex $d \in N_3(v)$ in $G$. 
@@ -358,7 +358,7 @@ If $p = v$ then $w$ is a direct witness for $v$ and if $p \in N(v)$, there exist
     A plane graph $G$ of $n$ vertices is reduced under \cref{rgl:rone} in time $\mathcal{O}(n)$.
 \end{lemma}
 \begin{proof}
-    As \cref{rgl:rone} stayed the same, the proof directly follows~\cite[Lemma 2]{Alber2004}.
+    As \cref{rgl:rone} stayed the same, the proof directly follows from the two-phase algorithm proposed in~\cite[Lemma 2]{Alber2004}. 
 \end{proof}
 
 Note that we need our definition of a reduced instance given in \cref{def:reduced}. 
@@ -620,8 +620,8 @@ See \cref{fig:rulethree} for an example of both cases.
 
         % BORDER VERTICES
         It will be enough to only consider cases where no border vertex is dominating. 
-        If $\abs{\partial R \setminus \{v,w\} \cap D} \geq 1$ then there is at least one other $v' \in V(R) \cap D$ to dominate all vertices inside the region.
-        If a pole $v \in D$ or $w \in D$, we set $D' = D \setminus V(R \setminus \partial R)$, otherwise there is at least one vertex $d \in (V(R) \setminus \partial R) \cap D$ and we replace it with one of the poles: $D' = D \setminus V(R \setminus \partial R) \cup \{v\}$.
+        If $\abs{\partial R \setminus \{v,w\} \cap D} \geq 1$ then there is at least one other $v' \in V(R) \cap D$ to dominate all at least three vertices inside the region.
+        If a pole $v \in D$ or $w \in D$, we set $D' = D \setminus V(R \setminus \partial R)$, otherwise there is at least one vertex $d \in (V(R) \setminus \partial R) \cap D$ and we replace it with one of the poles arbitrarily: $D' = D \setminus V(R \setminus \partial R) \cup \{v\}$.
         This works, because at least one $b \in \partial R \setminus \{v, w\}$ and $b,v$ together witness the same vertices as $d$ did: $b$ witnesses all vertices in $N(w) \cup N(v)$ and $v$ those neighbors from the opposite border vertices to $b$.
 
         \vspace*{1em}
@@ -636,7 +636,8 @@ See \cref{fig:rulethree} for an example of both cases.
          This case is depicted in \cref{fig:rulethree} on the \textit{right}.
 
          Now assume \cref{case:rtt} has applied and $V(R \setminus \partial R) \ncong P_3$. 
-         Let us denote this induced path as $(p_1,p_2,p_3)$. We observe that without contradicting the planarity of $G$ the induced subgraph of the vertices $G[V(R \setminus \partial R)]$ is a subgraph of path of length $\abs{V(R \setminus \partial R)}$ and at most three. 
+         Let us denote this induced path as $(p_1,p_2,p_3)$. 
+         We observe that without contradicting the planarity of $G$ the induced subgraph of the vertices $G[V(R \setminus \partial R)]$ is a subgraph $P_{\min({3, \abs{V(R \setminus \partial R)}})}$. 
 
           By assumption, we either have a $P_3$ with at least one missing edge or a longer path. 
           In both cases, it is impossible to dominate this path with only one single vertex from the path.
@@ -650,17 +651,19 @@ See \cref{fig:rulethree} for an example of both cases.
          Assume $V(R \setminus \partial R) \cong P_3$ and \cref{case:rto} has applied and $V(R \setminus R)$ replaced by one single vertex $y$. 
          We denote the induced path in $G$ as $(p_1,p_2,p_3)$.
          If $y \in D'$, we set $D = D' \setminus \{y\} \cup \{p_2\}$. 
-         We know that $p_2$ dominates $p_1$,$p_3$ in $G$ and witnesses the same vertices as in $G'$, namely $N(v) \cup N(w) \cup \{b, b'\}$
+         We know that $p_2$ dominates $p_1$,$p_3$ in $G$ and witnesses the same vertices as in $G'$, namely $N(v) \cup N(w) \cup \{b, b'\}$.
          Otherwise, we just set $D = D'$. 
 
          Contrary assume $V(R \setminus \partial R) \ncong P_3$ and \cref{case:rtt} has been applied.
          $V(R \setminus R)$ was replaced by two vertices $y$ and $y'$.
          Observe that neither $y$ nor $y'$ are useful in $D'$ in $G'$: If both $y, y' \in D'$, we replace them by $v$ and $w$.
-         If only $y \in D$ (resp. $y' \in D$), we need either $v \in D'$ or $w \in D'$ to dominate $y'$ ($y'$) and again, we replace them by $v$ and $w$. 
+         If only $y \in D$ (resp. $y' \in D$), we need either $v \in D'$ or $w \in D'$ to dominate $y$ ($y'$) and again, we replace them by $v$ and $w$. 
 
          $y$ or $y'$ are unimporant as witnesses, $v$ and $w$ witness each other and everything that could be witnesed by $y$ or $y'$ is witnessed by $\{v,w\}$ as well.
          This simulates an $\mathnormal{OR}$ gadget in $\{v, w\}$.
         Hence $D = D'$ and $\abs{D} = \abs{D'}$.
+
+        In all cases, the solution sizes only changes by a constant.
 \end{proof}
     
 The application of \cref{rgl:rthree} gives us a bound on the number of vertices inside a \sr. 
@@ -761,7 +764,7 @@ We continue by giving a constant bound on the number of simple regions that cove
     Given a plane Graph $G = (V,E)$ reduced under \cref{rgl:rtwo}  and a region R(v, w), if $\Dv \neq \emptyset $ (resp. $\Dw \neq \emptyset$), $N_3(v,w) \cap V(R)$ can be covered by: 
     \begin{enumerate}
         \item $11$ \sr s~if $\Dw \neq \emptyset$ ($\Dw \neq \emptyset$),
-        \item $14$ \sr s~if $N_{2,3}(v) \cap N_3(v,w) = \emptyset$
+        \item $14$ \sr s~if $N_{2,3}(v) \cap N_3(v,w) = \emptyset$.
     \end{enumerate}
 \end{lemma}
 
@@ -858,7 +861,7 @@ In the following, we define $\dGR(v) = \abs{\{R(v,w) \in \mathfrak{R}, w \in D\}
 \end{proof}
 
 \begin{proposition}\label{lemma:outside}
-    Let \G be a plane graph reduced under \cref*{rgl:rone,rgl:rtwo} and let D be a semitotal dominating set of $G$. For a maximal \dreg $\mathfrak{R}$,  $\abs{V \setminus (V(\mathfrak{R}) \cup D)} \leq 97 \abs{D}$
+    Let \G be a plane graph reduced under \cref*{rgl:rone,rgl:rtwo} and let D be a semitotal dominating set of $G$. For a maximal \dreg $\mathfrak{R}$,  $\abs{V \setminus (V(\mathfrak{R}) \cup D)} \leq 97 \abs{D}$.
 \end{proposition}
 
 With slight modifications, the proof given by Garnero and Sau~\cite[arXiv v2]{Garnero2018} will also apply for \sdom. Although we assume $G$ to be entirely reduced, the following proof only relies on \cref{rgl:rone,rgl:rthree}. The proof uses the observation that vertices from $N_2(v)$ that lie outside of a region must span simple regions between those from $\{v\} \cup N_1(v)$.
@@ -957,6 +960,6 @@ Therefore, the graph can be reduced in time $\mathcal{O}(n^3)$.
     \begin{equation}
          87 \cdot (3k - 6) + 97 \cdot k  < \kernelsize \cdot k
     \end{equation}
-    \noindent If $\abs{V(G')} > \kernelsize \cdot k$ $G$ we replace $G'$ by one single vertex $v$, which is trivially a \emph{no}-instance, because $v$ has no witness to form an sds.
+    \noindent If $\abs{V(G')} > \kernelsize \cdot k$ we replace $G'$ by one single vertex $v$, which is trivially a \emph{no}-instance, because $v$ has no witness to form an sds.
 
 \end{proof}

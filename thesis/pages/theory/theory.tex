@@ -251,7 +251,7 @@ We also added another column showing the known parameterized complexity.
 
 A polynomial-time algorithm was shown for graphs of bounded \textit{mim}-width by Galby et al.~\cite{Galby2020}.
 Because a branch decompositions of constant \textit{mim}-width can be found for \textit{permutation}, \textit{convex}, \textit{interval}, \textit{(circular k-)} \textit{trapezoid}, \textit{circular permutation}, \textit{Dilworth-$k$}, \textit{$k$-polygon}, \textit{circular arc}, \textit{complements of $d$-degenerate}, \textit{bipartite permutation} and \textit{convex bipartite} graphs in polynomial time~\cite{Belmonte2011}, this algorithm immediately implies the existence of a polynomial time algorithm for these graph classes as well. 
-Additionally, Galby et al.~\cite{Galby2020}resolved the complexity for \textit{bipartite permutation} and \textit{convex bipartite} graphs.
+Additionally, Galby et al.~\cite{Galby2020} resolved the complexity for \textit{bipartite permutation} and \textit{convex bipartite} graphs.
 
 Furthermore, new polynomial time algorithms have been devised for \textit{strongly chordal}~\cite{Tripathi2021}, \textit{AT-free}~\cite{Kloks2021} and \textit{block}~\cite{Henning2022} graphs and a new linear time algorithm has been found for interval graphs~\cite{Pradhan2021} beating the previous $\mathcal{O}(n^2)$-algorithm given by Henning and Pandey~\cite{Henning2019}.
 On the negative side, \sdom on \textit{circle graphs}~\cite{Kloks2021} graphs, and \textit{undirected path graphs}~\cite{Henning2019} was shown to be \NPc.
@@ -272,9 +272,6 @@ We were able to prove \WTWO-hardness for \textit{bipartite} and \textit{split} g
 
 \begin{center}
     \begin{table}[t]
-    \caption{\textit{Comparison between the complexities of \dom, \sdom and \tdom in the classical and parameterized setting when parameterized by solution size. 
-    Open problems are marked with an ``?''.}}
-    \label{tab:complexities}
     \begin{minipage}[th]{\linewidth}
     \setcounter{mpfootnote}{\value{footnote}}
     \renewcommand{\thempfootnote}{\arabic{mpfootnote}}
@@ -289,7 +286,7 @@ We were able to prove \WTWO-hardness for \textit{bipartite} and \textit{split} g
         \textbf{Graph Class}                  & \multicolumn{2}{c}{\textbf{\dom}}                       & \multicolumn{2}{c}{\textbf{\sdom}}           & \multicolumn{2}{c}{\textbf{\tdom}}                                                                                                                                \\
         \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
                                               & classical                                               & Parameterized                                & classical                                               & Parameterized              & classical                                    & Parameterized               \\
-        bipartite                             & \NPcs~\cite{Bertossi1984}                               & \WTWOhs~\cite{Raman2008}                                      & \NPcs~\cite{Henning2019}                                & \WTWOhs \cref{lemma:bipartite}             & \NPcs~\cite{Pfaff1983}                       & ?                             \\
+        bipartite                             & \NPcs~\cite{Bertossi1984}                               & \WTWOhs~\cite{Raman2008}                                      & \NPcs~\cite{Henning2019}                                & \WTWOhs (\cref{lemma:bipartite})             & \NPcs~\cite{Pfaff1983}                       & ?                             \\
         
         line graph of bipartite               & \NPcs~\cite{Korobitsin1992}                             & ? & \NPcs~\cite{Galby2020}                                  &     ?                       & \NPcs~\cite{McRae1995}                       &  ?                            \\
         
@@ -352,6 +349,9 @@ We were able to prove \WTWO-hardness for \textit{bipartite} and \textit{split} g
     \footnotetext[1]{Galby et al. \cite{Galby2020} attempted it, but found a mistake in their reduction.}
 }
 \end{minipage}
+    \caption{\textit{Comparison between the complexities of \dom, \sdom and \tdom in the classical and parameterized setting when parameterized by solution size. 
+    Open problems are marked with an \textbf{?}.
+    Note that \sdom follows more the complexities of \dom than \tdom which can be seen in the \underline{strongly chordal} and \underline{chordal bipartite} cases.}}\label{tab:complexities}
     \end{table}
 \end{center}
 
@@ -359,7 +359,6 @@ We were able to prove \WTWO-hardness for \textit{bipartite} and \textit{split} g
 We would like to mention that membership of \psdom in \FPT already follows from Alber et al.~\cite{Alber2002}.
 Their algorithm \pdomp can be used to obtain an fpt algorithm with running time $\mathcal{O}(c^{\sqrt{k}}n)$ for some large constant $c$ and solution size $k$.
 Although the kernel size we obtained is high, we think there is a lot of room for improvement by further adjusting the reduction rules and therefore shrinking the factor of the kernel size.
-
 There are still many gaps open left for further research.
 We will discuss them at the end of this thesis in \cref{ch:closing}.
 
@@ -371,11 +370,13 @@ We will discuss them at the end of this thesis in \cref{ch:closing}.
 % @DEPRACTED. Does not scale well.
 \begin{figure}
     \centering
-    \resizebox{0.9\textwidth}{!}{
+    \resizebox{1\textwidth}{!}{
         \input{fig/mathcha/classes.tikz}
     }
     \caption[Graph inclusions]{\textit{Computational complexity of \sdom. Graph classes that admit a polynomial time algorithm are marked in {\setulcolor{MATHAGREEN}\ul{green}}, those with an fpt algorithm when parameterized by solution size in {\setulcolor{MATHAYELLOW}\ul{yellow}}, those that are not fpt by solution size in {\setulcolor{MATHARED}\ul{red}}, and those that are unknown are left \textit{white}.
-    An \textbf{?} denotes problems where the classical complexity is also unknown.}}
+    An \textbf{?} denotes problems where the classical complexity is also unknown.\\
+    \underline{convex}, \underline{interval}, \underline{(circular k-)trapezoid}, \underline{circular permutation}, \underline{Dilworth-k}, \underline{$k$-polygon} and \underline{convex bipartite} graphs have bounded mim-width, and a branch decomposition can be found in polynomial time \cite{Belmonte2011} and therefore can be solved in polynomial time by using the algorithm proposed by Galby et al. \cite{Galby2020}.
+    }}
     
     \label{fig:bigpicture}
 \end{figure}
