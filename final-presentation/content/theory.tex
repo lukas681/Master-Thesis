@@ -18,7 +18,7 @@
 \begin{tcolorbox}[colback=TUMBlueLighter,title=\tdom]
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input} & Graph $G = (V, E)$, $k \in \mathbb{N}$\\
-        \textbf{Question} & Exists $D \subseteq V$ with $|D| \leq k$ such that \\ 
+        \textbf{Question} & Exists ds $D \subseteq V$ with $|D| \leq k$ such that \\ 
        &  $\forall d_1 \in X :\exists d_2 \in D \setminus \{d_1\}$ with ${d(d_1, d_2) \leq 1}$? \\
     \end{tabularx}
 \end{tcolorbox}
@@ -34,7 +34,7 @@
 \begin{tcolorbox}[colback=TUMBlueLighter,title=\sdom]
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input}    & Graph $G = (V, E)$, $k \in \mathbb{N}$\\
-        \textbf{Question} & Exists $D \subseteq V$ with $|D| \leq k$ such that  \\
+        \textbf{Question} & Exists ds $D \subseteq V$ with $|D| \leq k$ such that  \\
         & $\forall d_1 \in X :\exists d_2 \in D \setminus \{d_1\}$ with ${d(d_1, d_2) \leq 2}$? \\
     \end{tabularx}
 \end{tcolorbox}
@@ -46,7 +46,7 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}[c]{Example: $\gamma(G) < \mathbf{\gamma_{2t}(G)} < \gamma_t(G)$}
+\begin{frame}[c]{Example: $\gamma(G) < \mathbf{\gamma_{t2}(G)} < \gamma_t(G)$}
 \begin{figure}[!ht]
     \resizebox{0.95\textwidth}{!}{
          \tikzfig{../thesis/fig/tikz/ds-examples}
@@ -72,14 +72,14 @@ If possible, the problem is \textbf{fixed-parameter tractable}.
 \subsection{Intractability}
 \begin{frame}[c]{Fixed-Parameter Intractability}
     \begin{itemize}
-       \pause \item  Class NP corresponds to whole hierarchy $W[i]$ in parameterized setting.
-       \pause \item Problems at least $W[1]$-hard considered \textbf{fixed-parameter intractable}
+       \pause \item  Class \NP splits into whole hierarchy $W[i]$ in parameterized setting
+       \pause \item Problems at least \WONEhs-hard probably \textbf{fixed-parameter intractable}
        \pause \item \dom is $W[2]$-complete
        \pause \item \textbf{Tool for Proving Hardness}: FPT Reductions, preserving the parameter
     \end{itemize}
 \end{frame}
 
-\begin{frame}[c]{Complexity Comparison}
+\begin{frame}[c]{Complexity Landscape I}
 
     \begin{table}
     \centering
@@ -88,31 +88,32 @@ If possible, the problem is \textbf{fixed-parameter tractable}.
 
         \arrayrulecolor{TUMBlue}\toprule
 
-        \textbf{Graph Class}                  & \multicolumn{2}{c}{\textbf{\dom}}                       & \multicolumn{2}{c}{\textbf{\sdom}}           & \multicolumn{2}{c}{\textbf{\tdom}}                                                                                                                                \\
-        \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}    & classical                                               & Parameterized                                & classical                                               & Parameterized              & classical                                    & Parameterized               \\
-        bipartite                             & \NPcs~\cite{Bertossi1984}                               & \WTWOhs~\cite{Raman2008}                                      & \NPcs~\cite{Henning2019}                                & \WTWOhs (this)             & \NPcs~\cite{Pfaff1983}                       & \WTWOhs (cite!)                             \\        
-        line graph of bipartite               & \NPcs~\cite{Korobitsin1992}                             & ? & \NPcs~\cite{Galby2020}                                  &     ?         (?)              & \NPcs~\cite{McRae1995}                       &  ?                            \\
+         \textbf{Graph Class}                  & \multicolumn{2}{c}{\textbf{\dom}}                       & \multicolumn{2}{c}{\textbf{\sdom}}           & \multicolumn{2}{c}{\textbf{\tdom}}                                                                                                                                \\
+        \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+                                              & classical                                               & Parameterized                                & classical                                               & Parameterized              & classical                                    & Parameterized               \\
+        bipartite                             & \NPcs~\cite{Bertossi1984}                               & \WTWOhs~\cite{Raman2008}                                      & \NPcs~\cite{Henning2019}                                & \WTWOhs (We )             & \NPcs~\cite{Pfaff1983}                       & ?                             \\
         
-        circle                                & \NPcs~\cite{Keil1993}                                   & \WONEhs~\cite{Bousquet2012}                  & \NPcs~\cite{Kloks2021}                                  & ? (?)  & \NPcs~\cite{McRae1995}                       & \WONEhs~\cite{Bousquet2012} \\
+        line graph of bipartite               & \NPcs~\cite{Korobitsin1992}                             & ? & \NPcs~\cite{Galby2020}                                  &     ?                       & \NPcs~\cite{McRae1995}                       &  ?                            \\
         
-        chordal                               & \NPcs~\cite{Booth1982}                                  & \WTWOhs~\cite{Raman2008}                     & \NPcs~\cite{Henning2019}                                & \WTWOhs (this)               & \NPcs~\cite{Laskar1983}                      & \WONEhs~\cite{Chang1998} by \textit{split}                            \\
+        circle                                & \NPcs~\cite{Keil1993}                                   & \WONEhs~\cite{Bousquet2012}                  & \NPcs~\cite{Kloks2021}                                  & ?  & \NPcs~\cite{McRae1995}                       & \WONEhs~\cite{Bousquet2012} \\
         
-        $s$-chordal , $s > 3$                          & \NPcs~\cite{Liu2011}                                    & \WTWOhs~\cite{Liu2011}                       & ? (?)                                                     & ? (?)                         & \NPcs~\cite{Liu2011}                         & \WONEhs~\cite{Liu2011}      \\
+        chordal                               & \NPcs~\cite{Booth1982}                                  & \WTWOhs~\cite{Raman2008}                     & \NPcs~\cite{Henning2019}                                & \WTWOhs ( We )               & \NPcs~\cite{Laskar1983}                      & \WONEhs~\cite{Chang1998}                            \\
         
-        split                                 & \NPcs~\cite{Bertossi1984}                               & \WTWOhs~\cite{Raman2008}         & \NPcs~\cite{Henning2019}                                & \WTWOhs \textbf{this}             & \NPcs~\cite{Laskar1983}                      & \WONEhs~\cite{Chang1998}    \\
+        $s$-chordal , $s > 3$                          & \NPcs~\cite{Liu2011}                                    & \WTWOhs~\cite{Liu2011}                       & ?                                                     & ?                         & \NPcs~\cite{Liu2011}                         & \WONEhs~\cite{Liu2011}      \\
         
-        3-claw-free                           & \NPcs~\cite{Cygan2011}                                  & \FPTt~\cite{Cygan2011}                        & Prob. Unk                                               & Prob. Unk                  & \NPcs~\cite{McRae1995}                       & Unknown                     \\
+        split                                 & \NPcs~\cite{Bertossi1984}                               & \WTWOhs~\cite{Raman2008}         & \NPcs~\cite{Henning2019}                                & \WTWOhs (We)             & \NPcs~\cite{Laskar1983}                      & \WONEhs~\cite{Chang1998}    \\
         
-        $t$-claw-free, $t>3$                  & \NPcs~\cite{Cygan2011}                                  & \WTWOhs~\cite{Cygan2011}                     & Prob. Unknown                                           & Unknown                    & \NPcs~\cite{McRae1995}                       & Prob. Unknown               \\
+        3-claw-free                           & \NPcs~\cite{Cygan2011}                                  & \FPTt~\cite{Cygan2011}                        & ?                                               & ? & \NPcs~\cite{McRae1995}                       & ? \\
         
-        chordal bipartite                     & \NPcs~\cite{Mueller1987}                                & ? (?)                                & \NPcs~\cite{Henning2019}                                & ?                      & \multicolumn{2}{c}{\Ptt~\cite{Damaschke1990}}                               \\
+        $t$-claw-free, $t>3$                  & \NPcs~\cite{Cygan2011}                                  & \WTWOhs~\cite{Cygan2011}                     & ?                                           & ?                    & \NPcs~\cite{McRae1995}                       & ?               \\
         
-        planar                                & \NPcs (Sources!)                                        & \FPTt~\cite{Alber2004}                        & \NPcs                                                   & \FPT \textbf{(this)}                       & \NPcs                                        & \FPTt~\cite{Garnero2018}     \\
+        chordal bipartite                     & \NPcs~\cite{Mueller1987}                                & ?                                 & \NPcs~\cite{Henning2019}                                & ?                      & \multicolumn{2}{c}{\Ptt~\cite{Damaschke1990}}                               \\
+        
+        planar                                & \NPcs~\cite{Garey1979}                                        & \FPTt~\cite{Alber2004}                        & \NPcs                                                   & \FPT (We)                       & \NPcs                                        & \FPTt~\cite{Garnero2018}     \\
         
         undirected path                                & \NPcs~\cite{Booth1982}                                   & \FPTt~\cite{Figueiredo2022} & \NPcs~\cite{Henning2022}  & ?                     & \NPcs~\cite{Lan2014}                         & ?                     \\
-        % 2022 paper for DS proved it not for TDS, so whp. not known for TDS
-%
-        dually chordal                        & \multicolumn{2}{c}{\Ptt~\cite{Brandstaedt1998} }         & \multicolumn{2}{c}{? (attempted~\cite{Galby2020})} &                           \multicolumn{2}{c}{\Ptt~\cite{Kratsch1997}}                                                                            \\
+
+        dually chordal                        & \multicolumn{2}{c}{\Ptt~\cite{Brandstaedt1998} }         & \multicolumn{2}{c}{?\footnotemark} &                           \multicolumn{2}{c}{\Ptt~\cite{Kratsch1997}}                                                                            \\
         
         strongly chordal                      & \multicolumn{2}{c}{\Ptt~\cite{Farber1984} }            & \multicolumn{2}{c}{\Ptt~\cite{Tripathi2021}}  & \NPcs~\cite{Farber1984}                                 &                                                                                                         \\
         
@@ -120,6 +121,7 @@ If possible, the problem is \textbf{fixed-parameter tractable}.
         
         tolerance                             & \multicolumn{2}{c}{\Ptt~\cite{Giannopoulou2016}}                         & \multicolumn{2}{c}{?}                                                  & \multicolumn{2}{c}{?}                                                                    \\
         
+        % cocomperability                          & \multicolumn{2}{c}{\Pt~\cite{Kratsch1993}}                                & Unknwon (?)                                         & Unknown ?                                                    & \multicolumn{2}{c}{\Pt~\cite{Kratsch1993}}                                                                       \\
        block                        &                                                      \multicolumn{2}{c}{\Ptt~\cite{Farber1984} }                                          & \multicolumn{2}{c}{\Ptt~\cite{Henning2022}}              & \multicolumn{2}{c}{\Ptt~\cite{Chang1989}}                                                                       \\
         
         interval                  & \multicolumn{2}{c}{\Ptt~\cite{Chang1998a}}                                          & \multicolumn{2}{c}{\Ptt~\cite{Pradhan2021}} &                                         \multicolumn{2}{c}{\Ptt~\cite{Bertossi1986}}                       \\
@@ -129,12 +131,14 @@ If possible, the problem is \textbf{fixed-parameter tractable}.
         
         bounded mim-width                     & \multicolumn{2}{c}{\Ptt~\cite{Belmonte2011,BuiXuan2013}} & \multicolumn{2}{c}{\Ptt~\cite{Galby2020}}     & \multicolumn{2}{c}{\Ptt~\cite{Belmonte2011,BuiXuan2013}}                                                                                                           \\
         \midrule
+        \bottomrule
+
     \end{tabularx}
         }
 \end{table}
 \end{frame}
 
-\begin{frame}[c]{Status \sdom}
+\begin{frame}[c]{Complexity Landscape II}
  \begin{figure}
     \centering
 
@@ -163,22 +167,22 @@ If possible, the problem is \textbf{fixed-parameter tractable}.
 \begin{frame}[c]{Split Graphs}
 
     \begin{tcolorbox}[colback=TUMBlueLighter]
-        \sdom on \textit{split} and \textit{chordal} graphs is $\omega_2$-hard
+        \sdom on \textit{split} and \textit{chordal} graphs is \WTWOhs-hard
     \end{tcolorbox}
 
-    \begin{figure}[!ht]
-    \resizebox{0.35\textwidth}{!}{
+    \pause\begin{figure}[!ht]
+    \resizebox{0.5\textwidth}{!}{
          \tikzfig{../thesis/fig/tikz/split}
     }
     \end{figure}
 
-    \textbf{Proof by  fpt-reduction from \pdom on split graphs:}
+    \textbf{Proof by  fpt-reduction from \dom on split graphs:}
 
     \begin{enumerate}
-      \pause  \item \textbf{Construct } G* by adding $v$ with pendant $z$ to clique. G* split
-      \pause  \item If ds $D$ in G, $D' = D \cup \{v\}$ is sds $D'$.
-      \pause  \item If sds $D'$ in $G'$, $D \setminus \{v\}$ is $D$ in $G$ 
-      \pause  \item Parameter $k$ only changed by constant
+      \pause  \item \textbf{Observe}: Any ds $D$ directly admits a sds $D$'.
+      \pause  \item Length of longest shortest path exactly $3$
+      \pause  \item If $d \in (I \cap D)$, flip into $K$
+      \pause  \item Parameter $k'$ = $k$
     \end{enumerate}
 
 \end{frame}
@@ -186,16 +190,16 @@ If possible, the problem is \textbf{fixed-parameter tractable}.
 \begin{frame}[c]{Bipartite Graphs}
 
     \begin{tcolorbox}[colback=TUMBlueLighter]
-        \sdom on \textit{bipartite} graphs is $\omega_2$-hard
+        \sdom on \textit{bipartite} graphs is \WTWOhs-hard
     \end{tcolorbox}
 
-    \begin{figure}[!ht]
+    \pause\begin{figure}[!ht]
     \resizebox{0.4\textwidth}{!}{
          \tikzfig{../thesis/fig/tikz/wbipartite}
     }
     \end{figure}
 
-    \textbf{Proof by fpt-reduction from \pdom on bipart. graphs:}
+    \textbf{Proof by fpt-reduction from \dom on bipart. graphs:}
 
     \begin{enumerate}
      \pause   \item \textbf{Construct } Add new neighbor to each vertex and add $d_1,d_2,u_1,u_2$

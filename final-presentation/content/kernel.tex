@@ -5,13 +5,13 @@
     \begin{center}
         \textbf{A Linear Kernel for \psdom}
 
-        \textit{Another Explicit kernel for a Dominating Problem}
+        \textit{}
     \end{center}
 \end{frame}
 
 \begin{frame}[c]{Kernelization}
 \begin{itemize}
-    \item \textbf{Idea: } Preprocess an instance using \textit{Reduction Rules} until hard \textit{kernel} is found.
+    \item \textbf{Idea: } Preprocess an instance using \textit{Reduction Rules} until hard \textit{kernel} bounded by $f(k)$ is found.
 \end{itemize}
 
 \begin{figure}
@@ -50,7 +50,7 @@
             \textbf{Problem} & \textbf{Size}   & \textbf{Source}       \\
             \pdom            & $67k$           &~\cite{Diekert2005}    \\
             \ptdom           & $410k$          &~\cite{Garnero2018}    \\
-            \psdom           & $359 k$ & \textbf{This work}    \\
+            \psdom           & $358 k$ &       Slide \ref{main}    \\
                              &                 &                       \\
             \peddom          & $14k$           &~\cite{Guo2007} \\
             \pefdom          & $84k$           &~\cite{Guo2007} \\
@@ -64,19 +64,19 @@
 
 %\subsection{Definitions}
 \begin{frame}[c]{Main Theorem}
-\begin{tcolorbox}[colback=TUMBlueLighter,title=The Main Theorem]
-    \psdom parameterized by solution size admits a linear kernel.
-    There exists a polynomial-time algorithm that, given a planar graph $(G, k)$, either correctly reports that $(G, k)$ is a NO-instance or returns an equivalent instance $(G', k)$ such that $|V(G')| \leq 359 \cdot k$.
+\begin{tcolorbox}[colback=TUMBlueLighter,title=The Main Theorem]\label{main}
+    \psdom parameterized by solution size admits a linear kernel of size $|V(G')| \leq 358 \cdot k$.
+
+%    There exists a polynomial-time algorithm that, given a planar graph $(G, k)$, either correctly reports that $(G, k)$ is a NO-instance or returns an equivalent instance $(G', k')$ such that $|V(G')| \leq 359 \cdot k$.
 \end{tcolorbox}
 \end{frame}
 
 \begin{frame}[c]{The Big Picture}
-    Given a planar graph $G = (V ,E)$, we will:
 
     \begin{enumerate}
-     \pause   \item Split the neighborhoods of the graph;
-     \pause   \item Define reduction Rules
-     \pause   \item Use the region decomposition to analyze the size of each region
+     \pause   \item Split the neighborhoods of the graph \G;
+     \pause   \item Define three reduction rules
+     \pause   \item Use a region decomposition to analyze the size of each region
     \end{enumerate}
 \end{frame}
 %%%% REGIONS DEFINITION
@@ -116,18 +116,7 @@
     \end{figure}
 \end{frame}
 
-\begin{frame}[c]{\dreg}
-    \begin{tcolorbox}[colback=TUMBlueLighter,title={\dreg\cite{Alber2004}}]
-        Given $G = (V, W)$ and $D \subseteq V$, a \dreg is a set $\mathfrak{R}$ with poles in $D$ such that:
-        \begin{itemize}
-            \item for any $vw$-region $R \in \mathfrak{R}$: $D \cap V(R) = \{v, w\}$
-            \item Regions are disjunct, but can share border vertices
-        \end{itemize}
-    \end{tcolorbox}
-   \pause A region is \textbf{maximal}, if no $R \in \mathfrak{R}$ such that $\mathfrak{R}' = \mathfrak{R} \cup \{R\}$ is a \dreg with $V(\mathfrak{R})\subsetneq V(\mathfrak{R}')$.
-\end{frame}
-
-\begin{frame}[c]{Maximal \dreg}
+\begin{frame}[c]{$D$-Region Decomposition}
     \begin{figure}[!ht]
         \resizebox{0.55\textwidth}{!}{
             \tikzfig{./img/region}
@@ -135,14 +124,31 @@
     \end{figure}
 \end{frame}
 
-\begin{frame}[c]{Splitting Up $N(v)$}
+
+
+\begin{frame}[c]{$D$-Region Decomposition (cont.)}
+    \begin{tcolorbox}[colback=TUMBlueLighter,title={\dreg~(Alber, Fellows, Niedermeier \cite{Alber2004})}]
+        Given \G and sds $D \subseteq V$, a \dreg is a set $\mathfrak{R}$ of regions with poles in $D$ such that:
+        \begin{itemize}
+            \item The poles $v,w \in D \cap V(R)$  are only dominating vertices in the region.
+            \item Regions are disjoint but can share border vertices
+        \end{itemize}
+    \end{tcolorbox}
+   \pause A region is \textbf{maximal}, if no $R \in \mathfrak{R}$ such that $\mathfrak{R}' = \mathfrak{R} \cup \{R\}$ is a \dreg with $V(\mathfrak{R})\subsetneq V(\mathfrak{R}')$.
     \begin{figure}[!ht]
-        \resizebox{0.5\textwidth}{!}{
-            \tikzfig{../thesis/fig/tikz/neighborhoods-single-vertex}
+        \resizebox{0.3\textwidth}{!}{
+            \tikzfig{./img/region}
         }
     \end{figure}
 \end{frame}
+
 \begin{frame}[c]{Splitting Up $N(v)$}
+    \begin{figure}[!ht]
+        \resizebox{0.4\textwidth}{!}{
+            \tikzfig{../thesis/fig/tikz/neighborhoods-single-vertex}
+        }
+    \end{figure}
+
  %Let \G be a graph and let $v \in V$. 
  We split $N(v)$ into three subsets:
     \begin{align}
@@ -161,31 +167,31 @@
     \begin{tcolorbox}[colback=TUMBlueLighter,title=]
         Let \G be a graph and let $v \in V$. If $|N_3(v)| \geq 1$:
         \begin{itemize}
-            \item remove $N_{2,3}(v)$ from G,
-            \item add a vertex $v'$ and an edge $\{v, v'\}$.
+            \item remove $N_{2,3}(v)$ from $G$,
+            \item add $\{v, v'\}$.
         \end{itemize}
     \end{tcolorbox}
 
     \begin{figure}[!ht]
-    \resizebox{0.4\textwidth}{!}{
+    \resizebox{0.5\textwidth}{!}{
          \tikzfig{../thesis/fig/tikz/ruleone}
     }
     \end{figure}
     \begin{itemize}
-        \item \textbf{Idea: } $v$ better choice than $N_{2,3}$
+        \item \textbf{Idea: } $v$ better choice than $N_{2,3}(v)$
     \end{itemize}
 \end{frame}
 
+
+\subsection{Rule 2}
 \begin{frame}[c]{Splitting up $N(v,w)$}
 
     \begin{figure}[!ht]
-        \resizebox{0.7\textwidth}{!}{
+        \resizebox{0.45\textwidth}{!}{
             \tikzfig{../thesis/fig/tikz/neighborhoods-two-vertices}
         }
     \end{figure}
-\end{frame}
 
-\begin{frame}[c]{Splitting up $N(v,w)$}
     \begin{align}
       \pause  N_1(v,w) & = \{u \in N(v,w) \mid N(u) \setminus (N(v,w)\cup \{v,w\}) \neq \emptyset \}  \\
       \pause  N_2(v,w) & = \{u \in N(v,w)\setminus N_1(v,w) \mid N(u) \cap N_1(v,w) \neq \emptyset \} \\
@@ -195,58 +201,81 @@
 \end{frame}
 
 
-\begin{frame}[c]{Rule 2: Setting Up Our Weapons}
-    \textbf{Key Idea: } $N_{2,3}(v, w)$ can \textbf{always} be semitotally dominated with 4 vertices.
+\begin{frame}[c]{Rule 2}
+    \begin{figure}[!ht]
+        \resizebox{0.4\textwidth}{!}{
+            \tikzfig{./fig/Dvs}
+        }
+    \end{figure}
     \pause\begin{align}
-        \Dvw & = \{ \tilde D \subseteq N_{2,3}(v,w)            \mid N_3(v,w) \subseteq \bigcup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3                  \} \\
-        \Dv  & = \{ \tilde D \subseteq N_{2,3}(v,w) \cup \{v\} \mid N_3(v,w) \subseteq \bigcup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3,\ v \in \tilde D \} \\
-        \Dw  & = \{ \tilde D \subseteq N_{2,3}(v,w) \cup \{w\} \mid N_3(v,w) \subseteq \bigcup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3,\ w \in \tilde D \}
+        \Dvw & = \{ \tilde D \subseteq N_{2,3}(v,w)            \mid N_3(v,w) \subseteq \cup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3                  \} \\
+        \Dv  & = \{ \tilde D \subseteq N_{2,3}(v,w) \cup \{v\} \mid N_3(v,w) \subseteq \cup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3,\ v \in \tilde D \} \\
+        \Dw  & = \{ \tilde D \subseteq N_{2,3}(v,w) \cup \{w\} \mid N_3(v,w) \subseteq \cup_{v \in \tilde D} N(v),\ |\tilde D| \leq 3,\ w \in \tilde D \}
     \end{align}
+    
+    \pause \textbf{Key Idea: } $N_{2,3}(v, w)$ can \textbf{always} be semitotally dominated with 4 vertices.
 
+    \pause \textbf{Lemma}: $\Dvw = \emptyset$ and $\Dv = \emptyset$, then any solution contains $w$.
 \end{frame}
 
-\begin{frame}[c]{Rule 2}
-    If $\mathbf{\Dvw = \emptyset}$ we apply the following:
+%\begin{frame}[c]{Rule 2}
+ %   If $\mathbf{\Dvw = \emptyset}$ we apply the following:
 
-    \begin{caseof}
-       \case{if $\Dv =  \emptyset$ and $D_w = \emptyset$}
+    %\begin{caseof}
+       %\case{if $\Dv =  \emptyset$ and $D_w = \emptyset$}
+
+        %\begin{itemize}
+            %\item Remove $N_{2,3}(v,w)$
+            %\item Add vertices $v'$ and $w'$ and two edges $\{v, v'\}$ and $\{w, w'\}$
+            %\item Preserve $d(v,w)$
+        %\end{itemize}
+        %\pause \case{if $\Dv \neq  \emptyset$ and $D_w = \emptyset$}
+
+        %\begin{itemize}
+            %\item Remove $N_{2,3}(v)$
+            %\item Add $\{v, v'\}$
+        %\end{itemize}
+        
+        %\pause \case{if $\Dv =  \emptyset$ and $D_w \neq \emptyset$} Symmetric
+    %\end{caseof}
+
+\begin{frame}[c]{Rule 2}
+
+    \textbf{Case 1}: If $\Dvw = \emptyset$ and $\Dv =  \emptyset$ and $D_w = \emptyset$
 
         \begin{itemize}
             \item Remove $N_{2,3}(v,w)$
             \item Add vertices $v'$ and $w'$ and two edges $\{v, v'\}$ and $\{w, w'\}$
             \item Preserve $d(v,w)$
         \end{itemize}
-        \pause \case{if $\Dv \neq  \emptyset$ and $D_w = \emptyset$}
 
-        \begin{itemize}
-            \item Remove $N_{2,3}(v)$
-            \item Add $\{v, v'\}$
-        \end{itemize}
-        
-        \pause \case{if $\Dv =  \emptyset$ and $D_w \neq \emptyset$} Symmetric
-    \end{caseof}
-\end{frame}
-
-\subsection{Rule 2}
-\begin{frame}[2]{Rule 2: Case 1}
     \begin{figure}[!ht]
     \resizebox{0.9\textwidth}{!}{
          \tikzfig{./img/rule2-case1}
     }
-\end{figure}
+    \end{figure}
 \end{frame}
 
-\begin{frame}[2]{Rule 2: Case 2}
+\begin{frame}[c]{Rule 2}
+
+    If $\mathbf{\Dvw = \emptyset}$ we apply the following:
+
+    \textbf{Case 2/3}: if $\Dvw = \emptyset $ and $\Dv \neq  \emptyset$ and $D_w = \emptyset$
+        \begin{itemize}
+            \item Remove $N_{2,3}(v)$
+            \item Add $\{v, v'\}$
+        \end{itemize}
     \begin{figure}[!ht]
-    \resizebox{0.9\textwidth}{!}{
+    \resizebox{0.8\textwidth}{!}{
          \tikzfig{./img/rule2-case2}
     }
-\end{figure}
+    \end{figure}
 \end{frame}
 
+\subsection{Rule 3}
 \begin{frame}[c]{Simple Regions}
 
-    \begin{tcolorbox}[colback=TUMBlueLighter,title=The Main Theorem]
+    \begin{tcolorbox}[colback=TUMBlueLighter,title=Simple Region {\cite{Garnero2018}}]
         A simple $vw$-region is a $vw$-region such that:
         \begin{enumerate}
             \item its boundary paths have length at most 2, and
@@ -255,83 +284,43 @@
     \end{tcolorbox}
 
     \pause\begin{figure}[!ht]
-        \resizebox{0.35\textwidth}{!}{
+        \resizebox{0.3\textwidth}{!}{
             \tikzfig{../thesis/fig/tikz/simple-region-example}
         }
     \end{figure}
 
 \end{frame}
 
-\subsection{Rule 3}
-\begin{frame}[c]{Rule 3: Shrinking the Size of Simple Regions}
+
+\begin{frame}[c]{Rule 3}
 
 Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and $w$. If $|V(R) \setminus \{v, w\}| \geq 5$ apply the following:
 
-\begin{caseof}
-        \case{If $G[R\setminus\partial R] \cong P_3$, then:}
-
+        \textbf{Case 1:} If $G[R\setminus\partial R] \cong P_3$, then:
             \begin{itemize}
                     \item remove $V(R\setminus\partial R)$
-                    \item add vertex $y$ with edges $\{v, y\}$ and $\{y, w\}$
+                    \item add path $(v,y,w)$
             \end{itemize}
-
-        \case{If $G[R\setminus\partial R] \ncong P_3$, then}
-
-            \begin{itemize}
-                    \item remove $V(R\setminus\partial R)$
-                    \item add vertices $y$, $y'$ and four edges $\{v,y\}$, $\{v, y'\}$, $\{y, w\}$ and $\{y', w\}$
-            \end{itemize}
-        \end{caseof}
-\end{frame}
-
-\begin{frame}[c]{Rule 3: Shrinking the Size of Simple Regions}
-
-    \begin{caseof}
-        {\bfseries
-        \case{If $G[R\setminus\partial R] \cong P_3$, then:}
-
-            \begin{itemize}
-                    \item remove $V(R\setminus\partial R)$
-                    \item add vertex $y$ with edges $\{v, y\}$ and $\{y, w\}$
-            \end{itemize}
-        }
-
-        \case{If $G[R\setminus\partial R] \ncong P_3$, then}
-
-            \begin{itemize}
-                    \item remove $V(R\setminus\partial R)$
-                    \item add vertices $y$, $y'$ and four edges $\{v,y\}$, $\{v, y'\}$, $\{y, w\}$ and $\{y', w\}$
-            \end{itemize}
-        \end{caseof}
 
     \begin{figure}[!ht]
-    \resizebox{0.35\textwidth}{!}{
+    \pause\resizebox{0.4\textwidth}{!}{
          \tikzfig{./img/rulethree-1}
     }
     \end{figure}
 \end{frame}
 
-\begin{frame}[c]{Rule 3: Shrinking the Size of Simple Regions}
+\begin{frame}[c]{Rule 3}
 
-    \begin{caseof}
-        \case{If $G[R\setminus\partial R] \cong P_3$, then:}
+    Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and $w$. If $|V(R) \setminus \{v, w\}| \geq 5$ apply the following:
 
+        \textbf{Case 2: }If $G[R\setminus\partial R] \ncong P_3$, then
             \begin{itemize}
                     \item remove $V(R\setminus\partial R)$
-                    \item add vertex $y$ with edges $\{v, y\}$ and $\{y, w\}$
+                    \item add new path $(v,y,y',w)$
             \end{itemize}
-        {\bfseries
-        \case{If $G[R\setminus\partial R] \ncong P_3$, then}
-
-            \begin{itemize}
-                    \item remove $V(R\setminus\partial R)$
-                    \item add vertices $y$, $y'$ and four edges $\{v,y\}$, $\{v, y'\}$, $\{y, w\}$ and $\{y', w\}$
-            \end{itemize}
-        }
-        \end{caseof}
 
     \begin{figure}[!ht]
-    \resizebox{0.35\textwidth}{!}{
+    \pause\resizebox{0.4\textwidth}{!}{
          \tikzfig{./img/rulethree-2}
     }
     \end{figure}
@@ -339,9 +328,10 @@ Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and
 
 
 \begin{frame}[c]{Notes}
+    We proved, that
     \begin{itemize}
-        \pause \item We proved that all these rules are sound,
-        \pause \item change the solution size by only a constant factor
+        \pause \item all these rules are sound,
+        \pause \item only change the solution size by a function in $f(k)$, 
         \pause \item and can be applied in poly-time.
     \end{itemize}
 \end{frame}
@@ -357,9 +347,9 @@ Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and
 
     \pause For each $d$ in sds $D$:
     \begin{enumerate}
-           \pause \item $|N_1(v) \setminus V(\mathfrak{R})| = 0$~\cite{Alber2004}, On Border
-           \pause \item $|N_2(v) \setminus V(\mathfrak{R})| = 96$~\cite{Alber2004}: TODO Reasoning  
-           \pause \item $|N_3(v) \setminus V(\mathfrak{R})| = 1$, by Rule 1
+           \pause \item $|N_1(v) \setminus V(\mathfrak{R})| \leq 0$~\cite{Alber2004}, On Border
+           \pause \item $|N_2(v) \setminus V(\mathfrak{R})| \leq 96$~\cite{Alber2004}: Simple regions to $N_1(v,w)$  
+           \pause \item $|N_3(v) \setminus V(\mathfrak{R})| \leq 1$, by Rule 1
         \end{enumerate}
 \end{frame}
 \begin{frame}[c]{Bounding the Kernel: Inside a region}
@@ -371,9 +361,9 @@ Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and
     \end{figure}
     For each $vw$-region, we have
     \begin{enumerate}
-\pause        \item $|N_1(v,w)| \leq 4$~\cite{Alber2004} (vertices on border)
+\pause        \item $|N_1(v,w)| \leq 4$ (vertices on border~\cite{Alber2004})
 \pause        \item $|N_2(v,w)| \leq 6 \cdot 4$ (simple regions to $N_1(v,w)$, Rule 3)
-\pause        \item $|N_3(v,w)| \leq \max(27,44,4,57) \cdot 4$ (proof omitted depending on Rule 2)
+\pause        \item $|N_3(v,w)| \leq 57$ (Rule 2 / 3)
     \end{enumerate}
 
     \textbf{Total: } $|V(R)| = |\{v, w\} \cup (N_1(v,w) \cup N_2(v, w) \cup N_3(v, w))| \leq 87$
@@ -397,12 +387,12 @@ Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and
     Let D be sds of size $k$. There exists a maximal \dreg $\mathfrak{R}$ such that:
 
     \begin{enumerate}
-        \item $\mathfrak{R}$ has only at most $3 k - 6$ regions (\cite{Alber2004});
+        \item $\mathfrak{R}$ has only at most $3 k - 6$ regions  (Alber, Fellows Niedermeier~\cite{Alber2004});
         \item There are at most $97 \cdot k$ vertices outside of any region;
         \item Each region  $R \in \mathfrak{R}$ contains at most $87$ vertices.
     \end{enumerate}
 
-    \textbf{Hence: } $|V| = \bigcup_{v \in D} N(v) = 87 \cdot (3k - 6) + 97 \cdot k + k < 359 \cdot k$
+    \textbf{Hence: } $|V| = \bigcup_{v \in D} N(v) = 87 \cdot (3k - 6) + 97 \cdot k  < 358 \cdot k$
 
 \end{frame}
 
@@ -411,8 +401,7 @@ Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and
 
 \begin{tcolorbox}[colback=TUMBlueLighter,title=The Main Theorem]
     The \sdom problem parameterized by solution size admits a linear kernel on planar graphs.
-    There exists a polynomial-time algorithm that, given a planar graph $(G, k)$, either correctly reports that $(G, k)$ is a NO-instance or returns an equivalent instance $(G', k)$ such that $|V(G')| \leq 359 \cdot k$.
+    There exists a polynomial-time algorithm that, given a planar graph $(G, k)$, either correctly reports that $(G, k)$ is a NO-instance or returns an equivalent instance $(G', k)$ such that $|V(G')| \leq 358 \cdot k'$.
 \end{tcolorbox}
-\textbf{Proof: } Add Proof here.
 \end{frame}
 
