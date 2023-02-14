@@ -1,40 +1,48 @@
-\begin{frame}[c]{Motivation}
-\begin{tcolorbox}[colback=TUMBlueLighter,title=\dom]
-    \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
-        \textbf{Input} & Graph $G = (V, E)$, $k \in \mathbb{N}$\\
-        \textbf{Question} & Exists {$D \subseteq V$} with $|D| \leq k$ such that ${N[D] = V}$? \\
-    \end{tabularx}
-\end{tcolorbox}
-
-\begin{itemize}
-\pause \item The domination number is the minimum cardinality of a ds of $G$, denotes as $\gamma(G)$
-\pause \item \textbf{Observation:} In connected $G$ every $v\in D$ has another $z \in D$ with $d(v,z) \leq 3$.
-\end{itemize}
-
+\begin{frame}[c]{Example: $\gamma(G) < \mathbf{\gamma_{t2}(G)} < \gamma_t(G)$}
+\begin{figure}[!ht]
+    \resizebox{0.95\textwidth}{!}{
+         \tikzfig{../thesis/fig/tikz/ds-examples}
+    }
+    \end{figure}
 \end{frame}
 
-\begin{frame}[c]{Motivation}
-\begin{tcolorbox}[colback=TUMBlueLighter,title=\tdom]
-    \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
-        \textbf{Input} & Graph $G = (V, E)$, $k \in \mathbb{N}$\\
-        \textbf{Question} & Exists ds $D \subseteq V$ with $|D| \leq k$ such that \\ 
-       &  $\forall d_1 \in X :\exists d_2 \in D \setminus \{d_1\}$ with ${d(d_1, d_2) \leq 1}$? \\
-    \end{tabularx}
-\end{tcolorbox}
+%\begin{frame}[c]{Motivation}
+%\begin{tcolorbox}[colback=TUMBlueLighter,title=\dom]
+%    \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
+%        \textbf{Input} & Graph $G = (V, E)$, $k \in \mathbb{N}$\\
+%        \textbf{Question} & Exists {$D \subseteq V$} with $|D| \leq k$ such that ${N[D] = V}$? \\
+%    \end{tabularx}
+%\end{tcolorbox}
+%
+%\begin{itemize}
+%\pause \item The domination number is the minimum cardinality of a ds of $G$, denotes as $\gamma(G)$
+%\pause \item \textbf{Observation:} In connected $G$ every $v\in D$ has another $z \in D$ with $d(v,z) \leq 3$.
+%\end{itemize}
+%
+%\end{frame}
 
-\begin{itemize}
- \pause \item The total domination number is the minimum cardinality of a tds of $G$, denoted as $\gamma_t(G)$.
- \pause \item We say $d_1$ witnesses $d_2$ (and vice versa)
-\end{itemize}
-
-\end{frame}
+%\begin{frame}[c]{Motivation}
+%\begin{tcolorbox}[colback=TUMBlueLighter,title=\tdom]
+%    \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
+%        \textbf{Input} & Graph $G = (V, E)$, $k \in \mathbb{N}$\\
+%        \textbf{Question} & Exists ds $D \subseteq V$ with $|D| \leq k$ such that \\ 
+%       &  $\forall d_1 \in D :\exists d_2 \in D \setminus \{d_1\}$ with ${d(d_1, d_2) \leq 1}$? \\
+%    \end{tabularx}
+%\end{tcolorbox}
+%
+%\begin{itemize}
+% \pause \item The total domination number is the minimum cardinality of a tds of $G$, denoted as $\gamma_t(G)$.
+% \pause \item We say $d_1$ witnesses $d_2$ (and vice versa)
+%\end{itemize}
+%
+%\end{frame}
 
 \begin{frame}[c]{Motivation}
 \begin{tcolorbox}[colback=TUMBlueLighter,title=\sdom]
     \begin{tabularx}{1.0\textwidth}{>{\hsize=0.30\hsize}X>{\hsize=0.8\hsize}X}
         \textbf{Input}    & Graph $G = (V, E)$, $k \in \mathbb{N}$\\
         \textbf{Question} & Exists ds $D \subseteq V$ with $|D| \leq k$ such that  \\
-        & $\forall d_1 \in X :\exists d_2 \in D \setminus \{d_1\}$ with ${d(d_1, d_2) \leq 2}$? \\
+        & $\forall d_1 \in D :\exists d_2 \in D \setminus \{d_1\}$ with ${d(d_1, d_2) \leq 2}$? \\
     \end{tabularx}
 \end{tcolorbox}
 
@@ -43,14 +51,6 @@
     \pause \item \textbf{Observation}: $\gamma(G) \leq  \mathbf{\gamma_{t2}(G)}  \leq \gamma{t}(G)$
     \pause \item We say $d_1$ witnesses $d_2$ (and vice versa)
 \end{itemize}
-\end{frame}
-
-\begin{frame}[c]{Example: $\gamma(G) < \mathbf{\gamma_{t2}(G)} < \gamma_t(G)$}
-\begin{figure}[!ht]
-    \resizebox{0.95\textwidth}{!}{
-         \tikzfig{../thesis/fig/tikz/ds-examples}
-    }
-    \end{figure}
 \end{frame}
 
 \section{Theory}

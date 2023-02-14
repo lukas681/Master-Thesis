@@ -215,7 +215,7 @@
     
     \pause \textbf{Key Idea: } $N_{2,3}(v, w)$ can \textbf{always} be semitotally dominated with 4 vertices.
 
-    \pause \textbf{Lemma}: $\Dvw = \emptyset$ and $\Dv = \emptyset$, then any solution contains $w$.
+    \pause \textbf{Lemma}: $\Dvw = \emptyset$ and $\Dv = \emptyset$, then any solution contains $w$. Simply neighborhood.
 \end{frame}
 
 %\begin{frame}[c]{Rule 2}
@@ -284,47 +284,51 @@
     \end{tcolorbox}
 
     \pause\begin{figure}[!ht]
-        \resizebox{0.3\textwidth}{!}{
+        \resizebox{0.2\textwidth}{!}{
             \tikzfig{../thesis/fig/tikz/simple-region-example}
         }
     \end{figure}
 
+    \textbf{Rule 3:} Shrinking simple region to at most $4$ vertices + preserving witness properties.
+
 \end{frame}
 
 
-\begin{frame}[c]{Rule 3}
-
-Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and $w$. If $|V(R) \setminus \{v, w\}| \geq 5$ apply the following:
-
-        \textbf{Case 1:} If $G[R\setminus\partial R] \cong P_3$, then:
-            \begin{itemize}
-                    \item remove $V(R\setminus\partial R)$
-                    \item add path $(v,y,w)$
-            \end{itemize}
-
-    \begin{figure}[!ht]
-    \pause\resizebox{0.4\textwidth}{!}{
-         \tikzfig{./img/rulethree-1}
-    }
-    \end{figure}
-\end{frame}
-
-\begin{frame}[c]{Rule 3}
-
-    Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and $w$. If $|V(R) \setminus \{v, w\}| \geq 5$ apply the following:
-
-        \textbf{Case 2: }If $G[R\setminus\partial R] \ncong P_3$, then
-            \begin{itemize}
-                    \item remove $V(R\setminus\partial R)$
-                    \item add new path $(v,y,y',w)$
-            \end{itemize}
-
-    \begin{figure}[!ht]
-    \pause\resizebox{0.4\textwidth}{!}{
-         \tikzfig{./img/rulethree-2}
-    }
-    \end{figure}
-\end{frame}
+%\begin{frame}[c]{Rule 3}
+%
+%Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and $w$. If $|V(R) \setminus \{v, w\}| \geq 5$ apply the following:
+%
+%        \textbf{Case 1:} If $G[R\setminus\partial R] \cong P_3$, then:
+%            \begin{itemize}
+%                    \item remove $V(R\setminus\partial R)$
+%                    \item add path $(v,y,w)$
+%            \end{itemize}
+%
+%    \begin{figure}[!ht]
+%    \pause\resizebox{0.3\textwidth}{!}{
+%         \tikzfig{./img/rulethree-1}
+%    }
+%    \end{figure}
+%
+%
+%\end{frame}
+%
+%\begin{frame}[c]{Rule 3}
+%
+%    Let \G be a plane graph, $v, w \in V$ and $R$ be a simple region between $v$ and $w$. If $|V(R) \setminus \{v, w\}| \geq 5$ apply the following:
+%
+%        \textbf{Case 2: }If $G[R\setminus\partial R] \ncong P_3$, then
+%            \begin{itemize}
+%                    \item remove $V(R\setminus\partial R)$
+%                    \item add new path $(v,y,y',w)$
+%            \end{itemize}
+%
+%    \begin{figure}[!ht]
+%    \pause\resizebox{0.4\textwidth}{!}{
+%         \tikzfig{./img/rulethree-2}
+%    }
+%    \end{figure}
+%\end{frame}
 
 
 \begin{frame}[c]{Notes}
